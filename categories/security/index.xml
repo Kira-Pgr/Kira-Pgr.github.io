@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 26 Jan 2022 21:15:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</title>
-      <link>https://kira-pgr.github.io/home_page/github_vuln/</link>
+      <link>https://kira-pgr.github.io/posts/github_vuln/</link>
       <pubDate>Wed, 26 Jan 2022 21:15:07 -0500</pubDate>
       
-      <guid>https://kira-pgr.github.io/home_page/github_vuln/</guid>
+      <guid>https://kira-pgr.github.io/posts/github_vuln/</guid>
       <description>GitHub url修改逻辑漏洞 前言： 大家好，我是鸽子PGR, 这是我第一篇博客= =
 同时呢，这也意味着我接下来会放弃b站更新视频，主要是想要多花一些时间提升一下自己的技术，并通过写博客的形式做笔记，毕竟做视频真的很麻烦qaq
 (其实只是因为懒 别打)
