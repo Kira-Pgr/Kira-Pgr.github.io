@@ -6,14 +6,111 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 26 Jan 2022 06:00:27 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Hello World</title>
-        <link>https://kira-pgr.github.io/home_page/hello-world/</link>
-        <pubDate>Wed, 26 Jan 2022 06:00:27 -0500</pubDate>
+        <lastBuildDate>Wed, 26 Jan 2022 21:15:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</title>
+        <link>https://kira-pgr.github.io/home_page/github_vuln/</link>
+        <pubDate>Wed, 26 Jan 2022 21:15:07 -0500</pubDate>
         
-        <guid>https://kira-pgr.github.io/home_page/hello-world/</guid>
-        <description>&lt;img src="https://kira-pgr.github.io/home_page/hello-world/cover.jpg" alt="Featured image of post Hello World" /&gt;&lt;h1 id=&#34;hello-world&#34;&gt;Hello World&lt;/h1&gt;
-&lt;p&gt;&amp;ndash; A Hello World Test&lt;/p&gt;
+        <guid>https://kira-pgr.github.io/home_page/github_vuln/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/home_page/github_vuln/cover.jpg" alt="Featured image of post GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux" /&gt;&lt;h1 id=&#34;github-url修改逻辑漏洞&#34;&gt;GitHub url修改逻辑漏洞&lt;/h1&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言：&lt;/h2&gt;
+&lt;p&gt;大家好，我是鸽子PGR, 这是我第一篇博客= =&lt;/p&gt;
+&lt;p&gt;同时呢，这也意味着我接下来会&lt;strong&gt;放弃b站更新视频&lt;/strong&gt;，主要是想要多花一些时间提升一下自己的技术，并通过写博客的形式做笔记，毕竟做视频真的很麻烦qaq&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;(其实只是因为懒   别打)&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;一-漏洞演示&#34;&gt;一. 漏洞演示&lt;/h2&gt;
+&lt;p&gt;咳咳，言归正传 OwO&lt;/p&gt;
+&lt;p&gt;最近刷GitHub的时候看到了&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/tree/8bcab0346d4fcf21b97046eb44db8cf37ddd6da0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这个&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 246; 
+			flex-basis: 591px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att1.png&#34; data-size=&#34;1677x681&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att1.png&#34;
+			width=&#34;1677&#34;
+			height=&#34;681&#34;
+			srcset=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/home_page/github_vuln/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Linus真的一反常态删除了Linux??&lt;/p&gt;
+&lt;p&gt;很显然这是假的~&lt;/p&gt;
+&lt;p&gt;或者说，这是一个硬核恶作剧= =&lt;/p&gt;
+&lt;p&gt;而这个恶作剧利用了GitHub一个小小的逻辑漏洞&lt;/p&gt;
+&lt;h2 id=&#34;二-漏洞复现&#34;&gt;二. 漏洞复现&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你嘤文水平不戳的话，可以参考https://news.ycombinator.com/item?id=24976138&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;想要利用这个漏洞，你只需要一个GitHub帐号和一个浏览器&lt;/p&gt;
+&lt;p&gt;首先Fork某一个项目，然后在你fork的项目中随便改点东西(任意的东西都可以)&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;至于Fork键的位置，自己找&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;然后点进你新加上的commit&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 653; 
+			flex-basis: 1569px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att2.png&#34; data-size=&#34;595x91&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att2.png&#34;
+			width=&#34;595&#34;
+			height=&#34;91&#34;
+			srcset=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att2_huee27a286e853bc37957c8994abfce6a4_7560_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/home_page/github_vuln/Att2_huee27a286e853bc37957c8994abfce6a4_7560_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;commit位置&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;commit位置&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;commit链接&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Kira-Pgr/MEMZ/commit/43ab3c1283605216e5b56388c11483fee7dcd47c&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Kira-Pgr/MEMZ/commit/43ab3c1283605216e5b56388c11483fee7dcd47c&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;把&lt;code&gt;commit&lt;/code&gt; 改为&lt;code&gt;tree&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Kira-Pgr/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Kira-Pgr/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;最后，把你的id(这里演示时是Kira-Pgr)改成你想要&amp;quot;修改&amp;quot;对方项目的人的id&lt;/p&gt;
+&lt;p&gt;(这里的id是NyDubh3)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这样你修改的东西就看来像是在原项目里一样 qaq&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 322; 
+			flex-basis: 773px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att3.png&#34; data-size=&#34;1878x583&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att3.png&#34;
+			width=&#34;1878&#34;
+			height=&#34;583&#34;
+			srcset=&#34;https://kira-pgr.github.io/home_page/github_vuln/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/home_page/github_vuln/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;原项目被&amp;#34;修改&amp;#34;啦= =&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;原项目被&amp;quot;修改&amp;quot;啦= =&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;结语&#34;&gt;结语：&lt;/h2&gt;
+&lt;p&gt;这个洞虽说危害不大，而且只需要判断commit是不是从一个fork来的就可以避免收到影响&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;但还是很好VAN的 逃)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;(⁄ ⁄•⁄ω⁄•⁄ ⁄)&lt;/p&gt;
 </description>
         </item>
         

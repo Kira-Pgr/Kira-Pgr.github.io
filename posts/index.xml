@@ -6,14 +6,41 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Jan 2022 06:00:27 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jan 2022 21:15:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello World</title>
-      <link>https://kira-pgr.github.io/posts/hello-world/</link>
-      <pubDate>Wed, 26 Jan 2022 06:00:27 -0500</pubDate>
+      <title>GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</title>
+      <link>https://kira-pgr.github.io/posts/github_vuln/</link>
+      <pubDate>Wed, 26 Jan 2022 21:15:07 -0500</pubDate>
       
-      <guid>https://kira-pgr.github.io/posts/hello-world/</guid>
-      <description>Hello World &amp;ndash; A Hello World Test</description>
+      <guid>https://kira-pgr.github.io/posts/github_vuln/</guid>
+      <description>GitHub url修改逻辑漏洞 前言： 大家好，我是鸽子PGR, 这是我第一篇博客= =
+同时呢，这也意味着我接下来会放弃b站更新视频，主要是想要多花一些时间提升一下自己的技术，并通过写博客的形式做笔记，毕竟做视频真的很麻烦qaq
+(其实只是因为懒 别打)
+一. 漏洞演示 咳咳，言归正传 OwO
+最近刷GitHub的时候看到了这个
+ 啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP 
+Linus真的一反常态删除了Linux??
+很显然这是假的~
+或者说，这是一个硬核恶作剧= =
+而这个恶作剧利用了GitHub一个小小的逻辑漏洞
+二. 漏洞复现  如果你嘤文水平不戳的话，可以参考https://news.ycombinator.com/item?id=24976138
+ 想要利用这个漏洞，你只需要一个GitHub帐号和一个浏览器
+首先Fork某一个项目，然后在你fork的项目中随便改点东西(任意的东西都可以)
+至于Fork键的位置，自己找
+然后点进你新加上的commit
+ commit位置 
+commit链接
+ https://github.com/Kira-Pgr/MEMZ/commit/43ab3c1283605216e5b56388c11483fee7dcd47c
+ 把commit 改为tree
+ https://github.com/Kira-Pgr/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c
+ 最后，把你的id(这里演示时是Kira-Pgr)改成你想要&amp;quot;修改&amp;quot;对方项目的人的id
+(这里的id是NyDubh3)
+ https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c
+ 这样你修改的东西就看来像是在原项目里一样 qaq
+ 原项目被&amp;quot;修改&amp;quot;啦= = 
+结语： 这个洞虽说危害不大，而且只需要判断commit是不是从一个fork来的就可以避免收到影响
+但还是很好VAN的 逃)
+(⁄ ⁄•⁄ω⁄•⁄ ⁄)</description>
     </item>
     
   </channel>

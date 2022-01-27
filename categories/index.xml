@@ -5,13 +5,14 @@
     <link>https://kira-pgr.github.io/categories/</link>
     <description>Recent content in Categories on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://kira-pgr.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Jan 2022 21:15:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello_world</title>
-      <link>https://kira-pgr.github.io/categories/hello_world/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Security</title>
+      <link>https://kira-pgr.github.io/categories/security/</link>
+      <pubDate>Wed, 26 Jan 2022 21:15:07 -0500</pubDate>
       
-      <guid>https://kira-pgr.github.io/categories/hello_world/</guid>
+      <guid>https://kira-pgr.github.io/categories/security/</guid>
       <description></description>
     </item>
     

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home_pages on KiraPGR&#39;s Blog</title>
-    <link>https://kira-pgr.github.io/home_page/</link>
-    <description>Recent content in Home_pages on KiraPGR&#39;s Blog</description>
+    <title>Security on KiraPGR&#39;s Blog</title>
+    <link>https://kira-pgr.github.io/categories/security/</link>
+    <description>Recent content in Security on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Jan 2022 21:15:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/home_page/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jan 2022 21:15:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</title>
       <link>https://kira-pgr.github.io/home_page/github_vuln/</link>
