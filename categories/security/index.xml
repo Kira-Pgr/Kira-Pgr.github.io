@@ -8,6 +8,40 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>PWN! PWN! PANG! Part1---基础知识</title>
+      <link>https://kira-pgr.github.io/posts/pwn1/</link>
+      <pubDate>Thu, 27 Jan 2022 21:24:46 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/pwn1/</guid>
+      <description>PWN! PWN! PANG! Part1 前言 这里是PGR的PWN基础学习笔记qaq，主要研究的是Linux下ELF可执行文件的漏洞利用
+涉及内容:
+ 栈(Stack)的漏洞利用，主要是栈溢出(Stack Overflow)攻击   PS: 说到Stack Overflow就必须得说一个同名的国外著名IT论坛(真的特别特别特别好用)
+重要的事情说三遍哈XD
+https://stackoverflow.com/
+   C语言Printf()函数格式化字符串漏洞(Format String)
+  一小点堆(Heap)利用
+   AND: 文章中涉及的题目文件会全部随文章发出来
+如果各位不想一个一个下载的话，这边有一个环境搭好(工具+题目)的Xubuntu Linux(VMware虚拟机)
+链接如下:
+mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Efyh9fLtgIZCi2Q21hCXLI0BFrHp17qc9ZxHW6mjovmSBw?e=BUtZzA
+如果想只下载题目的话:
+mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Eefb6Yqp7vpGriwwFz6wQCkBtjqcFnGZwZTAyK2fJhA_FA?e=gjHVUW
+什么是PWN? PWN原指黑客攻破系统发出的“砰”的响声，在这里我们解释为二进制漏洞挖掘与利用
+分步来讲的话 = = 大概可以概括为以下几点：
+  破解、利用成功（程序的二进制漏洞）
+  攻破（设备、服务器）
+  控制（设备、服务器）
+   配个图 
+Linux下ELF文件 ELF文件的是Linux下的可执行文件，与Windows下exe文件不同
+可以用File命令查看你的文件格式:
+ File命令 
+ 不过这里有一个很有趣的地方，由于File命令依据文件头判断文件类型，Linux的后缀名并不影响File命令判断文件是ELF文件(即使a.out已经变成了a.zip)
+不过在文件夹窗口里双击这个.zip, 就会发现:这个ELF文件已经被当成压缩包打开 (这和win似乎很像)
+可见在修改后缀名的过程中，干扰了系统对于文件打开方式的识别= =
+  嘿嘿= =, 被迷惑了呢;)</description>
+    </item>
+    
+    <item>
       <title>GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</title>
       <link>https://kira-pgr.github.io/posts/github_vuln/</link>
       <pubDate>Wed, 26 Jan 2022 21:15:07 -0500</pubDate>

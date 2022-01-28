@@ -1,0 +1,23 @@
+
+.blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+  
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}

@@ -6,7 +6,327 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 27 Jan 2022 21:24:46 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PWN! PWN! PANG! Part1---基础知识</title>
+        <link>https://kira-pgr.github.io/posts/pwn1/</link>
+        <pubDate>Thu, 27 Jan 2022 21:24:46 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/pwn1/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/pwn1/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part1---基础知识" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part1&#34;&gt;PWN! PWN! PANG! Part1&lt;/h1&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;这里是PGR的PWN基础学习笔记qaq，主要研究的是Linux下ELF可执行文件的漏洞利用&lt;/p&gt;
+&lt;p&gt;涉及内容:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;栈(Stack)的漏洞利用，主要是栈溢出(Stack Overflow)攻击&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS: 说到Stack Overflow就必须得说一个同名的国外著名IT论坛(真的&lt;strong&gt;特别特别特别&lt;/strong&gt;好用)&lt;/p&gt;
+&lt;p&gt;重要的事情说三遍哈XD&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://stackoverflow.com/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;C语言Printf()函数格式化字符串漏洞(Format String)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一小点堆(Heap)利用&lt;/p&gt;
+&lt;hr&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;AND: 文章中涉及的题目文件会全部随文章发出来&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果各位不想一个一个下载的话，这边有一个环境搭好(工具+题目)的Xubuntu Linux(VMware虚拟机)&lt;/p&gt;
+&lt;p&gt;链接如下:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;blur&#34;&gt;mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Efyh9fLtgIZCi2Q21hCXLI0BFrHp17qc9ZxHW6mjovmSBw?e=BUtZzA&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;如果想只下载题目的话:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;blur&#34;&gt;mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Eefb6Yqp7vpGriwwFz6wQCkBtjqcFnGZwZTAyK2fJhA_FA?e=gjHVUW&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;什么是pwn&#34;&gt;什么是PWN?&lt;/h2&gt;
+&lt;p&gt;PWN原指黑客攻破系统发出的“砰”的响声，在这里我们解释为&lt;strong&gt;二进制漏洞挖掘与利用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;分步来讲的话 = = 大概可以概括为以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;破解、利用成功（程序的二进制漏洞）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;攻破（设备、服务器）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制（设备、服务器）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 153; 
+			flex-basis: 368px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/pwn.jpg&#34; data-size=&#34;316x206&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/pwn.jpg&#34;
+			width=&#34;316&#34;
+			height=&#34;206&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/pwn1/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;配个图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;配个图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;linux下elf文件&#34;&gt;Linux下ELF文件&lt;/h2&gt;
+&lt;p&gt;ELF文件的是Linux下的可执行文件，与Windows下exe文件不同&lt;/p&gt;
+&lt;p&gt;可以用File命令查看你的文件格式:&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 174; 
+			flex-basis: 417px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/file.png&#34; data-size=&#34;1139x654&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/file.png&#34;
+			width=&#34;1139&#34;
+			height=&#34;654&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn1/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;File命令&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;File命令&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不过这里有一个很有趣的地方，由于File命令依据文件头判断文件类型，Linux的后缀名并不影响File命令判断文件是ELF文件(即使a.out已经变成了a.zip)&lt;/p&gt;
+&lt;p&gt;不过在文件夹窗口里双击这个.zip, 就会发现:这个ELF文件已经被当成压缩包打开   (这和win似乎很像)&lt;/p&gt;
+&lt;p&gt;可见在修改后缀名的过程中，干扰了系统对于文件打开方式的识别= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 150; 
+			flex-basis: 361px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/file1.png&#34; data-size=&#34;945x627&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/file1.png&#34;
+			width=&#34;945&#34;
+			height=&#34;627&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/file1_hu875359da3f79d0c44f12bd1a55586189_97232_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn1/file1_hu875359da3f79d0c44f12bd1a55586189_97232_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;嘿嘿= =, 被迷惑了呢;)&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;嘿嘿= =, 被迷惑了呢;)&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;elf文件的结构&#34;&gt;ELF文件的结构&lt;/h2&gt;
+&lt;p&gt;咳咳，貌似扯远了=   =&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 190; 
+			flex-basis: 456px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/ELF.jpg&#34; data-size=&#34;1363x716&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/ELF.jpg&#34;
+			width=&#34;1363&#34;
+			height=&#34;716&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/pwn1/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;ELF文件结构&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;ELF文件结构&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;现在我们再重新审视一下&amp;quot;a.out&amp;quot;这个可执行文件&lt;/p&gt;
+&lt;p&gt;我们刚刚一不小心把它用压缩包的方式打开(如上图)&lt;/p&gt;
+&lt;p&gt;我们看到一堆奇怪的文件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;.got&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.got.plt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.plt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.text&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些文件实际上代表着这个ELF文件在磁盘里的 一个个 &lt;strong&gt;&amp;ldquo;节&amp;rdquo;(Section)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;而当ELF被映射进内存中的时候， 就有了&lt;strong&gt;段(Segment)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 192; 
+			flex-basis: 461px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/ELF1.jpg&#34; data-size=&#34;1351x703&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/ELF1.jpg&#34;
+			width=&#34;1351&#34;
+			height=&#34;703&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/pwn1/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;节与段&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;节与段&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;段与节&#34;&gt;段与节&lt;/h2&gt;
+&lt;p&gt;在这里再详细扯一点段与节的东西&lt;/p&gt;
+&lt;p&gt;(嘛 =    =， 因为我个人学的时候感觉这块知识对于后面影响挺大的)&lt;/p&gt;
+&lt;p&gt;先扯一下: 段是比节大的qaq&lt;/p&gt;
+&lt;p&gt;这里来一个非常非常经典且重要的图,有请:&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 189; 
+			flex-basis: 454px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/img.png&#34; data-size=&#34;1359x717&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/img.png&#34;
+			width=&#34;1359&#34;
+			height=&#34;717&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/img_hu25854d26341c86fdce4489a656418346_70073_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn1/img_hu25854d26341c86fdce4489a656418346_70073_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;非常非常经典且重要的图 PS: 还是QQ截图清楚  别打了别打了）&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;非常非常经典且重要的图 PS: 还是QQ截图清楚  别打了别打了）&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;从这张图我们可以看到，.data .bss .got.plt节都被映射到了&lt;strong&gt;Data(数据)段&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;而.rodata .text .init ELF Header被映射到了&lt;strong&gt;Code(代码)段&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这是为什么呢?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;前三个节~~(懒得仔细写了)~~有一个共同的特征:可读可写。因为用户数据是要保存在这里的，如果它不可写的话，显然不彳亍=  = 。 很显然，你也不能让它可执行，这样用户就可以写入任意数据并执行了(永远不要相信用户的输入是安全的)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;后四个节是代码部分，往往是小程序自己的一些东西，所以他是可读可执行，但不可以写=   =&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最后, &amp;gt;__&amp;lt;, 再来个图;)&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 187; 
+			flex-basis: 450px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/img1.png&#34; data-size=&#34;1350x719&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/img1.png&#34;
+			width=&#34;1350&#34;
+			height=&#34;719&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/img1_huc654210b42dc0202bb596523623c9d4c_100907_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn1/img1_huc654210b42dc0202bb596523623c9d4c_100907_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;有关部分节的作用&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;有关部分节的作用&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;程序数据在内存中的组织&#34;&gt;程序数据在内存中的组织&lt;/h2&gt;
+&lt;p&gt;废话不说，直接上图()&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 190; 
+			flex-basis: 457px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/mem.png&#34; data-size=&#34;1355x711&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/mem.png&#34;
+			width=&#34;1355&#34;
+			height=&#34;711&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/mem_huae9965f5cba59206b56105b8aa15edc0_63508_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn1/mem_huae9965f5cba59206b56105b8aa15edc0_63508_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;程序数据在内存中的组织&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;程序数据在内存中的组织&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;咳咳，在这里默认大家有一点的c基础&lt;/p&gt;
+&lt;p&gt;不再扯开讲了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;这里要注意的几点就是&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;栈是&lt;del&gt;向下&lt;/del&gt;从高地址向低地址增长的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;堆是从低地址向高地址增长&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据是从低地址向高地址写入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BSS保存全局变量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;栈保存局部变量&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;关于汇编罪恶的汇编--&#34;&gt;关于汇编，罪恶的汇编=  =&lt;/h2&gt;
+&lt;p&gt;汇编的话，只需要知道最最最基础的一些指令=  =&lt;/p&gt;
+&lt;p&gt;既然都写了这么长了=   =&lt;/p&gt;
+&lt;p&gt;那就继续下去好了。。咳咳。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;一些常用汇编指令&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 190; 
+			flex-basis: 457px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn1/asm.png&#34; data-size=&#34;1354x711&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn1/asm.png&#34;
+			width=&#34;1354&#34;
+			height=&#34;711&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn1/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn1/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;常用汇编指令&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;常用汇编指令&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;用法&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nasm&#34; data-lang=&#34;nasm&#34;&gt;&lt;span class=&#34;nf&#34;&gt;MOV&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DEST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;地址&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;SRC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;值&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;      &lt;span class=&#34;c1&#34;&gt;; 把源操作数传送给目标(类似赋值语句)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;LEA&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;REG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;SRC&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;; 把源操作数的有效地址送给指定的寄存器(把SRC的地址保存到…)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;PUSH&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;VALUE&lt;/span&gt;                 &lt;span class=&#34;c1&#34;&gt;; 把目标值压栈，同时SP指针-1字长&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;POP&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DEST&lt;/span&gt;                     &lt;span class=&#34;c1&#34;&gt;; 将栈顶的值弹出至目的存储位置，同时SP指针+1字长&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;LEAVE&lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;; 在函数返回时，恢复父函数栈帧的指令(子函数调用结束后，销毁子函数栈帧)&lt;/span&gt;
+&lt;span class=&#34;nf&#34;&gt;RET&lt;/span&gt;                      &lt;span class=&#34;c1&#34;&gt;; 在函数返回时，控制程序执行流返回父函数的指令&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;首先，恭喜你看完了这篇文章&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这一篇嘛。。。有些不符我平常的风格了()&lt;/p&gt;
+&lt;p&gt;主要是这些知识，多，且有些无聊&lt;/p&gt;
+&lt;p&gt;不过之后嘛= =&lt;/p&gt;
+&lt;p&gt;肯定会很有趣的啦~&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;(啊，终于写完了， 好累)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;花了四五个小时才搞完=  =&lt;/p&gt;
+&lt;p&gt;不过嘛，能复习前面的知识并且能与大家分享.qaq.&lt;/p&gt;
+&lt;p&gt;还是挺有趣的嘛= =&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;To Be Continued&amp;hellip;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>About Me</title>
         <link>https://kira-pgr.github.io/posts/about-me/</link>
         <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
