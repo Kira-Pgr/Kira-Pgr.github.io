@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='What?!Linus大神删除了Linux'><title>GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='你用的这啥浏览器啊，太可怕了XD'><title>Web安全--浏览器信息伪造</title>
 
-<link rel='canonical' href='https://kira-pgr.github.io/posts/github_vuln/'>
+<link rel='canonical' href='https://kira-pgr.github.io/posts/web1/'>
 
-<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux'>
-<meta property='og:description' content='What?!Linus大神删除了Linux'>
-<meta property='og:url' content='https://kira-pgr.github.io/posts/github_vuln/'>
+<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='Web安全--浏览器信息伪造'>
+<meta property='og:description' content='你用的这啥浏览器啊，太可怕了XD'>
+<meta property='og:url' content='https://kira-pgr.github.io/posts/web1/'>
 <meta property='og:site_name' content='KiraPGR&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='GitHub' /><meta property='article:published_time' content='2022-01-26T21:15:07-05:00'/><meta property='article:modified_time' content='2022-01-26T21:15:07-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/github_vuln/cover.jpg' />
-<meta name="twitter:title" content="GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux">
-<meta name="twitter:description" content="What?!Linus大神删除了Linux"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/github_vuln/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-01-28T22:53:47-05:00'/><meta property='article:modified_time' content='2022-01-28T22:53:47-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/web1/cover.jpg' />
+<meta name="twitter:title" content="Web安全--浏览器信息伪造">
+<meta name="twitter:description" content="你用的这啥浏览器啊，太可怕了XD"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/web1/cover.jpg' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
     </head>
@@ -64,13 +64,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/posts/github_vuln/">
-                <img src="/posts/github_vuln/cover_huc96b35635ae944d6d48a0fbbc753b249_133823_800x0_resize_q75_box.jpg"
-                        srcset="/posts/github_vuln/cover_huc96b35635ae944d6d48a0fbbc753b249_133823_800x0_resize_q75_box.jpg 800w, /posts/github_vuln/cover_huc96b35635ae944d6d48a0fbbc753b249_133823_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/posts/web1/">
+                <img src="/posts/web1/cover_hu337d2e493e824d835754f79e3b77496e_3809477_800x0_resize_q75_box.jpg"
+                        srcset="/posts/web1/cover_hu337d2e493e824d835754f79e3b77496e_3809477_800x0_resize_q75_box.jpg 800w, /posts/web1/cover_hu337d2e493e824d835754f79e3b77496e_3809477_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
-                        height="567" 
+                        height="609" 
                         loading="lazy"
-                        alt="Featured image of post GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux" />
+                        alt="Featured image of post Web安全--浏览器信息伪造" />
                 
             </a>
         </div>
@@ -88,12 +88,12 @@
     
 
     <h2 class="article-title">
-        <a href="/posts/github_vuln/">GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</a>
+        <a href="/posts/web1/">Web安全--浏览器信息伪造</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        What?!Linus大神删除了Linux
+        你用的这啥浏览器啊，太可怕了XD
     </h3>
     
 
@@ -110,7 +110,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jan 26, 2022</time>
+                <time class="article-time--published">Jan 28, 2022</time>
             </div>
         
 
@@ -137,105 +137,160 @@
     <section class="article-content">
     
     
-    <h1 id="github-url修改逻辑漏洞">GitHub url修改逻辑漏洞</h1>
-<h2 id="前言">前言：</h2>
-<p>大家好，我是鸽子PGR, 这是我第一篇博客= =</p>
-<p>同时呢，这也意味着我接下来会<strong>放弃b站更新视频</strong>，主要是想要多花一些时间提升一下自己的技术，并通过写博客的形式做笔记，毕竟做视频真的很麻烦qaq</p>
-<p><del>(其实只是因为懒   别打)</del></p>
-<h2 id="一-漏洞演示">一. 漏洞演示</h2>
-<p>咳咳，言归正传 OwO</p>
-<p>最近刷GitHub的时候看到了<a class="link" href="https://github.com/torvalds/linux/tree/8bcab0346d4fcf21b97046eb44db8cf37ddd6da0"  target="_blank" rel="noopener"
-    >这个</a></p>
+    <h1 id="web安全----浏览器信息伪造">Web安全&mdash;-浏览器信息伪造</h1>
+<p>&ldquo;诶。。。PGR酱你用的什么浏览器&rdquo;</p>
+<p>— <strong>MimiKs-Sec-Browser.QwQ.</strong></p>
+<p>&ldquo;啊= =哪有这种浏览器&rdquo;</p>
+<p>— 诶嘿嘿，我就有这样神奇的浏览器XD</p>
 <p><figure 
 	
 		class="gallery-image" 
 		style="
-			flex-grow: 246; 
-			flex-basis: 591px"
+			flex-grow: 220; 
+			flex-basis: 529px"
 	>
-	<a href="/posts/github_vuln/Att1.png" data-size="1677x681">
-		<img src="/posts/github_vuln/Att1.png"
-			width="1677"
-			height="681"
-			srcset="/posts/github_vuln/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_480x0_resize_box_3.png 480w, /posts/github_vuln/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_1024x0_resize_box_3.png 1024w"
+	<a href="/posts/web1/b.png" data-size="355x161">
+		<img src="/posts/web1/b.png"
+			width="355"
+			height="161"
+			srcset="/posts/web1/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_480x0_resize_box_3.png 480w, /posts/web1/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_1024x0_resize_box_3.png 1024w"
 			loading="lazy"
-			alt="啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP">
+			alt="诶嘿嘿，有图片作证哦qaq">
 	</a>
 	
-	<figcaption>啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP</figcaption>
+	<figcaption>诶嘿嘿，有图片作证哦qaq</figcaption>
 	
 </figure></p>
-<p>Linus真的一反常态删除了Linux??</p>
-<p>很显然这是假的~</p>
-<p>或者说，这是一个硬核恶作剧= =</p>
-<p>而这个恶作剧利用了GitHub一个小小的逻辑漏洞</p>
-<h2 id="二-漏洞复现">二. 漏洞复现</h2>
-<blockquote>
-<p>如果你嘤文水平不戳的话，可以参考https://news.ycombinator.com/item?id=24976138</p>
-</blockquote>
-<p>想要利用这个漏洞，你只需要一个GitHub帐号和一个浏览器</p>
-<p>首先Fork某一个项目，然后在你fork的项目中随便改点东西(任意的东西都可以)</p>
-<p><del>至于Fork键的位置，自己找</del></p>
-<p>然后点进你新加上的commit</p>
+<hr>
+<h2 id="如何拥有神奇的浏览器">如何拥有神奇的浏览器;)</h2>
+<p>咳咳咳，进入正题</p>
+<p>要实现以上的效果，就要用到<strong>浏览器信息伪造技术</strong></p>
+<h2 id="浏览器信息伪造的实现">浏览器信息伪造的实现</h2>
+<p>网站判断你的设备和浏览器信息主要是依据你发向网站的数据包</p>
+<p>所以我们通过修改数据包实现浏览器信息伪造awa</p>
+<h2 id="burp-suite抓包">Burp Suite抓包</h2>
+<p>想要修改数据包，我们必须先抓获它</p>
+<p><del>(刚从野外抓到一只野生数据包)</del></p>
+<ul>
+<li>抓包工具推荐<strong>Burp Suite</strong></li>
+</ul>
 <p><figure 
 	
 		class="gallery-image" 
 		style="
-			flex-grow: 653; 
-			flex-basis: 1569px"
+			flex-grow: 208; 
+			flex-basis: 501px"
 	>
-	<a href="/posts/github_vuln/Att2.png" data-size="595x91">
-		<img src="/posts/github_vuln/Att2.png"
-			width="595"
-			height="91"
-			srcset="/posts/github_vuln/Att2_huee27a286e853bc37957c8994abfce6a4_7560_480x0_resize_box_3.png 480w, /posts/github_vuln/Att2_huee27a286e853bc37957c8994abfce6a4_7560_1024x0_resize_box_3.png 1024w"
+	<a href="/posts/web1/burp.png" data-size="1668x799">
+		<img src="/posts/web1/burp.png"
+			width="1668"
+			height="799"
+			srcset="/posts/web1/burp_hu8a74becd61013693fc66c7c5802277f5_197339_480x0_resize_box_3.png 480w, /posts/web1/burp_hu8a74becd61013693fc66c7c5802277f5_197339_1024x0_resize_box_3.png 1024w"
 			loading="lazy"
-			alt="commit位置">
+			alt="Burp Suite">
 	</a>
 	
-	<figcaption>commit位置</figcaption>
+	<figcaption>Burp Suite</figcaption>
 	
 </figure></p>
-<p>commit链接</p>
 <blockquote>
-<p><a class="link" href="https://github.com/Kira-Pgr/MEMZ/commit/43ab3c1283605216e5b56388c11483fee7dcd47c"  target="_blank" rel="noopener"
-    >https://github.com/Kira-Pgr/MEMZ/commit/43ab3c1283605216e5b56388c11483fee7dcd47c</a></p>
+<p>Burp Suite的大概原理：</p>
+<p>burp类似于代理服务器，&ldquo;拦&quot;你的浏览器和服务器之间，能够发现，拦截过往的数据包</p>
 </blockquote>
-<p>把<code>commit</code> 改为<code>tree</code></p>
+<p>切到Proxy(代理)的标签页，打开burp内置浏览器，打开intercept(中断拦截)开关，就可以愉快地开始抓包了qaq</p>
+<p><strong>以ip查询网站ip.chinaz.com为例</strong></p>
+<p>抓到的数据包</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">GET / HTTP/1.1
+Host: ip.chinaz.com
+Cookie: qHistory=aHR0cDovL2lwLmNoaW5hei5jb21fSVAvSVB2Nuafpeivou+8jOacjeWKoeWZqOWcsOWdgOafpeivog==; cz_statistics_visitor=6e92e1cd-3bd8-6ec0-9e75-271a4c8dfe89; UM_distinctid=17e9ad54d9ea91-0de9b86d1a8b15-f791b31-e1000-17e9ad54d9faa3; Hm_lvt_ca96c3507ee04e182fb6d097cb2a1a4c=1643278444,1643280347,1643281459,1643430361; CNZZDATA5082706=cnzz_eid%3D1961137514-1643271376-%26ntime%3D1643422648; SECKEY_ABVK=d8C9ZBZRX6Qya0VNufaZozKriQgZkNE9wBJvCc1YVMo%3D; BMAP_SECKEY=ZvL10u-tISavTuXtRnLwuMF6SZ4DS3InrGol25-dIiWXTBfvmHf1rOql24bKE6-K7ExBo1yo-mlyN-y7jnL9aasP3q6E4R0onZG-ZZW_unKjL13-oBTm8QkEMlFdp3r8C7gTLnuhcWNYDIBVi6s_AOD-H2CjUVKCvfGq6TnZPfxkHkBk2xyM8n1R0E_onq6F
+Sec-Ch-Ua: &#34;Chromium&#34;;v=&#34;97&#34;, &#34; Not;A Brand&#34;;v=&#34;99&#34;
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: &#34;Windows&#34;
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Connection: close
+</code></pre></div><h2 id="数据包修改实现伪造浏览器信息">数据包修改实现伪造浏览器信息</h2>
+<p>现在看向这一行数据</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
+</code></pre></div><p>它包含了你的浏览器/网络信息</p>
+<p>所以我们只需对它进行修改并Forward(放行)</p>
 <blockquote>
-<p><a class="link" href="https://github.com/Kira-Pgr/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c"  target="_blank" rel="noopener"
-    >https://github.com/Kira-Pgr/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c</a></p>
+<p>小Tip:</p>
+<p>Burp抓到的包可以Forward(放行)</p>
+<p>也可以Drop(丢弃)</p>
 </blockquote>
-<p>最后，把你的id(这里演示时是Kira-Pgr)改成你想要&quot;修改&quot;对方项目的人的id</p>
-<p>(这里的id是NyDubh3)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">User-Agent: MimiKs-Sec_Browser.QwQ.
+</code></pre></div><hr>
+<h2 id="靶场实战">靶场实战</h2>
 <blockquote>
-<p><a class="link" href="https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c"  target="_blank" rel="noopener"
-    >https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c</a></p>
+<p>靶场地址:
+<a class="link" href="https://www.mozhe.cn/bug/detail/akpiNHpzUGtObW53Z2hSRUY3WU9lZz09bW96aGUmozhe"  target="_blank" rel="noopener"
+    >浏览器信息伪造_网络安全_在线靶场_墨者学院_专注于网络安全人才培养</a></p>
 </blockquote>
-<p>这样你修改的东西就看来像是在原项目里一样 qaq</p>
+<p>首先分析一下这个网站</p>
 <p><figure 
 	
 		class="gallery-image" 
 		style="
-			flex-grow: 322; 
-			flex-basis: 773px"
+			flex-grow: 262; 
+			flex-basis: 630px"
 	>
-	<a href="/posts/github_vuln/Att3.png" data-size="1878x583">
-		<img src="/posts/github_vuln/Att3.png"
-			width="1878"
-			height="583"
-			srcset="/posts/github_vuln/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_480x0_resize_box_3.png 480w, /posts/github_vuln/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_1024x0_resize_box_3.png 1024w"
+	<a href="/posts/web1/site.png" data-size="1914x729">
+		<img src="/posts/web1/site.png"
+			width="1914"
+			height="729"
+			srcset="/posts/web1/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_480x0_resize_box_3.png 480w, /posts/web1/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_1024x0_resize_box_3.png 1024w"
 			loading="lazy"
-			alt="原项目被&#34;修改&#34;啦= =">
+			alt="网站">
 	</a>
 	
-	<figcaption>原项目被&quot;修改&quot;啦= =</figcaption>
+	<figcaption>网站</figcaption>
 	
 </figure></p>
-<h2 id="结语">结语：</h2>
-<p>这个洞虽说危害不大，而且只需要判断commit是不是从一个fork来的就可以避免受到影响</p>
-<p><del>但还是很好VAN的 逃)</del></p>
-<p>(⁄ ⁄•⁄ω⁄•⁄ ⁄)</p>
+<p>好家伙，这网站叫我们用iPhone手机，并在2G环境下访问（</p>
+<p><del><strong>(这不明显是欠揍嘛= =)</strong></del></p>
+<p>很显然，这在正常情况下不大可能，现在的iPhone手机大多是4G/5G的</p>
+<p>那么我们就用&quot;不正常&quot;的方式去访问它</p>
+<blockquote>
+<p>注意:根据页面提示,抓包分析除了判断浏览器类型还判断了微信特有的NetType</p>
+</blockquote>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 222; 
+			flex-basis: 534px"
+	>
+	<a href="/posts/web1/img.png" data-size="1435x644">
+		<img src="/posts/web1/img.png"
+			width="1435"
+			height="644"
+			srcset="/posts/web1/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_480x0_resize_box_3.png 480w, /posts/web1/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="抓到的数据包">
+	</a>
+	
+	<figcaption>抓到的数据包</figcaption>
+	
+</figure></p>
+<p>将<strong>User-Agent</strong>改为:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 MicroMessenger/6.0 NetType/2G
+</code></pre></div><blockquote>
+<p>小Tip:可以上网查询相关设备User-Agent长什么样子</p>
+</blockquote>
+<p>成功获取flag</p>
+<p>(flag这里不放了，自己去可以去VAN)</p>
+<hr>
+<h2 id="ps">P.S.</h2>
+<p>本博客内所有文章均为PGR原创</p>
+<p>转载不需授权，请肆意蹂躏我的作品吧qaq</p>
 
 </section>
 
@@ -244,7 +299,7 @@
     
     <section class="article-tags">
         
-            <a href="/tags/github/">GitHub</a>
+            <a href="/tags/web-sec/">Web Sec</a>
         
     </section>
 
@@ -278,29 +333,6 @@
                 
                     
 <article class="has-image">
-    <a href="/posts/web1/">
-        
-        
-            <div class="article-image">
-                <img src="/posts/web1/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Web安全--浏览器信息伪造"
-                        
-                        data-hash="md5-9jtpqk9CGRVmVLWVIQu8nQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Web安全--浏览器信息伪造</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="has-image">
     <a href="/posts/pwn1/">
         
         
@@ -318,6 +350,29 @@
 
         <div class="article-details">
             <h2 class="article-title">PWN! PWN! PANG! Part1---基础知识</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/posts/github_vuln/">
+        
+        
+            <div class="article-image">
+                <img src="/posts/github_vuln/cover.b3ecdd0106e12d47708502859244daf7_huc96b35635ae944d6d48a0fbbc753b249_133823_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux"
+                        
+                        data-hash="md5-s&#43;zdAQbhLUdwhQKFkkTa9w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</h2>
         </div>
     </a>
 </article>
@@ -478,10 +533,12 @@
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#前言">前言：</a></li>
-    <li><a href="#一-漏洞演示">一. 漏洞演示</a></li>
-    <li><a href="#二-漏洞复现">二. 漏洞复现</a></li>
-    <li><a href="#结语">结语：</a></li>
+    <li><a href="#如何拥有神奇的浏览器">如何拥有神奇的浏览器;)</a></li>
+    <li><a href="#浏览器信息伪造的实现">浏览器信息伪造的实现</a></li>
+    <li><a href="#burp-suite抓包">Burp Suite抓包</a></li>
+    <li><a href="#数据包修改实现伪造浏览器信息">数据包修改实现伪造浏览器信息</a></li>
+    <li><a href="#靶场实战">靶场实战</a></li>
+    <li><a href="#ps">P.S.</a></li>
   </ol>
 </nav>
                 </div>
