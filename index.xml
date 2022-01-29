@@ -313,11 +313,6 @@
 &lt;span class=&#34;nf&#34;&gt;LEAVE&lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;; 在函数返回时，恢复父函数栈帧的指令(子函数调用结束后，销毁子函数栈帧)&lt;/span&gt;
 &lt;span class=&#34;nf&#34;&gt;RET&lt;/span&gt;                      &lt;span class=&#34;c1&#34;&gt;; 在函数返回时，控制程序执行流返回父函数的指令&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;&lt;u&gt;首先，恭喜你看完了这篇文章&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;这一篇嘛。。。有些不符我平常的风格了()&lt;/p&gt;
-&lt;p&gt;主要是这些知识，多，且有些无聊&lt;/p&gt;
-&lt;p&gt;不过之后嘛= =&lt;/p&gt;
-&lt;p&gt;肯定会很有趣的啦~&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;(啊，终于写完了， 好累)&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;花了四五个小时才搞完=  =&lt;/p&gt;
 &lt;p&gt;不过嘛，能复习前面的知识并且能与大家分享.qaq.&lt;/p&gt;
