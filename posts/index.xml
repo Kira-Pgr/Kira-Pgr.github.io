@@ -6,7 +6,31 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Jan 2022 22:53:47 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Jan 2022 02:02:45 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo无需服务器搭建个人博客</title>
+      <link>https://kira-pgr.github.io/posts/hugo1/</link>
+      <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/hugo1/</guid>
+      <description>用GitHub服务器免费搭建博客 安装环境(Linux) 安装Hugo yum系
+sudo yum install hugo -y Arch
+sudo pacman -S hugo deb系
+sudo apt install hugo 安装Git(系统已经预装的自行忽略) yum系
+sudo yum install git Arch
+sudo pacman -Syu git deb系
+sudo apt install git 安装环境(Windows) 安装Hugo https://gohugo.io/getting-started/installing/#less-technical-users
+安装Git winget install Git.Git  开始建站.UwU.!  注意：我本地环境是Kali Linux, 其他环境可能步骤略有不同= =
+ 终端/cmd/或者你用的其他东西也罢输入
+hugo new site 你想给网站起的名字 这个时候Hugo就给你生成了一个网站
+接下来该犯选择综合征了
+咳咳，接下来去https://themes.gohugo.io/ 找一个喜欢的主题
+P.S. 我的博客是主题Stack
+进入你本地hugo网站的themes目录
+cd 网站名/themes 然后把你的主题放进去.qaq.
+git clone 你的主题的GitHub网址.git 等你的主题静静的躺在那里了之后 逃)，依据文档配置你的网站</description>
+    </item>
+    
     <item>
       <title>Web安全--浏览器信息伪造</title>
       <link>https://kira-pgr.github.io/posts/web1/</link>
@@ -69,10 +93,10 @@ Linux下ELF文件 ELF文件的是Linux下的可执行文件，与Windows下exe�
     
     <item>
       <title>About Me</title>
-      <link>https://kira-pgr.github.io/posts/about-me/</link>
+      <link>https://kira-pgr.github.io/posts/about_me/</link>
       <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
       
-      <guid>https://kira-pgr.github.io/posts/about-me/</guid>
+      <guid>https://kira-pgr.github.io/posts/about_me/</guid>
       <description>KiraPGR 大家好, 我是PGR, 现在我来郑重其事地介绍一下我自己
 hmmm.. 咳咳= =
 我是一个女生( 我相信很多人看到这个很惊讶, 甚至不敢相信= =

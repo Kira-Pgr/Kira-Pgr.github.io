@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on KiraPGR&#39;s Blog</title>
+    <link>https://kira-pgr.github.io/tags/blog/</link>
+    <description>Recent content in Blog on KiraPGR&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Jan 2022 02:02:45 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo无需服务器搭建个人博客</title>
+      <link>https://kira-pgr.github.io/posts/hugo1/</link>
+      <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/hugo1/</guid>
+      <description>用GitHub服务器免费搭建博客 安装环境(Linux) 安装Hugo yum系
+sudo yum install hugo -y Arch
+sudo pacman -S hugo deb系
+sudo apt install hugo 安装Git(系统已经预装的自行忽略) yum系
+sudo yum install git Arch
+sudo pacman -Syu git deb系
+sudo apt install git 安装环境(Windows) 安装Hugo https://gohugo.io/getting-started/installing/#less-technical-users
+安装Git winget install Git.Git  开始建站.UwU.!  注意：我本地环境是Kali Linux, 其他环境可能步骤略有不同= =
+ 终端/cmd/或者你用的其他东西也罢输入
+hugo new site 你想给网站起的名字 这个时候Hugo就给你生成了一个网站
+接下来该犯选择综合征了
+咳咳，接下来去https://themes.gohugo.io/ 找一个喜欢的主题
+P.S. 我的博客是主题Stack
+进入你本地hugo网站的themes目录
+cd 网站名/themes 然后把你的主题放进去.qaq.
+git clone 你的主题的GitHub网址.git 等你的主题静静的躺在那里了之后 逃)，依据文档配置你的网站</description>
+    </item>
+    
+  </channel>
+</rss>

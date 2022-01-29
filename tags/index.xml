@@ -6,7 +6,25 @@
     <description>Recent content in Tags on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Jan 2022 22:53:47 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Jan 2022 02:02:45 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>https://kira-pgr.github.io/tags/blog/</link>
+      <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub</title>
+      <link>https://kira-pgr.github.io/tags/github/</link>
+      <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Web Sec</title>
       <link>https://kira-pgr.github.io/tags/web-sec/</link>
@@ -31,15 +49,6 @@
       <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
       
       <guid>https://kira-pgr.github.io/tags/about-kirapgr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GitHub</title>
-      <link>https://kira-pgr.github.io/tags/github/</link>
-      <pubDate>Wed, 26 Jan 2022 21:15:07 -0500</pubDate>
-      
-      <guid>https://kira-pgr.github.io/tags/github/</guid>
       <description></description>
     </item>
     

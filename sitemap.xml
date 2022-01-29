@@ -2,17 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kira-pgr.github.io/tags/blog/</loc>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
+  </url><url>
     <loc>https://kira-pgr.github.io/categories/</loc>
-    <lastmod>2022-01-28T22:53:47-05:00</lastmod>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/github/</loc>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/posts/hugo1/</loc>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/</loc>
-    <lastmod>2022-01-28T22:53:47-05:00</lastmod>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/</loc>
-    <lastmod>2022-01-28T22:53:47-05:00</lastmod>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/tags/</loc>
-    <lastmod>2022-01-28T22:53:47-05:00</lastmod>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/categories/hugo_blog/</loc>
+    <lastmod>2022-01-29T01:03:14-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/tags/web-sec/</loc>
     <lastmod>2022-01-28T22:53:47-05:00</lastmod>
@@ -29,7 +41,7 @@
     <loc>https://kira-pgr.github.io/tags/about-kirapgr/</loc>
     <lastmod>2022-01-27T01:03:14-05:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/posts/about-me/</loc>
+    <loc>https://kira-pgr.github.io/posts/about_me/</loc>
     <lastmod>2022-01-27T01:03:14-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/categories/about_me/</loc>
@@ -37,9 +49,6 @@
   </url><url>
     <loc>https://kira-pgr.github.io/categories/security/</loc>
     <lastmod>2022-01-27T01:03:14-05:00</lastmod>
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/github/</loc>
-    <lastmod>2022-01-26T21:15:07-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/github_vuln/</loc>
     <lastmod>2022-01-26T21:15:07-05:00</lastmod>
