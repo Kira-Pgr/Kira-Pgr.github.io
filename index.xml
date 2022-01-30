@@ -14,7 +14,7 @@
         <guid>https://kira-pgr.github.io/posts/pwn2/</guid>
         <description>&lt;img src="https://kira-pgr.github.io/posts/pwn2/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part2 --- 工具的使用" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part2&#34;&gt;PWN! PWN! PANG! Part2&lt;/h1&gt;
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;说完了前面那些基础~~(貌似一点也不基础)~~知识，今天再来谈谈工具&lt;/p&gt;
+&lt;p&gt;说完了前面那些基础 &lt;del&gt;(貌似一点也不基础)&lt;/del&gt; 知识，今天再来谈谈工具&lt;/p&gt;
 &lt;p&gt;由于我们研究的是Linux下的PWN,&lt;strong&gt;接下来的操作请在Linux下进行&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;只有Windows怎么办？&lt;/strong&gt;&lt;/p&gt;
@@ -23,7 +23,7 @@
     &gt;VMware Workstation Pro&lt;/a&gt;安装Linux虚拟机(我目前的方案)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;小Tip:某些Linux发行版(例如Kali)可以在官网找到现成的虚拟机文件下载，如果你没有安装过虚拟机~~(或懒得安装)~~，可以试试这种方式&lt;/p&gt;
+&lt;p&gt;小Tip:某些Linux发行版(例如Kali)可以在官网找到现成的虚拟机文件下载，如果你没有安装过虚拟机 &lt;del&gt;(或懒得安装)&lt;/del&gt; ，可以试试这种方式&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;方案二：使用&lt;a class=&#34;link&#34; href=&#34;https://os.51cto.com/article/649463.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
