@@ -8,6 +8,26 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>PWN! PWN! PANG! Part2 --- 工具的使用</title>
+      <link>https://kira-pgr.github.io/posts/pwn2/</link>
+      <pubDate>Sat, 29 Jan 2022 21:35:29 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/pwn2/</guid>
+      <description>PWN! PWN! PANG! Part2 前言 说完了前面那些基础~~(貌似一点也不基础)~~知识，今天再来谈谈工具
+由于我们研究的是Linux下的PWN,接下来的操作请在Linux下进行
+ 只有Windows怎么办？
+ 方案一：使用VMware Workstation Pro安装Linux虚拟机(我目前的方案)   小Tip:某些Linux发行版(例如Kali)可以在官网找到现成的虚拟机文件下载，如果你没有安装过虚拟机~~(或懒得安装)~~，可以试试这种方式
+  方案二：使用WSL2(怎么说呢，WSL2虽说占空间小，而且有了GUI,但配置其实挺麻烦)   PWNDBG pwndbg是Linux GDB的一个专门为PWN设计的一个插件, 能有助于我们调戏调试程序
+ pwndbg 
+安装 一般Linux都会预装gdb吧= =，不过还是扯一下安装方法好了
+Deb 系
+sudo apt install gdb yum系 快去用Debian 逃)
+sudo yum -y install centos-release-scl sudo yum-config-manager --enable rhel-server-rhscl-7-rpms sudo yum -y install devtoolset-7 scl enable devtoolset-7 bash 安装pwndbg
+git clone https://github.com/pwndbg/pwndbg cd pwndbg ./setup.sh 用法 大部分用法都和gdb的差不多，这里列举几个经常用的
+b 函数名 #断点断在某个函数处 b *一个地址 #断点断在某个地址 r #运行 n #执行下一条指令或者跳过一个函数 s #进入函数 q #推出gdb 至于pwndbg的特殊功能嘛= =，可以通过指令pwndbg查看</description>
+    </item>
+    
+    <item>
       <title>Web安全--浏览器信息伪造</title>
       <link>https://kira-pgr.github.io/posts/web1/</link>
       <pubDate>Fri, 28 Jan 2022 22:53:47 -0500</pubDate>
