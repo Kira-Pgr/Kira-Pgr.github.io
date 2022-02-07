@@ -6,7 +6,214 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 29 Jan 2022 21:35:29 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 07 Feb 2022 07:51:10 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PWN! PWN! PANG! Part3 --- 栈溢出基础</title>
+        <link>https://kira-pgr.github.io/posts/pwn3/</link>
+        <pubDate>Mon, 07 Feb 2022 07:51:10 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/pwn3/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/pwn3/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part3&#34;&gt;PWN! PWN! PANG! Part3&lt;/h1&gt;
+&lt;p&gt;&lt;del&gt;这是一篇黑暗童话故事 确信)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;至于简介嘛= =，好奇的话就把文章看完吧qaq&lt;/p&gt;
+&lt;h2 id=&#34;c语言函数调用栈&#34;&gt;C语言函数调用栈&lt;/h2&gt;
+&lt;h3 id=&#34;了解函数调用栈&#34;&gt;了解函数调用栈&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;函数调用栈是指程序运行时内存一段连续的区域&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用来保存函数运行时的状态信息，包括函数参数与局部变量等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;称之为“栈”是因为发生函数调用时，调用函数&lt;code&gt;(caller)&lt;/code&gt;的状态被保存在栈内，被调用函数&lt;code&gt;(callee)&lt;/code&gt;的状态被压入调用栈的栈顶&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在函数调用结束时，栈顶的函数&lt;code&gt;(callee)&lt;/code&gt;状态被弹出，栈顶恢复到调用函数&lt;code&gt;(caller)&lt;/code&gt;的状态&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 165; 
+			flex-basis: 396px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn3/Picture1.png&#34; data-size=&#34;720x436&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn3/Picture1.png&#34;
+			width=&#34;720&#34;
+			height=&#34;436&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn3/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn3/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;配图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;配图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;关于栈帧&#34;&gt;关于栈帧&lt;/h3&gt;
+&lt;p&gt;咳咳，上面很官方的解释是不是不容易理解.qwq.&lt;/p&gt;
+&lt;p&gt;实际上上面所说的&amp;quot;函数的状态&amp;quot;在栈中是由一个一个栈帧&lt;code&gt;(Stack Frame)&lt;/code&gt;表示的，基本上 &lt;em&gt;(特殊情况的话，可能是某些在main函数前调用的函数)&lt;/em&gt; 每一个函数调用时在栈中都有自己的栈帧&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 193; 
+			flex-basis: 464px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn3/SF.png&#34; data-size=&#34;1342x694&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn3/SF.png&#34;
+			width=&#34;1342&#34;
+			height=&#34;694&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn3/SF_hu956c5e946f835811fb7c23d45c55c874_55318_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn3/SF_hu956c5e946f835811fb7c23d45c55c874_55318_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;栈帧结构预览&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;栈帧结构预览&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;在这里，我们需要了解一下几点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;三个指针(寄存器)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ebp&lt;/code&gt;指向当前栈帧底部(保存当前栈帧底部地址)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;至于为什么在上面，是因为栈从高地址向低地址增长&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;esp&lt;/code&gt;指向栈顶(保存栈顶地址)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;eip&lt;/code&gt;指向要执行的下一指令(保存下一条指令地址)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;参数&lt;code&gt;(arguments)&lt;/code&gt;是保存在父函数栈帧中的(类似于父亲给儿子的&amp;quot;启动资金&amp;quot;)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意， 参数是逆序压栈滴&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 121; 
+			flex-basis: 291px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn3/Picture2.png&#34; data-size=&#34;491x404&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn3/Picture2.png&#34;
+			width=&#34;491&#34;
+			height=&#34;404&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn3/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn3/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;参数的保存&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;参数的保存&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;返回地址&lt;code&gt;(Return Address)&lt;/code&gt;保存了调用子函数前&lt;code&gt;eip&lt;/code&gt;值，&lt;strong&gt;这个值在我们栈溢出攻击中至关重要&lt;/strong&gt;，控制这个值之后就可以劫持程序执行流，让程序下一步执行你想要的指令&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 110; 
+			flex-basis: 266px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn3/Picture4.png&#34; data-size=&#34;488x440&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn3/Picture4.png&#34;
+			width=&#34;488&#34;
+			height=&#34;440&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn3/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn3/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;返回地址的位置&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;返回地址的位置&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;(Caller&#39;s ebp / Previous ebp&lt;/code&gt;保存这父函数&lt;code&gt;ebp&lt;/code&gt;的值，长度为一个字长(x32系统4Byte, x64系统8Byte)&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 99; 
+			flex-basis: 239px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn3/Picture5.jpg&#34; data-size=&#34;489x491&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn3/Picture5.jpg&#34;
+			width=&#34;489&#34;
+			height=&#34;491&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn3/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/pwn3/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;prev ebp&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;prev ebp&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;局部变量&lt;code&gt;(Local Variables)&lt;/code&gt;一般是发生栈溢出攻击的地方，主要是因为程序在局部变量中读入了超长的数据，造成溢出覆盖了其他内容(比如说返回地址)&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 87; 
+			flex-basis: 210px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn3/Picture6.png&#34; data-size=&#34;449x512&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn3/Picture6.png&#34;
+			width=&#34;449&#34;
+			height=&#34;512&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn3/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn3/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Local Var&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Local Var&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;函数调用栈整个过程&#34;&gt;函数调用栈整个过程&lt;/h3&gt;
+&lt;p&gt;这一部分前面的知识点已经概括了一些了，再详细将下来篇幅过长，大家可以&lt;a class=&#34;link&#34; href=&#34;https://mimiksworkshop-my.sharepoint.com/:p:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/EdGKswS2-exEikfnd_H5NPkBJCFXoutFXqQuFh4SR2ompA?e=B0QIft&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考PPT&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;栈溢出攻击子函数找不着家了&#34;&gt;栈溢出攻击:子函数&amp;quot;找不着家&amp;quot;了&lt;/h2&gt;
+&lt;p&gt;咳咳，为了便于理解，这里我们&lt;del&gt;生动形象&lt;/del&gt;一些&lt;/p&gt;
+&lt;h3 id=&#34;前提&#34;&gt;前提&lt;/h3&gt;
+&lt;p&gt;有时候程序猿不知道 &lt;strong&gt;&amp;ldquo;不要相信用户输入的数据总是安全的&amp;rdquo;&lt;/strong&gt; 的道理，就在读入函数局部变量的过程中用了&lt;code&gt;gets()&lt;/code&gt;等不限制数据长度的函数，或者写了其他可以导致读入过长数据的&lt;del&gt;BUG&lt;/del&gt;代码&lt;/p&gt;
+&lt;h3 id=&#34;攻击&#34;&gt;攻击&lt;/h3&gt;
+&lt;p&gt;如果我们在局部变量中写入的过长的数据，就会覆盖高地址处的 (数据从地址向高地址读入嘛)的数据，例如 &lt;code&gt;prev ebp&lt;/code&gt;或者是&lt;code&gt;ret addr&lt;/code&gt;(主要关注)&lt;/p&gt;
+&lt;p&gt;如果我们写入的是垃圾数据，程序会返回到一个奇怪的地址，自然会崩溃(Crash)&lt;/p&gt;
+&lt;p&gt;而如果我们写入&lt;strong&gt;精心构造的恶意数据&lt;/strong&gt;，我们就可以劫持程序，让它干我们想要的事情;)&lt;/p&gt;
+&lt;p&gt;比如说，调用&lt;code&gt;system(&amp;quot;/bin/sh&amp;quot;)&lt;/code&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;这里举个栗子&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果我们把父函数比喻成爸爸的话，那么子函数就是儿子&lt;/p&gt;
+&lt;p&gt;儿子要自己去闯荡了，&lt;/p&gt;
+&lt;p&gt;父亲给儿子一些财产让儿子能更好的为未来做准备(父函数栈帧中参数 &lt;code&gt;args&lt;/code&gt;)，&lt;/p&gt;
+&lt;p&gt;然后父亲告诫自己的儿子一定要好好奋斗，回来后为家乡搞建设(返回地址&lt;code&gt;ret addr&lt;/code&gt;)，&lt;/p&gt;
+&lt;p&gt;后来，儿子有了自己的生活，财产(局部变量&lt;code&gt;local var&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;但是呢，有攻击者这样一个角色。&lt;/p&gt;
+&lt;p&gt;咳咳，他利用各种手段(我们实战的时候可以用&lt;code&gt;pwndbg&lt;/code&gt;和&lt;code&gt;pwntools&lt;/code&gt;等工具进行攻击)诱骗儿子，最终让他晕头转向，失去理智， 连自己家在哪里都找不到了;) (栈溢出用恶意数据覆盖返回地址)&lt;/p&gt;
+&lt;p&gt;后来。。由于儿子以为攻击者给他的地址就是自己家的地址，就乖乖的跟着攻击者行事，帮助攻击者达成控制世界邪恶目的&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;全剧终 逃)&lt;/del&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;下一次开始实战哦.qaq.&lt;/p&gt;
+&lt;p&gt;To Be Continued&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>PWN! PWN! PANG! Part2 --- 工具的使用</title>
         <link>https://kira-pgr.github.io/posts/pwn2/</link>
         <pubDate>Sat, 29 Jan 2022 21:35:29 -0500</pubDate>

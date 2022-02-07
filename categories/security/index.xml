@@ -8,6 +8,35 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>PWN! PWN! PANG! Part3 --- 栈溢出基础</title>
+      <link>https://kira-pgr.github.io/posts/pwn3/</link>
+      <pubDate>Mon, 07 Feb 2022 07:51:10 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/pwn3/</guid>
+      <description>PWN! PWN! PANG! Part3 这是一篇黑暗童话故事 确信)
+至于简介嘛= =，好奇的话就把文章看完吧qaq
+C语言函数调用栈 了解函数调用栈   函数调用栈是指程序运行时内存一段连续的区域
+  用来保存函数运行时的状态信息，包括函数参数与局部变量等
+  称之为“栈”是因为发生函数调用时，调用函数(caller)的状态被保存在栈内，被调用函数(callee)的状态被压入调用栈的栈顶
+  在函数调用结束时，栈顶的函数(callee)状态被弹出，栈顶恢复到调用函数(caller)的状态
+  函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大
+   配图 
+关于栈帧 咳咳，上面很官方的解释是不是不容易理解.qwq.
+实际上上面所说的&amp;quot;函数的状态&amp;quot;在栈中是由一个一个栈帧(Stack Frame)表示的，基本上 (特殊情况的话，可能是某些在main函数前调用的函数) 每一个函数调用时在栈中都有自己的栈帧
+ 栈帧结构预览 
+ 在这里，我们需要了解一下几点
+  三个指针(寄存器)：
+  ebp指向当前栈帧底部(保存当前栈帧底部地址)
+至于为什么在上面，是因为栈从高地址向低地址增长
+  esp指向栈顶(保存栈顶地址)
+  eip指向要执行的下一指令(保存下一条指令地址)
+    参数(arguments)是保存在父函数栈帧中的(类似于父亲给儿子的&amp;quot;启动资金&amp;quot;)
+ 注意， 参数是逆序压栈滴
+  参数的保存 
+  返回地址(Return Address)保存了调用子函数前eip值，这个值在我们栈溢出攻击中至关重要，控制这个值之后就可以劫持程序执行流，让程序下一步执行你想要的指令</description>
+    </item>
+    
+    <item>
       <title>PWN! PWN! PANG! Part2 --- 工具的使用</title>
       <link>https://kira-pgr.github.io/posts/pwn2/</link>
       <pubDate>Sat, 29 Jan 2022 21:35:29 -0500</pubDate>

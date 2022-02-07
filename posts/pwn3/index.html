@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='你用的这啥浏览器啊，太可怕了XD'><title>Web安全--浏览器信息伪造</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='子函数诱拐指南'><title>PWN! PWN! PANG! Part3 --- 栈溢出基础</title>
 
-<link rel='canonical' href='https://kira-pgr.github.io/posts/web1/'>
+<link rel='canonical' href='https://kira-pgr.github.io/posts/pwn3/'>
 
-<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='Web安全--浏览器信息伪造'>
-<meta property='og:description' content='你用的这啥浏览器啊，太可怕了XD'>
-<meta property='og:url' content='https://kira-pgr.github.io/posts/web1/'>
+<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='PWN! PWN! PANG! Part3 --- 栈溢出基础'>
+<meta property='og:description' content='子函数诱拐指南'>
+<meta property='og:url' content='https://kira-pgr.github.io/posts/pwn3/'>
 <meta property='og:site_name' content='KiraPGR&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-01-28T22:53:47-05:00'/><meta property='article:modified_time' content='2022-01-28T22:53:47-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/web1/cover.jpg' />
-<meta name="twitter:title" content="Web安全--浏览器信息伪造">
-<meta name="twitter:description" content="你用的这啥浏览器啊，太可怕了XD"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/web1/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-02-07T07:51:10-05:00'/><meta property='article:modified_time' content='2022-02-07T07:51:10-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/pwn3/cover.jpg' />
+<meta name="twitter:title" content="PWN! PWN! PANG! Part3 --- 栈溢出基础">
+<meta name="twitter:description" content="子函数诱拐指南"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/pwn3/cover.jpg' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
     </head>
@@ -64,13 +64,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/posts/web1/">
-                <img src="/posts/web1/cover_hu337d2e493e824d835754f79e3b77496e_3809477_800x0_resize_q75_box.jpg"
-                        srcset="/posts/web1/cover_hu337d2e493e824d835754f79e3b77496e_3809477_800x0_resize_q75_box.jpg 800w, /posts/web1/cover_hu337d2e493e824d835754f79e3b77496e_3809477_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/posts/pwn3/">
+                <img src="/posts/pwn3/cover_huc93e8e51211b13db7df27f880625afbe_1479136_800x0_resize_q75_box.jpg"
+                        srcset="/posts/pwn3/cover_huc93e8e51211b13db7df27f880625afbe_1479136_800x0_resize_q75_box.jpg 800w, /posts/pwn3/cover_huc93e8e51211b13db7df27f880625afbe_1479136_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
-                        height="609" 
+                        height="570" 
                         loading="lazy"
-                        alt="Featured image of post Web安全--浏览器信息伪造" />
+                        alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础" />
                 
             </a>
         </div>
@@ -88,12 +88,12 @@
     
 
     <h2 class="article-title">
-        <a href="/posts/web1/">Web安全--浏览器信息伪造</a>
+        <a href="/posts/pwn3/">PWN! PWN! PANG! Part3 --- 栈溢出基础</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        你用的这啥浏览器啊，太可怕了XD
+        子函数诱拐指南
     </h3>
     
 
@@ -110,7 +110,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jan 28, 2022</time>
+                <time class="article-time--published">Feb 07, 2022</time>
             </div>
         
 
@@ -137,158 +137,205 @@
     <section class="article-content">
     
     
-    <h1 id="web安全----浏览器信息伪造">Web安全&mdash;-浏览器信息伪造</h1>
-<p>&ldquo;诶。。。PGR酱你用的什么浏览器&rdquo;</p>
-<p>— <strong>MimiKs-Sec-Browser.QwQ.</strong></p>
-<p>&ldquo;啊= =哪有这种浏览器&rdquo;</p>
-<p>— 诶嘿嘿，我就有这样神奇的浏览器XD</p>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 220; 
-			flex-basis: 529px"
-	>
-	<a href="/posts/web1/b.png" data-size="355x161">
-		<img src="/posts/web1/b.png"
-			width="355"
-			height="161"
-			srcset="/posts/web1/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_480x0_resize_box_3.png 480w, /posts/web1/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="诶嘿嘿，有图片作证哦qaq">
-	</a>
-	
-	<figcaption>诶嘿嘿，有图片作证哦qaq</figcaption>
-	
-</figure></p>
-<hr>
-<h2 id="如何拥有神奇的浏览器">如何拥有神奇的浏览器;)</h2>
-<p>咳咳咳，进入正题</p>
-<p>要实现以上的效果，就要用到<strong>浏览器信息伪造技术</strong></p>
-<h2 id="浏览器信息伪造的实现">浏览器信息伪造的实现</h2>
-<p>网站判断你的设备和浏览器信息主要是依据你发向网站的数据包</p>
-<p>所以我们通过修改数据包实现浏览器信息伪造awa</p>
-<h2 id="burp-suite抓包">Burp Suite抓包</h2>
-<p>想要修改数据包，我们必须先抓获它</p>
-<p><del>(刚从野外抓到一只野生数据包)</del></p>
+    <h1 id="pwn-pwn-pang-part3">PWN! PWN! PANG! Part3</h1>
+<p><del>这是一篇黑暗童话故事 确信)</del></p>
+<p>至于简介嘛= =，好奇的话就把文章看完吧qaq</p>
+<h2 id="c语言函数调用栈">C语言函数调用栈</h2>
+<h3 id="了解函数调用栈">了解函数调用栈</h3>
 <ul>
-<li>抓包工具推荐<strong>Burp Suite</strong></li>
+<li>
+<p>函数调用栈是指程序运行时内存一段连续的区域</p>
+</li>
+<li>
+<p>用来保存函数运行时的状态信息，包括函数参数与局部变量等</p>
+</li>
+<li>
+<p>称之为“栈”是因为发生函数调用时，调用函数<code>(caller)</code>的状态被保存在栈内，被调用函数<code>(callee)</code>的状态被压入调用栈的栈顶</p>
+</li>
+<li>
+<p>在函数调用结束时，栈顶的函数<code>(callee)</code>状态被弹出，栈顶恢复到调用函数<code>(caller)</code>的状态</p>
+</li>
+<li>
+<p>函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大</p>
+</li>
 </ul>
 <p><figure 
 	
 		class="gallery-image" 
 		style="
-			flex-grow: 208; 
-			flex-basis: 501px"
+			flex-grow: 165; 
+			flex-basis: 396px"
 	>
-	<a href="/posts/web1/burp.png" data-size="1668x799">
-		<img src="/posts/web1/burp.png"
-			width="1668"
-			height="799"
-			srcset="/posts/web1/burp_hu8a74becd61013693fc66c7c5802277f5_197339_480x0_resize_box_3.png 480w, /posts/web1/burp_hu8a74becd61013693fc66c7c5802277f5_197339_1024x0_resize_box_3.png 1024w"
+	<a href="/posts/pwn3/Picture1.png" data-size="720x436">
+		<img src="/posts/pwn3/Picture1.png"
+			width="720"
+			height="436"
+			srcset="/posts/pwn3/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_480x0_resize_box_3.png 480w, /posts/pwn3/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_1024x0_resize_box_3.png 1024w"
 			loading="lazy"
-			alt="Burp Suite">
+			alt="配图">
 	</a>
 	
-	<figcaption>Burp Suite</figcaption>
+	<figcaption>配图</figcaption>
 	
 </figure></p>
-<blockquote>
-<p>Burp Suite的大概原理：</p>
-<p>burp类似于代理服务器，&ldquo;拦&quot;你的浏览器和服务器之间，能够发现，拦截过往的数据包</p>
-</blockquote>
-<p>切到Proxy(代理)的标签页，打开burp内置浏览器，打开intercept(中断拦截)开关，就可以愉快地开始抓包了qaq</p>
-<p><strong>以ip查询网站ip.chinaz.com为例</strong></p>
-<p>抓到的数据包</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">GET / HTTP/1.1
-Host: ip.chinaz.com
-Cookie: qHistory=aHR0cDovL2lwLmNoaW5hei5jb21fSVAvSVB2Nuafpeivou+8jOacjeWKoeWZqOWcsOWdgOafpeivog==; cz_statistics_visitor=6e92e1cd-3bd8-6ec0-9e75-271a4c8dfe89; UM_distinctid=17e9ad54d9ea91-0de9b86d1a8b15-f791b31-e1000-17e9ad54d9faa3; Hm_lvt_ca96c3507ee04e182fb6d097cb2a1a4c=1643278444,1643280347,1643281459,1643430361; CNZZDATA5082706=cnzz_eid%3D1961137514-1643271376-%26ntime%3D1643422648; SECKEY_ABVK=d8C9ZBZRX6Qya0VNufaZozKriQgZkNE9wBJvCc1YVMo%3D; BMAP_SECKEY=ZvL10u-tISavTuXtRnLwuMF6SZ4DS3InrGol25-dIiWXTBfvmHf1rOql24bKE6-K7ExBo1yo-mlyN-y7jnL9aasP3q6E4R0onZG-ZZW_unKjL13-oBTm8QkEMlFdp3r8C7gTLnuhcWNYDIBVi6s_AOD-H2CjUVKCvfGq6TnZPfxkHkBk2xyM8n1R0E_onq6F
-Sec-Ch-Ua: &#34;Chromium&#34;;v=&#34;97&#34;, &#34; Not;A Brand&#34;;v=&#34;99&#34;
-Sec-Ch-Ua-Mobile: ?0
-Sec-Ch-Ua-Platform: &#34;Windows&#34;
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate
-Accept-Language: en-US,en;q=0.9
-Connection: close
-</code></pre></div><h2 id="数据包修改实现伪造浏览器信息">数据包修改实现伪造浏览器信息</h2>
-<p>现在看向这一行数据</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
-</code></pre></div><p>它包含了你的浏览器/网络信息</p>
-<p>所以我们只需对它进行修改并Forward(放行)</p>
-<blockquote>
-<p>小Tip:</p>
-<p>Burp抓到的包可以Forward(放行)</p>
-<p>也可以Drop(丢弃)</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">User-Agent: MimiKs-Sec_Browser.QwQ.
-</code></pre></div><hr>
-<h2 id="靶场实战">靶场实战</h2>
-<blockquote>
-<p>靶场地址:
-<a class="link" href="https://www.mozhe.cn/bug/detail/akpiNHpzUGtObW53Z2hSRUY3WU9lZz09bW96aGUmozhe"  target="_blank" rel="noopener"
-    >浏览器信息伪造_网络安全_在线靶场_墨者学院_专注于网络安全人才培养</a></p>
-</blockquote>
-<p>首先分析一下这个网站</p>
+<h3 id="关于栈帧">关于栈帧</h3>
+<p>咳咳，上面很官方的解释是不是不容易理解.qwq.</p>
+<p>实际上上面所说的&quot;函数的状态&quot;在栈中是由一个一个栈帧<code>(Stack Frame)</code>表示的，基本上 <em>(特殊情况的话，可能是某些在main函数前调用的函数)</em> 每一个函数调用时在栈中都有自己的栈帧</p>
 <p><figure 
 	
 		class="gallery-image" 
 		style="
-			flex-grow: 262; 
-			flex-basis: 630px"
+			flex-grow: 193; 
+			flex-basis: 464px"
 	>
-	<a href="/posts/web1/site.png" data-size="1914x729">
-		<img src="/posts/web1/site.png"
-			width="1914"
-			height="729"
-			srcset="/posts/web1/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_480x0_resize_box_3.png 480w, /posts/web1/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_1024x0_resize_box_3.png 1024w"
+	<a href="/posts/pwn3/SF.png" data-size="1342x694">
+		<img src="/posts/pwn3/SF.png"
+			width="1342"
+			height="694"
+			srcset="/posts/pwn3/SF_hu956c5e946f835811fb7c23d45c55c874_55318_480x0_resize_box_3.png 480w, /posts/pwn3/SF_hu956c5e946f835811fb7c23d45c55c874_55318_1024x0_resize_box_3.png 1024w"
 			loading="lazy"
-			alt="网站">
+			alt="栈帧结构预览">
 	</a>
 	
-	<figcaption>网站</figcaption>
+	<figcaption>栈帧结构预览</figcaption>
 	
 </figure></p>
-<p>好家伙，这网站叫我们用iPhone手机，并在2G环境下访问（</p>
-<p><del><strong>(这不明显是欠揍嘛= =)</strong></del></p>
-<p>很显然，这在正常情况下不大可能，现在的iPhone手机大多是4G/5G的</p>
-<p>那么我们就用&quot;不正常&quot;的方式去访问它</p>
-<blockquote>
-<p>注意:根据页面提示,抓包分析除了判断浏览器类型还判断了微信特有的NetType</p>
-</blockquote>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 222; 
-			flex-basis: 534px"
-	>
-	<a href="/posts/web1/img.png" data-size="1435x644">
-		<img src="/posts/web1/img.png"
-			width="1435"
-			height="644"
-			srcset="/posts/web1/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_480x0_resize_box_3.png 480w, /posts/web1/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="抓到的数据包">
-	</a>
-	
-	<figcaption>抓到的数据包</figcaption>
-	
-</figure></p>
-<p>将<strong>User-Agent</strong>改为:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 MicroMessenger/6.0 NetType/2G
-</code></pre></div><blockquote>
-<p>小Tip:可以上网查询相关设备User-Agent长什么样子</p>
-</blockquote>
-<p>成功获取flag</p>
-<p>(flag这里不放了，自己去可以去VAN)</p>
 <hr>
-<h2 id="the-end">The END</h2>
+<p><strong>在这里，我们需要了解一下几点</strong></p>
+<ol>
+<li>
+<p>三个指针(寄存器)：</p>
+<ul>
+<li>
+<p><code>ebp</code>指向当前栈帧底部(保存当前栈帧底部地址)</p>
+<p><em>至于为什么在上面，是因为栈从高地址向低地址增长</em></p>
+</li>
+<li>
+<p><code>esp</code>指向栈顶(保存栈顶地址)</p>
+</li>
+<li>
+<p><code>eip</code>指向要执行的下一指令(保存下一条指令地址)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>参数<code>(arguments)</code>是保存在父函数栈帧中的(类似于父亲给儿子的&quot;启动资金&quot;)</p>
+<blockquote>
+<p>注意， 参数是逆序压栈滴</p>
+</blockquote>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 121; 
+			flex-basis: 291px"
+	>
+	<a href="/posts/pwn3/Picture2.png" data-size="491x404">
+		<img src="/posts/pwn3/Picture2.png"
+			width="491"
+			height="404"
+			srcset="/posts/pwn3/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_480x0_resize_box_3.png 480w, /posts/pwn3/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="参数的保存">
+	</a>
+	
+	<figcaption>参数的保存</figcaption>
+	
+</figure></p>
+</li>
+<li>
+<p>返回地址<code>(Return Address)</code>保存了调用子函数前<code>eip</code>值，<strong>这个值在我们栈溢出攻击中至关重要</strong>，控制这个值之后就可以劫持程序执行流，让程序下一步执行你想要的指令</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 110; 
+			flex-basis: 266px"
+	>
+	<a href="/posts/pwn3/Picture4.png" data-size="488x440">
+		<img src="/posts/pwn3/Picture4.png"
+			width="488"
+			height="440"
+			srcset="/posts/pwn3/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_480x0_resize_box_3.png 480w, /posts/pwn3/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="返回地址的位置">
+	</a>
+	
+	<figcaption>返回地址的位置</figcaption>
+	
+</figure></p>
+</li>
+<li>
+<p><code>(Caller's ebp / Previous ebp</code>保存这父函数<code>ebp</code>的值，长度为一个字长(x32系统4Byte, x64系统8Byte)</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 99; 
+			flex-basis: 239px"
+	>
+	<a href="/posts/pwn3/Picture5.jpg" data-size="489x491">
+		<img src="/posts/pwn3/Picture5.jpg"
+			width="489"
+			height="491"
+			srcset="/posts/pwn3/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_480x0_resize_q75_box.jpg 480w, /posts/pwn3/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="prev ebp">
+	</a>
+	
+	<figcaption>prev ebp</figcaption>
+	
+</figure></p>
+</li>
+<li>
+<p>局部变量<code>(Local Variables)</code>一般是发生栈溢出攻击的地方，主要是因为程序在局部变量中读入了超长的数据，造成溢出覆盖了其他内容(比如说返回地址)</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 87; 
+			flex-basis: 210px"
+	>
+	<a href="/posts/pwn3/Picture6.png" data-size="449x512">
+		<img src="/posts/pwn3/Picture6.png"
+			width="449"
+			height="512"
+			srcset="/posts/pwn3/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_480x0_resize_box_3.png 480w, /posts/pwn3/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Local Var">
+	</a>
+	
+	<figcaption>Local Var</figcaption>
+	
+</figure></p>
+</li>
+</ol>
+<h3 id="函数调用栈整个过程">函数调用栈整个过程</h3>
+<p>这一部分前面的知识点已经概括了一些了，再详细将下来篇幅过长，大家可以<a class="link" href="https://mimiksworkshop-my.sharepoint.com/:p:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/EdGKswS2-exEikfnd_H5NPkBJCFXoutFXqQuFh4SR2ompA?e=B0QIft"  target="_blank" rel="noopener"
+    >参考PPT</a></p>
+<h2 id="栈溢出攻击子函数找不着家了">栈溢出攻击:子函数&quot;找不着家&quot;了</h2>
+<p>咳咳，为了便于理解，这里我们<del>生动形象</del>一些</p>
+<h3 id="前提">前提</h3>
+<p>有时候程序猿不知道 <strong>&ldquo;不要相信用户输入的数据总是安全的&rdquo;</strong> 的道理，就在读入函数局部变量的过程中用了<code>gets()</code>等不限制数据长度的函数，或者写了其他可以导致读入过长数据的<del>BUG</del>代码</p>
+<h3 id="攻击">攻击</h3>
+<p>如果我们在局部变量中写入的过长的数据，就会覆盖高地址处的 (数据从地址向高地址读入嘛)的数据，例如 <code>prev ebp</code>或者是<code>ret addr</code>(主要关注)</p>
+<p>如果我们写入的是垃圾数据，程序会返回到一个奇怪的地址，自然会崩溃(Crash)</p>
+<p>而如果我们写入<strong>精心构造的恶意数据</strong>，我们就可以劫持程序，让它干我们想要的事情;)</p>
+<p>比如说，调用<code>system(&quot;/bin/sh&quot;)</code></p>
+<hr>
+<p><strong>这里举个栗子</strong></p>
+<p>如果我们把父函数比喻成爸爸的话，那么子函数就是儿子</p>
+<p>儿子要自己去闯荡了，</p>
+<p>父亲给儿子一些财产让儿子能更好的为未来做准备(父函数栈帧中参数 <code>args</code>)，</p>
+<p>然后父亲告诫自己的儿子一定要好好奋斗，回来后为家乡搞建设(返回地址<code>ret addr</code>)，</p>
+<p>后来，儿子有了自己的生活，财产(局部变量<code>local var</code>)</p>
+<p>但是呢，有攻击者这样一个角色。</p>
+<p>咳咳，他利用各种手段(我们实战的时候可以用<code>pwndbg</code>和<code>pwntools</code>等工具进行攻击)诱骗儿子，最终让他晕头转向，失去理智， 连自己家在哪里都找不到了;) (栈溢出用恶意数据覆盖返回地址)</p>
+<p>后来。。由于儿子以为攻击者给他的地址就是自己家的地址，就乖乖的跟着攻击者行事，帮助攻击者达成控制世界邪恶目的</p>
+<p><del>全剧终 逃)</del></p>
+<hr>
+<p>下一次开始实战哦.qaq.</p>
+<p>To Be Continued&hellip;</p>
 
 </section>
 
@@ -297,7 +344,7 @@ Connection: close
     
     <section class="article-tags">
         
-            <a href="/tags/web-sec/">Web Sec</a>
+            <a href="/tags/pwn/">PWN</a>
         
     </section>
 
@@ -328,29 +375,6 @@ Connection: close
         <h2 class="section-title">Related contents</h2>
         <div class="related-contents">
             <div class="flex article-list--tile">
-                
-                    
-<article class="has-image">
-    <a href="/posts/pwn3/">
-        
-        
-            <div class="article-image">
-                <img src="/posts/pwn3/cover.83e414d02bfc9f736e824b7f6cd9a9eb_huc93e8e51211b13db7df27f880625afbe_1479136_250x150_fill_q75_box_smart1.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础"
-                        
-                        data-hash="md5-g&#43;QU0Cv8n3Nugkt/bNmp6w==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PWN! PWN! PANG! Part3 --- 栈溢出基础</h2>
-        </div>
-    </a>
-</article>
                 
                     
 <article class="has-image">
@@ -394,6 +418,29 @@ Connection: close
 
         <div class="article-details">
             <h2 class="article-title">PWN! PWN! PANG! Part1---基础知识</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/posts/web1/">
+        
+        
+            <div class="article-image">
+                <img src="/posts/web1/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全--浏览器信息伪造"
+                        
+                        data-hash="md5-9jtpqk9CGRVmVLWVIQu8nQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全--浏览器信息伪造</h2>
         </div>
     </a>
 </article>
@@ -577,12 +624,19 @@ Connection: close
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#如何拥有神奇的浏览器">如何拥有神奇的浏览器;)</a></li>
-    <li><a href="#浏览器信息伪造的实现">浏览器信息伪造的实现</a></li>
-    <li><a href="#burp-suite抓包">Burp Suite抓包</a></li>
-    <li><a href="#数据包修改实现伪造浏览器信息">数据包修改实现伪造浏览器信息</a></li>
-    <li><a href="#靶场实战">靶场实战</a></li>
-    <li><a href="#the-end">The END</a></li>
+    <li><a href="#c语言函数调用栈">C语言函数调用栈</a>
+      <ol>
+        <li><a href="#了解函数调用栈">了解函数调用栈</a></li>
+        <li><a href="#关于栈帧">关于栈帧</a></li>
+        <li><a href="#函数调用栈整个过程">函数调用栈整个过程</a></li>
+      </ol>
+    </li>
+    <li><a href="#栈溢出攻击子函数找不着家了">栈溢出攻击:子函数&quot;找不着家&quot;了</a>
+      <ol>
+        <li><a href="#前提">前提</a></li>
+        <li><a href="#攻击">攻击</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
                 </div>
