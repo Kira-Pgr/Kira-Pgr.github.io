@@ -853,6 +853,10 @@ git push -u origin master
 &lt;p&gt;Burp Suite的大概原理：&lt;/p&gt;
 &lt;p&gt;burp类似于代理服务器，&amp;ldquo;拦&amp;quot;你的浏览器和服务器之间，能够发现，拦截过往的数据包&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Update: 本文章图片里用的是Burp Suite 社区免费版，如需要免费获取专业版，可以参考我的另一篇&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/burppro/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;切到Proxy(代理)的标签页，打开burp内置浏览器，打开intercept(中断拦截)开关，就可以愉快地开始抓包了qaq&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;以ip查询网站ip.chinaz.com为例&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;抓到的数据包&lt;/p&gt;
