@@ -268,17 +268,29 @@ sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
 sudo yum -y install devtoolset-7
 scl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; devtoolset-7 bash
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装pwndbg&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git clone https://github.com/pwndbg/pwndbg
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git clone https://github.com/pwndbg/pwndbg.git
 &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; pwndbg
 ./setup.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;用法&#34;&gt;用法&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;安装踩坑记&#34;&gt;安装踩坑记&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;注意:pwndbg这个目录请不要删除或随意移动位置,否则可能会导致pwndbg无法正常启动&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果安装后或系统更新后无法正常启动的话，请检查路径问题&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo vi ~/.gdbinit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输入命令后应该能看到一行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; 其他内容/pwndbg/gdbinit.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;记得把&lt;code&gt;source&lt;/code&gt;之后的内容改成你pwndbg文件夹里gdbinit.py的路径&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip:如果你想不用pwndbg的话，去掉这一行即可&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;用法&#34;&gt;用法&lt;/h3&gt;
 &lt;p&gt;大部分用法都和gdb的差不多，这里列举几个经常用的&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;b 函数名 &lt;span class=&#34;c1&#34;&gt;#断点断在某个函数处&lt;/span&gt;
 b *一个地址 &lt;span class=&#34;c1&#34;&gt;#断点断在某个地址&lt;/span&gt;
 r        &lt;span class=&#34;c1&#34;&gt;#运行&lt;/span&gt;
 n        &lt;span class=&#34;c1&#34;&gt;#执行下一条指令或者跳过一个函数&lt;/span&gt;
 s        &lt;span class=&#34;c1&#34;&gt;#进入函数&lt;/span&gt;
-q        &lt;span class=&#34;c1&#34;&gt;#推出gdb&lt;/span&gt;
+q        &lt;span class=&#34;c1&#34;&gt;#退出gdb&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至于pwndbg的特殊功能嘛= =，&lt;strong&gt;可以通过指令&lt;code&gt;pwndbg&lt;/code&gt;查看&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure 
 	

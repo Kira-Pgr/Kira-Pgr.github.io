@@ -186,17 +186,29 @@ sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
 sudo yum -y install devtoolset-7
 scl <span class="nb">enable</span> devtoolset-7 bash
 </code></pre></div><p>安装pwndbg</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/pwndbg/pwndbg
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/pwndbg/pwndbg.git
 <span class="nb">cd</span> pwndbg
 ./setup.sh
-</code></pre></div><h3 id="用法">用法</h3>
+</code></pre></div><hr>
+<h3 id="安装踩坑记">安装踩坑记</h3>
+<p><strong>注意:pwndbg这个目录请不要删除或随意移动位置,否则可能会导致pwndbg无法正常启动</strong></p>
+<p>如果安装后或系统更新后无法正常启动的话，请检查路径问题</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo vi ~/.gdbinit
+</code></pre></div><p>输入命令后应该能看到一行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">source</span> 其他内容/pwndbg/gdbinit.py
+</code></pre></div><p>记得把<code>source</code>之后的内容改成你pwndbg文件夹里gdbinit.py的路径</p>
+<blockquote>
+<p>Tip:如果你想不用pwndbg的话，去掉这一行即可</p>
+</blockquote>
+<hr>
+<h3 id="用法">用法</h3>
 <p>大部分用法都和gdb的差不多，这里列举几个经常用的</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">b 函数名 <span class="c1">#断点断在某个函数处</span>
 b *一个地址 <span class="c1">#断点断在某个地址</span>
 r        <span class="c1">#运行</span>
 n        <span class="c1">#执行下一条指令或者跳过一个函数</span>
 s        <span class="c1">#进入函数</span>
-q        <span class="c1">#推出gdb</span>
+q        <span class="c1">#退出gdb</span>
 </code></pre></div><p>至于pwndbg的特殊功能嘛= =，<strong>可以通过指令<code>pwndbg</code>查看</strong></p>
 <p><figure 
 	
@@ -620,6 +632,7 @@ Maybe I will tell you again when you clever than ELSEpush ......
     <li><a href="#pwndbg">PWNDBG</a>
       <ol>
         <li><a href="#安装">安装</a></li>
+        <li><a href="#安装踩坑记">安装踩坑记</a></li>
         <li><a href="#用法">用法</a></li>
       </ol>
     </li>

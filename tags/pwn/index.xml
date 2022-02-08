@@ -52,7 +52,7 @@ C语言函数调用栈 了解函数调用栈   函数调用栈是指程序运行
 Deb 系
 sudo apt install gdb yum系 快去用Debian 逃)
 sudo yum -y install centos-release-scl sudo yum-config-manager --enable rhel-server-rhscl-7-rpms sudo yum -y install devtoolset-7 scl enable devtoolset-7 bash 安装pwndbg
-git clone https://github.com/pwndbg/pwndbg cd pwndbg ./setup.sh 用法 大部分用法都和gdb的差不多，这里列举几个经常用的</description>
+git clone https://github.com/pwndbg/pwndbg.git cd pwndbg ./setup.sh  安装踩坑记 注意:pwndbg这个目录请不要删除或随意移动位置,否则可能会导致pwndbg无法正常启动</description>
     </item>
     
     <item>
