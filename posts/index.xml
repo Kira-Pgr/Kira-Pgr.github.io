@@ -6,7 +6,33 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Feb 2022 07:51:10 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Feb 2022 07:42:01 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Burp Suite Professional 安装&#43;破解教程</title>
+      <link>https://kira-pgr.github.io/posts/burppro/</link>
+      <pubDate>Tue, 08 Feb 2022 07:42:01 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/burppro/</guid>
+      <description>Burp Suite Professional 安装+破解教程 嗝~~
+(Burp在英文中有打嗝的意思)
+前言 咳咳，先声明一下，当你看到这篇文章的时候，它很可能已经是 过时 的了= =,
+由于Burp会不断更新换代，本文章提供的软件安装包不可能提供最新安装包，如果你觉得版本太旧了，请自行网上搜索最新安装包，但文章提供的破解工具 应该 能保证在之后一段时间内有用
+资源   破解工具
+  Burp Suite Pro v2022.1
+  使用 JAVA环境 运行Burp Suite Professional需要提前安装好java环境
+  Windows Java下载
+  Linux
+  deb系
+sudo apt install default-jdk Red Hat
+sudo yum install java-版本号-openjdk-devel Linux Java下载
+嗝～～开始破解 注意：请把Burp的文件和破解工具放入同一个文件夹
+终端/cmd/你奇奇怪怪的命令行工具进入放有以上两个文件的目录
+先运行破解工具
+java -jar burploader.jar  破解工具 
+这里License Text随便填一些东西(这些东西之后会显示在你的Burp标题栏上，可以考虑搞些酷酷的东西)
+ TIP: 如果你是JAVA 17+, 记得不要直接点旁边的RUN(要不然会报错)</description>
+    </item>
+    
     <item>
       <title>PWN! PWN! PANG! Part3 --- 栈溢出基础</title>
       <link>https://kira-pgr.github.io/posts/pwn3/</link>

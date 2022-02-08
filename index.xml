@@ -6,7 +6,188 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 07 Feb 2022 07:51:10 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Feb 2022 07:42:01 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Burp Suite Professional 安装&#43;破解教程</title>
+        <link>https://kira-pgr.github.io/posts/burppro/</link>
+        <pubDate>Tue, 08 Feb 2022 07:42:01 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/burppro/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/burppro/cover.jpg" alt="Featured image of post Burp Suite Professional 安装&#43;破解教程" /&gt;&lt;h1 id=&#34;burp-suite-professional-安装破解教程&#34;&gt;Burp Suite Professional 安装+破解教程&lt;/h1&gt;
+&lt;p&gt;嗝~~&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;(Burp在英文中有打嗝的意思)&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;咳咳，先声明一下，当你看到这篇文章的时候，它很可能已经是 &lt;em&gt;&lt;strong&gt;过时&lt;/strong&gt;&lt;/em&gt; 的了= =,&lt;/p&gt;
+&lt;p&gt;由于Burp会不断更新换代，本文章提供的软件安装包不可能提供最新安装包，如果你觉得版本太旧了，&lt;strong&gt;请自行网上搜索最新安装包&lt;/strong&gt;，但文章提供的破解工具 &lt;em&gt;应该&lt;/em&gt; 能保证在之后一段时间内有用&lt;/p&gt;
+&lt;h2 id=&#34;资源&#34;&gt;资源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/EcxltDgxg55Lm1YNOAOk89kBQ4Ty7lKbFSfPMvRtZ0V1Mw?e=Slwzws&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;破解工具&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/ETCKDiiKZVNBrdTlXsEdtRoBVpL1zYDC340s62MAPH5KLA?e=ckzbZI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Burp Suite Pro v2022.1&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+&lt;h3 id=&#34;java环境&#34;&gt;JAVA环境&lt;/h3&gt;
+&lt;p&gt;运行Burp Suite Professional需要&lt;strong&gt;提前安装好java环境&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.java.com/download/ie_manual.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Windows Java下载&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;deb系&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install default-jdk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Red Hat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo yum install java-版本号-openjdk-devel
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.java.com/en/download/manual.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux Java下载&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;嗝开始破解&#34;&gt;嗝～～开始破解&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;注意：请把Burp的文件和破解工具放入同一个文件夹&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;终端/cmd/你奇奇怪怪的命令行工具进入放有以上两个文件的目录&lt;/p&gt;
+&lt;p&gt;先运行破解工具&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -jar burploader.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 176; 
+			flex-basis: 423px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/burppro/1.png&#34; data-size=&#34;796x451&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/burppro/1.png&#34;
+			width=&#34;796&#34;
+			height=&#34;451&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/burppro/1_hude958c5b360fb8fb230f2ce450c616ef_44660_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/burppro/1_hude958c5b360fb8fb230f2ce450c616ef_44660_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;破解工具&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;破解工具&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这里License Text随便填一些东西(&lt;strong&gt;这些东西之后会显示在你的Burp标题栏上&lt;/strong&gt;，&lt;del&gt;可以考虑搞些酷酷的东西&lt;/del&gt;)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TIP: 如果你是JAVA 17+, 记得不要直接点旁边的RUN(要不然会报错)&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;JAVA17+的看这里&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;保留破解工具窗口，并终端输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -noverify -javaagent:burploader.jar --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.desktop/javax.swing&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.base/java.lang&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED -jar burpsuite_pro_v2022.1.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你是其他JAVA版本，Burp启动后提示你要加上xxx的JVM参数，参考以下命令格式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -noverify -javaagent:burploader.jar 提示你要加上的参数 -jar burpsuite_pro_v2022.1.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;把破解工具生成的Liscense(许可证)粘贴进Burp的许可证框框= =&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 252; 
+			flex-basis: 607px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/burppro/2.png&#34; data-size=&#34;764x302&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/burppro/2.png&#34;
+			width=&#34;764&#34;
+			height=&#34;302&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/burppro/2_hu29a58fd9b1af39045aaffd6a8af2aaae_123384_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/burppro/2_hu29a58fd9b1af39045aaffd6a8af2aaae_123384_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;许可证框框嗝~~&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;许可证框框嗝~~&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;点击Next(下一步)后选择Manual Activation(人工激活)&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 145; 
+			flex-basis: 350px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/burppro/3.png&#34; data-size=&#34;838x574&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/burppro/3.png&#34;
+			width=&#34;838&#34;
+			height=&#34;574&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/burppro/3_hu662f4b453037502af61e9051280d2ba7_101889_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/burppro/3_hu662f4b453037502af61e9051280d2ba7_101889_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;这应该灰常EASY&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;这应该灰常EASY&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后把Burp的Request复制粘贴进激活工具&lt;/p&gt;
+&lt;p&gt;傻瓜教程：点击旁边的Copy Request按钮复制，然后粘贴进激活工具Request框&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 164; 
+			flex-basis: 394px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/burppro/5.png&#34; data-size=&#34;955x581&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/burppro/5.png&#34;
+			width=&#34;955&#34;
+			height=&#34;581&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/burppro/5_hueed93c348322a78de358c60c3d39a4c4_120610_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/burppro/5_hueed93c348322a78de358c60c3d39a4c4_120610_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;QAQ = =&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;QAQ = =&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后把激活工具的Response(回复)复制粘贴进Burp的Response框&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 164; 
+			flex-basis: 394px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/burppro/6.png&#34; data-size=&#34;955x581&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/burppro/6.png&#34;
+			width=&#34;955&#34;
+			height=&#34;581&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/burppro/6_hu6853f4ca6b82090ec00dd1d56430d62b_149977_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/burppro/6_hu6853f4ca6b82090ec00dd1d56430d62b_149977_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;操作与上一步类似&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;操作与上一步类似&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后不BUG的话就应该激活成功了.qwq.&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 153; 
+			flex-basis: 369px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/burppro/7.png&#34; data-size=&#34;829x539&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/burppro/7.png&#34;
+			width=&#34;829&#34;
+			height=&#34;539&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/burppro/7_hu4d686dcae0324c9334fd8193d0e0e634_88893_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/burppro/7_hu4d686dcae0324c9334fd8193d0e0e634_88893_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;激活成功&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;激活成功&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;部分图片来自https://github.com/hanshaze/burp&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>PWN! PWN! PANG! Part3 --- 栈溢出基础</title>
         <link>https://kira-pgr.github.io/posts/pwn3/</link>
         <pubDate>Mon, 07 Feb 2022 07:51:10 -0500</pubDate>

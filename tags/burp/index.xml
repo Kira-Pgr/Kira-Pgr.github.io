@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Burp on KiraPGR&#39;s Blog</title>
+    <link>https://kira-pgr.github.io/tags/burp/</link>
+    <description>Recent content in Burp on KiraPGR&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Feb 2022 07:42:01 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/tags/burp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Burp Suite Professional 安装&#43;破解教程</title>
+      <link>https://kira-pgr.github.io/posts/burppro/</link>
+      <pubDate>Tue, 08 Feb 2022 07:42:01 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/burppro/</guid>
+      <description>Burp Suite Professional 安装+破解教程 嗝~~
+(Burp在英文中有打嗝的意思)
+前言 咳咳，先声明一下，当你看到这篇文章的时候，它很可能已经是 过时 的了= =,
+由于Burp会不断更新换代，本文章提供的软件安装包不可能提供最新安装包，如果你觉得版本太旧了，请自行网上搜索最新安装包，但文章提供的破解工具 应该 能保证在之后一段时间内有用
+资源   破解工具
+  Burp Suite Pro v2022.1
+  使用 JAVA环境 运行Burp Suite Professional需要提前安装好java环境
+  Windows Java下载
+  Linux
+  deb系
+sudo apt install default-jdk Red Hat
+sudo yum install java-版本号-openjdk-devel Linux Java下载
+嗝～～开始破解 注意：请把Burp的文件和破解工具放入同一个文件夹
+终端/cmd/你奇奇怪怪的命令行工具进入放有以上两个文件的目录
+先运行破解工具
+java -jar burploader.jar  破解工具 
+这里License Text随便填一些东西(这些东西之后会显示在你的Burp标题栏上，可以考虑搞些酷酷的东西)
+ TIP: 如果你是JAVA 17+, 记得不要直接点旁边的RUN(要不然会报错)</description>
+    </item>
+    
+    <item>
+      <title>Web安全--浏览器信息伪造</title>
+      <link>https://kira-pgr.github.io/posts/web1/</link>
+      <pubDate>Fri, 28 Jan 2022 22:53:47 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/web1/</guid>
+      <description>Web安全&amp;mdash;-浏览器信息伪造 &amp;ldquo;诶。。。PGR酱你用的什么浏览器&amp;rdquo;
+— MimiKs-Sec-Browser.QwQ.
+&amp;ldquo;啊= =哪有这种浏览器&amp;rdquo;
+— 诶嘿嘿，我就有这样神奇的浏览器XD
+ 诶嘿嘿，有图片作证哦qaq 
+ 如何拥有神奇的浏览器;) 咳咳咳，进入正题
+要实现以上的效果，就要用到浏览器信息伪造技术
+浏览器信息伪造的实现 网站判断你的设备和浏览器信息主要是依据你发向网站的数据包
+所以我们通过修改数据包实现浏览器信息伪造awa
+Burp Suite抓包 想要修改数据包，我们必须先抓获它
+(刚从野外抓到一只野生数据包)
+ 抓包工具推荐Burp Suite   Burp Suite 
+ Burp Suite的大概原理：
+burp类似于代理服务器，&amp;ldquo;拦&amp;quot;你的浏览器和服务器之间，能够发现，拦截过往的数据包
+ 切到Proxy(代理)的标签页，打开burp内置浏览器，打开intercept(中断拦截)开关，就可以愉快地开始抓包了qaq
+以ip查询网站ip.chinaz.com为例
+抓到的数据包
+GET / HTTP/1.1 Host: ip.chinaz.com Cookie: qHistory=aHR0cDovL2lwLmNoaW5hei5jb21fSVAvSVB2Nuafpeivou+8jOacjeWKoeWZqOWcsOWdgOafpeivog==; cz_statistics_visitor=6e92e1cd-3bd8-6ec0-9e75-271a4c8dfe89; UM_distinctid=17e9ad54d9ea91-0de9b86d1a8b15-f791b31-e1000-17e9ad54d9faa3; Hm_lvt_ca96c3507ee04e182fb6d097cb2a1a4c=1643278444,1643280347,1643281459,1643430361; CNZZDATA5082706=cnzz_eid%3D1961137514-1643271376-%26ntime%3D1643422648; SECKEY_ABVK=d8C9ZBZRX6Qya0VNufaZozKriQgZkNE9wBJvCc1YVMo%3D; BMAP_SECKEY=ZvL10u-tISavTuXtRnLwuMF6SZ4DS3InrGol25-dIiWXTBfvmHf1rOql24bKE6-K7ExBo1yo-mlyN-y7jnL9aasP3q6E4R0onZG-ZZW_unKjL13-oBTm8QkEMlFdp3r8C7gTLnuhcWNYDIBVi6s_AOD-H2CjUVKCvfGq6TnZPfxkHkBk2xyM8n1R0E_onq6F Sec-Ch-Ua: &amp;#34;Chromium&amp;#34;;v=&amp;#34;97&amp;#34;, &amp;#34; Not;A Brand&amp;#34;;v=&amp;#34;99&amp;#34; Sec-Ch-Ua-Mobile: ?0 Sec-Ch-Ua-Platform: &amp;#34;Windows&amp;#34; Upgrade-Insecure-Requests: 1 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.</description>
+    </item>
+    
+  </channel>
+</rss>
