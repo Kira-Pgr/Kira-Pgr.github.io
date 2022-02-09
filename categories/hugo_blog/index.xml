@@ -8,6 +8,27 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 29 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/hugo_blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Hugo Stack主题简单美化</title>
+      <link>https://kira-pgr.github.io/posts/hugo2/</link>
+      <pubDate>Wed, 09 Feb 2022 04:35:37 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/hugo2/</guid>
+      <description>Hugo Stack 简单美化/配置 前言 本篇文章主要是说说几个我在搭建博客的时候采用的几种美化/配置方式，
+如大家有其他需求的话，可以去康康文末几个参考链接
+分类部分加上缩略图 在你网站根目录(术语不理解的话看上一篇文章)打开终端/cmd/其他命令行工具，
+并输入
+hugo new categories/分类名字/_index.md  注意: index前面下划线不能少
+ 然后修改_index.md成下面这种样子
+---title:&amp;#34;分类名&amp;#34;date:2022-02-08T01:03:14-05:00image:你的图片名(带后缀)style:background:&amp;#34;#2a9d8f&amp;#34;color:&amp;#34;#fff&amp;#34;--- 注意: 请把图片和_index.md放在同一目录里
+ 代码:给你点Color See See 咳咳，关于代码框框着色问题= =
+只需要指明代码类型是可以着色的qaq
+ 代码块着色 
+文本特效 在网站根目录/static/css/内新建一个文件custom.css
+以下是custom.css代码
+.blur { color: transparent; text-shadow:0px 0px 8px rgba(0,0,0,0.5) } .blur:hover { color: transparent; text-shadow:0px 0px 0px rgba(0,0,0,1) } .shady { color:#000; font-weight: bold; box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; transition: all 0.3s ease; } .shady:hover{ font-weight: bold; color:#FFF; box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; } 还有，由于你要在MarkDown中内嵌html代码，你需要修改一下配置文件(网站根目录下的config.</description>
+    </item>
+    
+    <item>
       <title>Hugo无需服务器搭建个人博客</title>
       <link>https://kira-pgr.github.io/posts/hugo1/</link>
       <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
