@@ -6,7 +6,24 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 09 Feb 2022 04:35:37 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Feb 2022 07:54:34 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>留言板</title>
+        <link>https://kira-pgr.github.io/posts/comment/</link>
+        <pubDate>Thu, 10 Feb 2022 07:54:34 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/comment/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/comment/cover.jpg" alt="Featured image of post 留言板" /&gt;&lt;h1 id=&#34;嘛--这是一个留言板&#34;&gt;嘛。。。= = 这是一个留言板&lt;/h1&gt;
+&lt;p&gt;嘿嘿，小伙伴们可以在下面评论区畅所欲言哦&lt;/p&gt;
+&lt;p&gt;大家可以给我留言，求资源，交流技术，在这里交朋友&lt;/p&gt;
+&lt;p&gt;甚至可以贴广告&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;咳咳，当然是非盈利性的那种= = 我们是开源主义者XD&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PS:如果我博客的文章内容有什么技术上的错误的话烦请各位dalao指正哦.qaq.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
         <title>Hugo Stack主题简单美化</title>
         <link>https://kira-pgr.github.io/posts/hugo2/</link>
         <pubDate>Wed, 09 Feb 2022 04:35:37 -0500</pubDate>
