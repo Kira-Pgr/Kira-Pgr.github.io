@@ -3,13 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kira-pgr.github.io/categories/</loc>
-    <lastmod>2022-02-10T07:54:34-05:00</lastmod>
+    <lastmod>2022-02-10T22:54:20-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/</loc>
-    <lastmod>2022-02-10T07:54:34-05:00</lastmod>
+    <lastmod>2022-02-10T22:54:20-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/</loc>
-    <lastmod>2022-02-10T07:54:34-05:00</lastmod>
+    <lastmod>2022-02-10T22:54:20-05:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/pwn/</loc>
+    <lastmod>2022-02-10T22:54:20-05:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/posts/pwn4/</loc>
+    <lastmod>2022-02-10T22:54:20-05:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/</loc>
+    <lastmod>2022-02-10T22:54:20-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/comment/</loc>
     <lastmod>2022-02-10T07:54:34-05:00</lastmod>
@@ -23,9 +32,6 @@
     <loc>https://kira-pgr.github.io/posts/hugo2/</loc>
     <lastmod>2022-02-09T04:35:37-05:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/tags/</loc>
-    <lastmod>2022-02-09T04:35:37-05:00</lastmod>
-  </url><url>
     <loc>https://kira-pgr.github.io/tags/burp/</loc>
     <lastmod>2022-02-08T07:42:01-05:00</lastmod>
   </url><url>
@@ -34,9 +40,6 @@
   </url><url>
     <loc>https://kira-pgr.github.io/categories/software/</loc>
     <lastmod>2022-02-08T01:03:14-05:00</lastmod>
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/pwn/</loc>
-    <lastmod>2022-02-07T07:51:10-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/pwn3/</loc>
     <lastmod>2022-02-07T07:51:10-05:00</lastmod>

