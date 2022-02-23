@@ -1969,29 +1969,12 @@ Connection: close
         
         <guid>https://kira-pgr.github.io/posts/about_me/</guid>
         <description>&lt;img src="https://kira-pgr.github.io/posts/about_me/yran.jpg" alt="Featured image of post About Me" /&gt;&lt;h1 id=&#34;kirapgr&#34;&gt;KiraPGR&lt;/h1&gt;
-&lt;p&gt;大家好, 我是PGR, 现在我来&lt;del&gt;郑重其事&lt;/del&gt;地介绍一下我自己&lt;/p&gt;
-&lt;p&gt;hmmm.. 咳咳= =&lt;/p&gt;
-&lt;h2 id=&#34;我是一个女生&#34;&gt;我是一个女生(&lt;/h2&gt;
-&lt;p&gt;我相信很多人看到这个很惊讶, 甚至不敢相信= =&lt;/p&gt;
-&lt;p&gt;但是，，确实= =&lt;/p&gt;
-&lt;p&gt;毕竟学信息安全的女生是。。数量特别少啦（（&lt;/p&gt;
-&lt;h2 id=&#34;简单对自己的概括&#34;&gt;简单对自己的概括&lt;/h2&gt;
-&lt;p&gt;宅，喜欢IT, 有点社恐, 还很可爱 &lt;del&gt;(谁让大家都这么说)&lt;/del&gt;&lt;/p&gt;
-&lt;h2 id=&#34;技术方面的东东&#34;&gt;技术方面的东东&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;详细介绍可以看我GitHub个人主页;)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;编程语言： c / c++  python&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;IDE: VS VSC&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;涉及领域：信息安全(目前主攻方向)，安软测试，文件恶意行为分析，UI开发，python爪巴虫开发, GitHub Actions开发&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;大家好, 我是PGR, 欢迎大家来到我的Blog,&lt;/p&gt;
+&lt;p&gt;本篇文章是对我自己简单的一个介绍&lt;/p&gt;
+&lt;h2 id=&#34;kirapgr是谁&#34;&gt;KiraPGR是谁？&lt;/h2&gt;
+&lt;p&gt;我是一个高中在读学生，开源主义者，熟悉c++/Python开发 ,平常喜欢自己折腾折腾计算机技术，也不时会写一点小Project(基本上以工具为主),目前主要在研究信息安全方面，如果有意向的朋友们可以和我一起学习哦qaq&lt;/p&gt;
+&lt;h2 id=&#34;关于本博客&#34;&gt;关于本博客&lt;/h2&gt;
+&lt;p&gt;搭建这个博客的目的呢，主要是为了能和大家共享我自己学到的一些知识 (&lt;del&gt;刚好就有动力写一点笔记了&lt;/del&gt; )，同时呢，还希望能结交到一些志同道合的好朋友awa&lt;/p&gt;
 &lt;h2 id=&#34;联系方式&#34;&gt;联系方式&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -2006,7 +1989,7 @@ Connection: close
     &gt;https://space.bilibili.com/66912843&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;QQ: 1532375915 (尽量别QQ联系)&lt;/p&gt;
+&lt;p&gt;QQ: 1532375915&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;我的朋友们&#34;&gt;我的朋友们&lt;/h2&gt;
