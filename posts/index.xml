@@ -6,7 +6,29 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Feb 2022 21:18:34 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Feb 2022 23:27:12 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clash猫猫RCE复现(弹shell)</title>
+      <link>https://kira-pgr.github.io/posts/clash_rce/</link>
+      <pubDate>Fri, 25 Feb 2022 23:27:12 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/clash_rce/</guid>
+      <description>Clash For Windows RCE弹Shell  小白:RCE是什么
+大佬:Reliable Computer Engineering (可靠的电脑工程)
+咳咳，应该是Remote Code Execution(远程代码执行)= =
+ 前期准备  Tip:请使用一个Linux机器和一个Windows机器，否则可能会出现&amp;lt;意想不到&amp;gt;的问题
+(没有Linux? 去下载一个Kali Linux吧)
+ 一个有漏洞的Clash Windows 客户端 下载地址
+下载后按照提示在Windows系统下安装即可
+C2工具Octopus 在一个装好了Python3和Git的Linux系统执行以下的操作
+ 如果你没有安装，请参考
+  安装Git
+  安装Python3: 终端输入sudo apt install python3
+  (由于大部分系统已经预装，如果你非deb系请自主上网搜索安装方式)
+ git clone https://github.com/mhaskar/Octopus.git cd Octopus pip install -r requirements.txt python3 octopus.py 成功安装后你会看到如下界面
+┌─[askar@hackbook]─[/opt/redteaming/Octopus] └──╼ $python3 octopus.py ___ ___ ___ ___ ___ ___ / /\  / /\  ___ / /\  / /\  /__/\  / /\  / /::\  / /:/ / /\  / /::\  / /::\  \  \:\  / /:/_ / /:/\:\  / /:/ / /:/ / /:/\:\  / /:/\:\  \  \:\  / /:/ /\  / /:/ \:\  / /:/ ___ / /:/ / /:/ \:\  / /:/~/:/ ___ \  \:\  / /:/ /::\  /__/:/ \__\:\ /__/:/ / /\  / /::\  /__/:/ \__\:\ /__/:/ /:/ /__/\  \__\:\ /__/:/ /:/\:\  \  \:\ / /:/ \  \:\ / /:/ /__/:/\:\  \  \:\ / /:/ \  \:\/:/ \  \:\ / /:/ \  \:\/:/~/:/ \  \:\  /:/ \  \:\  /:/ \__\/ \:\  \  \:\  /:/ \  \::/ \  \:\  /:/ \  \::/ /:/ \  \:\/:/ \  \:\/:/ \  \:\  \  \:\/:/ \  \:\  \  \:\/:/ \__\/ /:/ \  \::/ \  \::/ \__\/ \  \::/ \  \:\  \  \::/ /__/:/ \__\/ \__\/ \__\/ \__\/ \__\/ \__\/ v1.</description>
+    </item>
+    
     <item>
       <title>蹲点神器GitHub-CVE-Listener安利</title>
       <link>https://kira-pgr.github.io/posts/gcl/</link>
