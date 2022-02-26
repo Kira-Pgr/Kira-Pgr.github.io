@@ -18,6 +18,8 @@
 &lt;p&gt;&lt;del&gt;大佬:Reliable Computer Engineering (可靠的电脑工程)&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;咳咳，应该是Remote Code Execution(远程代码执行)= =&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;免责声明&#34;&gt;免责声明&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;本文章为PGR的个人漏洞复现笔记，仅供参考/学习，如用文章中技术造成任何损失的后果自负&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Tip:请使用一个Linux机器和一个Windows机器，否则可能会出现&amp;lt;意想不到&amp;gt;的问题&lt;/strong&gt;&lt;/p&gt;
