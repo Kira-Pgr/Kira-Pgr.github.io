@@ -1677,7 +1677,7 @@ Maybe I will tell you again when you clever than ELSEpush ......
 &lt;h3 id=&#34;stack-主题的简单配置&#34;&gt;Stack 主题的简单配置&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;把&lt;code&gt;你的网站名/themes/hugo-theme-stack/&lt;/code&gt;目录下的config.yaml复制到网站根目录(也就是&lt;code&gt;你的网站名&lt;/code&gt;这个目录)&lt;/p&gt;
+&lt;p&gt;把&lt;code&gt;你的网站名/themes/hugo-theme-stack/exampleSite/&lt;/code&gt;目录下的config.yaml复制到网站根目录(也就是&lt;code&gt;你的网站名&lt;/code&gt;这个目录)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;删除网站根目录的&lt;code&gt;config.toml&lt;/code&gt;&lt;/p&gt;
