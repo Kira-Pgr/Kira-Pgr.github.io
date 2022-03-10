@@ -6,7 +6,45 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Mar 2022 05:50:08 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Mar 2022 22:45:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>送给小白的IT入门指南</title>
+      <link>https://kira-pgr.github.io/posts/noob1/</link>
+      <pubDate>Wed, 09 Mar 2022 22:45:07 -0500</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/noob1/</guid>
+      <description>0基础计算机小白自学IT的方法 ww又开一个新坑，至于原因嘛= =，就是很多小白入门第一个问题就是 &amp;ldquo;0基础怎么学xxx&amp;rdquo; 一类的问题，所以干脆就写篇关于这个的文章
+至于PWN系列拖更的事情，就请谅解啦~
+咕咕咕.QAQ.
+前言 作为一个自学IT的高中生，个人认为在一开始起步的时候，经常会遇到很多问题以及踩很多多坑非常正常，在解决问题其实最重要的不是解决问题本身，而是学会解决问题的能力。本系列文章基本上就是着重教给大家如何解决问题，而不是铺天盖地的知识性的东西
+什么时候学? 个人认为。。你什么时候学都不晚，只要你有兴趣，能学下去就可以= =
+如何摆脱「0基础」 如果你之前以前没怎么用过电脑的话，想要入门IT肯定是一件「难事」,所以我们要先熟悉熟悉电脑的基本操作
+至于怎么熟悉的话，也没有必要当作一个任务一样来「学习」，我的方法就是到处点点摸摸(反正不会坏，电脑没那么脆弱= =)，然后看看每个功能大概在哪里，每个按键大概是什么作用
+搜索引擎的使用 咳咳咳，敲重点
+ 实际上，大家遇到的99%问题，都可以通过搜索解决，等你能熟练运用搜索引擎之后，你会发现。那1%你自己解决不了的问题，往往很多dalao也解决不了.QAQ.
+ 如果你要问:「搜索引擎」是什么? 看上去很高大上的样子
+嘛。。说白了就是像百度搜索，360搜索一类的东西
+&amp;ldquo;这么简单还要学??&amp;rdquo;
+但实际上很多小白都没有真正掌握搜索引擎的使用
+ 当然，如果你能熟练的通过搜索解决你所遇到的大部分问题，而不是一有问题就不知所措，然后直接去问你认识的大佬，说明你这种技能已经掌握的差不多了，那么请直接跳过下面的「长篇大论」
+ 选一个合适的浏览器 某些流氓浏览器嘛。。不仅有那种「奇奇怪怪」的主页，还可能会经常去不了国外一些资源网站。。
+实际上现在Windows内置的浏览器Edge就完全够用，而且很舒适，要是你想要用其他的浏览器的话，推荐Chrome和FireFox,建议不要使用360.2345一类的浏览器= =
+选择一个合适的搜索引擎  由于本篇文章是面向小白的，我们暂且不提那些因为某些原因在国内不能访问的Google/DuckDuckGo等优秀搜索引擎
+ 搜索引擎的话。。基本上用百度或者bing就够了。尽量不要使用360搜索一类的，因为它们往往不能给你最准确的结果
+如何搜索 一般在搜索东西的时候，可以采用关键词搜索法，不要像问人问题那样搜索(比如说带上「为什么」「怎么办」「可不可以」等词语)
+ 举个栗子：如果我想要知道如何用VMware Workstation安装虚拟机
+你应该这么搜索
+ VMware Workstation安装虚拟机  你不应该这么搜索
+  如何用VMware Workstation安装虚拟机?
+  VMware Workstation怎么安装虚拟机?
+   还有就是每个搜索引擎有不同的高级搜索语法，利用这些搜索语法你可以指定搜索标题/网址/内容等
+百度常用高级搜索语法
+如果你不喜欢像代码一样的语法的话,可以采用高级搜索的图形界面
+ 百度的高级搜索图形界面 
+有时候优秀的教程不一定需要购买 b站,曾被称为&amp;quot;b站大学&amp;quot;，里面有很多优秀的视频教程，大家有需要可以去搜索哦
+选择学习的内容和方向 即使是IT行业也会有很多很多分支.QwQ.</description>
+    </item>
+    
     <item>
       <title>PWN! PWN! PANG! Part5 --- ret2shellcode</title>
       <link>https://kira-pgr.github.io/posts/pwn5/</link>
