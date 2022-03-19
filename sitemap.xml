@@ -3,13 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kira-pgr.github.io/categories/</loc>
-    <lastmod>2022-03-09T22:45:07-05:00</lastmod>
+    <lastmod>2022-03-17T00:23:45-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/</loc>
-    <lastmod>2022-03-09T22:45:07-05:00</lastmod>
+    <lastmod>2022-03-17T00:23:45-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/</loc>
-    <lastmod>2022-03-09T22:45:07-05:00</lastmod>
+    <lastmod>2022-03-17T00:23:45-04:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/</loc>
+    <lastmod>2022-03-17T00:23:45-04:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/web-sec/</loc>
+    <lastmod>2022-03-17T00:23:45-04:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/posts/web2/</loc>
+    <lastmod>2022-03-17T00:23:45-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/noob1/</loc>
     <lastmod>2022-03-09T22:45:07-05:00</lastmod>
@@ -21,9 +30,6 @@
     <lastmod>2022-03-03T05:50:08-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/pwn5/</loc>
-    <lastmod>2022-03-03T05:50:08-05:00</lastmod>
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/</loc>
     <lastmod>2022-03-03T05:50:08-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/clash_rce/</loc>
@@ -70,9 +76,6 @@
   </url><url>
     <loc>https://kira-pgr.github.io/categories/hugo_blog/</loc>
     <lastmod>2022-01-29T01:03:14-05:00</lastmod>
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/web-sec/</loc>
-    <lastmod>2022-01-28T22:53:47-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/web1/</loc>
     <lastmod>2022-01-28T22:53:47-05:00</lastmod>

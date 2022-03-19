@@ -6,7 +6,307 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 09 Mar 2022 22:45:07 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 17 Mar 2022 00:23:45 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Web安全:关于信息收集那些事</title>
+        <link>https://kira-pgr.github.io/posts/web2/</link>
+        <pubDate>Thu, 17 Mar 2022 00:23:45 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/web2/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/web2/cover.jpg" alt="Featured image of post Web安全:关于信息收集那些事" /&gt;&lt;h1 id=&#34;关于信息收集那些事&#34;&gt;关于信息收集那些事&lt;/h1&gt;
+&lt;p&gt;在安全测试中，信息收集是非常重要的一个环节，此环节的信息将影响到后续的成功几率，掌握信息的多少将决定发现漏洞机会大小(毕竟你找到的东西越多，可能出现漏洞的几率越大嘛= =)&lt;/p&gt;
+&lt;h2 id=&#34;判断有无cdn&#34;&gt;判断有无CDN&lt;/h2&gt;
+&lt;p&gt;基本上通过&lt;a class=&#34;link&#34; href=&#34;https://ping.chinaz.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;超级ping&lt;/a&gt;就可以判断了awa&lt;/p&gt;
+&lt;h3 id=&#34;有cdn--尝试绕过&#34;&gt;有CDN&amp;ndash;&amp;gt;尝试绕过&lt;/h3&gt;
+&lt;p&gt;如果多地ping响应的ip不一样，说明该网站配置有CDN&lt;/p&gt;
+&lt;p&gt;绕过方法大致有:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://tools.ipip.net/cdn.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;冷门地区地址ping&lt;/a&gt;:由于经费原因，服务商不大可能在某些地区搞CDN,所以往往用那些地区的ip来ping的话能找到服务器的真实ip&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://securitytrails.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DNS解析历史记录&lt;/a&gt;:有可能这个服务器之前没有配置CDN,查看历史DNS解析记录可以获得服务器真实IP&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;黑暗引擎&lt;/a&gt;搜索&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;奇怪的&lt;code&gt;www.&lt;/code&gt;绕过:有可能某些网站CDN配置的时候忽视了一些细节(比如说带有&lt;code&gt;www.&lt;/code&gt;的域名配置了CDN.不带有&lt;code&gt;www.&lt;/code&gt;的没有)，部分网站可以用过ping去掉&lt;code&gt;www.&lt;/code&gt;的域名来找出服务器真实IP, 比如说著名的学而思网校的网站= =&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;咳咳= = 说到这里，某些同学应该跃跃欲试了吧= =，绕过CDN的测试昨晚玩玩可以，&lt;strong&gt;但请不要瞎搞&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;特定文件hash值:这里放一个Python3脚本(PS:原脚本是基于python2的，我在其基础上修改了下)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# -*- coding: gb2312 -*-&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Missing modules? Run the following commands in cmd/terminal&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pip install base64&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pip install requests&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;pip install mmh3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;mmh3&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;requests&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;base64&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Pls input the url you want to hash favicon(Include http(s):// )&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;favicon.ico&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;requests&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;icon&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b64encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;Hash&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mmh3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hash&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;icon&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;The hash is:&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Hash&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Go to https://www.shodan.io/ and search with http.favicon.hash:&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Hash&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;暴力出奇迹= =：采用&lt;a class=&#34;link&#34; href=&#34;https://github.com/Tai7sy/fuckcdn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;fuckcdn&lt;/a&gt; w8fuckcdn(不推荐)  &lt;a class=&#34;link&#34; href=&#34;https://github.com/zmap/zmap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;zmap&lt;/a&gt;等工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;没有cdn--直接上&#34;&gt;没有CDN&amp;ndash;&amp;gt;直接上&lt;/h3&gt;
+&lt;p&gt;如果多地ping响应的ip一样，说明该网站没有CDN&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;嘛。。。还等什么嘛= = 干就是了&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;判断waf&#34;&gt;判断WAF&lt;/h2&gt;
+&lt;p&gt;直接上工具: &lt;a class=&#34;link&#34; href=&#34;https://github.com/EnableSecurity/wafw00f&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;wafw00f&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 242; 
+			flex-basis: 581px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/web2/1.png&#34; data-size=&#34;1143x472&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/web2/1.png&#34;
+			width=&#34;1143&#34;
+			height=&#34;472&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/web2/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/web2/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;让我们直面WAF  (大雾&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;让我们直面WAF  (大雾&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;工具能帮你判断对方使用的WAF，然后你可以依据该WAF的~~特性  确信)~~来选择绕过的姿势&lt;/p&gt;
+&lt;h2 id=&#34;子域名收集&#34;&gt;子域名收集&lt;/h2&gt;
+&lt;p&gt;推荐工具&lt;a class=&#34;link&#34; href=&#34;https://github.com/shmilylty/OneForAll&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OneForAll&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;子域名可能和主站在同一台服务器上，或者在同一个C段内，目标越多，发现漏洞的可能性越大&lt;/p&gt;
+&lt;h2 id=&#34;网站目录扫描&#34;&gt;网站目录扫描&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Ea6a6APuuMVFk5JO5LPkskwBrevk0Ho55BFP226MNIp2oA?e=Krjec3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;御剑后台扫描珍藏版&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;目录扫描可以让你有发现一些&lt;del&gt;有趣&lt;/del&gt;有价值的页面&lt;/p&gt;
+&lt;h2 id=&#34;google-hacking-语法信息收集&#34;&gt;Google Hacking 语法信息收集&lt;/h2&gt;
+&lt;p&gt;这种收集方式对于新手非常友好，可以用来搜寻敏感信息泄漏/弱密码/目录遍历等较容易挖掘的漏洞。&lt;/p&gt;
+&lt;p&gt;几个好用的语法:&lt;code&gt;inurl:&lt;/code&gt; &lt;code&gt;intext:&lt;/code&gt; &lt;code&gt;intitle:&lt;/code&gt; &lt;code&gt;site:&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;黑暗引擎信息收集&#34;&gt;黑暗引擎信息收集&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://fofa.info/toLogin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;fofa&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://www.shodan.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;shodan&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://zoomeye.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;zoomeye&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以收集到网站一些和服务有关的信息，便于漏洞检测&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip:建议通过黑暗引擎搜索的时候&lt;strong&gt;尽量使用语法&lt;/strong&gt;，这样会对你信息收集更有帮助&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;关于操作系统的信息收集&#34;&gt;关于操作系统的信息收集&lt;/h2&gt;
+&lt;h3 id=&#34;通过ttl值判断&#34;&gt;通过ttl值判断&lt;/h3&gt;
+&lt;p&gt;ttl是数据包能经过路由的最大数量，每经过一次路由ttl减一。
+&lt;strong&gt;默认情况下&lt;/strong&gt;，不同系统ttl值的区别:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux: 64&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 302; 
+			flex-basis: 725px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/web2/2.jpg&#34; data-size=&#34;647x214&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/web2/2.jpg&#34;
+			width=&#34;647&#34;
+			height=&#34;214&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/web2/2_hu226c9e5dc427c2353909a855d8ebec97_33274_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/web2/2_hu226c9e5dc427c2353909a855d8ebec97_33274_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Linux下TTL值&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Linux下TTL值&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows: 128&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 296; 
+			flex-basis: 711px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/web2/1.jpg&#34; data-size=&#34;643x217&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/web2/1.jpg&#34;
+			width=&#34;643&#34;
+			height=&#34;217&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/web2/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/web2/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Win下TTL值&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Win下TTL值&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意:TTL值是可手动修改的&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;通过大小写敏感判断&#34;&gt;通过大小写敏感判断&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Windows:对大小写不敏感&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux:对大小写敏感&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这里的大小写敏感针对的是&lt;strong&gt;网站目录名&lt;/strong&gt;和&lt;strong&gt;提交给服务器的参数名&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;特定的中间件只能用于特定系统&#34;&gt;特定的中间件只能用于特定系统&lt;/h3&gt;
+&lt;p&gt;某些&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/web2/#%e5%85%b3%e4%ba%8e%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%9a%84%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;中间件&lt;/a&gt;只能用于特定的操作系统，如IIS只能用于windows，nginx只能用于Linux&lt;/p&gt;
+&lt;h2 id=&#34;关于中间件的信息收集&#34;&gt;关于中间件的信息收集&lt;/h2&gt;
+&lt;h3 id=&#34;通过应答包判断&#34;&gt;通过应答包判断&lt;/h3&gt;
+&lt;p&gt;在应答包中可能会有server字段 &lt;strong&gt;(也就意味着可以后台手动去掉)&lt;/strong&gt; ，其中代表的则是所有的搭建平台(中间件)类型&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如何找Server字段(?&lt;/p&gt;
+&lt;p&gt;去开发者工具里网络一栏，然后刷新界面&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 344; 
+			flex-basis: 826px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/web2/3.jpg&#34; data-size=&#34;1291x375&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/web2/3.jpg&#34;
+			width=&#34;1291&#34;
+			height=&#34;375&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/web2/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/web2/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Server字段awa&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Server字段awa&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;通过报错判断&#34;&gt;通过报错判断&lt;/h3&gt;
+&lt;p&gt;故意让网页报错，报错页面可能包含中间件一些信息&lt;/p&gt;
+&lt;p&gt;比如:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;https://www.baidu.com/233333333333333333333333333
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;del&gt;别试了，百度的报错不包含中间件信息;)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 450; 
+			flex-basis: 1080px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/web2/4.jpg&#34; data-size=&#34;1287x286&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/web2/4.jpg&#34;
+			width=&#34;1287&#34;
+			height=&#34;286&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/web2/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/web2/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;嘿嘿，这才是真正的例子&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;嘿嘿，这才是真正的例子&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;懒人必备第三方工具&#34;&gt;懒人必备:第三方工具&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://seo.chinaz.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;站长之家&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关于数据库的信息收集&#34;&gt;关于数据库的信息收集&lt;/h2&gt;
+&lt;h3 id=&#34;黑暗引擎一把梭&#34;&gt;黑暗引擎一把梭&lt;/h3&gt;
+&lt;p&gt;见&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;上文&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;依据默认端口判断&#34;&gt;依据默认端口判断&lt;/h3&gt;
+&lt;p&gt;各数据库&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/zhangrenguo/p/10646116.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;默认端口&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;常见搭配&#34;&gt;常见搭配&lt;/h3&gt;
+&lt;p&gt;某些集成化的搭建平台有着固定的网站架构搭配，如PHPStudy,在windows上常见的apache+mysql+php,linux上为nginx+mysql+php&lt;/p&gt;
+&lt;h2 id=&#34;关于后端语言的信息收集&#34;&gt;关于后端语言的信息收集&lt;/h2&gt;
+&lt;h3 id=&#34;一目了然法&#34;&gt;一目了然法&lt;/h3&gt;
+&lt;p&gt;对于页面直接带有相关文件后缀的，通过后缀直接判断&lt;/p&gt;
+&lt;h3 id=&#34;添加后缀法&#34;&gt;添加后缀法&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;没后缀？加着玩玩试试呗&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在域名的后面手动添加index后在添加php、jsp、py、asp等常见的后端编写语言，&lt;strong&gt;哪个能正常显示后端就是哪个语言编写的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 380; 
+			flex-basis: 912px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/web2/5.jpg&#34; data-size=&#34;1262x332&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/web2/5.jpg&#34;
+			width=&#34;1262&#34;
+			height=&#34;332&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/web2/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/web2/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;可见，百度是用PHP编写的&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;可见，百度是用PHP编写的&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;通过应答包判断-1&#34;&gt;通过应答包判断&lt;/h3&gt;
+&lt;p&gt;应答包用的好，&lt;del&gt;监狱进的早&lt;/del&gt;就能收集到不少信息&lt;/p&gt;
+&lt;p&gt;可以通过应答包x-powered-by字段判断后端语言&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: 现在一些大一点的网站，安全意识较高，都会隐藏相应的字段&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 284; 
+			flex-basis: 682px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/web2/6.jpg&#34; data-size=&#34;1285x452&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/web2/6.jpg&#34;
+			width=&#34;1285&#34;
+			height=&#34;452&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/web2/6_hu358432c5f38c49ead525937a041e8cfa_79429_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/web2/6_hu358432c5f38c49ead525937a041e8cfa_79429_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;直接上图QvQ&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;直接上图QvQ&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;第三方平台yyds-&#34;&gt;第三方平台yyds= =&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://builtwith.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;BuildWith&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关于app的信息收集&#34;&gt;关于APP的信息收集&lt;/h2&gt;
+&lt;p&gt;由于部分APP是由网页封装而成，我们可以通过一些手段将对于APP的渗透测试变为Web渗透&lt;/p&gt;
+&lt;h3 id=&#34;暴力拆包找url&#34;&gt;暴力拆包找url&lt;/h3&gt;
+&lt;p&gt;又到了暴力出奇迹的时候了pvp&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;&#34; &gt;工具:漏了个大洞&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;burp抓包app&#34;&gt;Burp抓包APP&lt;/h3&gt;
+&lt;p&gt;没有安装burp的朋友们可以看&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/burppro/&#34; &gt;这篇文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果各位有安卓模拟器，可以将模拟器的代理改成Burp的代理，然后可以给模拟器安装burp的证书。&lt;/p&gt;
+&lt;p&gt;如果不想用模拟器的话可以&lt;a class=&#34;link&#34; href=&#34;https://www.yuque.com/weiker/xiaodi/gq0iv9#jBift&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;自行参考这篇文章&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.yuque.com/weiker/xiaodi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;小迪安全 · Yuque&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/mzli_l/category_11298124.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;信息收集_Plastilina的博客-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/zhangrenguo/p/10646116.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;各个数据库的默认端口 - 张仁国 - 博客园&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>送给小白的IT入门指南</title>
         <link>https://kira-pgr.github.io/posts/noob1/</link>
         <pubDate>Wed, 09 Mar 2022 22:45:07 -0500</pubDate>
