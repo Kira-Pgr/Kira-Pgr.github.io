@@ -1779,6 +1779,9 @@ kira
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -noverify -javaagent:burploader.jar 提示你要加上的参数 -jar burpsuite_pro_v2022.1.jar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;把破解工具生成的Liscense(许可证)粘贴进Burp的许可证框框= =&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TIP:你在使用快捷键复制粘贴的时候一定要注意无论你是什么系统快捷键都是Ctrl + C/V&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;figure 
 	
 		class=&#34;gallery-image&#34; 
@@ -1819,7 +1822,7 @@ kira
 	
 &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;然后把Burp的Request复制粘贴进激活工具&lt;/p&gt;
-&lt;p&gt;傻瓜教程：点击旁边的Copy Request按钮复制，然后粘贴进激活工具Request框&lt;/p&gt;
+&lt;p&gt;傻瓜教程：点击旁边的Copy Request按钮复制，然后粘贴 **进激活工具Request框&lt;/p&gt;
 &lt;p&gt;&lt;figure 
 	
 		class=&#34;gallery-image&#34; 
@@ -1860,6 +1863,9 @@ kira
 	
 &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;然后不BUG的话就应该激活成功了.qwq.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TIP:在实际情况下要是点&lt;code&gt;paste response&lt;/code&gt;后激活失败请使用&lt;strong&gt;快捷键&lt;/strong&gt;粘贴，然后&lt;strong&gt;检查首尾是否有多余的空格或换行&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;figure 
 	
 		class=&#34;gallery-image&#34; 
