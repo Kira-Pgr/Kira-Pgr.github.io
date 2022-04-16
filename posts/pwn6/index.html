@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='子函数诱拐指南'><title>PWN! PWN! PANG! Part3 --- 栈溢出基础</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='小程序就这样走上了不归路ww('><title>PWN! PWN! PANG! Part6 --- ROP</title>
 
-<link rel='canonical' href='https://kira-pgr.github.io/posts/pwn3/'>
+<link rel='canonical' href='https://kira-pgr.github.io/posts/pwn6/'>
 
-<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='PWN! PWN! PANG! Part3 --- 栈溢出基础'>
-<meta property='og:description' content='子函数诱拐指南'>
-<meta property='og:url' content='https://kira-pgr.github.io/posts/pwn3/'>
+<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='PWN! PWN! PANG! Part6 --- ROP'>
+<meta property='og:description' content='小程序就这样走上了不归路ww('>
+<meta property='og:url' content='https://kira-pgr.github.io/posts/pwn6/'>
 <meta property='og:site_name' content='KiraPGR&#39;s Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-02-07T07:51:10-05:00'/><meta property='article:modified_time' content='2022-02-07T07:51:10-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/pwn3/cover.jpg' />
-<meta name="twitter:title" content="PWN! PWN! PANG! Part3 --- 栈溢出基础">
-<meta name="twitter:description" content="子函数诱拐指南"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/pwn3/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-04-14T23:21:24-04:00'/><meta property='article:modified_time' content='2022-04-14T23:21:24-04:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/pwn6/cover.jpg' />
+<meta name="twitter:title" content="PWN! PWN! PANG! Part6 --- ROP">
+<meta name="twitter:description" content="小程序就这样走上了不归路ww("><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/pwn6/cover.jpg' />
     <link rel="shortcut icon" href="/img/favicon.png" />
 
     </head>
@@ -64,13 +64,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/posts/pwn3/">
-                <img src="/posts/pwn3/cover_huc93e8e51211b13db7df27f880625afbe_1479136_800x0_resize_q75_box.jpg"
-                        srcset="/posts/pwn3/cover_huc93e8e51211b13db7df27f880625afbe_1479136_800x0_resize_q75_box.jpg 800w, /posts/pwn3/cover_huc93e8e51211b13db7df27f880625afbe_1479136_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/posts/pwn6/">
+                <img src="/posts/pwn6/cover_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_800x0_resize_q75_box.jpg"
+                        srcset="/posts/pwn6/cover_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_800x0_resize_q75_box.jpg 800w, /posts/pwn6/cover_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
-                        height="570" 
+                        height="450" 
                         loading="lazy"
-                        alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础" />
+                        alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP" />
                 
             </a>
         </div>
@@ -88,12 +88,12 @@
     
 
     <h2 class="article-title">
-        <a href="/posts/pwn3/">PWN! PWN! PANG! Part3 --- 栈溢出基础</a>
+        <a href="/posts/pwn6/">PWN! PWN! PANG! Part6 --- ROP</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        子函数诱拐指南
+        小程序就这样走上了不归路ww(
     </h3>
     
 
@@ -110,7 +110,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Feb 07, 2022</time>
+                <time class="article-time--published">Apr 14, 2022</time>
             </div>
         
 
@@ -137,205 +137,131 @@
     <section class="article-content">
     
     
-    <h1 id="pwn-pwn-pang-part3">PWN! PWN! PANG! Part3</h1>
-<p><del>这是一篇黑暗童话故事 确信)</del></p>
-<p>至于简介嘛= =，好奇的话就把文章看完吧qaq</p>
-<h2 id="c语言函数调用栈">C语言函数调用栈</h2>
-<h3 id="了解函数调用栈">了解函数调用栈</h3>
-<ul>
-<li>
-<p>函数调用栈是指程序运行时内存一段连续的区域</p>
-</li>
-<li>
-<p>用来保存函数运行时的状态信息，包括函数参数与局部变量等</p>
-</li>
-<li>
-<p>称之为“栈”是因为发生函数调用时，调用函数<code>(caller)</code>的状态被保存在栈内，被调用函数<code>(callee)</code>的状态被压入调用栈的栈顶</p>
-</li>
-<li>
-<p>在函数调用结束时，栈顶的函数<code>(callee)</code>状态被弹出，栈顶恢复到调用函数<code>(caller)</code>的状态</p>
-</li>
-<li>
-<p>函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大</p>
-</li>
-</ul>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 165; 
-			flex-basis: 396px"
-	>
-	<a href="/posts/pwn3/Picture1.png" data-size="720x436">
-		<img src="/posts/pwn3/Picture1.png"
-			width="720"
-			height="436"
-			srcset="/posts/pwn3/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_480x0_resize_box_3.png 480w, /posts/pwn3/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="配图">
-	</a>
-	
-	<figcaption>配图</figcaption>
-	
-</figure></p>
-<h3 id="关于栈帧">关于栈帧</h3>
-<p>咳咳，上面很官方的解释是不是不容易理解.qwq.</p>
-<p>实际上上面所说的&quot;函数的状态&quot;在栈中是由一个一个栈帧<code>(Stack Frame)</code>表示的，基本上 <em>(特殊情况的话，可能是某些在main函数前调用的函数)</em> 每一个函数调用时在栈中都有自己的栈帧</p>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 193; 
-			flex-basis: 464px"
-	>
-	<a href="/posts/pwn3/SF.png" data-size="1342x694">
-		<img src="/posts/pwn3/SF.png"
-			width="1342"
-			height="694"
-			srcset="/posts/pwn3/SF_hu956c5e946f835811fb7c23d45c55c874_55318_480x0_resize_box_3.png 480w, /posts/pwn3/SF_hu956c5e946f835811fb7c23d45c55c874_55318_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="栈帧结构预览">
-	</a>
-	
-	<figcaption>栈帧结构预览</figcaption>
-	
-</figure></p>
-<hr>
-<p><strong>在这里，我们需要了解一下几点</strong></p>
-<ol>
-<li>
-<p>三个指针(寄存器)：</p>
-<ul>
-<li>
-<p><code>ebp</code>指向当前栈帧底部(保存当前栈帧底部地址)</p>
-<p><em>至于为什么在上面，是因为栈从高地址向低地址增长</em></p>
-</li>
-<li>
-<p><code>esp</code>指向栈顶(保存栈顶地址)</p>
-</li>
-<li>
-<p><code>eip</code>指向要执行的下一指令(保存下一条指令地址)</p>
-</li>
-</ul>
-</li>
-<li>
-<p>参数<code>(arguments)</code>是保存在父函数栈帧中的(类似于父亲给儿子的&quot;启动资金&quot;)</p>
+    <h1 id="pwn-pwn-pang-part6">PWN! PWN! PANG! Part6</h1>
+<p>呼～好久没有玩PWNPWN车了 <del>(又再次摆烂的PGR)</del></p>
+<p>本篇文章给大家来谈谈ROP</p>
+<h2 id="什么是rop">什么是ROP</h2>
+<p><del>ROP寄存器(?</del></p>
+<p>不存在的啦 233 = =</p>
+<p><strong>ROP是Return Oriented Programming(返回导向编程)的简称</strong></p>
+<p>&ldquo;又是专业术语?? 整天术语!术语!术语!&rdquo;</p>
+<iframe src="1.gif" width="84" height="78" frameBorder="0"></iframe>
+<p>ww,别打了(, 这就简单讲解嘛= =</p>
 <blockquote>
-<p>注意， 参数是逆序压栈滴</p>
+<p>ROP是一种高级的内存攻击技术可以用来绕过现代操作系统的各种通用防御（比如内存不可执行和代码签名等）。通过前几篇文章的介绍，我们可以发现栈溢出的控制点是ret处(也就是子函数的ret addr)，那么ROP的核心思想就是利用以ret结尾的指令序列(gadgets)把栈中的应该返回EIP的地址更改成我们需要的值，从而控制程序的执行流程。</p>
 </blockquote>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 121; 
-			flex-basis: 291px"
-	>
-	<a href="/posts/pwn3/Picture2.png" data-size="491x404">
-		<img src="/posts/pwn3/Picture2.png"
-			width="491"
-			height="404"
-			srcset="/posts/pwn3/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_480x0_resize_box_3.png 480w, /posts/pwn3/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="参数的保存">
-	</a>
-	
-	<figcaption>参数的保存</figcaption>
-	
-</figure></p>
-</li>
-<li>
-<p>返回地址<code>(Return Address)</code>保存了调用子函数前<code>eip</code>值，<strong>这个值在我们栈溢出攻击中至关重要</strong>，控制这个值之后就可以劫持程序执行流，让程序下一步执行你想要的指令</p>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 110; 
-			flex-basis: 266px"
-	>
-	<a href="/posts/pwn3/Picture4.png" data-size="488x440">
-		<img src="/posts/pwn3/Picture4.png"
-			width="488"
-			height="440"
-			srcset="/posts/pwn3/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_480x0_resize_box_3.png 480w, /posts/pwn3/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="返回地址的位置">
-	</a>
-	
-	<figcaption>返回地址的位置</figcaption>
-	
-</figure></p>
-</li>
-<li>
-<p><code>(Caller's ebp / Previous ebp</code>保存这父函数<code>ebp</code>的值，长度为一个字长(x32系统4Byte, x64系统8Byte)</p>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 99; 
-			flex-basis: 239px"
-	>
-	<a href="/posts/pwn3/Picture5.jpg" data-size="489x491">
-		<img src="/posts/pwn3/Picture5.jpg"
-			width="489"
-			height="491"
-			srcset="/posts/pwn3/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_480x0_resize_q75_box.jpg 480w, /posts/pwn3/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_1024x0_resize_q75_box.jpg 1024w"
-			loading="lazy"
-			alt="prev ebp">
-	</a>
-	
-	<figcaption>prev ebp</figcaption>
-	
-</figure></p>
-</li>
-<li>
-<p>局部变量<code>(Local Variables)</code>一般是发生栈溢出攻击的地方，主要是因为程序在局部变量中读入了超长的数据，造成溢出覆盖了其他内容(比如说返回地址)</p>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 87; 
-			flex-basis: 210px"
-	>
-	<a href="/posts/pwn3/Picture6.png" data-size="449x512">
-		<img src="/posts/pwn3/Picture6.png"
-			width="449"
-			height="512"
-			srcset="/posts/pwn3/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_480x0_resize_box_3.png 480w, /posts/pwn3/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="Local Var">
-	</a>
-	
-	<figcaption>Local Var</figcaption>
-	
-</figure></p>
-</li>
-</ol>
-<h3 id="函数调用栈整个过程">函数调用栈整个过程</h3>
-<p>这一部分前面的知识点已经概括了一些了，再详细将下来篇幅过长，大家可以<a class="link" href="https://mimiksworkshop-my.sharepoint.com/:p:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/EdGKswS2-exEikfnd_H5NPkBJCFXoutFXqQuFh4SR2ompA?e=B0QIft"  target="_blank" rel="noopener"
-    >参考PPT</a></p>
-<h2 id="栈溢出攻击子函数找不着家了">栈溢出攻击:子函数&quot;找不着家&quot;了</h2>
-<p>咳咳，为了便于理解，这里我们<del>生动形象</del>一些</p>
-<h3 id="前提">前提</h3>
-<p>有时候程序猿不知道 <strong>&ldquo;不要相信用户输入的数据总是安全的&rdquo;</strong> 的道理，就在读入函数局部变量的过程中用了<code>gets()</code>等不限制数据长度的函数，或者写了其他可以导致读入过长数据的<del>BUG</del>代码</p>
-<h3 id="攻击">攻击</h3>
-<p>如果我们在局部变量中写入的过长的数据，就会覆盖高地址处的 (数据从地址向高地址读入嘛)的数据，例如 <code>prev ebp</code>或者是<code>ret addr</code>(主要关注)</p>
-<p>如果我们写入的是垃圾数据，程序会返回到一个奇怪的地址，自然会崩溃(Crash)</p>
-<p>而如果我们写入<strong>精心构造的恶意数据</strong>，我们就可以劫持程序，让它干我们想要的事情;)</p>
-<p>比如说，调用<code>system(&quot;/bin/sh&quot;)</code></p>
 <hr>
-<p><strong>这里举个栗子</strong></p>
-<p>如果我们把父函数比喻成爸爸的话，那么子函数就是儿子</p>
-<p>儿子要自己去闯荡了，</p>
-<p>父亲给儿子一些财产让儿子能更好的为未来做准备(父函数栈帧中参数 <code>args</code>)，</p>
-<p>然后父亲告诫自己的儿子一定要好好奋斗，回来后为家乡搞建设(返回地址<code>ret addr</code>)，</p>
-<p>后来，儿子有了自己的生活，财产(局部变量<code>local var</code>)</p>
-<p>但是呢，有攻击者这样一个角色。</p>
-<p>咳咳，他利用各种手段(我们实战的时候可以用<code>pwndbg</code>和<code>pwntools</code>等工具进行攻击)诱骗儿子，最终让他晕头转向，失去理智， 连自己家在哪里都找不到了;) (栈溢出用恶意数据覆盖返回地址)</p>
-<p>后来。。由于儿子以为攻击者给他的地址就是自己家的地址，就乖乖的跟着攻击者行事，帮助攻击者达成控制世界邪恶目的</p>
-<p><del>全剧终 逃)</del></p>
+<p><strong>还不够简单?</strong></p>
+<p>QAQ, 我们首先了解一下为什么要用到ROP</p>
+<h3 id="为什么需要rop">为什么需要ROP</h3>
+<p>我们很容易就发现，前几次的PWN攻击都是通过栈溢出篡改函数返回地址来<strong>一次性</strong>使程序跳转到某个恶意地址(后门函数或者shellcode)，从而getshell</p>
+<p>然而，并不是每一次都是有那么好的运气的，程序猿写后门函数的肯定少，在加上各种程序的保护机制，导致想要跳转到shellcode也不大可能</p>
+<p><strong>这个时候，就该ROP上场了</strong></p>
+<h3 id="rop的过程的简单介绍">ROP的过程的简单介绍</h3>
+<p>我们思考一下，我们之前通过栈溢出覆盖掉了函数的返回地址，那么既然是溢出，我们也可以溢出覆盖更多数据，从而控制更多内容。</p>
+<p>栈溢出的目的是控制程序执行流，如果一次不能实现返回到一个恶意地址来getshell,那么就需要让程序执行流在我们的控制之中，通过多次操作，让程序<del>反复横跳</del>多次跳转并执行恶意指令</p>
+<p>现在来看一看手上能用的东西</p>
+<ul>
+<li>
+<p>乖乖躺在一边任凭我们折腾的栈</p>
+</li>
+<li>
+<p>程序本身的一些代码小片段(即下文提到的gadget)</p>
+</li>
+</ul>
+<h3 id="gadget">gadget</h3>
+<p>谈到ROP就必须讲到gadgets, gadget指程序的一些代码片段</p>
+<p>我们可以通过返回到含有<code>pop</code>和<code>ret</code>(比如<code>pop eax; ret;</code>)的gadgets的地址来实现特定操作而又使程序的执行流还在我们的控制中</p>
+<blockquote>
+<p>由于栈是受我们的控制的，我们可以在栈中写入任意的内容</p>
+<p>不妨设我们在覆盖了ret addr后又覆盖了一些内容</p>
+<ul>
+<li>
+<p>ret addr &ndash; gadget A(<code>pop eax; ret;</code>)地址</p>
+</li>
+<li>
+<p>0xb</p>
+</li>
+<li>
+<p>gadget B 地址</p>
+</li>
+</ul>
+<p>这样我们就构造了一个简单的<strong>ROP链</strong></p>
+</blockquote>
+<p>来模拟一下此时被搞得不成样子的程序的执行过程= =</p>
+<p>由于ret addr被覆盖掉了w, 程序下一步会去执行gadget A</p>
+<p>首先执行<code>pop eax</code>,这个时候栈中的<code>0xb</code>就会被弹到eax寄存器中</p>
+<p>然后是ret, 程序又被强迫去执行gadget B了.UwU.</p>
+<p>由此类推，接下来攻击者可以让程序执行更多的gadget, 从而getshell</p>
+<p><font size=2>害，又是一个被骗入传销组织的小程序，可怜啊 bushi)</font></p>
 <hr>
-<p>下一次开始实战哦.qaq.</p>
-<p>To Be Continued&hellip;</p>
+<p><strong>实际上, gadget可以理解成一个一个小的积木块，通过构造ROP链把一个个gadget拼凑起来，就构成了完成整个攻击流程的payload</strong></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 78; 
+			flex-basis: 187px"
+	>
+	<a href="/posts/pwn6/1.jpg" data-size="517x661">
+		<img src="/posts/pwn6/1.jpg"
+			width="517"
+			height="661"
+			srcset="/posts/pwn6/1_huc2ddfc89603364ca85e0155ada406240_348427_480x0_resize_q75_box.jpg 480w, /posts/pwn6/1_huc2ddfc89603364ca85e0155ada406240_348427_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="gadget和payload">
+	</a>
+	
+	<figcaption>gadget和payload</figcaption>
+	
+</figure></p>
+<h2 id="如何获取gadget">如何获取gadget</h2>
+<p>上面扯了这么多，在最后我推荐几个好用的获取gadget的工具</p>
+<h3 id="ropgadget">ROPgadget</h3>
+<p>这款工具主要是帮助你找到合适的gadget</p>
+<p>安装方法</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install python3-pip
+sudo -H python3 -m pip install ROPgadget
+</code></pre></div><p>获取使用指南</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ROPgadget --help
+</code></pre></div><p>简单举例几个常用命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ROPgadget --binary 程序 --ropchain
+<span class="c1">#直接构造一个ROP链</span>
+ROPgadget --binary 程序 --only <span class="s2">&#34;pop|ret&#34;</span>
+<span class="c1">#只寻找含有pop ret的gadgets</span>
+</code></pre></div><h3 id="onegadget有一点鸡肋需要运气成分">Onegadget(有一点鸡肋，需要运气成分)</h3>
+<p><del>怎么说。。。还是运气不好的时间多= =</del></p>
+<p>这款工具就有点魔法了，它能够帮你找到<strong>可能</strong>帮助你一次性getshell的gadget</p>
+<blockquote>
+<p><strong>一定注意啊!!是可能</strong></p>
+</blockquote>
+<p>它列出的gadget要能getshell必须满足一定的条件</p>
+<p>至于能不能满足这个条件,,</p>
+<p><font size=2>你就一个一个放上去试试呗&hellip;</font></p>
+<p><del>当然没有一个可以的也是非常常见的</del></p>
+<p>安装Onegadge需要<strong>提前装好ruby</strong>，下面是各Linux安装ruby的方法</p>
+<p>deb(Debian 或 Ubuntu)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install ruby-full
+</code></pre></div><p>yum(CentOS、Fedora 或 RHEL)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum install ruby
+</code></pre></div><p>portage(Gentoo)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo emerge dev-lang/ruby
+<span class="c1"># 安装指定的版本，要在 make.conf 文件中设置 RUBY_TARGETS。详见 Gentoo Ruby Project 网站。</span>
+</code></pre></div><p>pacman(Arch Linux)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo pacman -S ruby
+</code></pre></div><p>安装Onegadget</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">gem install one_gadget
+</code></pre></div><p>使用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">one_gadget 程序名
+</code></pre></div><h2 id="ref">ref</h2>
+<p><a class="link" href="https://www.jianshu.com/p/3a9d70529d7a"  target="_blank" rel="noopener"
+    >基本ROP讲解 - 简书</a></p>
+<p><a class="link" href="https://www.ruby-lang.org/zh_cn/documentation/installation/"  target="_blank" rel="noopener"
+    >安装 Ruby</a></p>
+<p><a class="link" href="https://github.com/david942j/one_gadget"  target="_blank" rel="noopener"
+    >GitHub - david942j/one_gadget: The best tool for finding one gadget RCE in libc.so.6</a></p>
+<p><a class="link" href="https://github.com/JonathanSalwan/ROPgadget"  target="_blank" rel="noopener"
+    >GitHub - JonathanSalwan/ROPgadget: This tool lets you search your gadgets on your binaries to facilitate your ROP exploitation. ROPgadget supports ELF, PE and Mach-O format on x86, x64, ARM, ARM64, PowerPC, SPARC and MIPS architectures.</a></p>
 
 </section>
 
@@ -375,29 +301,6 @@
         <h2 class="section-title">Related contents</h2>
         <div class="related-contents">
             <div class="flex article-list--tile">
-                
-                    
-<article class="has-image">
-    <a href="/posts/pwn6/">
-        
-        
-            <div class="article-image">
-                <img src="/posts/pwn6/cover.9ce3629f5f54def41971d23600c4a453_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_250x150_fill_q75_box_smart1.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP"
-                        
-                        data-hash="md5-nONin19U3vQZcdI2AMSkUw==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PWN! PWN! PANG! Part6 --- ROP</h2>
-        </div>
-    </a>
-</article>
                 
                     
 <article class="has-image">
@@ -441,6 +344,29 @@
 
         <div class="article-details">
             <h2 class="article-title">PWN! PWN! PANG! Part4 --- ret2text</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/posts/pwn3/">
+        
+        
+            <div class="article-image">
+                <img src="/posts/pwn3/cover.83e414d02bfc9f736e824b7f6cd9a9eb_huc93e8e51211b13db7df27f880625afbe_1479136_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础"
+                        
+                        data-hash="md5-g&#43;QU0Cv8n3Nugkt/bNmp6w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part3 --- 栈溢出基础</h2>
         </div>
     </a>
 </article>
@@ -647,19 +573,20 @@
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#c语言函数调用栈">C语言函数调用栈</a>
+    <li><a href="#什么是rop">什么是ROP</a>
       <ol>
-        <li><a href="#了解函数调用栈">了解函数调用栈</a></li>
-        <li><a href="#关于栈帧">关于栈帧</a></li>
-        <li><a href="#函数调用栈整个过程">函数调用栈整个过程</a></li>
+        <li><a href="#为什么需要rop">为什么需要ROP</a></li>
+        <li><a href="#rop的过程的简单介绍">ROP的过程的简单介绍</a></li>
+        <li><a href="#gadget">gadget</a></li>
       </ol>
     </li>
-    <li><a href="#栈溢出攻击子函数找不着家了">栈溢出攻击:子函数&quot;找不着家&quot;了</a>
+    <li><a href="#如何获取gadget">如何获取gadget</a>
       <ol>
-        <li><a href="#前提">前提</a></li>
-        <li><a href="#攻击">攻击</a></li>
+        <li><a href="#ropgadget">ROPgadget</a></li>
+        <li><a href="#onegadget有一点鸡肋需要运气成分">Onegadget(有一点鸡肋，需要运气成分)</a></li>
       </ol>
     </li>
+    <li><a href="#ref">ref</a></li>
   </ol>
 </nav>
                 </div>

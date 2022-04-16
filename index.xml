@@ -6,7 +6,140 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 17 Mar 2022 00:23:45 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 14 Apr 2022 23:21:24 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PWN! PWN! PANG! Part6 --- ROP</title>
+        <link>https://kira-pgr.github.io/posts/pwn6/</link>
+        <pubDate>Thu, 14 Apr 2022 23:21:24 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/pwn6/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/pwn6/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part6&#34;&gt;PWN! PWN! PANG! Part6&lt;/h1&gt;
+&lt;p&gt;呼～好久没有玩PWNPWN车了 &lt;del&gt;(又再次摆烂的PGR)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;本篇文章给大家来谈谈ROP&lt;/p&gt;
+&lt;h2 id=&#34;什么是rop&#34;&gt;什么是ROP&lt;/h2&gt;
+&lt;p&gt;&lt;del&gt;ROP寄存器(?&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;不存在的啦 233 = =&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ROP是Return Oriented Programming(返回导向编程)的简称&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;又是专业术语?? 整天术语!术语!术语!&amp;rdquo;&lt;/p&gt;
+&lt;iframe src=&#34;1.gif&#34; width=&#34;84&#34; height=&#34;78&#34; frameBorder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;ww,别打了(, 这就简单讲解嘛= =&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ROP是一种高级的内存攻击技术可以用来绕过现代操作系统的各种通用防御（比如内存不可执行和代码签名等）。通过前几篇文章的介绍，我们可以发现栈溢出的控制点是ret处(也就是子函数的ret addr)，那么ROP的核心思想就是利用以ret结尾的指令序列(gadgets)把栈中的应该返回EIP的地址更改成我们需要的值，从而控制程序的执行流程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;还不够简单?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;QAQ, 我们首先了解一下为什么要用到ROP&lt;/p&gt;
+&lt;h3 id=&#34;为什么需要rop&#34;&gt;为什么需要ROP&lt;/h3&gt;
+&lt;p&gt;我们很容易就发现，前几次的PWN攻击都是通过栈溢出篡改函数返回地址来&lt;strong&gt;一次性&lt;/strong&gt;使程序跳转到某个恶意地址(后门函数或者shellcode)，从而getshell&lt;/p&gt;
+&lt;p&gt;然而，并不是每一次都是有那么好的运气的，程序猿写后门函数的肯定少，在加上各种程序的保护机制，导致想要跳转到shellcode也不大可能&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这个时候，就该ROP上场了&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rop的过程的简单介绍&#34;&gt;ROP的过程的简单介绍&lt;/h3&gt;
+&lt;p&gt;我们思考一下，我们之前通过栈溢出覆盖掉了函数的返回地址，那么既然是溢出，我们也可以溢出覆盖更多数据，从而控制更多内容。&lt;/p&gt;
+&lt;p&gt;栈溢出的目的是控制程序执行流，如果一次不能实现返回到一个恶意地址来getshell,那么就需要让程序执行流在我们的控制之中，通过多次操作，让程序&lt;del&gt;反复横跳&lt;/del&gt;多次跳转并执行恶意指令&lt;/p&gt;
+&lt;p&gt;现在来看一看手上能用的东西&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;乖乖躺在一边任凭我们折腾的栈&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;程序本身的一些代码小片段(即下文提到的gadget)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;gadget&#34;&gt;gadget&lt;/h3&gt;
+&lt;p&gt;谈到ROP就必须讲到gadgets, gadget指程序的一些代码片段&lt;/p&gt;
+&lt;p&gt;我们可以通过返回到含有&lt;code&gt;pop&lt;/code&gt;和&lt;code&gt;ret&lt;/code&gt;(比如&lt;code&gt;pop eax; ret;&lt;/code&gt;)的gadgets的地址来实现特定操作而又使程序的执行流还在我们的控制中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于栈是受我们的控制的，我们可以在栈中写入任意的内容&lt;/p&gt;
+&lt;p&gt;不妨设我们在覆盖了ret addr后又覆盖了一些内容&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ret addr &amp;ndash; gadget A(&lt;code&gt;pop eax; ret;&lt;/code&gt;)地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;0xb&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;gadget B 地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样我们就构造了一个简单的&lt;strong&gt;ROP链&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;来模拟一下此时被搞得不成样子的程序的执行过程= =&lt;/p&gt;
+&lt;p&gt;由于ret addr被覆盖掉了w, 程序下一步会去执行gadget A&lt;/p&gt;
+&lt;p&gt;首先执行&lt;code&gt;pop eax&lt;/code&gt;,这个时候栈中的&lt;code&gt;0xb&lt;/code&gt;就会被弹到eax寄存器中&lt;/p&gt;
+&lt;p&gt;然后是ret, 程序又被强迫去执行gadget B了.UwU.&lt;/p&gt;
+&lt;p&gt;由此类推，接下来攻击者可以让程序执行更多的gadget, 从而getshell&lt;/p&gt;
+&lt;p&gt;&lt;font size=2&gt;害，又是一个被骗入传销组织的小程序，可怜啊 bushi)&lt;/font&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;实际上, gadget可以理解成一个一个小的积木块，通过构造ROP链把一个个gadget拼凑起来，就构成了完成整个攻击流程的payload&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 78; 
+			flex-basis: 187px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/pwn6/1.jpg&#34; data-size=&#34;517x661&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/pwn6/1.jpg&#34;
+			width=&#34;517&#34;
+			height=&#34;661&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/pwn6/1_huc2ddfc89603364ca85e0155ada406240_348427_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/pwn6/1_huc2ddfc89603364ca85e0155ada406240_348427_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;gadget和payload&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;gadget和payload&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;如何获取gadget&#34;&gt;如何获取gadget&lt;/h2&gt;
+&lt;p&gt;上面扯了这么多，在最后我推荐几个好用的获取gadget的工具&lt;/p&gt;
+&lt;h3 id=&#34;ropgadget&#34;&gt;ROPgadget&lt;/h3&gt;
+&lt;p&gt;这款工具主要是帮助你找到合适的gadget&lt;/p&gt;
+&lt;p&gt;安装方法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install python3-pip
+sudo -H python3 -m pip install ROPgadget
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;获取使用指南&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ROPgadget --help
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;简单举例几个常用命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;ROPgadget --binary 程序 --ropchain
+&lt;span class=&#34;c1&#34;&gt;#直接构造一个ROP链&lt;/span&gt;
+ROPgadget --binary 程序 --only &lt;span class=&#34;s2&#34;&gt;&amp;#34;pop|ret&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#只寻找含有pop ret的gadgets&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;onegadget有一点鸡肋需要运气成分&#34;&gt;Onegadget(有一点鸡肋，需要运气成分)&lt;/h3&gt;
+&lt;p&gt;&lt;del&gt;怎么说。。。还是运气不好的时间多= =&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;这款工具就有点魔法了，它能够帮你找到&lt;strong&gt;可能&lt;/strong&gt;帮助你一次性getshell的gadget&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一定注意啊!!是可能&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;它列出的gadget要能getshell必须满足一定的条件&lt;/p&gt;
+&lt;p&gt;至于能不能满足这个条件,,&lt;/p&gt;
+&lt;p&gt;&lt;font size=2&gt;你就一个一个放上去试试呗&amp;hellip;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;当然没有一个可以的也是非常常见的&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;安装Onegadge需要&lt;strong&gt;提前装好ruby&lt;/strong&gt;，下面是各Linux安装ruby的方法&lt;/p&gt;
+&lt;p&gt;deb(Debian 或 Ubuntu)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt-get install ruby-full
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;yum(CentOS、Fedora 或 RHEL)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo yum install ruby
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;portage(Gentoo)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo emerge dev-lang/ruby
+&lt;span class=&#34;c1&#34;&gt;# 安装指定的版本，要在 make.conf 文件中设置 RUBY_TARGETS。详见 Gentoo Ruby Project 网站。&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;pacman(Arch Linux)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo pacman -S ruby
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装Onegadget&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;gem install one_gadget
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;one_gadget 程序名
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;ref&#34;&gt;ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/3a9d70529d7a&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;基本ROP讲解 - 简书&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ruby-lang.org/zh_cn/documentation/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;安装 Ruby&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/david942j/one_gadget&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub - david942j/one_gadget: The best tool for finding one gadget RCE in libc.so.6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/JonathanSalwan/ROPgadget&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub - JonathanSalwan/ROPgadget: This tool lets you search your gadgets on your binaries to facilitate your ROP exploitation. ROPgadget supports ELF, PE and Mach-O format on x86, x64, ARM, ARM64, PowerPC, SPARC and MIPS architectures.&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Web安全:关于信息收集那些事</title>
         <link>https://kira-pgr.github.io/posts/web2/</link>
         <pubDate>Thu, 17 Mar 2022 00:23:45 -0400</pubDate>

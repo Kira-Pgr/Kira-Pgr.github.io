@@ -6,7 +6,40 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Mar 2022 00:23:45 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Apr 2022 23:21:24 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PWN! PWN! PANG! Part6 --- ROP</title>
+      <link>https://kira-pgr.github.io/posts/pwn6/</link>
+      <pubDate>Thu, 14 Apr 2022 23:21:24 -0400</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/pwn6/</guid>
+      <description>PWN! PWN! PANG! Part6 呼～好久没有玩PWNPWN车了 (又再次摆烂的PGR)
+本篇文章给大家来谈谈ROP
+什么是ROP ROP寄存器(?
+不存在的啦 233 = =
+ROP是Return Oriented Programming(返回导向编程)的简称
+&amp;ldquo;又是专业术语?? 整天术语!术语!术语!&amp;rdquo;
+ ww,别打了(, 这就简单讲解嘛= =
+ ROP是一种高级的内存攻击技术可以用来绕过现代操作系统的各种通用防御（比如内存不可执行和代码签名等）。通过前几篇文章的介绍，我们可以发现栈溢出的控制点是ret处(也就是子函数的ret addr)，那么ROP的核心思想就是利用以ret结尾的指令序列(gadgets)把栈中的应该返回EIP的地址更改成我们需要的值，从而控制程序的执行流程。
+  还不够简单?
+QAQ, 我们首先了解一下为什么要用到ROP
+为什么需要ROP 我们很容易就发现，前几次的PWN攻击都是通过栈溢出篡改函数返回地址来一次性使程序跳转到某个恶意地址(后门函数或者shellcode)，从而getshell
+然而，并不是每一次都是有那么好的运气的，程序猿写后门函数的肯定少，在加上各种程序的保护机制，导致想要跳转到shellcode也不大可能
+这个时候，就该ROP上场了
+ROP的过程的简单介绍 我们思考一下，我们之前通过栈溢出覆盖掉了函数的返回地址，那么既然是溢出，我们也可以溢出覆盖更多数据，从而控制更多内容。
+栈溢出的目的是控制程序执行流，如果一次不能实现返回到一个恶意地址来getshell,那么就需要让程序执行流在我们的控制之中，通过多次操作，让程序反复横跳多次跳转并执行恶意指令
+现在来看一看手上能用的东西
+  乖乖躺在一边任凭我们折腾的栈
+  程序本身的一些代码小片段(即下文提到的gadget)
+  gadget 谈到ROP就必须讲到gadgets, gadget指程序的一些代码片段
+我们可以通过返回到含有pop和ret(比如pop eax; ret;)的gadgets的地址来实现特定操作而又使程序的执行流还在我们的控制中
+ 由于栈是受我们的控制的，我们可以在栈中写入任意的内容
+不妨设我们在覆盖了ret addr后又覆盖了一些内容
+  ret addr &amp;ndash; gadget A(pop eax; ret;)地址
+  0xb
+  gadget B 地址</description>
+    </item>
+    
     <item>
       <title>Web安全:关于信息收集那些事</title>
       <link>https://kira-pgr.github.io/posts/web2/</link>
