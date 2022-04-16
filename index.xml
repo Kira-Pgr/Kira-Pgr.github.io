@@ -113,7 +113,7 @@ ROPgadget --binary 程序 --only &lt;span class=&#34;s2&#34;&gt;&amp;#34;pop|ret
 &lt;p&gt;它列出的gadget要能getshell必须满足一定的条件&lt;/p&gt;
 &lt;p&gt;至于能不能满足这个条件,,&lt;/p&gt;
 &lt;p&gt;&lt;font size=2&gt;你就一个一个放上去试试呗&amp;hellip;&lt;/font&gt;&lt;/p&gt;
-&lt;p&gt;&lt;del&gt;当然没有一个可以的也是非常常见的&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;当然没有一个可以用也是非常常见的&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;安装Onegadge需要&lt;strong&gt;提前装好ruby&lt;/strong&gt;，下面是各Linux安装ruby的方法&lt;/p&gt;
 &lt;p&gt;deb(Debian 或 Ubuntu)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt-get install ruby-full
