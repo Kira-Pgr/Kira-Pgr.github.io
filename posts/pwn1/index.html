@@ -431,13 +431,13 @@
 	
 </figure></p>
 <p><em><strong>用法</strong></em></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nasm" data-lang="nasm"><span class="nf">MOV</span> <span class="nv">DEST</span><span class="p">(</span><span class="err">地址</span><span class="p">),</span> <span class="nv">SRC</span><span class="p">(</span><span class="err">值</span><span class="p">)</span>      <span class="c1">; 把源操作数传送给目标(类似赋值语句)</span>
-<span class="nf">LEA</span> <span class="nv">REG</span><span class="p">,</span> <span class="nv">SRC</span>            <span class="c1">; 把源操作数的有效地址送给指定的寄存器(把SRC的地址保存到…)</span>
-<span class="nf">PUSH</span> <span class="nv">VALUE</span>                 <span class="c1">; 把目标值压栈，同时SP指针-1字长</span>
-<span class="nf">POP</span> <span class="nv">DEST</span>                     <span class="c1">; 将栈顶的值弹出至目的存储位置，同时SP指针+1字长</span>
-<span class="nf">LEAVE</span>       <span class="c1">; 在函数返回时，恢复父函数栈帧的指令(子函数调用结束后，销毁子函数栈帧)</span>
-<span class="nf">RET</span>                      <span class="c1">; 在函数返回时，控制程序执行流返回父函数的指令</span>
-</code></pre></div><h2 id="结语">结语</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nasm" data-lang="nasm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="nv">DEST</span><span class="p">(</span><span class="err">地址</span><span class="p">),</span> <span class="nv">SRC</span><span class="p">(</span><span class="err">值</span><span class="p">)</span>      <span class="c1">; 把源操作数传送给目标(类似赋值语句)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">LEA</span> <span class="nv">REG</span><span class="p">,</span> <span class="nv">SRC</span>            <span class="c1">; 把源操作数的有效地址送给指定的寄存器(把SRC的地址保存到…)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">PUSH</span> <span class="nv">VALUE</span>                 <span class="c1">; 把目标值压栈，同时SP指针-1字长</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POP</span> <span class="nv">DEST</span>                     <span class="c1">; 将栈顶的值弹出至目的存储位置，同时SP指针+1字长</span>
+</span></span><span class="line"><span class="cl"><span class="nf">LEAVE</span>       <span class="c1">; 在函数返回时，恢复父函数栈帧的指令(子函数调用结束后，销毁子函数栈帧)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">RET</span>                      <span class="c1">; 在函数返回时，控制程序执行流返回父函数的指令</span>
+</span></span></code></pre></div><h2 id="结语">结语</h2>
 <p><del>(啊，终于写完了， 好累)</del></p>
 <p>花了四五个小时才搞完=  =</p>
 <p>不过嘛，能复习前面的知识并且能与大家分享.qaq.</p>

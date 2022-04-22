@@ -204,34 +204,34 @@
 <p>切到Proxy(代理)的标签页，打开burp内置浏览器，打开intercept(中断拦截)开关，就可以愉快地开始抓包了qaq</p>
 <p><strong>以ip查询网站ip.chinaz.com为例</strong></p>
 <p>抓到的数据包</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">GET / HTTP/1.1
-Host: ip.chinaz.com
-Cookie: qHistory=aHR0cDovL2lwLmNoaW5hei5jb21fSVAvSVB2Nuafpeivou+8jOacjeWKoeWZqOWcsOWdgOafpeivog==; cz_statistics_visitor=6e92e1cd-3bd8-6ec0-9e75-271a4c8dfe89; UM_distinctid=17e9ad54d9ea91-0de9b86d1a8b15-f791b31-e1000-17e9ad54d9faa3; Hm_lvt_ca96c3507ee04e182fb6d097cb2a1a4c=1643278444,1643280347,1643281459,1643430361; CNZZDATA5082706=cnzz_eid%3D1961137514-1643271376-%26ntime%3D1643422648; SECKEY_ABVK=d8C9ZBZRX6Qya0VNufaZozKriQgZkNE9wBJvCc1YVMo%3D; BMAP_SECKEY=ZvL10u-tISavTuXtRnLwuMF6SZ4DS3InrGol25-dIiWXTBfvmHf1rOql24bKE6-K7ExBo1yo-mlyN-y7jnL9aasP3q6E4R0onZG-ZZW_unKjL13-oBTm8QkEMlFdp3r8C7gTLnuhcWNYDIBVi6s_AOD-H2CjUVKCvfGq6TnZPfxkHkBk2xyM8n1R0E_onq6F
-Sec-Ch-Ua: &#34;Chromium&#34;;v=&#34;97&#34;, &#34; Not;A Brand&#34;;v=&#34;99&#34;
-Sec-Ch-Ua-Mobile: ?0
-Sec-Ch-Ua-Platform: &#34;Windows&#34;
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate
-Accept-Language: en-US,en;q=0.9
-Connection: close
-</code></pre></div><h2 id="数据包修改实现伪造浏览器信息">数据包修改实现伪造浏览器信息</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">GET / HTTP/1.1
+</span></span><span class="line"><span class="cl">Host: ip.chinaz.com
+</span></span><span class="line"><span class="cl">Cookie: qHistory=aHR0cDovL2lwLmNoaW5hei5jb21fSVAvSVB2Nuafpeivou+8jOacjeWKoeWZqOWcsOWdgOafpeivog==; cz_statistics_visitor=6e92e1cd-3bd8-6ec0-9e75-271a4c8dfe89; UM_distinctid=17e9ad54d9ea91-0de9b86d1a8b15-f791b31-e1000-17e9ad54d9faa3; Hm_lvt_ca96c3507ee04e182fb6d097cb2a1a4c=1643278444,1643280347,1643281459,1643430361; CNZZDATA5082706=cnzz_eid%3D1961137514-1643271376-%26ntime%3D1643422648; SECKEY_ABVK=d8C9ZBZRX6Qya0VNufaZozKriQgZkNE9wBJvCc1YVMo%3D; BMAP_SECKEY=ZvL10u-tISavTuXtRnLwuMF6SZ4DS3InrGol25-dIiWXTBfvmHf1rOql24bKE6-K7ExBo1yo-mlyN-y7jnL9aasP3q6E4R0onZG-ZZW_unKjL13-oBTm8QkEMlFdp3r8C7gTLnuhcWNYDIBVi6s_AOD-H2CjUVKCvfGq6TnZPfxkHkBk2xyM8n1R0E_onq6F
+</span></span><span class="line"><span class="cl">Sec-Ch-Ua: &#34;Chromium&#34;;v=&#34;97&#34;, &#34; Not;A Brand&#34;;v=&#34;99&#34;
+</span></span><span class="line"><span class="cl">Sec-Ch-Ua-Mobile: ?0
+</span></span><span class="line"><span class="cl">Sec-Ch-Ua-Platform: &#34;Windows&#34;
+</span></span><span class="line"><span class="cl">Upgrade-Insecure-Requests: 1
+</span></span><span class="line"><span class="cl">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
+</span></span><span class="line"><span class="cl">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+</span></span><span class="line"><span class="cl">Sec-Fetch-Site: none
+</span></span><span class="line"><span class="cl">Sec-Fetch-Mode: navigate
+</span></span><span class="line"><span class="cl">Sec-Fetch-User: ?1
+</span></span><span class="line"><span class="cl">Sec-Fetch-Dest: document
+</span></span><span class="line"><span class="cl">Accept-Encoding: gzip, deflate
+</span></span><span class="line"><span class="cl">Accept-Language: en-US,en;q=0.9
+</span></span><span class="line"><span class="cl">Connection: close
+</span></span></code></pre></div><h2 id="数据包修改实现伪造浏览器信息">数据包修改实现伪造浏览器信息</h2>
 <p>现在看向这一行数据</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
-</code></pre></div><p>它包含了你的浏览器/网络信息</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36
+</span></span></code></pre></div><p>它包含了你的浏览器/网络信息</p>
 <p>所以我们只需对它进行修改并Forward(放行)</p>
 <blockquote>
 <p>小Tip:</p>
 <p>Burp抓到的包可以Forward(放行)</p>
 <p>也可以Drop(丢弃)</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">User-Agent: MimiKs-Sec_Browser.QwQ.
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">User-Agent: MimiKs-Sec_Browser.QwQ.
+</span></span></code></pre></div><hr>
 <h2 id="靶场实战">靶场实战</h2>
 <blockquote>
 <p>靶场地址:
@@ -285,8 +285,8 @@ Connection: close
 	
 </figure></p>
 <p>将<strong>User-Agent</strong>改为:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 MicroMessenger/6.0 NetType/2G
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 MicroMessenger/6.0 NetType/2G
+</span></span></code></pre></div><blockquote>
 <p>小Tip:可以上网查询相关设备User-Agent长什么样子</p>
 </blockquote>
 <p>成功获取flag</p>
