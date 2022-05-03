@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='嘛。。。我只是想偷个懒而已'><title>SSH配置免密码(公私钥认证)登录</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/posts/ssh/'>
+
+<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='SSH配置免密码(公私钥认证)登录'>
+<meta property='og:description' content='嘛。。。我只是想偷个懒而已'>
+<meta property='og:url' content='https://kira-pgr.github.io/posts/ssh/'>
+<meta property='og:site_name' content='KiraPGR&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='SSH' /><meta property='article:published_time' content='2022-05-03T08:57:18-04:00'/><meta property='article:modified_time' content='2022-05-03T08:57:18-04:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/ssh/cover.jpg' />
+<meta name="twitter:title" content="SSH配置免密码(公私钥认证)登录">
+<meta name="twitter:description" content="嘛。。。我只是想偷个懒而已"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/ssh/cover.jpg' />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/posts/ssh/">
+                <img src="/posts/ssh/cover_hud70aba980b5bea29bd4d9b4092eab599_3305743_800x0_resize_q75_box.jpg"
+                        srcset="/posts/ssh/cover_hud70aba980b5bea29bd4d9b4092eab599_3305743_800x0_resize_q75_box.jpg 800w, /posts/ssh/cover_hud70aba980b5bea29bd4d9b4092eab599_3305743_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="491" 
+                        loading="lazy"
+                        alt="Featured image of post SSH配置免密码(公私钥认证)登录" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" style="background-color: #2a9d8f; color: #fff;">
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/posts/ssh/">SSH配置免密码(公私钥认证)登录</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        嘛。。。我只是想偷个懒而已
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="ssh配置免密码公私钥认证登录">SSH配置免密码(公私钥认证)登录</h1>
+<p>不得不说，每次登录和传文件都要输入密码真的是对我这种摆烂人太不友好了啊，不仅麻烦，而且强度大的密码还容易忘</p>
+<p><del>俗话说得好，懒能促进科技发展(逃</del></p>
+<p>今天就来扯一扯如何在SSH远程连接服务器的时候偷点小懒，甩掉烦人的密码0.0</p>
+<h2 id="配置步骤">配置步骤</h2>
+<p>由于Linux,高版本Win(我的Win11是预装了)绝大多数都预装了OpenSSH，我们就直接跳过安装步骤，如果你还没有装的话。。。那就找搜索引擎吧(</p>
+<h3 id="检查配置文件">检查配置文件</h3>
+<p>配置的第一步就是要检查配置文件中公钥认证是否处于开启状态(默认是开启的)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi /etc/ssh/sshd_config
+</span></span></code></pre></div><p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 926; 
+			flex-basis: 2223px"
+	>
+	<a href="/posts/ssh/1.jpg" data-size="1482x160">
+		<img src="/posts/ssh/1.jpg"
+			width="1482"
+			height="160"
+			srcset="/posts/ssh/1_hu0cb90567214003b0e63d95ba029c92e4_348427_480x0_resize_q75_box.jpg 480w, /posts/ssh/1_hu0cb90567214003b0e63d95ba029c92e4_348427_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="默认配置(一般没有主动修改过都是默认配置)">
+	</a>
+	
+	<figcaption>默认配置(一般没有主动修改过都是默认配置)</figcaption>
+	
+</figure></p>
+<p>要是你没有开启(一般会存在这样的语句<code>PubkeyAuthentication no</code>最前面没有注释符#),请把no改为yes</p>
+<blockquote>
+<p>PS: <code>AuthorizedKeysFile</code>后的路径(用户公钥保存的位置)尽量保持默认(即<code>.ssh/authorized_keys</code>),毕竟别给自己找麻烦嘛((</p>
+</blockquote>
+<p>改完了记得重启服务</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart sshd.service
+</span></span></code></pre></div><hr>
+<p>现在，我们假设有两台A,B,A(客户机)要通过SSH连接B(服务器)</p>
+<h3 id="生成一堆公钥私钥对">生成一堆公钥/私钥对</h3>
+<p>在客户机的终端/cmd/powershell或者其他满足你个人喜好的命令行里输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssh-keygen
+</span></span></code></pre></div><p>命令执行完成后，一对密钥(公钥文件<code>id_rsa.pub</code>, 私钥文件<code>id_rsa</code>)就在你的客户机上生成了</p>
+<p><strong>顾名思义，公钥是可以公开(上传到要连接的服务器上)的，而私钥一定一定一定只能自己知道(重要的事情说3遍)，因为如果别人拿到了你的私钥文件就相当于知道了你的密码(,也就意味着他们可以用你的身份登录服务器 <del>，然后帮你删个库</del></strong></p>
+<p>文件所在路径如下</p>
+<ul>
+<li>
+<p>Windows     &mdash;&gt;     %UserProfile%/.ssh/</p>
+</li>
+<li>
+<p>Linux       &mdash;&gt;          ~/.ssh/</p>
+</li>
+</ul>
+<blockquote>
+<p>注意:在Linux下前面有点的文件夹/文件是隐藏的捏，要用<code>ls -a</code>才能看到.</p>
+</blockquote>
+<h3 id="上传公钥">上传公钥</h3>
+<blockquote>
+<p>这一步网上很多教程都搞得特别烦，既然是懒人，那就使用自带的<code>ssh-copy-id</code>,能自动完成上传文件和处理权限的操作，美滋滋aww</p>
+<p>不过貌似如果第一步操作中公钥保存路径不是默认的话就不可以这样起飞了，要是你确实有那样的需求，请找搜索引擎= =</p>
+</blockquote>
+<p>依然是在客户机上操作</p>
+<pre tabindex="0"><code>ssh-copy-id 用户名@服务器ip或域名
+</code></pre><h3 id="免密码登录">免密码登录</h3>
+<p>完成了上述步骤后，你就可以实现免密码登录服务器了</p>
+<pre tabindex="0"><code>ssh 用户名@服务器ip或域名
+</code></pre><p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 217; 
+			flex-basis: 521px"
+	>
+	<a href="/posts/ssh/2.jpg" data-size="1038x478">
+		<img src="/posts/ssh/2.jpg"
+			width="1038"
+			height="478"
+			srcset="/posts/ssh/2_hu520bb428ab14f5cdad80f68d4bbf9cad_85631_480x0_resize_q75_box.jpg 480w, /posts/ssh/2_hu520bb428ab14f5cdad80f68d4bbf9cad_85631_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			>
+	</a>
+	
+</figure></p>
+<h2 id="关于公私钥登录和使用密码的安全性讨论">关于公私钥登录和使用密码的安全性讨论</h2>
+<p>既然是网安人，就再说说安全吧</p>
+<p>大部分人都认为公私钥认证登录会比较安全些，因为密码有被爆破的风险</p>
+<p>但是，从客观角度来仔细推敲，公私钥认证登录实际上也没有<em>那么</em>的安全</p>
+<p><del>咳咳，我来杠一杠</del></p>
+<hr>
+<p>不妨来看看密码和公私钥认证登录各自安全性上的弱点</p>
+<p>密码</p>
+<ul>
+<li>
+<p>弱密码被爆破</p>
+</li>
+<li>
+<p>密码泄露</p>
+</li>
+<li>
+<p>很多账号相同密码，如果一台设备密码泄露，就可以登入所有服务器</p>
+</li>
+</ul>
+<p>公私钥认证</p>
+<ul>
+<li>
+<p>私钥被抢走了，拿到文件的人可以随意连接服务器</p>
+</li>
+<li>
+<p>任何使用/入侵设备的人可以随意连接服务器</p>
+</li>
+<li>
+<p>设备被偷了,拿到设备的人可以随意连接服务器</p>
+</li>
+</ul>
+<p>综上，实际上两种方式安全性差不多，都各自有一定的弱点 = =</p>
+<p>不过，处于偷懒的考虑，我更喜欢免密码的公私钥认证登录，诶嘿嘿~~</p>
+<p>总之，不要过于迷信某种方式捏，挑自己喜欢用的就可以啦</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/ssh/">SSH</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 KiraPGR&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.7.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#配置步骤">配置步骤</a>
+      <ol>
+        <li><a href="#检查配置文件">检查配置文件</a></li>
+        <li><a href="#生成一堆公钥私钥对">生成一堆公钥/私钥对</a></li>
+        <li><a href="#上传公钥">上传公钥</a></li>
+        <li><a href="#免密码登录">免密码登录</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于公私钥登录和使用密码的安全性讨论">关于公私钥登录和使用密码的安全性讨论</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+
+
+    </body>
+</html>

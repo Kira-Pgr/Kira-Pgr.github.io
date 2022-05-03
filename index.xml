@@ -6,7 +6,129 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 03 May 2022 08:57:18 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SSH配置免密码(公私钥认证)登录</title>
+        <link>https://kira-pgr.github.io/posts/ssh/</link>
+        <pubDate>Tue, 03 May 2022 08:57:18 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/ssh/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/ssh/cover.jpg" alt="Featured image of post SSH配置免密码(公私钥认证)登录" /&gt;&lt;h1 id=&#34;ssh配置免密码公私钥认证登录&#34;&gt;SSH配置免密码(公私钥认证)登录&lt;/h1&gt;
+&lt;p&gt;不得不说，每次登录和传文件都要输入密码真的是对我这种摆烂人太不友好了啊，不仅麻烦，而且强度大的密码还容易忘&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;俗话说得好，懒能促进科技发展(逃&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;今天就来扯一扯如何在SSH远程连接服务器的时候偷点小懒，甩掉烦人的密码0.0&lt;/p&gt;
+&lt;h2 id=&#34;配置步骤&#34;&gt;配置步骤&lt;/h2&gt;
+&lt;p&gt;由于Linux,高版本Win(我的Win11是预装了)绝大多数都预装了OpenSSH，我们就直接跳过安装步骤，如果你还没有装的话。。。那就找搜索引擎吧(&lt;/p&gt;
+&lt;h3 id=&#34;检查配置文件&#34;&gt;检查配置文件&lt;/h3&gt;
+&lt;p&gt;配置的第一步就是要检查配置文件中公钥认证是否处于开启状态(默认是开启的)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi /etc/ssh/sshd_config
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 926; 
+			flex-basis: 2223px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/ssh/1.jpg&#34; data-size=&#34;1482x160&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/ssh/1.jpg&#34;
+			width=&#34;1482&#34;
+			height=&#34;160&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/ssh/1_hu0cb90567214003b0e63d95ba029c92e4_348427_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/ssh/1_hu0cb90567214003b0e63d95ba029c92e4_348427_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;默认配置(一般没有主动修改过都是默认配置)&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;默认配置(一般没有主动修改过都是默认配置)&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;要是你没有开启(一般会存在这样的语句&lt;code&gt;PubkeyAuthentication no&lt;/code&gt;最前面没有注释符#),请把no改为yes&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS: &lt;code&gt;AuthorizedKeysFile&lt;/code&gt;后的路径(用户公钥保存的位置)尽量保持默认(即&lt;code&gt;.ssh/authorized_keys&lt;/code&gt;),毕竟别给自己找麻烦嘛((&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;改完了记得重启服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl restart sshd.service
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;现在，我们假设有两台A,B,A(客户机)要通过SSH连接B(服务器)&lt;/p&gt;
+&lt;h3 id=&#34;生成一堆公钥私钥对&#34;&gt;生成一堆公钥/私钥对&lt;/h3&gt;
+&lt;p&gt;在客户机的终端/cmd/powershell或者其他满足你个人喜好的命令行里输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ssh-keygen
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;命令执行完成后，一对密钥(公钥文件&lt;code&gt;id_rsa.pub&lt;/code&gt;, 私钥文件&lt;code&gt;id_rsa&lt;/code&gt;)就在你的客户机上生成了&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;顾名思义，公钥是可以公开(上传到要连接的服务器上)的，而私钥一定一定一定只能自己知道(重要的事情说3遍)，因为如果别人拿到了你的私钥文件就相当于知道了你的密码(,也就意味着他们可以用你的身份登录服务器 &lt;del&gt;，然后帮你删个库&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;文件所在路径如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Windows     &amp;mdash;&amp;gt;     %UserProfile%/.ssh/&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux       &amp;mdash;&amp;gt;          ~/.ssh/&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:在Linux下前面有点的文件夹/文件是隐藏的捏，要用&lt;code&gt;ls -a&lt;/code&gt;才能看到.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;上传公钥&#34;&gt;上传公钥&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这一步网上很多教程都搞得特别烦，既然是懒人，那就使用自带的&lt;code&gt;ssh-copy-id&lt;/code&gt;,能自动完成上传文件和处理权限的操作，美滋滋aww&lt;/p&gt;
+&lt;p&gt;不过貌似如果第一步操作中公钥保存路径不是默认的话就不可以这样起飞了，要是你确实有那样的需求，请找搜索引擎= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;依然是在客户机上操作&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ssh-copy-id 用户名@服务器ip或域名
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;免密码登录&#34;&gt;免密码登录&lt;/h3&gt;
+&lt;p&gt;完成了上述步骤后，你就可以实现免密码登录服务器了&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ssh 用户名@服务器ip或域名
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 217; 
+			flex-basis: 521px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/ssh/2.jpg&#34; data-size=&#34;1038x478&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/ssh/2.jpg&#34;
+			width=&#34;1038&#34;
+			height=&#34;478&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/ssh/2_hu520bb428ab14f5cdad80f68d4bbf9cad_85631_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/ssh/2_hu520bb428ab14f5cdad80f68d4bbf9cad_85631_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关于公私钥登录和使用密码的安全性讨论&#34;&gt;关于公私钥登录和使用密码的安全性讨论&lt;/h2&gt;
+&lt;p&gt;既然是网安人，就再说说安全吧&lt;/p&gt;
+&lt;p&gt;大部分人都认为公私钥认证登录会比较安全些，因为密码有被爆破的风险&lt;/p&gt;
+&lt;p&gt;但是，从客观角度来仔细推敲，公私钥认证登录实际上也没有&lt;em&gt;那么&lt;/em&gt;的安全&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;咳咳，我来杠一杠&lt;/del&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;不妨来看看密码和公私钥认证登录各自安全性上的弱点&lt;/p&gt;
+&lt;p&gt;密码&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;弱密码被爆破&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;密码泄露&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;很多账号相同密码，如果一台设备密码泄露，就可以登入所有服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;公私钥认证&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;私钥被抢走了，拿到文件的人可以随意连接服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任何使用/入侵设备的人可以随意连接服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设备被偷了,拿到设备的人可以随意连接服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;综上，实际上两种方式安全性差不多，都各自有一定的弱点 = =&lt;/p&gt;
+&lt;p&gt;不过，处于偷懒的考虑，我更喜欢免密码的公私钥认证登录，诶嘿嘿~~&lt;/p&gt;
+&lt;p&gt;总之，不要过于迷信某种方式捏，挑自己喜欢用的就可以啦&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>PWN! PWN! PANG! Part6 --- ROP</title>
         <link>https://kira-pgr.github.io/posts/pwn6/</link>
         <pubDate>Thu, 14 Apr 2022 23:21:24 -0400</pubDate>

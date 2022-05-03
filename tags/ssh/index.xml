@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on KiraPGR&#39;s Blog</title>
-    <link>https://kira-pgr.github.io/categories/linux/</link>
-    <description>Recent content in Linux on KiraPGR&#39;s Blog</description>
+    <title>SSH on KiraPGR&#39;s Blog</title>
+    <link>https://kira-pgr.github.io/tags/ssh/</link>
+    <description>Recent content in SSH on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 May 2022 08:57:18 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SSH配置免密码(公私钥认证)登录</title>
       <link>https://kira-pgr.github.io/posts/ssh/</link>

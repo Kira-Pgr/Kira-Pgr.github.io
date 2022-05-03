@@ -6,7 +6,42 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Apr 2022 23:21:24 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 May 2022 08:57:18 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH配置免密码(公私钥认证)登录</title>
+      <link>https://kira-pgr.github.io/posts/ssh/</link>
+      <pubDate>Tue, 03 May 2022 08:57:18 -0400</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/ssh/</guid>
+      <description>SSH配置免密码(公私钥认证)登录 不得不说，每次登录和传文件都要输入密码真的是对我这种摆烂人太不友好了啊，不仅麻烦，而且强度大的密码还容易忘
+俗话说得好，懒能促进科技发展(逃
+今天就来扯一扯如何在SSH远程连接服务器的时候偷点小懒，甩掉烦人的密码0.0
+配置步骤 由于Linux,高版本Win(我的Win11是预装了)绝大多数都预装了OpenSSH，我们就直接跳过安装步骤，如果你还没有装的话。。。那就找搜索引擎吧(
+检查配置文件 配置的第一步就是要检查配置文件中公钥认证是否处于开启状态(默认是开启的)
+vi /etc/ssh/sshd_config  默认配置(一般没有主动修改过都是默认配置) 
+要是你没有开启(一般会存在这样的语句PubkeyAuthentication no最前面没有注释符#),请把no改为yes
+ PS: AuthorizedKeysFile后的路径(用户公钥保存的位置)尽量保持默认(即.ssh/authorized_keys),毕竟别给自己找麻烦嘛((
+ 改完了记得重启服务
+systemctl restart sshd.service  现在，我们假设有两台A,B,A(客户机)要通过SSH连接B(服务器)
+生成一堆公钥/私钥对 在客户机的终端/cmd/powershell或者其他满足你个人喜好的命令行里输入
+ssh-keygen 命令执行完成后，一对密钥(公钥文件id_rsa.pub, 私钥文件id_rsa)就在你的客户机上生成了
+顾名思义，公钥是可以公开(上传到要连接的服务器上)的，而私钥一定一定一定只能自己知道(重要的事情说3遍)，因为如果别人拿到了你的私钥文件就相当于知道了你的密码(,也就意味着他们可以用你的身份登录服务器 ，然后帮你删个库
+文件所在路径如下
+  Windows &amp;mdash;&amp;gt; %UserProfile%/.ssh/
+  Linux &amp;mdash;&amp;gt; ~/.ssh/
+   注意:在Linux下前面有点的文件夹/文件是隐藏的捏，要用ls -a才能看到.
+ 上传公钥  这一步网上很多教程都搞得特别烦，既然是懒人，那就使用自带的ssh-copy-id,能自动完成上传文件和处理权限的操作，美滋滋aww
+不过貌似如果第一步操作中公钥保存路径不是默认的话就不可以这样起飞了，要是你确实有那样的需求，请找搜索引擎= =
+ 依然是在客户机上操作
+ssh-copy-id 用户名@服务器ip或域名 免密码登录 完成了上述步骤后，你就可以实现免密码登录服务器了
+ssh 用户名@服务器ip或域名  
+关于公私钥登录和使用密码的安全性讨论 既然是网安人，就再说说安全吧
+大部分人都认为公私钥认证登录会比较安全些，因为密码有被爆破的风险
+但是，从客观角度来仔细推敲，公私钥认证登录实际上也没有那么的安全
+咳咳，我来杠一杠
+ 不妨来看看密码和公私钥认证登录各自安全性上的弱点</description>
+    </item>
+    
     <item>
       <title>PWN! PWN! PANG! Part6 --- ROP</title>
       <link>https://kira-pgr.github.io/posts/pwn6/</link>
