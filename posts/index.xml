@@ -6,7 +6,24 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 May 2022 08:57:18 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 May 2022 09:31:14 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian Linux下安装虚拟机软件</title>
+      <link>https://kira-pgr.github.io/posts/vmm/</link>
+      <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/vmm/</guid>
+      <description>Debian Linux下安装虚拟机软件 VirtualBox VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少
+安装最新版本内核头文件/内核镜像 为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们尽量避免使用网上提供的这种方式
+sudo apt-get install linux-headers-`uname -r` 采用以下命令
+sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  如图 
+apt安装VirtualBox apt-get install linux-image-xxx linux-header-xxx VMware Workstation 比起VBox,VMware折腾起来坑真的好多啊= =
+不过没办法。。。我还有10多个VMware的虚拟机w(
+安装最新版本内核头文件/内核镜像 第一步和安VBox一样的操作
+sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做 
+安装各种编译器 sudo apt-get install build-essential  P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器</description>
+    </item>
+    
     <item>
       <title>SSH配置免密码(公私钥认证)登录</title>
       <link>https://kira-pgr.github.io/posts/ssh/</link>
@@ -423,7 +440,8 @@ Linux下ELF文件 ELF文件的是Linux下的可执行文件，与Windows下exe�
       <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
       
       <guid>https://kira-pgr.github.io/posts/about_me/</guid>
-      <description>KiraPGR&#39;s Blog  Hello World! 大家好, 我是PGR, 欢迎大家来到我的Blog, 本篇文章是对我自己简单的一个介绍  KiraPGR是谁？ 我是一个高中在读学生，开源主义者，了解C++/Python开发 ,平常喜欢自己折腾折腾计算机技术，也不时会写一点小Project(基本上以工具为主),目前主要在研究信息安全方面，如果有意向的朋友们可以和我一起学习哦qaq
+      <description>KiraPGR&#39;s Blog  To tell the truth, I don’t care at all, ya know?
+--But it’s only me and I don’t like being alone... 大家好, 我是PGR, 欢迎大家来到我的Blog, 本篇文章是对我自己简单的一个介绍  KiraPGR是谁？ 我是一个高中在读学生，开源主义者，了解C++/Python开发 ,平常喜欢自己折腾折腾计算机技术，也不时会写一点小Project(基本上以工具为主),目前主要在研究信息安全方面，如果有意向的朋友们可以和我一起学习哦qaq
 关于本博客 搭建这个博客的目的呢，主要是为了能和大家共享我自己学到的一些知识 (刚好就有动力写一点笔记了 )，同时呢，还希望能结交到一些志同道合的好朋友awa
 ^__^ ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ ( ´∀` ) ／ ( ) &amp;lt; 嘛。。既然来了，给我GitHub个Star小星星呗～ | | | ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ (__)__) 关于开源 作为一个开源主义的猫猫，肯定是会开源自己的代码捏~
 所有的代码都会发布在GitHub上(个人很讨厌Gitee;()

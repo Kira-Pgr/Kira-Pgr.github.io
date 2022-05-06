@@ -6,7 +6,240 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 03 May 2022 08:57:18 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 05 May 2022 09:31:14 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Debian Linux下安装虚拟机软件</title>
+        <link>https://kira-pgr.github.io/posts/vmm/</link>
+        <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/vmm/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/vmm/cover.jpg" alt="Featured image of post Debian Linux下安装虚拟机软件" /&gt;&lt;h1 id=&#34;debian-linux下安装虚拟机软件&#34;&gt;Debian Linux下安装虚拟机软件&lt;/h1&gt;
+&lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
+&lt;p&gt;VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少&lt;/p&gt;
+&lt;h3 id=&#34;安装最新版本内核头文件内核镜像&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
+&lt;p&gt;为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们&lt;strong&gt;尽量避免&lt;/strong&gt;使用网上提供的这种方式&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt-get install linux-headers-`uname -r`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;采用以下命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 144; 
+			flex-basis: 346px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/1.jpg&#34; data-size=&#34;1031x715&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/1.jpg&#34;
+			width=&#34;1031&#34;
+			height=&#34;715&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/vmm/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;如图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;如图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;apt安装virtualbox&#34;&gt;apt安装VirtualBox&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apt-get install linux-image-xxx linux-header-xxx
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
+&lt;p&gt;比起VBox,VMware折腾起来坑真的好多啊= =&lt;/p&gt;
+&lt;p&gt;不过没办法。。。我还有10多个VMware的虚拟机w(&lt;/p&gt;
+&lt;h3 id=&#34;安装最新版本内核头文件内核镜像-1&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
+&lt;p&gt;第一步和安VBox一样的操作&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt update
+sudo apt-cache search linux-image    
+sudo apt-get install linux-headers-xxx linux-image-xxx  
+#后面的xxx是上面语句中搜索出来的版本号和系统架构
+init 6 #装完重启
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 184; 
+			flex-basis: 442px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/347b.png&#34; data-size=&#34;498x270&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/347b.png&#34;
+			width=&#34;498&#34;
+			height=&#34;270&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/vmm/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装各种编译器&#34;&gt;安装各种编译器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install build-essential 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 198; 
+			flex-basis: 476px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/347a.png&#34; data-size=&#34;496x250&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/347a.png&#34;
+			width=&#34;496&#34;
+			height=&#34;250&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/vmm/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装vmware-workstation&#34;&gt;安装VMware Workstation&lt;/h3&gt;
+&lt;p&gt;去&lt;a class=&#34;link&#34; href=&#34;https://www.vmware.com/go/getworkstation-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;下载安装程序&lt;/p&gt;
+&lt;p&gt;给可执行权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod x VMware-Workstation-Full-版本号.bundle 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#TIP:文件名太长可以Tab补全&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./VMware-Workstation-Full-版本号.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;安装好之后想要运行直接终端输入vmware就可以了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;排坑&#34;&gt;排坑&lt;/h3&gt;
+&lt;p&gt;如果你顺利的话完成上面几步之后依照提示就可以结束这&lt;del&gt;快乐&lt;/del&gt;的安装过程了&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是，，，我还遇到了更多奇奇怪怪的坑&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe src=&#34;1.gif&#34; width=&#34;300&#34; height=&#34;200&#34; frameBorder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;如果各位朋友也遇到了，可以参考下解决方案&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 172; 
+			flex-basis: 413px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/2.jpg&#34; data-size=&#34;701x407&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/2.jpg&#34;
+			width=&#34;701&#34;
+			height=&#34;407&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/vmm/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;你再报错试试!?!  怒)&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;你再报错试试!?!  怒)&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;VMware在编译和安装&lt;code&gt;vmmom&lt;/code&gt;和&lt;code&gt;vmnet&lt;/code&gt;两个模块的时候出了问题，查了各种解决方案都没用&lt;/p&gt;
+&lt;p&gt;最后，我采取了&lt;strong&gt;手动编译安装两个模块&lt;/strong&gt;的方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;暴力出奇迹&amp;ndash;永远不变的真理 逃)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下是具体解决方案，英语好的伙伴们可以参考&lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/VM-Workstation-16-1-gt-16-2-1-on-Ubuntu-21-10-broke-everything/m-p/2884738#M173158&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这个官方论坛帖子&lt;/a&gt;捏~~&lt;/p&gt;
+&lt;p&gt;先下载模块的&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkubecek/vmware-host-modules/tree/workstation-16.2.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;源码&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于这里&lt;code&gt;git clone&lt;/code&gt;不知道为什么并不能拉取所有源码，所以我们这里选择下载zip包&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 103; 
+			flex-basis: 248px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/3.jpg&#34; data-size=&#34;589x570&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/3.jpg&#34;
+			width=&#34;589&#34;
+			height=&#34;570&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/vmm/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;下载界面&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;下载界面&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;解压后进入源码目录&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;unzip vmware-host-modules-workstation-16.2.1.zip
+cd vmware-host-modules-workstation-16.2.1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;编译+安装&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo systemctl restart vmware
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 157; 
+			flex-basis: 378px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/4.jpg&#34; data-size=&#34;1033x655&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/4.jpg&#34;
+			width=&#34;1033&#34;
+			height=&#34;655&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/vmm/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;如图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;如图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;完成之后再运行VMware Workstation,就应该可以正常进入程序了&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;vmware
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 121; 
+			flex-basis: 292px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/5.jpg&#34; data-size=&#34;904x741&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/5.jpg&#34;
+			width=&#34;904&#34;
+			height=&#34;741&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/vmm/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;激活&#34;&gt;激活&lt;/h3&gt;
+&lt;p&gt;网上VMware激活码可谓了一大堆&lt;/p&gt;
+&lt;p&gt;为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 136; 
+			flex-basis: 328px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/vmm/6.jpg&#34; data-size=&#34;897x655&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/vmm/6.jpg&#34;
+			width=&#34;897&#34;
+			height=&#34;655&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/vmm/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/vmm/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;激活界面&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;激活界面&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.a5idc.com/helpcontent/347.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.a5idc.com/helpcontent/347.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>SSH配置免密码(公私钥认证)登录</title>
         <link>https://kira-pgr.github.io/posts/ssh/</link>
         <pubDate>Tue, 03 May 2022 08:57:18 -0400</pubDate>
@@ -126,6 +359,9 @@
 &lt;p&gt;综上，实际上两种方式安全性差不多，都各自有一定的弱点 = =&lt;/p&gt;
 &lt;p&gt;不过，处于偷懒的考虑，我更喜欢免密码的公私钥认证登录，诶嘿嘿~~&lt;/p&gt;
 &lt;p&gt;总之，不要过于迷信某种方式捏，挑自己喜欢用的就可以啦&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-B-linux%E6%9C%8D%E5%8A%A1/101-B1-openssh%E6%9C%8D%E5%8A%A1.html#4-%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%EF%BC%88%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81%EF%BC%89%E7%99%BB%E5%BD%95&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-B-linux%E6%9C%8D%E5%8A%A1/101-B1-openssh%E6%9C%8D%E5%8A%A1.html#4-%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%EF%BC%88%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81%EF%BC%89%E7%99%BB%E5%BD%95&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -3242,7 +3478,8 @@ Maybe I will tell you again when you clever than ELSEpush ......
 KiraPGR&#39;s Blog
 &lt;/h1&gt;
 &lt;p align=&#34;center&#34;&gt;
-        Hello World!
+        To tell the truth, I don’t care at all, ya know?&lt;br&gt;
+        --But it’s only me and I don’t like being alone...
 &lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;
 &lt;img src=&#34;https://img.shields.io/badge/Build-Passed-success&#34; alt=&#34;&#34; /&gt; 
