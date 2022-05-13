@@ -6,7 +6,42 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 05 May 2022 09:31:14 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 13 May 2022 03:44:40 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>网安猫猫资源库</title>
+        <link>https://kira-pgr.github.io/posts/tg/</link>
+        <pubDate>Fri, 13 May 2022 03:44:40 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/tg/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/tg/cover.jpg" alt="Featured image of post 网安猫猫资源库" /&gt;&lt;h1 id=&#34;网安猫猫资源库&#34;&gt;网安猫猫资源库&lt;/h1&gt;
+&lt;p&gt;喵~~&lt;/p&gt;
+&lt;p&gt;事情是这样的，搞了一个&lt;del&gt;会卖萌的&lt;/del&gt;Telegram频道存放一些自己学习时用的网安资源，&lt;/p&gt;
+&lt;p&gt;既然都集中存放了，干脆分享给有幸看到我blog的朋友们吧，其中包括&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Web安全教程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PWN教程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一些好用的工具&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CVE推送&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;链接:&lt;a class=&#34;link&#34; href=&#34;https://t.me/nanosec47&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Telegram: Contact @nanosec47&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;附属群(欢迎来吹水):&lt;a class=&#34;link&#34; href=&#34;https://t.me/nanonanoda&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Telegram: Contact @nanonanoda&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;个人收集的资源，非广告/营销号，不喜欢请默默离开，勿喷.uwu.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>Debian Linux下安装虚拟机软件</title>
         <link>https://kira-pgr.github.io/posts/vmm/</link>
         <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>

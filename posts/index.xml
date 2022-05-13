@@ -6,7 +6,26 @@
     <description>Recent content in Posts on KiraPGR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 May 2022 09:31:14 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 May 2022 03:44:40 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网安猫猫资源库</title>
+      <link>https://kira-pgr.github.io/posts/tg/</link>
+      <pubDate>Fri, 13 May 2022 03:44:40 -0400</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/tg/</guid>
+      <description>网安猫猫资源库 喵~~
+事情是这样的，搞了一个会卖萌的Telegram频道存放一些自己学习时用的网安资源，
+既然都集中存放了，干脆分享给有幸看到我blog的朋友们吧，其中包括
+  Web安全教程
+  PWN教程
+  一些好用的工具
+  CVE推送
+   链接:Telegram: Contact @nanosec47
+附属群(欢迎来吹水):Telegram: Contact @nanonanoda
+  个人收集的资源，非广告/营销号，不喜欢请默默离开，勿喷.uwu.
+ </description>
+    </item>
+    
     <item>
       <title>Debian Linux下安装虚拟机软件</title>
       <link>https://kira-pgr.github.io/posts/vmm/</link>

@@ -3,24 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kira-pgr.github.io/categories/</loc>
-    <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <lastmod>2022-05-13T03:44:40-04:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/posts/vmm/</loc>
-    <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <loc>https://kira-pgr.github.io/tags/exploit/</loc>
+    <lastmod>2022-05-13T03:44:40-04:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/github/</loc>
+    <lastmod>2022-05-13T03:44:40-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/</loc>
-    <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <lastmod>2022-05-13T03:44:40-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/</loc>
+    <lastmod>2022-05-13T03:44:40-04:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/</loc>
+    <lastmod>2022-05-13T03:44:40-04:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/posts/tg/</loc>
+    <lastmod>2022-05-13T03:44:40-04:00</lastmod>
+  </url><url>
+    <loc>https://kira-pgr.github.io/posts/vmm/</loc>
     <lastmod>2022-05-05T09:31:14-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/tags/ssh/</loc>
     <lastmod>2022-05-03T08:57:18-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/ssh/</loc>
-    <lastmod>2022-05-03T08:57:18-04:00</lastmod>
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/</loc>
     <lastmod>2022-05-03T08:57:18-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/categories/linux/</loc>
@@ -52,12 +61,6 @@
   </url><url>
     <loc>https://kira-pgr.github.io/posts/clash_rce/</loc>
     <lastmod>2022-02-25T23:27:12-05:00</lastmod>
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/exploit/</loc>
-    <lastmod>2022-02-25T23:27:12-05:00</lastmod>
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/github/</loc>
-    <lastmod>2022-02-22T21:18:34-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/posts/gcl/</loc>
     <lastmod>2022-02-22T21:18:34-05:00</lastmod>
