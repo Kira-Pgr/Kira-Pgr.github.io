@@ -2883,6 +2883,92 @@ Maybe I will tell you again when you clever than ELSEpush ......
 &lt;p&gt;博主头像放在&lt;code&gt;/themes/hugo-theme-stack/assets/img/&lt;/code&gt;下&lt;/p&gt;
 &lt;p&gt;关于那个头像下的emoji,如果你不想加上，emoji那一行留空就好&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;stack排坑&#34;&gt;Stack排坑&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Edit:&lt;/p&gt;
+&lt;p&gt;嘛。。。。自从我出了这篇文章之后，很多人都成为了StackStack人((&lt;/p&gt;
+&lt;p&gt;既然这个主题这么受欢迎，那就详细来扯扯我配置的心得吧w&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;q1文章不显示在首页怎么办&#34;&gt;Q1:文章不显示在首页怎么办&lt;/h3&gt;
+&lt;p&gt;修改你&lt;strong&gt;网站根目录&lt;/strong&gt;下的&lt;code&gt;config.yaml&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;mainSections&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;posts&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;q2评论区如何配置&#34;&gt;Q2:评论区如何配置&lt;/h3&gt;
+&lt;p&gt;我这里选用的是&lt;code&gt;Gitalk&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;comments&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;enabled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#开启评论功能设置为true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;provider&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;gitalk&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#提供平台，我这里是gitalk,当然你也可以选择其他的&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#注意:提供平台选哪个下面的就填哪块区域&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;gitaik配置:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;gitalk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;owner&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;你的GitHub用户名&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;admin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;你的GitHub用户名 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;repo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;你的GitHub仓库名&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#(注意不是网址!!!!!!!)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;clientID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;clientSecret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#ClientID和ClientSecret请不要随意告诉他人哦~&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ClientID和ClientSecret获取方法:&lt;/p&gt;
+&lt;p&gt;去&lt;a class=&#34;link&#34; href=&#34;https://github.com/settings/developers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub开发者设置里&lt;/a&gt;新建一个&lt;code&gt;OAuth App&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 353; 
+			flex-basis: 847px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo1/1.jpg&#34; data-size=&#34;1815x514&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo1/1.jpg&#34;
+			width=&#34;1815&#34;
+			height=&#34;514&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo1/1_hu83f57fbfa775c166070d66c978aa20d9_205490_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/hugo1/1_hu83f57fbfa775c166070d66c978aa20d9_205490_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;如图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;如图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后就填空啦:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Applicaton Name:随便起个名字&lt;/p&gt;
+&lt;p&gt;Homepage URL:你博客的url&lt;/p&gt;
+&lt;p&gt;Application description:描述，随便写&lt;/p&gt;
+&lt;p&gt;Authorization callback URL:你博客url&lt;/p&gt;
+&lt;p&gt;Enable Device Flow 不勾选&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;保存后就可以获得ClientID，在它的下面(Client Secret框里)点击&lt;code&gt;Generate a new client secret&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 375; 
+			flex-basis: 901px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo1/2.jpg&#34; data-size=&#34;1254x334&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo1/2.jpg&#34;
+			width=&#34;1254&#34;
+			height=&#34;334&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo1/2_hue4a4cba18a7872f7215e13e8cb31100a_44607_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/hugo1/2_hue4a4cba18a7872f7215e13e8cb31100a_44607_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;日常点点点&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;日常点点点&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后记得保存好，因为Client Secret你&lt;strong&gt;只能看到一次&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;q3关于自定义和美化&#34;&gt;Q3:关于自定义和美化&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个自定义的话，其实感觉没什么特殊的必要，往往就是加一些奇奇怪怪的东西上去，但还是扯两句&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;与自定义相关的路径(如没有可以自己添加)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网站根目录/layouts/partials/head/custom.html &lt;span class=&#34;c1&#34;&gt;#插入所有页面头部的HTML &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网站根目录/layouts/partials/footer/custom.html &lt;span class=&#34;c1&#34;&gt;#插入所有页面底部的HTML&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网站根目录/static/ &lt;span class=&#34;c1&#34;&gt;#资源文件路径 e.g. js css ...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后放一个我写的Stack博客美化的&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/posts/hugo2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;懒人方法&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;本地网站试运行&#34;&gt;本地网站试运行&lt;/h2&gt;
 &lt;p&gt;在你的&lt;strong&gt;网站根目录&lt;/strong&gt;下打开终端/cmd/或者你喜欢的命令行工具&lt;/p&gt;

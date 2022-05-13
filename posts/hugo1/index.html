@@ -125,7 +125,7 @@
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -216,6 +216,92 @@
 <p>博主头像放在<code>/themes/hugo-theme-stack/assets/img/</code>下</p>
 <p>关于那个头像下的emoji,如果你不想加上，emoji那一行留空就好</p>
 </blockquote>
+<h2 id="stack排坑">Stack排坑</h2>
+<blockquote>
+<p>Edit:</p>
+<p>嘛。。。。自从我出了这篇文章之后，很多人都成为了StackStack人((</p>
+<p>既然这个主题这么受欢迎，那就详细来扯扯我配置的心得吧w</p>
+</blockquote>
+<h3 id="q1文章不显示在首页怎么办">Q1:文章不显示在首页怎么办</h3>
+<p>修改你<strong>网站根目录</strong>下的<code>config.yaml</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">mainSections</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">posts</span><span class="w">
+</span></span></span></code></pre></div><h3 id="q2评论区如何配置">Q2:评论区如何配置</h3>
+<p>我这里选用的是<code>Gitalk</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c">#开启评论功能设置为true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">gitalk</span><span class="w"> </span><span class="c">#提供平台，我这里是gitalk,当然你也可以选择其他的</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#注意:提供平台选哪个下面的就填哪块区域</span><span class="w">
+</span></span></span></code></pre></div><p>gitaik配置:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">gitalk</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub用户名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">admin</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub用户名 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub仓库名</span><span class="w"> </span><span class="c">#(注意不是网址!!!!!!!)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#ClientID和ClientSecret请不要随意告诉他人哦~</span><span class="w">
+</span></span></span></code></pre></div><p>ClientID和ClientSecret获取方法:</p>
+<p>去<a class="link" href="https://github.com/settings/developers"  target="_blank" rel="noopener"
+    >GitHub开发者设置里</a>新建一个<code>OAuth App</code></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 353; 
+			flex-basis: 847px"
+	>
+	<a href="/posts/hugo1/1.jpg" data-size="1815x514">
+		<img src="/posts/hugo1/1.jpg"
+			width="1815"
+			height="514"
+			srcset="/posts/hugo1/1_hu83f57fbfa775c166070d66c978aa20d9_205490_480x0_resize_q75_box.jpg 480w, /posts/hugo1/1_hu83f57fbfa775c166070d66c978aa20d9_205490_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="如图">
+	</a>
+	
+	<figcaption>如图</figcaption>
+	
+</figure></p>
+<p>然后就填空啦:</p>
+<blockquote>
+<p>Applicaton Name:随便起个名字</p>
+<p>Homepage URL:你博客的url</p>
+<p>Application description:描述，随便写</p>
+<p>Authorization callback URL:你博客url</p>
+<p>Enable Device Flow 不勾选</p>
+</blockquote>
+<p>保存后就可以获得ClientID，在它的下面(Client Secret框里)点击<code>Generate a new client secret</code></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 375; 
+			flex-basis: 901px"
+	>
+	<a href="/posts/hugo1/2.jpg" data-size="1254x334">
+		<img src="/posts/hugo1/2.jpg"
+			width="1254"
+			height="334"
+			srcset="/posts/hugo1/2_hue4a4cba18a7872f7215e13e8cb31100a_44607_480x0_resize_q75_box.jpg 480w, /posts/hugo1/2_hue4a4cba18a7872f7215e13e8cb31100a_44607_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="日常点点点">
+	</a>
+	
+	<figcaption>日常点点点</figcaption>
+	
+</figure></p>
+<p>然后记得保存好，因为Client Secret你<strong>只能看到一次</strong></p>
+<h3 id="q3关于自定义和美化">Q3:关于自定义和美化</h3>
+<blockquote>
+<p>这个自定义的话，其实感觉没什么特殊的必要，往往就是加一些奇奇怪怪的东西上去，但还是扯两句</p>
+</blockquote>
+<p>与自定义相关的路径(如没有可以自己添加)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">网站根目录/layouts/partials/head/custom.html <span class="c1">#插入所有页面头部的HTML </span>
+</span></span><span class="line"><span class="cl">网站根目录/layouts/partials/footer/custom.html <span class="c1">#插入所有页面底部的HTML</span>
+</span></span><span class="line"><span class="cl">网站根目录/static/ <span class="c1">#资源文件路径 e.g. js css ...</span>
+</span></span></code></pre></div><p>最后放一个我写的Stack博客美化的<a class="link" href="https://blog.nanosec.site/posts/hugo2/"  target="_blank" rel="noopener"
+    >懒人方法</a></p>
 <hr>
 <h2 id="本地网站试运行">本地网站试运行</h2>
 <p>在你的<strong>网站根目录</strong>下打开终端/cmd/或者你喜欢的命令行工具</p>
@@ -555,6 +641,13 @@
         <li><a href="#github项目创建">GitHub项目创建</a></li>
         <li><a href="#本地网站搭建">本地网站搭建</a></li>
         <li><a href="#stack-主题的简单配置">Stack 主题的简单配置</a></li>
+      </ol>
+    </li>
+    <li><a href="#stack排坑">Stack排坑</a>
+      <ol>
+        <li><a href="#q1文章不显示在首页怎么办">Q1:文章不显示在首页怎么办</a></li>
+        <li><a href="#q2评论区如何配置">Q2:评论区如何配置</a></li>
+        <li><a href="#q3关于自定义和美化">Q3:关于自定义和美化</a></li>
       </ol>
     </li>
     <li><a href="#本地网站试运行">本地网站试运行</a></li>
