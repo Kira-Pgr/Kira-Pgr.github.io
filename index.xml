@@ -6,7 +6,208 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 13 May 2022 03:44:40 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 15 May 2022 02:19:13 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GitHub Pages配置自定义域名以及CDN</title>
+        <link>https://kira-pgr.github.io/posts/hugo3/</link>
+        <pubDate>Sun, 15 May 2022 02:19:13 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/hugo3/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/hugo3/cover.jpg" alt="Featured image of post GitHub Pages配置自定义域名以及CDN" /&gt;&lt;h1 id=&#34;github-pages配置自定义域名以及cdn&#34;&gt;GitHub Pages配置自定义域名以及CDN&lt;/h1&gt;
+&lt;p&gt;嘶~~,最近在折腾博客&lt;/p&gt;
+&lt;p&gt;刚买了个域名，由于没有服务器,就把域名绑定到我博客上来了&lt;/p&gt;
+&lt;p&gt;嘛= =,闲话不多说，直接上做法&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;配置自定义域名&#34;&gt;配置自定义域名&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你没有域名，且是白嫖党 &lt;del&gt;(而且是经费不足的那种)&lt;/del&gt; ，下面这一段你可以绕过了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;前置准备&#34;&gt;前置准备&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一个域名(需要购买)&lt;/p&gt;
+&lt;p&gt;这里推荐几个买域名的地方&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;腾讯云DNSPod&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;优点:价格第一年便宜，能低至7-8元的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;缺点:国内的要实名，而且实名审核要一定时间&lt;/p&gt;
+&lt;p&gt;P.S. 像我们这种个人建议别买.cn域名，不是说.cn域名不好，而是因为有可能通过whois&lt;strong&gt;查出你的一些个人信息&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;我相信看到这里一些人肯定想去查了，先说好了，要是出什么问题我可不负责&lt;/del&gt;XD~~&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GoDaddy&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;优点:国外的不需要实名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;缺点:价格相对贵一点,不支持微信支付&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一个在GitHub Pages部署好的网站&lt;/p&gt;
+&lt;p&gt;Tip:要是没有的话可以按照我&lt;a class=&#34;link&#34; href=&#34;../hugo1/&#34; &gt;之前的文章&lt;/a&gt;来搭一个个人网站&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;快乐de配置过程&#34;&gt;快乐de配置过程&lt;/h3&gt;
+&lt;h4 id=&#34;dns解析方面&#34;&gt;DNS解析方面&lt;/h4&gt;
+&lt;p&gt;首先打开你域名DNS解析记录的控制台&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;没有链接提供! 各个平台控制台的位置不一样 ;&amp;lt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 187; 
+			flex-basis: 449px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo3/1.jpg&#34; data-size=&#34;1413x754&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo3/1.jpg&#34;
+			width=&#34;1413&#34;
+			height=&#34;754&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo3/1_hu922d056d14a6333985b6c001c624e8e6_201070_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/hugo3/1_hu922d056d14a6333985b6c001c624e8e6_201070_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;DNS解析控制台实例&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;DNS解析控制台实例&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后新建一条&lt;strong&gt;CNAME记录&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CNAME类似于你域名的一个别名,如果域名A建立了一条CNAME记录指向域名B,你请求A就会去请求B&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 362; 
+			flex-basis: 870px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo3/2.jpg&#34; data-size=&#34;831x229&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo3/2.jpg&#34;
+			width=&#34;831&#34;
+			height=&#34;229&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo3/2_hubbf64ecbb329d4fea4a2f7cb67f3df2d_22341_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/hugo3/2_hubbf64ecbb329d4fea4a2f7cb67f3df2d_22341_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;CNAME记录&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;CNAME记录&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;现在我们看向上图中右边两个框框，又到了做填空的时候呐!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Name(名称)填你想要的子域名或者是@&lt;/p&gt;
+&lt;p&gt;举个糖炒板栗(逃: 如果你的域名是nanosec.site,你这里输入@别人访问nanasec.site的时候是这个网站,如果你填了blog,别人访问blog.nanosec.site是你的网站&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Target(目标)填你GitHub Pages哪个网站的域名，一般是你的用户名.github.io,如果你忘了你的用户名~~(这什么有大病的如果)~~你可以去下面的评论区发条评论，然后你的用户名就会显示出来啦 : 3&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;github方面&#34;&gt;GitHub方面&lt;/h4&gt;
+&lt;p&gt;首先登录到GitHub，然后打开你网站的那个仓库的设置的Pages栏&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 219; 
+			flex-basis: 526px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo3/3.jpg&#34; data-size=&#34;1785x814&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo3/3.jpg&#34;
+			width=&#34;1785&#34;
+			height=&#34;814&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo3/3_hu5c77afebe1a91ced3892922795576793_156718_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/hugo3/3_hu5c77afebe1a91ced3892922795576793_156718_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;别怕，有图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;别怕，有图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你找不到仓库了,你可以去下面的评论区发条评论，然后点击你的用户名，你的个人界面就打开了~~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后在上图中的Custom domain下面的框中填写你之前配置好的域名&lt;/p&gt;
+&lt;p&gt;点击Save,等它检测完成&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;看到上面有一行绿色的英文&lt;code&gt;Your site is published at https://你的域名/&lt;/code&gt;就可以吃西瓜啦~(≧▽≦)/~&lt;/p&gt;
+&lt;p&gt;之后别人访问你的域名就可以打开你自己网站了&lt;/p&gt;
+&lt;iframe src=&#34;1.gif&#34; width=&#34;300&#34; height=&#34;200&#34; frameBorder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;h2 id=&#34;cloudflare免费cdn配置&#34;&gt;CloudFlare免费CDN配置&lt;/h2&gt;
+&lt;p&gt;进入CloudFlare&lt;a class=&#34;link&#34; href=&#34;https://www.cloudflare.com/plans/#overview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;，选择免费的那个计划&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 342; 
+			flex-basis: 822px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo3/1.png&#34; data-size=&#34;1831x534&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo3/1.png&#34;
+			width=&#34;1831&#34;
+			height=&#34;534&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo3/1_huf4fdd880d74a9a55ab818154c6cf512b_88266_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/hugo3/1_huf4fdd880d74a9a55ab818154c6cf512b_88266_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;好像过于可爱了些= v =&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;好像过于可爱了些= v =&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后就是日常的注册/登录操作&lt;/p&gt;
+&lt;p&gt;进入你个人用户的面板-&amp;gt;Websites(网站)了之后,点击Add A Site(添加网站)&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 1272; 
+			flex-basis: 3052px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo3/5.jpg&#34; data-size=&#34;1908x150&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo3/5.jpg&#34;
+			width=&#34;1908&#34;
+			height=&#34;150&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo3/5_hu8b29d78f6daeca86bb3c824bc3a0850a_30993_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/hugo3/5_hu8b29d78f6daeca86bb3c824bc3a0850a_30993_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后输入你的域名,点击Add Site(添加网站)&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 270; 
+			flex-basis: 649px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/hugo3/6.jpg&#34; data-size=&#34;1447x535&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/hugo3/6.jpg&#34;
+			width=&#34;1447&#34;
+			height=&#34;535&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/hugo3/6_hu8376e501262425e4887e7ae4ff3a573b_83941_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/hugo3/6_hu8376e501262425e4887e7ae4ff3a573b_83941_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;之后选择Free(免费)的那个计划，&lt;/p&gt;
+&lt;p&gt;接下来的操作有了CloudFlare官方详细的提示就是有手就行的事情啦&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>网安猫猫资源库</title>
         <link>https://kira-pgr.github.io/posts/tg/</link>
         <pubDate>Fri, 13 May 2022 03:44:40 -0400</pubDate>

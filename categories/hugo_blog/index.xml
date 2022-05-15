@@ -8,6 +8,37 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 29 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/hugo_blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>GitHub Pages配置自定义域名以及CDN</title>
+      <link>https://kira-pgr.github.io/posts/hugo3/</link>
+      <pubDate>Sun, 15 May 2022 02:19:13 -0400</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/hugo3/</guid>
+      <description>GitHub Pages配置自定义域名以及CDN 嘶~~,最近在折腾博客
+刚买了个域名，由于没有服务器,就把域名绑定到我博客上来了
+嘛= =,闲话不多说，直接上做法&amp;hellip;
+配置自定义域名  如果你没有域名，且是白嫖党 (而且是经费不足的那种) ，下面这一段你可以绕过了
+ 前置准备   一个域名(需要购买)
+这里推荐几个买域名的地方
+  腾讯云DNSPod
+  优点:价格第一年便宜，能低至7-8元的
+  缺点:国内的要实名，而且实名审核要一定时间
+P.S. 像我们这种个人建议别买.cn域名，不是说.cn域名不好，而是因为有可能通过whois查出你的一些个人信息
+我相信看到这里一些人肯定想去查了，先说好了，要是出什么问题我可不负责XD~~
+    GoDaddy
+  优点:国外的不需要实名
+  缺点:价格相对贵一点,不支持微信支付
+      一个在GitHub Pages部署好的网站
+Tip:要是没有的话可以按照我之前的文章来搭一个个人网站
+  快乐de配置过程 DNS解析方面 首先打开你域名DNS解析记录的控制台
+ 没有链接提供! 各个平台控制台的位置不一样 ;&amp;lt;
+  DNS解析控制台实例 
+然后新建一条CNAME记录
+ CNAME类似于你域名的一个别名,如果域名A建立了一条CNAME记录指向域名B,你请求A就会去请求B
+  CNAME记录 
+现在我们看向上图中右边两个框框，又到了做填空的时候呐!</description>
+    </item>
+    
+    <item>
       <title>Hugo Stack主题简单美化</title>
       <link>https://kira-pgr.github.io/posts/hugo2/</link>
       <pubDate>Wed, 09 Feb 2022 04:35:37 -0500</pubDate>
