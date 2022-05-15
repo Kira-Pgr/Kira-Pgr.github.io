@@ -145,7 +145,7 @@
 &lt;p&gt;之后别人访问你的域名就可以打开你自己网站了&lt;/p&gt;
 &lt;div class=&#34;wrap&#34;&gt;
         &lt;div class=&#34;iframe-container&#34;&gt;
-            &lt;iframe height=498 width=510 src=&#34;1.gif&#34; frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;
+            &lt;iframe src=&#34;1.gif&#34; frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;h2 id=&#34;cloudflare免费cdn配置&#34;&gt;CloudFlare免费CDN配置&lt;/h2&gt;
