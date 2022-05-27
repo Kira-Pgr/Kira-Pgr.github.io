@@ -6,7 +6,124 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 15 May 2022 02:19:13 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 27 May 2022 14:45:16 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Kali Gnome桌面环境の调整&amp;美化</title>
+        <link>https://kira-pgr.github.io/posts/gnome/</link>
+        <pubDate>Fri, 27 May 2022 14:45:16 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/gnome/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/gnome/cover.jpg" alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化" /&gt;&lt;h1 id=&#34;kali-gnome桌面环境の调整美化&#34;&gt;Kali Gnome桌面环境の调整&amp;amp;美化&lt;/h1&gt;
+&lt;p&gt;最近刚把kali桌面环境从xfce迁移到了gnome,主要是看中了gnome的&amp;quot;任务栏&amp;quot;美观这一点,&lt;/p&gt;
+&lt;p&gt;不过这一换貌似有点后悔，不得不说kali还是默认的xfce舒适= =&lt;/p&gt;
+&lt;p&gt;gnome不仅占用更多的资源，而且在GUI方面可供自定义的地方也少了很多:(&lt;/p&gt;
+&lt;p&gt;不过既然已经干了这事，我也懒得再换回来了((&lt;/p&gt;
+&lt;p&gt;那就好好调教一下gnome吧awa&lt;/p&gt;
+&lt;h2 id=&#34;切换默认终端&#34;&gt;切换默认终端&lt;/h2&gt;
+&lt;p&gt;个人感觉gnome默认的terminal很鸡肋，可以&lt;del&gt;花里胡哨&lt;/del&gt;个性化的地方比较少，&lt;/p&gt;
+&lt;p&gt;于是我决定做一个&lt;del&gt;感天动地の大事&lt;/del&gt;:把默认终端换成xfce默认的&lt;strong&gt;qterminal&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;先安装qterminal&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install qterminal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后配置默认终端&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --config x-terminal-emulator
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 344; 
+			flex-basis: 826px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/gnome/1.jpg&#34; data-size=&#34;789x229&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/gnome/1.jpg&#34;
+			width=&#34;789&#34;
+			height=&#34;229&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/gnome/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/gnome/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;列表示例,本图里并没有qterminal,大家自己实践时自己探索哦&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;列表示例,本图里并没有qterminal,大家自己实践时自己探索哦&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;调整任务栏位置&#34;&gt;调整&amp;quot;任务栏&amp;quot;位置&lt;/h2&gt;
+&lt;p&gt;找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =&lt;/p&gt;
+&lt;p&gt;嘛&amp;hellip;.原来是只能用命令行= =&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gsettings &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; org.gnome.shell.extensions.dash-to-dock dock-position 位置
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;关于这个位置支持的值说明:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BOTTOM&lt;/strong&gt; -&amp;gt; 底部&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LEFT&lt;/strong&gt; -&amp;gt; 靠左&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RIGHT&lt;/strong&gt; -&amp;gt; 靠右&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TOP&lt;/strong&gt; -&amp;gt; 顶部&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;用户头像设置排坑&#34;&gt;用户头像设置排坑&lt;/h2&gt;
+&lt;p&gt;因为Kali的安全设置(很有可能是权限)问题，&lt;/p&gt;
+&lt;p&gt;使本来很愉快的换头像变成一件非常狗的事情&lt;/p&gt;
+&lt;p&gt;因为不能走GUI快捷通过点点点换一个好看的头像，&lt;/p&gt;
+&lt;p&gt;所以只能上配置文件了;(&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi /var/lib/AccountsService/users/你的用户名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按&lt;code&gt;i&lt;/code&gt;进入编辑模式对配置文件进行修改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;User&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;Icon&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;你图片的绝对路径 &lt;span class=&#34;c1&#34;&gt;#绝对路径就是从/开始的那个&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;Language&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;XSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;SystemAccount&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按&lt;code&gt;Esc&lt;/code&gt;并输入&lt;code&gt;:wq&lt;/code&gt;,再&lt;code&gt;Enter&lt;/code&gt;保存并退出&lt;/p&gt;
+&lt;p&gt;然后再进入你图片所在的目录，调整下改图片文件的权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod &lt;span class=&#34;m&#34;&gt;777&lt;/span&gt; 你的图片
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再退出登陆，就可以看到你更改的头像啦~~&lt;/p&gt;
+&lt;h2 id=&#34;调教后整体效果&#34;&gt;调教后整体效果&lt;/h2&gt;
+&lt;p&gt;废话不说，直接上图0.0&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 190; 
+			flex-basis: 457px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/gnome/1.png&#34; data-size=&#34;1600x839&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/gnome/1.png&#34;
+			width=&#34;1600&#34;
+			height=&#34;839&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/gnome/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/posts/gnome/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;桌面&amp;#43;终端&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;桌面+终端&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 191; 
+			flex-basis: 459px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/gnome/2.jpg&#34; data-size=&#34;1600x835&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/gnome/2.jpg&#34;
+			width=&#34;1600&#34;
+			height=&#34;835&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/gnome/2_hud70b774ae600729d49d8899bde48f9da_52198_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/gnome/2_hud70b774ae600729d49d8899bde48f9da_52198_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;锁屏界面&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;锁屏界面&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.k4nz.com/ad7919e239407320e4c7db00fe28b785/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;「GNOME」- 登录界面，GDM，GNOME Display Manager - K4NZ BLOG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.yisu.com/zixun/461030.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;怎么在Ubuntu中安装多个终端以及更改默认终端 - 系统运维 - 亿速云&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://technoresult.com/move-launcher-bar-to-the-bottom-right-using-terminal-in-ubuntu/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Move Launcher Bar to the Bottom/Right using Terminal in Ubuntu? - Technoresult&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>GitHub Pages配置自定义域名以及CDN</title>
         <link>https://kira-pgr.github.io/posts/hugo3/</link>
         <pubDate>Sun, 15 May 2022 02:19:13 -0400</pubDate>
@@ -143,9 +260,7 @@
 &lt;p&gt;点击Save,等它检测完成&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;看到上面有一行绿色的英文&lt;code&gt;Your site is published at https://你的域名/&lt;/code&gt;就可以吃西瓜啦~(≧▽≦)/~&lt;/p&gt;
 &lt;p&gt;之后别人访问你的域名就可以打开你自己网站了&lt;/p&gt;
-&lt;div style=&#34;overflow: hidden;position: relative; height:200px;&#34;  &gt;
-      &lt;iframe class=&#34;&#34; rel=&#34;nofollow&#34; style=&#34;height: 800px; width:1400px; transform: scale(0.294167) !important; transform-origin: 0px 0px;&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; 
-      src=&#34;1.gif&#34;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;iframe src=&#34;1.gif&#34; frameBorder=&#34;0&#34;&gt;&lt;/iframe&gt;
 &lt;h2 id=&#34;cloudflare免费cdn配置&#34;&gt;CloudFlare免费CDN配置&lt;/h2&gt;
 &lt;p&gt;进入CloudFlare&lt;a class=&#34;link&#34; href=&#34;https://www.cloudflare.com/plans/#overview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网&lt;/a&gt;，选择免费的那个计划&lt;/p&gt;

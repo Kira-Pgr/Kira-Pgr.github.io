@@ -8,6 +8,40 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Kali Gnome桌面环境の调整&amp;美化</title>
+      <link>https://kira-pgr.github.io/posts/gnome/</link>
+      <pubDate>Fri, 27 May 2022 14:45:16 +0800</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/gnome/</guid>
+      <description>Kali Gnome桌面环境の调整&amp;amp;美化 最近刚把kali桌面环境从xfce迁移到了gnome,主要是看中了gnome的&amp;quot;任务栏&amp;quot;美观这一点,
+不过这一换貌似有点后悔，不得不说kali还是默认的xfce舒适= =
+gnome不仅占用更多的资源，而且在GUI方面可供自定义的地方也少了很多:(
+不过既然已经干了这事，我也懒得再换回来了((
+那就好好调教一下gnome吧awa
+切换默认终端 个人感觉gnome默认的terminal很鸡肋，可以花里胡哨个性化的地方比较少，
+于是我决定做一个感天动地の大事:把默认终端换成xfce默认的qterminal
+先安装qterminal
+sudo apt install qterminal 然后配置默认终端
+sudo update-alternatives --config x-terminal-emulator  输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵
+  列表示例,本图里并没有qterminal,大家自己实践时自己探索哦 
+调整&amp;quot;任务栏&amp;quot;位置 找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =
+嘛&amp;hellip;.原来是只能用命令行= =
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 位置  关于这个位置支持的值说明:
+BOTTOM -&amp;gt; 底部
+LEFT -&amp;gt; 靠左
+RIGHT -&amp;gt; 靠右
+TOP -&amp;gt; 顶部
+ 用户头像设置排坑 因为Kali的安全设置(很有可能是权限)问题，
+使本来很愉快的换头像变成一件非常狗的事情
+因为不能走GUI快捷通过点点点换一个好看的头像，
+所以只能上配置文件了;(
+sudo vi /var/lib/AccountsService/users/你的用户名 按i进入编辑模式对配置文件进行修改
+[User] Icon=你图片的绝对路径 #绝对路径就是从/开始的那个 Language= XSession= SystemAccount=true 按Esc并输入:wq,再Enter保存并退出
+然后再进入你图片所在的目录，调整下改图片文件的权限
+sudo chmod 777 你的图片 然后再退出登陆，就可以看到你更改的头像啦~~</description>
+    </item>
+    
+    <item>
       <title>Debian Linux下安装虚拟机软件</title>
       <link>https://kira-pgr.github.io/posts/vmm/</link>
       <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>

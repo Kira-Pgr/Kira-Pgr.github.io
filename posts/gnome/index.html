@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Gnome折腾日记'><title>Kali Gnome桌面环境の调整&amp;美化</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/posts/gnome/'>
+
+<link rel="stylesheet" href="/scss/style.min.4df26095a027ead9be46f67fb83b44e98b34c87d5e891c2bdfb3bfce96b9d54e.css"><meta property='og:title' content='Kali Gnome桌面环境の调整&amp;美化'>
+<meta property='og:description' content='Gnome折腾日记'>
+<meta property='og:url' content='https://kira-pgr.github.io/posts/gnome/'>
+<meta property='og:site_name' content='KiraPGR&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2022-05-27T14:45:16&#43;08:00'/><meta property='article:modified_time' content='2022-05-27T14:45:16&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/posts/gnome/cover.jpg' />
+<meta name="twitter:title" content="Kali Gnome桌面环境の调整&amp;美化">
+<meta name="twitter:description" content="Gnome折腾日记"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/posts/gnome/cover.jpg' />
+    <link rel="shortcut icon" href="/img/favicon.png" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="/" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/posts/gnome/">
+                <img src="/posts/gnome/cover_hu81a9c413a1c8e188446087e0ced1bda4_3605489_800x0_resize_q75_box.jpg"
+                        srcset="/posts/gnome/cover_hu81a9c413a1c8e188446087e0ced1bda4_3605489_800x0_resize_q75_box.jpg 800w, /posts/gnome/cover_hu81a9c413a1c8e188446087e0ced1bda4_3605489_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" style="background-color: #98bbd0; color: #fff;">
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/posts/gnome/">Kali Gnome桌面环境の调整&amp;美化</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        Gnome折腾日记
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 27, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="kali-gnome桌面环境の调整美化">Kali Gnome桌面环境の调整&amp;美化</h1>
+<p>最近刚把kali桌面环境从xfce迁移到了gnome,主要是看中了gnome的&quot;任务栏&quot;美观这一点,</p>
+<p>不过这一换貌似有点后悔，不得不说kali还是默认的xfce舒适= =</p>
+<p>gnome不仅占用更多的资源，而且在GUI方面可供自定义的地方也少了很多:(</p>
+<p>不过既然已经干了这事，我也懒得再换回来了((</p>
+<p>那就好好调教一下gnome吧awa</p>
+<h2 id="切换默认终端">切换默认终端</h2>
+<p>个人感觉gnome默认的terminal很鸡肋，可以<del>花里胡哨</del>个性化的地方比较少，</p>
+<p>于是我决定做一个<del>感天动地の大事</del>:把默认终端换成xfce默认的<strong>qterminal</strong></p>
+<p>先安装qterminal</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install qterminal
+</span></span></code></pre></div><p>然后配置默认终端</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo update-alternatives --config x-terminal-emulator
+</span></span></code></pre></div><blockquote>
+<p>输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵</p>
+</blockquote>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 344; 
+			flex-basis: 826px"
+	>
+	<a href="/posts/gnome/1.jpg" data-size="789x229">
+		<img src="/posts/gnome/1.jpg"
+			width="789"
+			height="229"
+			srcset="/posts/gnome/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_480x0_resize_q75_box.jpg 480w, /posts/gnome/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="列表示例,本图里并没有qterminal,大家自己实践时自己探索哦">
+	</a>
+	
+	<figcaption>列表示例,本图里并没有qterminal,大家自己实践时自己探索哦</figcaption>
+	
+</figure></p>
+<h2 id="调整任务栏位置">调整&quot;任务栏&quot;位置</h2>
+<p>找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =</p>
+<p>嘛&hellip;.原来是只能用命令行= =</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gsettings <span class="nb">set</span> org.gnome.shell.extensions.dash-to-dock dock-position 位置
+</span></span></code></pre></div><blockquote>
+<p>关于这个位置支持的值说明:</p>
+<p><strong>BOTTOM</strong> -&gt; 底部</p>
+<p><strong>LEFT</strong> -&gt; 靠左</p>
+<p><strong>RIGHT</strong> -&gt; 靠右</p>
+<p><strong>TOP</strong> -&gt; 顶部</p>
+</blockquote>
+<h2 id="用户头像设置排坑">用户头像设置排坑</h2>
+<p>因为Kali的安全设置(很有可能是权限)问题，</p>
+<p>使本来很愉快的换头像变成一件非常狗的事情</p>
+<p>因为不能走GUI快捷通过点点点换一个好看的头像，</p>
+<p>所以只能上配置文件了;(</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo vi /var/lib/AccountsService/users/你的用户名
+</span></span></code></pre></div><p>按<code>i</code>进入编辑模式对配置文件进行修改</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>User<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Icon</span><span class="o">=</span>你图片的绝对路径 <span class="c1">#绝对路径就是从/开始的那个</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Language</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">XSession</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SystemAccount</span><span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><p>按<code>Esc</code>并输入<code>:wq</code>,再<code>Enter</code>保存并退出</p>
+<p>然后再进入你图片所在的目录，调整下改图片文件的权限</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo chmod <span class="m">777</span> 你的图片
+</span></span></code></pre></div><p>然后再退出登陆，就可以看到你更改的头像啦~~</p>
+<h2 id="调教后整体效果">调教后整体效果</h2>
+<p>废话不说，直接上图0.0</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 190; 
+			flex-basis: 457px"
+	>
+	<a href="/posts/gnome/1.png" data-size="1600x839">
+		<img src="/posts/gnome/1.png"
+			width="1600"
+			height="839"
+			srcset="/posts/gnome/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_480x0_resize_box_3.png 480w, /posts/gnome/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="桌面&#43;终端">
+	</a>
+	
+	<figcaption>桌面+终端</figcaption>
+	
+</figure></p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 191; 
+			flex-basis: 459px"
+	>
+	<a href="/posts/gnome/2.jpg" data-size="1600x835">
+		<img src="/posts/gnome/2.jpg"
+			width="1600"
+			height="835"
+			srcset="/posts/gnome/2_hud70b774ae600729d49d8899bde48f9da_52198_480x0_resize_q75_box.jpg 480w, /posts/gnome/2_hud70b774ae600729d49d8899bde48f9da_52198_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="锁屏界面">
+	</a>
+	
+	<figcaption>锁屏界面</figcaption>
+	
+</figure></p>
+<h2 id="ref">ref</h2>
+<p><a class="link" href="https://blog.k4nz.com/ad7919e239407320e4c7db00fe28b785/"  target="_blank" rel="noopener"
+    >「GNOME」- 登录界面，GDM，GNOME Display Manager - K4NZ BLOG</a></p>
+<p><a class="link" href="https://www.yisu.com/zixun/461030.html"  target="_blank" rel="noopener"
+    >怎么在Ubuntu中安装多个终端以及更改默认终端 - 系统运维 - 亿速云</a></p>
+<p><a class="link" href="https://technoresult.com/move-launcher-bar-to-the-bottom-right-using-terminal-in-ubuntu/"  target="_blank" rel="noopener"
+    >Move Launcher Bar to the Bottom/Right using Terminal in Ubuntu? - Technoresult</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/posts/vmm/">
+        
+        
+            <div class="article-image">
+                <img src="/posts/vmm/cover.324a51e9dbf43598476ed25b88c6f485_hu5a0bff5542c2b4a2a99ba03dfc469cdd_192581_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Debian Linux下安装虚拟机软件"
+                        
+                        data-hash="md5-MkpR6dv0NZhHbtJbiMb0hQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Debian Linux下安装虚拟机软件</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/posts/ssh/">
+        
+        
+            <div class="article-image">
+                <img src="/posts/ssh/cover.647977cd570640ed52a063e3e1b0d062_hud70aba980b5bea29bd4d9b4092eab599_3305743_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post SSH配置免密码(公私钥认证)登录"
+                        
+                        data-hash="md5-ZHl3zVcGQO1SoGPj4bDQYg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SSH配置免密码(公私钥认证)登录</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+ 
+    
+
+
+<br>
+<br>
+
+    <section class="copyright">
+        <a>&copy; 
+        
+            2020 - 
+        
+        2022  PGR猫猫酱的博客</a>
+    </section>
+<br>
+<span id="span"></span>
+<script type="text/javascript">
+    function runtime(){
+        
+        X = new Date("01/26/2022 8:32:00");
+        Y = new Date();
+        T = (Y.getTime()-X.getTime());
+        M = 24*60*60*1000;
+        a = T/M;
+        A = Math.floor(a);
+        b = (a-A)*24;
+        B = Math.floor(b);
+        c = (b-B)*60;
+        C = Math.floor((b-B)*60);
+        D = Math.floor((c-C)*60);
+        
+        span.innerHTML = "<a>本站已经在线运行: "+A+"天"+B+"小时"+C+"分"+D+"秒</a>"
+    }
+    setInterval(runtime, 1000);
+</script>
+<br>
+<br>
+      <a>共喵喵了3.5k字·共22篇文章</br><span></a>
+</br>
+</br>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#切换默认终端">切换默认终端</a></li>
+    <li><a href="#调整任务栏位置">调整&quot;任务栏&quot;位置</a></li>
+    <li><a href="#用户头像设置排坑">用户头像设置排坑</a></li>
+    <li><a href="#调教后整体效果">调教后整体效果</a></li>
+    <li><a href="#ref">ref</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+
+    </body>
+</html>
