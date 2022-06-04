@@ -17,11 +17,13 @@
 安装最新版本内核头文件/内核镜像 为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们尽量避免使用网上提供的这种方式
 sudo apt-get install linux-headers-`uname -r` 采用以下命令
 sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  如图 
-apt安装VirtualBox apt-get install linux-image-xxx linux-header-xxx VMware Workstation 比起VBox,VMware折腾起来坑真的好多啊= =
+apt安装VirtualBox VMware Workstation 比起VBox,VMware折腾起来坑真的好多啊= =
 不过没办法。。。我还有10多个VMware的虚拟机w(
 安装最新版本内核头文件/内核镜像 第一步和安VBox一样的操作
 sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做 
-安装各种编译器 sudo apt-get install build-essential  P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器</description>
+安装各种编译器 sudo apt-get install build-essential  P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器 
+安装VMware Workstation 去官网下载安装程序
+给可执行权限</description>
     </item>
     
     <item>
