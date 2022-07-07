@@ -8,6 +8,33 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>模拟搭建企业自动化运维体系</title>
+      <link>https://kira-pgr.github.io/posts/enterprise/</link>
+      <pubDate>Thu, 07 Jul 2022 17:20:00 +0800</pubDate>
+      
+      <guid>https://kira-pgr.github.io/posts/enterprise/</guid>
+      <description>NanoSec&amp;ndash;模拟企业网络搭建 Part 1&amp;ndash;规划 由于实验条件限制，共准备5台机器来测试:
+  Jenkins
+  GitLab + NFS
+  Database
+  Web Servers
+  Nginx_Reverse_Proxy
+   其中机器3,4,5中服务均用Docker进行部署，且用Jenkins进行自动化安装Docker环境, 启动并配置容器;)
+  一个画的很狗的拓扑图 
+最后实现效果预测:访问Nginx反向代理可以访问到真实Web服务器的页面，Web服务器能正常访问数据库，代码以及部分配置文件使用GitLab储存，数据定时备份到备份服务器
+Part 2&amp;ndash;实验过程  本实验使用系统均为CentOS和Rocky Linux(新一代的CenOS ?)
+ 准备工作 首先配置好5台机器的IP
+ Jenkins 192.168.245.137
+GitLab+NFS 192.168.245.129
+WebServers 192.168.245.149
+DataBase 192.168.245.150
+Nginx反向代理 192.168.245.151
+ GitLab安装 由于直接配置GitLab时我本地各种报错姿势(
+就采用Docker配置了，其实Docker配置反倒方便一些= =
+sudo docker run --detach \  --hostname IP or Domain \  --env GITLAB_OMNIBUS_CONFIG=&amp;#34;external_url &amp;#39;http://IP or Domain/&amp;#39;; gitlab_rails[&amp;#39;lfs_enabled&amp;#39;] = true;&amp;#34; \  --publish 443:443 --publish 80:80 --publish 2222:22 \  --name gitlab \  --restart always \  --volume $GITLAB_HOME/config:/etc/gitlab \  --volume $GITLAB_HOME/logs:/var/log/gitlab \  --volume $GITLAB_HOME/data:/var/opt/gitlab \  --shm-size 256m \  gitlab/gitlab-ee:latest然后就直接在浏览器访问该机器IP并按照提示配置，这里不再过多赘述</description>
+    </item>
+    
+    <item>
       <title>Kali Gnome桌面环境の调整&amp;美化</title>
       <link>https://kira-pgr.github.io/posts/gnome/</link>
       <pubDate>Fri, 27 May 2022 14:45:16 +0800</pubDate>

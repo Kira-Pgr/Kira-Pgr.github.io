@@ -6,7 +6,1255 @@
         <description>Recent content on KiraPGR&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 27 May 2022 14:45:16 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 07 Jul 2022 17:20:00 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>模拟搭建企业自动化运维体系</title>
+        <link>https://kira-pgr.github.io/posts/enterprise/</link>
+        <pubDate>Thu, 07 Jul 2022 17:20:00 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/posts/enterprise/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/posts/enterprise/cover.jpg" alt="Featured image of post 模拟搭建企业自动化运维体系" /&gt;&lt;h1 id=&#34;nanosec--模拟企业网络搭建&#34;&gt;NanoSec&amp;ndash;模拟企业网络搭建&lt;/h1&gt;
+&lt;h2 id=&#34;part-1--规划&#34;&gt;Part 1&amp;ndash;规划&lt;/h2&gt;
+&lt;p&gt;由于实验条件限制，共准备5台机器来测试:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Jenkins&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GitLab + NFS&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Database&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Web Servers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Nginx_Reverse_Proxy&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其中机器3,4,5中服务均用Docker进行部署，且用Jenkins进行自动化安装Docker环境, 启动并配置容器;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 212; 
+			flex-basis: 510px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/TP.jpg&#34; data-size=&#34;1012x476&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/TP.jpg&#34;
+			width=&#34;1012&#34;
+			height=&#34;476&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;一个画的很狗的拓扑图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;一个画的很狗的拓扑图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;最后实现效果预测:访问Nginx反向代理可以访问到真实Web服务器的页面，Web服务器能正常访问数据库，代码以及部分配置文件使用GitLab储存，数据定时备份到备份服务器&lt;/p&gt;
+&lt;h2 id=&#34;part-2--实验过程&#34;&gt;Part 2&amp;ndash;实验过程&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本实验使用系统均为CentOS和Rocky Linux(新一代的CenOS ?)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;准备工作&#34;&gt;准备工作&lt;/h3&gt;
+&lt;p&gt;首先配置好5台机器的IP&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jenkins                   192.168.245.137&lt;/p&gt;
+&lt;p&gt;GitLab+NFS           192.168.245.129&lt;/p&gt;
+&lt;p&gt;WebServers           192.168.245.149&lt;/p&gt;
+&lt;p&gt;DataBase               192.168.245.150&lt;/p&gt;
+&lt;p&gt;Nginx反向代理      192.168.245.151&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;gitlab安装&#34;&gt;GitLab安装&lt;/h4&gt;
+&lt;p&gt;由于直接配置GitLab时我本地各种报错姿势(&lt;/p&gt;
+&lt;p&gt;就采用Docker配置了，其实Docker配置反倒方便一些= =&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo docker run --detach &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --hostname IP or Domain &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --env &lt;span class=&#34;nv&#34;&gt;GITLAB_OMNIBUS_CONFIG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;external_url &amp;#39;http://IP or Domain/&amp;#39;; gitlab_rails[&amp;#39;lfs_enabled&amp;#39;] = true;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --publish 443:443 --publish 80:80 --publish 2222:22 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --name gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --restart always &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --volume &lt;span class=&#34;nv&#34;&gt;$GITLAB_HOME&lt;/span&gt;/config:/etc/gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --volume &lt;span class=&#34;nv&#34;&gt;$GITLAB_HOME&lt;/span&gt;/logs:/var/log/gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --volume &lt;span class=&#34;nv&#34;&gt;$GITLAB_HOME&lt;/span&gt;/data:/var/opt/gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --shm-size 256m &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  gitlab/gitlab-ee:latest&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就直接在浏览器访问该机器IP并按照提示配置，这里不再过多赘述&lt;/p&gt;
+&lt;p&gt;至于使用方法嘛。。。和&lt;del&gt;世界上最大的同性交友平台&lt;/del&gt;GitHub差不多&lt;/p&gt;
+&lt;h4 id=&#34;jenkins安装&#34;&gt;Jenkins安装&lt;/h4&gt;
+&lt;p&gt;由于Jenkins依赖Java环境，先安装Java&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install java-11-openjdk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来导入Jenkins官方源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;导入Jenkins密钥&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;终于可以安装啦uwu&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum install jenkins
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完之后可不要忘记启动并启用服务哦 ;D&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 启动服务:使服务立刻运行起来，启用服务:使服务开机自启&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl start jenkins
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; jenkins
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后即可在&lt;code&gt;ip:8080&lt;/code&gt;访问Jenkins了喵&lt;/p&gt;
+&lt;h4 id=&#34;jenkins配置&#34;&gt;Jenkins配置&lt;/h4&gt;
+&lt;p&gt;在自定义Jenkins那步选择&lt;strong&gt;安装推荐的插件&lt;/strong&gt;，这样你之后可以少很多折腾&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 169; 
+			flex-basis: 407px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/Plug.jpg&#34; data-size=&#34;789x465&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/Plug.jpg&#34;
+			width=&#34;789&#34;
+			height=&#34;465&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后就是安装其他配置自动化需要的插件(Ansible, SSH)了&lt;/p&gt;
+&lt;p&gt;去到&lt;code&gt;http://ip:8080/pluginManager/&lt;/code&gt;(即&lt;code&gt;Manage Jenkins&lt;/code&gt;下的&lt;code&gt;Plugin Manager&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;然后在&lt;code&gt;Available&lt;/code&gt;一栏搜索SSH和Jenkins&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个小提醒:SSH插件存在已知漏洞，从&lt;strong&gt;安全角度考虑生产环境请慎用&lt;/strong&gt;(指可以找到这些漏洞的临时缓解方案)，在实验里我偷个小懒&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 204; 
+			flex-basis: 489px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/4.jpg&#34; data-size=&#34;1375x674&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/4.jpg&#34;
+			width=&#34;1375&#34;
+			height=&#34;674&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/4_hu8814786f0602457dd08f41b6a29edb65_61296_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/4_hu8814786f0602457dd08f41b6a29edb65_61296_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;步骤如图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;步骤如图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;要是想要节省时间，选中两个插件之后选择&lt;code&gt;Install without restart&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 169; 
+			flex-basis: 407px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/5.jpg&#34; data-size=&#34;725x427&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/5.jpg&#34;
+			width=&#34;725&#34;
+			height=&#34;427&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;直接上图吧= =&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;直接上图吧= =&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;安装完成之后该配置各个插件了uwu&lt;/p&gt;
+&lt;h5 id=&#34;ssh&#34;&gt;SSH&lt;/h5&gt;
+&lt;p&gt;去到&lt;code&gt;http://ip:8080/configure&lt;/code&gt;或在网页点击&lt;code&gt;Manage Jenkins&lt;/code&gt; &amp;ndash;&amp;gt;&lt;code&gt;Configure System&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在这一界面下滑直到看到&lt;code&gt;SSH remote hosts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 327; 
+			flex-basis: 786px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/6.jpg&#34; data-size=&#34;439x134&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/6.jpg&#34;
+			width=&#34;439&#34;
+			height=&#34;134&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/6_hu4cf2abb05ac5d7dd5144943631646021_4848_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/6_hu4cf2abb05ac5d7dd5144943631646021_4848_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后点击下方的&lt;code&gt;Add&lt;/code&gt;进行配置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Hostname&lt;/code&gt;:主机名，一般填写目标主机ip(写一个)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Port&lt;/code&gt;：ssh端口，默认22&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Credentials&lt;/code&gt;：认证信息，即为通过ssh远程连接目标主机的用户名、密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;这里注意，如果是第一次使用，需要添加新的认证信息&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 261; 
+			flex-basis: 626px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/7.jpg&#34; data-size=&#34;483x185&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/7.jpg&#34;
+			width=&#34;483&#34;
+			height=&#34;185&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/7_hudca93671f7d3466b8db333519b2c3971_15723_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/7_hudca93671f7d3466b8db333519b2c3971_15723_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;还等什么??点Add呀!&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;还等什么??点Add呀!&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果你想使用用户名，密码来认证的化，选择&lt;code&gt;Username with password&lt;/code&gt;,然后填好你的用户名，密码&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意，你要用自动化配置的几台机器的账号密码须一样&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 234; 
+			flex-basis: 562px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/8.jpg&#34; data-size=&#34;1410x602&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/8.jpg&#34;
+			width=&#34;1410&#34;
+			height=&#34;602&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;然后点下方的&lt;code&gt;check connection&lt;/code&gt;检查连接,如果看到提示&lt;code&gt;Successfull connection&lt;/code&gt;即为连接成功，然后点击&lt;code&gt;Apply&lt;/code&gt;- -&amp;gt;&lt;code&gt;Save&lt;/code&gt;即可完成ssh配置&lt;/p&gt;
+&lt;h5 id=&#34;ansible&#34;&gt;Ansible&lt;/h5&gt;
+&lt;p&gt;如果要使用Ansible插件，你必须机器(注意是装有Jenkins的机器)上安装有Ansible&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip:Ansible是一个批量自动化管理多台机器的工具&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ansible在epel源里才有，所以先安装epel源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install epel-release
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装Ansible&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install ansible
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;下面配置Ansible插件&lt;/p&gt;
+&lt;p&gt;去到&lt;code&gt;http://ip:8080/configureTools/&lt;/code&gt;，或者网页上&lt;code&gt;Manage Jenkins&lt;/code&gt; - -&amp;gt; &lt;code&gt;Global Tool Configuration&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;下划到&lt;code&gt;Ansible&lt;/code&gt;区域，点击&lt;code&gt;Add Ansible&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 203; 
+			flex-basis: 488px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/9.jpg&#34; data-size=&#34;389x191&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/9.jpg&#34;
+			width=&#34;389&#34;
+			height=&#34;191&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/9_hu131514d8c0f82ef766da13f19e39aaed_7498_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/9_hu131514d8c0f82ef766da13f19e39aaed_7498_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;分别添加&lt;code&gt;ansible&lt;/code&gt;和&lt;code&gt;ansible-playbook&lt;/code&gt;,默认他们的路径都安装在&lt;code&gt;/usr/bin&lt;/code&gt;下，如果不放心可以用&lt;code&gt;which&lt;/code&gt;命令检查&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;which ansible
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;which ansible-playbook
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;注意这里的安装路径写到可执行文件所在目录&lt;/p&gt;
+&lt;p&gt;比如说我的ansible是&lt;code&gt;/usr/bin/ansible&lt;/code&gt;,我只需要填&lt;code&gt;/usr/bin&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 270; 
+			flex-basis: 648px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/10-1.jpg&#34; data-size=&#34;1300x481&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/10-1.jpg&#34;
+			width=&#34;1300&#34;
+			height=&#34;481&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;ansible&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;ansible&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 269; 
+			flex-basis: 647px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/10-2.jpg&#34; data-size=&#34;1300x482&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/10-2.jpg&#34;
+			width=&#34;1300&#34;
+			height=&#34;482&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;ansible-playbook&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;ansible-playbook&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Ansible有个小坑，就是它不会说&amp;quot;是&amp;quot;&lt;/p&gt;
+&lt;p&gt;为什么这么说捏&lt;/p&gt;
+&lt;p&gt;因为当SSH询问是否需要将新的主机添加到&lt;code&gt;known_hosts&lt;/code&gt;时Ansible无法回应,那就只有报错辣;(&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 264; 
+			flex-basis: 633px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/17.jpg&#34; data-size=&#34;1394x528&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/17.jpg&#34;
+			width=&#34;1394&#34;
+			height=&#34;528&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/17_hu9a6a7a35b55e21213a89272e0177d619_77850_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/17_hu9a6a7a35b55e21213a89272e0177d619_77850_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;呜呜呜，Ansible好可怜  雾)&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;呜呜呜，Ansible好可怜  雾)&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;嘛= =那就帮帮Ansible吧，让它省去烦人的说&amp;quot;是&amp;quot;的步骤&lt;/p&gt;
+&lt;p&gt;在装有&lt;code&gt;Jenkins&lt;/code&gt;和&lt;code&gt;Ansible&lt;/code&gt;的机器上完成:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi /etc/ssh/ssh_config
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后将&lt;code&gt;/etc/ssh/ssh_config&lt;/code&gt; 内容中的&lt;code&gt;StrictHostKeyChecking&lt;/code&gt; 值为&lt;code&gt;no&lt;/code&gt; ,让机器自动接受证书&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意去掉这一行前的注释符&lt;code&gt;#&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 185; 
+			flex-basis: 444px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/18.jpg&#34; data-size=&#34;1494x807&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/18.jpg&#34;
+			width=&#34;1494&#34;
+			height=&#34;807&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/18_hu880132dc73536d7a0effdb0f42b30610_121846_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/18_hu880132dc73536d7a0effdb0f42b30610_121846_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;有图有真相&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;有图有真相&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;别忘了关键的重启一步喵~~&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl restart sshd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h4 id=&#34;nfs安装和配置&#34;&gt;NFS安装和配置&lt;/h4&gt;
+&lt;h5 id=&#34;安装&#34;&gt;安装&lt;/h5&gt;
+&lt;p&gt;由于&lt;code&gt;rpc-bind&lt;/code&gt;是NFS的依赖项，必须先安装&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dnf -y install rpcbind nfs-utils
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后启动&lt;code&gt;rpc-blind&lt;/code&gt;和NFS服务(&lt;code&gt;rpc-bind&lt;/code&gt;服务一定先启动)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl start rpcbind
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl start nfs-server
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; rpcbind
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nfs-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;配置&#34;&gt;配置&lt;/h5&gt;
+&lt;p&gt;由于我们的NFS是用来备份数据库的，所以建一个名为DB_Backup的备份文件夹&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir /DB_Backup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后修改配置文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi /etc/exports
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输入如下内容:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/DB_Backup 192.168.245.1/24&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;sync,ro&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 192.168.245.150&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;sync,rw,no_root_squash&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至于配置文件里里东西的含义，可以看下文&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;最前面的是用来存放备份文件的目录绝对路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;地址可以使用完整IP或网段，例如10.0.0.8或10.0.0.0/24，10.0.0.0/255.255.255.0当然也可以地址可以使用主机名，DNS解析的和本地/etc/hosts解析的都行，支持通配符，例如：*.nanosec.site&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关于括号里的权限设置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;rw：read-write，可读写;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ro：read-only，只读;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;sync：文件同时写入硬盘和内存;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;async：文件暂存于内存，而不是直接写入硬盘;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;no_root_squash：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，也拥有root权限;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;root_squash：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，拥有匿名用户权限，通常他将使用nobody或nfsnobody身份;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;all_squash：不论NFS客户端连接服务端时使用什么用户，对服务端分享的目录来说都是拥有匿名用户权限;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;anonuid：匿名用户的UID值，通常是nobody或nfsnobody，可以在此处自行设定;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;anongid：匿名用户的GID值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;出于安全角度角度，只给192.168.245.150即存放数据库的机器写权限&lt;/p&gt;
+&lt;p&gt;当然，no_root_squash参数最好也不要使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;编辑配置文件完成后，需要运行&lt;code&gt;exportfs&lt;/code&gt;重新发布所共享的目录&lt;/p&gt;
+&lt;p&gt;当然也可以重启服务，不过记得先重启&lt;code&gt;rpcbind&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实现自动化安装环境&#34;&gt;实现自动化安装环境&lt;/h3&gt;
+&lt;p&gt;我们梳理一下思路，我们现在大概可以想到两种方案&lt;/p&gt;
+&lt;h4 id=&#34;方案猜想&#34;&gt;方案猜想&lt;/h4&gt;
+&lt;p&gt;第一种就是直接用SSH插件:不断添加构建步骤在不同机器上进行安装&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 119; 
+			flex-basis: 285px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/11.jpg&#34; data-size=&#34;594x499&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/11.jpg&#34;
+			width=&#34;594&#34;
+			height=&#34;499&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 212; 
+			flex-basis: 509px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/12.jpg&#34; data-size=&#34;1247x587&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/12.jpg&#34;
+			width=&#34;1247&#34;
+			height=&#34;587&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;不得不说，是不是又那么亿点烦&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;不得不说，是不是又那么亿点烦&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这个方法想想是没什么问题，但绝对不是适合我们这种懒人的哒= =&lt;/p&gt;
+&lt;p&gt;因为一旦设备数足够多，工作量就会巨大，费时费力&lt;/p&gt;
+&lt;p&gt;第二种方法则是通过ansible插件结合Jenkins和ansible来完成批量自动化，用一个构建步骤就可以在n台机器上运行脚本，而我们只需要提供运行的命令和所有机器的ip就好了&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;绝对是效率贼高的偷懒摸鱼小妙招&lt;/del&gt;&lt;/p&gt;
+&lt;h4 id=&#34;开始施工awa&#34;&gt;开始施工awa&lt;/h4&gt;
+&lt;p&gt;ok,现在我们想好了方案，接下来要做的就是新建一个Jenkins项目然后进行配置&lt;/p&gt;
+&lt;p&gt;回到&lt;code&gt;Dashboard&lt;/code&gt;- -&amp;gt;&lt;code&gt;New item&lt;/code&gt;新建一个项目&lt;/p&gt;
+&lt;p&gt;给项目起一个合适的名字(比如说用来安装环境的项目叫做Install),然后选&lt;code&gt;Freestyle Project&lt;/code&gt;,然后再&lt;del&gt;傻瓜式地&lt;/del&gt;点OK&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 195; 
+			flex-basis: 468px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/13.jpg&#34; data-size=&#34;1492x764&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/13.jpg&#34;
+			width=&#34;1492&#34;
+			height=&#34;764&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;你是不是还在想项目叫什么(?&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;你是不是还在想项目叫什么(?&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后&lt;code&gt;Add build step&lt;/code&gt;-&amp;gt;&lt;code&gt;Invoke Ansible Ad-Hoc Command(调用Ansible临时命令)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 121; 
+			flex-basis: 291px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/14.jpg&#34; data-size=&#34;602x496&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/14.jpg&#34;
+			width=&#34;602&#34;
+			height=&#34;496&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/14_hu540c502a602a414f9b0bd01281d8b574_32599_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/14_hu540c502a602a414f9b0bd01281d8b574_32599_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;如图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;如图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;接下来这样填空&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ansible installation&lt;/code&gt;&amp;ndash;&amp;gt;&lt;code&gt;ansible&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Host pattern&lt;/code&gt;填&lt;strong&gt;all&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Inventory&lt;/code&gt;-&amp;gt;&lt;code&gt;Inline content&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S.如果你不需要使用编程语言来生成IP列表,&lt;/p&gt;
+&lt;p&gt;请不要勾选下方的&lt;code&gt;Dynamic inventory&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 206; 
+			flex-basis: 496px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/15-1.jpg&#34; data-size=&#34;1266x612&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/15-1.jpg&#34;
+			width=&#34;1266&#34;
+			height=&#34;612&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/15-1_hu57e93bda8b45dddce357893423f532af_34127_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/15-1_hu57e93bda8b45dddce357893423f532af_34127_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;呐呐呐~~&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;呐呐呐~~&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Content&lt;/code&gt;填你需要执行命令机器的IP,一行一个&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Module&lt;/code&gt;填&lt;code&gt;shell&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Module arguments or command to execute&lt;/code&gt;填你要执行的命令,我们这里是要为3台机器配置Docker运行环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum install -y yum-utils
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum install -y docker-ce docker-ce-cli --allowerasing
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl start docker
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; docker
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker pull centos
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 196; 
+			flex-basis: 471px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/15-2.jpg&#34; data-size=&#34;1258x640&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/15-2.jpg&#34;
+			width=&#34;1258&#34;
+			height=&#34;640&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/15-2_hu991cec24529d5374f803afdd72465c57_44167_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/15-2_hu991cec24529d5374f803afdd72465c57_44167_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;图是不能少的啦qwq&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;图是不能少的啦qwq&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Credentials&lt;/code&gt;选我们前面在配置SSH插件的适合创建的那个&lt;/li&gt;
+&lt;li&gt;其他的东西保持默认&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 237; 
+			flex-basis: 569px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/15-3.jpg&#34; data-size=&#34;1260x531&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/15-3.jpg&#34;
+			width=&#34;1260&#34;
+			height=&#34;531&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;然后就是&lt;code&gt;Apply&lt;/code&gt;+&lt;code&gt;Save&lt;/code&gt;一把梭= =&lt;/p&gt;
+&lt;p&gt;然后回到项目主界面之后捏，点&lt;code&gt;Build Now&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;就是那个上面有绿绿三角形的钟~~(要是你理解为其他的东西也可以~~&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 342; 
+			flex-basis: 820px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/16.jpg&#34; data-size=&#34;1919x561&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/16.jpg&#34;
+			width=&#34;1919&#34;
+			height=&#34;561&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;没事，反正有图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;没事，反正有图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;要是你运气好，没报错，就能看到一个绿绿的勾&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;PASS.jpg&#34; alt=&#34;嘛= = 长这样&#34; width=&#34;331&#34;&gt;
+&lt;p&gt;要是BUG满天飞，就会是一个红红火火的x&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;FAIL.jpg&#34; alt=&#34;祝愿大家永远没BUG&#34; width=&#34;331&#34;&gt;
+&lt;p&gt;假设现在已经运行成功并且没有任何报错，右键&lt;code&gt;build&lt;/code&gt;编号，点&lt;code&gt;Console Output&lt;/code&gt;查看控制台输出&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 257; 
+			flex-basis: 617px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/19.jpg&#34; data-size=&#34;1917x745&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/19.jpg&#34;
+			width=&#34;1917&#34;
+			height=&#34;745&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;OK！完工qaq&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;OK！完工qaq&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;到现在为止，我们3台机器上已经安装好了Docker环境并拉去了centos镜像&lt;/p&gt;
+&lt;h3 id=&#34;部署web-server&#34;&gt;部署Web Server&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的内心是崩溃的，Docker对于我这种菜狗就全都是坑 =  =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;思路&#34;&gt;思路&lt;/h4&gt;
+&lt;p&gt;我这边的实验能是打算用Docker搭一个LNMP架构，再安装WordPress,&lt;/p&gt;
+&lt;p&gt;当然啦，用Docker也可以搭建其他网站架构&lt;/p&gt;
+&lt;h4 id=&#34;jenkins新建一个新项目&#34;&gt;Jenkins新建一个新项目&lt;/h4&gt;
+&lt;p&gt;建项目的流程和上面配置自动化安装基本一样，就是把机器ip和代码替换掉就可以了&lt;/p&gt;
+&lt;h4 id=&#34;lnmp&#34;&gt;LNMP&lt;/h4&gt;
+&lt;p&gt;在这个过程中真的踩到无数的坑，可能是因为Docker这个镜像精简的&lt;code&gt;feature&lt;/code&gt;吧，很多最最基础的东西都没有= =&lt;/p&gt;
+&lt;p&gt;不管怎么说，先启动Docker,再映射到一个&lt;del&gt;吉利的&lt;/del&gt;端口  &lt;del&gt;(顿时接地气了起来，咳咳= =&lt;/del&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --name LNMP -p 8888:80 -d -t centos:latest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;至于为什么不直接pull nginx的镜像，是因为想统一用yum包管理器，而nginx镜像是apt包管理器= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;第一个坑容器无法正常启动&#34;&gt;第一个坑:容器无法正常启动&lt;/h5&gt;
+&lt;p&gt;你会注意到上面启动容器的命令里包含了&lt;code&gt;-t&lt;/code&gt;参数，&lt;/p&gt;
+&lt;p&gt;为什么咧????&lt;/p&gt;
+&lt;p&gt;&amp;ndash; 因为不加上centos镜像启动的容器会立刻停止运行&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 883; 
+			flex-basis: 2120px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/20.jpg&#34; data-size=&#34;1175x133&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/20.jpg&#34;
+			width=&#34;1175&#34;
+			height=&#34;133&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/20_hu179365e207b53619013dedb83625c086_34439_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/20_hu179365e207b53619013dedb83625c086_34439_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;就是这么狗&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;就是这么狗&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h5 id=&#34;第二个坑无法使用yum源&#34;&gt;第二个坑:无法使用Yum源&lt;/h5&gt;
+&lt;p&gt;太狗了!  容器里的yum源用不了= =&lt;/p&gt;
+&lt;p&gt;报错如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Failed to &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; locale, defaulting to C.UTF-8
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CentOS Linux &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; - AppStream                                                                                                   &lt;span class=&#34;m&#34;&gt;57&lt;/span&gt;  B/s &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;38&lt;/span&gt;  B     00:00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Error: Failed to download metadata &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; repo &lt;span class=&#34;s1&#34;&gt;&amp;#39;appstream&amp;#39;&lt;/span&gt;: Cannot prepare internal mirrorlist: No URLs in mirrorlist
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到这个报错，我直接炸毛= =&lt;/p&gt;
+&lt;p&gt;刚开始还以为源的URL没有加上，后来发现是因为&lt;code&gt;AppStream&lt;/code&gt;的&lt;code&gt;mirrorlist&lt;/code&gt;里URL用不了&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;/etc/yum.repos.d/CentOS-Linux-AppStream.repo&lt;/code&gt;文件中官方友情提醒了我们&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-she&#34; data-lang=&#34;she&#34;&gt;# If the mirrorlist does not work for you, you can try the commented out
+# baseurl line instead.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;所以我们只需要把&lt;code&gt;mirrorlist&lt;/code&gt;那一行注释掉并且取消&lt;code&gt;baseurl&lt;/code&gt;的注释&lt;/p&gt;
+&lt;p&gt;因为我们是在Jenkins里自动化，很显然不能用vim,就改用下面这种方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:自动化也导致不能&lt;code&gt;docker exec -ti 容器名 /bin/bash&lt;/code&gt;调出交互终端&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s/mirrorlist/#mirrorlist/g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;P.S. 使用&lt;code&gt;sh -c &amp;quot;内容&amp;quot;&lt;/code&gt;的原因是不放在引号里&lt;code&gt;Docker exec&lt;/code&gt;会把后面一团东东当成两条命令执行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;第三个坑systemctl报错&#34;&gt;第三个坑:systemctl报错&lt;/h5&gt;
+&lt;p&gt;在一番快乐的安装之后&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum makecache
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install php*
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该到了启动和启用服务的时候了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start php-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; php-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后&amp;quot;啪!&amp;ldquo;就是一个报错&lt;/p&gt;
+&lt;p&gt;好家伙! systemctl都用不了!!!   震怒)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;System has not been booted with systemd as init system &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;PID 1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;. Can&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;t operate.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Failed to connect to bus: Host is down
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img title=&#34;&#34; src=&#34;nu.jpg&#34; alt=&#34;&#34; width=&#34;143&#34; data-align=&#34;center&#34;&gt;
+&lt;p&gt;还好有&lt;del&gt;GayHub&lt;/del&gt;GitHub上大佬的&lt;a class=&#34;link&#34; href=&#34;https://github.com/gdraheim/docker-systemctl-replacement&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Docker systemctl替代品&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install wget
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install python3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;小提醒:GitHub的raw应该是被gfw给挡住了，所以可能要给Docker配置代理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;部署wordpress&#34;&gt;部署WordPress&lt;/h4&gt;
+&lt;p&gt;因为我们要从GitHub拉取Wordpress源码(或者从内部的GitLab拉取代码)&lt;/p&gt;
+&lt;p&gt;先给容器安装Git&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再把原先nginx默认的一些网页文件删除&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /usr/share/nginx/html/*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;拉取WordPress&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就可以访问机器ip开始安装WordPress啦&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 228; 
+			flex-basis: 548px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/WP.jpg&#34; data-size=&#34;1918x840&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/WP.jpg&#34;
+			width=&#34;1918&#34;
+			height=&#34;840&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h5 id=&#34;又双叒叕踩坑啦wordpress权限不足&#34;&gt;又双叒叕踩坑啦:WordPress权限不足&lt;/h5&gt;
+&lt;p&gt;你需要在Jenkins中提前让WordPress目录对于所有用户可写&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod -R 777 /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;否则就不能自动化了qeq&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 172; 
+			flex-basis: 413px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/21.jpg&#34; data-size=&#34;1142x663&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/21.jpg&#34;
+			width=&#34;1142&#34;
+			height=&#34;663&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;我不想接受这个抱歉&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;我不想接受这个抱歉&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;输入已经配置好的数据库信息&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据库配置见下文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 180; 
+			flex-basis: 432px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/wp2.jpg&#34; data-size=&#34;1109x615&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/wp2.jpg&#34;
+			width=&#34;1109&#34;
+			height=&#34;615&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&#34;自动化花里胡哨&#34;&gt;自动化花里胡哨&lt;/h4&gt;
+&lt;p&gt;嘿嘿，最后给配个&lt;a class=&#34;link&#34; href=&#34;https://github.com/mashirozx/sakura&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;主题&lt;/a&gt;，让我的实验kawaii起来~~&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 150; 
+			flex-basis: 362px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/theme.jpg&#34; data-size=&#34;809x536&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/theme.jpg&#34;
+			width=&#34;809&#34;
+			height=&#34;536&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/theme_hu486b38f6208f54dffe23747ffdf76669_48395_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/theme_hu486b38f6208f54dffe23747ffdf76669_48395_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;主题预览&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;主题预览&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&#34;附上代码&#34;&gt;附上代码&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --name LNMP -p 8888:80 -d -t centos:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s/mirrorlist/#mirrorlist/g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum makecache
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install php*
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install wget
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install python3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start php-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; php-fpm
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /usr/share/nginx/html/*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod -R 777 /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;部署mariadb数据库&#34;&gt;部署MariaDB数据库&lt;/h3&gt;
+&lt;h4 id=&#34;老规矩jenkins新建项目&#34;&gt;老规矩:Jenkins新建项目&lt;/h4&gt;
+&lt;p&gt;不过有了前面的经验之后，这边可以偷个小懒，嘿嘿嘿&lt;/p&gt;
+&lt;p&gt;细心的朋友们可以发现，在新建项目的时候还可以用之前的项目作为模版&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 348; 
+			flex-basis: 836px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/22.jpg&#34; data-size=&#34;1422x408&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/22.jpg&#34;
+			width=&#34;1422&#34;
+			height=&#34;408&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/22_hu2744b412728c5e618591b07eb0ab3231_24477_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/22_hu2744b412728c5e618591b07eb0ab3231_24477_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;好诶，可以懒了&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;好诶，可以懒了&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;我们就以刚刚配置的Web Server作为模板&lt;/p&gt;
+&lt;p&gt;点OK创建之后你会看见和一个和Web Server项目配置相同的新项目&lt;/p&gt;
+&lt;p&gt;接下来也是老样子:修改IP和代码&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 159; 
+			flex-basis: 381px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/25.jpg&#34; data-size=&#34;1238x778&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/25.jpg&#34;
+			width=&#34;1238&#34;
+			height=&#34;778&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&#34;配置数据库&#34;&gt;配置数据库&lt;/h4&gt;
+&lt;p&gt;现在在之前配置Web Server的代码基础上进行修改&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S.:建议把容器名进行修改，并起一个易于识别的名字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;3306端口&#34;&gt;3306端口&lt;/h5&gt;
+&lt;p&gt;既然是MariaDB数据库(和MySQL基本相同)，那就需要映射3306到端口&lt;/p&gt;
+&lt;p&gt;为了之后备份的方便，我们映射一个目录&lt;code&gt;/mnt/backup&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir /mnt/backup
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;关于安装&#34;&gt;关于安装&lt;/h5&gt;
+&lt;p&gt;这里轻松多啦，我们已经解决了前面所提及的几个大坑，&lt;/p&gt;
+&lt;p&gt;仔细思考，因为在这里只需要部署数据库，前面安装PHP和Nginx的代码可以干掉啦qwq&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意：记得保留前面解决坑所需的代码= =&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后换成安装MariaDB的代码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install mariadb mariadb-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动并启用数据库服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl start mariadb
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; mariadb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;配置-1&#34;&gt;配置&lt;/h5&gt;
+&lt;p&gt;因为我们是自动化，所以不能用之前一贯的方法调出MariaDB的交互式控制台&lt;/p&gt;
+&lt;p&gt;那么，就直接在命令行执行SQL语句吧&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mysql -u 用户名 -p密码 -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;语句&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意初始状态的MariaDB是没有密码的，&lt;/p&gt;
+&lt;p&gt;毕竟我们是网安人嘛，为了安全性肯定要设置密码= =&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;ALTER USER &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;你的密码&amp;#39;;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;因为需要让跑Web Server的那台机器访问到数据库，我们进行配置一下权限，顺便再建一个叫做DB的数据库(以存放WordPress的数据)&lt;/p&gt;
+&lt;p&gt;为了安全性，我们只许可Web Server的机器用root的用户名和密码登陆&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意这里指mysql的root用户，和系统的root用户不一样哦 -   -&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -u root -p123.密码 -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &amp;#39;root&amp;#39;@&amp;#39;ip&amp;#39;IDENTIFIED BY &amp;#39;密码&amp;#39; WITH GRANT OPTION; flush privileges; create database db;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;备份&#34;&gt;备份&lt;/h4&gt;
+&lt;p&gt;好啦，最后要做的就是定时备份数据库&lt;/p&gt;
+&lt;p&gt;毕竟数据无价是真理嘛awa&lt;/p&gt;
+&lt;p&gt;首先给数据库的主机装个NFS客户端并每次启动时挂载共享文件夹&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install nfs-utils
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mount.nfs IP:/DB_Backup /mnt/backup/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;mount.nfs IP:/DB_Backup /mnt/backup/&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;docker start MySQL&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在来到容器内部完成真正定时&amp;quot;备份&amp;quot;的操作&lt;/p&gt;
+&lt;p&gt;我们决定每天备份一次数据库，这个时候小小偷个懒，不用&lt;code&gt;crontab -e&lt;/code&gt;了，直接将脚本放到&lt;code&gt;/etc/cron.daily&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们可以把备份的脚本放在GitLab里&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;mysqldump -u root -p密码 --all-databases &amp;gt; /db/data-dump.sql
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date +%F&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cp /db/data-dump.sql /mnt/backup/DB_&lt;span class=&#34;nv&#34;&gt;$date&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf /db/data-dump.sql
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 227; 
+			flex-basis: 544px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/23.jpg&#34; data-size=&#34;1912x842&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/23.jpg&#34;
+			width=&#34;1912&#34;
+			height=&#34;842&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/23_hub48237f653917c1a3ce43a6776273b2d_90308_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/23_hub48237f653917c1a3ce43a6776273b2d_90308_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;放在GitLab会更方便管理&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;放在GitLab会更方便管理&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;由于我们脚本里需要用到&lt;code&gt;/db&lt;/code&gt;目录，我们得先建&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;mkdir /db&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就&lt;code&gt;git pull&lt;/code&gt;到&lt;code&gt;/etc/cron.daily&lt;/code&gt;目录并赋予适当权限(记得先在容器里安装git哦)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone http://IP/nanosec/backup.git /etc/cron.daily/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后可以先运行一下看看是否备份成功&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;/etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 150; 
+			flex-basis: 361px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/26.jpg&#34; data-size=&#34;999x663&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/26.jpg&#34;
+			width=&#34;999&#34;
+			height=&#34;663&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 459; 
+			flex-basis: 1102px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/24.jpg&#34; data-size=&#34;441x96&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/24.jpg&#34;
+			width=&#34;441&#34;
+			height=&#34;96&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;成功XD&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;成功XD&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&#34;附上代码-1&#34;&gt;附上代码&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir /mnt/backup
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install nfs-utils
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;docker start MySQL&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x /etc/rc.local
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s/mirrorlist/#mirrorlist/g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum makecache
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install mariadb mariadb-server
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install wget
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install python3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl start mariadb
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; mariadb
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;ALTER USER &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;密码&amp;#39;;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -u root -p密码 -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &amp;#39;root&amp;#39;@&amp;#39;IP&amp;#39;IDENTIFIED BY &amp;#39;密码&amp;#39; WITH GRANT OPTION; flush privileges; create database db;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;mkdir /db&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone http://192.168.245.129/nanosec/backup.git /etc/cron.daily/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;/etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;配置nginx反向代理&#34;&gt;配置Nginx反向代理&lt;/h3&gt;
+&lt;p&gt;呼，最后的工作则是配置Nginx反向代理&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;(心里:aaaaaaa总算熬到头了)&lt;/del&gt;&lt;/p&gt;
+&lt;h4 id=&#34;jenkins项目&#34;&gt;Jenkins项目&lt;/h4&gt;
+&lt;p&gt;到这里应该已经成为&amp;quot;老油条&amp;quot;了，&lt;/p&gt;
+&lt;p&gt;直接利用模板+修改一把梭&lt;/p&gt;
+&lt;img src=&#34;awa.jpg&#34; title=&#34;&#34; alt=&#34;&#34; width=&#34;60&#34;&gt;
+&lt;p&gt;最后大概确定应该肯定是这样纸捏&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 161; 
+			flex-basis: 387px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/27.jpg&#34; data-size=&#34;1245x772&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/27.jpg&#34;
+			width=&#34;1245&#34;
+			height=&#34;772&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/27_hu836adf1d51f47e292a0038b6982634eb_58051_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/27_hu836adf1d51f47e292a0038b6982634eb_58051_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&#34;部署nginx反向代理&#34;&gt;部署Nginx反向代理&lt;/h4&gt;
+&lt;p&gt;为了用户访问方便，这次直接映射到80端口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --name N_Proxy -p 80:80 -d -t centos:latest
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;安装-1&#34;&gt;安装&lt;/h5&gt;
+&lt;p&gt;Nginx反代嘛= =&lt;/p&gt;
+&lt;p&gt;当然就是要装Nginx&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy yum -y install nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就是日常对服务的操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy systemctl start nginx
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;配置-2&#34;&gt;配置&lt;/h5&gt;
+&lt;p&gt;老样子，先把默认的网站文件删除&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /usr/share/nginx/html/*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就到了最关键一步，配置文件的调整&lt;/p&gt;
+&lt;p&gt;为了之后修改配置文件能够&lt;del&gt;优雅地&lt;/del&gt;偷懒，我们将配置文件托管在GitLab上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;user nginx&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;worker_processes auto&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;error_log /var/log/nginx/error.log&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pid /run/nginx.pid&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;include /usr/share/nginx/modules/*.conf&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;events &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    worker_connections 1024&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;http &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    log_format  main  &lt;span class=&#34;s1&#34;&gt;&amp;#39;$remote_addr - $remote_user [$time_local] &amp;#34;$request&amp;#34; &amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;s1&#34;&gt;&amp;#39;$status $body_bytes_sent &amp;#34;$http_referer&amp;#34; &amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                      &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#34;$http_user_agent&amp;#34; &amp;#34;$http_x_forwarded_for&amp;#34;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    access_log  /var/log/nginx/access.log  main&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    sendfile            on&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    tcp_nopush          on&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    tcp_nodelay         on&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    keepalive_timeout   65&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    types_hash_max_size 2048&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    include             /etc/nginx/mime.types&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    default_type        application/octet-stream&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Load modular configuration files from the /etc/nginx/conf.d directory.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# See http://nginx.org/en/docs/ngx_core_module.html#include&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# for more information.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    include /etc/nginx/conf.d/*.conf&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;#include /etc/nginx/default.d/*.conf;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;upstream web1 &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        server 192.168.245.149:8888  &lt;span class=&#34;nv&#34;&gt;weight&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#此处填写被代理服务器IP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;c1&#34;&gt;#server 192.168.0.17  weight=1;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;       &lt;span class=&#34;c1&#34;&gt;#ip_hash;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;server&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        listen 80&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        server_name blog.nanosec.io&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        access_log  /var/log/nginx/blog.log&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        location / &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            root /home/web1_root&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_pass http://web1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_read_timeout 300&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_connect_timeout 300&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_redirect     off&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_set_header   X-Forwarded-Proto &lt;span class=&#34;nv&#34;&gt;$scheme&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_set_header   Host              &lt;span class=&#34;nv&#34;&gt;$http_host&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_set_header   X-Real-IP         &lt;span class=&#34;nv&#34;&gt;$remote_addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            proxy_set_header X-Forwarded-For &lt;span class=&#34;nv&#34;&gt;$proxy_add_x_forwarded_for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 255; 
+			flex-basis: 613px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/28.jpg&#34; data-size=&#34;1585x620&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/28.jpg&#34;
+			width=&#34;1585&#34;
+			height=&#34;620&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;配图&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;配图&lt;/figcaption&gt;
+	
+&lt;/figure&gt;我们先把原有的配置文件干掉&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /etc/nginx/nginx.conf&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再放上新的配置文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：因为&lt;code&gt;git clone&lt;/code&gt;无法clone进一个已经存在的目录&lt;/p&gt;
+&lt;p&gt;所以我们需要先clone到一个其他位置并进行移动&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone http://192.168.245.129/nanosec/your-code-here.git&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;cp /your-code-here/nginx.conf /etc/nginx/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;检查配置文件是否存在问题&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy nginx -t
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;检查无误后再重新加载配置文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy nginx -s reload
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;完工&#34;&gt;完工&lt;/h4&gt;
+&lt;p&gt;这个时候就可以让这个项目跑起来啦awa&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 156; 
+			flex-basis: 376px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/30.jpg&#34; data-size=&#34;1059x675&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/30.jpg&#34;
+			width=&#34;1059&#34;
+			height=&#34;675&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/30_hufca6db4e98f81389b0873d5504c95ec7_105467_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/30_hufca6db4e98f81389b0873d5504c95ec7_105467_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;好诶!没有报错&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;好诶!没有报错&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;到这里我们访问反向代理的ip或者把&lt;code&gt;blog.nanosec.io&lt;/code&gt;解析到这个ip后访问就可以看到Web Server的那个网页啦&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 1171; 
+			flex-basis: 2811px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/29.jpg&#34; data-size=&#34;937x80&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/29.jpg&#34;
+			width=&#34;937&#34;
+			height=&#34;80&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/29_hueb5b90525fb4cf606e51d6c59824a990_6539_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/29_hueb5b90525fb4cf606e51d6c59824a990_6539_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 228; 
+			flex-basis: 547px&#34;
+	&gt;
+	&lt;a href=&#34;https://kira-pgr.github.io/posts/enterprise/wp3.jpg&#34; data-size=&#34;1919x841&#34;&gt;
+		&lt;img src=&#34;https://kira-pgr.github.io/posts/enterprise/wp3.jpg&#34;
+			width=&#34;1919&#34;
+			height=&#34;841&#34;
+			srcset=&#34;https://kira-pgr.github.io/posts/enterprise/wp3_hu247aef0cba82f0843aca389463206524_80693_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/posts/enterprise/wp3_hu247aef0cba82f0843aca389463206524_80693_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;TaDa! 美滋滋~~&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;TaDa! 美滋滋~~&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;part3--结语&#34;&gt;Part3&amp;ndash;结语&lt;/h2&gt;
+&lt;p&gt;Hmmm,这样一个有意思的自动化企业网络架构部署到这里就完成了&lt;/p&gt;
+&lt;h3 id=&#34;优势&#34;&gt;优势&lt;/h3&gt;
+&lt;p&gt;可以说是为运维带来了很大的便捷，一旦机器多起来一台一台装显得费时费力又不现实，&lt;/p&gt;
+&lt;p&gt;自动化通过按几个键就能完成部署，在很大程度上提高了效率 = =&lt;/p&gt;
+&lt;p&gt;![你说方便不方便;)](Screenshot 2022-06-21 224626.jpg)&lt;/p&gt;
+&lt;p&gt;以后的维护也是变得特别简单了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要是代码和配置文件需要更改直接去GitLab改&lt;/li&gt;
+&lt;li&gt;要是一些配置步骤需要微调直接在Jenkins上操作&lt;/li&gt;
+&lt;li&gt;新加入的机器只需要按几个键就可以完成部署&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;一些思考&#34;&gt;一些思考&lt;/h3&gt;
+&lt;h4 id=&#34;关于本方案如何改进&#34;&gt;关于本方案如何改进&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;使用ZStack私有云，在与Docker共度了几个夜晚之后，我发现如果在&lt;strong&gt;拥有足够的性能&lt;/strong&gt;条件下，还是使用虚拟机比较好，至于原因嘛，一是对于新手来说友好，配置/使用更加方便，二是安全性更高，毕竟虚拟机逃逸比容器逃逸要困难&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本次实验由于性能问题，没带动ZStack(悲&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;可以把Jenkins里配置的命令集合成脚本，并也托管到GitLab上，这样后期维护会更加便捷&lt;/li&gt;
+&lt;li&gt;备份最好独立一台机器，并把GitLab和Jenkins里的东西也做相应备份&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;关于安全的思考&#34;&gt;关于安全的思考&lt;/h4&gt;
+&lt;p&gt;怎么说呢。。。这种事情就把所有机器的权限高度集中在一个地方了，这实际上在某种意义上也是十分危险的= =&lt;/p&gt;
+&lt;p&gt;因为一旦集中权限的机器被入侵，那就是&amp;quot;全都没了&amp;quot;的惨剧了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;就举个最简单的例子，Jenkins机器放到了公网上，而且还是弱密码= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&#34;cx.jpg&#34; title=&#34;&#34; alt=&#34;&#34; width=&#34;117&#34;&gt;
+&lt;p&gt;当然，从攻击者的角度，可以考虑对于权限集中的地方下手;)&lt;/p&gt;
+&lt;h2 id=&#34;part-4----ref&#34;&gt;Part 4 &amp;ndash; Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://book.fsec.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://book.fsec.io/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Kali Gnome桌面环境の调整&amp;美化</title>
         <link>https://kira-pgr.github.io/posts/gnome/</link>
         <pubDate>Fri, 27 May 2022 14:45:16 +0800</pubDate>
