@@ -1554,7 +1554,7 @@
 &lt;p&gt;点击Save,等它检测完成&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;看到上面有一行绿色的英文&lt;code&gt;Your site is published at https://你的域名/&lt;/code&gt;就可以吃西瓜啦~(≧▽≦)/~&lt;/p&gt;
 &lt;p&gt;之后别人访问你的域名就可以打开你自己网站了&lt;/p&gt;
-&lt;iframe src=&#34;1.gif&#34; frameBorder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;img title=&#34;&#34; src=&#34;1.gif&#34; alt=&#34;&#34; width=&#34;176&#34;&gt;
 &lt;h2 id=&#34;cloudflare免费cdn配置&#34;&gt;CloudFlare免费CDN配置&lt;/h2&gt;
 &lt;p&gt;进入CloudFlare&lt;a class=&#34;link&#34; href=&#34;https://www.cloudflare.com/plans/#overview&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网&lt;/a&gt;，选择免费的那个计划&lt;/p&gt;
@@ -1775,7 +1775,7 @@ init 6 #装完重启
 &lt;h3 id=&#34;排坑&#34;&gt;排坑&lt;/h3&gt;
 &lt;p&gt;如果你顺利的话完成上面几步之后依照提示就可以结束这&lt;del&gt;快乐&lt;/del&gt;的安装过程了&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;但是，，，我还遇到了更多奇奇怪怪的坑&lt;/strong&gt;&lt;/p&gt;
-&lt;iframe src=&#34;1.gif&#34; frameBorder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;img title=&#34;&#34; src=&#34;1.gif&#34; alt=&#34;&#34; width=&#34;251&#34;&gt;
 &lt;p&gt;如果各位朋友也遇到了，可以参考下解决方案&lt;/p&gt;
 &lt;p&gt;&lt;figure 
 	
