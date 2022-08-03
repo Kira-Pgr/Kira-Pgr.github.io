@@ -16,12 +16,12 @@
       <description>Debian Linux下安装虚拟机软件 VirtualBox VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少
 安装最新版本内核头文件/内核镜像 为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们尽量避免使用网上提供的这种方式
 sudo apt-get install linux-headers-`uname -r` 采用以下命令
-sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  如图 
-apt安装VirtualBox apt-get install virtualbox virtualbox-guest-additions-iso VMware Workstation 比起VBox,VMware折腾起来坑真的好多啊= =
+sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启 如图 apt安装VirtualBox apt-get install virtualbox virtualbox-guest-additions-iso VMware Workstation 比起VBox,VMware折腾起来坑真的好多啊= =
 不过没办法。。。我还有10多个VMware的虚拟机w(
 安装最新版本内核头文件/内核镜像 第一步和安VBox一样的操作
-sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做 
-安装各种编译器 sudo apt-get install build-essential  P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器</description>
+sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启 P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做 安装各种编译器 sudo apt-get install build-essential P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器 安装VMware Workstation 去官网下载安装程序
+给可执行权限
+chmod x VMware-Workstation-Full-版本号.</description>
     </item>
     
     <item>
@@ -31,11 +31,9 @@ sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-hea
       
       <guid>https://kira-pgr.github.io/posts/gcl/</guid>
       <description>Github-CVE-Listener&amp;mdash;无需服务器的GitHub漏洞利用工具实时推送 没错= = 我来厚颜无耻地安利我自己写的工具了
- 项目地址 https://github.com/Kira-Pgr/Github-CVE-Listener
+项目地址 https://github.com/Kira-Pgr/Github-CVE-Listener
 功能 无需服务器的GitHub漏洞利用工具实时推送(目前支持推送到TG/微信)
- Telegram 
- 微信 
-使用方法 https://github.com/Kira-Pgr/Github-CVE-Listener/blob/main/README_ZH.md
+Telegram 微信 使用方法 https://github.com/Kira-Pgr/Github-CVE-Listener/blob/main/README_ZH.md
 项目特点 目前其他的GitHub监听器都需要依赖自己的服务器来运行，本Project使用GitHub Actions
 运行，不需要依赖其他任何环境(即使你没有电脑也可以使用) :)
 对于像我这种没有服务器的人比较友好啊
@@ -52,20 +50,23 @@ sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-hea
 (Burp在英文中有打嗝的意思)
 前言 咳咳，先声明一下，当你看到这篇文章的时候，它很可能已经是 过时 的了= =,
 由于Burp会不断更新换代，本文章提供的软件安装包不可能提供最新安装包，如果你觉得版本太旧了，请自行网上搜索最新安装包，但文章提供的破解工具 应该 能保证在之后一段时间内有用
-资源   破解工具
-  Burp Suite Pro v2022.1
-  使用 JAVA环境 运行Burp Suite Professional需要提前安装好java环境
-  Windows Java下载
-  Linux
-  deb系
+资源 破解工具
+Burp Suite Pro v2022.1
+使用 JAVA环境 运行Burp Suite Professional需要提前安装好java环境
+Windows Java下载
+Linux
+deb系
 sudo apt install default-jdk Red Hat
 sudo yum install java-版本号-openjdk-devel Linux Java下载
 嗝～～开始破解 注意：请把Burp的文件和破解工具放入同一个文件夹
 终端/cmd/你奇奇怪怪的命令行工具进入放有以上两个文件的目录
 先运行破解工具
-java -jar burploader.jar  破解工具 
-这里License Text随便填一些东西(这些东西之后会显示在你的Burp标题栏上，可以考虑搞些酷酷的东西)
- TIP: 如果你是JAVA 17+, 记得不要直接点旁边的RUN(要不然会报错)</description>
+java -jar burploader.jar 破解工具 这里License Text随便填一些东西(这些东西之后会显示在你的Burp标题栏上，可以考虑搞些酷酷的东西)
+TIP: 如果你是JAVA 17+, 记得不要直接点旁边的RUN(要不然会报错)
+JAVA17+的看这里
+保留破解工具窗口，并终端输入
+java -noverify -javaagent:burploader.jar --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -jar burpsuite_pro_v2022.1.jar 如果你是其他JAVA版本，Burp启动后提示你要加上xxx的JVM参数，参考以下命令格式
+java -noverify -javaagent:burploader.jar 提示你要加上的参数 -jar burpsuite_pro_v2022.</description>
     </item>
     
   </channel>

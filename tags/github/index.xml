@@ -16,26 +16,37 @@
       <description>GitHub Pages配置自定义域名以及CDN 嘶~~,最近在折腾博客
 刚买了个域名，由于没有服务器,就把域名绑定到我博客上来了
 嘛= =,闲话不多说，直接上做法&amp;hellip;
-配置自定义域名  如果你没有域名，且是白嫖党 (而且是经费不足的那种) ，下面这一段你可以绕过了
- 前置准备   一个域名(需要购买)
+配置自定义域名 如果你没有域名，且是白嫖党 (而且是经费不足的那种) ，下面这一段你可以绕过了
+前置准备 一个域名(需要购买)
 这里推荐几个买域名的地方
-  腾讯云DNSPod
-  优点:价格第一年便宜，能低至7-8元的
-  缺点:国内的要实名，而且实名审核要一定时间
+腾讯云DNSPod
+优点:价格第一年便宜，能低至7-8元的
+缺点:国内的要实名，而且实名审核要一定时间
 P.S. 像我们这种个人建议别买.cn域名，不是说.cn域名不好，而是因为有可能通过whois查出你的一些个人信息
 我相信看到这里一些人肯定想去查了，先说好了，要是出什么问题我可不负责XD~~
-    GoDaddy
-  优点:国外的不需要实名
-  缺点:价格相对贵一点,不支持微信支付
-      一个在GitHub Pages部署好的网站
+GoDaddy
+优点:国外的不需要实名
+缺点:价格相对贵一点,不支持微信支付
+一个在GitHub Pages部署好的网站
 Tip:要是没有的话可以按照我之前的文章来搭一个个人网站
-  快乐de配置过程 DNS解析方面 首先打开你域名DNS解析记录的控制台
- 没有链接提供! 各个平台控制台的位置不一样 ;&amp;lt;
-  DNS解析控制台实例 
-然后新建一条CNAME记录
- CNAME类似于你域名的一个别名,如果域名A建立了一条CNAME记录指向域名B,你请求A就会去请求B
-  CNAME记录 
-现在我们看向上图中右边两个框框，又到了做填空的时候呐!</description>
+快乐de配置过程 DNS解析方面 首先打开你域名DNS解析记录的控制台
+没有链接提供! 各个平台控制台的位置不一样 ;&amp;lt;
+DNS解析控制台实例 然后新建一条CNAME记录
+CNAME类似于你域名的一个别名,如果域名A建立了一条CNAME记录指向域名B,你请求A就会去请求B
+CNAME记录 现在我们看向上图中右边两个框框，又到了做填空的时候呐!
+Name(名称)填你想要的子域名或者是@
+举个糖炒板栗(逃: 如果你的域名是nanosec.site,你这里输入@别人访问nanasec.site的时候是这个网站,如果你填了blog,别人访问blog.nanosec.site是你的网站
+Target(目标)填你GitHub Pages哪个网站的域名，一般是你的用户名.github.io,如果你忘了你的用户名 (这什么有大病的如果) 你可以去下面的评论区发条评论，然后你的用户名就会显示出来啦 : 3
+GitHub方面 首先登录到GitHub，然后打开你网站的那个仓库的设置的Pages栏
+别怕，有图 如果你找不到仓库了,你可以去下面的评论区发条评论，然后点击你的用户名，你的个人界面就打开了~~
+然后在上图中的Custom domain下面的框中填写你之前配置好的域名
+点击Save,等它检测完成&amp;hellip;.
+看到上面有一行绿色的英文Your site is published at https://你的域名/就可以吃西瓜啦~(≧▽≦)/~
+之后别人访问你的域名就可以打开你自己网站了
+CloudFlare免费CDN配置 进入CloudFlare官网，选择免费的那个计划
+好像过于可爱了些= v = 然后就是日常的注册/登录操作
+进入你个人用户的面板-&amp;gt;Websites(网站)了之后,点击Add A Site(添加网站)
+然后输入你的域名,点击Add Site(添加网站)</description>
     </item>
     
     <item>
@@ -47,15 +58,13 @@ Tip:要是没有的话可以按照我之前的文章来搭一个个人网站
       <description>网安猫猫资源库 喵~~
 事情是这样的，搞了一个会卖萌的Telegram频道存放一些自己学习时用的网安资源，
 既然都集中存放了，干脆分享给有幸看到我blog的朋友们吧，其中包括
-  Web安全教程
-  PWN教程
-  一些好用的工具
-  CVE推送
-   链接:Telegram: Contact @nanosec47
- 配个图 
-附属群(欢迎来吹水):Telegram: Contact @nanonanoda
-  个人收集的资源，非广告/营销号，不喜欢请默默离开，勿喷.uwu.
- </description>
+Web安全教程
+PWN教程
+一些好用的工具
+CVE推送
+链接:Telegram: Contact @nanosec47
+配个图 附属群(欢迎来吹水):Telegram: Contact @nanonanoda
+个人收集的资源，非广告/营销号，不喜欢请默默离开，勿喷.uwu.</description>
     </item>
     
     <item>
@@ -65,11 +74,9 @@ Tip:要是没有的话可以按照我之前的文章来搭一个个人网站
       
       <guid>https://kira-pgr.github.io/posts/gcl/</guid>
       <description>Github-CVE-Listener&amp;mdash;无需服务器的GitHub漏洞利用工具实时推送 没错= = 我来厚颜无耻地安利我自己写的工具了
- 项目地址 https://github.com/Kira-Pgr/Github-CVE-Listener
+项目地址 https://github.com/Kira-Pgr/Github-CVE-Listener
 功能 无需服务器的GitHub漏洞利用工具实时推送(目前支持推送到TG/微信)
- Telegram 
- 微信 
-使用方法 https://github.com/Kira-Pgr/Github-CVE-Listener/blob/main/README_ZH.md
+Telegram 微信 使用方法 https://github.com/Kira-Pgr/Github-CVE-Listener/blob/main/README_ZH.md
 项目特点 目前其他的GitHub监听器都需要依赖自己的服务器来运行，本Project使用GitHub Actions
 运行，不需要依赖其他任何环境(即使你没有电脑也可以使用) :)
 对于像我这种没有服务器的人比较友好啊
@@ -86,15 +93,14 @@ Tip:要是没有的话可以按照我之前的文章来搭一个个人网站
 如大家有其他需求的话，可以去康康文末几个参考链接
 分类部分加上缩略图 在你网站根目录(术语不理解的话看上一篇文章)打开终端/cmd/其他命令行工具，
 并输入
-hugo new categories/分类名字/_index.md  注意: index前面下划线不能少
- 然后修改_index.md成下面这种样子
----title:&amp;#34;分类名&amp;#34;date:2022-02-08T01:03:14-05:00image:你的图片名(带后缀)style:background:&amp;#34;#2a9d8f&amp;#34;color:&amp;#34;#fff&amp;#34;--- 注意: 请把图片和_index.md放在同一目录里
- 代码:给你点Color See See 咳咳，关于代码框框着色问题= =
+hugo new categories/分类名字/_index.md 注意: index前面下划线不能少
+然后修改_index.md成下面这种样子
+--- title: &amp;#34;分类名&amp;#34; date: 2022-02-08T01:03:14-05:00 image: 你的图片名(带后缀) style: background: &amp;#34;#2a9d8f&amp;#34; color: &amp;#34;#fff&amp;#34; --- 注意: 请把图片和_index.md放在同一目录里
+代码:给你点Color See See 咳咳，关于代码框框着色问题= =
 只需要指明代码类型是可以着色的qaq
- 代码块着色 
-文本特效 在网站根目录/static/css/内新建一个文件custom.css
+代码块着色 文本特效 在网站根目录/static/css/内新建一个文件custom.css
 以下是custom.css代码
-.blur { color: transparent; text-shadow:0px 0px 8px rgba(0,0,0,0.5) } .blur:hover { color: transparent; text-shadow:0px 0px 0px rgba(0,0,0,1) } .shady { color:#000; font-weight: bold; box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; transition: all 0.3s ease; } .shady:hover{ font-weight: bold; color:#FFF; box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; } 还有，由于你要在MarkDown中内嵌html代码，你需要修改一下配置文件(网站根目录下的config.</description>
+.blur { color: transparent; text-shadow:0px 0px 8px rgba(0,0,0,0.5) } .blur:hover { color: transparent; text-shadow:0px 0px 0px rgba(0,0,0,1) } .shady { color:#000; font-weight: bold; box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; transition: all 0.</description>
     </item>
     
     <item>
@@ -110,11 +116,17 @@ sudo apt install hugo 安装Git(系统已经预装的自行忽略) yum系
 sudo yum install git Arch
 sudo pacman -Syu git deb系
 sudo apt install git 安装环境(Windows) 安装Hugo https://gohugo.io/getting-started/installing/#less-technical-users
-安装Git winget install Git.Git  开始建站.UwU.! GitHub项目创建  注册/登录GitHub帐号   P.S. 因为众所周知的原因。。在某些地区GitHub无法访问= =
+安装Git winget install Git.Git 开始建站.UwU.! GitHub项目创建 注册/登录GitHub帐号 P.S. 因为众所周知的原因。。在某些地区GitHub无法访问= =
 解决方案: 魔法上网/换Gitee(要实名= =)
-   创建一个名为你的Github用户名.github.io的项目
-  放在那里备用
-  本地网站搭建  注意：我本地环境是Kali Linux, 其他环境可能步骤略有不同= =</description>
+创建一个名为你的Github用户名.github.io的项目
+放在那里备用
+本地网站搭建 注意：我本地环境是Kali Linux, 其他环境可能步骤略有不同= =
+终端/cmd/或者你用的其他东西也罢输入
+hugo new site 你想给网站起的名字 这个时候Hugo就给你生成了一个网站
+接下来该犯选择综合征了
+咳咳，接下来去https://themes.gohugo.io/ 找一个喜欢的主题
+P.S. 我的博客是主题Stack
+进入你本地hugo网站的themes目录</description>
     </item>
     
     <item>
@@ -128,27 +140,24 @@ sudo apt install git 安装环境(Windows) 安装Hugo https://gohugo.io/getting-
 (其实只是因为懒 别打)
 一. 漏洞演示 咳咳，言归正传 OwO
 最近刷GitHub的时候看到了这个
- 啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP 
-Linus真的一反常态删除了Linux??
+啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP Linus真的一反常态删除了Linux??
 很显然这是假的~
 或者说，这是一个硬核恶作剧= =
 而这个恶作剧利用了GitHub一个小小的逻辑漏洞
-二. 漏洞复现  如果你嘤文水平不戳的话，可以参考https://news.ycombinator.com/item?id=24976138
- 想要利用这个漏洞，你只需要一个GitHub帐号和一个浏览器
+二. 漏洞复现 如果你嘤文水平不戳的话，可以参考https://news.ycombinator.com/item?id=24976138
+想要利用这个漏洞，你只需要一个GitHub帐号和一个浏览器
 首先Fork某一个项目，然后在你fork的项目中随便改点东西(任意的东西都可以)
 至于Fork键的位置，自己找
 然后点进你新加上的commit
- commit位置 
-commit链接
- https://github.com/Kira-Pgr/MEMZ/commit/43ab3c1283605216e5b56388c11483fee7dcd47c
- 把commit 改为tree
- https://github.com/Kira-Pgr/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c
- 最后，把你的id(这里演示时是Kira-Pgr)改成你想要&amp;quot;修改&amp;quot;对方项目的人的id
+commit位置 commit链接
+https://github.com/Kira-Pgr/MEMZ/commit/43ab3c1283605216e5b56388c11483fee7dcd47c
+把commit 改为tree
+https://github.com/Kira-Pgr/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c
+最后，把你的id(这里演示时是Kira-Pgr)改成你想要&amp;quot;修改&amp;quot;对方项目的人的id
 (这里的id是NyDubh3)
- https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c
- 这样你修改的东西就看来像是在原项目里一样 qaq
- 原项目被&amp;quot;修改&amp;quot;啦= = 
-结语： 这个洞虽说危害不大，而且只需要判断commit是不是从一个fork来的就可以避免受到影响
+https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c
+这样你修改的东西就看来像是在原项目里一样 qaq
+原项目被&amp;quot;修改&amp;quot;啦= = 结语： 这个洞虽说危害不大，而且只需要判断commit是不是从一个fork来的就可以避免受到影响
 但还是很好VAN的 逃)
 (⁄ ⁄•⁄ω⁄•⁄ ⁄)</description>
     </item>

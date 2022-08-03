@@ -14,24 +14,23 @@
       
       <guid>https://kira-pgr.github.io/posts/enterprise/</guid>
       <description>NanoSec&amp;ndash;模拟企业网络搭建 Part 1&amp;ndash;规划 由于实验条件限制，共准备5台机器来测试:
-  Jenkins
-  GitLab + NFS
-  Database
-  Web Servers
-  Nginx_Reverse_Proxy
-   其中机器3,4,5中服务均用Docker进行部署，且用Jenkins进行自动化安装Docker环境, 启动并配置容器;)
-  一个画的很狗的拓扑图 
-最后实现效果预测:访问Nginx反向代理可以访问到真实Web服务器的页面，Web服务器能正常访问数据库，代码以及部分配置文件使用GitLab储存，数据定时备份到备份服务器
-Part 2&amp;ndash;实验过程  本实验使用系统均为CentOS和Rocky Linux(新一代的CenOS ?)
- 准备工作 首先配置好5台机器的IP
- Jenkins 192.168.245.137
+Jenkins
+GitLab + NFS
+Database
+Web Servers
+Nginx_Reverse_Proxy
+其中机器3,4,5中服务均用Docker进行部署，且用Jenkins进行自动化安装Docker环境, 启动并配置容器;)
+一个画的很狗的拓扑图 最后实现效果预测:访问Nginx反向代理可以访问到真实Web服务器的页面，Web服务器能正常访问数据库，代码以及部分配置文件使用GitLab储存，数据定时备份到备份服务器
+Part 2&amp;ndash;实验过程 本实验使用系统均为CentOS和Rocky Linux(新一代的CenOS ?)
+准备工作 首先配置好5台机器的IP
+Jenkins 192.168.245.137
 GitLab+NFS 192.168.245.129
 WebServers 192.168.245.149
 DataBase 192.168.245.150
 Nginx反向代理 192.168.245.151
- GitLab安装 由于直接配置GitLab时我本地各种报错姿势(
+GitLab安装 由于直接配置GitLab时我本地各种报错姿势(
 就采用Docker配置了，其实Docker配置反倒方便一些= =
-sudo docker run --detach \  --hostname IP or Domain \  --env GITLAB_OMNIBUS_CONFIG=&amp;#34;external_url &amp;#39;http://IP or Domain/&amp;#39;; gitlab_rails[&amp;#39;lfs_enabled&amp;#39;] = true;&amp;#34; \  --publish 443:443 --publish 80:80 --publish 2222:22 \  --name gitlab \  --restart always \  --volume $GITLAB_HOME/config:/etc/gitlab \  --volume $GITLAB_HOME/logs:/var/log/gitlab \  --volume $GITLAB_HOME/data:/var/opt/gitlab \  --shm-size 256m \  gitlab/gitlab-ee:latest然后就直接在浏览器访问该机器IP并按照提示配置，这里不再过多赘述</description>
+sudo docker run --detach \ --hostname IP or Domain \ --env GITLAB_OMNIBUS_CONFIG=&amp;#34;external_url &amp;#39;http://IP or Domain/&amp;#39;; gitlab_rails[&amp;#39;lfs_enabled&amp;#39;] = true;&amp;#34; \ --publish 443:443 --publish 80:80 --publish 2222:22 \ --name gitlab \ --restart always \ --volume $GITLAB_HOME/config:/etc/gitlab \ --volume $GITLAB_HOME/logs:/var/log/gitlab \ --volume $GITLAB_HOME/data:/var/opt/gitlab \ --shm-size 256m \ gitlab/gitlab-ee:latest 然后就直接在浏览器访问该机器IP并按照提示配置，这里不再过多赘述</description>
     </item>
     
     <item>
@@ -49,23 +48,23 @@ gnome不仅占用更多的资源，而且在GUI方面可供自定义的地方也
 于是我决定做一个感天动地の大事:把默认终端换成xfce默认的qterminal
 先安装qterminal
 sudo apt install qterminal 然后配置默认终端
-sudo update-alternatives --config x-terminal-emulator  输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵
-  列表示例,本图里并没有qterminal,大家自己实践时自己探索哦 
-调整&amp;quot;任务栏&amp;quot;位置 找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =
+sudo update-alternatives --config x-terminal-emulator 输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵
+列表示例,本图里并没有qterminal,大家自己实践时自己探索哦 调整&amp;quot;任务栏&amp;quot;位置 找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =
 嘛&amp;hellip;.原来是只能用命令行= =
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 位置  关于这个位置支持的值说明:
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 位置 关于这个位置支持的值说明:
 BOTTOM -&amp;gt; 底部
 LEFT -&amp;gt; 靠左
 RIGHT -&amp;gt; 靠右
 TOP -&amp;gt; 顶部
- 用户头像设置排坑 因为Kali的安全设置(很有可能是权限)问题，
+用户头像设置排坑 因为Kali的安全设置(很有可能是权限)问题，
 使本来很愉快的换头像变成一件非常狗的事情
 因为不能走GUI快捷通过点点点换一个好看的头像，
 所以只能上配置文件了;(
 sudo vi /var/lib/AccountsService/users/你的用户名 按i进入编辑模式对配置文件进行修改
 [User] Icon=你图片的绝对路径 #绝对路径就是从/开始的那个 Language= XSession= SystemAccount=true 按Esc并输入:wq,再Enter保存并退出
 然后再进入你图片所在的目录，调整下改图片文件的权限
-sudo chmod 777 你的图片 然后再退出登陆，就可以看到你更改的头像啦~~</description>
+sudo chmod 777 你的图片 然后再退出登陆，就可以看到你更改的头像啦~~
+调教后整体效果 废话不说，直接上图0.0</description>
     </item>
     
     <item>
@@ -77,12 +76,12 @@ sudo chmod 777 你的图片 然后再退出登陆，就可以看到你更改的�
       <description>Debian Linux下安装虚拟机软件 VirtualBox VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少
 安装最新版本内核头文件/内核镜像 为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们尽量避免使用网上提供的这种方式
 sudo apt-get install linux-headers-`uname -r` 采用以下命令
-sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  如图 
-apt安装VirtualBox apt-get install virtualbox virtualbox-guest-additions-iso VMware Workstation 比起VBox,VMware折腾起来坑真的好多啊= =
+sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启 如图 apt安装VirtualBox apt-get install virtualbox virtualbox-guest-additions-iso VMware Workstation 比起VBox,VMware折腾起来坑真的好多啊= =
 不过没办法。。。我还有10多个VMware的虚拟机w(
 安装最新版本内核头文件/内核镜像 第一步和安VBox一样的操作
-sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启  P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做 
-安装各种编译器 sudo apt-get install build-essential  P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器</description>
+sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-headers-xxx linux-image-xxx #后面的xxx是上面语句中搜索出来的版本号和系统架构 init 6 #装完重启 P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做 安装各种编译器 sudo apt-get install build-essential P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器 安装VMware Workstation 去官网下载安装程序
+给可执行权限
+chmod x VMware-Workstation-Full-版本号.</description>
     </item>
     
     <item>
@@ -96,28 +95,38 @@ sudo apt update sudo apt-cache search linux-image sudo apt-get install linux-hea
 今天就来扯一扯如何在SSH远程连接服务器的时候偷点小懒，甩掉烦人的密码0.0
 配置步骤 由于Linux,高版本Win(我的Win11是预装了)绝大多数都预装了OpenSSH，我们就直接跳过安装步骤，如果你还没有装的话。。。那就找搜索引擎吧(
 检查配置文件 配置的第一步就是要检查配置文件中公钥认证是否处于开启状态(默认是开启的)
-vi /etc/ssh/sshd_config  默认配置(一般没有主动修改过都是默认配置) 
-要是你没有开启(一般会存在这样的语句PubkeyAuthentication no最前面没有注释符#),请把no改为yes
- PS: AuthorizedKeysFile后的路径(用户公钥保存的位置)尽量保持默认(即.ssh/authorized_keys),毕竟别给自己找麻烦嘛((
- 改完了记得重启服务
-systemctl restart sshd.service  现在，我们假设有两台A,B,A(客户机)要通过SSH连接B(服务器)
+vi /etc/ssh/sshd_config 默认配置(一般没有主动修改过都是默认配置) 要是你没有开启(一般会存在这样的语句PubkeyAuthentication no最前面没有注释符#),请把no改为yes
+PS: AuthorizedKeysFile后的路径(用户公钥保存的位置)尽量保持默认(即.ssh/authorized_keys),毕竟别给自己找麻烦嘛((
+改完了记得重启服务
+systemctl restart sshd.service 现在，我们假设有两台A,B,A(客户机)要通过SSH连接B(服务器)
 生成一堆公钥/私钥对 在客户机的终端/cmd/powershell或者其他满足你个人喜好的命令行里输入
 ssh-keygen 命令执行完成后，一对密钥(公钥文件id_rsa.pub, 私钥文件id_rsa)就在你的客户机上生成了
 顾名思义，公钥是可以公开(上传到要连接的服务器上)的，而私钥一定一定一定只能自己知道(重要的事情说3遍)，因为如果别人拿到了你的私钥文件就相当于知道了你的密码(,也就意味着他们可以用你的身份登录服务器 ，然后帮你删个库
 文件所在路径如下
-  Windows &amp;mdash;&amp;gt; %UserProfile%/.ssh/
-  Linux &amp;mdash;&amp;gt; ~/.ssh/
-   注意:在Linux下前面有点的文件夹/文件是隐藏的捏，要用ls -a才能看到.
- 上传公钥  这一步网上很多教程都搞得特别烦，既然是懒人，那就使用自带的ssh-copy-id,能自动完成上传文件和处理权限的操作，美滋滋aww
+Windows &amp;mdash;&amp;gt; %UserProfile%/.ssh/
+Linux &amp;mdash;&amp;gt; ~/.ssh/
+注意:在Linux下前面有点的文件夹/文件是隐藏的捏，要用ls -a才能看到.
+上传公钥 这一步网上很多教程都搞得特别烦，既然是懒人，那就使用自带的ssh-copy-id,能自动完成上传文件和处理权限的操作，美滋滋aww
 不过貌似如果第一步操作中公钥保存路径不是默认的话就不可以这样起飞了，要是你确实有那样的需求，请找搜索引擎= =
- 依然是在客户机上操作
+依然是在客户机上操作
 ssh-copy-id 用户名@服务器ip或域名 免密码登录 完成了上述步骤后，你就可以实现免密码登录服务器了
-ssh 用户名@服务器ip或域名  
-关于公私钥登录和使用密码的安全性讨论 既然是网安人，就再说说安全吧
+ssh 用户名@服务器ip或域名 关于公私钥登录和使用密码的安全性讨论 既然是网安人，就再说说安全吧
 大部分人都认为公私钥认证登录会比较安全些，因为密码有被爆破的风险
 但是，从客观角度来仔细推敲，公私钥认证登录实际上也没有那么的安全
 咳咳，我来杠一杠
- 不妨来看看密码和公私钥认证登录各自安全性上的弱点</description>
+不妨来看看密码和公私钥认证登录各自安全性上的弱点
+密码
+弱密码被爆破
+密码泄露
+很多账号相同密码，如果一台设备密码泄露，就可以登入所有服务器
+公私钥认证
+私钥被抢走了，拿到文件的人可以随意连接服务器
+任何使用/入侵设备的人可以随意连接服务器
+设备被偷了,拿到设备的人可以随意连接服务器
+综上，实际上两种方式安全性差不多，都各自有一定的弱点 = =
+不过，处于偷懒的考虑，我更喜欢免密码的公私钥认证登录，诶嘿嘿~~
+总之，不要过于迷信某种方式捏，挑自己喜欢用的就可以啦
+Ref http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-B-linux%E6%9C%8D%E5%8A%A1/101-B1-openssh%E6%9C%8D%E5%8A%A1.html#4-%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%A0%81%EF%BC%88%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81%EF%BC%89%E7%99%BB%E5%BD%95</description>
     </item>
     
   </channel>
