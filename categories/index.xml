@@ -2,65 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on 猫猫の博客</title>
-        <link>https://blog.nanosec.site/categories/</link>
+        <link>https://kira-pgr.github.io/categories/</link>
         <description>Recent content in Categories on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 29 Aug 2022 13:25:06 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 29 Aug 2022 13:25:06 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Linux</title>
-        <link>https://blog.nanosec.site/categories/linux/</link>
+        <link>https://kira-pgr.github.io/categories/linux/</link>
         <pubDate>Fri, 29 Apr 2022 01:03:14 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/categories/linux/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/linux/Linux.png" alt="Featured image of post Linux" /&gt;</description>
+        <guid>https://kira-pgr.github.io/categories/linux/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/categories/linux/Linux.png" alt="Featured image of post Linux" /&gt;</description>
         </item>
         <item>
         <title>Others</title>
-        <link>https://blog.nanosec.site/categories/others/</link>
+        <link>https://kira-pgr.github.io/categories/others/</link>
         <pubDate>Fri, 29 Apr 2022 01:03:14 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/categories/others/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/others/Others.png" alt="Featured image of post Others" /&gt;</description>
+        <guid>https://kira-pgr.github.io/categories/others/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/categories/others/Others.png" alt="Featured image of post Others" /&gt;</description>
         </item>
         <item>
         <title>Beginner</title>
-        <link>https://blog.nanosec.site/categories/beginner/</link>
+        <link>https://kira-pgr.github.io/categories/beginner/</link>
         <pubDate>Wed, 09 Mar 2022 01:03:14 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/categories/beginner/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/beginner/1.png" alt="Featured image of post Beginner" /&gt;</description>
+        <guid>https://kira-pgr.github.io/categories/beginner/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/categories/beginner/1.png" alt="Featured image of post Beginner" /&gt;</description>
         </item>
         <item>
         <title>Software</title>
-        <link>https://blog.nanosec.site/categories/software/</link>
+        <link>https://kira-pgr.github.io/categories/software/</link>
         <pubDate>Tue, 08 Feb 2022 01:03:14 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/categories/software/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/software/software.png" alt="Featured image of post Software" /&gt;</description>
+        <guid>https://kira-pgr.github.io/categories/software/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/categories/software/software.png" alt="Featured image of post Software" /&gt;</description>
         </item>
         <item>
         <title>Hugo_Blog</title>
-        <link>https://blog.nanosec.site/categories/hugo_blog/</link>
+        <link>https://kira-pgr.github.io/categories/hugo_blog/</link>
         <pubDate>Sat, 29 Jan 2022 01:03:14 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/categories/hugo_blog/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/hugo_blog/hugo.png" alt="Featured image of post Hugo_Blog" /&gt;</description>
+        <guid>https://kira-pgr.github.io/categories/hugo_blog/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/categories/hugo_blog/hugo.png" alt="Featured image of post Hugo_Blog" /&gt;</description>
         </item>
         <item>
         <title>About_Me</title>
-        <link>https://blog.nanosec.site/categories/about_me/</link>
+        <link>https://kira-pgr.github.io/categories/about_me/</link>
         <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/categories/about_me/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/about_me/download.jpg" alt="Featured image of post About_Me" /&gt;</description>
+        <guid>https://kira-pgr.github.io/categories/about_me/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/categories/about_me/download.jpg" alt="Featured image of post About_Me" /&gt;</description>
         </item>
         <item>
         <title>Security</title>
-        <link>https://blog.nanosec.site/categories/security/</link>
+        <link>https://kira-pgr.github.io/categories/security/</link>
         <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/categories/security/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/security/download.jpg" alt="Featured image of post Security" /&gt;</description>
+        <guid>https://kira-pgr.github.io/categories/security/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/categories/security/download.jpg" alt="Featured image of post Security" /&gt;</description>
         </item>
         
     </channel>
