@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='域名太单调了?换一个吧uwu'><title>GitHub Pages配置自定义域名以及CDN</title>
+
+<link rel='canonical' href='https://blog.nanosec.site/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='GitHub Pages配置自定义域名以及CDN'>
+<meta property='og:description' content='域名太单调了?换一个吧uwu'>
+<meta property='og:url' content='https://blog.nanosec.site/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GitHub' /><meta property='article:tag' content='Blog' /><meta property='article:published_time' content='2022-05-15T02:19:13-04:00'/><meta property='article:modified_time' content='2022-05-15T02:19:13-04:00'/><meta property='og:image' content='https://blog.nanosec.site/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/cover.jpg' />
+<meta name="twitter:title" content="GitHub Pages配置自定义域名以及CDN">
+<meta name="twitter:description" content="域名太单调了?换一个吧uwu"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/cover.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">猫猫の博客</a></h1>
+            <h2 class="site-description">DEV OPS SEC</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/">
+                <img src="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/cover_hu7ef721bb127455c22405c2143026501a_3462223_800x0_resize_q75_box.jpg"
+                        srcset="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/cover_hu7ef721bb127455c22405c2143026501a_3462223_800x0_resize_q75_box.jpg 800w, /p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/cover_hu7ef721bb127455c22405c2143026501a_3462223_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="1173" 
+                        loading="lazy"
+                        alt="Featured image of post GitHub Pages配置自定义域名以及CDN" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/hugo_blog/" style="background-color: #585356; color: #fff;">
+                Hugo_Blog
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/">GitHub Pages配置自定义域名以及CDN</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            域名太单调了?换一个吧uwu
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 15, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="github-pages配置自定义域名以及cdn">GitHub Pages配置自定义域名以及CDN</h1>
+<p>嘶~~,最近在折腾博客</p>
+<p>刚买了个域名，由于没有服务器,就把域名绑定到我博客上来了</p>
+<p>嘛= =,闲话不多说，直接上做法&hellip;</p>
+<h2 id="配置自定义域名">配置自定义域名</h2>
+<blockquote>
+<p>如果你没有域名，且是白嫖党 <del>(而且是经费不足的那种)</del> ，下面这一段你可以绕过了</p>
+</blockquote>
+<h3 id="前置准备">前置准备</h3>
+<ul>
+<li>
+<p>一个域名(需要购买)</p>
+<p>这里推荐几个买域名的地方</p>
+<ul>
+<li>
+<p>腾讯云DNSPod</p>
+<ul>
+<li>
+<p>优点:价格第一年便宜，能低至7-8元的</p>
+</li>
+<li>
+<p>缺点:国内的要实名，而且实名审核要一定时间</p>
+<p>P.S. 像我们这种个人建议别买.cn域名，不是说.cn域名不好，而是因为有可能通过whois<strong>查出你的一些个人信息</strong></p>
+<p><del>我相信看到这里一些人肯定想去查了，先说好了，要是出什么问题我可不负责</del>XD~~</p>
+</li>
+</ul>
+</li>
+<li>
+<p>GoDaddy</p>
+<ul>
+<li>
+<p>优点:国外的不需要实名</p>
+</li>
+<li>
+<p>缺点:价格相对贵一点,不支持微信支付</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>一个在GitHub Pages部署好的网站</p>
+<p>Tip:要是没有的话可以按照我<a class="link" href="../hugo1/" >之前的文章</a>来搭一个个人网站</p>
+</li>
+</ul>
+<h3 id="快乐de配置过程">快乐de配置过程</h3>
+<h4 id="dns解析方面">DNS解析方面</h4>
+<p>首先打开你域名DNS解析记录的控制台</p>
+<blockquote>
+<p>没有链接提供! 各个平台控制台的位置不一样 ;&lt;</p>
+</blockquote>
+<p><img src="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/1.jpg"
+	width="1413"
+	height="754"
+	srcset="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/1_hu922d056d14a6333985b6c001c624e8e6_201070_480x0_resize_q75_box.jpg 480w, /p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/1_hu922d056d14a6333985b6c001c624e8e6_201070_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="DNS解析控制台实例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="449px"
+	
+></p>
+<p>然后新建一条<strong>CNAME记录</strong></p>
+<blockquote>
+<p>CNAME类似于你域名的一个别名,如果域名A建立了一条CNAME记录指向域名B,你请求A就会去请求B</p>
+</blockquote>
+<p><img src="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/2.jpg"
+	width="831"
+	height="229"
+	srcset="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/2_hubbf64ecbb329d4fea4a2f7cb67f3df2d_22341_480x0_resize_q75_box.jpg 480w, /p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/2_hubbf64ecbb329d4fea4a2f7cb67f3df2d_22341_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="CNAME记录"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="362"
+		data-flex-basis="870px"
+	
+></p>
+<p>现在我们看向上图中右边两个框框，又到了做填空的时候呐!</p>
+<ul>
+<li>
+<p>Name(名称)填你想要的子域名或者是@</p>
+<p>举个糖炒板栗(逃: 如果你的域名是nanosec.site,你这里输入@别人访问nanasec.site的时候是这个网站,如果你填了blog,别人访问blog.nanosec.site是你的网站</p>
+</li>
+<li>
+<p>Target(目标)填你GitHub Pages哪个网站的域名，一般是你的用户名.github.io,如果你忘了你的用户名 <del>(这什么有大病的如果)</del> 你可以去下面的评论区发条评论，然后你的用户名就会显示出来啦 : 3</p>
+</li>
+</ul>
+<h4 id="github方面">GitHub方面</h4>
+<p>首先登录到GitHub，然后打开你网站的那个仓库的设置的Pages栏</p>
+<p><img src="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/3.jpg"
+	width="1785"
+	height="814"
+	srcset="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/3_hu5c77afebe1a91ced3892922795576793_156718_480x0_resize_q75_box.jpg 480w, /p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/3_hu5c77afebe1a91ced3892922795576793_156718_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="别怕，有图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="219"
+		data-flex-basis="526px"
+	
+></p>
+<blockquote>
+<p>如果你找不到仓库了,你可以去下面的评论区发条评论，然后点击你的用户名，你的个人界面就打开了~~</p>
+</blockquote>
+<p>然后在上图中的Custom domain下面的框中填写你之前配置好的域名</p>
+<p>点击Save,等它检测完成&hellip;.</p>
+<p>看到上面有一行绿色的英文<code>Your site is published at https://你的域名/</code>就可以吃西瓜啦~(≧▽≦)/~</p>
+<p>之后别人访问你的域名就可以打开你自己网站了</p>
+<img title="" src="1.gif" alt="" width="176">
+<h2 id="cloudflare免费cdn配置">CloudFlare免费CDN配置</h2>
+<p>进入CloudFlare<a class="link" href="https://www.cloudflare.com/plans/#overview"  target="_blank" rel="noopener"
+    >官网</a>，选择免费的那个计划</p>
+<p><img src="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/1.png"
+	width="1831"
+	height="534"
+	srcset="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/1_huf4fdd880d74a9a55ab818154c6cf512b_88266_480x0_resize_box_3.png 480w, /p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/1_huf4fdd880d74a9a55ab818154c6cf512b_88266_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="好像过于可爱了些= v ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="342"
+		data-flex-basis="822px"
+	
+></p>
+<p>然后就是日常的注册/登录操作</p>
+<p>进入你个人用户的面板-&gt;Websites(网站)了之后,点击Add A Site(添加网站)</p>
+<p><img src="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/5.jpg"
+	width="1908"
+	height="150"
+	srcset="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/5_hu8b29d78f6daeca86bb3c824bc3a0850a_30993_480x0_resize_q75_box.jpg 480w, /p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/5_hu8b29d78f6daeca86bb3c824bc3a0850a_30993_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1272"
+		data-flex-basis="3052px"
+	
+></p>
+<p>然后输入你的域名,点击Add Site(添加网站)</p>
+<p><img src="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/6.jpg"
+	width="1447"
+	height="535"
+	srcset="/p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/6_hu8376e501262425e4887e7ae4ff3a573b_83941_480x0_resize_q75_box.jpg 480w, /p/github-pages%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E4%BB%A5%E5%8F%8Acdn/6_hu8376e501262425e4887e7ae4ff3a573b_83941_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="270"
+		data-flex-basis="649px"
+	
+></p>
+<p>之后选择Free(免费)的那个计划，</p>
+<p>接下来的操作有了CloudFlare官方详细的提示就是有手就行的事情啦</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/github/">GitHub</a>
+        
+            <a href="/tags/blog/">Blog</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/hugo-stack%E4%B8%BB%E9%A2%98%E7%AE%80%E5%8D%95%E7%BE%8E%E5%8C%96/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo-stack%E4%B8%BB%E9%A2%98%E7%AE%80%E5%8D%95%E7%BE%8E%E5%8C%96/cover.6bf77574217b7f42b61453ba97b91b02_hu81032a5d4f0a887010a47d971b45af85_853501_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo Stack主题简单美化"
+                        
+                        data-hash="md5-a/d1dCF7f0K2FFO6l7kbAg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo Stack主题简单美化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo%E6%97%A0%E9%9C%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo%E6%97%A0%E9%9C%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/cover.f89ebdbfa008d13badfe993417727026_hu8faceda538ccec36a41e941e68707cfc_3003908_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Hugo无需服务器搭建个人博客"
+                        
+                        data-hash="md5-&#43;J69v6AI0Tut/pk0F3JwJg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo无需服务器搭建个人博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#配置自定义域名">配置自定义域名</a>
+      <ol>
+        <li><a href="#前置准备">前置准备</a></li>
+        <li><a href="#快乐de配置过程">快乐de配置过程</a>
+          <ol>
+            <li><a href="#dns解析方面">DNS解析方面</a></li>
+            <li><a href="#github方面">GitHub方面</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#cloudflare免费cdn配置">CloudFlare免费CDN配置</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

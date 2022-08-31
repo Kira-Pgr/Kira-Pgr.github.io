@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on 猫猫の博客</title>
+        <link>https://blog.nanosec.site/page/</link>
+        <description>Recent content in Pages on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.nanosec.site/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Archives</title>
+        <link>https://blog.nanosec.site/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.nanosec.site/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>About</title>
+        <link>https://blog.nanosec.site/about/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.nanosec.site/about/</guid>
+        <description>&lt;p style=&#34;text-align: center&#34;&gt;
+    &lt;img src=&#34;ava.png&#34; alt=&#34;头像&#34; align=&#34;center&#34; width=&#34;200&#34;&gt;
+&lt;/p&gt;
+&lt;h1 align=&#34;center&#34;&gt;
+KiraPGR&#39;s Blog
+&lt;/h1&gt;
+&lt;p align=&#34;center&#34;&gt;
+        To tell the truth, I don’t care at all, ya know?&lt;br&gt;
+        --But it’s only me and I don’t like being alone...
+&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://img.shields.io/badge/Build-Passed-success&#34; alt=&#34;&#34; /&gt; 
+&lt;img src=&#34;https://img.shields.io/badge/Server-GitHub%20Pages-blueviolet&#34; alt=&#34;&#34; /&gt; 
+&lt;img src=&#34;https://img.shields.io/badge/Built%20With-Hugo-yellowgreen&#34; alt=&#34;&#34; /&gt; 
+&lt;img src=&#34;https://img.shields.io/badge/Theme-Stack-orange&#34; alt=&#34;&#34; /&gt; 
+&lt;/p&gt;
+&lt;HR style=&#34;border:1 dashed #987cb9&#34; width=&#34;80%&#34; color=#987cb9 SIZE=1&gt;
+&lt;p align=&#34;center&#34;&gt;
+大家好, 我是PGR, 欢迎大家来到我的Blog,
+本篇文章是对我自己简单的一个介绍
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;img align=&#39;right&#39; src=&#39;nyan.png&#39; width=&#39;410px&#39; height=&#39;50&#39;&gt;
+&lt;h2 id=&#34;kirapgr是谁&#34;&gt;KiraPGR是谁？&lt;/h2&gt;
+&lt;p&gt;我是一个高中在读学生，开源主义者，了解C++/Python开发 ,平常喜欢自己折腾折腾计算机技术，也不时会写一点小Project(基本上以工具为主),目前主要在研究信息安全方面，如果有意向的朋友们可以和我一起学习哦qaq&lt;/p&gt;
+&lt;h2 id=&#34;关于本博客&#34;&gt;关于本博客&lt;/h2&gt;
+&lt;p&gt;搭建这个博客的目的呢，主要是为了能和大家共享我自己学到的一些知识 (&lt;del&gt;刚好就有动力写一点笔记了&lt;/del&gt; )，同时呢，还希望能结交到一些志同道合的好朋友awa&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;^__^       ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;( ´∀` )   ／ 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(     )  &amp;lt; 嘛。。既然来了，给我GitHub个Star小星星呗～
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;|  |  |   ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;(__)__)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;关于开源&#34;&gt;关于开源&lt;/h2&gt;
+&lt;p&gt;作为一个开源主义的猫猫，肯定是会开源自己的代码捏~&lt;/p&gt;
+&lt;p&gt;所有的代码都会发布在GitHub上(个人很讨厌Gitee;()&lt;/p&gt;
+&lt;p&gt;大家可以随意蹂躏我的作品哦.awa.&lt;/p&gt;
+&lt;h2 id=&#34;联系方式&#34;&gt;联系方式&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=邮箱:aieternal@outlook.com&amp;scale=2&amp;url=https://github.com/Kira-Pgr/Assets/blob/main/null-734a5c30eb62d277.jpg?raw=true&amp;fontcolor=ffffff&#34; alt=&#34;&#34; /&gt; &lt;br&gt;
+&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=TG:https://t.me/pgr47&amp;scale=2&amp;url=https://github.com/Kira-Pgr/Assets/blob/main/null-734a5c30eb62d277.jpg?raw=true&amp;fontcolor=ffffff&#34; alt=&#34;&#34; /&gt; &lt;br&gt;
+&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=QQ:1532375915~&amp;scale=2&amp;url=https://github.com/Kira-Pgr/Assets/blob/main/null-734a5c30eb62d277.jpg?raw=true&amp;fontcolor=ffffff&#34; alt=&#34;&#34; /&gt; &lt;br&gt;
+&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=b站:https://space.bilibili.com/66912843&amp;scale=2&amp;url=https://github.com/Kira-Pgr/Assets/blob/main/null-734a5c30eb62d277.jpg?raw=true&amp;fontcolor=ffffff&#34; alt=&#34;&#34;/&gt; &lt;br&gt;&lt;/p&gt;
+&lt;h2 id=&#34;我的朋友们&#34;&gt;我的朋友们&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=黑兔由帝:https://space.bilibili.com/351510324&amp;scale=2&amp;url=https://i0.hdslb.com/bfs/face/40994943b14112a6e461cd4ad9dd5aceab03c42d.jpg@240w_240h_1c_1s.webp&amp;fontcolor=ffffff&#34; alt=&#34;&#34; /&gt; &lt;br&gt;
+&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=WeepingDogel:https://weepingdogel.github.io&amp;scale=2&amp;url=https://weepingdogel.github.io/photo_2021-07-21_03-31-50.jpg&amp;fontcolor=ffffff&#34; alt=&#34;&#34; /&gt; &lt;br&gt;
+&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=Kera:https://space.bilibili.com/37960560&amp;scale=2&amp;url=https://i0.hdslb.com/bfs/face/8e14005978d30da56bb297f415b5e8361b324dcc.jpg@240w_240h_1c_1s.webp&amp;fontcolor=ffffff&#34; alt=&#34;&#34; /&gt; &lt;br&gt;
+&lt;img src=&#34;https://unv-shield.librian.net/api/unv_shield?txt=小仙女:http://blog.233.pink&amp;scale=2&amp;url=http://blog.233.pink/img/avatar_hu2057e85479d0f1694995a620813bf7b1_119705_300x0_resize_box_3.png&amp;fontcolor=ffffff&#34; alt=&#34;&#34; /&gt; &lt;br&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Links</title>
+        <link>https://blog.nanosec.site/links/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.nanosec.site/links/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://blog.nanosec.site/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.nanosec.site/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

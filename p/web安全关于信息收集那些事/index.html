@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='简单总结一下信息收集'><title>Web安全:关于信息收集那些事</title>
+
+<link rel='canonical' href='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Web安全:关于信息收集那些事'>
+<meta property='og:description' content='简单总结一下信息收集'>
+<meta property='og:url' content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-03-17T00:23:45-04:00'/><meta property='article:modified_time' content='2022-03-17T00:23:45-04:00'/><meta property='og:image' content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover.jpg' />
+<meta name="twitter:title" content="Web安全:关于信息收集那些事">
+<meta name="twitter:description" content="简单总结一下信息收集"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">猫猫の博客</a></h1>
+            <h2 class="site-description">DEV OPS SEC</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+                <img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover_hub66e432b1b6d7210dd7ccd81a1693998_438324_800x0_resize_q75_box.jpg"
+                        srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover_hub66e432b1b6d7210dd7ccd81a1693998_438324_800x0_resize_q75_box.jpg 800w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover_hub66e432b1b6d7210dd7ccd81a1693998_438324_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:关于信息收集那些事" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/">Web安全:关于信息收集那些事</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            简单总结一下信息收集
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 17, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="关于信息收集那些事">关于信息收集那些事</h1>
+<p>在安全测试中，信息收集是非常重要的一个环节，此环节的信息将影响到后续的成功几率，掌握信息的多少将决定发现漏洞机会大小(毕竟你找到的东西越多，可能出现漏洞的几率越大嘛= =)</p>
+<h2 id="判断有无cdn">判断有无CDN</h2>
+<p>基本上通过<a class="link" href="https://ping.chinaz.com/"  target="_blank" rel="noopener"
+    >超级ping</a>就可以判断了awa</p>
+<h3 id="有cdn--尝试绕过">有CDN&ndash;&gt;尝试绕过</h3>
+<p>如果多地ping响应的ip不一样，说明该网站配置有CDN</p>
+<p>绕过方法大致有:</p>
+<ul>
+<li>
+<p><a class="link" href="http://tools.ipip.net/cdn.php"  target="_blank" rel="noopener"
+    >冷门地区地址ping</a>:由于经费原因，服务商不大可能在某些地区搞CDN,所以往往用那些地区的ip来ping的话能找到服务器的真实ip</p>
+</li>
+<li>
+<p><a class="link" href="https://securitytrails.com/"  target="_blank" rel="noopener"
+    >DNS解析历史记录</a>:有可能这个服务器之前没有配置CDN,查看历史DNS解析记录可以获得服务器真实IP</p>
+</li>
+<li>
+<p><a class="link" href="/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86" >黑暗引擎</a>搜索</p>
+</li>
+<li>
+<p>奇怪的<code>www.</code>绕过:有可能某些网站CDN配置的时候忽视了一些细节(比如说带有<code>www.</code>的域名配置了CDN.不带有<code>www.</code>的没有)，部分网站可以用过ping去掉<code>www.</code>的域名来找出服务器真实IP, 比如说著名的学而思网校的网站= =</p>
+</li>
+</ul>
+<blockquote>
+<p>咳咳= = 说到这里，某些同学应该跃跃欲试了吧= =，绕过CDN的测试昨晚玩玩可以，<strong>但请不要瞎搞</strong></p>
+</blockquote>
+<ul>
+<li>特定文件hash值:这里放一个Python3脚本(PS:原脚本是基于python2的，我在其基础上修改了下)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*- coding: gb2312 -*-</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Missing modules? Run the following commands in cmd/terminal&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install base64&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install requests&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install mmh3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">mmh3</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Pls input the url you want to hash favicon(Include http(s):// )&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;favicon.ico&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">icon</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Hash</span> <span class="o">=</span> <span class="n">mmh3</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;The hash is:&#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Hash</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Go to https://www.shodan.io/ and search with http.favicon.hash:&#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Hash</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>暴力出奇迹= =：采用<a class="link" href="https://github.com/Tai7sy/fuckcdn"  target="_blank" rel="noopener"
+    >fuckcdn</a> w8fuckcdn(不推荐)  <a class="link" href="https://github.com/zmap/zmap"  target="_blank" rel="noopener"
+    >zmap</a>等工具</li>
+</ul>
+<h3 id="没有cdn--直接上">没有CDN&ndash;&gt;直接上</h3>
+<p>如果多地ping响应的ip一样，说明该网站没有CDN</p>
+<p><del>嘛。。。还等什么嘛= = 干就是了</del></p>
+<h2 id="判断waf">判断WAF</h2>
+<p>直接上工具: <a class="link" href="https://github.com/EnableSecurity/wafw00f"  target="_blank" rel="noopener"
+    >wafw00f</a></p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1.png"
+	width="1143"
+	height="472"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="让我们直面WAF  (大雾"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="242"
+		data-flex-basis="581px"
+	
+></p>
+<p>工具能帮你判断对方使用的WAF，然后你可以依据该WAF的~~特性  确信)~~来选择绕过的姿势</p>
+<h2 id="子域名收集">子域名收集</h2>
+<p>推荐工具<a class="link" href="https://github.com/shmilylty/OneForAll"  target="_blank" rel="noopener"
+    >OneForAll</a></p>
+<p>子域名可能和主站在同一台服务器上，或者在同一个C段内，目标越多，发现漏洞的可能性越大</p>
+<h2 id="网站目录扫描">网站目录扫描</h2>
+<p><a class="link" href="https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/Ea6a6APuuMVFk5JO5LPkskwBrevk0Ho55BFP226MNIp2oA?e=Krjec3"  target="_blank" rel="noopener"
+    >御剑后台扫描珍藏版</a></p>
+<p>目录扫描可以让你有发现一些<del>有趣</del>有价值的页面</p>
+<h2 id="google-hacking-语法信息收集">Google Hacking 语法信息收集</h2>
+<p>这种收集方式对于新手非常友好，可以用来搜寻敏感信息泄漏/弱密码/目录遍历等较容易挖掘的漏洞。</p>
+<p>几个好用的语法:<code>inurl:</code> <code>intext:</code> <code>intitle:</code> <code>site:</code></p>
+<h2 id="黑暗引擎信息收集">黑暗引擎信息收集</h2>
+<p><a class="link" href="https://fofa.info/toLogin"  target="_blank" rel="noopener"
+    >fofa</a>, <a class="link" href="https://www.shodan.io/"  target="_blank" rel="noopener"
+    >shodan</a>, <a class="link" href="https://zoomeye.org/"  target="_blank" rel="noopener"
+    >zoomeye</a></p>
+<p>可以收集到网站一些和服务有关的信息，便于漏洞检测</p>
+<blockquote>
+<p>Tip:建议通过黑暗引擎搜索的时候<strong>尽量使用语法</strong>，这样会对你信息收集更有帮助</p>
+</blockquote>
+<h2 id="关于操作系统的信息收集">关于操作系统的信息收集</h2>
+<h3 id="通过ttl值判断">通过ttl值判断</h3>
+<p>ttl是数据包能经过路由的最大数量，每经过一次路由ttl减一。
+<strong>默认情况下</strong>，不同系统ttl值的区别:</p>
+<ul>
+<li>Linux: 64</li>
+</ul>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2.jpg"
+	width="647"
+	height="214"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2_hu226c9e5dc427c2353909a855d8ebec97_33274_480x0_resize_q75_box.jpg 480w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2_hu226c9e5dc427c2353909a855d8ebec97_33274_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Linux下TTL值"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="302"
+		data-flex-basis="725px"
+	
+></p>
+<ul>
+<li>Windows: 128</li>
+</ul>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1.jpg"
+	width="643"
+	height="217"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_480x0_resize_q75_box.jpg 480w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Win下TTL值"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="296"
+		data-flex-basis="711px"
+	
+></p>
+<blockquote>
+<p><strong>注意:TTL值是可手动修改的</strong></p>
+</blockquote>
+<h3 id="通过大小写敏感判断">通过大小写敏感判断</h3>
+<ul>
+<li>
+<p>Windows:对大小写不敏感</p>
+</li>
+<li>
+<p>Linux:对大小写敏感</p>
+</li>
+</ul>
+<blockquote>
+<p>这里的大小写敏感针对的是<strong>网站目录名</strong>和<strong>提交给服务器的参数名</strong></p>
+</blockquote>
+<h3 id="特定的中间件只能用于特定系统">特定的中间件只能用于特定系统</h3>
+<p>某些<a class="link" href="/posts/web2/#%e5%85%b3%e4%ba%8e%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%9a%84%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86" >中间件</a>只能用于特定的操作系统，如IIS只能用于windows，nginx只能用于Linux</p>
+<h2 id="关于中间件的信息收集">关于中间件的信息收集</h2>
+<h3 id="通过应答包判断">通过应答包判断</h3>
+<p>在应答包中可能会有server字段 <strong>(也就意味着可以后台手动去掉)</strong> ，其中代表的则是所有的搭建平台(中间件)类型</p>
+<blockquote>
+<p>如何找Server字段(?</p>
+<p>去开发者工具里网络一栏，然后刷新界面</p>
+</blockquote>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3.jpg"
+	width="1291"
+	height="375"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_480x0_resize_q75_box.jpg 480w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Server字段awa"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="344"
+		data-flex-basis="826px"
+	
+></p>
+<h3 id="通过报错判断">通过报错判断</h3>
+<p>故意让网页报错，报错页面可能包含中间件一些信息</p>
+<p>比如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">https://www.baidu.com/233333333333333333333333333
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><del>别试了，百度的报错不包含中间件信息;)</del></p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4.jpg"
+	width="1287"
+	height="286"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_480x0_resize_q75_box.jpg 480w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="嘿嘿，这才是真正的例子"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="450"
+		data-flex-basis="1080px"
+	
+></p>
+<h3 id="懒人必备第三方工具">懒人必备:第三方工具</h3>
+<p><a class="link" href="https://seo.chinaz.com/"  target="_blank" rel="noopener"
+    >站长之家</a></p>
+<h2 id="关于数据库的信息收集">关于数据库的信息收集</h2>
+<h3 id="黑暗引擎一把梭">黑暗引擎一把梭</h3>
+<p>见<a class="link" href="/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86" >上文</a></p>
+<h3 id="依据默认端口判断">依据默认端口判断</h3>
+<p>各数据库<a class="link" href="https://www.cnblogs.com/zhangrenguo/p/10646116.html"  target="_blank" rel="noopener"
+    >默认端口</a></p>
+<h3 id="常见搭配">常见搭配</h3>
+<p>某些集成化的搭建平台有着固定的网站架构搭配，如PHPStudy,在windows上常见的apache+mysql+php,linux上为nginx+mysql+php</p>
+<h2 id="关于后端语言的信息收集">关于后端语言的信息收集</h2>
+<h3 id="一目了然法">一目了然法</h3>
+<p>对于页面直接带有相关文件后缀的，通过后缀直接判断</p>
+<h3 id="添加后缀法">添加后缀法</h3>
+<p><strong>没后缀？加着玩玩试试呗</strong></p>
+<p>在域名的后面手动添加index后在添加php、jsp、py、asp等常见的后端编写语言，<strong>哪个能正常显示后端就是哪个语言编写的</strong></p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5.jpg"
+	width="1262"
+	height="332"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_480x0_resize_q75_box.jpg 480w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="可见，百度是用PHP编写的"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="380"
+		data-flex-basis="912px"
+	
+></p>
+<h3 id="通过应答包判断-1">通过应答包判断</h3>
+<p>应答包用的好，<del>监狱进的早</del>就能收集到不少信息</p>
+<p>可以通过应答包x-powered-by字段判断后端语言</p>
+<blockquote>
+<p>Tip: 现在一些大一点的网站，安全意识较高，都会隐藏相应的字段</p>
+</blockquote>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6.jpg"
+	width="1285"
+	height="452"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6_hu358432c5f38c49ead525937a041e8cfa_79429_480x0_resize_q75_box.jpg 480w, /p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6_hu358432c5f38c49ead525937a041e8cfa_79429_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="直接上图QvQ"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="284"
+		data-flex-basis="682px"
+	
+></p>
+<h3 id="第三方平台yyds-">第三方平台yyds= =</h3>
+<p><a class="link" href="https://builtwith.com/"  target="_blank" rel="noopener"
+    >BuildWith</a></p>
+<h2 id="关于app的信息收集">关于APP的信息收集</h2>
+<p>由于部分APP是由网页封装而成，我们可以通过一些手段将对于APP的渗透测试变为Web渗透</p>
+<h3 id="暴力拆包找url">暴力拆包找url</h3>
+<p>又到了暴力出奇迹的时候了pvp</p>
+<p><a class="link" href="" >工具:漏了个大洞</a></p>
+<h3 id="burp抓包app">Burp抓包APP</h3>
+<p>没有安装burp的朋友们可以看<a class="link" href="/posts/burppro/" >这篇文章</a></p>
+<p>如果各位有安卓模拟器，可以将模拟器的代理改成Burp的代理，然后可以给模拟器安装burp的证书。</p>
+<p>如果不想用模拟器的话可以<a class="link" href="https://www.yuque.com/weiker/xiaodi/gq0iv9#jBift"  target="_blank" rel="noopener"
+    >自行参考这篇文章</a></p>
+<h2 id="ref">Ref</h2>
+<p><a class="link" href="https://www.yuque.com/weiker/xiaodi"  target="_blank" rel="noopener"
+    >小迪安全 · Yuque</a></p>
+<p><a class="link" href="https://blog.csdn.net/mzli_l/category_11298124.html"  target="_blank" rel="noopener"
+    >信息收集_Plastilina的博客-CSDN博客</a></p>
+<p><a class="link" href="https://www.cnblogs.com/zhangrenguo/p/10646116.html"  target="_blank" rel="noopener"
+    >各个数据库的默认端口 - 张仁国 - 博客园</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/web-sec/">Web Sec</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.83f907b854aabf08219afb59282a127f_hub39257f7b520a72e81a71654a57446e0_105468_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:SQL注入基础知识和简单绕过笔记"
+                        
+                        data-hash="md5-g/kHuFSqvwghmvtZKCoSfw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:SQL注入基础知识和简单绕过笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全--浏览器信息伪造"
+                        
+                        data-hash="md5-9jtpqk9CGRVmVLWVIQu8nQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全--浏览器信息伪造</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/pwn-pwn-pang-part6---rop/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pwn-pwn-pang-part6---rop/cover.9ce3629f5f54def41971d23600c4a453_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP"
+                        
+                        data-hash="md5-nONin19U3vQZcdI2AMSkUw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part6 --- ROP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/pwn-pwn-pang-part5---ret2shellcode/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pwn-pwn-pang-part5---ret2shellcode/cover.5f05682fb9be023753c14c7bf7b130e4_hu3166df2cafdca7684e1b9dcf3608c6c9_2294292_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode"
+                        
+                        data-hash="md5-XwVoL7m&#43;AjdTwUx797Ew5A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part5 --- ret2shellcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/">
+        
+        
+            <div class="article-image">
+                <img src="/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover.90388edc5b014d294f952b1813c530d7_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Clash猫猫RCE复现(弹shell)"
+                        
+                        data-hash="md5-kDiO3FsBTSlPlSsYE8Uw1w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Clash猫猫RCE复现(弹shell)</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#判断有无cdn">判断有无CDN</a>
+      <ol>
+        <li><a href="#有cdn--尝试绕过">有CDN&ndash;&gt;尝试绕过</a></li>
+        <li><a href="#没有cdn--直接上">没有CDN&ndash;&gt;直接上</a></li>
+      </ol>
+    </li>
+    <li><a href="#判断waf">判断WAF</a></li>
+    <li><a href="#子域名收集">子域名收集</a></li>
+    <li><a href="#网站目录扫描">网站目录扫描</a></li>
+    <li><a href="#google-hacking-语法信息收集">Google Hacking 语法信息收集</a></li>
+    <li><a href="#黑暗引擎信息收集">黑暗引擎信息收集</a></li>
+    <li><a href="#关于操作系统的信息收集">关于操作系统的信息收集</a>
+      <ol>
+        <li><a href="#通过ttl值判断">通过ttl值判断</a></li>
+        <li><a href="#通过大小写敏感判断">通过大小写敏感判断</a></li>
+        <li><a href="#特定的中间件只能用于特定系统">特定的中间件只能用于特定系统</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于中间件的信息收集">关于中间件的信息收集</a>
+      <ol>
+        <li><a href="#通过应答包判断">通过应答包判断</a></li>
+        <li><a href="#通过报错判断">通过报错判断</a></li>
+        <li><a href="#懒人必备第三方工具">懒人必备:第三方工具</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于数据库的信息收集">关于数据库的信息收集</a>
+      <ol>
+        <li><a href="#黑暗引擎一把梭">黑暗引擎一把梭</a></li>
+        <li><a href="#依据默认端口判断">依据默认端口判断</a></li>
+        <li><a href="#常见搭配">常见搭配</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于后端语言的信息收集">关于后端语言的信息收集</a>
+      <ol>
+        <li><a href="#一目了然法">一目了然法</a></li>
+        <li><a href="#添加后缀法">添加后缀法</a></li>
+        <li><a href="#通过应答包判断-1">通过应答包判断</a></li>
+        <li><a href="#第三方平台yyds-">第三方平台yyds= =</a></li>
+      </ol>
+    </li>
+    <li><a href="#关于app的信息收集">关于APP的信息收集</a>
+      <ol>
+        <li><a href="#暴力拆包找url">暴力拆包找url</a></li>
+        <li><a href="#burp抓包app">Burp抓包APP</a></li>
+      </ol>
+    </li>
+    <li><a href="#ref">Ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>
