@@ -18,7 +18,7 @@
 &lt;p&gt;网上嘛&amp;hellip;都是那么一大长串的概念&amp;hellip;特别难记&lt;/p&gt;
 &lt;p&gt;简单理解概括一下本质，其实就可以缩减成一句话&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;攻击者插入恶意的SQL语句，从而使得原本的语句产生歧义，从而达到攻击者的目的&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击者插入恶意的SQL语句，使得原本的语句产生歧义，从而达到攻击者的目的&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;所以说，SQL注入攻击要成功的话得满足以下条件&lt;/p&gt;
 &lt;ul&gt;
@@ -194,7 +194,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h5 id=&#34;你好数据篇&#34;&gt;你好，数据篇&lt;/h5&gt;
-&lt;p&gt;接下来就是要到了逐步获取，库名，表名，列名，数据的环节了&lt;/p&gt;
+&lt;p&gt;接下来就是要到了逐步获取库名，表名，列名，数据的环节了&lt;/p&gt;
 &lt;p&gt;高版本的mysql和MariaDB数据库有一个特征，即information_schema库.&lt;/p&gt;
 &lt;p&gt;information_schema 库用于存储数据库&lt;strong&gt;元数据&lt;/strong&gt;(关于数据的数据)，例如数据库名、表名、列的数据类型、访问权限等。&lt;/p&gt;
 &lt;p&gt;information_schema 库中:&lt;/p&gt;
