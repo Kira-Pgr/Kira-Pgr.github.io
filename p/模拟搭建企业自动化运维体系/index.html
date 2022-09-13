@@ -358,88 +358,35 @@
 <h4 id="gitlab安装">GitLab安装</h4>
 <p>由于直接配置GitLab时我本地各种报错姿势(</p>
 <p>就采用Docker配置了，其实Docker配置反倒方便一些= =</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-docker" data-lang="docker"><span class="line"><span class="cl">sudo docker run --detach <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --hostname IP or Domain <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --env <span class="nv">GITLAB_OMNIBUS_CONFIG</span><span class="o">=</span><span class="s2">&#34;external_url &#39;http://IP or Domain/&#39;; gitlab_rails[&#39;lfs_enabled&#39;] = true;&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --publish 443:443 --publish 80:80 --publish 2222:22 <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name gitlab <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --restart always <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --volume <span class="nv">$GITLAB_HOME</span>/config:/etc/gitlab <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --volume <span class="nv">$GITLAB_HOME</span>/logs:/var/log/gitlab <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --volume <span class="nv">$GITLAB_HOME</span>/data:/var/opt/gitlab <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --shm-size 256m <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  gitlab/gitlab-ee:latest<span class="err">
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后就直接在浏览器访问该机器IP并按照提示配置，这里不再过多赘述</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-docker" data-lang="docker"><span class="line"><span class="ln"> 1</span><span class="cl">sudo docker run --detach <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="se"></span>  --hostname IP or Domain <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="se"></span>  --env <span class="nv">GITLAB_OMNIBUS_CONFIG</span><span class="o">=</span><span class="s2">&#34;external_url &#39;http://IP or Domain/&#39;; gitlab_rails[&#39;lfs_enabled&#39;] = true;&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="se"></span>  --publish 443:443 --publish 80:80 --publish 2222:22 <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="se"></span>  --name gitlab <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="se"></span>  --restart always <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="se"></span>  --volume <span class="nv">$GITLAB_HOME</span>/config:/etc/gitlab <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="se"></span>  --volume <span class="nv">$GITLAB_HOME</span>/logs:/var/log/gitlab <span class="se">\
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="se"></span>  --volume <span class="nv">$GITLAB_HOME</span>/data:/var/opt/gitlab <span class="se">\
+</span></span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="se"></span>  --shm-size 256m <span class="se">\
+</span></span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="se"></span>  gitlab/gitlab-ee:latest<span class="err">
+</span></span></span></code></pre></div><p>然后就直接在浏览器访问该机器IP并按照提示配置，这里不再过多赘述</p>
 <p>至于使用方法嘛。。。和<del>世界上最大的同性交友平台</del>GitHub差不多</p>
 <h4 id="jenkins安装">Jenkins安装</h4>
 <p>由于Jenkins依赖Java环境，先安装Java</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum -y install java-11-openjdk
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>接下来导入Jenkins官方源</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>导入Jenkins密钥</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>终于可以安装啦uwu</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum install jenkins
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>安装完之后可不要忘记启动并启用服务哦 ;D</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">yum -y install java-11-openjdk
+</span></span></code></pre></div><p>接下来导入Jenkins官方源</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+</span></span></code></pre></div><p>导入Jenkins密钥</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+</span></span></code></pre></div><p>终于可以安装啦uwu</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">yum install jenkins
+</span></span></code></pre></div><p>安装完之后可不要忘记启动并启用服务哦 ;D</p>
 <blockquote>
 <p>P.S. 启动服务:使服务立刻运行起来，启用服务:使服务开机自启</p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl start jenkins
-</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> jenkins
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>最后即可在<code>ip:8080</code>访问Jenkins了喵</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">systemctl start jenkins
+</span></span><span class="line"><span class="ln">2</span><span class="cl">systemctl <span class="nb">enable</span> jenkins
+</span></span></code></pre></div><p>最后即可在<code>ip:8080</code>访问Jenkins了喵</p>
 <h4 id="jenkins配置">Jenkins配置</h4>
 <p>在自定义Jenkins那步选择<strong>安装推荐的插件</strong>，这样你之后可以少很多折腾</p>
 <p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug.jpg"
@@ -557,24 +504,10 @@
 <p>Tip:Ansible是一个批量自动化管理多台机器的工具</p>
 </blockquote>
 <p>Ansible在epel源里才有，所以先安装epel源</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum -y install epel-release
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>安装Ansible</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum -y install ansible
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>下面配置Ansible插件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">yum -y install epel-release
+</span></span></code></pre></div><p>安装Ansible</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">yum -y install ansible
+</span></span></code></pre></div><p>下面配置Ansible插件</p>
 <p>去到<code>http://ip:8080/configureTools/</code>，或者网页上<code>Manage Jenkins</code> - -&gt; <code>Global Tool Configuration</code></p>
 <p>下划到<code>Ansible</code>区域，点击<code>Add Ansible</code></p>
 <p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9.jpg"
@@ -590,17 +523,9 @@
 	
 ></p>
 <p>分别添加<code>ansible</code>和<code>ansible-playbook</code>,默认他们的路径都安装在<code>/usr/bin</code>下，如果不放心可以用<code>which</code>命令检查</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">which ansible
-</span></span><span class="line"><span class="cl">which ansible-playbook
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">which ansible
+</span></span><span class="line"><span class="ln">2</span><span class="cl">which ansible-playbook
+</span></span></code></pre></div><blockquote>
 <p>注意这里的安装路径写到可执行文件所在目录</p>
 <p>比如说我的ansible是<code>/usr/bin/ansible</code>,我只需要填<code>/usr/bin</code></p>
 </blockquote>
@@ -652,15 +577,8 @@
 ></p>
 <p>嘛= =那就帮帮Ansible吧，让它省去烦人的说&quot;是&quot;的步骤</p>
 <p>在装有<code>Jenkins</code>和<code>Ansible</code>的机器上完成:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi /etc/ssh/ssh_config
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后将<code>/etc/ssh/ssh_config</code> 内容中的<code>StrictHostKeyChecking</code> 值为<code>no</code> ,让机器自动接受证书</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">vi /etc/ssh/ssh_config
+</span></span></code></pre></div><p>然后将<code>/etc/ssh/ssh_config</code> 内容中的<code>StrictHostKeyChecking</code> 值为<code>no</code> ,让机器自动接受证书</p>
 <blockquote>
 <p>注意去掉这一行前的注释符<code>#</code></p>
 </blockquote>
@@ -679,70 +597,25 @@
 	
 ></p>
 <p>别忘了关键的重启一步喵~~</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart sshd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">systemctl restart sshd
+</span></span></code></pre></div><hr>
 <h4 id="nfs安装和配置">NFS安装和配置</h4>
 <h5 id="安装">安装</h5>
 <p>由于<code>rpc-bind</code>是NFS的依赖项，必须先安装</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">dnf -y install rpcbind nfs-utils
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后启动<code>rpc-blind</code>和NFS服务(<code>rpc-bind</code>服务一定先启动)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl start rpcbind
-</span></span><span class="line"><span class="cl">systemctl start nfs-server
-</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> rpcbind
-</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> nfs-server
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h5 id="配置">配置</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">dnf -y install rpcbind nfs-utils
+</span></span></code></pre></div><p>然后启动<code>rpc-blind</code>和NFS服务(<code>rpc-bind</code>服务一定先启动)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">systemctl start rpcbind
+</span></span><span class="line"><span class="ln">2</span><span class="cl">systemctl start nfs-server
+</span></span><span class="line"><span class="ln">3</span><span class="cl">systemctl <span class="nb">enable</span> rpcbind
+</span></span><span class="line"><span class="ln">4</span><span class="cl">systemctl <span class="nb">enable</span> nfs-server
+</span></span></code></pre></div><h5 id="配置">配置</h5>
 <p>由于我们的NFS是用来备份数据库的，所以建一个名为DB_Backup的备份文件夹</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir /DB_Backup
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后修改配置文件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi /etc/exports
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>输入如下内容:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/DB_Backup 192.168.245.1/24<span class="o">(</span>sync,ro<span class="o">)</span> 192.168.245.150<span class="o">(</span>sync,rw,no_root_squash<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>至于配置文件里里东西的含义，可以看下文</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">mkdir /DB_Backup
+</span></span></code></pre></div><p>然后修改配置文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">vi /etc/exports
+</span></span></code></pre></div><p>输入如下内容:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">/DB_Backup 192.168.245.1/24<span class="o">(</span>sync,ro<span class="o">)</span> 192.168.245.150<span class="o">(</span>sync,rw,no_root_squash<span class="o">)</span>
+</span></span></code></pre></div><p>至于配置文件里里东西的含义，可以看下文</p>
 <ul>
 <li>
 <p>最前面的是用来存放备份文件的目录绝对路径</p>
@@ -891,25 +764,13 @@
 <li><code>Module</code>填<code>shell</code></li>
 <li><code>Module arguments or command to execute</code>填你要执行的命令,我们这里是要为3台机器配置Docker运行环境</li>
 </ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum install -y yum-utils
-</span></span><span class="line"><span class="cl">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-</span></span><span class="line"><span class="cl">yum install -y docker-ce docker-ce-cli --allowerasing
-</span></span><span class="line"><span class="cl">systemctl start docker
-</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> docker
-</span></span><span class="line"><span class="cl">docker pull centos
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2.jpg"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">yum install -y yum-utils
+</span></span><span class="line"><span class="ln">2</span><span class="cl">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</span></span><span class="line"><span class="ln">3</span><span class="cl">yum install -y docker-ce docker-ce-cli --allowerasing
+</span></span><span class="line"><span class="ln">4</span><span class="cl">systemctl start docker
+</span></span><span class="line"><span class="ln">5</span><span class="cl">systemctl <span class="nb">enable</span> docker
+</span></span><span class="line"><span class="ln">6</span><span class="cl">docker pull centos
+</span></span></code></pre></div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2.jpg"
 	width="1258"
 	height="640"
 	srcset="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_480x0_resize_q75_box.jpg 480w, /p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_1024x0_resize_q75_box.jpg 1024w"
@@ -988,15 +849,8 @@
 <h4 id="lnmp">LNMP</h4>
 <p>在这个过程中真的踩到无数的坑，可能是因为Docker这个镜像精简的<code>feature</code>吧，很多最最基础的东西都没有= =</p>
 <p>不管怎么说，先启动Docker,再映射到一个<del>吉利的</del>端口  <del>(顿时接地气了起来，咳咳= =</del></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run --name LNMP -p 8888:80 -d -t centos:latest
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker run --name LNMP -p 8888:80 -d -t centos:latest
+</span></span></code></pre></div><blockquote>
 <p>至于为什么不直接pull nginx的镜像，是因为想统一用yum包管理器，而nginx镜像是apt包管理器= =</p>
 </blockquote>
 <h5 id="第一个坑容器无法正常启动">第一个坑:容器无法正常启动</h5>
@@ -1020,140 +874,57 @@
 <h5 id="第二个坑无法使用yum源">第二个坑:无法使用Yum源</h5>
 <p>太狗了!  容器里的yum源用不了= =</p>
 <p>报错如下:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Failed to <span class="nb">set</span> locale, defaulting to C.UTF-8
-</span></span><span class="line"><span class="cl">CentOS Linux <span class="m">8</span> - AppStream                                                                                                   <span class="m">57</span>  B/s <span class="p">|</span>  <span class="m">38</span>  B     00:00
-</span></span><span class="line"><span class="cl">Error: Failed to download metadata <span class="k">for</span> repo <span class="s1">&#39;appstream&#39;</span>: Cannot prepare internal mirrorlist: No URLs in mirrorlist
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>看到这个报错，我直接炸毛= =</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">Failed to <span class="nb">set</span> locale, defaulting to C.UTF-8
+</span></span><span class="line"><span class="ln">2</span><span class="cl">CentOS Linux <span class="m">8</span> - AppStream                                                                                                   <span class="m">57</span>  B/s <span class="p">|</span>  <span class="m">38</span>  B     00:00
+</span></span><span class="line"><span class="ln">3</span><span class="cl">Error: Failed to download metadata <span class="k">for</span> repo <span class="s1">&#39;appstream&#39;</span>: Cannot prepare internal mirrorlist: No URLs in mirrorlist
+</span></span></code></pre></div><p>看到这个报错，我直接炸毛= =</p>
 <p>刚开始还以为源的URL没有加上，后来发现是因为<code>AppStream</code>的<code>mirrorlist</code>里URL用不了</p>
 <p>在<code>/etc/yum.repos.d/CentOS-Linux-AppStream.repo</code>文件中官方友情提醒了我们</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># If the mirrorlist does not work for you, you can try the commented out
-</span></span><span class="line"><span class="cl"># baseurl line instead.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>所以我们只需要把<code>mirrorlist</code>那一行注释掉并且取消<code>baseurl</code>的注释</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl"># If the mirrorlist does not work for you, you can try the commented out
+</span></span><span class="line"><span class="ln">2</span><span class="cl"># baseurl line instead.
+</span></span></code></pre></div><p>所以我们只需要把<code>mirrorlist</code>那一行注释掉并且取消<code>baseurl</code>的注释</p>
 <p>因为我们是在Jenkins里自动化，很显然不能用vim,就改用下面这种方法</p>
 <blockquote>
 <p>注意:自动化也导致不能<code>docker exec -ti 容器名 /bin/bash</code>调出交互终端</p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it LNMP sh -c <span class="s2">&#34;sed -i &#39;s/mirrorlist/#mirrorlist/g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;sed -i &#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -it LNMP sh -c <span class="s2">&#34;sed -i &#39;s/mirrorlist/#mirrorlist/g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;sed -i &#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
+</span></span></code></pre></div><blockquote>
 <p>P.S. 使用<code>sh -c &quot;内容&quot;</code>的原因是不放在引号里<code>Docker exec</code>会把后面一团东东当成两条命令执行</p>
 </blockquote>
 <h5 id="第三个坑systemctl报错">第三个坑:systemctl报错</h5>
 <p>在一番快乐的安装之后</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum makecache
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install nginx
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install php*
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>该到了启动和启用服务的时候了</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start php-fpm
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> php-fpm
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start nginx
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> nginx
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后&quot;啪!&ldquo;就是一个报错</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum makecache
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install nginx
+</span></span><span class="line"><span class="ln">3</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install php*
+</span></span></code></pre></div><p>该到了启动和启用服务的时候了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start php-fpm
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> php-fpm
+</span></span><span class="line"><span class="ln">3</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start nginx
+</span></span><span class="line"><span class="ln">4</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> nginx
+</span></span></code></pre></div><p>然后&quot;啪!&ldquo;就是一个报错</p>
 <p>好家伙! systemctl都用不了!!!   震怒)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">System has not been booted with systemd as init system <span class="o">(</span>PID 1<span class="o">)</span>. Can<span class="err">&#39;</span>t operate.
-</span></span><span class="line"><span class="cl">Failed to connect to bus: Host is down
-</span></span></code></pre></td></tr></table>
-</div>
-</div><img title="" src="nu.jpg" alt="" width="143" data-align="center">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">System has not been booted with systemd as init system <span class="o">(</span>PID 1<span class="o">)</span>. Can<span class="err">&#39;</span>t operate.
+</span></span><span class="line"><span class="ln">2</span><span class="cl">Failed to connect to bus: Host is down
+</span></span></code></pre></div><img title="" src="nu.jpg" alt="" width="143" data-align="center">
 <p>还好有<del>GayHub</del>GitHub上大佬的<a class="link" href="https://github.com/gdraheim/docker-systemctl-replacement"  target="_blank" rel="noopener"
     >Docker systemctl替代品</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install wget
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install python3
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod +x /usr/local/bin/systemctl&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install wget
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install python3
+</span></span><span class="line"><span class="ln">3</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&#34;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod +x /usr/local/bin/systemctl&#34;</span>
+</span></span></code></pre></div><blockquote>
 <p>小提醒:GitHub的raw应该是被gfw给挡住了，所以可能要给Docker配置代理</p>
 </blockquote>
 <h4 id="部署wordpress">部署WordPress</h4>
 <p>因为我们要从GitHub拉取Wordpress源码(或者从内部的GitLab拉取代码)</p>
 <p>先给容器安装Git</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install git
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后再把原先nginx默认的一些网页文件删除</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;rm -rf /usr/share/nginx/html/*&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>拉取WordPress</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后就可以访问机器ip开始安装WordPress啦</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install git
+</span></span></code></pre></div><p>然后再把原先nginx默认的一些网页文件删除</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;rm -rf /usr/share/nginx/html/*&#34;</span>
+</span></span></code></pre></div><p>拉取WordPress</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&#34;</span>
+</span></span></code></pre></div><p>然后就可以访问机器ip开始安装WordPress啦</p>
 <p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP.jpg"
 	width="1918"
 	height="840"
@@ -1168,15 +939,8 @@
 ></p>
 <h5 id="又双叒叕踩坑啦wordpress权限不足">又双叒叕踩坑啦:WordPress权限不足</h5>
 <p>你需要在Jenkins中提前让WordPress目录对于所有用户可写</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod -R 777 /usr/share/nginx/html/&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>否则就不能自动化了qeq</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod -R 777 /usr/share/nginx/html/&#34;</span>
+</span></span></code></pre></div><p>否则就不能自动化了qeq</p>
 <p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21.jpg"
 	width="1142"
 	height="663"
@@ -1210,15 +974,8 @@
 <h4 id="自动化花里胡哨">自动化花里胡哨</h4>
 <p>嘿嘿，最后给配个<a class="link" href="https://github.com/mashirozx/sakura"  target="_blank" rel="noopener"
     >主题</a>，让我的实验kawaii起来~~</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme.jpg"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&#34;</span>
+</span></span></code></pre></div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme.jpg"
 	width="809"
 	height="536"
 	srcset="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_480x0_resize_q75_box.jpg 480w, /p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_1024x0_resize_q75_box.jpg 1024w"
@@ -1233,51 +990,26 @@
 	
 ></p>
 <h4 id="附上代码">附上代码</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run --name LNMP -p 8888:80 -d -t centos:latest
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it LNMP sh -c <span class="s2">&#34;sed -i &#39;s/mirrorlist/#mirrorlist/g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;sed -i &#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum makecache
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install nginx
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install php*
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install wget
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install python3
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install git
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod +x /usr/local/bin/systemctl&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start php-fpm
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> php-fpm
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start nginx
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> nginx
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;rm -rf /usr/share/nginx/html/*&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod -R 777 /usr/share/nginx/html/&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="部署mariadb数据库">部署MariaDB数据库</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">docker run --name LNMP -p 8888:80 -d -t centos:latest
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">docker <span class="nb">exec</span> -it LNMP sh -c <span class="s2">&#34;sed -i &#39;s/mirrorlist/#mirrorlist/g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;sed -i &#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum makecache
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install nginx
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install php*
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install wget
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install python3
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP yum -y install git
+</span></span><span class="line"><span class="ln">10</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&#34;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod +x /usr/local/bin/systemctl&#34;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start php-fpm
+</span></span><span class="line"><span class="ln">13</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> php-fpm
+</span></span><span class="line"><span class="ln">14</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl start nginx
+</span></span><span class="line"><span class="ln">15</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP systemctl <span class="nb">enable</span> nginx
+</span></span><span class="line"><span class="ln">16</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;rm -rf /usr/share/nginx/html/*&#34;</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&#34;</span>
+</span></span><span class="line"><span class="ln">18</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;chmod -R 777 /usr/share/nginx/html/&#34;</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">docker <span class="nb">exec</span> -ti LNMP sh -c <span class="s2">&#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&#34;</span>
+</span></span></code></pre></div><h3 id="部署mariadb数据库">部署MariaDB数据库</h3>
 <h4 id="老规矩jenkins新建项目">老规矩:Jenkins新建项目</h4>
 <p>不过有了前面的经验之后，这边可以偷个小懒，嘿嘿嘿</p>
 <p>细心的朋友们可以发现，在新建项目的时候还可以用之前的项目作为模版</p>
@@ -1318,116 +1050,50 @@
 <h5 id="3306端口">3306端口</h5>
 <p>既然是MariaDB数据库(和MySQL基本相同)，那就需要映射3306到端口</p>
 <p>为了之后备份的方便，我们映射一个目录<code>/mnt/backup</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir /mnt/backup
-</span></span><span class="line"><span class="cl">docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h5 id="关于安装">关于安装</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">mkdir /mnt/backup
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
+</span></span></code></pre></div><h5 id="关于安装">关于安装</h5>
 <p>这里轻松多啦，我们已经解决了前面所提及的几个大坑，</p>
 <p>仔细思考，因为在这里只需要部署数据库，前面安装PHP和Nginx的代码可以干掉啦qwq</p>
 <blockquote>
 <p><strong>注意：记得保留前面解决坑所需的代码= =</strong></p>
 </blockquote>
 <p>然后换成安装MariaDB的代码</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install mariadb mariadb-server
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>启动并启用数据库服务</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl start mariadb
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl <span class="nb">enable</span> mariadb
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h5 id="配置-1">配置</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install mariadb mariadb-server
+</span></span></code></pre></div><p>启动并启用数据库服务</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl start mariadb
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl <span class="nb">enable</span> mariadb
+</span></span></code></pre></div><h5 id="配置-1">配置</h5>
 <p>因为我们是自动化，所以不能用之前一贯的方法调出MariaDB的交互式控制台</p>
 <p>那么，就直接在命令行执行SQL语句吧</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql -u 用户名 -p密码 -e <span class="s2">&#34;语句&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>注意初始状态的MariaDB是没有密码的，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">mysql -u 用户名 -p密码 -e <span class="s2">&#34;语句&#34;</span>
+</span></span></code></pre></div><p>注意初始状态的MariaDB是没有密码的，</p>
 <p>毕竟我们是网安人嘛，为了安全性肯定要设置密码= =</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -e <span class="s2">&#34;ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;你的密码&#39;;&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>因为需要让跑Web Server的那台机器访问到数据库，我们进行配置一下权限，顺便再建一个叫做DB的数据库(以存放WordPress的数据)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -e <span class="s2">&#34;ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;你的密码&#39;;&#34;</span>
+</span></span></code></pre></div><p>因为需要让跑Web Server的那台机器访问到数据库，我们进行配置一下权限，顺便再建一个叫做DB的数据库(以存放WordPress的数据)</p>
 <p>为了安全性，我们只许可Web Server的机器用root的用户名和密码登陆</p>
 <blockquote>
 <p>注意这里指mysql的root用户，和系统的root用户不一样哦 -   -</p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -u root -p123.密码 -e <span class="s2">&#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;ip&#39;IDENTIFIED BY &#39;密码&#39; WITH GRANT OPTION; flush privileges; create database db;&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="备份">备份</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -u root -p123.密码 -e <span class="s2">&#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;ip&#39;IDENTIFIED BY &#39;密码&#39; WITH GRANT OPTION; flush privileges; create database db;&#34;</span>
+</span></span></code></pre></div><h4 id="备份">备份</h4>
 <p>好啦，最后要做的就是定时备份数据库</p>
 <p>毕竟数据无价是真理嘛awa</p>
 <p>首先给数据库的主机装个NFS客户端并每次启动时挂载共享文件夹</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum -y install nfs-utils
-</span></span><span class="line"><span class="cl">mount.nfs IP:/DB_Backup /mnt/backup/
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;mount.nfs IP:/DB_Backup /mnt/backup/&#39;</span> &gt;&gt; /etc/rc.local
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;docker start MySQL&#39;</span> &gt;&gt; /etc/rc.local
-</span></span><span class="line"><span class="cl">chmod +x /etc/rc.local
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>现在来到容器内部完成真正定时&quot;备份&quot;的操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">yum -y install nfs-utils
+</span></span><span class="line"><span class="ln">2</span><span class="cl">mount.nfs IP:/DB_Backup /mnt/backup/
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;mount.nfs IP:/DB_Backup /mnt/backup/&#39;</span> &gt;&gt; /etc/rc.local
+</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;docker start MySQL&#39;</span> &gt;&gt; /etc/rc.local
+</span></span><span class="line"><span class="ln">5</span><span class="cl">chmod +x /etc/rc.local
+</span></span></code></pre></div><p>现在来到容器内部完成真正定时&quot;备份&quot;的操作</p>
 <p>我们决定每天备份一次数据库，这个时候小小偷个懒，不用<code>crontab -e</code>了，直接将脚本放到<code>/etc/cron.daily</code></p>
 <p>我们可以把备份的脚本放在GitLab里</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>mysqldump -u root -p密码 --all-databases &gt; /db/data-dump.sql
-</span></span><span class="line"><span class="cl"><span class="nv">date</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">cp /db/data-dump.sql /mnt/backup/DB_<span class="nv">$date</span>
-</span></span><span class="line"><span class="cl">rm -rf /db/data-dump.sql
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23.jpg"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="cp"></span>mysqldump -u root -p密码 --all-databases &gt; /db/data-dump.sql
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nv">date</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>date +%F<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">cp /db/data-dump.sql /mnt/backup/DB_<span class="nv">$date</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">rm -rf /db/data-dump.sql
+</span></span></code></pre></div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23.jpg"
 	width="1912"
 	height="842"
 	srcset="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_480x0_resize_q75_box.jpg 480w, /p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_1024x0_resize_q75_box.jpg 1024w"
@@ -1442,37 +1108,14 @@
 	
 ></p>
 <p>由于我们脚本里需要用到<code>/db</code>目录，我们得先建</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;mkdir /db&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后就<code>git pull</code>到<code>/etc/cron.daily</code>目录并赋予适当权限(记得先在容器里安装git哦)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install git
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;git clone http://IP/nanosec/backup.git /etc/cron.daily/&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;chmod +x /etc/cron.daily/backup.sh&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后可以先运行一下看看是否备份成功</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;/etc/cron.daily/backup.sh&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26.jpg"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;mkdir /db&#34;</span>
+</span></span></code></pre></div><p>然后就<code>git pull</code>到<code>/etc/cron.daily</code>目录并赋予适当权限(记得先在容器里安装git哦)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install git
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;git clone http://IP/nanosec/backup.git /etc/cron.daily/&#34;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;chmod +x /etc/cron.daily/backup.sh&#34;</span>
+</span></span></code></pre></div><p>然后可以先运行一下看看是否备份成功</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;/etc/cron.daily/backup.sh&#34;</span>
+</span></span></code></pre></div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26.jpg"
 	width="999"
 	height="663"
 	srcset="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_480x0_resize_q75_box.jpg 480w, /p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_1024x0_resize_q75_box.jpg 1024w"
@@ -1499,61 +1142,31 @@
 	
 ></p>
 <h4 id="附上代码-1">附上代码</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir /mnt/backup
-</span></span><span class="line"><span class="cl">yum -y install nfs-utils
-</span></span><span class="line"><span class="cl">mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/&#39;</span> &gt;&gt; /etc/rc.local
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;docker start MySQL&#39;</span> &gt;&gt; /etc/rc.local
-</span></span><span class="line"><span class="cl">chmod +x /etc/rc.local
-</span></span><span class="line"><span class="cl">docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it MySQL sh -c <span class="s2">&#34;sed -i &#39;s/mirrorlist/#mirrorlist/g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;sed -i &#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum makecache
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install mariadb mariadb-server
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install wget
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install python3
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install git
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;chmod +x /usr/local/bin/systemctl&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl start mariadb
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl <span class="nb">enable</span> mariadb
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -e <span class="s2">&#34;ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;密码&#39;;&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -u root -p密码 -e <span class="s2">&#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;IP&#39;IDENTIFIED BY &#39;密码&#39; WITH GRANT OPTION; flush privileges; create database db;&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;mkdir /db&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;git clone http://192.168.245.129/nanosec/backup.git /etc/cron.daily/&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;chmod +x /etc/cron.daily/backup.sh&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;/etc/cron.daily/backup.sh&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="配置nginx反向代理">配置Nginx反向代理</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">mkdir /mnt/backup
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">yum -y install nfs-utils
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/&#39;</span> &gt;&gt; /etc/rc.local
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;docker start MySQL&#39;</span> &gt;&gt; /etc/rc.local
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">chmod +x /etc/rc.local
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">docker <span class="nb">exec</span> -it MySQL sh -c <span class="s2">&#34;sed -i &#39;s/mirrorlist/#mirrorlist/g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;sed -i &#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&#39; /etc/yum.repos.d/CentOS-*&#34;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum makecache
+</span></span><span class="line"><span class="ln">11</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install mariadb mariadb-server
+</span></span><span class="line"><span class="ln">12</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install wget
+</span></span><span class="line"><span class="ln">13</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install python3
+</span></span><span class="line"><span class="ln">14</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL yum -y install git
+</span></span><span class="line"><span class="ln">15</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&#34;</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;chmod +x /usr/local/bin/systemctl&#34;</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl start mariadb
+</span></span><span class="line"><span class="ln">18</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL systemctl <span class="nb">enable</span> mariadb
+</span></span><span class="line"><span class="ln">19</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -e <span class="s2">&#34;ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;密码&#39;;&#34;</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL mysql -u root -p密码 -e <span class="s2">&#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;IP&#39;IDENTIFIED BY &#39;密码&#39; WITH GRANT OPTION; flush privileges; create database db;&#34;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;mkdir /db&#34;</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;git clone http://192.168.245.129/nanosec/backup.git /etc/cron.daily/&#34;</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;chmod +x /etc/cron.daily/backup.sh&#34;</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">docker <span class="nb">exec</span> -ti MySQL sh -c <span class="s2">&#34;/etc/cron.daily/backup.sh&#34;</span>
+</span></span></code></pre></div><h3 id="配置nginx反向代理">配置Nginx反向代理</h3>
 <p>呼，最后的工作则是配置Nginx反向代理</p>
 <p><del>(心里:aaaaaaa总算熬到头了)</del></p>
 <h4 id="jenkins项目">Jenkins项目</h4>
@@ -1575,173 +1188,79 @@
 ></p>
 <h4 id="部署nginx反向代理">部署Nginx反向代理</h4>
 <p>为了用户访问方便，这次直接映射到80端口</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run --name N_Proxy -p 80:80 -d -t centos:latest
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h5 id="安装-1">安装</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker run --name N_Proxy -p 80:80 -d -t centos:latest
+</span></span></code></pre></div><h5 id="安装-1">安装</h5>
 <p>Nginx反代嘛= =</p>
 <p>当然就是要装Nginx</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy yum -y install nginx
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后就是日常对服务的操作</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy systemctl start nginx
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy systemctl <span class="nb">enable</span> nginx
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h5 id="配置-2">配置</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy yum -y install nginx
+</span></span></code></pre></div><p>然后就是日常对服务的操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy systemctl start nginx
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy systemctl <span class="nb">enable</span> nginx
+</span></span></code></pre></div><h5 id="配置-2">配置</h5>
 <p>老样子，先把默认的网站文件删除</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;rm -rf /usr/share/nginx/html/*&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后就到了最关键一步，配置文件的调整</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;rm -rf /usr/share/nginx/html/*&#34;</span>
+</span></span></code></pre></div><p>然后就到了最关键一步，配置文件的调整</p>
 <p>为了之后修改配置文件能够<del>优雅地</del>偷懒，我们将配置文件托管在GitLab上</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">user nginx<span class="p">;</span>
-</span></span><span class="line"><span class="cl">worker_processes auto<span class="p">;</span>
-</span></span><span class="line"><span class="cl">error_log /var/log/nginx/error.log<span class="p">;</span>
-</span></span><span class="line"><span class="cl">pid /run/nginx.pid<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span>
-</span></span><span class="line"><span class="cl">include /usr/share/nginx/modules/*.conf<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">events <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    worker_connections 1024<span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">http <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    log_format  main  <span class="s1">&#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;</span>
-</span></span><span class="line"><span class="cl">                      <span class="s1">&#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;</span>
-</span></span><span class="line"><span class="cl">                      <span class="s1">&#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    access_log  /var/log/nginx/access.log  main<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    sendfile            on<span class="p">;</span>
-</span></span><span class="line"><span class="cl">    tcp_nopush          on<span class="p">;</span>
-</span></span><span class="line"><span class="cl">    tcp_nodelay         on<span class="p">;</span>
-</span></span><span class="line"><span class="cl">    keepalive_timeout   65<span class="p">;</span>
-</span></span><span class="line"><span class="cl">    types_hash_max_size 2048<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    include             /etc/nginx/mime.types<span class="p">;</span>
-</span></span><span class="line"><span class="cl">    default_type        application/octet-stream<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Load modular configuration files from the /etc/nginx/conf.d directory.</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># See http://nginx.org/en/docs/ngx_core_module.html#include</span>
-</span></span><span class="line"><span class="cl">    <span class="c1"># for more information.</span>
-</span></span><span class="line"><span class="cl">    include /etc/nginx/conf.d/*.conf<span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">#include /etc/nginx/default.d/*.conf;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">upstream web1 <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        server 192.168.245.149:8888  <span class="nv">weight</span><span class="o">=</span>1<span class="p">;</span>        <span class="c1">#此处填写被代理服务器IP</span>
-</span></span><span class="line"><span class="cl">       <span class="c1">#server 192.168.0.17  weight=1;</span>
-</span></span><span class="line"><span class="cl">       <span class="c1">#ip_hash;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">server<span class="o">{</span>
-</span></span><span class="line"><span class="cl">        listen 80<span class="p">;</span>
-</span></span><span class="line"><span class="cl">        server_name blog.nanosec.io<span class="p">;</span>
-</span></span><span class="line"><span class="cl">        access_log  /var/log/nginx/blog.log<span class="p">;</span>
-</span></span><span class="line"><span class="cl">        location / <span class="o">{</span>
-</span></span><span class="line"><span class="cl">            root /home/web1_root<span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_pass http://web1<span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_read_timeout 300<span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_connect_timeout 300<span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_redirect     off<span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_set_header   X-Forwarded-Proto <span class="nv">$scheme</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_set_header   Host              <span class="nv">$http_host</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_set_header   X-Real-IP         <span class="nv">$remote_addr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28.jpg"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">user nginx<span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl">worker_processes auto<span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">error_log /var/log/nginx/error.log<span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">pid /run/nginx.pid<span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">include /usr/share/nginx/modules/*.conf<span class="p">;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">events <span class="o">{</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    worker_connections 1024<span class="p">;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">
+</span></span><span class="line"><span class="ln">13</span><span class="cl">http <span class="o">{</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">    log_format  main  <span class="s1">&#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">                      <span class="s1">&#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">                      <span class="s1">&#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">
+</span></span><span class="line"><span class="ln">18</span><span class="cl">    access_log  /var/log/nginx/access.log  main<span class="p">;</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">
+</span></span><span class="line"><span class="ln">20</span><span class="cl">    sendfile            on<span class="p">;</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">    tcp_nopush          on<span class="p">;</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">    tcp_nodelay         on<span class="p">;</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">    keepalive_timeout   65<span class="p">;</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">    types_hash_max_size 2048<span class="p">;</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">
+</span></span><span class="line"><span class="ln">26</span><span class="cl">    include             /etc/nginx/mime.types<span class="p">;</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">    default_type        application/octet-stream<span class="p">;</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">
+</span></span><span class="line"><span class="ln">29</span><span class="cl">    <span class="c1"># Load modular configuration files from the /etc/nginx/conf.d directory.</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">    <span class="c1"># See http://nginx.org/en/docs/ngx_core_module.html#include</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">    <span class="c1"># for more information.</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">    include /etc/nginx/conf.d/*.conf<span class="p">;</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">
+</span></span><span class="line"><span class="ln">34</span><span class="cl">    <span class="c1">#include /etc/nginx/default.d/*.conf;</span>
+</span></span><span class="line"><span class="ln">35</span><span class="cl">
+</span></span><span class="line"><span class="ln">36</span><span class="cl">upstream web1 <span class="o">{</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">        server 192.168.245.149:8888  <span class="nv">weight</span><span class="o">=</span>1<span class="p">;</span>        <span class="c1">#此处填写被代理服务器IP</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">       <span class="c1">#server 192.168.0.17  weight=1;</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">       <span class="c1">#ip_hash;</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">server<span class="o">{</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">        listen 80<span class="p">;</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">        server_name blog.nanosec.io<span class="p">;</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">        access_log  /var/log/nginx/blog.log<span class="p">;</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">        location / <span class="o">{</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">            root /home/web1_root<span class="p">;</span>
+</span></span><span class="line"><span class="ln">47</span><span class="cl">            proxy_pass http://web1<span class="p">;</span>
+</span></span><span class="line"><span class="ln">48</span><span class="cl">            proxy_read_timeout 300<span class="p">;</span>
+</span></span><span class="line"><span class="ln">49</span><span class="cl">            proxy_connect_timeout 300<span class="p">;</span>
+</span></span><span class="line"><span class="ln">50</span><span class="cl">            proxy_redirect     off<span class="p">;</span>
+</span></span><span class="line"><span class="ln">51</span><span class="cl">            proxy_set_header   X-Forwarded-Proto <span class="nv">$scheme</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">52</span><span class="cl">            proxy_set_header   Host              <span class="nv">$http_host</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">53</span><span class="cl">            proxy_set_header   X-Real-IP         <span class="nv">$remote_addr</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">54</span><span class="cl">            proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+</span></span><span class="line"><span class="ln">55</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">56</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">57</span><span class="cl">
+</span></span><span class="line"><span class="ln">58</span><span class="cl">
+</span></span><span class="line"><span class="ln">59</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28.jpg"
 	width="1585"
 	height="620"
 	srcset="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_480x0_resize_q75_box.jpg 480w, /p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_1024x0_resize_q75_box.jpg 1024w"
@@ -1755,48 +1274,19 @@
 		data-flex-basis="613px"
 	
 >我们先把原有的配置文件干掉</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;rm -rf /etc/nginx/nginx.conf&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>然后再放上新的配置文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;rm -rf /etc/nginx/nginx.conf&#34;</span>
+</span></span></code></pre></div><p>然后再放上新的配置文件</p>
 <blockquote>
 <p>注意：因为<code>git clone</code>无法clone进一个已经存在的目录</p>
 <p>所以我们需要先clone到一个其他位置并进行移动</p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;git clone http://192.168.245.129/nanosec/your-code-here.git&#34;</span>
-</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;cp /your-code-here/nginx.conf /etc/nginx/&#34;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>检查配置文件是否存在问题</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy nginx -t
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>检查无误后再重新加载配置文件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy nginx -s reload
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="完工">完工</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;git clone http://192.168.245.129/nanosec/your-code-here.git&#34;</span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy sh -c <span class="s2">&#34;cp /your-code-here/nginx.conf /etc/nginx/&#34;</span>
+</span></span></code></pre></div><p>检查配置文件是否存在问题</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy nginx -t
+</span></span></code></pre></div><p>检查无误后再重新加载配置文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">docker <span class="nb">exec</span> -ti N_Proxy nginx -s reload
+</span></span></code></pre></div><h4 id="完工">完工</h4>
 <p>这个时候就可以让这个项目跑起来啦awa</p>
 <p><img src="/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30.jpg"
 	width="1059"
