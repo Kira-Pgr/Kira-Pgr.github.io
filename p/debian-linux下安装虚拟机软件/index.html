@@ -12,7 +12,34 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2022-05-05T09:31:14-04:00'/><meta property='article:modified_time' content='2022-05-05T09:31:14-04:00'/><meta property='og:image' content='https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg' />
 <meta name="twitter:title" content="Debian Linux下安装虚拟机软件">
 <meta name="twitter:description" content="在Debian Linux下驯服VMware Workstation和VirtualBox"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg' />
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
     </head>
     <body class="
     article-page
@@ -313,13 +340,13 @@
 <p>VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少</p>
 <h3 id="安装最新版本内核头文件内核镜像">安装最新版本内核头文件/内核镜像</h3>
 <p>为了避免系统因为&quot;年久失修&quot;内核版本不是最新，我们<strong>尽量避免</strong>使用网上提供的这种方式</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">sudo apt-get install linux-headers-`uname -r`
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo apt-get install linux-headers-`uname -r`
 </span></span></code></pre></div><p>采用以下命令</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt update
-</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo apt-cache search linux-image    
-</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo apt-get install linux-headers-xxx linux-image-xxx  
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1">#后面的xxx是上面语句中搜索出来的版本号和系统架构</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">init <span class="m">6</span> <span class="c1">#装完重启</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt-cache search linux-image    
+</span></span><span class="line"><span class="cl">sudo apt-get install linux-headers-xxx linux-image-xxx  
+</span></span><span class="line"><span class="cl"><span class="c1">#后面的xxx是上面语句中搜索出来的版本号和系统架构</span>
+</span></span><span class="line"><span class="cl">init <span class="m">6</span> <span class="c1">#装完重启</span>
 </span></span></code></pre></div><p><img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg"
 	width="1031"
 	height="715"
@@ -335,17 +362,17 @@
 	
 ></p>
 <h3 id="apt安装virtualbox">apt安装VirtualBox</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">apt-get install virtualbox virtualbox-guest-additions-iso
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apt-get install virtualbox virtualbox-guest-additions-iso
 </span></span></code></pre></div><h2 id="vmware-workstation">VMware Workstation</h2>
 <p>比起VBox,VMware折腾起来坑真的好多啊= =</p>
 <p>不过没办法。。。我还有10多个VMware的虚拟机w(</p>
 <h3 id="安装最新版本内核头文件内核镜像-1">安装最新版本内核头文件/内核镜像</h3>
 <p>第一步和安VBox一样的操作</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">sudo apt update
-</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo apt-cache search linux-image    
-</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo apt-get install linux-headers-xxx linux-image-xxx  
-</span></span><span class="line"><span class="ln">4</span><span class="cl">#后面的xxx是上面语句中搜索出来的版本号和系统架构
-</span></span><span class="line"><span class="ln">5</span><span class="cl">init 6 #装完重启
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt-cache search linux-image    
+</span></span><span class="line"><span class="cl">sudo apt-get install linux-headers-xxx linux-image-xxx  
+</span></span><span class="line"><span class="cl">#后面的xxx是上面语句中搜索出来的版本号和系统架构
+</span></span><span class="line"><span class="cl">init 6 #装完重启
 </span></span></code></pre></div><p><img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png"
 	width="498"
 	height="270"
@@ -361,7 +388,7 @@
 	
 ></p>
 <h3 id="安装各种编译器">安装各种编译器</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt-get install build-essential 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install build-essential 
 </span></span></code></pre></div><p><img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png"
 	width="496"
 	height="250"
@@ -380,10 +407,10 @@
 <p>去<a class="link" href="https://www.vmware.com/go/getworkstation-linux"  target="_blank" rel="noopener"
     >官网</a>下载安装程序</p>
 <p>给可执行权限</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">chmod x VMware-Workstation-Full-版本号.bundle 
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">#TIP:文件名太长可以Tab补全</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">chmod x VMware-Workstation-Full-版本号.bundle 
+</span></span><span class="line"><span class="cl"><span class="c1">#TIP:文件名太长可以Tab补全</span>
 </span></span></code></pre></div><p>运行</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo ./VMware-Workstation-Full-版本号.bundle
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo ./VMware-Workstation-Full-版本号.bundle
 </span></span></code></pre></div><blockquote>
 <p>安装好之后想要运行直接终端输入vmware就可以了</p>
 </blockquote>
@@ -433,13 +460,13 @@
 	
 ></p>
 <p>解压后进入源码目录</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">unzip vmware-host-modules-workstation-16.2.1.zip
-</span></span><span class="line"><span class="ln">2</span><span class="cl">cd vmware-host-modules-workstation-16.2.1
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">unzip vmware-host-modules-workstation-16.2.1.zip
+</span></span><span class="line"><span class="cl">cd vmware-host-modules-workstation-16.2.1
 </span></span></code></pre></div><p>编译+安装</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">make
-</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo make install
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">sudo make install
 </span></span></code></pre></div><p>模块安装完之后重启vmware服务</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">sudo systemctl restart vmware
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo systemctl restart vmware
 </span></span></code></pre></div><p><img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg"
 	width="1033"
 	height="655"
@@ -455,7 +482,7 @@
 	
 ></p>
 <p>完成之后再运行VMware Workstation,就应该可以正常进入程序了</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">vmware
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vmware
 </span></span></code></pre></div><p><img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg"
 	width="904"
 	height="741"
@@ -471,7 +498,7 @@
 <h3 id="激活">激活</h3>
 <p>网上VMware激活码可谓了一大堆</p>
 <p>为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ZF3R0-FHED2-M80TY-8QYGC-NPKYF
 </span></span></code></pre></div><p><img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg"
 	width="897"
 	height="655"

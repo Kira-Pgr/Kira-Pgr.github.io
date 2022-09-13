@@ -12,7 +12,34 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-01-29T21:35:29-05:00'/><meta property='article:modified_time' content='2022-01-29T21:35:29-05:00'/><meta property='og:image' content='https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/cover.jpg' />
 <meta name="twitter:title" content="PWN! PWN! PANG! Part2 --- 工具的使用">
 <meta name="twitter:description" content="我要告诉你一个秘密，只有聪明的人才能看到哦qaq"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/cover.jpg' />
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
     </head>
     <body class="
     article-page
@@ -341,23 +368,23 @@
 <h3 id="安装">安装</h3>
 <p>一般Linux都会预装gdb吧= =，不过还是扯一下安装方法好了</p>
 <p>Deb 系</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt install gdb
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install gdb
 </span></span></code></pre></div><p>yum系      <del>快去用Debian 逃)</del></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo yum -y install centos-release-scl
-</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
-</span></span><span class="line"><span class="ln">3</span><span class="cl">sudo yum -y install devtoolset-7
-</span></span><span class="line"><span class="ln">4</span><span class="cl">scl <span class="nb">enable</span> devtoolset-7 bash
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum -y install centos-release-scl
+</span></span><span class="line"><span class="cl">sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
+</span></span><span class="line"><span class="cl">sudo yum -y install devtoolset-7
+</span></span><span class="line"><span class="cl">scl <span class="nb">enable</span> devtoolset-7 bash
 </span></span></code></pre></div><p>安装pwndbg</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">git clone https://github.com/pwndbg/pwndbg.git
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nb">cd</span> pwndbg
-</span></span><span class="line"><span class="ln">3</span><span class="cl">./setup.sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/pwndbg/pwndbg.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> pwndbg
+</span></span><span class="line"><span class="cl">./setup.sh
 </span></span></code></pre></div><hr>
 <h3 id="安装踩坑记">安装踩坑记</h3>
 <p><strong>注意:pwndbg这个目录请不要删除或随意移动位置,否则可能会导致pwndbg无法正常启动</strong></p>
 <p>如果安装后或系统更新后无法正常启动的话，请检查路径问题</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo vi ~/.gdbinit
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo vi ~/.gdbinit
 </span></span></code></pre></div><p>输入命令后应该能看到一行</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"><span class="nb">source</span> 其他内容/pwndbg/gdbinit.py
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">source</span> 其他内容/pwndbg/gdbinit.py
 </span></span></code></pre></div><p>记得把<code>source</code>之后的内容改成你pwndbg文件夹里gdbinit.py的路径</p>
 <blockquote>
 <p>Tip:如果你想不用pwndbg的话，去掉这一行即可</p>
@@ -365,12 +392,12 @@
 <hr>
 <h3 id="用法">用法</h3>
 <p>大部分用法都和gdb的差不多，这里列举几个经常用的</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">b 函数名 <span class="c1">#断点断在某个函数处</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl">b *一个地址 <span class="c1">#断点断在某个地址</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">r        <span class="c1">#运行</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">n        <span class="c1">#执行下一条指令或者跳过一个函数</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">s        <span class="c1">#进入函数</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">q        <span class="c1">#退出gdb</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">b 函数名 <span class="c1">#断点断在某个函数处</span>
+</span></span><span class="line"><span class="cl">b *一个地址 <span class="c1">#断点断在某个地址</span>
+</span></span><span class="line"><span class="cl">r        <span class="c1">#运行</span>
+</span></span><span class="line"><span class="cl">n        <span class="c1">#执行下一条指令或者跳过一个函数</span>
+</span></span><span class="line"><span class="cl">s        <span class="c1">#进入函数</span>
+</span></span><span class="line"><span class="cl">q        <span class="c1">#退出gdb</span>
 </span></span></code></pre></div><p>至于pwndbg的特殊功能嘛= =，<strong>可以通过指令<code>pwndbg</code>查看</strong></p>
 <p><img src="/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwndbg.png"
 	width="1133"
@@ -390,22 +417,22 @@
 <p>这个呢，是python的一个用来pwn的第三方库</p>
 <h3 id="安装-1">安装</h3>
 <p>直接上命令</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">pip install pwntools
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pip install pwntools
 </span></span></code></pre></div><blockquote>
 <p><strong>没有pip? 赶紧去装python3!!!(这个大部分Linux也应该预装了= = )</strong></p>
 </blockquote>
 <h3 id="使用">使用</h3>
 <p>就和一般的python库一样用嘛= =</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
 </span></span></code></pre></div><p>再说几个常用的命令吧.qaq(其他的用到再说)，当然你最好可以看看<a class="link" href="https://docs.pwntools.com/en/stable/"  target="_blank" rel="noopener"
     >文档</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./程序名&#34;</span><span class="p">)</span>  <span class="c1">#类似与用PWNTools“监听”本地一个程序，之后就用io这个变量来负责数据的收发</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;内容&#34;</span><span class="p">)</span> <span class="c1">#发送数据(结尾不自动加换行符)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s2">&#34;内容&#34;</span><span class="p">)</span>  <span class="c1">#发送一行数据(结尾自动加上换行符)</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span> <span class="c1">#接收数据，和前面两个函数同理</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="c1"># 注意，在之后PWN的过程中一定要根据目标程序的输入/输出函数来判断前四个指令的使用，这种细微的差别也可能导致无法getshell</span>
-</span></span><span class="line"><span class="ln">7</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>  <span class="c1">#切换至交互模式，我们可以尽情享用得到的Shell了</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./程序名&#34;</span><span class="p">)</span>  <span class="c1">#类似与用PWNTools“监听”本地一个程序，之后就用io这个变量来负责数据的收发</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;内容&#34;</span><span class="p">)</span> <span class="c1">#发送数据(结尾不自动加换行符)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s2">&#34;内容&#34;</span><span class="p">)</span>  <span class="c1">#发送一行数据(结尾自动加上换行符)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span> <span class="c1">#接收数据，和前面两个函数同理</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 注意，在之后PWN的过程中一定要根据目标程序的输入/输出函数来判断前四个指令的使用，这种细微的差别也可能导致无法getshell</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>  <span class="c1">#切换至交互模式，我们可以尽情享用得到的Shell了</span>
 </span></span></code></pre></div><h2 id="pwnpwn-一起来实战吧">PWN?PWN! 一起来实战吧</h2>
 <p><strong>实战目的: 熟悉pwntools的使用</strong></p>
 <p>如果你没使用之前的集成环境, 请点<a class="link" href="https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/EY3FbCme0nVPm-6X5x3-QGEB2My6gCoLaLB9Xm4Z_ZpgcA?e=V53Nr1"  target="_blank" rel="noopener"
@@ -432,43 +459,43 @@
 	
 ></p>
 <p>输出</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">1</span><span class="cl">Pwntools is such an awesome python module, right?
-</span></span><span class="line"><span class="ln">2</span><span class="cl">Tell you a secret (only smart baby can see it) :
-</span></span><span class="line"><span class="ln">3</span><span class="cl">Maybe I will tell you again when you clever than ELSEpush ......
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Pwntools is such an awesome python module, right?
+</span></span><span class="line"><span class="cl">Tell you a secret (only smart baby can see it) :
+</span></span><span class="line"><span class="cl">Maybe I will tell you again when you clever than ELSEpush ......
 </span></span></code></pre></div><p>程序说:<strong>Pwntools</strong>是一个很好用的python模块，要告诉我们一个聪明人才能看见的小秘密</p>
 <p><del>还挑衅是吧</del></p>
 <p>咳咳，那怎样才能看到所谓的小秘密呢qaq,直接运行肯定看不到()</p>
 <p>根据所学知识和<strong>程序输出</strong>，我们可以判断出应该通过pwntools查看</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="ln">1</span><span class="cl"><span class="err">$</span> <span class="n">python3</span>                  
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">Python</span> <span class="mf">3.9.9</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">12</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">51</span><span class="p">)</span> 
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="p">[</span><span class="n">GCC</span> <span class="mf">11.2.0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">Type</span> <span class="s2">&#34;help&#34;</span><span class="p">,</span> <span class="s2">&#34;copyright&#34;</span><span class="p">,</span> <span class="s2">&#34;credits&#34;</span> <span class="ow">or</span> <span class="s2">&#34;license&#34;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl"><span class="o">&gt;&gt;&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="err">$</span> <span class="n">python3</span>                  
+</span></span><span class="line"><span class="cl"><span class="n">Python</span> <span class="mf">3.9.9</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">12</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">51</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">GCC</span> <span class="mf">11.2.0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+</span></span><span class="line"><span class="cl"><span class="n">Type</span> <span class="s2">&#34;help&#34;</span><span class="p">,</span> <span class="s2">&#34;copyright&#34;</span><span class="p">,</span> <span class="s2">&#34;credits&#34;</span> <span class="ow">or</span> <span class="s2">&#34;license&#34;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span>
 </span></span></code></pre></div><p>既然程序没有输入，只有输出，那么只有使用recv()或recvline()函数了qaq</p>
 <p>EXP:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="ln">1</span><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./tools&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./tools&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
 </span></span></code></pre></div><p>整个过程展示:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="err">$</span> <span class="n">python3</span>                  
-</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="n">Python</span> <span class="mf">3.9.9</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">12</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">51</span><span class="p">)</span> 
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="p">[</span><span class="n">GCC</span> <span class="mf">11.2.0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="n">Type</span> <span class="s2">&#34;help&#34;</span><span class="p">,</span> <span class="s2">&#34;copyright&#34;</span><span class="p">,</span> <span class="s2">&#34;credits&#34;</span> <span class="ow">or</span> <span class="s2">&#34;license&#34;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./tools&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Starting</span> <span class="n">local</span> <span class="n">process</span> <span class="s1">&#39;./tools&#39;</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Starting</span> <span class="n">local</span> <span class="n">process</span> <span class="s1">&#39;./tools&#39;</span><span class="p">:</span> <span class="n">pid</span> <span class="mi">108320</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Process</span> <span class="s1">&#39;./tools&#39;</span> <span class="n">stopped</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span> <span class="p">(</span><span class="n">pid</span> <span class="mi">108320</span><span class="p">)</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="sa">b</span><span class="s1">&#39;Pwntools is such an awesome python module, right?</span><span class="se">\n</span><span class="s1">&#39;</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="sa">b</span><span class="s1">&#39;Tell you a secret (only smart baby can see it) :</span><span class="se">\n</span><span class="s1">&#39;</span>
-</span></span><span class="line"><span class="ln">14</span><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
-</span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="sa">b</span><span class="s1">&#39;ZmxhZ3tuMHRfZjRzdGVyX3Q2YW5feTB1fQo=</span><span class="se">\r</span><span class="s1">Maybe I will tell you again when you clever than ELSEpush ......</span><span class="se">\n</span><span class="s1">&#39;</span>
-</span></span><span class="line"><span class="ln">16</span><span class="cl"><span class="o">&gt;&gt;&gt;</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="err">$</span> <span class="n">python3</span>                  
+</span></span><span class="line"><span class="cl"><span class="n">Python</span> <span class="mf">3.9.9</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Jan</span> <span class="mi">12</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">16</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">51</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">GCC</span> <span class="mf">11.2.0</span><span class="p">]</span> <span class="n">on</span> <span class="n">linux</span>
+</span></span><span class="line"><span class="cl"><span class="n">Type</span> <span class="s2">&#34;help&#34;</span><span class="p">,</span> <span class="s2">&#34;copyright&#34;</span><span class="p">,</span> <span class="s2">&#34;credits&#34;</span> <span class="ow">or</span> <span class="s2">&#34;license&#34;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./tools&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">Starting</span> <span class="n">local</span> <span class="n">process</span> <span class="s1">&#39;./tools&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Starting</span> <span class="n">local</span> <span class="n">process</span> <span class="s1">&#39;./tools&#39;</span><span class="p">:</span> <span class="n">pid</span> <span class="mi">108320</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Process</span> <span class="s1">&#39;./tools&#39;</span> <span class="n">stopped</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span> <span class="p">(</span><span class="n">pid</span> <span class="mi">108320</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="sa">b</span><span class="s1">&#39;Pwntools is such an awesome python module, right?</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="sa">b</span><span class="s1">&#39;Tell you a secret (only smart baby can see it) :</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="sa">b</span><span class="s1">&#39;ZmxhZ3tuMHRfZjRzdGVyX3Q2YW5feTB1fQo=</span><span class="se">\r</span><span class="s1">Maybe I will tell you again when you clever than ELSEpush ......</span><span class="se">\n</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> 
 </span></span></code></pre></div><p><img src="/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwned.png"
 	width="1138"
 	height="673"

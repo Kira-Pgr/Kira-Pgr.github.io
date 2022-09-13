@@ -12,7 +12,34 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-04-14T23:21:24-04:00'/><meta property='article:modified_time' content='2022-04-14T23:21:24-04:00'/><meta property='og:image' content='https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/cover.jpg' />
 <meta name="twitter:title" content="PWN! PWN! PANG! Part6 --- ROP">
 <meta name="twitter:description" content="小程序就这样走上了不归路ww("><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/cover.jpg' />
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
     </head>
     <body class="
     article-page
@@ -382,15 +409,15 @@
 <h3 id="ropgadget">ROPgadget</h3>
 <p>这款工具主要是帮助你找到合适的gadget</p>
 <p>安装方法</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt install python3-pip
-</span></span><span class="line"><span class="ln">2</span><span class="cl">sudo -H python3 -m pip install ROPgadget
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install python3-pip
+</span></span><span class="line"><span class="cl">sudo -H python3 -m pip install ROPgadget
 </span></span></code></pre></div><p>获取使用指南</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">ROPgadget --help
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ROPgadget --help
 </span></span></code></pre></div><p>简单举例几个常用命令</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">ROPgadget --binary 程序 --ropchain
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1">#直接构造一个ROP链</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">ROPgadget --binary 程序 --only <span class="s2">&#34;pop|ret&#34;</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl"><span class="c1">#只寻找含有pop ret的gadgets</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ROPgadget --binary 程序 --ropchain
+</span></span><span class="line"><span class="cl"><span class="c1">#直接构造一个ROP链</span>
+</span></span><span class="line"><span class="cl">ROPgadget --binary 程序 --only <span class="s2">&#34;pop|ret&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#只寻找含有pop ret的gadgets</span>
 </span></span></code></pre></div><h3 id="onegadget有一点鸡肋需要运气成分">Onegadget(有一点鸡肋，需要运气成分)</h3>
 <p><del>怎么说。。。还是运气不好的时间多= =</del></p>
 <p>这款工具就有点魔法了，它能够帮你找到<strong>可能</strong>帮助你一次性getshell的gadget</p>
@@ -403,18 +430,18 @@
 <p><del>当然没有一个可以用也是非常常见的</del></p>
 <p>安装Onegadge需要<strong>提前装好ruby</strong>，下面是各Linux安装ruby的方法</p>
 <p>deb(Debian 或 Ubuntu)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo apt-get install ruby-full
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install ruby-full
 </span></span></code></pre></div><p>yum(CentOS、Fedora 或 RHEL)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo yum install ruby
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum install ruby
 </span></span></code></pre></div><p>portage(Gentoo)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo emerge dev-lang/ruby
-</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"># 安装指定的版本，要在 make.conf 文件中设置 RUBY_TARGETS。详见 Gentoo Ruby Project 网站。</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo emerge dev-lang/ruby
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装指定的版本，要在 make.conf 文件中设置 RUBY_TARGETS。详见 Gentoo Ruby Project 网站。</span>
 </span></span></code></pre></div><p>pacman(Arch Linux)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">sudo pacman -S ruby
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo pacman -S ruby
 </span></span></code></pre></div><p>安装Onegadget</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">gem install one_gadget
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gem install one_gadget
 </span></span></code></pre></div><p>使用</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">one_gadget 程序名
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">one_gadget 程序名
 </span></span></code></pre></div><h2 id="ref">ref</h2>
 <p><a class="link" href="https://www.jianshu.com/p/3a9d70529d7a"  target="_blank" rel="noopener"
     >基本ROP讲解 - 简书</a></p>

