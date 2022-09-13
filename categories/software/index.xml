@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Software on 猫猫の博客</title>
-        <link>https://kira-pgr.github.io/categories/software/</link>
+        <link>https://blog.nanosec.site/categories/software/</link>
         <description>Recent content in Software on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 08 Feb 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/software/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 08 Feb 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/software/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Debian Linux下安装虚拟机软件</title>
-        <link>https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</link>
+        <link>https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</link>
         <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
         
-        <guid>https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</guid>
-        <description>&lt;img src="https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg" alt="Featured image of post Debian Linux下安装虚拟机软件" /&gt;&lt;h1 id=&#34;debian-linux下安装虚拟机软件&#34;&gt;Debian Linux下安装虚拟机软件&lt;/h1&gt;
+        <guid>https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg" alt="Featured image of post Debian Linux下安装虚拟机软件" /&gt;&lt;h1 id=&#34;debian-linux下安装虚拟机软件&#34;&gt;Debian Linux下安装虚拟机软件&lt;/h1&gt;
 &lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
 &lt;p&gt;VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少&lt;/p&gt;
 &lt;h3 id=&#34;安装最新版本内核头文件内核镜像&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
@@ -24,10 +24,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
 	width=&#34;1031&#34;
 	height=&#34;715&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;如图&#34;
@@ -50,10 +50,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;init 6 #装完重启
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
 	width=&#34;498&#34;
 	height=&#34;270&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做&#34;
@@ -66,10 +66,10 @@
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;安装各种编译器&#34;&gt;安装各种编译器&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install build-essential 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
 	width=&#34;496&#34;
 	height=&#34;250&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器&#34;
@@ -96,10 +96,10 @@
 &lt;p&gt;&lt;strong&gt;但是，，，我还遇到了更多奇奇怪怪的坑&lt;/strong&gt;&lt;/p&gt;
 &lt;img title=&#34;&#34; src=&#34;1.gif&#34; alt=&#34;&#34; width=&#34;251&#34;&gt;
 &lt;p&gt;如果各位朋友也遇到了，可以参考下解决方案&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2.jpg&#34;
 	width=&#34;701&#34;
 	height=&#34;407&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你再报错试试!?!  怒)&#34;
@@ -122,10 +122,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;由于这里&lt;code&gt;git clone&lt;/code&gt;不知道为什么并不能拉取所有源码，所以我们这里选择下载zip包&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3.jpg&#34;
 	width=&#34;589&#34;
 	height=&#34;570&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;下载界面&#34;
@@ -144,10 +144,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart vmware
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
 	width=&#34;1033&#34;
 	height=&#34;655&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;如图&#34;
@@ -160,10 +160,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;完成之后再运行VMware Workstation,就应该可以正常进入程序了&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;vmware
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
 	width=&#34;904&#34;
 	height=&#34;741&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -176,10 +176,10 @@
 &lt;p&gt;网上VMware激活码可谓了一大堆&lt;/p&gt;
 &lt;p&gt;为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
 	width=&#34;897&#34;
 	height=&#34;655&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;激活界面&#34;
@@ -201,11 +201,11 @@
         </item>
         <item>
         <title>Burp Suite Professional 安装&#43;破解教程</title>
-        <link>https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</link>
+        <link>https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</link>
         <pubDate>Tue, 08 Feb 2022 07:42:01 -0500</pubDate>
         
-        <guid>https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</guid>
-        <description>&lt;img src="https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/cover.jpg" alt="Featured image of post Burp Suite Professional 安装&#43;破解教程" /&gt;&lt;h1 id=&#34;burp-suite-professional-安装破解教程&#34;&gt;Burp Suite Professional 安装+破解教程&lt;/h1&gt;
+        <guid>https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/cover.jpg" alt="Featured image of post Burp Suite Professional 安装&#43;破解教程" /&gt;&lt;h1 id=&#34;burp-suite-professional-安装破解教程&#34;&gt;Burp Suite Professional 安装+破解教程&lt;/h1&gt;
 &lt;p&gt;嗝~~&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;(Burp在英文中有打嗝的意思)&lt;/del&gt;&lt;/p&gt;
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
@@ -245,10 +245,10 @@
 &lt;p&gt;终端/cmd/你奇奇怪怪的命令行工具进入放有以上两个文件的目录&lt;/p&gt;
 &lt;p&gt;先运行破解工具&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;java -jar burploader.jar
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1.png&#34;
 	width=&#34;796&#34;
 	height=&#34;451&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;破解工具&#34;
@@ -274,10 +274,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;TIP:你在使用快捷键复制粘贴的时候一定要注意无论你是什么系统快捷键都是Ctrl + C/V&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/2.png&#34;
 	width=&#34;764&#34;
 	height=&#34;302&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/2_hu29a58fd9b1af39045aaffd6a8af2aaae_123384_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/2_hu29a58fd9b1af39045aaffd6a8af2aaae_123384_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/2_hu29a58fd9b1af39045aaffd6a8af2aaae_123384_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/2_hu29a58fd9b1af39045aaffd6a8af2aaae_123384_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;许可证框框嗝~~&#34;
@@ -289,10 +289,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;点击Next(下一步)后选择Manual Activation(人工激活)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/3.png&#34;
 	width=&#34;838&#34;
 	height=&#34;574&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/3_hu662f4b453037502af61e9051280d2ba7_101889_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/3_hu662f4b453037502af61e9051280d2ba7_101889_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/3_hu662f4b453037502af61e9051280d2ba7_101889_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/3_hu662f4b453037502af61e9051280d2ba7_101889_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;这应该灰常EASY&#34;
@@ -305,10 +305,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;然后把Burp的Request复制粘贴进激活工具&lt;/p&gt;
 &lt;p&gt;傻瓜教程：点击旁边的Copy Request按钮复制，然后粘贴 **进激活工具Request框&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/5.png&#34;
 	width=&#34;955&#34;
 	height=&#34;581&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/5_hueed93c348322a78de358c60c3d39a4c4_120610_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/5_hueed93c348322a78de358c60c3d39a4c4_120610_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/5_hueed93c348322a78de358c60c3d39a4c4_120610_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/5_hueed93c348322a78de358c60c3d39a4c4_120610_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;QAQ = =&#34;
@@ -320,10 +320,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;然后把激活工具的Response(回复)复制粘贴进Burp的Response框&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/6.png&#34;
 	width=&#34;955&#34;
 	height=&#34;581&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/6_hu6853f4ca6b82090ec00dd1d56430d62b_149977_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/6_hu6853f4ca6b82090ec00dd1d56430d62b_149977_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/6_hu6853f4ca6b82090ec00dd1d56430d62b_149977_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/6_hu6853f4ca6b82090ec00dd1d56430d62b_149977_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;操作与上一步类似&#34;
@@ -338,10 +338,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;TIP:在实际情况下要是点&lt;code&gt;paste response&lt;/code&gt;后激活失败请使用&lt;strong&gt;快捷键&lt;/strong&gt;粘贴，然后&lt;strong&gt;检查首尾是否有多余的空格或换行&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/7.png&#34;
 	width=&#34;829&#34;
 	height=&#34;539&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/7_hu4d686dcae0324c9334fd8193d0e0e634_88893_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/7_hu4d686dcae0324c9334fd8193d0e0e634_88893_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/7_hu4d686dcae0324c9334fd8193d0e0e634_88893_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/7_hu4d686dcae0324c9334fd8193d0e0e634_88893_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;激活成功&#34;

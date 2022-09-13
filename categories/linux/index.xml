@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Linux on 猫猫の博客</title>
-        <link>https://kira-pgr.github.io/categories/linux/</link>
+        <link>https://blog.nanosec.site/categories/linux/</link>
         <description>Recent content in Linux on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>模拟搭建企业自动化运维体系</title>
-        <link>https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/</link>
+        <link>https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/</link>
         <pubDate>Thu, 07 Jul 2022 17:20:00 +0800</pubDate>
         
-        <guid>https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/</guid>
-        <description>&lt;img src="https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/cover.jpg" alt="Featured image of post 模拟搭建企业自动化运维体系" /&gt;&lt;h1 id=&#34;nanosec--模拟企业网络搭建&#34;&gt;NanoSec&amp;ndash;模拟企业网络搭建&lt;/h1&gt;
+        <guid>https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/cover.jpg" alt="Featured image of post 模拟搭建企业自动化运维体系" /&gt;&lt;h1 id=&#34;nanosec--模拟企业网络搭建&#34;&gt;NanoSec&amp;ndash;模拟企业网络搭建&lt;/h1&gt;
 &lt;h2 id=&#34;part-1--规划&#34;&gt;Part 1&amp;ndash;规划&lt;/h2&gt;
 &lt;p&gt;由于实验条件限制，共准备5台机器来测试:&lt;/p&gt;
 &lt;ol&gt;
@@ -35,10 +35,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;其中机器3,4,5中服务均用Docker进行部署，且用Jenkins进行自动化安装Docker环境, 启动并配置容器;)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP.jpg&#34;
 	width=&#34;1012&#34;
 	height=&#34;476&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;一个画的很狗的拓扑图&#34;
@@ -97,10 +97,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后即可在&lt;code&gt;ip:8080&lt;/code&gt;访问Jenkins了喵&lt;/p&gt;
 &lt;h4 id=&#34;jenkins配置&#34;&gt;Jenkins配置&lt;/h4&gt;
 &lt;p&gt;在自定义Jenkins那步选择&lt;strong&gt;安装推荐的插件&lt;/strong&gt;，这样你之后可以少很多折腾&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug.jpg&#34;
 	width=&#34;789&#34;
 	height=&#34;465&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -115,10 +115,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;一个小提醒:SSH插件存在已知漏洞，从&lt;strong&gt;安全角度考虑生产环境请慎用&lt;/strong&gt;(指可以找到这些漏洞的临时缓解方案)，在实验里我偷个小懒&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4.jpg&#34;
 	width=&#34;1375&#34;
 	height=&#34;674&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4_hu8814786f0602457dd08f41b6a29edb65_61296_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4_hu8814786f0602457dd08f41b6a29edb65_61296_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4_hu8814786f0602457dd08f41b6a29edb65_61296_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4_hu8814786f0602457dd08f41b6a29edb65_61296_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;步骤如图&#34;
@@ -130,10 +130,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;要是想要节省时间，选中两个插件之后选择&lt;code&gt;Install without restart&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5.jpg&#34;
 	width=&#34;725&#34;
 	height=&#34;427&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;直接上图吧= =&#34;
@@ -148,10 +148,10 @@
 &lt;h5 id=&#34;ssh&#34;&gt;SSH&lt;/h5&gt;
 &lt;p&gt;去到&lt;code&gt;http://ip:8080/configure&lt;/code&gt;或在网页点击&lt;code&gt;Manage Jenkins&lt;/code&gt; &amp;ndash;&amp;gt;&lt;code&gt;Configure System&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;在这一界面下滑直到看到&lt;code&gt;SSH remote hosts&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6.jpg&#34;
 	width=&#34;439&#34;
 	height=&#34;134&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6_hu4cf2abb05ac5d7dd5144943631646021_4848_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6_hu4cf2abb05ac5d7dd5144943631646021_4848_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6_hu4cf2abb05ac5d7dd5144943631646021_4848_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6_hu4cf2abb05ac5d7dd5144943631646021_4848_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -174,10 +174,10 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;这里注意，如果是第一次使用，需要添加新的认证信息&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7.jpg&#34;
 	width=&#34;483&#34;
 	height=&#34;185&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7_hudca93671f7d3466b8db333519b2c3971_15723_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7_hudca93671f7d3466b8db333519b2c3971_15723_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7_hudca93671f7d3466b8db333519b2c3971_15723_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7_hudca93671f7d3466b8db333519b2c3971_15723_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;还等什么??点Add呀!&#34;
@@ -192,10 +192,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意，你要用自动化配置的几台机器的账号密码须一样&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8.jpg&#34;
 	width=&#34;1410&#34;
 	height=&#34;602&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -218,10 +218,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;下面配置Ansible插件&lt;/p&gt;
 &lt;p&gt;去到&lt;code&gt;http://ip:8080/configureTools/&lt;/code&gt;，或者网页上&lt;code&gt;Manage Jenkins&lt;/code&gt; - -&amp;gt; &lt;code&gt;Global Tool Configuration&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;下划到&lt;code&gt;Ansible&lt;/code&gt;区域，点击&lt;code&gt;Add Ansible&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9.jpg&#34;
 	width=&#34;389&#34;
 	height=&#34;191&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9_hu131514d8c0f82ef766da13f19e39aaed_7498_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9_hu131514d8c0f82ef766da13f19e39aaed_7498_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9_hu131514d8c0f82ef766da13f19e39aaed_7498_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9_hu131514d8c0f82ef766da13f19e39aaed_7498_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -237,10 +237,10 @@
 &lt;p&gt;注意这里的安装路径写到可执行文件所在目录&lt;/p&gt;
 &lt;p&gt;比如说我的ansible是&lt;code&gt;/usr/bin/ansible&lt;/code&gt;,我只需要填&lt;code&gt;/usr/bin&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1.jpg&#34;
 	width=&#34;1300&#34;
 	height=&#34;481&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ansible&#34;
@@ -251,10 +251,10 @@
 		data-flex-basis=&#34;648px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2.jpg&#34;
 	width=&#34;1300&#34;
 	height=&#34;482&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ansible-playbook&#34;
@@ -269,10 +269,10 @@
 &lt;p&gt;Ansible有个小坑，就是它不会说&amp;quot;是&amp;quot;&lt;/p&gt;
 &lt;p&gt;为什么这么说捏&lt;/p&gt;
 &lt;p&gt;因为当SSH询问是否需要将新的主机添加到&lt;code&gt;known_hosts&lt;/code&gt;时Ansible无法回应,那就只有报错辣;(&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17.jpg&#34;
 	width=&#34;1394&#34;
 	height=&#34;528&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17_hu9a6a7a35b55e21213a89272e0177d619_77850_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17_hu9a6a7a35b55e21213a89272e0177d619_77850_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17_hu9a6a7a35b55e21213a89272e0177d619_77850_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17_hu9a6a7a35b55e21213a89272e0177d619_77850_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;呜呜呜，Ansible好可怜  雾)&#34;
@@ -290,10 +290,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意去掉这一行前的注释符&lt;code&gt;#&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18.jpg&#34;
 	width=&#34;1494&#34;
 	height=&#34;807&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18_hu880132dc73536d7a0effdb0f42b30610_121846_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18_hu880132dc73536d7a0effdb0f42b30610_121846_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18_hu880132dc73536d7a0effdb0f42b30610_121846_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18_hu880132dc73536d7a0effdb0f42b30610_121846_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;有图有真相&#34;
@@ -374,10 +374,10 @@
 &lt;p&gt;我们梳理一下思路，我们现在大概可以想到两种方案&lt;/p&gt;
 &lt;h4 id=&#34;方案猜想&#34;&gt;方案猜想&lt;/h4&gt;
 &lt;p&gt;第一种就是直接用SSH插件:不断添加构建步骤在不同机器上进行安装&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11.jpg&#34;
 	width=&#34;594&#34;
 	height=&#34;499&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -386,10 +386,10 @@
 		data-flex-basis=&#34;285px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12.jpg&#34;
 	width=&#34;1247&#34;
 	height=&#34;587&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;不得不说，是不是又那么亿点烦&#34;
@@ -408,10 +408,10 @@
 &lt;p&gt;ok,现在我们想好了方案，接下来要做的就是新建一个Jenkins项目然后进行配置&lt;/p&gt;
 &lt;p&gt;回到&lt;code&gt;Dashboard&lt;/code&gt;- -&amp;gt;&lt;code&gt;New item&lt;/code&gt;新建一个项目&lt;/p&gt;
 &lt;p&gt;给项目起一个合适的名字(比如说用来安装环境的项目叫做Install),然后选&lt;code&gt;Freestyle Project&lt;/code&gt;,然后再&lt;del&gt;傻瓜式地&lt;/del&gt;点OK&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13.jpg&#34;
 	width=&#34;1492&#34;
 	height=&#34;764&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你是不是还在想项目叫什么(?&#34;
@@ -423,10 +423,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;然后&lt;code&gt;Add build step&lt;/code&gt;-&amp;gt;&lt;code&gt;Invoke Ansible Ad-Hoc Command(调用Ansible临时命令)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14.jpg&#34;
 	width=&#34;602&#34;
 	height=&#34;496&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14_hu540c502a602a414f9b0bd01281d8b574_32599_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14_hu540c502a602a414f9b0bd01281d8b574_32599_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14_hu540c502a602a414f9b0bd01281d8b574_32599_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14_hu540c502a602a414f9b0bd01281d8b574_32599_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;如图&#34;
@@ -453,10 +453,10 @@
 &lt;p&gt;P.S.如果你不需要使用编程语言来生成IP列表,&lt;/p&gt;
 &lt;p&gt;请不要勾选下方的&lt;code&gt;Dynamic inventory&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1.jpg&#34;
 	width=&#34;1266&#34;
 	height=&#34;612&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1_hu57e93bda8b45dddce357893423f532af_34127_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1_hu57e93bda8b45dddce357893423f532af_34127_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1_hu57e93bda8b45dddce357893423f532af_34127_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1_hu57e93bda8b45dddce357893423f532af_34127_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;呐呐呐~~&#34;
@@ -478,10 +478,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;systemctl start docker
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; docker
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;docker pull centos
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2.jpg&#34;
 	width=&#34;1258&#34;
 	height=&#34;640&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;图是不能少的啦qwq&#34;
@@ -496,10 +496,10 @@
 &lt;li&gt;&lt;code&gt;Credentials&lt;/code&gt;选我们前面在配置SSH插件的适合创建的那个&lt;/li&gt;
 &lt;li&gt;其他的东西保持默认&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3.jpg&#34;
 	width=&#34;1260&#34;
 	height=&#34;531&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -511,10 +511,10 @@
 &lt;p&gt;然后就是&lt;code&gt;Apply&lt;/code&gt;+&lt;code&gt;Save&lt;/code&gt;一把梭= =&lt;/p&gt;
 &lt;p&gt;然后回到项目主界面之后捏，点&lt;code&gt;Build Now&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;就是那个上面有绿绿三角形的钟~~(要是你理解为其他的东西也可以~~&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16.jpg&#34;
 	width=&#34;1919&#34;
 	height=&#34;561&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;没事，反正有图&#34;
@@ -530,10 +530,10 @@
 &lt;p&gt;要是BUG满天飞，就会是一个红红火火的x&lt;/p&gt;
 &lt;img title=&#34;&#34; src=&#34;FAIL.jpg&#34; alt=&#34;祝愿大家永远没BUG&#34; width=&#34;331&#34;&gt;
 &lt;p&gt;假设现在已经运行成功并且没有任何报错，右键&lt;code&gt;build&lt;/code&gt;编号，点&lt;code&gt;Console Output&lt;/code&gt;查看控制台输出&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19.jpg&#34;
 	width=&#34;1917&#34;
 	height=&#34;745&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;OK！完工qaq&#34;
@@ -565,10 +565,10 @@
 &lt;p&gt;你会注意到上面启动容器的命令里包含了&lt;code&gt;-t&lt;/code&gt;参数，&lt;/p&gt;
 &lt;p&gt;为什么咧????&lt;/p&gt;
 &lt;p&gt;&amp;ndash; 因为不加上centos镜像启动的容器会立刻停止运行&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20.jpg&#34;
 	width=&#34;1175&#34;
 	height=&#34;133&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20_hu179365e207b53619013dedb83625c086_34439_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20_hu179365e207b53619013dedb83625c086_34439_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20_hu179365e207b53619013dedb83625c086_34439_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20_hu179365e207b53619013dedb83625c086_34439_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;就是这么狗&#34;
@@ -633,10 +633,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;拉取WordPress&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就可以访问机器ip开始安装WordPress啦&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP.jpg&#34;
 	width=&#34;1918&#34;
 	height=&#34;840&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -649,10 +649,10 @@
 &lt;p&gt;你需要在Jenkins中提前让WordPress目录对于所有用户可写&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod -R 777 /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;否则就不能自动化了qeq&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21.jpg&#34;
 	width=&#34;1142&#34;
 	height=&#34;663&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;我不想接受这个抱歉&#34;
@@ -667,10 +667,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;数据库配置见下文&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2.jpg&#34;
 	width=&#34;1109&#34;
 	height=&#34;615&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -683,10 +683,10 @@
 &lt;p&gt;嘿嘿，最后给配个&lt;a class=&#34;link&#34; href=&#34;https://github.com/mashirozx/sakura&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;主题&lt;/a&gt;，让我的实验kawaii起来~~&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme.jpg&#34;
 	width=&#34;809&#34;
 	height=&#34;536&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;主题预览&#34;
@@ -721,10 +721,10 @@
 &lt;h4 id=&#34;老规矩jenkins新建项目&#34;&gt;老规矩:Jenkins新建项目&lt;/h4&gt;
 &lt;p&gt;不过有了前面的经验之后，这边可以偷个小懒，嘿嘿嘿&lt;/p&gt;
 &lt;p&gt;细心的朋友们可以发现，在新建项目的时候还可以用之前的项目作为模版&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22.jpg&#34;
 	width=&#34;1422&#34;
 	height=&#34;408&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22_hu2744b412728c5e618591b07eb0ab3231_24477_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22_hu2744b412728c5e618591b07eb0ab3231_24477_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22_hu2744b412728c5e618591b07eb0ab3231_24477_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22_hu2744b412728c5e618591b07eb0ab3231_24477_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;好诶，可以懒了&#34;
@@ -738,10 +738,10 @@
 &lt;p&gt;我们就以刚刚配置的Web Server作为模板&lt;/p&gt;
 &lt;p&gt;点OK创建之后你会看见和一个和Web Server项目配置相同的新项目&lt;/p&gt;
 &lt;p&gt;接下来也是老样子:修改IP和代码&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25.jpg&#34;
 	width=&#34;1238&#34;
 	height=&#34;778&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -801,10 +801,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date +%F&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;cp /db/data-dump.sql /mnt/backup/DB_&lt;span class=&#34;nv&#34;&gt;$date&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf /db/data-dump.sql
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23.jpg&#34;
 	width=&#34;1912&#34;
 	height=&#34;842&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;放在GitLab会更方便管理&#34;
@@ -823,10 +823,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后可以先运行一下看看是否备份成功&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;/etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26.jpg&#34;
 	width=&#34;999&#34;
 	height=&#34;663&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -835,10 +835,10 @@
 		data-flex-basis=&#34;361px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24.jpg&#34;
 	width=&#34;441&#34;
 	height=&#34;96&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;成功XD&#34;
@@ -882,10 +882,10 @@
 &lt;p&gt;直接利用模板+修改一把梭&lt;/p&gt;
 &lt;img src=&#34;awa.jpg&#34; title=&#34;&#34; alt=&#34;&#34; width=&#34;60&#34;&gt;
 &lt;p&gt;最后大概确定应该肯定是这样纸捏&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27.jpg&#34;
 	width=&#34;1245&#34;
 	height=&#34;772&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27_hu836adf1d51f47e292a0038b6982634eb_58051_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27_hu836adf1d51f47e292a0038b6982634eb_58051_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27_hu836adf1d51f47e292a0038b6982634eb_58051_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27_hu836adf1d51f47e292a0038b6982634eb_58051_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -968,10 +968,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;57&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;58&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;59&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28.jpg&#34;
 	width=&#34;1585&#34;
 	height=&#34;620&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;配图&#34;
@@ -996,10 +996,10 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy nginx -s reload
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;完工&#34;&gt;完工&lt;/h4&gt;
 &lt;p&gt;这个时候就可以让这个项目跑起来啦awa&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30.jpg&#34;
 	width=&#34;1059&#34;
 	height=&#34;675&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30_hufca6db4e98f81389b0873d5504c95ec7_105467_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30_hufca6db4e98f81389b0873d5504c95ec7_105467_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30_hufca6db4e98f81389b0873d5504c95ec7_105467_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30_hufca6db4e98f81389b0873d5504c95ec7_105467_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;好诶!没有报错&#34;
@@ -1011,10 +1011,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;到这里我们访问反向代理的ip或者把&lt;code&gt;blog.nanosec.io&lt;/code&gt;解析到这个ip后访问就可以看到Web Server的那个网页啦&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29.jpg&#34;
 	width=&#34;937&#34;
 	height=&#34;80&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29_hueb5b90525fb4cf606e51d6c59824a990_6539_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29_hueb5b90525fb4cf606e51d6c59824a990_6539_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29_hueb5b90525fb4cf606e51d6c59824a990_6539_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29_hueb5b90525fb4cf606e51d6c59824a990_6539_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1023,10 +1023,10 @@
 		data-flex-basis=&#34;2811px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3.jpg&#34;
 	width=&#34;1919&#34;
 	height=&#34;841&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3_hu247aef0cba82f0843aca389463206524_80693_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3_hu247aef0cba82f0843aca389463206524_80693_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3_hu247aef0cba82f0843aca389463206524_80693_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3_hu247aef0cba82f0843aca389463206524_80693_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;TaDa! 美滋滋~~&#34;
@@ -1042,10 +1042,10 @@
 &lt;h3 id=&#34;优势&#34;&gt;优势&lt;/h3&gt;
 &lt;p&gt;可以说是为运维带来了很大的便捷，一旦机器多起来一台一台装显得费时费力又不现实，&lt;/p&gt;
 &lt;p&gt;自动化通过按几个键就能完成部署，在很大程度上提高了效率 = =&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233.jpg&#34;
 	width=&#34;1918&#34;
 	height=&#34;811&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233_hu1c39254c82a3387047299d017b409ba6_134470_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233_hu1c39254c82a3387047299d017b409ba6_134470_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233_hu1c39254c82a3387047299d017b409ba6_134470_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233_hu1c39254c82a3387047299d017b409ba6_134470_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你说方便不方便;)&#34;
@@ -1089,11 +1089,11 @@
         </item>
         <item>
         <title>Kali Gnome桌面环境の调整&amp;美化</title>
-        <link>https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</link>
+        <link>https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</link>
         <pubDate>Fri, 27 May 2022 14:45:16 +0800</pubDate>
         
-        <guid>https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</guid>
-        <description>&lt;img src="https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/cover.jpg" alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化" /&gt;&lt;h1 id=&#34;kali-gnome桌面环境の调整美化&#34;&gt;Kali Gnome桌面环境の调整&amp;amp;美化&lt;/h1&gt;
+        <guid>https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/cover.jpg" alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化" /&gt;&lt;h1 id=&#34;kali-gnome桌面环境の调整美化&#34;&gt;Kali Gnome桌面环境の调整&amp;amp;美化&lt;/h1&gt;
 &lt;p&gt;最近刚把kali桌面环境从xfce迁移到了gnome,主要是看中了gnome的&amp;quot;任务栏&amp;quot;美观这一点,&lt;/p&gt;
 &lt;p&gt;不过这一换貌似有点后悔，不得不说kali还是默认的xfce舒适= =&lt;/p&gt;
 &lt;p&gt;gnome不仅占用更多的资源，而且在GUI方面可供自定义的地方也少了很多:(&lt;/p&gt;
@@ -1109,10 +1109,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.jpg&#34;
 	width=&#34;789&#34;
 	height=&#34;229&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;列表示例,本图里并没有qterminal,大家自己实践时自己探索哦&#34;
@@ -1152,10 +1152,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再退出登陆，就可以看到你更改的头像啦~~&lt;/p&gt;
 &lt;h2 id=&#34;调教后整体效果&#34;&gt;调教后整体效果&lt;/h2&gt;
 &lt;p&gt;废话不说，直接上图0.0&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.png&#34;
 	width=&#34;1600&#34;
 	height=&#34;839&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;桌面&amp;#43;终端&#34;
@@ -1166,10 +1166,10 @@
 		data-flex-basis=&#34;457px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2.jpg&#34;
 	width=&#34;1600&#34;
 	height=&#34;835&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;锁屏界面&#34;
@@ -1191,11 +1191,11 @@
         </item>
         <item>
         <title>Debian Linux下安装虚拟机软件</title>
-        <link>https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</link>
+        <link>https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</link>
         <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
         
-        <guid>https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</guid>
-        <description>&lt;img src="https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg" alt="Featured image of post Debian Linux下安装虚拟机软件" /&gt;&lt;h1 id=&#34;debian-linux下安装虚拟机软件&#34;&gt;Debian Linux下安装虚拟机软件&lt;/h1&gt;
+        <guid>https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg" alt="Featured image of post Debian Linux下安装虚拟机软件" /&gt;&lt;h1 id=&#34;debian-linux下安装虚拟机软件&#34;&gt;Debian Linux下安装虚拟机软件&lt;/h1&gt;
 &lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
 &lt;p&gt;VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少&lt;/p&gt;
 &lt;h3 id=&#34;安装最新版本内核头文件内核镜像&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
@@ -1207,10 +1207,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
 	width=&#34;1031&#34;
 	height=&#34;715&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;如图&#34;
@@ -1233,10 +1233,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;init 6 #装完重启
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
 	width=&#34;498&#34;
 	height=&#34;270&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做&#34;
@@ -1249,10 +1249,10 @@
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;安装各种编译器&#34;&gt;安装各种编译器&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install build-essential 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
 	width=&#34;496&#34;
 	height=&#34;250&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器&#34;
@@ -1279,10 +1279,10 @@
 &lt;p&gt;&lt;strong&gt;但是，，，我还遇到了更多奇奇怪怪的坑&lt;/strong&gt;&lt;/p&gt;
 &lt;img title=&#34;&#34; src=&#34;1.gif&#34; alt=&#34;&#34; width=&#34;251&#34;&gt;
 &lt;p&gt;如果各位朋友也遇到了，可以参考下解决方案&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2.jpg&#34;
 	width=&#34;701&#34;
 	height=&#34;407&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你再报错试试!?!  怒)&#34;
@@ -1305,10 +1305,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;由于这里&lt;code&gt;git clone&lt;/code&gt;不知道为什么并不能拉取所有源码，所以我们这里选择下载zip包&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3.jpg&#34;
 	width=&#34;589&#34;
 	height=&#34;570&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;下载界面&#34;
@@ -1327,10 +1327,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart vmware
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
 	width=&#34;1033&#34;
 	height=&#34;655&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;如图&#34;
@@ -1343,10 +1343,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;完成之后再运行VMware Workstation,就应该可以正常进入程序了&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;vmware
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
 	width=&#34;904&#34;
 	height=&#34;741&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1359,10 +1359,10 @@
 &lt;p&gt;网上VMware激活码可谓了一大堆&lt;/p&gt;
 &lt;p&gt;为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;cl&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
 	width=&#34;897&#34;
 	height=&#34;655&#34;
-	srcset=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;激活界面&#34;

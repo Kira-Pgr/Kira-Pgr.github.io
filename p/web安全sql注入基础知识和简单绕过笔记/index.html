@@ -3,16 +3,16 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='科幻大片:黑客猫vs安全狗'><title>Web安全:SQL注入基础知识和简单绕过笔记</title>
 
-<link rel='canonical' href='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/'>
+<link rel='canonical' href='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/'>
 
 <link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Web安全:SQL注入基础知识和简单绕过笔记'>
 <meta property='og:description' content='科幻大片:黑客猫vs安全狗'>
-<meta property='og:url' content='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/'>
+<meta property='og:url' content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/'>
 <meta property='og:site_name' content='猫猫の博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-08-29T13:25:06&#43;08:00'/><meta property='article:modified_time' content='2022-08-29T13:25:06&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-08-29T13:25:06&#43;08:00'/><meta property='article:modified_time' content='2022-08-29T13:25:06&#43;08:00'/><meta property='og:image' content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg' />
 <meta name="twitter:title" content="Web安全:SQL注入基础知识和简单绕过笔记">
 <meta name="twitter:description" content="科幻大片:黑客猫vs安全狗"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg' />
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg' />
     </head>
     <body class="
     article-page
