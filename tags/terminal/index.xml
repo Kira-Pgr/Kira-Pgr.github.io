@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Terminal on 猫猫の博客</title>
+        <link>https://blog.nanosec.site/tags/terminal/</link>
+        <description>Recent content in Terminal on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 25 Sep 2022 10:51:58 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/tags/terminal/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux/Windows终端美化</title>
+        <link>https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</link>
+        <pubDate>Sun, 25 Sep 2022 10:51:58 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/cover.jpg" alt="Featured image of post Linux/Windows终端美化" /&gt;&lt;h1 id=&#34;oh-my-posh终端美化&#34;&gt;Oh-My-Posh终端美化&lt;/h1&gt;
+&lt;p&gt;厌倦了默认的终端样式? 那我们就来搞些花里胡哨的东西&lt;/p&gt;
+&lt;p&gt;本篇文章将介绍用开源工具&lt;strong&gt;Oh-My-Posh&lt;/strong&gt;来美化终端&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/IMG_0294.JPG&#34;
+	width=&#34;300&#34;
+	height=&#34;300&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/IMG_0294_hu9fdfacd6bece8e012b9ca008a214c681_20576_480x0_resize_q75_box.JPG 480w, https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/IMG_0294_hu9fdfacd6bece8e012b9ca008a214c681_20576_1024x0_resize_q75_box.JPG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;好诶!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;效果演示&#34;&gt;效果演示&lt;/h2&gt;
+&lt;p&gt;这次把效果演示放在最前面= =&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;(生动形象，激发读者的阅读兴趣?)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/e1c561cb71ad5bf400f9c0984df43a0c5a47f795.png&#34;
+	width=&#34;1243&#34;
+	height=&#34;764&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/e1c561cb71ad5bf400f9c0984df43a0c5a47f795_huee85f59ab13553a0aad658eee5216718_1675505_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/e1c561cb71ad5bf400f9c0984df43a0c5a47f795_huee85f59ab13553a0aad658eee5216718_1675505_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;美化前(Linux)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;390px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2022-09-25-11-24-10-image.png&#34;
+	width=&#34;1265&#34;
+	height=&#34;765&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2022-09-25-11-24-10-image_hu0411825a4ee87ac651c701d4eaa41017_1651181_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2022-09-25-11-24-10-image_hu0411825a4ee87ac651c701d4eaa41017_1651181_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;396px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/990604e3ad3d4be16bbda372a9670a5e2a76d51c.png&#34;
+	width=&#34;1264&#34;
+	height=&#34;766&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/990604e3ad3d4be16bbda372a9670a5e2a76d51c_hub6df233772a23fb1bb1fe0ebc79c2094_1666853_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/990604e3ad3d4be16bbda372a9670a5e2a76d51c_hub6df233772a23fb1bb1fe0ebc79c2094_1666853_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;美化后(Linux)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;396px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/1.png&#34;
+	width=&#34;1672&#34;
+	height=&#34;935&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/1_hu58d68befa5cbef79ae6de3513fedbea2_31236_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/1_hu58d68befa5cbef79ae6de3513fedbea2_31236_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;美化前(Windows)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;429px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2.png&#34;
+	width=&#34;1490&#34;
+	height=&#34;804&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2_hua1081957edabc3338c5a58ea3138e733_1167279_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2_hua1081957edabc3338c5a58ea3138e733_1167279_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;美化后(Windows)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;444px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安装oh-my-posh&#34;&gt;安装Oh-My-Posh&lt;/h2&gt;
+&lt;h3 id=&#34;windows&#34;&gt;Windows&lt;/h3&gt;
+&lt;p&gt;打开你的终端/cmd/powershell,在其中输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JanDeDobbeleer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OhMyPosh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-s&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;注意: 如果你需要美化WSL,请使用下文中的Linux安装方法= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
+&lt;p&gt;打开你的终端，输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod +x /usr/local/bin/oh-my-posh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir ~/.poshthemes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod u+rw ~/.poshthemes/*.omp.*
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm ~/.poshthemes/themes.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装适配的字体&#34;&gt;安装适配的字体&lt;/h2&gt;
+&lt;p&gt;打开你的命令行工具，输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;oh-my-posh font install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;注意：如果你是Windows用户需要以管理员身份运行命令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;windows-terminal注意事项&#34;&gt;Windows Terminal注意事项&lt;/h3&gt;
+&lt;p&gt;你需要设置Windows终端使用这个字体&lt;/p&gt;
+&lt;p&gt;按下快捷键&lt;code&gt;CTRL&lt;/code&gt; + &lt;code&gt;SHIFT&lt;/code&gt; + &lt;code&gt;,&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个是默认快捷键，如果你修改过按你自己修改的快捷键 :&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;编辑&lt;code&gt;settings.json&lt;/code&gt;修改以下内容&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;profiles&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;#34;defaults&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;font&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nt&#34;&gt;&amp;#34;face&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;字体名&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;切换主题&#34;&gt;切换主题&lt;/h2&gt;
+&lt;p&gt;Oh-My-Posh安装完成之后会有一个默认的主题&lt;/p&gt;
+&lt;p&gt;如果不够喜欢的话可以切换其他的主题&lt;/p&gt;
+&lt;h3 id=&#34;获取主题列表&#34;&gt;获取主题列表&lt;/h3&gt;
+&lt;p&gt;第一个方法是在终端输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Get-PoshThemes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二个方法就是去&lt;a class=&#34;link&#34; href=&#34;https://ohmyposh.dev/docs/themes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网文档&lt;/a&gt;找&lt;/p&gt;
+&lt;h3 id=&#34;换一个主题吧&#34;&gt;换一个主题吧&lt;/h3&gt;
+&lt;h4 id=&#34;windows-1&#34;&gt;Windows&lt;/h4&gt;
+&lt;p&gt;打开终端，输入以下命令尝试主题&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;oh-my&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-posh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pwsh&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-config&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;主题路径&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;主题名&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;omp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;json&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Invoke-Expression&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;P.S. 如果出现报错找不到命令，请将&lt;code&gt;C:\Users\用户名\AppData\Local\Programs\oh-my-posh\bin&lt;/code&gt;添加进环境变量&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一旦确定主题就去修改&lt;code&gt;$PROFILE&lt;/code&gt;的值&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;n&#34;&gt;notepad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;写入尝试主题的那个语句&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一般来说，主题路径会是&lt;code&gt;C:\Users\用户名\AppData\Local\Programs\oh-my-posh\themes&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;重载&lt;code&gt;$Profile&lt;/code&gt;后生效&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;linux-1&#34;&gt;Linux&lt;/h4&gt;
+&lt;p&gt;这个时候可以说Linux yyds了&lt;/p&gt;
+&lt;p&gt;Linux修改主题起来特别容易，输入以下命令就能试用一个主题，也不会有讨厌的报错&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#如果你用的bash把zsh替换成bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;oh-my-posh init zsh --config 主题路径/主题名.omp.json&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;确定主题就去改&lt;code&gt;~/.bashrc&lt;/code&gt;或者&lt;code&gt;~/.zshrc&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi ~/.zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;写入尝试主题的那个语句&lt;/p&gt;
+&lt;p&gt;依旧是重载后生效&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; zsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
+&lt;p&gt;到这里为止我们的美化就完成啦QwQ&lt;/p&gt;
+&lt;p&gt;如果大家想要更多花里胡哨的东西可以在评论区留言哦0.0&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;诶?之前文章评论呢?&lt;/p&gt;
+&lt;p&gt;&amp;ndash;因为更新主题的缘故，就寄了呜呜呜&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;2022-09-25-13-14-35-1.jpg&#34; alt=&#34;&#34; width=&#34;78&#34; data-align=&#34;left&#34;&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;之后准备做一期云吸猫的文章，大家觉得怎样喵~~&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;Ref是不能少哒- -&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ohmyposh.dev/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://ohmyposh.dev/docs/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://img-blog.csdnimg.cn/img_convert/92fc35be4ee25257ace598cf95a6064b.png#pic_center&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://img-blog.csdnimg.cn/img_convert/92fc35be4ee25257ace598cf95a6064b.png#pic_center&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Kali Gnome桌面环境の调整&amp;美化</title>
+        <link>https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</link>
+        <pubDate>Fri, 27 May 2022 14:45:16 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/cover.jpg" alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化" /&gt;&lt;h1 id=&#34;kali-gnome桌面环境の调整美化&#34;&gt;Kali Gnome桌面环境の调整&amp;amp;美化&lt;/h1&gt;
+&lt;p&gt;最近刚把kali桌面环境从xfce迁移到了gnome,主要是看中了gnome的&amp;quot;任务栏&amp;quot;美观这一点,&lt;/p&gt;
+&lt;p&gt;不过这一换貌似有点后悔，不得不说kali还是默认的xfce舒适= =&lt;/p&gt;
+&lt;p&gt;gnome不仅占用更多的资源，而且在GUI方面可供自定义的地方也少了很多:(&lt;/p&gt;
+&lt;p&gt;不过既然已经干了这事，我也懒得再换回来了((&lt;/p&gt;
+&lt;p&gt;那就好好调教一下gnome吧awa&lt;/p&gt;
+&lt;h2 id=&#34;切换默认终端&#34;&gt;切换默认终端&lt;/h2&gt;
+&lt;p&gt;个人感觉gnome默认的terminal很鸡肋，可以&lt;del&gt;花里胡哨&lt;/del&gt;个性化的地方比较少，&lt;/p&gt;
+&lt;p&gt;于是我决定做一个&lt;del&gt;感天动地の大事&lt;/del&gt;:把默认终端换成xfce默认的&lt;strong&gt;qterminal&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;先安装qterminal&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install qterminal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后配置默认终端&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo update-alternatives --config x-terminal-emulator
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.jpg&#34;
+	width=&#34;789&#34;
+	height=&#34;229&#34;
+	srcset=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;列表示例,本图里并没有qterminal,大家自己实践时自己探索哦&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;344&#34;
+		data-flex-basis=&#34;826px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;调整任务栏位置&#34;&gt;调整&amp;quot;任务栏&amp;quot;位置&lt;/h2&gt;
+&lt;p&gt;找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =&lt;/p&gt;
+&lt;p&gt;嘛&amp;hellip;.原来是只能用命令行= =&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gsettings &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; org.gnome.shell.extensions.dash-to-dock dock-position 位置
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;关于这个位置支持的值说明:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BOTTOM&lt;/strong&gt; -&amp;gt; 底部&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LEFT&lt;/strong&gt; -&amp;gt; 靠左&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RIGHT&lt;/strong&gt; -&amp;gt; 靠右&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TOP&lt;/strong&gt; -&amp;gt; 顶部&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;用户头像设置排坑&#34;&gt;用户头像设置排坑&lt;/h2&gt;
+&lt;p&gt;因为Kali的安全设置(很有可能是权限)问题，&lt;/p&gt;
+&lt;p&gt;使本来很愉快的换头像变成一件非常狗的事情&lt;/p&gt;
+&lt;p&gt;因为不能走GUI快捷通过点点点换一个好看的头像，&lt;/p&gt;
+&lt;p&gt;所以只能上配置文件了;(&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi /var/lib/AccountsService/users/你的用户名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按&lt;code&gt;i&lt;/code&gt;进入编辑模式对配置文件进行修改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;User&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;Icon&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;你图片的绝对路径 &lt;span class=&#34;c1&#34;&gt;#绝对路径就是从/开始的那个&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;Language&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;XSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;SystemAccount&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按&lt;code&gt;Esc&lt;/code&gt;并输入&lt;code&gt;:wq&lt;/code&gt;,再&lt;code&gt;Enter&lt;/code&gt;保存并退出&lt;/p&gt;
+&lt;p&gt;然后再进入你图片所在的目录，调整下改图片文件的权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod &lt;span class=&#34;m&#34;&gt;777&lt;/span&gt; 你的图片
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再退出登陆，就可以看到你更改的头像啦~~&lt;/p&gt;
+&lt;h2 id=&#34;调教后整体效果&#34;&gt;调教后整体效果&lt;/h2&gt;
+&lt;p&gt;废话不说，直接上图0.0&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.png&#34;
+	width=&#34;1600&#34;
+	height=&#34;839&#34;
+	srcset=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;桌面&amp;#43;终端&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2.jpg&#34;
+	width=&#34;1600&#34;
+	height=&#34;835&#34;
+	srcset=&#34;https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;锁屏界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;459px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.k4nz.com/ad7919e239407320e4c7db00fe28b785/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;「GNOME」- 登录界面，GDM，GNOME Display Manager - K4NZ BLOG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.yisu.com/zixun/461030.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;怎么在Ubuntu中安装多个终端以及更改默认终端 - 系统运维 - 亿速云&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://technoresult.com/move-launcher-bar-to-the-bottom-right-using-terminal-in-ubuntu/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Move Launcher Bar to the Bottom/Right using Terminal in Ubuntu? - Technoresult&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

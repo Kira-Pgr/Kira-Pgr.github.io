@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Ohhhhhhh!? My Posh~~'><title>Linux/Windows终端美化</title>
+
+<link rel='canonical' href='https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Linux/Windows终端美化'>
+<meta property='og:description' content='Ohhhhhhh!? My Posh~~'>
+<meta property='og:url' content='https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Terminal' /><meta property='article:published_time' content='2022-09-25T10:51:58&#43;08:00'/><meta property='article:modified_time' content='2022-09-25T10:51:58&#43;08:00'/><meta property='og:image' content='https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/cover.jpg' />
+<meta name="twitter:title" content="Linux/Windows终端美化">
+<meta name="twitter:description" content="Ohhhhhhh!? My Posh~~"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">猫猫の博客</a></h1>
+            <h2 class="site-description">DEV OPS SEC</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/">
+                <img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/cover_hu99afe94c4a345b020505285bddeebbdd_2544478_800x0_resize_q75_box.jpg"
+                        srcset="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/cover_hu99afe94c4a345b020505285bddeebbdd_2544478_800x0_resize_q75_box.jpg 800w, /p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/cover_hu99afe94c4a345b020505285bddeebbdd_2544478_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Linux/Windows终端美化" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/software/" style="background-color: #c0972b; color: #fff;">
+                Software
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/">Linux/Windows终端美化</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Ohhhhhhh!? My Posh~~
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 25, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="oh-my-posh终端美化">Oh-My-Posh终端美化</h1>
+<p>厌倦了默认的终端样式? 那我们就来搞些花里胡哨的东西</p>
+<p>本篇文章将介绍用开源工具<strong>Oh-My-Posh</strong>来美化终端</p>
+<p><img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/IMG_0294.JPG"
+	width="300"
+	height="300"
+	srcset="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/IMG_0294_hu9fdfacd6bece8e012b9ca008a214c681_20576_480x0_resize_q75_box.JPG 480w, /p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/IMG_0294_hu9fdfacd6bece8e012b9ca008a214c681_20576_1024x0_resize_q75_box.JPG 1024w"
+	loading="lazy"
+	
+		alt="好诶!"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<h2 id="效果演示">效果演示</h2>
+<p>这次把效果演示放在最前面= =</p>
+<p><del>(生动形象，激发读者的阅读兴趣?)</del></p>
+<p><img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/e1c561cb71ad5bf400f9c0984df43a0c5a47f795.png"
+	width="1243"
+	height="764"
+	srcset="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/e1c561cb71ad5bf400f9c0984df43a0c5a47f795_huee85f59ab13553a0aad658eee5216718_1675505_480x0_resize_box_3.png 480w, /p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/e1c561cb71ad5bf400f9c0984df43a0c5a47f795_huee85f59ab13553a0aad658eee5216718_1675505_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="美化前(Linux)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="162"
+		data-flex-basis="390px"
+	
+></p>
+<p><img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2022-09-25-11-24-10-image.png"
+	width="1265"
+	height="765"
+	srcset="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2022-09-25-11-24-10-image_hu0411825a4ee87ac651c701d4eaa41017_1651181_480x0_resize_box_3.png 480w, /p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2022-09-25-11-24-10-image_hu0411825a4ee87ac651c701d4eaa41017_1651181_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="165"
+		data-flex-basis="396px"
+	
+></p>
+<p><img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/990604e3ad3d4be16bbda372a9670a5e2a76d51c.png"
+	width="1264"
+	height="766"
+	srcset="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/990604e3ad3d4be16bbda372a9670a5e2a76d51c_hub6df233772a23fb1bb1fe0ebc79c2094_1666853_480x0_resize_box_3.png 480w, /p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/990604e3ad3d4be16bbda372a9670a5e2a76d51c_hub6df233772a23fb1bb1fe0ebc79c2094_1666853_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="美化后(Linux)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="165"
+		data-flex-basis="396px"
+	
+></p>
+<p><img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/1.png"
+	width="1672"
+	height="935"
+	srcset="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/1_hu58d68befa5cbef79ae6de3513fedbea2_31236_480x0_resize_box_3.png 480w, /p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/1_hu58d68befa5cbef79ae6de3513fedbea2_31236_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="美化前(Windows)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="429px"
+	
+></p>
+<p><img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2.png"
+	width="1490"
+	height="804"
+	srcset="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2_hua1081957edabc3338c5a58ea3138e733_1167279_480x0_resize_box_3.png 480w, /p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/2_hua1081957edabc3338c5a58ea3138e733_1167279_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="美化后(Windows)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="444px"
+	
+></p>
+<h2 id="安装oh-my-posh">安装Oh-My-Posh</h2>
+<h3 id="windows">Windows</h3>
+<p>打开你的终端/cmd/powershell,在其中输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">JanDeDobbeleer</span><span class="p">.</span><span class="n">OhMyPosh</span> <span class="n">-s</span> <span class="n">winget</span>
+</span></span></code></pre></div><blockquote>
+<p>注意: 如果你需要美化WSL,请使用下文中的Linux安装方法= =</p>
+</blockquote>
+<h3 id="linux">Linux</h3>
+<p>打开你的终端，输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+</span></span><span class="line"><span class="cl">sudo chmod +x /usr/local/bin/oh-my-posh
+</span></span><span class="line"><span class="cl">mkdir ~/.poshthemes
+</span></span><span class="line"><span class="cl">wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+</span></span><span class="line"><span class="cl">unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+</span></span><span class="line"><span class="cl">chmod u+rw ~/.poshthemes/*.omp.*
+</span></span><span class="line"><span class="cl">rm ~/.poshthemes/themes.zip
+</span></span></code></pre></div><h2 id="安装适配的字体">安装适配的字体</h2>
+<p>打开你的命令行工具，输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">oh-my-posh font install
+</span></span></code></pre></div><blockquote>
+<p>注意：如果你是Windows用户需要以管理员身份运行命令</p>
+</blockquote>
+<h3 id="windows-terminal注意事项">Windows Terminal注意事项</h3>
+<p>你需要设置Windows终端使用这个字体</p>
+<p>按下快捷键<code>CTRL</code> + <code>SHIFT</code> + <code>,</code></p>
+<blockquote>
+<p>这个是默认快捷键，如果你修改过按你自己修改的快捷键 :&gt;</p>
+</blockquote>
+<p>编辑<code>settings.json</code>修改以下内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;profiles&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;defaults&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;font&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;face&#34;</span><span class="p">:</span> <span class="s2">&#34;字体名&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="切换主题">切换主题</h2>
+<p>Oh-My-Posh安装完成之后会有一个默认的主题</p>
+<p>如果不够喜欢的话可以切换其他的主题</p>
+<h3 id="获取主题列表">获取主题列表</h3>
+<p>第一个方法是在终端输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Get-PoshThemes
+</span></span></code></pre></div><p>第二个方法就是去<a class="link" href="https://ohmyposh.dev/docs/themes"  target="_blank" rel="noopener"
+    >官网文档</a>找</p>
+<h3 id="换一个主题吧">换一个主题吧</h3>
+<h4 id="windows-1">Windows</h4>
+<p>打开终端，输入以下命令尝试主题</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">oh-my</span><span class="n">-posh</span> <span class="n">init</span> <span class="n">pwsh</span> <span class="p">-</span><span class="n">-config</span> <span class="n">主题路径</span><span class="p">/</span><span class="n">主题名</span><span class="p">.</span><span class="n">omp</span><span class="p">.</span><span class="n">json</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
+</span></span></code></pre></div><blockquote>
+<p>P.S. 如果出现报错找不到命令，请将<code>C:\Users\用户名\AppData\Local\Programs\oh-my-posh\bin</code>添加进环境变量</p>
+</blockquote>
+<p>一旦确定主题就去修改<code>$PROFILE</code>的值</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"> <span class="n">notepad</span> <span class="nv">$PROFILE</span>
+</span></span></code></pre></div><p>写入尝试主题的那个语句</p>
+<blockquote>
+<p>一般来说，主题路径会是<code>C:\Users\用户名\AppData\Local\Programs\oh-my-posh\themes</code></p>
+</blockquote>
+<p>重载<code>$Profile</code>后生效</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="nv">$PROFILE</span>
+</span></span></code></pre></div><h4 id="linux-1">Linux</h4>
+<p>这个时候可以说Linux yyds了</p>
+<p>Linux修改主题起来特别容易，输入以下命令就能试用一个主题，也不会有讨厌的报错</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#如果你用的bash把zsh替换成bash</span>
+</span></span><span class="line"><span class="cl"><span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>oh-my-posh init zsh --config 主题路径/主题名.omp.json<span class="k">)</span><span class="s2">&#34;</span>
+</span></span></code></pre></div><p>确定主题就去改<code>~/.bashrc</code>或者<code>~/.zshrc</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi ~/.bashrc
+</span></span><span class="line"><span class="cl">vi ~/.zshrc
+</span></span></code></pre></div><p>写入尝试主题的那个语句</p>
+<p>依旧是重载后生效</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">exec</span> zsh
+</span></span><span class="line"><span class="cl"><span class="nb">exec</span> bash
+</span></span></code></pre></div><h2 id="结语">结语</h2>
+<p>到这里为止我们的美化就完成啦QwQ</p>
+<p>如果大家想要更多花里胡哨的东西可以在评论区留言哦0.0</p>
+<blockquote>
+<p>诶?之前文章评论呢?</p>
+<p>&ndash;因为更新主题的缘故，就寄了呜呜呜</p>
+<img title="" src="2022-09-25-13-14-35-1.jpg" alt="" width="78" data-align="left">
+</blockquote>
+<p>之后准备做一期云吸猫的文章，大家觉得怎样喵~~</p>
+<h2 id="ref">Ref</h2>
+<p>Ref是不能少哒- -</p>
+<p><a class="link" href="https://ohmyposh.dev/docs/"  target="_blank" rel="noopener"
+    >https://ohmyposh.dev/docs/</a></p>
+<p><a class="link" href="https://img-blog.csdnimg.cn/img_convert/92fc35be4ee25257ace598cf95a6064b.png#pic_center"  target="_blank" rel="noopener"
+    >https://img-blog.csdnimg.cn/img_convert/92fc35be4ee25257ace598cf95a6064b.png#pic_center</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/terminal/">Terminal</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/">
+        
+        
+            <div class="article-image">
+                <img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.324a51e9dbf43598476ed25b88c6f485_hu5a0bff5542c2b4a2a99ba03dfc469cdd_192581_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Debian Linux下安装虚拟机软件"
+                        
+                        data-hash="md5-MkpR6dv0NZhHbtJbiMb0hQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Debian Linux下安装虚拟机软件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/">
+        
+        
+            <div class="article-image">
+                <img src="/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/cover.af704ad07b0b03e760dfafb8d575b284_hua2066985386d1eb65cef6aee0e5704d3_126782_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Burp Suite Professional 安装&#43;破解教程"
+                        
+                        data-hash="md5-r3BK0HsLA&#43;dg36&#43;41XWyhA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Burp Suite Professional 安装&#43;破解教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#效果演示">效果演示</a></li>
+    <li><a href="#安装oh-my-posh">安装Oh-My-Posh</a>
+      <ol>
+        <li><a href="#windows">Windows</a></li>
+        <li><a href="#linux">Linux</a></li>
+      </ol>
+    </li>
+    <li><a href="#安装适配的字体">安装适配的字体</a>
+      <ol>
+        <li><a href="#windows-terminal注意事项">Windows Terminal注意事项</a></li>
+      </ol>
+    </li>
+    <li><a href="#切换主题">切换主题</a>
+      <ol>
+        <li><a href="#获取主题列表">获取主题列表</a></li>
+        <li><a href="#换一个主题吧">换一个主题吧</a>
+          <ol>
+            <li><a href="#windows-1">Windows</a></li>
+            <li><a href="#linux-1">Linux</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#结语">结语</a></li>
+    <li><a href="#ref">Ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>
