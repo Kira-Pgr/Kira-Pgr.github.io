@@ -6,7 +6,15 @@
         <description>Recent content in Tags on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 25 Sep 2022 10:51:58 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 03 Oct 2022 18:05:25 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Burp</title>
+        <link>https://blog.nanosec.site/tags/burp/</link>
+        <pubDate>Mon, 03 Oct 2022 18:05:25 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/tags/burp/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Terminal</title>
         <link>https://blog.nanosec.site/tags/terminal/</link>
         <pubDate>Sun, 25 Sep 2022 10:51:58 +0800</pubDate>
@@ -52,14 +60,6 @@
         <pubDate>Thu, 14 Apr 2022 23:21:24 -0400</pubDate>
         
         <guid>https://blog.nanosec.site/tags/pwn/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Burp</title>
-        <link>https://blog.nanosec.site/tags/burp/</link>
-        <pubDate>Tue, 08 Feb 2022 07:42:01 -0500</pubDate>
-        
-        <guid>https://blog.nanosec.site/tags/burp/</guid>
         <description></description>
         </item>
         
