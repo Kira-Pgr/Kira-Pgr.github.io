@@ -6,7 +6,7 @@
         <description>Recent content in Categories on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 03 Oct 2022 18:05:25 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 05 Oct 2022 20:14:25 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Linux</title>
         <link>https://blog.nanosec.site/categories/linux/</link>
         <pubDate>Fri, 29 Apr 2022 01:03:14 -0500</pubDate>
@@ -20,7 +20,7 @@
         <pubDate>Fri, 29 Apr 2022 01:03:14 -0500</pubDate>
         
         <guid>https://blog.nanosec.site/categories/others/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/categories/others/Others.png" alt="Featured image of post Others" /&gt;</description>
+        <description>&lt;img src="https://blog.nanosec.site/categories/others/others.png" alt="Featured image of post Others" /&gt;</description>
         </item>
         <item>
         <title>Beginner</title>

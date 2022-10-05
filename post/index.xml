@@ -6,7 +6,219 @@
         <description>Recent content in Posts on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 03 Oct 2022 18:05:25 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 05 Oct 2022 20:14:25 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>送给小白的IT入门指南</title>
+        <link>https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</link>
+        <pubDate>Wed, 05 Oct 2022 20:14:25 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/cover.jpg" alt="Featured image of post 送给小白的IT入门指南" /&gt;&lt;h1 id=&#34;0基础计算机小白自学it的方法&#34;&gt;0基础计算机小白自学IT的方法&lt;/h1&gt;
+&lt;p&gt;ww又开一个新坑，至于原因嘛= =，就是很多小白入门第一个问题就是 &lt;strong&gt;&amp;ldquo;0基础怎么学xxx&amp;rdquo;&lt;/strong&gt; 一类的问题，所以干脆就写篇关于这个的文章&lt;/p&gt;
+&lt;p&gt;至于PWN系列拖更的事情，就请谅解啦~&lt;/p&gt;
+&lt;p&gt;咕咕咕.QAQ.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Edit(22.10.5):很抱歉因为博客系统更新，本篇文章之前消失了一段时间((&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;要不是WeepingDogel提醒我，我还不知道啊啊啊&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;既然这样的话，本&amp;quot;程序媛&amp;quot;准备再加上一点内容=   =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;作为一个自学IT的高中生，个人认为在一开始起步的时候，经常会遇到很多问题以及踩很多多坑非常正常，在解决问题其实最重要的不是解决问题本身，而是学会解决问题的能力。本系列文章基本上就是&lt;strong&gt;着重教给大家如何解决问题&lt;/strong&gt;，而不是铺天盖地的知识性的东西&lt;/p&gt;
+&lt;h2 id=&#34;什么时候学&#34;&gt;什么时候学?&lt;/h2&gt;
+&lt;p&gt;个人认为。。你什么时候学都不晚，只要你有兴趣，能学下去就可以= =&lt;/p&gt;
+&lt;h2 id=&#34;什么人不适合学it&#34;&gt;什么人不适合学IT&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;遇到这种人，我一般直接劝退= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;特别没有耐心的人&lt;/p&gt;
+&lt;p&gt;比如说看个视频教程看个十几分钟看不下去了，不能坚持再看了，这样很显然不核适, 学这个是需要投入大量时间经历的qaq&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;别有用心的人&lt;/p&gt;
+&lt;p&gt;之前就有人和我讲，特别想学网络&amp;quot;危险&amp;quot; =  =&lt;/p&gt;
+&lt;p&gt;怎么说呢，你要是学技术是搞破坏这种目的&amp;hellip;. 还是别学了=  =&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;光&lt;/strong&gt;是追求高薪的人&lt;/p&gt;
+&lt;p&gt;可别被某些人骗了，高薪是确实，但是也特别卷，要有足够的实力才能获得高薪.&lt;/p&gt;
+&lt;p&gt;注意这里是&lt;strong&gt;只追求高薪&lt;/strong&gt;的人，如果你有足够的热情学IT,还是非常建议学这个的哈&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;如何摆脱0基础&#34;&gt;如何摆脱「0基础」&lt;/h2&gt;
+&lt;p&gt;如果你之前&lt;strong&gt;以前没怎么用过电脑&lt;/strong&gt;的话，想要入门IT肯定是一件「难事」,所以我们要先熟悉熟悉电脑的基本操作&lt;/p&gt;
+&lt;p&gt;至于怎么熟悉的话，也没有必要当作一个任务一样来「学习」，我的方法就是&lt;strong&gt;到处点点摸摸&lt;/strong&gt;(反正不会坏，电脑没那么脆弱= =)，然后看看每个功能大概在哪里，每个按键大概是什么作用&lt;/p&gt;
+&lt;h2 id=&#34;搜索引擎的使用&#34;&gt;搜索引擎的使用&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;咳咳咳，敲重点&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实际上，大家遇到的99%问题，都可以通过搜索解决，等你能熟练运用搜索引擎之后，你会发现。那1%你自己解决不了的问题，往往很多dalao也解决不了.QAQ.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果你要问:「搜索引擎」是什么? 看上去很高大上的样子&lt;/p&gt;
+&lt;p&gt;嘛。。说白了就是&lt;strong&gt;像百度搜索，360搜索一类的东西&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;这么简单还要学??&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;但实际上很多小白都&lt;strong&gt;没有真正掌握搜索引擎的使用&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当然，如果你能熟练的通过搜索解决你所遇到的大部分问题，而不是一有问题就不知所措，然后直接去问你认识的大佬，说明你这种技能已经掌握的差不多了，那么请直接跳过下面的「长篇大论」&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;选一个合适的浏览器&#34;&gt;选一个合适的浏览器&lt;/h3&gt;
+&lt;p&gt;某些流氓浏览器嘛。。不仅有那种「奇奇怪怪」的主页，还可能会经常去不了国外一些资源网站。。&lt;/p&gt;
+&lt;p&gt;实际上现在&lt;strong&gt;Windows内置的浏览器Edge&lt;/strong&gt;就完全够用，而且很舒适，要是你想要用其他的浏览器的话，推荐Chrome和FireFox,&lt;strong&gt;建议不要使用360.2345一类的浏览器= =&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;选择一个合适的搜索引擎&#34;&gt;选择一个合适的搜索引擎&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于本篇文章是面向小白的，我们暂且不提那些因为某些原因在国内不能访问的Google/DuckDuckGo等优秀搜索引擎&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;搜索引擎的话。。基本上用百度或者bing就够了。尽量不要使用360搜索一类的，因为它们往往不能给你最准确的结果&lt;/p&gt;
+&lt;h3 id=&#34;如何搜索&#34;&gt;如何搜索&lt;/h3&gt;
+&lt;p&gt;一般在搜索东西的时候，可以采用关键词搜索法，不要像问人问题那样搜索(比如说带上「为什么」「怎么办」「可不可以」等词语)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;举个栗子：如果我想要知道如何用VMware Workstation安装虚拟机&lt;/p&gt;
+&lt;p&gt;你应该这么搜索&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VMware Workstation安装虚拟机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;你不应该这么搜索&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;如何用VMware Workstation安装虚拟机?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VMware Workstation怎么安装虚拟机?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;还有就是每个搜索引擎有不同的高级搜索语法，利用这些搜索语法你可以&lt;strong&gt;指定搜索标题/网址/内容等&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;[%e4%ba%94%e5%a4%a7%e5%b8%b8%e7%94%a8%e7%99%be%e5%ba%a6%e9%ab%98%e7%ba%a7%e6%90%9c%e7%b4%a2%e8%af%ad%e6%b3%95-%e7%99%be%e5%ba%a6%e7%bb%8f%e9%aa%8c]%28https://jingyan.baidu.com/article/2a138328488be7074a134f15.html%29&#34; &gt;百度常用高级搜索语法&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果你不喜欢像代码一样的语法的话,可以采用高级搜索的图形界面&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/1.png&#34;
+	width=&#34;1112&#34;
+	height=&#34;520&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/1_huacb1dcb59b8ae0a7219c13bd44a1da4f_53454_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/1_huacb1dcb59b8ae0a7219c13bd44a1da4f_53454_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;百度的高级搜索图形界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;有时候优秀的教程不一定需要购买&#34;&gt;有时候优秀的教程不一定需要购买&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;b站&lt;/a&gt;,曾被称为&amp;quot;b站大学&amp;quot;，里面有很多优秀的视频教程，大家有需要可以去搜索哦&lt;/p&gt;
+&lt;h2 id=&#34;选择学习的内容和方向&#34;&gt;选择学习的内容和方向&lt;/h2&gt;
+&lt;p&gt;即使是IT行业也会有很多很多分支.QwQ.&lt;/p&gt;
+&lt;p&gt;大家可以依据自己的兴趣爱好和现有的水平选择自己的学习方向&lt;/p&gt;
+&lt;p&gt;但是呢，最好选一个方向持续学习，不要啥都学，最后什么都懂一点，但一个也不精通&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;&lt;strong&gt;&amp;ldquo;全菜工程师&amp;quot;就是这么诞生的= =&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关于英语&#34;&gt;关于英语&lt;/h2&gt;
+&lt;p&gt;很多人有这样一个疑问:英语不好能不能学IT?&lt;/p&gt;
+&lt;p&gt;答案是能，不过会错失很多国外优秀的资源库和技术文档，所以还是建议各位英语渣提升下英语水平啦.QwQ.&lt;/p&gt;
+&lt;p&gt;当然，你可以使用翻译软件，不过翻译后的专业的东西往往会看起来。。很奇怪= =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/2.png&#34;
+	width=&#34;496&#34;
+	height=&#34;98&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/2_hu5e5e9056ce5a2d5bb0a08ceda63467bb_59169_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/2_hu5e5e9056ce5a2d5bb0a08ceda63467bb_59169_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;您的主机现在情绪很低落= =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;506&#34;
+		data-flex-basis=&#34;1214px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果你的英语水平还可以的话，这里推荐几个网站&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;github.com&#34; &gt;有很多优秀代码的GitHub,其中还不乏很多免费且好用的软件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;del&gt;抄代码神器  逃)&lt;/del&gt;  StackOverFlow, 基本上能解决你的所有BUG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/en-us/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;微软官方文档MSDN&amp;ndash;有中文版文档，不过看上去没那么舒适&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;适合查资料的中文网站推荐&#34;&gt;适合查资料的中文网站推荐&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.csdn.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;中文最大开发者社区CSDN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.zhihu.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;知乎&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/zh-cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;中文版MSDN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gitee.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Gitee 类似GitHub,不过是中文的&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;如何询问大佬&#34;&gt;如何询问大佬&lt;/h2&gt;
+&lt;p&gt;一般说，群里能特别有耐心的大佬比较少，但即使是很有耐心的大佬，问问题也要讲究方法= =&lt;/p&gt;
+&lt;p&gt;要不然就是&amp;quot;一些小白整着整着，就把专家搞死了&amp;rdquo; (大雾&lt;/p&gt;
+&lt;h3 id=&#34;进一些环境比较好的群&#34;&gt;进一些环境比较好的群&lt;/h3&gt;
+&lt;p&gt;一般你在群搜索里面搜索到的群基本上都是什么闲杂人等都有，就很乱。。所以还是建议不要在这类群里问问题，你有可能不仅得不到想要的答案，还会被莫名骂一顿= =&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可以考虑进一些b站知识型up主的交流群&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;如何提问&#34;&gt;如何提问&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/qaq.jpg&#34;
+	width=&#34;826&#34;
+	height=&#34;466&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/qaq_hu8faf04e03f278e03eb2643748a182332_48528_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/qaq_hu8faf04e03f278e03eb2643748a182332_48528_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;某大佬群提问收费表.QAQ.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;425px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;提问一定要&lt;strong&gt;直接了当&lt;/strong&gt;，直接上问题本身.不要之前说一些和问题无关且多余的东西&lt;/p&gt;
+&lt;p&gt;比如:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;有大佬会xxx的吗&amp;rdquo; &amp;ndash;&amp;gt; 大佬就算会也不想回答你，对方也不知道你想干什么&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;在吗?/有人吗?&amp;rdquo;  &amp;ndash;&amp;gt; 真心没必要，直接上问题自然看到了之后有人会回答&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;「救命啊」&amp;ndash;&amp;gt; 救不了，谢谢= =&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不要问一些很显然搜索引擎能搜索到的问题，问了也是白问，很多情况下大佬会回答&amp;quot;你不会百度嘛= =?&amp;quot;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/3.png&#34;
+	width=&#34;563&#34;
+	height=&#34;351&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/3_hu1e64717560b4610c94b8e9996e910997_122239_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E9%80%81%E7%BB%99%E5%B0%8F%E7%99%BD%E7%9A%84it%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/3_hu1e64717560b4610c94b8e9996e910997_122239_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;你不知,百度知= =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;问问题的时候描述要清晰，如果是报错一类的记得带上截图和必要的日志&lt;/p&gt;
+&lt;p&gt;比如说这样问就让大佬很乐意回答你:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;我在xxx(软件)xxx(操作)的时候遇到了xxx(问题)[图片]怎么办?&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;想要实现xxx可以用什么?&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
+&lt;p&gt;以上大概就是我认为的比较好的入门IT的思路了.QAQ.&lt;/p&gt;
+&lt;p&gt;希望能帮到大家吧awa&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Burp Suite翻译大赏</title>
         <link>https://blog.nanosec.site/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/</link>
         <pubDate>Mon, 03 Oct 2022 18:05:25 +0800</pubDate>
@@ -22,7 +234,7 @@
 &lt;p&gt;Burp Suite是一个网安人特别钟爱的Web安全测试工具，&lt;/p&gt;
 &lt;p&gt;但是大家基本上提到该工具的时候，都会直接称呼它的英文原名&lt;strong&gt;Burp Suite&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;(当然，这也是比较&lt;del&gt;正常&lt;/del&gt;规范的叫法)&lt;/p&gt;
-&lt;p&gt;但脑洞大开的Pgr决心找找Burp Suite应该怎么翻译才核里~~(没错，核弹的核)~~&lt;/p&gt;
+&lt;p&gt;但脑洞大开的Pgr决心找找Burp Suite应该怎么翻译才核里 &lt;del&gt;(没错，核弹的核)&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;众所周知，让机器翻译来翻译专业术语/工具名字会有意想不到的惊吓&lt;/p&gt;
 &lt;p&gt;所以，我们来让各种机器翻译来翻译以下&lt;strong&gt;Burp Suite&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;为什么选择burp-suite&#34;&gt;为什么选择Burp Suite&lt;/h2&gt;
@@ -246,7 +458,7 @@
 &lt;p&gt;&amp;hellip;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;如果各位有什么有创业的翻译可以在评论区留言哦qaq&lt;/p&gt;
+&lt;p&gt;如果各位有什么有创意的翻译可以在评论区留言哦qaq&lt;/p&gt;
 </description>
         </item>
         <item>
