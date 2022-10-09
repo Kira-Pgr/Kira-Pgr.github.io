@@ -7,6 +7,285 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Thunar文件管理器玩转右键菜单</title>
+        <link>https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/</link>
+        <pubDate>Fri, 07 Oct 2022 18:07:43 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/cover.jpg" alt="Featured image of post Thunar文件管理器玩转右键菜单" /&gt;&lt;h1 id=&#34;thunar文件管理器自定义右键菜单&#34;&gt;Thunar文件管理器自定义右键菜单&lt;/h1&gt;
+&lt;p&gt;最近找到了一个Linux也能纵想点点点乐趣的方法:)&lt;/p&gt;
+&lt;p&gt;主要是了解到&lt;strong&gt;Thunar文件管理器&lt;/strong&gt;可以自定义右键菜单项后，Pgr猫猫就又想到了奇奇怪怪的点子.&lt;/p&gt;
+&lt;p&gt;既然可以右键菜单项运行一个命令的话，那岂不是可以&amp;hellip;嘿嘿嘿&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一键启动各种工具&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一键完成一些复杂操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;斯哈! 总之，只要是命令行能完成的东西一键都可以实现&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;1.jpg&#34; alt=&#34;&#34; width=&#34;162&#34;&gt;
+&lt;h2 id=&#34;右键菜单自定义步骤&#34;&gt;右键菜单自定义步骤&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以说是有手就行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;打开自定义菜单项界面&#34;&gt;打开自定义菜单项界面&lt;/h3&gt;
+&lt;p&gt;在Thunar的菜单栏点&lt;code&gt;Edit&lt;/code&gt;&amp;ndash;&amp;gt;&lt;code&gt;Configure custom actions...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2.jpg&#34;
+	width=&#34;780&#34;
+	height=&#34;558&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2_hua268a8cdb06823d818de55bafa20932c_32843_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2_hua268a8cdb06823d818de55bafa20932c_32843_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;事这样纸滴&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;335px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后就可以看到这个界面了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-00.png&#34;
+	width=&#34;494&#34;
+	height=&#34;542&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-00_hu95ce8e0ad2fe9ad951ee3c1497607887_51069_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-00_hu95ce8e0ad2fe9ad951ee3c1497607887_51069_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;嗯!没错!这个界面!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;218px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;大概介绍以下每个按钮的意思吧&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;这不是显而易见嘛，还要介绍干啥???&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;加号代表新建一个菜单项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;齿轮代表修改当前菜单项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;减号表示删除当前菜单项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上箭头表示上移&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下箭头表示下移&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;自定义菜单项的设置&#34;&gt;自定义菜单项的设置&lt;/h3&gt;
+&lt;p&gt;我们点击那个加号，新建一个菜单项&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-08.png&#34;
+	width=&#34;446&#34;
+	height=&#34;523&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-08_hu73e47c01a4fdcfa08d138e91d44a3c6d_36976_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-08_hu73e47c01a4fdcfa08d138e91d44a3c6d_36976_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;会弹出这样一个界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;204px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;basic页面&#34;&gt;Basic页面&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Name&lt;/code&gt;填随便起的名字，这个名字到时候会显示在菜单栏里&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Description&lt;/code&gt;填简介，这个简介在你鼠标悬停在该菜单项上时出现在文件管理器窗口的最下面&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/4.jpg&#34;
+	width=&#34;1057&#34;
+	height=&#34;350&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/4_hu25ef1283190b37c73e507e35bdb42f06_32708_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/4_hu25ef1283190b37c73e507e35bdb42f06_32708_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;此处应有大滑稽:&amp;gt;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;302&#34;
+		data-flex-basis=&#34;724px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;虽说你已经可能蚌埠住了，但本篇文章不可能等你笑完:)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Command&lt;/code&gt;填你想要点击该菜单项时执行的命令或者选择一个你想要执行的程序,这一栏的内容将在后文详细讲述.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:命令中可以包含Thunar为我们准备的有特定含义的参数&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;%f     第一个选中的文件/目录的路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%F    所有选中的文件/目录的路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%d    包含该文件的目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%D    包含多个文件的多个目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%n     第一个选中文件的文件名(不带路径)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%N     所有选中文件的文件名(不带路径)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Keyboard Shortcut&lt;/code&gt;这一栏，你只需要点击这一栏然后按下你喜欢的按键组合即可，这一项可以不填&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07-19-53-05-image.png&#34;
+	width=&#34;449&#34;
+	height=&#34;534&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07-19-53-05-image_hu056d31a392ef83410bdcd6839bcab3cd_44486_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07-19-53-05-image_hu056d31a392ef83410bdcd6839bcab3cd_44486_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;84&#34;
+		data-flex-basis=&#34;201px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Icon&lt;/code&gt;选泽你喜欢的图标，不设置也没事&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;appearance-conditions界面&#34;&gt;Appearance Conditions界面&lt;/h4&gt;
+&lt;p&gt;你可以选择该快捷方式出现的条件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_20-09.png&#34;
+	width=&#34;443&#34;
+	height=&#34;536&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_20-09_hu3e71df763a4b2c339cc1e188440b7655_38947_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_20-09_hu3e71df763a4b2c339cc1e188440b7655_38947_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;嫌麻烦可以全选&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;82&#34;
+		data-flex-basis=&#34;198px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;勾选的文件类型右击后会显示该选项&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;效果展示&#34;&gt;效果展示&lt;/h3&gt;
+&lt;p&gt;在点OK后我们的自定义菜单项就可以用啦喵~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1.gif&#34;
+	width=&#34;600&#34;
+	height=&#34;338&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_480x0_resize_box.gif 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_1024x0_resize_box.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;效果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;通过自定义菜单项简化操作实例&#34;&gt;通过自定义菜单项简化操作实例&lt;/h2&gt;
+&lt;p&gt;点击菜单项执行的命令可以十分灵活，我们这里举几个实用的例子&lt;/p&gt;
+&lt;h3 id=&#34;一键开burp-pro&#34;&gt;一键开Burp Pro&lt;/h3&gt;
+&lt;p&gt;关于Burp Suite Professional的破解可以看我之前的[文章](&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Burp Suite Professional 安装+破解教程&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;完成破解之后，在你Burp Pro的目录下新建一个&lt;code&gt;burp.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在文件中写入你破解的时候用来&lt;strong&gt;启动Burp的命令&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一般情况下是Loader里显示的那个命令，要是你遇到报错就填解决报错之后的命令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我这里是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -noverify -javaagent:burploader.jar --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.desktop/javax.swing&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.base/java.lang&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED -jar 文件名.jar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh /绝对/路径/burp.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+&lt;h3 id=&#34;一键开cobalt-strike&#34;&gt;一键开Cobalt Strike&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 最近Cobalt Strike出了个严重漏洞，请及时做相关处理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;进入你放有Cobalt Strike的目录，创建以下几个文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CS1&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CS2&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;list&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;start.sh&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在&lt;code&gt;CS1&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/opt/CSAgent/teamserver &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ifconfig &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep &lt;span class=&#34;m&#34;&gt;192&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print($2)}&amp;#39;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; 密码
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在&lt;code&gt;CS2&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/绝对/路径/cobaltstrike
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在&lt;code&gt;list&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/绝对/路径/CS1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/绝对/路径/CS2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在&lt;code&gt;start.sh&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /绝对/路径/list &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; xargs -P &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; -n1 sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;密码&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sudo -S /绝对/路径/start.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+&lt;h3 id=&#34;一键开蚁剑&#34;&gt;一键开蚁剑&lt;/h3&gt;
+&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/绝对/路径/AntSword %f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+&lt;h3 id=&#34;一键解压缩&#34;&gt;一键解压缩&lt;/h3&gt;
+&lt;p&gt;以zip为例,其他压缩包格式类似&lt;/p&gt;
+&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip -o -d %D %F
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后进入&lt;code&gt;Appearance Conditions&lt;/code&gt;页面&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;File Pattern&lt;/code&gt;改为&lt;code&gt;.zip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;只勾选&lt;code&gt;Other Files&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_23-45.png&#34;
+	width=&#34;449&#34;
+	height=&#34;526&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_23-45_hu2488d1096fbb0f316dab99e04a4c76e2_39543_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_23-45_hu2488d1096fbb0f316dab99e04a4c76e2_39543_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图片酱!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;204px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[WARN] 不支持带密码的压缩包&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;一键压缩&#34;&gt;一键压缩&lt;/h3&gt;
+&lt;p&gt;依然以zip为例,其他压缩包格式类似&lt;/p&gt;
+&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;zip -r %n.zip %N
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>模拟搭建企业自动化运维体系</title>
         <link>https://blog.nanosec.site/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/</link>
         <pubDate>Thu, 07 Jul 2022 17:20:00 +0800</pubDate>
