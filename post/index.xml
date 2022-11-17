@@ -6,7 +6,184 @@
         <description>Recent content in Posts on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 07 Oct 2022 18:07:43 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 16 Nov 2022 17:43:04 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Web安全:sqlmap常用参数整理</title>
+        <link>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/</link>
+        <pubDate>Wed, 16 Nov 2022 17:43:04 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/cover.jpg" alt="Featured image of post Web安全:sqlmap常用参数整理" /&gt;&lt;h1 id=&#34;web安全sqlmap常用参数整理&#34;&gt;Web安全:sqlmap常用参数整理&lt;/h1&gt;
+&lt;p&gt;在sqlmap梭哈的时候总是记不住参数?&lt;/p&gt;
+&lt;p&gt;打开帮助文档又因为看到一大堆&lt;del&gt;嘤glish&lt;/del&gt;英文感觉头变大了?&lt;/p&gt;
+&lt;p&gt;于是乎，由于要消灭以上两种问题, 本篇文章就诞生了&lt;/p&gt;
+&lt;h2 id=&#34;第一类必备参数&#34;&gt;第一类:必备参数&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这一类参数用于指定目标和修改sqlmap发给目标的http请求头&lt;/p&gt;
+&lt;p&gt;对于实际测试有很大影响&lt;/p&gt;
+&lt;p&gt;如果配置不对会直接导致测试的失败:)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p style=&#34;line-height: 10px;&#34;&gt;
+&lt;small&gt;&lt;small&gt;等等?为什么那里有个笑脸?&lt;/small&gt;&lt;/small&gt;
+&lt;small&gt;&lt;br&gt;&lt;/small&gt;
+&lt;small&gt;&lt;br&gt;&lt;/small&gt;
+&lt;small&gt;&lt;small&gt;&lt;strike&gt;幸灾乐祸呗;)&lt;/strike&gt;&lt;/small&gt;&lt;/small&gt;
+&lt;/p&gt;
+&lt;p&gt;1.设置目标url&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-u --url
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2.从文件中读取http请求&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;非常好用，可以直接从burp导出数据包文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-r
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Tip: 一个提高工作效率的方法&lt;/p&gt;
+&lt;p&gt;可以在需要测试的地方(比如说参数/Cookie/UA)加上&lt;code&gt;*&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;从而实现精准快速测试&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;3.从文件中批量导入url&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4.设置sqlmap在发包的时候使用的cookie&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意! 该参数并不能测试cookie注入&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--cookie=cookie值
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;5.让sqlmap在发包的时候使用一个手机的UA&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--mobile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;6.让sqlmap在发包的时候用一个随机的UA,&lt;/p&gt;
+&lt;p&gt;而不是默认的UA:&lt;code&gt;sqlmap+版本号&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实际测试记得加上这个参数，否则就是 &lt;strong&gt;&amp;ldquo;我是坏人&amp;quot;四个字写在脸上 ;&amp;gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--random-agent
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;7.设置sqlmap使用代理&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--proxy=设置的代理
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;第二类帮助获取数据权限的参数&#34;&gt;第二类:帮助获取数据/权限的参数&lt;/h2&gt;
+&lt;p&gt;1.判断当前数据库用户是不是数据库管理员&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--is-dba
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2.获取所有数据库名&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--dbs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3.获取当前数据库用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--current-user
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4.获取当前数据库&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--current-db
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;5.获取数据库所有数据&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在某些场景下很刑! 非常可拷!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--dump-all
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;6.获取表名&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-D 数据库名 --tables
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;7.获取列名&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-D 数据库名 -T 表名 --columns
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;8.获取数据 (危)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-D 数据库名 -T 表名 -C 列名 --dump
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;9.弹shell&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--os-shell
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;第三类可以增加工作效率的参数&#34;&gt;第三类:可以增加工作效率的参数&lt;/h2&gt;
+&lt;p&gt;1.告诉sqlmap目标的数据库类型(如mysql)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--dbms=数据库类型
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2.在注入的payload前面加上特定的前缀&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--prefix=前缀
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3.在注入的payload后面加上特定的后缀&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--suffix=后缀
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4.使用特定的注入技术&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--technique=技术
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;Tip: 技术的选项 (默认是全选)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;B:布尔型注入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;E:基于报错的注入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;U:Union注入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;S:堆叠注入&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;T:时间型注入 (最通用)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Q:内联查询&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;内联查询是什么?能吃吗?&lt;/p&gt;
+&lt;p&gt;&amp;ndash; 不可以吃!&lt;/p&gt;
+&lt;p&gt;是类似于这样的语句&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SELECT statement FROM (SELECT statement);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;5.让sqlmap自动选择默认的选项&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29.png&#34;
+	width=&#34;1156&#34;
+	height=&#34;688&#34;
+	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29_huf03febae7f1fd2647dbd8a0837fc82ef_676707_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29_huf03febae7f1fd2647dbd8a0837fc82ef_676707_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图，大写的那个字母就是默认选项辣!!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--batch
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;6.调整mysql测试范围的广度 (1最窄，5最广，默认1)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--level=数字
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;7.调整mysql测试风险等级 (1最小，5最大，默认1)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--risk=数字
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;第四类在特定情况中会用到的参数&#34;&gt;第四类:在特定情况中会用到的参数&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在一些稀奇古怪的场景中，某些参数的出现会让我们能愉快的突突突&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1.指定非注入页面的注入结果显示页面&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在sql注入中，可能会出现在一个页面注入的结果，在另一个页面显示的情况&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--second-url=另一个页面
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;2.使用分块传输(比如说用来绕waf)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--chunked
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;3.使用http参数污染(还是可以绕讨厌的waf)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--hpp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;4.使用混淆模块&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;内置的模块放在sqlmap目录下的&lt;code&gt;tamper&lt;/code&gt;文件夹里&lt;/p&gt;
+&lt;p&gt;但基本上都寄了= =，最好需要自己做一些修改&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--tamper=模块名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;5.设置每次发包之间的延迟&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为了防止破服务器宕机或者waf拦截都可能用到&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--delay=秒数
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;6.设置连接超时的秒数(默认是30)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;破服务器可能响应的比较慢&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--timeout=秒数
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;7.设置等待数据库响应的秒数&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;破服务器嘛&amp;hellip;你懂的= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--time-sec=秒数
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;8.设置本次测试不用sqlmap的缓存&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;比如说要检验一下注入漏洞有没有被修复&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;--flush-session
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;ref&#34;&gt;ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bingslient.github.io/2019/10/31/SQLMAP%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/#%E5%86%85%E8%81%94%E6%9F%A5%E8%AF%A2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://bingslient.github.io/2019/10/31/SQLMAP%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/#%E5%86%85%E8%81%94%E6%9F%A5%E8%AF%A2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://security.stackexchange.com/questions/238646/never-use-stored-session-in-sqlmap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://security.stackexchange.com/questions/238646/never-use-stored-session-in-sqlmap&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Thunar文件管理器玩转右键菜单</title>
         <link>https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/</link>
         <pubDate>Fri, 07 Oct 2022 18:07:43 +0800</pubDate>
@@ -193,7 +370,7 @@
 &lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1.gif&#34;
 	width=&#34;600&#34;
 	height=&#34;338&#34;
-	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_480x0_resize_box.gif 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_1024x0_resize_box.gif 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_480x0_resize_box_1.gif 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_1024x0_resize_box_1.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;效果&#34;
@@ -3756,6 +3933,7 @@
 &lt;ul&gt;
 &lt;li&gt;可以把Jenkins里配置的命令集合成脚本，并也托管到GitLab上，这样后期维护会更加便捷&lt;/li&gt;
 &lt;li&gt;备份最好独立一台机器，并把GitLab和Jenkins里的东西也做相应备份&lt;/li&gt;
+&lt;li&gt;在Jenkin中新建一个一键查看日志的项目，方便日志的查看&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;关于安全的思考&#34;&gt;关于安全的思考&lt;/h4&gt;
 &lt;p&gt;怎么说呢。。。这种事情就把所有机器的权限高度集中在一个地方了，这实际上在某种意义上也是十分危险的= =&lt;/p&gt;

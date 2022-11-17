@@ -193,7 +193,7 @@
 &lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1.gif&#34;
 	width=&#34;600&#34;
 	height=&#34;338&#34;
-	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_480x0_resize_box.gif 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_1024x0_resize_box.gif 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_480x0_resize_box_1.gif 480w, https://blog.nanosec.site/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_1024x0_resize_box_1.gif 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;效果&#34;
@@ -1352,6 +1352,7 @@
 &lt;ul&gt;
 &lt;li&gt;可以把Jenkins里配置的命令集合成脚本，并也托管到GitLab上，这样后期维护会更加便捷&lt;/li&gt;
 &lt;li&gt;备份最好独立一台机器，并把GitLab和Jenkins里的东西也做相应备份&lt;/li&gt;
+&lt;li&gt;在Jenkin中新建一个一键查看日志的项目，方便日志的查看&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;关于安全的思考&#34;&gt;关于安全的思考&lt;/h4&gt;
 &lt;p&gt;怎么说呢。。。这种事情就把所有机器的权限高度集中在一个地方了，这实际上在某种意义上也是十分危险的= =&lt;/p&gt;
