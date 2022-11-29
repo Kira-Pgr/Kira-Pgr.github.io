@@ -4728,10 +4728,6 @@
 &lt;p&gt;绕过方法大致有:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://tools.ipip.net/cdn.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;冷门地区地址ping&lt;/a&gt;:由于经费原因，服务商不大可能在某些地区搞CDN,所以往往用那些地区的ip来ping的话能找到服务器的真实ip&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://securitytrails.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;DNS解析历史记录&lt;/a&gt;:有可能这个服务器之前没有配置CDN,查看历史DNS解析记录可以获得服务器真实IP&lt;/p&gt;
 &lt;/li&gt;
@@ -4993,7 +4989,6 @@
 &lt;p&gt;既然今天的话题叫做ret2shellcode,我们先来了解一下&lt;strong&gt;ShellCode&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;什么是shellcode&#34;&gt;什么是ShellCode&lt;/h3&gt;
 &lt;p&gt;shellcode是一段用于利用软件漏洞而执行的代码，也可以认为是一段填充数据，shellcode为16进制的机器码，因为经常让攻击者&lt;strong&gt;获得shell&lt;/strong&gt;而得名。shellcode常常使用机器语言编写&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;简而言之，ShellCode就是执行后可以直接getshell的代码&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;如何获取shellcode&#34;&gt;如何获取ShellCode&lt;/h3&gt;
 &lt;p&gt;获取ShellCode有很多种方法，这里简单介绍几种&lt;/p&gt;
 &lt;h4 id=&#34;利用pwntools自带函数&#34;&gt;利用PWNTools自带函数&lt;/h4&gt;

@@ -150,7 +150,6 @@
 &lt;p&gt;既然今天的话题叫做ret2shellcode,我们先来了解一下&lt;strong&gt;ShellCode&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;什么是shellcode&#34;&gt;什么是ShellCode&lt;/h3&gt;
 &lt;p&gt;shellcode是一段用于利用软件漏洞而执行的代码，也可以认为是一段填充数据，shellcode为16进制的机器码，因为经常让攻击者&lt;strong&gt;获得shell&lt;/strong&gt;而得名。shellcode常常使用机器语言编写&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;简而言之，ShellCode就是执行后可以直接getshell的代码&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;如何获取shellcode&#34;&gt;如何获取ShellCode&lt;/h3&gt;
 &lt;p&gt;获取ShellCode有很多种方法，这里简单介绍几种&lt;/p&gt;
 &lt;h4 id=&#34;利用pwntools自带函数&#34;&gt;利用PWNTools自带函数&lt;/h4&gt;

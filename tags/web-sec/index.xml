@@ -1904,10 +1904,6 @@
 &lt;p&gt;绕过方法大致有:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://tools.ipip.net/cdn.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;冷门地区地址ping&lt;/a&gt;:由于经费原因，服务商不大可能在某些地区搞CDN,所以往往用那些地区的ip来ping的话能找到服务器的真实ip&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://securitytrails.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;DNS解析历史记录&lt;/a&gt;:有可能这个服务器之前没有配置CDN,查看历史DNS解析记录可以获得服务器真实IP&lt;/p&gt;
 &lt;/li&gt;
