@@ -6,7 +6,241 @@
         <description>Recent content in Posts on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 22 Mar 2023 13:38:46 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 07 Jun 2023 13:20:32 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>小白如何高效地解决各种报错</title>
+        <link>https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/</link>
+        <pubDate>Wed, 07 Jun 2023 13:20:32 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/cover.jpg" alt="Featured image of post 小白如何高效地解决各种报错" /&gt;&lt;h1 id=&#34;小白de排错教程&#34;&gt;小白de排错教程&lt;/h1&gt;
+&lt;p&gt;细心的朋友们可能发现了&amp;hellip;博客用以前的域名打不开了，&lt;/p&gt;
+&lt;p&gt;那是因为猫猫经费不够了&amp;hellip;&lt;strong&gt;域名过期了&lt;/strong&gt;&amp;hellip;= =&lt;/p&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;我的一个朋友, The_Void, 创立了一个叫作CSTU的组织, 本篇文章是写给CSTU的伙伴们的&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-30-48-image.png&#34;
+	width=&#34;1080&#34;
+	height=&#34;3525&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-30-48-image_huf06f3df2e0c4e35b44fc01619947c1a9_1770544_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-30-48-image_huf06f3df2e0c4e35b44fc01619947c1a9_1770544_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CSTU简介&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;30&#34;
+		data-flex-basis=&#34;73px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;各位dalao们有兴趣也可以来凑凑热闹，目前组织小白居多:)&lt;/p&gt;
+&lt;h2 id=&#34;关于本文&#34;&gt;关于本文&lt;/h2&gt;
+&lt;p&gt;介于不少小白害怕报错，本篇文章主要通过个人解决报错的实战案例来教小白们如何正确的面对报错&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/91166d54f03352f7e0de681dc719a915fe8e0bbf.jpg&#34;
+	width=&#34;277&#34;
+	height=&#34;199&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/91166d54f03352f7e0de681dc719a915fe8e0bbf_hue7c34f4427f56fad4a0b0288fb5b5136_15155_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/91166d54f03352f7e0de681dc719a915fe8e0bbf_hue7c34f4427f56fad4a0b0288fb5b5136_15155_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;遇到问题别害怕，删库跑路一把梭 (bushi&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;事件起因&#34;&gt;事件起因&lt;/h2&gt;
+&lt;p&gt;咕咕咕了好久的猫猫准备开始继续coding&amp;hellip;&lt;/p&gt;
+&lt;p&gt;VSCode启动!!!&lt;/p&gt;
+&lt;p&gt;终端启动!!!&lt;/p&gt;
+&lt;p&gt;Uvicorn启动!!!&amp;hellip;????&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Uvicorn 是什么?&lt;/p&gt;
+&lt;p&gt;&amp;mdash;一种&lt;strong&gt;web服务器&lt;/strong&gt;框架&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;诶????怎么启动不了了,之前还好好的?!!&lt;/p&gt;
+&lt;img src=&#34;62c5d7b799c3653d851dcfd9c2a31a0a7bb9a8aa.jpg&#34; title=&#34;&#34; alt=&#34;原地爆炸&#34; width=&#34;225&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ uvicorn main:app --reload  --host 0.0.0.0 --port &lt;span class=&#34;m&#34;&gt;8000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Command &lt;span class=&#34;s1&#34;&gt;&amp;#39;uvicorn&amp;#39;&lt;/span&gt; not found
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我明明用pip&lt;strong&gt;装过&lt;/strong&gt;啊&amp;hellip;&lt;/p&gt;
+&lt;p&gt;于是，就有了接下来一幕&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/d8694ad5ad976b997b75aab6d3e144d95c0ce78b.PNG&#34;
+	width=&#34;1284&#34;
+	height=&#34;765&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/d8694ad5ad976b997b75aab6d3e144d95c0ce78b_hu650d3e767c1fea0b16f7ca538d9f4df7_232174_480x0_resize_box_3.PNG 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/d8694ad5ad976b997b75aab6d3e144d95c0ce78b_hu650d3e767c1fea0b16f7ca538d9f4df7_232174_1024x0_resize_box_3.PNG 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;火猫三丈&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;402px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;猫猫排错的经过&#34;&gt;猫猫排错的经过&lt;/h2&gt;
+&lt;p&gt;在吐槽过后&amp;hellip;得解决问题啊&lt;/p&gt;
+&lt;h3 id=&#34;尝试自己解决问题&#34;&gt;尝试自己解决问题&lt;/h3&gt;
+&lt;p&gt;Hmmm,要不再装一下看看，难不成是python默认环境更新了?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python3 -m pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果&amp;hellip;全部环境都显示已安装&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-54-10-image.png&#34;
+	width=&#34;1256&#34;
+	height=&#34;648&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-54-10-image_hufe286bc701141851544dd23683939d11_1842435_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-54-10-image_hufe286bc701141851544dd23683939d11_1842435_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;都装上了诶&amp;hellip;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;465px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;卸了再装逝世看&amp;hellip;?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ pip uninstall uvicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Found existing installation: uvicorn 0.17.6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Not uninstalling uvicorn at /usr/lib/python3/dist-packages, outside environment /usr
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Can&lt;span class=&#34;s1&#34;&gt;&amp;#39;t uninstall &amp;#39;&lt;/span&gt;uvicorn&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;. No files were found to uninstall.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;怪，太怪了&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;遇事不决chatgpt&#34;&gt;遇事不决，ChatGPT&lt;/h3&gt;
+&lt;p&gt;后来我又把所有报错全部贴给&lt;code&gt;ChatGPT&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;结果，兜兜转转好几回，GPT卡bug了&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;找不到命令--&amp;gt;安装--&amp;gt;已经安装了--&amp;gt;GPT给我原来的运行命令-&amp;gt;找不到命令--&amp;gt;安装...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;del&gt;你跟我这里搁这儿搁这儿卡循环是吧= =&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&#34;尝试找更多细节&#34;&gt;尝试找更多细节&lt;/h3&gt;
+&lt;p&gt;在我在其他目录跑这个命令的时候，发现&lt;code&gt;Uvicorn&lt;/code&gt;命令是可用的&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Hmmm, 说不定查查这个能解决问题..?&lt;/p&gt;
+&lt;h3 id=&#34;继续向gpt请教&#34;&gt;继续向GPT请教&lt;/h3&gt;
+&lt;p&gt;我告诉&lt;code&gt;ChatGPT&lt;/code&gt;这个事情后, GPT说可能和python虚拟环境有关&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-13-39-image.png&#34;
+	width=&#34;1033&#34;
+	height=&#34;677&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-13-39-image_hu84b0fb0a08cf27b74c5c31fe3ed8ca8b_101866_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-13-39-image_hu84b0fb0a08cf27b74c5c31fe3ed8ca8b_101866_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;猫猫和GPT的对话&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;152&#34;
+		data-flex-basis=&#34;366px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;不过我并没有使用虚拟环境啊&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;那问狗狗google吧&#34;&gt;那问狗狗(Google)吧&lt;/h3&gt;
+&lt;p&gt;这个时候，就该搜索引擎闪亮登场了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;猫猫向往常一样，决定用英语搜索&amp;hellip;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;用英文会得到更好的结果哦qwq&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;组织下语言&#34;&gt;组织下语言&lt;/h4&gt;
+&lt;p&gt;&lt;u&gt;&lt;strong&gt;咳咳，划重点，搜索的内容是很重要的&lt;/strong&gt;&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;现在整理下我们所拥有的信息&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;uvicorn&lt;/code&gt;找不到命令&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;uvicorn&lt;/code&gt;已经安装了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;且&lt;code&gt;uvicorn&lt;/code&gt;无法卸载&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;只在项目文件夹里找不到命令&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过直觉想想，&lt;code&gt;1&lt;/code&gt;,&lt;code&gt;2&lt;/code&gt;和&lt;code&gt;4&lt;/code&gt;更重要些&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因为能不能卸对于解决问题貌似关联不大嘛&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;浓缩一下，变成两组关键信息&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;&lt;code&gt;uvicorn&lt;/code&gt;已经安装 只在项目文件夹内找不到命令&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;换成英文&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;&lt;code&gt;uvicorn&lt;/code&gt; installed command not found only in project folder&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;进行搜索&#34;&gt;进行搜索&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-30-19-image.png&#34;
+	width=&#34;1094&#34;
+	height=&#34;567&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-30-19-image_hubde8b22d7cc08ca1e6a6d323c3d70058_112558_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-30-19-image_hubde8b22d7cc08ca1e6a6d323c3d70058_112558_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Stack Overflow 程序员的救星 (打call&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;463px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;直接点第一个结果~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-31-55-image.png&#34;
+	width=&#34;1165&#34;
+	height=&#34;436&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-31-55-image_huf3d48600b43f291c66d40679c78c2b1d_70242_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-31-55-image_huf3d48600b43f291c66d40679c78c2b1d_70242_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;日常看最多赞的解答~&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;267&#34;
+		data-flex-basis=&#34;641px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;问题解决&#34;&gt;问题解决&lt;/h3&gt;
+&lt;p&gt;我怀揣着30%的兴奋, 30%的激动, 40%的紧张开始尝试&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python3 -m uvicorn main:app --reload  --host 0.0.0.0 --port &lt;span class=&#34;m&#34;&gt;8000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image.png&#34;
+	width=&#34;1300&#34;
+	height=&#34;537&#34;
+	srcset=&#34;https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image_hu40080c2ea8e5b90d4fa0930abcc0de37_1578653_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image_hu40080c2ea8e5b90d4fa0930abcc0de37_1578653_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;泰裤辣! 运行成功!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;242&#34;
+		data-flex-basis=&#34;581px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;YES!!! 排错成功!&lt;/p&gt;
+&lt;h2 id=&#34;其他排错tip&#34;&gt;其他排错TIP&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;不要害怕报错，有报错你反而更加知道哪里出错了，比没有报错会容易解决很多~&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建议排错步骤顺序：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;自己解决&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尝试推测错误产生的原因&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用英文谷歌下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;问AI&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;实在不行向大佬求助&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;这个问题以我目前的能力无法解决，先放下继续学习吧喵~&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Phind-一个实用的AI搜索引擎</title>
         <link>https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
         <pubDate>Wed, 22 Mar 2023 13:38:46 +0800</pubDate>
