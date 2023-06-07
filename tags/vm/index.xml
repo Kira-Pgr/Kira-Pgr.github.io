@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>VM on 猫猫の博客</title>
+        <link>https://blog.nanosec.site/tags/vm/</link>
+        <description>Recent content in VM on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 07 Jun 2023 17:07:14 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/tags/vm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux平台下搭建KVM/QEMU的win10虚拟机</title>
+        <link>https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+        <pubDate>Wed, 07 Jun 2023 17:07:14 +0800</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg" alt="Featured image of post Linux平台下搭建KVM/QEMU的win10虚拟机" /&gt;&lt;h1 id=&#34;linux平台下搭建kvmqemu的windows虚拟机&#34;&gt;Linux平台下搭建KVM/QEMU的Windows虚拟机&lt;/h1&gt;
+&lt;p&gt;关于Linux下的虚拟机, 我之前写过一篇&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/p/debian-linux%e4%b8%8b%e5%ae%89%e8%a3%85%e8%99%9a%e6%8b%9f%e6%9c%ba%e8%bd%af%e4%bb%b6/&#34; &gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;不过无论是&lt;code&gt;Virtual Box&lt;/code&gt;还是&lt;code&gt;VMware&lt;/code&gt;,都逃不过一个问题:Windows虚拟机&lt;strong&gt;巨卡无比&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用体验感觉很糟糕，不过它俩儿的优点也有，就是搭虚拟机比较简单&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;友情提醒: 以下人员可以&lt;strong&gt;撤离&lt;/strong&gt;了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IT小白&lt;br&gt;&lt;small&gt;&lt;strike&gt;(如果你不大想感受到计算机十足的恶意&amp;hellip;)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于Linux不是很熟悉的&lt;br&gt;&lt;small&gt;&lt;strike&gt;(怎么说呐&amp;hellip;如果你看下去可容易被劝退哦= =)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不大喜欢折腾的&lt;br&gt;&lt;small&gt;&lt;strike&gt;(相信我，你懒得这么搞&amp;hellip;)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于虚拟机速度没那么在意的&lt;br&gt;&lt;small&gt;&lt;strike&gt;(Duck不必, VBox和VMware完全够用&amp;hellip;)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上人员如果系统是&lt;code&gt;Linux&lt;/code&gt;,可以考虑我之前写的&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/&#34; &gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果系统是&lt;code&gt;Windows&lt;/code&gt;, 请移步百度，这里不过多赘述= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
+&lt;p&gt;在搭建虚拟机前，你需要下载一些东西&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.microsoft.com/zh-cn/software-download/windows10ISO&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Windows的ISO文件&lt;/a&gt;，这里用Win10做演示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso&#34; &gt;VirtIO驱动&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe&#34; &gt;SpiceTools&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image.png&#34;
+	width=&#34;460&#34;
+	height=&#34;171&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;下到的三个文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;269&#34;
+		data-flex-basis=&#34;645px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;之后就是装软件前的经典套路&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装qemukvm&#34;&gt;安装QEMU/KVM&lt;/h2&gt;
+&lt;p&gt;打开Linux主机的终端，输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后重启&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;创建windows虚拟机&#34;&gt;创建Windows虚拟机&lt;/h2&gt;
+&lt;p&gt;重启后打开&lt;code&gt;Virtual Machine Manager&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo virt-manager
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照下面的步骤进行&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png&#34;
+	width=&#34;584&#34;
+	height=&#34;205&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;点加号&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;284&#34;
+		data-flex-basis=&#34;683px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image.png&#34;
+	width=&#34;580&#34;
+	height=&#34;555&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Forward&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;104&#34;
+		data-flex-basis=&#34;250px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image.png&#34;
+	width=&#34;514&#34;
+	height=&#34;535&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Browse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;96&#34;
+		data-flex-basis=&#34;230px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image.png&#34;
+	width=&#34;820&#34;
+	height=&#34;534&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Browse Local&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;368px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在弹出的文件管理器里选择你的Win10 ISO&lt;/p&gt;
+&lt;p&gt;之后就是选择合适的性能设置&amp;hellip;&lt;/p&gt;
+&lt;p&gt;到第5步请注意除虚拟机名字外，设置与图片一致&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image.png&#34;
+	width=&#34;499&#34;
+	height=&#34;396&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;win10就是虚拟机名字，可以随意起&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;302px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;更改windows虚拟机设置&#34;&gt;更改Windows虚拟机设置&lt;/h2&gt;
+&lt;p&gt;在弹出的页面选到&lt;code&gt;SATA Disk1&lt;/code&gt;,&lt;code&gt;Disk bus&lt;/code&gt;选择&lt;code&gt;VirtIO&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;然后点&lt;code&gt;Apply&lt;/code&gt;保存&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image.png&#34;
+	width=&#34;785&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;最后别忘了Apply&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在点击&lt;code&gt;Add Hardware&lt;/code&gt;后进入到&lt;code&gt;Graphics&lt;/code&gt;,把&lt;code&gt;Type&lt;/code&gt;改成&lt;code&gt;VNC server&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;改完了记得点&lt;code&gt;Finish&lt;/code&gt;,否则前功尽弃= =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image.png&#34;
+	width=&#34;501&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;252px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后再点含有&lt;code&gt;NIC&lt;/code&gt;的那个菜单&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Device model&lt;/code&gt;改为&lt;code&gt;virtio&lt;/code&gt;,并&lt;code&gt;Apply&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image.png&#34;
+	width=&#34;761&#34;
+	height=&#34;615&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;NIC后面的东西和视频不一致没事&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;296px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，继续&lt;code&gt;Add Hardware&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;Storage&lt;/code&gt;中选择&lt;code&gt;Select or create custom storage&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后看准了&lt;code&gt;Manage&lt;/code&gt;&lt;del&gt;啪叽~一声&lt;/del&gt;点下去&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image.png&#34;
+	width=&#34;491&#34;
+	height=&#34;474&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;248px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Browse Local&lt;/code&gt;,然后选择&lt;code&gt;virtio&lt;/code&gt;的ISO文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Device type&lt;/code&gt;改成&lt;code&gt;CDROM device&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后日常&lt;code&gt;Apply&lt;/code&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image.png&#34;
+	width=&#34;533&#34;
+	height=&#34;302&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，是&lt;u&gt;&lt;strong&gt;非常关键&lt;/strong&gt;&lt;/u&gt;的一步&amp;hellip;&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;Boot Options&lt;/code&gt;, 启用&lt;code&gt;Enable boot menu&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;三个设备都勾上，并 &lt;strong&gt;&lt;u&gt;调整顺序&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请一定要检查：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;放在最上面的CDROM是Win10的ISO&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;最下面的CDROM是VirtIO的ISO&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image.png&#34;
+	width=&#34;820&#34;
+	height=&#34;498&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一定要看清楚了再进行下一步&amp;hellip;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;395px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;虚拟机安装系统&#34;&gt;虚拟机安装系统&lt;/h2&gt;
+&lt;p&gt;在确认无误后, 点&lt;code&gt;Begin Installation&lt;/code&gt;开始给虚拟机安装系统&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image.png&#34;
+	width=&#34;785&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Windows的安装过程大家应该很熟悉了，这里不过多赘述&amp;hellip;&lt;br&gt;&lt;small&gt;&lt;strike&gt;如果你在想，快乐(bushi的安装过程终于要结束了，那么网页的滚动条会告诉你，事情没有那么简单:)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;当你进行着熟悉无比的Win安装操作时，到这一步，事情就有点不对劲了:&amp;lt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image.png&#34;
+	width=&#34;512&#34;
+	height=&#34;391&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;没错，你 无 处 可 装&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;314px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我当时的心情和你们应该差不多，是这样纸滴~&lt;/p&gt;
+&lt;img src=&#34;8d5a832ae5e45d6a676c785e1c1c678cdf056049.jpg&#34; title=&#34;&#34; alt=&#34;337f360dc537189159ca4a21bb2e4dd0.jpg&#34; width=&#34;110&#34;&gt;
+&lt;p&gt;在一阵网上冲浪后，我找到了解决方案:点&lt;code&gt;Load driver&lt;/code&gt;加载驱动&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image.png&#34;
+	width=&#34;518&#34;
+	height=&#34;405&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;这个弹窗点OK既可&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;306px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后点&lt;code&gt;Browse&lt;/code&gt;依据目标系统选择驱动&lt;/p&gt;
+&lt;p&gt;路径一般是&lt;code&gt;VirtIO ISO所在盘\viostor\系统版本\系统架构\viostor.inf&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我这里是&lt;code&gt;E:\viostor\w10\amd64\viostor.inf&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;VirtIO ISO&lt;/code&gt;挂载成为了E盘&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;我安装了&lt;code&gt;Windows 10&lt;/code&gt;系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;架构是&lt;code&gt;x64&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image.png&#34;
+	width=&#34;503&#34;
+	height=&#34;382&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;316px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image.png&#34;
+	width=&#34;531&#34;
+	height=&#34;387&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;呼~终于有地方可以装了&amp;hellip;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;329px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在日常&lt;code&gt;Next&lt;/code&gt;之后，你就可以休息下了&lt;/p&gt;
+&lt;p&gt;等待系统安装完成吧&lt;/p&gt;
+&lt;h2 id=&#34;虚拟机其他配置&#34;&gt;虚拟机其他配置&lt;/h2&gt;
+&lt;p&gt;嘛&amp;hellip;你不会认为这就结束了吧&amp;hellip;  (坏笑&lt;/p&gt;
+&lt;p&gt;别急，咱们慢慢来~&lt;/p&gt;
+&lt;img src=&#34;4e499250bdb2520afa4a9ed1ff8a4020a833486a.jpg&#34; title=&#34;&#34; alt=&#34;f58581a63f5a05c06a3970ca6753db29.jpg&#34; width=&#34;136&#34;&gt;
+&lt;h3 id=&#34;更新一些驱动&#34;&gt;更新一些驱动&lt;/h3&gt;
+&lt;p&gt;这一步是为了解决一些奇奇怪怪的BUG,&lt;/p&gt;
+&lt;p&gt;比如说虚拟机上不了网&amp;hellip;&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;Windows&lt;/code&gt;虚拟机的设备管理器,找到&lt;code&gt;其他设备&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;右击&lt;code&gt;以太网控制器&lt;/code&gt;并点击&lt;code&gt;更新驱动&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;:由于图片上是英文系统，对应选项的译文有可能和实际显示不符= =&lt;/p&gt;
+&lt;p&gt;以图片和你的系统上显示的内容为准&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image.png&#34;
+	width=&#34;674&#34;
+	height=&#34;498&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;英文系统上的内容&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后&lt;strong&gt;从本地&lt;/strong&gt;选择驱动&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image.png&#34;
+	width=&#34;533&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;看不懂的话，直接选第二个选项= =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;312px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;选择的时候直接选你&lt;code&gt;VirtIO ISO&lt;/code&gt;挂载的那个盘，我这里是&lt;code&gt;E:\&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image.png&#34;
+	width=&#34;547&#34;
+	height=&#34;394&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;够清晰了吧&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;138&#34;
+		data-flex-basis=&#34;333px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对&lt;code&gt;显示适配器&lt;/code&gt;重复同样的操作= =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image.png&#34;
+	width=&#34;676&#34;
+	height=&#34;497&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;326px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;配置远程访问&#34;&gt;配置远程访问&lt;/h3&gt;
+&lt;p&gt;为什么要这么做?&lt;/p&gt;
+&lt;p&gt;因为在&lt;code&gt;Virt-Manager&lt;/code&gt;里用虚拟机感觉说不出来的难受&lt;/p&gt;
+&lt;p&gt;远程访问能够解决虚拟机两大难题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;复制粘贴不互通&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文件不互通&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先，在&lt;code&gt;Windows&lt;/code&gt;虚拟机中控制面板里允许远程控制&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个大家应该会吧&amp;hellip;qwq, 不写了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接着，登出&lt;code&gt;Windows&lt;/code&gt;虚拟机&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;virt-manager&lt;/code&gt;中获取虚拟机IP并记录&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image.png&#34;
+	width=&#34;1134&#34;
+	height=&#34;329&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;344&#34;
+		data-flex-basis=&#34;827px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在你的&lt;code&gt;Linux&lt;/code&gt;主机打开终端，输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install remmina
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;code&gt;remmina&lt;/code&gt;命令打开远程控制软件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png&#34;
+	width=&#34;899&#34;
+	height=&#34;513&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;remmina界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点左上角加号新建一个连接&lt;code&gt;Profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;填入相关信息&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image.png&#34;
+	width=&#34;936&#34;
+	height=&#34;642&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: &lt;code&gt;Share folder&lt;/code&gt;填你想要共享给虚拟机文件夹的&lt;strong&gt;全路径&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;进入&lt;code&gt;Advanced&lt;/code&gt;目录，&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Audio output mode&lt;/code&gt;改为&lt;code&gt;Local&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;为了美观，&lt;code&gt;Quality&lt;/code&gt;可以改成&lt;code&gt;Best (slowest)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image.png&#34;
+	width=&#34;951&#34;
+	height=&#34;633&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;内网嘛&amp;hellip;速度反正很快~&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在把&lt;code&gt;Spice Tools&lt;/code&gt;放进共享文件夹后&lt;code&gt;Save and Connect&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装spice-tools&#34;&gt;安装Spice Tools&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Spice Tools&lt;/code&gt;有助于提升用户体验&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上一步登入&lt;code&gt;Windows&lt;/code&gt;虚拟机后，在&lt;code&gt;此电脑&lt;/code&gt;里找到共享文件夹并打开&lt;/p&gt;
+&lt;p&gt;把放进去的&lt;code&gt;Spice Tools&lt;/code&gt;的&lt;code&gt;exe&lt;/code&gt;文件拖到其他地方，并断开远程连接&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;virt-manager&lt;/code&gt;中进入虚拟机，并双击运行刚刚拖出来的&lt;code&gt;exe&lt;/code&gt;文件&lt;/p&gt;
+&lt;p&gt;然后就是下一步,&amp;hellip;下一步&amp;hellip;&lt;/p&gt;
+&lt;p&gt;重启后就可以关掉&lt;code&gt;virt-manager&lt;/code&gt;然后用&lt;code&gt;remmina&lt;/code&gt;使用虚拟机辣~&lt;/p&gt;
+&lt;h3 id=&#34;remmina使用技巧&#34;&gt;Remmina使用技巧&lt;/h3&gt;
+&lt;p&gt;在连接后，可以打开两个东西，让使用体验更加丝滑:)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;动态调整分辨率&lt;/p&gt;
+&lt;p&gt;打开后虚拟机分辨率会随着窗口大小调整而调整&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image.png&#34;
+	width=&#34;893&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;是不是无比丝滑~?&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;获取所有键盘操作&lt;/p&gt;
+&lt;p&gt;这个能方便我们在虚拟机使用快捷键qwq&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image.png&#34;
+	width=&#34;892&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;对于猫猫这样的老win用户，如果不能用win&amp;#43;r，还真的很不习惯捏~&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;效果展示&#34;&gt;效果展示&lt;/h2&gt;
+&lt;p&gt;呼~这次终于是要结束了= =&lt;/p&gt;
+&lt;p&gt;让我们一起来看看效果吧&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;整体效果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image.png&#34;
+	width=&#34;899&#34;
+	height=&#34;697&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;共享文件夹&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;309px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;本文参考以下视频教程:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=Zei8i9CpAn0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FAST! Windows VM on Linux using QEMU / kvm / VirtIO // Ditch Your VirtualBox! - YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;英文好的各位也可以考虑看这个视频哦~&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Debian Linux下安装虚拟机软件</title>
+        <link>https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</link>
+        <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
+        
+        <guid>https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg" alt="Featured image of post Debian Linux下安装虚拟机软件" /&gt;&lt;h1 id=&#34;debian-linux下安装虚拟机软件&#34;&gt;Debian Linux下安装虚拟机软件&lt;/h1&gt;
+&lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
+&lt;p&gt;VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少&lt;/p&gt;
+&lt;h3 id=&#34;安装最新版本内核头文件内核镜像&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
+&lt;p&gt;为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们&lt;strong&gt;尽量避免&lt;/strong&gt;使用网上提供的这种方式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-`uname -r`
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;采用以下命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
+	width=&#34;1031&#34;
+	height=&#34;715&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;apt安装virtualbox&#34;&gt;apt安装VirtualBox&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt-get install virtualbox virtualbox-guest-additions-iso
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
+&lt;p&gt;比起VBox,VMware折腾起来坑真的好多啊= =&lt;/p&gt;
+&lt;p&gt;不过没办法。。。我还有10多个VMware的虚拟机w(&lt;/p&gt;
+&lt;h3 id=&#34;安装最新版本内核头文件内核镜像-1&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
+&lt;p&gt;第一步和安VBox一样的操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init 6 #装完重启
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
+	width=&#34;498&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;442px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装各种编译器&#34;&gt;安装各种编译器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install build-essential 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
+	width=&#34;496&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;476px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装vmware-workstation&#34;&gt;安装VMware Workstation&lt;/h3&gt;
+&lt;p&gt;去&lt;a class=&#34;link&#34; href=&#34;https://www.vmware.com/go/getworkstation-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;下载安装程序&lt;/p&gt;
+&lt;p&gt;给可执行权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod x VMware-Workstation-Full-版本号.bundle 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#TIP:文件名太长可以Tab补全&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./VMware-Workstation-Full-版本号.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;安装好之后想要运行直接终端输入vmware就可以了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;排坑&#34;&gt;排坑&lt;/h3&gt;
+&lt;p&gt;如果你顺利的话完成上面几步之后依照提示就可以结束这&lt;del&gt;快乐&lt;/del&gt;的安装过程了&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是，，，我还遇到了更多奇奇怪怪的坑&lt;/strong&gt;&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;1.gif&#34; alt=&#34;&#34; width=&#34;251&#34;&gt;
+&lt;p&gt;如果各位朋友也遇到了，可以参考下解决方案&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2.jpg&#34;
+	width=&#34;701&#34;
+	height=&#34;407&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;你再报错试试!?!  怒)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;VMware在编译和安装&lt;code&gt;vmmom&lt;/code&gt;和&lt;code&gt;vmnet&lt;/code&gt;两个模块的时候出了问题，查了各种解决方案都没用&lt;/p&gt;
+&lt;p&gt;最后，我采取了&lt;strong&gt;手动编译安装两个模块&lt;/strong&gt;的方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;暴力出奇迹&amp;ndash;永远不变的真理 逃)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下是具体解决方案，英语好的伙伴们可以参考&lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/VM-Workstation-16-1-gt-16-2-1-on-Ubuntu-21-10-broke-everything/m-p/2884738#M173158&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这个官方论坛帖子&lt;/a&gt;捏~~&lt;/p&gt;
+&lt;p&gt;先下载模块的&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkubecek/vmware-host-modules/tree/workstation-16.2.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;源码&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于这里&lt;code&gt;git clone&lt;/code&gt;不知道为什么并不能拉取所有源码，所以我们这里选择下载zip包&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3.jpg&#34;
+	width=&#34;589&#34;
+	height=&#34;570&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;下载界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;248px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;解压后进入源码目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip vmware-host-modules-workstation-16.2.1.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd vmware-host-modules-workstation-16.2.1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译+安装&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
+	width=&#34;1033&#34;
+	height=&#34;655&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成之后再运行VMware Workstation,就应该可以正常进入程序了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
+	width=&#34;904&#34;
+	height=&#34;741&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;292px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;激活&#34;&gt;激活&lt;/h3&gt;
+&lt;p&gt;网上VMware激活码可谓了一大堆&lt;/p&gt;
+&lt;p&gt;为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
+	width=&#34;897&#34;
+	height=&#34;655&#34;
+	srcset=&#34;https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;激活界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.a5idc.com/helpcontent/347.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.a5idc.com/helpcontent/347.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
