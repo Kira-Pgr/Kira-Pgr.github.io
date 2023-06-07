@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 07 Jun 2023 17:07:14 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/tags/vm/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Linux平台下搭建KVM/QEMU的win10虚拟机</title>
-        <link>https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+        <title>Linux平台下搭建KVM/QEMU的Windows虚拟机</title>
+        <link>https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
         <pubDate>Wed, 07 Jun 2023 17:07:14 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg" alt="Featured image of post Linux平台下搭建KVM/QEMU的win10虚拟机" /&gt;&lt;h1 id=&#34;linux平台下搭建kvmqemu的windows虚拟机&#34;&gt;Linux平台下搭建KVM/QEMU的Windows虚拟机&lt;/h1&gt;
+        <guid>https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
+        <description>&lt;img src="https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg" alt="Featured image of post Linux平台下搭建KVM/QEMU的Windows虚拟机" /&gt;&lt;h1 id=&#34;linux平台下搭建kvmqemu的windows虚拟机&#34;&gt;Linux平台下搭建KVM/QEMU的Windows虚拟机&lt;/h1&gt;
 &lt;p&gt;关于Linux下的虚拟机, 我之前写过一篇&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/p/debian-linux%e4%b8%8b%e5%ae%89%e8%a3%85%e8%99%9a%e6%8b%9f%e6%9c%ba%e8%bd%af%e4%bb%b6/&#34; &gt;文章&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;不过无论是&lt;code&gt;Virtual Box&lt;/code&gt;还是&lt;code&gt;VMware&lt;/code&gt;,都逃不过一个问题:Windows虚拟机&lt;strong&gt;巨卡无比&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用体验感觉很糟糕，不过它俩儿的优点也有，就是搭虚拟机比较简单&lt;/p&gt;
@@ -49,10 +49,10 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe&#34; &gt;SpiceTools&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image.png&#34;
 	width=&#34;460&#34;
 	height=&#34;171&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;下到的三个文件&#34;
@@ -74,10 +74,10 @@
 &lt;p&gt;重启后打开&lt;code&gt;Virtual Machine Manager&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo virt-manager
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照下面的步骤进行&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png&#34;
 	width=&#34;584&#34;
 	height=&#34;205&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;点加号&#34;
@@ -88,10 +88,10 @@
 		data-flex-basis=&#34;683px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image.png&#34;
 	width=&#34;580&#34;
 	height=&#34;555&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Forward&#34;
@@ -102,10 +102,10 @@
 		data-flex-basis=&#34;250px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image.png&#34;
 	width=&#34;514&#34;
 	height=&#34;535&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Browse&#34;
@@ -116,10 +116,10 @@
 		data-flex-basis=&#34;230px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image.png&#34;
 	width=&#34;820&#34;
 	height=&#34;534&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Browse Local&#34;
@@ -133,10 +133,10 @@
 &lt;p&gt;在弹出的文件管理器里选择你的Win10 ISO&lt;/p&gt;
 &lt;p&gt;之后就是选择合适的性能设置&amp;hellip;&lt;/p&gt;
 &lt;p&gt;到第5步请注意除虚拟机名字外，设置与图片一致&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image.png&#34;
 	width=&#34;499&#34;
 	height=&#34;396&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;win10就是虚拟机名字，可以随意起&#34;
@@ -150,10 +150,10 @@
 &lt;h2 id=&#34;更改windows虚拟机设置&#34;&gt;更改Windows虚拟机设置&lt;/h2&gt;
 &lt;p&gt;在弹出的页面选到&lt;code&gt;SATA Disk1&lt;/code&gt;,&lt;code&gt;Disk bus&lt;/code&gt;选择&lt;code&gt;VirtIO&lt;/code&gt;,&lt;/p&gt;
 &lt;p&gt;然后点&lt;code&gt;Apply&lt;/code&gt;保存&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image.png&#34;
 	width=&#34;785&#34;
 	height=&#34;617&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;最后别忘了Apply&#34;
@@ -166,10 +166,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;在点击&lt;code&gt;Add Hardware&lt;/code&gt;后进入到&lt;code&gt;Graphics&lt;/code&gt;,把&lt;code&gt;Type&lt;/code&gt;改成&lt;code&gt;VNC server&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;改完了记得点&lt;code&gt;Finish&lt;/code&gt;,否则前功尽弃= =&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image.png&#34;
 	width=&#34;501&#34;
 	height=&#34;476&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -180,10 +180,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;然后再点含有&lt;code&gt;NIC&lt;/code&gt;的那个菜单&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Device model&lt;/code&gt;改为&lt;code&gt;virtio&lt;/code&gt;,并&lt;code&gt;Apply&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image.png&#34;
 	width=&#34;761&#34;
 	height=&#34;615&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;NIC后面的东西和视频不一致没事&#34;
@@ -197,10 +197,10 @@
 &lt;p&gt;接下来，继续&lt;code&gt;Add Hardware&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;在&lt;code&gt;Storage&lt;/code&gt;中选择&lt;code&gt;Select or create custom storage&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然后看准了&lt;code&gt;Manage&lt;/code&gt;&lt;del&gt;啪叽~一声&lt;/del&gt;点下去&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image.png&#34;
 	width=&#34;491&#34;
 	height=&#34;474&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -212,10 +212,10 @@
 &lt;p&gt;&lt;code&gt;Browse Local&lt;/code&gt;,然后选择&lt;code&gt;virtio&lt;/code&gt;的ISO文件&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Device type&lt;/code&gt;改成&lt;code&gt;CDROM device&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然后日常&lt;code&gt;Apply&lt;/code&gt;&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image.png&#34;
 	width=&#34;533&#34;
 	height=&#34;302&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -232,10 +232,10 @@
 &lt;p&gt;&lt;strong&gt;&lt;u&gt;放在最上面的CDROM是Win10的ISO&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;u&gt;最下面的CDROM是VirtIO的ISO&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image.png&#34;
 	width=&#34;820&#34;
 	height=&#34;498&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;一定要看清楚了再进行下一步&amp;hellip;&#34;
@@ -248,10 +248,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;虚拟机安装系统&#34;&gt;虚拟机安装系统&lt;/h2&gt;
 &lt;p&gt;在确认无误后, 点&lt;code&gt;Begin Installation&lt;/code&gt;开始给虚拟机安装系统&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image.png&#34;
 	width=&#34;785&#34;
 	height=&#34;489&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -262,10 +262,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Windows的安装过程大家应该很熟悉了，这里不过多赘述&amp;hellip;&lt;br&gt;&lt;small&gt;&lt;strike&gt;如果你在想，快乐(bushi的安装过程终于要结束了，那么网页的滚动条会告诉你，事情没有那么简单:)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;p&gt;当你进行着熟悉无比的Win安装操作时，到这一步，事情就有点不对劲了:&amp;lt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image.png&#34;
 	width=&#34;512&#34;
 	height=&#34;391&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;没错，你 无 处 可 装&#34;
@@ -279,10 +279,10 @@
 &lt;p&gt;我当时的心情和你们应该差不多，是这样纸滴~&lt;/p&gt;
 &lt;img src=&#34;8d5a832ae5e45d6a676c785e1c1c678cdf056049.jpg&#34; title=&#34;&#34; alt=&#34;337f360dc537189159ca4a21bb2e4dd0.jpg&#34; width=&#34;110&#34;&gt;
 &lt;p&gt;在一阵网上冲浪后，我找到了解决方案:点&lt;code&gt;Load driver&lt;/code&gt;加载驱动&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image.png&#34;
 	width=&#34;518&#34;
 	height=&#34;405&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;这个弹窗点OK既可&#34;
@@ -309,10 +309,10 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image.png&#34;
 	width=&#34;503&#34;
 	height=&#34;382&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -321,10 +321,10 @@
 		data-flex-basis=&#34;316px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image.png&#34;
 	width=&#34;531&#34;
 	height=&#34;387&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;呼~终于有地方可以装了&amp;hellip;&#34;
@@ -350,10 +350,10 @@
 &lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;:由于图片上是英文系统，对应选项的译文有可能和实际显示不符= =&lt;/p&gt;
 &lt;p&gt;以图片和你的系统上显示的内容为准&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image.png&#34;
 	width=&#34;674&#34;
 	height=&#34;498&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;英文系统上的内容&#34;
@@ -365,10 +365,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;然后&lt;strong&gt;从本地&lt;/strong&gt;选择驱动&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image.png&#34;
 	width=&#34;533&#34;
 	height=&#34;410&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;看不懂的话，直接选第二个选项= =&#34;
@@ -380,10 +380,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;选择的时候直接选你&lt;code&gt;VirtIO ISO&lt;/code&gt;挂载的那个盘，我这里是&lt;code&gt;E:\&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image.png&#34;
 	width=&#34;547&#34;
 	height=&#34;394&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;够清晰了吧&#34;
@@ -395,10 +395,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;对&lt;code&gt;显示适配器&lt;/code&gt;重复同样的操作= =&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image.png&#34;
 	width=&#34;676&#34;
 	height=&#34;497&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -425,10 +425,10 @@
 &lt;/blockquote&gt;
 &lt;p&gt;接着，登出&lt;code&gt;Windows&lt;/code&gt;虚拟机&lt;/p&gt;
 &lt;p&gt;在&lt;code&gt;virt-manager&lt;/code&gt;中获取虚拟机IP并记录&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image.png&#34;
 	width=&#34;1134&#34;
 	height=&#34;329&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -440,10 +440,10 @@
 &lt;p&gt;在你的&lt;code&gt;Linux&lt;/code&gt;主机打开终端，输入&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install remmina
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;code&gt;remmina&lt;/code&gt;命令打开远程控制软件&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png&#34;
 	width=&#34;899&#34;
 	height=&#34;513&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;remmina界面&#34;
@@ -456,10 +456,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;点左上角加号新建一个连接&lt;code&gt;Profile&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;填入相关信息&amp;hellip;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image.png&#34;
 	width=&#34;936&#34;
 	height=&#34;642&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -474,10 +474,10 @@
 &lt;p&gt;进入&lt;code&gt;Advanced&lt;/code&gt;目录，&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Audio output mode&lt;/code&gt;改为&lt;code&gt;Local&lt;/code&gt;,&lt;/p&gt;
 &lt;p&gt;为了美观，&lt;code&gt;Quality&lt;/code&gt;可以改成&lt;code&gt;Best (slowest)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image.png&#34;
 	width=&#34;951&#34;
 	height=&#34;633&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;内网嘛&amp;hellip;速度反正很快~&#34;
@@ -506,10 +506,10 @@
 &lt;p&gt;打开后虚拟机分辨率会随着窗口大小调整而调整&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image.png&#34;
 	width=&#34;893&#34;
 	height=&#34;694&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;是不是无比丝滑~?&#34;
@@ -526,10 +526,10 @@
 &lt;p&gt;这个能方便我们在虚拟机使用快捷键qwq&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image.png&#34;
 	width=&#34;892&#34;
 	height=&#34;694&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;对于猫猫这样的老win用户，如果不能用win&amp;#43;r，还真的很不习惯捏~&#34;
@@ -543,10 +543,10 @@
 &lt;h2 id=&#34;效果展示&#34;&gt;效果展示&lt;/h2&gt;
 &lt;p&gt;呼~这次终于是要结束了= =&lt;/p&gt;
 &lt;p&gt;让我们一起来看看效果吧&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image.png&#34;
 	width=&#34;1920&#34;
 	height=&#34;1080&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;整体效果&#34;
@@ -557,10 +557,10 @@
 		data-flex-basis=&#34;426px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image.png&#34;
 	width=&#34;899&#34;
 	height=&#34;697&#34;
-	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84win10%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;共享文件夹&#34;

@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='和Win虚拟机卡慢说拜拜'><title>Linux平台下搭建KVM/QEMU的Windows虚拟机</title>
+
+<link rel='canonical' href='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Linux平台下搭建KVM/QEMU的Windows虚拟机'>
+<meta property='og:description' content='和Win虚拟机卡慢说拜拜'>
+<meta property='og:url' content='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VM' /><meta property='article:published_time' content='2023-06-07T17:07:14&#43;08:00'/><meta property='article:modified_time' content='2023-06-07T17:07:14&#43;08:00'/><meta property='og:image' content='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg' />
+<meta name="twitter:title" content="Linux平台下搭建KVM/QEMU的Windows虚拟机">
+<meta name="twitter:description" content="和Win虚拟机卡慢说拜拜"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">猫猫の博客</a></h1>
+            <h2 class="site-description">累了, 毁灭吧(</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                <img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover_huaff3555d9167d8863726c9c3b3b95f86_2865950_800x0_resize_q75_box.jpg"
+                        srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover_huaff3555d9167d8863726c9c3b3b95f86_2865950_800x0_resize_q75_box.jpg 800w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover_huaff3555d9167d8863726c9c3b3b95f86_2865950_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="457" 
+                        loading="lazy"
+                        alt="Featured image of post Linux平台下搭建KVM/QEMU的Windows虚拟机" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/software/" style="background-color: #c0972b; color: #fff;">
+                Software
+            </a>
+        
+            <a href="/categories/linux/" style="background-color: #98bbd0; color: #fff;">
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/">Linux平台下搭建KVM/QEMU的Windows虚拟机</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            和Win虚拟机卡慢说拜拜
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 07, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="linux平台下搭建kvmqemu的windows虚拟机">Linux平台下搭建KVM/QEMU的Windows虚拟机</h1>
+<p>关于Linux下的虚拟机, 我之前写过一篇<a class="link" href="/p/debian-linux%e4%b8%8b%e5%ae%89%e8%a3%85%e8%99%9a%e6%8b%9f%e6%9c%ba%e8%bd%af%e4%bb%b6/" >文章</a></p>
+<p>不过无论是<code>Virtual Box</code>还是<code>VMware</code>,都逃不过一个问题:Windows虚拟机<strong>巨卡无比</strong></p>
+<p>使用体验感觉很糟糕，不过它俩儿的优点也有，就是搭虚拟机比较简单</p>
+<blockquote>
+<p>友情提醒: 以下人员可以<strong>撤离</strong>了</p>
+<ul>
+<li>
+<p>IT小白<br><small><strike>(如果你不大想感受到计算机十足的恶意&hellip;)</strike></small></p>
+</li>
+<li>
+<p>对于Linux不是很熟悉的<br><small><strike>(怎么说呐&hellip;如果你看下去可容易被劝退哦= =)</strike></small></p>
+</li>
+<li>
+<p>不大喜欢折腾的<br><small><strike>(相信我，你懒得这么搞&hellip;)</strike></small></p>
+</li>
+<li>
+<p>对于虚拟机速度没那么在意的<br><small><strike>(Duck不必, VBox和VMware完全够用&hellip;)</strike></small></p>
+</li>
+</ul>
+<p>以上人员如果系统是<code>Linux</code>,可以考虑我之前写的<a class="link" href="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/" >文章</a></p>
+<p>如果系统是<code>Windows</code>, 请移步百度，这里不过多赘述= =</p>
+</blockquote>
+<h2 id="前期准备">前期准备</h2>
+<p>在搭建虚拟机前，你需要下载一些东西&hellip;</p>
+<ul>
+<li>
+<p><a class="link" href="https://www.microsoft.com/zh-cn/software-download/windows10ISO"  target="_blank" rel="noopener"
+    >Windows的ISO文件</a>，这里用Win10做演示</p>
+</li>
+<li>
+<p><a class="link" href="fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso" >VirtIO驱动</a></p>
+</li>
+<li>
+<p><a class="link" href="spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe" >SpiceTools</a></p>
+</li>
+</ul>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image.png"
+	width="460"
+	height="171"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="下到的三个文件"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="269"
+		data-flex-basis="645px"
+	
+></p>
+<p>之后就是装软件前的经典套路&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span></code></pre></div><h2 id="安装qemukvm">安装QEMU/KVM</h2>
+<p>打开Linux主机的终端，输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
+</span></span></code></pre></div><p>然后重启</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">reboot
+</span></span></code></pre></div><h2 id="创建windows虚拟机">创建Windows虚拟机</h2>
+<p>重启后打开<code>Virtual Machine Manager</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo virt-manager
+</span></span></code></pre></div><p>然后按照下面的步骤进行</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png"
+	width="584"
+	height="205"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="点加号"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="284"
+		data-flex-basis="683px"
+	
+></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image.png"
+	width="580"
+	height="555"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Forward"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="104"
+		data-flex-basis="250px"
+	
+></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image.png"
+	width="514"
+	height="535"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Browse"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="96"
+		data-flex-basis="230px"
+	
+></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image.png"
+	width="820"
+	height="534"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Browse Local"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="368px"
+	
+></p>
+<p>在弹出的文件管理器里选择你的Win10 ISO</p>
+<p>之后就是选择合适的性能设置&hellip;</p>
+<p>到第5步请注意除虚拟机名字外，设置与图片一致</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image.png"
+	width="499"
+	height="396"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="win10就是虚拟机名字，可以随意起"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="302px"
+	
+></p>
+<h2 id="更改windows虚拟机设置">更改Windows虚拟机设置</h2>
+<p>在弹出的页面选到<code>SATA Disk1</code>,<code>Disk bus</code>选择<code>VirtIO</code>,</p>
+<p>然后点<code>Apply</code>保存</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image.png"
+	width="785"
+	height="617"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="最后别忘了Apply"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>在点击<code>Add Hardware</code>后进入到<code>Graphics</code>,把<code>Type</code>改成<code>VNC server</code></p>
+<p>改完了记得点<code>Finish</code>,否则前功尽弃= =</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image.png"
+	width="501"
+	height="476"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="105"
+		data-flex-basis="252px"
+	
+></p>
+<p>然后再点含有<code>NIC</code>的那个菜单</p>
+<p><code>Device model</code>改为<code>virtio</code>,并<code>Apply</code></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image.png"
+	width="761"
+	height="615"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="NIC后面的东西和视频不一致没事"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="123"
+		data-flex-basis="296px"
+	
+></p>
+<p>接下来，继续<code>Add Hardware</code></p>
+<p>在<code>Storage</code>中选择<code>Select or create custom storage</code></p>
+<p>然后看准了<code>Manage</code><del>啪叽~一声</del>点下去</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image.png"
+	width="491"
+	height="474"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="248px"
+	
+></p>
+<p><code>Browse Local</code>,然后选择<code>virtio</code>的ISO文件</p>
+<p><code>Device type</code>改成<code>CDROM device</code></p>
+<p>然后日常<code>Apply</code>&hellip;</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image.png"
+	width="533"
+	height="302"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="423px"
+	
+></p>
+<p>接下来，是<u><strong>非常关键</strong></u>的一步&hellip;</p>
+<p>进入<code>Boot Options</code>, 启用<code>Enable boot menu</code></p>
+<p>三个设备都勾上，并 <strong><u>调整顺序</u></strong></p>
+<blockquote>
+<p>请一定要检查：</p>
+<p><strong><u>放在最上面的CDROM是Win10的ISO</u></strong></p>
+<p><strong><u>最下面的CDROM是VirtIO的ISO</u></strong></p>
+</blockquote>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image.png"
+	width="820"
+	height="498"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="一定要看清楚了再进行下一步&hellip;"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="395px"
+	
+></p>
+<h2 id="虚拟机安装系统">虚拟机安装系统</h2>
+<p>在确认无误后, 点<code>Begin Installation</code>开始给虚拟机安装系统</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image.png"
+	width="785"
+	height="489"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="385px"
+	
+></p>
+<p>Windows的安装过程大家应该很熟悉了，这里不过多赘述&hellip;<br><small><strike>如果你在想，快乐(bushi的安装过程终于要结束了，那么网页的滚动条会告诉你，事情没有那么简单:)</strike></small></p>
+<p>当你进行着熟悉无比的Win安装操作时，到这一步，事情就有点不对劲了:&lt;</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image.png"
+	width="512"
+	height="391"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="没错，你 无 处 可 装"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="314px"
+	
+></p>
+<p>我当时的心情和你们应该差不多，是这样纸滴~</p>
+<img src="8d5a832ae5e45d6a676c785e1c1c678cdf056049.jpg" title="" alt="337f360dc537189159ca4a21bb2e4dd0.jpg" width="110">
+<p>在一阵网上冲浪后，我找到了解决方案:点<code>Load driver</code>加载驱动</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image.png"
+	width="518"
+	height="405"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="这个弹窗点OK既可"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="306px"
+	
+></p>
+<p>然后点<code>Browse</code>依据目标系统选择驱动</p>
+<p>路径一般是<code>VirtIO ISO所在盘\viostor\系统版本\系统架构\viostor.inf</code></p>
+<blockquote>
+<p>我这里是<code>E:\viostor\w10\amd64\viostor.inf</code></p>
+<ul>
+<li>
+<p><code>VirtIO ISO</code>挂载成为了E盘</p>
+</li>
+<li>
+<p>我安装了<code>Windows 10</code>系统</p>
+</li>
+<li>
+<p>架构是<code>x64</code></p>
+</li>
+</ul>
+</blockquote>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image.png"
+	width="503"
+	height="382"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="131"
+		data-flex-basis="316px"
+	
+></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image.png"
+	width="531"
+	height="387"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="呼~终于有地方可以装了&hellip;"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="137"
+		data-flex-basis="329px"
+	
+></p>
+<p>在日常<code>Next</code>之后，你就可以休息下了</p>
+<p>等待系统安装完成吧</p>
+<h2 id="虚拟机其他配置">虚拟机其他配置</h2>
+<p>嘛&hellip;你不会认为这就结束了吧&hellip;  (坏笑</p>
+<p>别急，咱们慢慢来~</p>
+<img src="4e499250bdb2520afa4a9ed1ff8a4020a833486a.jpg" title="" alt="f58581a63f5a05c06a3970ca6753db29.jpg" width="136">
+<h3 id="更新一些驱动">更新一些驱动</h3>
+<p>这一步是为了解决一些奇奇怪怪的BUG,</p>
+<p>比如说虚拟机上不了网&hellip;</p>
+<p>进入<code>Windows</code>虚拟机的设备管理器,找到<code>其他设备</code></p>
+<p>右击<code>以太网控制器</code>并点击<code>更新驱动</code></p>
+<blockquote>
+<p><strong>WARNING</strong>:由于图片上是英文系统，对应选项的译文有可能和实际显示不符= =</p>
+<p>以图片和你的系统上显示的内容为准</p>
+</blockquote>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image.png"
+	width="674"
+	height="498"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="英文系统上的内容"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="324px"
+	
+></p>
+<p>然后<strong>从本地</strong>选择驱动</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image.png"
+	width="533"
+	height="410"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="看不懂的话，直接选第二个选项= ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="312px"
+	
+></p>
+<p>选择的时候直接选你<code>VirtIO ISO</code>挂载的那个盘，我这里是<code>E:\</code></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image.png"
+	width="547"
+	height="394"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="够清晰了吧"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="333px"
+	
+></p>
+<p>对<code>显示适配器</code>重复同样的操作= =</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image.png"
+	width="676"
+	height="497"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="326px"
+	
+></p>
+<h3 id="配置远程访问">配置远程访问</h3>
+<p>为什么要这么做?</p>
+<p>因为在<code>Virt-Manager</code>里用虚拟机感觉说不出来的难受</p>
+<p>远程访问能够解决虚拟机两大难题</p>
+<ul>
+<li>
+<p>复制粘贴不互通</p>
+</li>
+<li>
+<p>文件不互通</p>
+</li>
+</ul>
+<p>首先，在<code>Windows</code>虚拟机中控制面板里允许远程控制</p>
+<blockquote>
+<p>这个大家应该会吧&hellip;qwq, 不写了</p>
+</blockquote>
+<p>接着，登出<code>Windows</code>虚拟机</p>
+<p>在<code>virt-manager</code>中获取虚拟机IP并记录</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image.png"
+	width="1134"
+	height="329"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="344"
+		data-flex-basis="827px"
+	
+></p>
+<p>在你的<code>Linux</code>主机打开终端，输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install remmina
+</span></span></code></pre></div><p>运行<code>remmina</code>命令打开远程控制软件</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png"
+	width="899"
+	height="513"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="remmina界面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="420px"
+	
+></p>
+<p>点左上角加号新建一个连接<code>Profile</code></p>
+<p>填入相关信息&hellip;</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image.png"
+	width="936"
+	height="642"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="349px"
+	
+></p>
+<blockquote>
+<p>Tip: <code>Share folder</code>填你想要共享给虚拟机文件夹的<strong>全路径</strong></p>
+</blockquote>
+<p>进入<code>Advanced</code>目录，</p>
+<p><code>Audio output mode</code>改为<code>Local</code>,</p>
+<p>为了美观，<code>Quality</code>可以改成<code>Best (slowest)</code></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image.png"
+	width="951"
+	height="633"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="内网嘛&hellip;速度反正很快~"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="360px"
+	
+></p>
+<p>在把<code>Spice Tools</code>放进共享文件夹后<code>Save and Connect</code></p>
+<h3 id="安装spice-tools">安装Spice Tools</h3>
+<blockquote>
+<p><code>Spice Tools</code>有助于提升用户体验</p>
+</blockquote>
+<p>上一步登入<code>Windows</code>虚拟机后，在<code>此电脑</code>里找到共享文件夹并打开</p>
+<p>把放进去的<code>Spice Tools</code>的<code>exe</code>文件拖到其他地方，并断开远程连接</p>
+<p>在<code>virt-manager</code>中进入虚拟机，并双击运行刚刚拖出来的<code>exe</code>文件</p>
+<p>然后就是下一步,&hellip;下一步&hellip;</p>
+<p>重启后就可以关掉<code>virt-manager</code>然后用<code>remmina</code>使用虚拟机辣~</p>
+<h3 id="remmina使用技巧">Remmina使用技巧</h3>
+<p>在连接后，可以打开两个东西，让使用体验更加丝滑:)</p>
+<ol>
+<li>
+<p>动态调整分辨率</p>
+<p>打开后虚拟机分辨率会随着窗口大小调整而调整</p>
+</li>
+</ol>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image.png"
+	width="893"
+	height="694"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="是不是无比丝滑~?"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<ol start="2">
+<li>
+<p>获取所有键盘操作</p>
+<p>这个能方便我们在虚拟机使用快捷键qwq</p>
+</li>
+</ol>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image.png"
+	width="892"
+	height="694"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="对于猫猫这样的老win用户，如果不能用win&#43;r，还真的很不习惯捏~"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h2 id="效果展示">效果展示</h2>
+<p>呼~这次终于是要结束了= =</p>
+<p>让我们一起来看看效果吧</p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image.png"
+	width="1920"
+	height="1080"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="整体效果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<p><img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image.png"
+	width="899"
+	height="697"
+	srcset="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_480x0_resize_box_3.png 480w, /p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="共享文件夹"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="309px"
+	
+></p>
+<h2 id="ref">Ref</h2>
+<p>本文参考以下视频教程:</p>
+<p><a class="link" href="https://www.youtube.com/watch?v=Zei8i9CpAn0"  target="_blank" rel="noopener"
+    >FAST! Windows VM on Linux using QEMU / kvm / VirtIO // Ditch Your VirtualBox! - YouTube</a></p>
+<p>英文好的各位也可以考虑看这个视频哦~</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/vm/">VM</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/">
+        
+        
+            <div class="article-image">
+                <img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.324a51e9dbf43598476ed25b88c6f485_hu5a0bff5542c2b4a2a99ba03dfc469cdd_192581_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Debian Linux下安装虚拟机软件"
+                        
+                        data-hash="md5-MkpR6dv0NZhHbtJbiMb0hQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Debian Linux下安装虚拟机软件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">
+        
+        
+            <div class="article-image">
+                <img src="/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/cover.441c90122ed582ec01a082e2cf5cabf0_hud3ad7a751bbd2237c0b01c746cf1ef70_1876263_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Phind-一个实用的AI搜索引擎"
+                        
+                        data-hash="md5-RByQEi7VguwBoILiz1yr8A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Phind-一个实用的AI搜索引擎</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/">
+        
+        
+            <div class="article-image">
+                <img src="/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化--Part3"
+                        
+                        data-hash="md5-dvSjHRhtFs1atHMRO52g5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kali Gnome桌面环境の调整&amp;美化--Part3</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/cover.6609479bd0907ec6ea00715509d31ad3_hud789057b5615606983ce824e4e6d2366_3484484_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化--Part2"
+                        
+                        data-hash="md5-ZglHm9CQfsbqAHFVCdMa0w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kali Gnome桌面环境の调整&amp;美化--Part2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">
+        
+        
+            <div class="article-image">
+                <img src="/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/cover.3cefc1778c5c86f23c3dec8316fc07fa_hud7fd8ab6e651f4b11b6ec81f5975f698_2529435_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Thunar文件管理器玩转右键菜单"
+                        
+                        data-hash="md5-PO/Bd4xchvI8PeyDFvwH&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Thunar文件管理器玩转右键菜单</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前期准备">前期准备</a></li>
+    <li><a href="#安装qemukvm">安装QEMU/KVM</a></li>
+    <li><a href="#创建windows虚拟机">创建Windows虚拟机</a></li>
+    <li><a href="#更改windows虚拟机设置">更改Windows虚拟机设置</a></li>
+    <li><a href="#虚拟机安装系统">虚拟机安装系统</a></li>
+    <li><a href="#虚拟机其他配置">虚拟机其他配置</a>
+      <ol>
+        <li><a href="#更新一些驱动">更新一些驱动</a></li>
+        <li><a href="#配置远程访问">配置远程访问</a></li>
+        <li><a href="#安装spice-tools">安装Spice Tools</a></li>
+        <li><a href="#remmina使用技巧">Remmina使用技巧</a></li>
+      </ol>
+    </li>
+    <li><a href="#效果展示">效果展示</a></li>
+    <li><a href="#ref">Ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>
