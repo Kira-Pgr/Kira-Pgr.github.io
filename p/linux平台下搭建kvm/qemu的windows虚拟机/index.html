@@ -3,16 +3,16 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='和Win虚拟机卡慢说拜拜'><title>Linux平台下搭建KVM/QEMU的Windows虚拟机</title>
 
-<link rel='canonical' href='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
+<link rel='canonical' href='https://kira-pgr.github.io/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
 
 <link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Linux平台下搭建KVM/QEMU的Windows虚拟机'>
 <meta property='og:description' content='和Win虚拟机卡慢说拜拜'>
-<meta property='og:url' content='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
+<meta property='og:url' content='https://kira-pgr.github.io/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/'>
 <meta property='og:site_name' content='猫猫の博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VM' /><meta property='article:published_time' content='2023-06-07T17:07:14&#43;08:00'/><meta property='article:modified_time' content='2023-06-07T17:07:14&#43;08:00'/><meta property='og:image' content='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VM' /><meta property='article:published_time' content='2023-06-07T17:07:14&#43;08:00'/><meta property='article:modified_time' content='2023-06-07T17:07:14&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg' />
 <meta name="twitter:title" content="Linux平台下搭建KVM/QEMU的Windows虚拟机">
 <meta name="twitter:description" content="和Win虚拟机卡慢说拜拜"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://blog.nanosec.site/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg' /><head>
+    <meta name="twitter:image" content='https://kira-pgr.github.io/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg' /><head>
     <style>
  .blur {
    color: transparent;

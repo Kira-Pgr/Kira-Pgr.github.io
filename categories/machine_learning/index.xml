@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Machine_Learning on 猫猫の博客</title>
-        <link>https://blog.nanosec.site/categories/machine_learning/</link>
+        <link>https://kira-pgr.github.io/categories/machine_learning/</link>
         <description>Recent content in Machine_Learning on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 22 Mar 2023 13:38:46 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/categories/machine_learning/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 22 Mar 2023 13:38:46 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/machine_learning/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Phind-一个实用的AI搜索引擎</title>
-        <link>https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
+        <link>https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
         <pubDate>Wed, 22 Mar 2023 13:38:46 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</guid>
-        <description>&lt;img src="https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/cover.jpg" alt="Featured image of post Phind-一个实用的AI搜索引擎" /&gt;&lt;h1 id=&#34;phind-一个实用的ai搜索引擎&#34;&gt;Phind-一个实用的AI搜索引擎&lt;/h1&gt;
+        <guid>https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/cover.jpg" alt="Featured image of post Phind-一个实用的AI搜索引擎" /&gt;&lt;h1 id=&#34;phind-一个实用的ai搜索引擎&#34;&gt;Phind-一个实用的AI搜索引擎&lt;/h1&gt;
 &lt;p&gt;随着AI技术的迅速发展，在网上搜索想要的东西也变得方便很多了，以前觉得是搜索引擎&amp;quot;天花板&amp;quot;的Google也变得没那么香了。&lt;/p&gt;
 &lt;p&gt;&lt;del&gt;同样，以前的万能问题回答&amp;quot;自己谷歌&amp;quot;现在也变成了&amp;quot;问ChatGPT&amp;quot;去&lt;/del&gt;。逃)&lt;/p&gt;
 &lt;p&gt;不过，无论是GPT系列还是必应想要使用都有几大难题:&lt;/p&gt;
@@ -43,10 +43,10 @@
 &lt;h2 id=&#34;开始使用phind&#34;&gt;开始使用Phind&lt;/h2&gt;
 &lt;p&gt;嘛&amp;hellip;打开你的浏览器再输入这个&lt;a class=&#34;link&#34; href=&#34;https://www.phind.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;网址&lt;/a&gt;就可以了&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image.png&#34;
 	width=&#34;1898&#34;
 	height=&#34;909&#34;
-	srcset=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image_hu017e8ba60755042a036e538be1bd4321_108551_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image_hu017e8ba60755042a036e538be1bd4321_108551_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image_hu017e8ba60755042a036e538be1bd4321_108551_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image_hu017e8ba60755042a036e538be1bd4321_108551_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;界面&#34;
@@ -73,10 +73,10 @@
 &lt;p&gt;搜索结果&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image.png&#34;
 	width=&#34;1855&#34;
 	height=&#34;905&#34;
-	srcset=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image_hu22c9bc7594912f3538cf0e5a7a7fd8b8_263071_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image_hu22c9bc7594912f3538cf0e5a7a7fd8b8_263071_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image_hu22c9bc7594912f3538cf0e5a7a7fd8b8_263071_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image_hu22c9bc7594912f3538cf0e5a7a7fd8b8_263071_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -109,10 +109,10 @@
 &lt;p&gt;你可以自定义搜索结果来源，并优先选择搜索哪些来源&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;想使用这个功能，点击左下角&lt;code&gt;Customize search&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image.png&#34;
 	width=&#34;1918&#34;
 	height=&#34;881&#34;
-	srcset=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image_hu3ac1dd411ed544f00acd51234a4119d4_254219_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image_hu3ac1dd411ed544f00acd51234a4119d4_254219_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image_hu3ac1dd411ed544f00acd51234a4119d4_254219_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image_hu3ac1dd411ed544f00acd51234a4119d4_254219_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Customize search&#34;
@@ -126,10 +126,10 @@
 &lt;p&gt;然后加入你想要的域名或者关键词，并对于域名或者关键词进行分级&lt;/p&gt;
 &lt;p&gt;级别从&lt;code&gt;+++&lt;/code&gt;到&lt;code&gt;---&lt;/code&gt;,&lt;code&gt;+&lt;/code&gt;越多优先级越高&lt;/p&gt;
 &lt;p&gt;比如说我很想要来自&lt;code&gt;stackoverflow&lt;/code&gt;的结果，那么我就给&lt;code&gt;stackoverflow.com&lt;/code&gt;分级为&lt;code&gt;+++&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image.png&#34;
 	width=&#34;1118&#34;
 	height=&#34;818&#34;
-	srcset=&#34;https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image_hu5cad1667124dfa0b8d3a5bd48c398049_56334_480x0_resize_box_3.png 480w, https://blog.nanosec.site/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image_hu5cad1667124dfa0b8d3a5bd48c398049_56334_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image_hu5cad1667124dfa0b8d3a5bd48c398049_56334_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image_hu5cad1667124dfa0b8d3a5bd48c398049_56334_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;&amp;#43;&amp;#43;&amp;#43;&#34;

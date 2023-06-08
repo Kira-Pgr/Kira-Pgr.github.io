@@ -2,96 +2,96 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on 猫猫の博客</title>
-        <link>https://blog.nanosec.site/tags/</link>
+        <link>https://kira-pgr.github.io/tags/</link>
         <description>Recent content in Tags on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 07 Jun 2023 17:07:14 +0800</lastBuildDate><atom:link href="https://blog.nanosec.site/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 07 Jun 2023 17:07:14 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>VM</title>
-        <link>https://blog.nanosec.site/tags/vm/</link>
+        <link>https://kira-pgr.github.io/tags/vm/</link>
         <pubDate>Wed, 07 Jun 2023 17:07:14 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/vm/</guid>
+        <guid>https://kira-pgr.github.io/tags/vm/</guid>
         <description></description>
         </item>
         <item>
         <title>AI</title>
-        <link>https://blog.nanosec.site/tags/ai/</link>
+        <link>https://kira-pgr.github.io/tags/ai/</link>
         <pubDate>Wed, 22 Mar 2023 13:38:46 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/ai/</guid>
+        <guid>https://kira-pgr.github.io/tags/ai/</guid>
         <description></description>
         </item>
         <item>
         <title>Gnome</title>
-        <link>https://blog.nanosec.site/tags/gnome/</link>
+        <link>https://kira-pgr.github.io/tags/gnome/</link>
         <pubDate>Mon, 20 Mar 2023 18:08:35 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/gnome/</guid>
+        <guid>https://kira-pgr.github.io/tags/gnome/</guid>
         <description></description>
         </item>
         <item>
         <title>Post-exploitation</title>
-        <link>https://blog.nanosec.site/tags/post-exploitation/</link>
+        <link>https://kira-pgr.github.io/tags/post-exploitation/</link>
         <pubDate>Mon, 30 Jan 2023 13:57:43 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/post-exploitation/</guid>
+        <guid>https://kira-pgr.github.io/tags/post-exploitation/</guid>
         <description></description>
         </item>
         <item>
         <title>Web Sec</title>
-        <link>https://blog.nanosec.site/tags/web-sec/</link>
+        <link>https://kira-pgr.github.io/tags/web-sec/</link>
         <pubDate>Wed, 16 Nov 2022 17:43:04 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/web-sec/</guid>
+        <guid>https://kira-pgr.github.io/tags/web-sec/</guid>
         <description></description>
         </item>
         <item>
         <title>Burp</title>
-        <link>https://blog.nanosec.site/tags/burp/</link>
+        <link>https://kira-pgr.github.io/tags/burp/</link>
         <pubDate>Mon, 03 Oct 2022 18:05:25 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/burp/</guid>
+        <guid>https://kira-pgr.github.io/tags/burp/</guid>
         <description></description>
         </item>
         <item>
         <title>Terminal</title>
-        <link>https://blog.nanosec.site/tags/terminal/</link>
+        <link>https://kira-pgr.github.io/tags/terminal/</link>
         <pubDate>Sun, 25 Sep 2022 10:51:58 +0800</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/terminal/</guid>
+        <guid>https://kira-pgr.github.io/tags/terminal/</guid>
         <description></description>
         </item>
         <item>
         <title>Blog</title>
-        <link>https://blog.nanosec.site/tags/blog/</link>
+        <link>https://kira-pgr.github.io/tags/blog/</link>
         <pubDate>Sun, 15 May 2022 02:19:13 -0400</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/blog/</guid>
+        <guid>https://kira-pgr.github.io/tags/blog/</guid>
         <description></description>
         </item>
         <item>
         <title>GitHub</title>
-        <link>https://blog.nanosec.site/tags/github/</link>
+        <link>https://kira-pgr.github.io/tags/github/</link>
         <pubDate>Sun, 15 May 2022 02:19:13 -0400</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/github/</guid>
+        <guid>https://kira-pgr.github.io/tags/github/</guid>
         <description></description>
         </item>
         <item>
         <title>exploit</title>
-        <link>https://blog.nanosec.site/tags/exploit/</link>
+        <link>https://kira-pgr.github.io/tags/exploit/</link>
         <pubDate>Fri, 13 May 2022 03:44:40 -0400</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/exploit/</guid>
+        <guid>https://kira-pgr.github.io/tags/exploit/</guid>
         <description></description>
         </item>
         <item>
         <title>PWN</title>
-        <link>https://blog.nanosec.site/tags/pwn/</link>
+        <link>https://kira-pgr.github.io/tags/pwn/</link>
         <pubDate>Thu, 14 Apr 2022 23:21:24 -0400</pubDate>
         
-        <guid>https://blog.nanosec.site/tags/pwn/</guid>
+        <guid>https://kira-pgr.github.io/tags/pwn/</guid>
         <description></description>
         </item>
         
