@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='比Windows还丝滑的文件拖拽体验'><title>SSH软件Termius推荐</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='SSH软件Termius推荐'>
+<meta property='og:description' content='比Windows还丝滑的文件拖拽体验'>
+<meta property='og:url' content='https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Terminal' /><meta property='article:published_time' content='2023-06-17T16:19:51&#43;08:00'/><meta property='article:modified_time' content='2023-06-17T16:19:51&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/cover.jpg' />
+<meta name="twitter:title" content="SSH软件Termius推荐">
+<meta name="twitter:description" content="比Windows还丝滑的文件拖拽体验"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">猫猫の博客</a></h1>
+            <h2 class="site-description">累了, 毁灭吧(</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/">
+                <img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/cover_hu307d91f0734f4671faee94d116bb7d59_5797042_800x0_resize_q75_box.jpg"
+                        srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/cover_hu307d91f0734f4671faee94d116bb7d59_5797042_800x0_resize_q75_box.jpg 800w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/cover_hu307d91f0734f4671faee94d116bb7d59_5797042_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="448" 
+                        loading="lazy"
+                        alt="Featured image of post SSH软件Termius推荐" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/software/" style="background-color: #c0972b; color: #fff;">
+                Software
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/">SSH软件Termius推荐</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            比Windows还丝滑的文件拖拽体验
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 17, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="ssh软件termius推荐">SSH软件Termius推荐</h1>
+<h2 id="前言">前言</h2>
+<p>有朋友肯定会问，为什么不用命令行直接SSH?</p>
+<p>答案应该很明了：<del>因为我懒啊</del></p>
+<p>经常看我blog的朋友应该知道，懒猫猫为了用着方便，特别喜欢把我的Linux折腾出一股Windows味 ;(</p>
+<h2 id="termius简介">Termius简介</h2>
+<p>所以，今天先大家推荐软件<code>Termius</code>,一款多平台SSH连接用的软件= =</p>
+<p>它有如下优点:</p>
+<ul>
+<li>
+<p>超丝滑的终端体验</p>
+<ul>
+<li>
+<p>终端命令智能补全</p>
+</li>
+<li>
+<p>自定义快捷命令块</p>
+</li>
+<li>
+<p>自动输入密码</p>
+</li>
+<li>
+<p>一个窗口多个终端</p>
+</li>
+<li>
+<p>选中+单击实现复制粘贴</p>
+<p><em>(嗯&hellip;很有Windows味)</em></p>
+</li>
+</ul>
+</li>
+<li>
+<p>无需命令的SFTP</p>
+<ul>
+<li>
+<p>可以像文件资源管理器一样看文件夹</p>
+<blockquote>
+<p>PS: 可以一个窗口内放两个文件浏览页面，省去开多个窗口，Tab还要翻动页面的烦恼</p>
+</blockquote>
+</li>
+<li>
+<p>拖拽上传，下载，移动文件</p>
+</li>
+<li>
+<p>右键实现文件操作 (删除，改权限等)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>多端SSH信息同步，也就是你在电脑端储存了服务器信息，手机端也同步过去</p>
+</li>
+<li>
+<p>一些有点奇怪但有用的功能</p>
+<blockquote>
+<p>这部分大家请自行探索 ;)</p>
+</blockquote>
+<ul>
+<li>
+<p>分享SSH会话 - -</p>
+</li>
+<li>
+<p>本地/远程端口转发</p>
+</li>
+<li>
+<p>作为<code>SOCKS</code>代理</p>
+<p><img src="2e95152d222194275b031a2654a8d0910cca6a5f.jpg" title="" alt="没错，你永远也猜不到对方用的什么做代理" width="53"><br>
+<small><small><strike>没错，你永远也猜不到别人用的什么做代理= =</strike></small></small></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>美中不足的是，这款软件有些功能需要花钱，比如说端口转发，代理等，但是你可以试用将近一个月，而且开通了<code>GitHub</code>学生包就免费辣:)</p>
+<blockquote>
+<p>免费版功能完全也够用，而且也很丝滑</p>
+</blockquote>
+<p>然而，我最不能接受的一点就是不能够客制化主题，</p>
+<p>而且还不能放壁纸!!!!</p>
+<p><img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-16-21-image.png"
+	width="331"
+	height="325"
+	srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-16-21-image_hu6fcd7b8f150aa4c6f69afb299ccc2271_158641_480x0_resize_box_3.png 480w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-16-21-image_hu6fcd7b8f150aa4c6f69afb299ccc2271_158641_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="不~~老二次元不能没有壁纸ww!"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="101"
+		data-flex-basis="244px"
+	
+></p>
+<p>不过，这么好的功能，为了壁纸放弃也太不值了啊喂= =</p>
+<h2 id="部分实用功能展示">部分实用功能展示</h2>
+<p>嘿嘿，不知道你们怎么感觉</p>
+<p>猫猫反正心动咯!</p>
+<h3 id="和终端相关的功能">和终端相关的功能</h3>
+<p>直接放图吧!</p>
+<p>视觉冲击才是最好的（</p>
+<p><img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-21-11-image.png"
+	width="1920"
+	height="1043"
+	srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-21-11-image_hu6df4f07955d4254d262fbebdeddd7fae_350117_480x0_resize_box_3.png 480w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-21-11-image_hu6df4f07955d4254d262fbebdeddd7fae_350117_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="一窗口多终端"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="441px"
+	
+></p>
+<p><img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-22-37-image.png"
+	width="1920"
+	height="1043"
+	srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-22-37-image_hu31e5e65a0df95cb61ac0a28649bddb7a_125240_480x0_resize_box_3.png 480w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-22-37-image_hu31e5e65a0df95cb61ac0a28649bddb7a_125240_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="命令补全"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="441px"
+	
+></p>
+<p><img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-24-09-image.png"
+	width="1920"
+	height="1043"
+	srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-24-09-image_hu73f5b0d3d8a8769e58675a3398b91716_215917_480x0_resize_box_3.png 480w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-24-09-image_hu73f5b0d3d8a8769e58675a3398b91716_215917_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="密码自动输入"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="441px"
+	
+></p>
+<h3 id="sftp">SFTP</h3>
+<p>这个功能使用起来很简单，就和Windows文件差不多</p>
+<p><img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-28-30-image.png"
+	width="1920"
+	height="1043"
+	srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-28-30-image_hua2ee798f75a6f6247951bb3a0551847c_196575_480x0_resize_box_3.png 480w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-28-30-image_hua2ee798f75a6f6247951bb3a0551847c_196575_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="选择文件互传机器，也可以通过这个方式来移动文件(自己传给自己)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="441px"
+	
+></p>
+<p><img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-29-45-image.png"
+	width="1920"
+	height="1043"
+	srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-29-45-image_hu75911b078183bc841dcf45c030e425d9_245030_480x0_resize_box_3.png 480w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-29-45-image_hu75911b078183bc841dcf45c030e425d9_245030_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="拖动下载示例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="441px"
+	
+></p>
+<p><img src="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-31-13-image.png"
+	width="1920"
+	height="1043"
+	srcset="/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-31-13-image_hu336c96ee51a0002b1c5de7aeb6a4a428_242146_480x0_resize_box_3.png 480w, /p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-31-13-image_hu336c96ee51a0002b1c5de7aeb6a4a428_242146_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="右键更多操作，你都可以直接图形化修改权限哦:)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="441px"
+	
+></p>
+<blockquote>
+<p>Tip: 点右上角<code>Actions</code>&ndash;&gt;<code>Show Hidden Files</code>即可操作隐藏文件</p>
+</blockquote>
+<h1 id="heading"></h1>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/terminal/">Terminal</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linux/windows%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/cover.fb5c0b5fc6e0eed1fd1f665f44ff2b00_hu99afe94c4a345b020505285bddeebbdd_2544478_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux/Windows终端美化"
+                        
+                        data-hash="md5-&#43;1wLX8bg7tH9H2ZfRP8rAA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux/Windows终端美化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.4464f018b5cd958a3da7c4b180ced7f7_huaff3555d9167d8863726c9c3b3b95f86_2865950_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux平台下搭建KVM/QEMU的Windows虚拟机"
+                        
+                        data-hash="md5-RGTwGLXNlYo9p8SxgM7X9w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux平台下搭建KVM/QEMU的Windows虚拟机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">
+        
+        
+            <div class="article-image">
+                <img src="/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/cover.441c90122ed582ec01a082e2cf5cabf0_hud3ad7a751bbd2237c0b01c746cf1ef70_1876263_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Phind-一个实用的AI搜索引擎"
+                        
+                        data-hash="md5-RByQEi7VguwBoILiz1yr8A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Phind-一个实用的AI搜索引擎</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/">
+        
+        
+            <div class="article-image">
+                <img src="/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.324a51e9dbf43598476ed25b88c6f485_hu5a0bff5542c2b4a2a99ba03dfc469cdd_192581_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Debian Linux下安装虚拟机软件"
+                        
+                        data-hash="md5-MkpR6dv0NZhHbtJbiMb0hQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Debian Linux下安装虚拟机软件</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/">
+        
+        
+            <div class="article-image">
+                <img src="/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/cover.af704ad07b0b03e760dfafb8d575b284_hua2066985386d1eb65cef6aee0e5704d3_126782_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Burp Suite Professional 安装&#43;破解教程"
+                        
+                        data-hash="md5-r3BK0HsLA&#43;dg36&#43;41XWyhA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Burp Suite Professional 安装&#43;破解教程</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#termius简介">Termius简介</a></li>
+    <li><a href="#部分实用功能展示">部分实用功能展示</a>
+      <ol>
+        <li><a href="#和终端相关的功能">和终端相关的功能</a></li>
+        <li><a href="#sftp">SFTP</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

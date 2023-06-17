@@ -6,7 +6,202 @@
         <description>Recent content in Posts on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 07 Jun 2023 17:07:14 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 17 Jun 2023 16:19:51 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SSH软件Termius推荐</title>
+        <link>https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/</link>
+        <pubDate>Sat, 17 Jun 2023 16:19:51 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/cover.jpg" alt="Featured image of post SSH软件Termius推荐" /&gt;&lt;h1 id=&#34;ssh软件termius推荐&#34;&gt;SSH软件Termius推荐&lt;/h1&gt;
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;有朋友肯定会问，为什么不用命令行直接SSH?&lt;/p&gt;
+&lt;p&gt;答案应该很明了：&lt;del&gt;因为我懒啊&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;经常看我blog的朋友应该知道，懒猫猫为了用着方便，特别喜欢把我的Linux折腾出一股Windows味 ;(&lt;/p&gt;
+&lt;h2 id=&#34;termius简介&#34;&gt;Termius简介&lt;/h2&gt;
+&lt;p&gt;所以，今天先大家推荐软件&lt;code&gt;Termius&lt;/code&gt;,一款多平台SSH连接用的软件= =&lt;/p&gt;
+&lt;p&gt;它有如下优点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;超丝滑的终端体验&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;终端命令智能补全&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自定义快捷命令块&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;自动输入密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一个窗口多个终端&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选中+单击实现复制粘贴&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(嗯&amp;hellip;很有Windows味)&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无需命令的SFTP&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可以像文件资源管理器一样看文件夹&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS: 可以一个窗口内放两个文件浏览页面，省去开多个窗口，Tab还要翻动页面的烦恼&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;拖拽上传，下载，移动文件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;右键实现文件操作 (删除，改权限等)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;多端SSH信息同步，也就是你在电脑端储存了服务器信息，手机端也同步过去&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一些有点奇怪但有用的功能&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这部分大家请自行探索 ;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;分享SSH会话 - -&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本地/远程端口转发&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作为&lt;code&gt;SOCKS&lt;/code&gt;代理&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2e95152d222194275b031a2654a8d0910cca6a5f.jpg&#34; title=&#34;&#34; alt=&#34;没错，你永远也猜不到对方用的什么做代理&#34; width=&#34;53&#34;&gt;&lt;br&gt;
+&lt;small&gt;&lt;small&gt;&lt;strike&gt;没错，你永远也猜不到别人用的什么做代理= =&lt;/strike&gt;&lt;/small&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;美中不足的是，这款软件有些功能需要花钱，比如说端口转发，代理等，但是你可以试用将近一个月，而且开通了&lt;code&gt;GitHub&lt;/code&gt;学生包就免费辣:)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;免费版功能完全也够用，而且也很丝滑&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然而，我最不能接受的一点就是不能够客制化主题，&lt;/p&gt;
+&lt;p&gt;而且还不能放壁纸!!!!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-16-21-image.png&#34;
+	width=&#34;331&#34;
+	height=&#34;325&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-16-21-image_hu6fcd7b8f150aa4c6f69afb299ccc2271_158641_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-16-21-image_hu6fcd7b8f150aa4c6f69afb299ccc2271_158641_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不~~老二次元不能没有壁纸ww!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;101&#34;
+		data-flex-basis=&#34;244px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;不过，这么好的功能，为了壁纸放弃也太不值了啊喂= =&lt;/p&gt;
+&lt;h2 id=&#34;部分实用功能展示&#34;&gt;部分实用功能展示&lt;/h2&gt;
+&lt;p&gt;嘿嘿，不知道你们怎么感觉&lt;/p&gt;
+&lt;p&gt;猫猫反正心动咯!&lt;/p&gt;
+&lt;h3 id=&#34;和终端相关的功能&#34;&gt;和终端相关的功能&lt;/h3&gt;
+&lt;p&gt;直接放图吧!&lt;/p&gt;
+&lt;p&gt;视觉冲击才是最好的（&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-21-11-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1043&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-21-11-image_hu6df4f07955d4254d262fbebdeddd7fae_350117_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-21-11-image_hu6df4f07955d4254d262fbebdeddd7fae_350117_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一窗口多终端&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-22-37-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1043&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-22-37-image_hu31e5e65a0df95cb61ac0a28649bddb7a_125240_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-22-37-image_hu31e5e65a0df95cb61ac0a28649bddb7a_125240_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令补全&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-24-09-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1043&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-24-09-image_hu73f5b0d3d8a8769e58675a3398b91716_215917_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-24-09-image_hu73f5b0d3d8a8769e58675a3398b91716_215917_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;密码自动输入&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;sftp&#34;&gt;SFTP&lt;/h3&gt;
+&lt;p&gt;这个功能使用起来很简单，就和Windows文件差不多&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-28-30-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1043&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-28-30-image_hua2ee798f75a6f6247951bb3a0551847c_196575_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-28-30-image_hua2ee798f75a6f6247951bb3a0551847c_196575_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;选择文件互传机器，也可以通过这个方式来移动文件(自己传给自己)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-29-45-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1043&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-29-45-image_hu75911b078183bc841dcf45c030e425d9_245030_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-29-45-image_hu75911b078183bc841dcf45c030e425d9_245030_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;拖动下载示例&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-31-13-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1043&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-31-13-image_hu336c96ee51a0002b1c5de7aeb6a4a428_242146_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/2023-06-17-17-31-13-image_hu336c96ee51a0002b1c5de7aeb6a4a428_242146_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;右键更多操作，你都可以直接图形化修改权限哦:)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: 点右上角&lt;code&gt;Actions&lt;/code&gt;&amp;ndash;&amp;gt;&lt;code&gt;Show Hidden Files&lt;/code&gt;即可操作隐藏文件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
+</description>
+        </item>
+        <item>
         <title>Linux平台下搭建KVM/QEMU的Windows虚拟机</title>
         <link>https://kira-pgr.github.io/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
         <pubDate>Wed, 07 Jun 2023 17:07:14 +0800</pubDate>
