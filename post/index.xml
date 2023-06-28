@@ -6,7 +6,138 @@
         <description>Recent content in Posts on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 17 Jun 2023 16:19:51 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 Jun 2023 20:04:01 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>在Linux上使用截图软件Snipaste</title>
+        <link>https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/</link>
+        <pubDate>Tue, 27 Jun 2023 20:04:01 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/cover.jpg" alt="Featured image of post 在Linux上使用截图软件Snipaste" /&gt;&lt;h1 id=&#34;在linux上使用截图软件snipaste&#34;&gt;在Linux上使用截图软件Snipaste&lt;/h1&gt;
+&lt;p&gt;在离开&lt;code&gt;Windows&lt;/code&gt;之后很长时间，猫猫都对于那款名叫&lt;code&gt;Snipaste&lt;/code&gt;的截图软件甚是怀念&lt;/p&gt;
+&lt;p&gt;可惜官方还没有制作完适配&lt;code&gt;Linux&lt;/code&gt;的版本 :(&lt;/p&gt;
+&lt;p&gt;唉&amp;hellip;那就只有自己折腾&lt;strong&gt;wine&lt;/strong&gt;了&lt;/p&gt;
+&lt;h2 id=&#34;wine的安装&#34;&gt;Wine的安装&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install wine64
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Tip:&lt;/p&gt;
+&lt;p&gt;如果你的系统是32位的，请使用&lt;code&gt;sudo apt install wine32&lt;/code&gt;
+目前大部分Linux都只有64位了= =&lt;/p&gt;
+&lt;p&gt;如果你不大确定你是不是64位，请使用&lt;code&gt;lscpu&lt;/code&gt;命令并查看&lt;code&gt;CPU op-mode(s)&lt;/code&gt;项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CPU op-mode(s): 32-bit:&lt;/strong&gt; 你用的是32位系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CPU op-mode(s): 64-bit:&lt;/strong&gt; 你用的是64位系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CPU op-mode(s): 32-bit, 64-bit:&lt;/strong&gt; 你的系统同时支持32位和64位 (这种情况最普遍)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-21-29-image.png&#34;
+	width=&#34;1327&#34;
+	height=&#34;703&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-21-29-image_hu07804e81f189cdbb477c598bac83606f_1090640_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-21-29-image_hu07804e81f189cdbb477c598bac83606f_1090640_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下载snipaste&#34;&gt;下载Snipaste&lt;/h2&gt;
+&lt;p&gt;进入&lt;a class=&#34;link&#34; href=&#34;https://www.snipaste.com/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网下载页面&lt;/a&gt;下载&lt;/p&gt;
+&lt;p&gt;注意我们要选择&lt;code&gt;portable&lt;/code&gt;的&lt;code&gt;Windows&lt;/code&gt;版本&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-26-10-image.png&#34;
+	width=&#34;604&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-26-10-image_hu0393b4c6ad2d65f09d0f9948456d5e17_42602_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-26-10-image_hu0393b4c6ad2d65f09d0f9948456d5e17_42602_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;依据你的系统对应下载32/64位的Snipaste&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;296px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Portable&lt;/code&gt;软件包的优势是没有安装包，直接解压就可以使用，&lt;/p&gt;
+&lt;p&gt;方便我们用&lt;code&gt;Wine&lt;/code&gt;运行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;运行snipaste&#34;&gt;运行Snipaste&lt;/h2&gt;
+&lt;p&gt;把下载下来的压缩包解压到一个合适的地方&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-32-48-image.png&#34;
+	width=&#34;1020&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-32-48-image_hu6e222b36e13e546240299f76b475cf13_46906_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-32-48-image_hu6e222b36e13e546240299f76b475cf13_46906_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;466px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后在该位置打开终端并输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wine Snipaste.exe
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后你的Snipaste就应该运行起来了，你应该能在任务栏里看到一个白色的图标&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image.png&#34;
+	width=&#34;524&#34;
+	height=&#34;34&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image_hu9c5a93e18bf51de1680b883f3ed56cba_16492_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image_hu9c5a93e18bf51de1680b883f3ed56cba_16492_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;怪哦，怎么有只猫猫， 没错，那是猫猫本体  (bushi&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1541&#34;
+		data-flex-basis=&#34;3698px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击它就能进行截图啦 :)&lt;/p&gt;
+&lt;h2 id=&#34;配置snipaste快捷键&#34;&gt;配置Snipaste快捷键&lt;/h2&gt;
+&lt;p&gt;在一阵测试后发现在Linux上不能正常使用Snipaste快捷键&lt;/p&gt;
+&lt;p&gt;不过，截图怎么能少了快捷键呢?&lt;/p&gt;
+&lt;p&gt;所以我找到了一个方案&lt;/p&gt;
+&lt;p&gt;去设置里找到自定义快捷键&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于不同系统界面的差异，找不到的自行搜索，这里就不演示了 :]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后在命令那一栏写上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;xdotool key --window &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;xdotool search --name Snipaste &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -n1&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; F1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后配上你喜欢的截图快捷键&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image.png&#34;
+	width=&#34;585&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image_hu0b1c4c9e162f92f82651ed878c57153a_31076_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image_hu0b1c4c9e162f92f82651ed878c57153a_31076_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;我这里是Ctrl&amp;#43;PrintScreen&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;342px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;其他快捷键在截图后也都能正常使用了哦~&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://phoenixnap.com/kb/how-to-install-wine-on-ubuntu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;How to Install Wine on Ubuntu {Tutorial with Screenshots}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.snipaste.com/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Snipaste Downloads&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>SSH软件Termius推荐</title>
         <link>https://kira-pgr.github.io/p/ssh%E8%BD%AF%E4%BB%B6termius%E6%8E%A8%E8%8D%90/</link>
         <pubDate>Sat, 17 Jun 2023 16:19:51 +0800</pubDate>
