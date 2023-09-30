@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Machine_Learning on 猫猫の博客</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/machine_learning/</link>
+        <description>Recent content in Machine_Learning on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 22 Mar 2023 13:38:46 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/categories/machine_learning/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Phind-一个实用的AI搜索引擎</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</link>
+        <pubDate>Wed, 22 Mar 2023 13:38:46 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/cover.jpg" alt="Featured image of post Phind-一个实用的AI搜索引擎" /&gt;&lt;h1 id=&#34;phind-一个实用的ai搜索引擎&#34;&gt;Phind-一个实用的AI搜索引擎&lt;/h1&gt;
+&lt;p&gt;随着AI技术的迅速发展，在网上搜索想要的东西也变得方便很多了，以前觉得是搜索引擎&amp;quot;天花板&amp;quot;的Google也变得没那么香了。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;同样，以前的万能问题回答&amp;quot;自己谷歌&amp;quot;现在也变成了&amp;quot;问ChatGPT&amp;quot;去&lt;/del&gt;。逃)&lt;/p&gt;
+&lt;p&gt;不过，无论是GPT系列还是必应想要使用都有几大难题:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;烦人的Waitlist&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;总需要爬点什么东西:)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Edit-2023-6-7: 目前Phind已停止对国内的服务:(&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要海外手机号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要花小钱钱&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有时候AI会开始胡诌&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今天我要推荐的这个小众搜索引擎Phind就能完全&lt;strong&gt;Get rid of&lt;/strong&gt;这些难题&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;应该还算&amp;hellip;.干货文章吧&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;开始使用phind&#34;&gt;开始使用Phind&lt;/h2&gt;
+&lt;p&gt;嘛&amp;hellip;打开你的浏览器再输入这个&lt;a class=&#34;link&#34; href=&#34;https://www.phind.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;网址&lt;/a&gt;就可以了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image.png&#34;
+	width=&#34;1898&#34;
+	height=&#34;909&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image_hu017e8ba60755042a036e538be1bd4321_108551_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-03-30-image_hu017e8ba60755042a036e538be1bd4321_108551_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;501px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后就输入你的问题，和问ChatGPT差不多，问题问得越详细越好.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 问题用中英文问都可以&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;它的搜索页面大概分为三部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;聊天记录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AI总结搜索结果得出的回答&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;搜索结果&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image.png&#34;
+	width=&#34;1855&#34;
+	height=&#34;905&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image_hu22c9bc7594912f3538cf0e5a7a7fd8b8_263071_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-07-46-image_hu22c9bc7594912f3538cf0e5a7a7fd8b8_263071_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;至于那个&lt;code&gt;+++&lt;/code&gt;是什么后面会讲到&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;优点&#34;&gt;优点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;国内免登陆可用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;结果更加准确，胡诌的概率小一点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同时显示了搜索结果和AI答案来源&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可自定义的项较多&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;自定义搜索结果优先级&#34;&gt;自定义搜索结果优先级&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在这里我特别想提到一个很有用的功能，&lt;/p&gt;
+&lt;p&gt;你可以自定义搜索结果来源，并优先选择搜索哪些来源&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;想使用这个功能，点击左下角&lt;code&gt;Customize search&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image.png&#34;
+	width=&#34;1918&#34;
+	height=&#34;881&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image_hu3ac1dd411ed544f00acd51234a4119d4_254219_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-15-04-image_hu3ac1dd411ed544f00acd51234a4119d4_254219_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Customize search&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;217&#34;
+		data-flex-basis=&#34;522px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后加入你想要的域名或者关键词，并对于域名或者关键词进行分级&lt;/p&gt;
+&lt;p&gt;级别从&lt;code&gt;+++&lt;/code&gt;到&lt;code&gt;---&lt;/code&gt;,&lt;code&gt;+&lt;/code&gt;越多优先级越高&lt;/p&gt;
+&lt;p&gt;比如说我很想要来自&lt;code&gt;stackoverflow&lt;/code&gt;的结果，那么我就给&lt;code&gt;stackoverflow.com&lt;/code&gt;分级为&lt;code&gt;+++&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image.png&#34;
+	width=&#34;1118&#34;
+	height=&#34;818&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image_hu5cad1667124dfa0b8d3a5bd48c398049_56334_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/phind-%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/2023-03-22-14-18-30-image_hu5cad1667124dfa0b8d3a5bd48c398049_56334_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;&amp;#43;&amp;#43;&amp;#43;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;其他有趣的自定义地方&#34;&gt;其他有趣的自定义地方&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;你可以选择要精简的答案(Concise enabled),或者详细的答案(Detailed enabled)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;你可以选择要来自Web更精准的答案(Web enabled)，或者让AI更加发挥自我(Creative enabled)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;已知不足&#34;&gt;已知不足&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对于上下文理解有点弱，所以你尽可能要提问更详细一点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以&lt;del&gt;调戏&lt;/del&gt;陪聊的空间不大，确实是一个搜索引擎= =&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on 猫猫の博客</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/</link>
+        <description>Recent content in Categories on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 27 Jun 2023 20:04:01 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Machine_Learning</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/machine_learning/</link>
+        <pubDate>Wed, 22 Mar 2023 13:38:46 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/machine_learning/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/machine_learning/ml.png" alt="Featured image of post Machine_Learning" /&gt;</description>
+        </item>
+        <item>
+        <title>Linux</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/linux/</link>
+        <pubDate>Fri, 29 Apr 2022 01:03:14 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/linux/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/linux/Linux.png" alt="Featured image of post Linux" /&gt;</description>
+        </item>
+        <item>
+        <title>Others</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/others/</link>
+        <pubDate>Fri, 29 Apr 2022 01:03:14 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/others/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/others/others.png" alt="Featured image of post Others" /&gt;</description>
+        </item>
+        <item>
+        <title>Beginner</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/beginner/</link>
+        <pubDate>Wed, 09 Mar 2022 01:03:14 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/beginner/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/beginner/1.png" alt="Featured image of post Beginner" /&gt;</description>
+        </item>
+        <item>
+        <title>Software</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/software/</link>
+        <pubDate>Tue, 08 Feb 2022 01:03:14 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/software/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/software/software.png" alt="Featured image of post Software" /&gt;</description>
+        </item>
+        <item>
+        <title>Hugo_Blog</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/hugo_blog/</link>
+        <pubDate>Sat, 29 Jan 2022 01:03:14 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/hugo_blog/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/hugo_blog/hugo.png" alt="Featured image of post Hugo_Blog" /&gt;</description>
+        </item>
+        <item>
+        <title>About_Me</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/about_me/</link>
+        <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/about_me/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/about_me/download.jpg" alt="Featured image of post About_Me" /&gt;</description>
+        </item>
+        <item>
+        <title>Security</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/security/</link>
+        <pubDate>Thu, 27 Jan 2022 01:03:14 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/categories/security/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/categories/security/download.jpg" alt="Featured image of post Security" /&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

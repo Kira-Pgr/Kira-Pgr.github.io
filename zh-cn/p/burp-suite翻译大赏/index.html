@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='嗝 套 件'><title>Burp Suite翻译大赏</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Burp Suite翻译大赏'>
+<meta property='og:description' content='嗝 套 件'>
+<meta property='og:url' content='https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Burp' /><meta property='article:published_time' content='2022-10-03T18:05:25&#43;08:00'/><meta property='article:modified_time' content='2022-10-03T18:05:25&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/cover.jpg' />
+<meta name="twitter:title" content="Burp Suite翻译大赏">
+<meta name="twitter:description" content="嗝 套 件"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">猫猫の博客</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%96%B5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于本喵</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>猫の存档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>猫の搜索</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>猫の链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" >English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/">
+                <img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/cover_hu2d6dba34ee932a3e26891d4bc0c7facb_272060_800x0_resize_q75_box.jpg"
+                        srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/cover_hu2d6dba34ee932a3e26891d4bc0c7facb_272060_800x0_resize_q75_box.jpg 800w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/cover_hu2d6dba34ee932a3e26891d4bc0c7facb_272060_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="504" 
+                        loading="lazy"
+                        alt="Featured image of post Burp Suite翻译大赏" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/others/" style="background-color: #8ea885; color: #fff;">
+                Others
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/">Burp Suite翻译大赏</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            嗝 套 件
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="burp-suite翻译大赏">Burp Suite翻译大赏</h1>
+<p>不知道有多少人看到文章简介之后就开始蚌埠住了捏 :&gt;</p>
+<blockquote>
+<p><del>神tm嗝套件</del></p>
+</blockquote>
+<img title="" src="1.png" alt="" data-align="left" width="211">
+<h2 id="正文开始">正文开始!</h2>
+<p>Burp Suite是一个网安人特别钟爱的Web安全测试工具，</p>
+<p>但是大家基本上提到该工具的时候，都会直接称呼它的英文原名<strong>Burp Suite</strong></p>
+<p>(当然，这也是比较<del>正常</del>规范的叫法)</p>
+<p>但脑洞大开的Pgr决心找找Burp Suite应该怎么翻译才核里 <del>(没错，核弹的核)</del></p>
+<p>众所周知，让机器翻译来翻译专业术语/工具名字会有意想不到的惊吓</p>
+<p>所以，我们来让各种机器翻译来翻译以下<strong>Burp Suite</strong></p>
+<h2 id="为什么选择burp-suite">为什么选择Burp Suite</h2>
+<p>因为这两个单词直译起来本身就很搞笑了</p>
+<ul>
+<li>
+<p>Burp: 饱嗝</p>
+</li>
+<li>
+<p>Suite:套件</p>
+</li>
+</ul>
+<h2 id="google翻译">Google翻译</h2>
+<p>本以为<strong>Google</strong>能给人一个满意的翻译= =</p>
+<p>但它翻译成 <strong>打 嗝 套 房</strong> 属实有点奇奇怪怪</p>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-18.png"
+	width="1347"
+	height="428"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-18_hu896f24bd62a59c7a117303f5f965c193_40998_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-18_hu896f24bd62a59c7a117303f5f965c193_40998_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="打嗝套房&hellip;可还行"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="314"
+		data-flex-basis="755px"
+	
+></p>
+<h2 id="百度翻译">百度翻译</h2>
+<p>诶?百度貌似彳亍了诶</p>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-24.png"
+	width="1604"
+	height="641"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-24_hua0d2aa015a538d9cfd803c1beb0219c0_106872_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-24_hua0d2aa015a538d9cfd803c1beb0219c0_106872_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="不过，莫名加上&#34;教程&#34;是怎么回事"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="600px"
+	
+></p>
+<p>不过它还是翻译出了<strong>Burp套件</strong>的意思，可以说是很腻害~(≧▽≦)/~</p>
+<h2 id="有道翻译">有道翻译</h2>
+<p>有道选手在检测语言的时候就寄了诶，难道它认为Burp Suite是来自奇奇怪怪的语言吗 ;&lt;</p>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-30.png"
+	width="1559"
+	height="494"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-30_hud8ea57d96a649283c8c953a42bbbc957_56280_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-30_hud8ea57d96a649283c8c953a42bbbc957_56280_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="315"
+		data-flex-basis="757px"
+	
+></p>
+<p>在把语言指定为英语后，有道翻译成了 <strong>打 嗝 套 件</strong></p>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-33.png"
+	width="1589"
+	height="485"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-33_hu81151d00c319360a8412260d6f7c871b_53943_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-33_hu81151d00c319360a8412260d6f7c871b_53943_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="非常的直译啊"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="327"
+		data-flex-basis="786px"
+	
+></p>
+<p>但有道这个网络释义就&hellip;多少有点大病</p>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-37.png"
+	width="714"
+	height="150"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-37_hu93ca8f322ec4b766dcf7079083e00df9_13179_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-37_hu93ca8f322ec4b766dcf7079083e00df9_13179_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Burp Suite使用教程不意味着Burp Suite就是使用教程啊喂&hellip;"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="476"
+		data-flex-basis="1142px"
+	
+></p>
+<h2 id="搜狗翻译">搜狗翻译</h2>
+<p>噗哈哈哈，我第一次了解到打嗝还能组曲</p>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-40.png"
+	width="1394"
+	height="455"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-40_hu83ab4abb4e762f82d7732d76ca4eaebc_73758_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-40_hu83ab4abb4e762f82d7732d76ca4eaebc_73758_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="不愧是搜狗，真是搜到狗了"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="306"
+		data-flex-basis="735px"
+	
+></p>
+<p>别急，还没完，搜<strong>狗</strong>网络释义&hellip;.我真的会谢&hellip;</p>
+<img src="2.jpg" title="" alt="" width="204">
+<p>搜<strong>狗</strong>:我在网上找到了Burp Suite的n种释义</p>
+<ul>
+<li>
+<p>1.设置模拟器 2.设置代理</p>
+<p>(注意上面那行是Burp Suite的一个释义)</p>
+</li>
+<li>
+<p>抓包测试 推荐工具</p>
+<p>(貌似没有猫病)</p>
+</li>
+<li>
+<p>直接可以运行,但需要安装ava platform se binary</p>
+</li>
+</ul>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/3.jpg"
+	width="1000"
+	height="1036"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/3_hu17348d235087a30bf8d4ac03d7a07806_115326_480x0_resize_q75_box.jpg 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/3_hu17348d235087a30bf8d4ac03d7a07806_115326_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="????????"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="96"
+		data-flex-basis="231px"
+	
+></p>
+<ul>
+<li>
+<p>Burp Suite是一个功能强大的web运用安全工具,它能够扫描,分析和攻击web运用,通过手动和自动的技术</p>
+<p>(译文 迫真) )</p>
+</li>
+<li>
+<p>总之就是要让Burp Suite和浏览器是在一个端口,这样才能抓到你想要的</p>
+</li>
+</ul>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-57.png"
+	width="696"
+	height="266"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-57_huf6477e2cd79b96aa4e9c4a7f1cff552d_22629_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-57_huf6477e2cd79b96aa4e9c4a7f1cff552d_22629_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="261"
+		data-flex-basis="627px"
+	
+></p>
+<h2 id="360翻译">360翻译</h2>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-00.png"
+	width="1500"
+	height="424"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-00_hu27c0972fa81c1273576ea4f383fe7a6b_24793_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-00_hu27c0972fa81c1273576ea4f383fe7a6b_24793_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="360和谷歌关系不错哈"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="353"
+		data-flex-basis="849px"
+	
+></p>
+<h2 id="金山词霸">金山词霸</h2>
+<p>这个翻译，是真的无力吐槽&hellip;</p>
+<blockquote>
+<p>逐渐离谱.jpg ↓↓↓</p>
+</blockquote>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-03.png"
+	width="1544"
+	height="628"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-03_huffc339725b47c524330b057faefc94a3_45709_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-03_huffc339725b47c524330b057faefc94a3_45709_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="合着渗透测试是看看网站会不会被烧伤的嘛= ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="245"
+		data-flex-basis="590px"
+	
+></p>
+<h2 id="腾讯翻译君">腾讯翻译君</h2>
+<p>可以看出各大机翻平台倾向于认为存在会打嗝的套房= =</p>
+<p><img src="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-07.png"
+	width="1602"
+	height="530"
+	srcset="/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-07_hu154c7a2fb54a25ba53aab175e5de867c_59886_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-07_hu154c7a2fb54a25ba53aab175e5de867c_59886_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="302"
+		data-flex-basis="725px"
+	
+></p>
+<h2 id="彩蛋-人-工-翻-译">彩蛋: 人 工 翻 译</h2>
+<blockquote>
+<p>&ldquo;你会怎么翻译Burp Suite&rdquo;</p>
+</blockquote>
+<ul>
+<li>
+<p>英语老师: 打嗝套件..?</p>
+</li>
+<li>
+<p>网安人A: 我刚开始倾向于翻译成&quot; 嗝 套 件&quot;</p>
+</li>
+<li>
+<p>网安人B: 这个&hellip;没办法翻译吧&hellip;</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
+</ul>
+<p>如果各位有什么有创意的翻译可以在评论区留言哦qaq</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-cn/tags/burp/">Burp</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/%E5%9B%A2%E9%98%9Fme0w00f%E4%BB%8B%E7%BB%8D/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/%E5%9B%A2%E9%98%9Fme0w00f%E4%BB%8B%E7%BB%8D/cover.af91ac987a508a3bd45b231dc6e2cb3e_huf0d3b7170fd2f9a3b8d4f4afd904df62_4209345_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 团队Me0w00f介绍"
+                        
+                        data-hash="md5-r5GsmHpQijvUWyMdxuLLPg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">团队Me0w00f介绍</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/cover.f97ae32198577e50ce558d63231068cc_hu1d28bf14f3bac81f6a767dcaeaeb18c8_196702_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 网安猫猫资源库"
+                        
+                        data-hash="md5-&#43;XrjIZhXflDOVY1jIxBozA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">网安猫猫资源库</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#正文开始">正文开始!</a></li>
+    <li><a href="#为什么选择burp-suite">为什么选择Burp Suite</a></li>
+    <li><a href="#google翻译">Google翻译</a></li>
+    <li><a href="#百度翻译">百度翻译</a></li>
+    <li><a href="#有道翻译">有道翻译</a></li>
+    <li><a href="#搜狗翻译">搜狗翻译</a></li>
+    <li><a href="#360翻译">360翻译</a></li>
+    <li><a href="#金山词霸">金山词霸</a></li>
+    <li><a href="#腾讯翻译君">腾讯翻译君</a></li>
+    <li><a href="#彩蛋-人-工-翻-译">彩蛋: 人 工 翻 译</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

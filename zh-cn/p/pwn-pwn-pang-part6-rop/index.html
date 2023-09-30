@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='小程序就这样走上了不归路ww('><title>PWN! PWN! PANG! Part6 --- ROP</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part6-rop/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='PWN! PWN! PANG! Part6 --- ROP'>
+<meta property='og:description' content='小程序就这样走上了不归路ww('>
+<meta property='og:url' content='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part6-rop/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-04-14T23:21:24-04:00'/><meta property='article:modified_time' content='2022-04-14T23:21:24-04:00'/><meta property='og:image' content='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part6-rop/cover.jpg' />
+<meta name="twitter:title" content="PWN! PWN! PANG! Part6 --- ROP">
+<meta name="twitter:description" content="小程序就这样走上了不归路ww("><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part6-rop/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">猫猫の博客</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%96%B5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于本喵</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>猫の存档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>猫の搜索</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>猫の链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" >English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/pwn-pwn-pang-part6-rop/">
+                <img src="/zh-cn/p/pwn-pwn-pang-part6-rop/cover_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_800x0_resize_q75_box.jpg"
+                        srcset="/zh-cn/p/pwn-pwn-pang-part6-rop/cover_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_800x0_resize_q75_box.jpg 800w, /zh-cn/p/pwn-pwn-pang-part6-rop/cover_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/pwn-pwn-pang-part6-rop/">PWN! PWN! PANG! Part6 --- ROP</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            小程序就这样走上了不归路ww(
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 14, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="pwn-pwn-pang-part6">PWN! PWN! PANG! Part6</h1>
+<p>呼～好久没有玩PWNPWN车了 <del>(又再次摆烂的PGR)</del></p>
+<p>本篇文章给大家来谈谈ROP</p>
+<h2 id="什么是rop">什么是ROP</h2>
+<p><del>ROP寄存器(?</del></p>
+<p>不存在的啦 233 = =</p>
+<p><strong>ROP是Return Oriented Programming(返回导向编程)的简称</strong></p>
+<p>&ldquo;又是专业术语?? 整天术语!术语!术语!&rdquo;</p>
+<iframe src="1.gif" width="84" height="78" frameBorder="0"></iframe>
+<p>ww,别打了(, 这就简单讲解嘛= =</p>
+<blockquote>
+<p>ROP是一种高级的内存攻击技术可以用来绕过现代操作系统的各种通用防御（比如内存不可执行和代码签名等）。通过前几篇文章的介绍，我们可以发现栈溢出的控制点是ret处(也就是子函数的ret addr)，那么ROP的核心思想就是利用以ret结尾的指令序列(gadgets)把栈中的应该返回EIP的地址更改成我们需要的值，从而控制程序的执行流程。</p>
+</blockquote>
+<hr>
+<p><strong>还不够简单?</strong></p>
+<p>QAQ, 我们首先了解一下为什么要用到ROP</p>
+<h3 id="为什么需要rop">为什么需要ROP</h3>
+<p>我们很容易就发现，前几次的PWN攻击都是通过栈溢出篡改函数返回地址来<strong>一次性</strong>使程序跳转到某个恶意地址(后门函数或者shellcode)，从而getshell</p>
+<p>然而，并不是每一次都是有那么好的运气的，程序猿写后门函数的肯定少，在加上各种程序的保护机制，导致想要跳转到shellcode也不大可能</p>
+<p><strong>这个时候，就该ROP上场了</strong></p>
+<h3 id="rop的过程的简单介绍">ROP的过程的简单介绍</h3>
+<p>我们思考一下，我们之前通过栈溢出覆盖掉了函数的返回地址，那么既然是溢出，我们也可以溢出覆盖更多数据，从而控制更多内容。</p>
+<p>栈溢出的目的是控制程序执行流，如果一次不能实现返回到一个恶意地址来getshell,那么就需要让程序执行流在我们的控制之中，通过多次操作，让程序<del>反复横跳</del>多次跳转并执行恶意指令</p>
+<p>现在来看一看手上能用的东西</p>
+<ul>
+<li>
+<p>乖乖躺在一边任凭我们折腾的栈</p>
+</li>
+<li>
+<p>程序本身的一些代码小片段(即下文提到的gadget)</p>
+</li>
+</ul>
+<h3 id="gadget">gadget</h3>
+<p>谈到ROP就必须讲到gadgets, gadget指程序的一些代码片段</p>
+<p>我们可以通过返回到含有<code>pop</code>和<code>ret</code>(比如<code>pop eax; ret;</code>)的gadgets的地址来实现特定操作而又使程序的执行流还在我们的控制中</p>
+<blockquote>
+<p>由于栈是受我们的控制的，我们可以在栈中写入任意的内容</p>
+<p>不妨设我们在覆盖了ret addr后又覆盖了一些内容</p>
+<ul>
+<li>
+<p>ret addr &ndash; gadget A(<code>pop eax; ret;</code>)地址</p>
+</li>
+<li>
+<p>0xb</p>
+</li>
+<li>
+<p>gadget B 地址</p>
+</li>
+</ul>
+<p>这样我们就构造了一个简单的<strong>ROP链</strong></p>
+</blockquote>
+<p>来模拟一下此时被搞得不成样子的程序的执行过程= =</p>
+<p>由于ret addr被覆盖掉了w, 程序下一步会去执行gadget A</p>
+<p>首先执行<code>pop eax</code>,这个时候栈中的<code>0xb</code>就会被弹到eax寄存器中</p>
+<p>然后是ret, 程序又被强迫去执行gadget B了.UwU.</p>
+<p>由此类推，接下来攻击者可以让程序执行更多的gadget, 从而getshell</p>
+<p><font size=2>害，又是一个被骗入传销组织的小程序，可怜啊 bushi)</font></p>
+<hr>
+<p><strong>实际上, gadget可以理解成一个一个小的积木块，通过构造ROP链把一个个gadget拼凑起来，就构成了完成整个攻击流程的payload</strong></p>
+<p><img src="/zh-cn/p/pwn-pwn-pang-part6-rop/1.jpg"
+	width="517"
+	height="661"
+	srcset="/zh-cn/p/pwn-pwn-pang-part6-rop/1_huc2ddfc89603364ca85e0155ada406240_348427_480x0_resize_q75_box.jpg 480w, /zh-cn/p/pwn-pwn-pang-part6-rop/1_huc2ddfc89603364ca85e0155ada406240_348427_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="gadget和payload"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="78"
+		data-flex-basis="187px"
+	
+></p>
+<h2 id="如何获取gadget">如何获取gadget</h2>
+<p>上面扯了这么多，在最后我推荐几个好用的获取gadget的工具</p>
+<h3 id="ropgadget">ROPgadget</h3>
+<p>这款工具主要是帮助你找到合适的gadget</p>
+<p>安装方法</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install python3-pip
+sudo -H python3 -m pip install ROPgadget
+</code></pre></div><p>获取使用指南</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ROPgadget --help
+</code></pre></div><p>简单举例几个常用命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ROPgadget --binary 程序 --ropchain
+<span class="c1">#直接构造一个ROP链</span>
+ROPgadget --binary 程序 --only <span class="s2">&#34;pop|ret&#34;</span>
+<span class="c1">#只寻找含有pop ret的gadgets</span>
+</code></pre></div><h3 id="onegadget有一点鸡肋需要运气成分">Onegadget(有一点鸡肋，需要运气成分)</h3>
+<p><del>怎么说。。。还是运气不好的时间多= =</del></p>
+<p>这款工具就有点魔法了，它能够帮你找到<strong>可能</strong>帮助你一次性getshell的gadget</p>
+<blockquote>
+<p><strong>一定注意啊!!是可能</strong></p>
+</blockquote>
+<p>它列出的gadget要能getshell必须满足一定的条件</p>
+<p>至于能不能满足这个条件,,</p>
+<p><font size=2>你就一个一个放上去试试呗&hellip;</font></p>
+<p><del>当然没有一个可以用也是非常常见的</del></p>
+<p>安装Onegadge需要<strong>提前装好ruby</strong>，下面是各Linux安装ruby的方法</p>
+<p>deb(Debian 或 Ubuntu)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install ruby-full
+</code></pre></div><p>yum(CentOS、Fedora 或 RHEL)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum install ruby
+</code></pre></div><p>portage(Gentoo)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo emerge dev-lang/ruby
+<span class="c1"># 安装指定的版本，要在 make.conf 文件中设置 RUBY_TARGETS。详见 Gentoo Ruby Project 网站。</span>
+</code></pre></div><p>pacman(Arch Linux)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo pacman -S ruby
+</code></pre></div><p>安装Onegadget</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">gem install one_gadget
+</code></pre></div><p>使用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">one_gadget 程序名
+</code></pre></div><h2 id="ref">ref</h2>
+<p><a class="link" href="https://www.jianshu.com/p/3a9d70529d7a"  target="_blank" rel="noopener"
+    >基本ROP讲解 - 简书</a></p>
+<p><a class="link" href="https://www.ruby-lang.org/zh_cn/documentation/installation/"  target="_blank" rel="noopener"
+    >安装 Ruby</a></p>
+<p><a class="link" href="https://github.com/david942j/one_gadget"  target="_blank" rel="noopener"
+    >GitHub - david942j/one_gadget: The best tool for finding one gadget RCE in libc.so.6</a></p>
+<p><a class="link" href="https://github.com/JonathanSalwan/ROPgadget"  target="_blank" rel="noopener"
+    >GitHub - JonathanSalwan/ROPgadget: This tool lets you search your gadgets on your binaries to facilitate your ROP exploitation. ROPgadget supports ELF, PE and Mach-O format on x86, x64, ARM, ARM64, PowerPC, SPARC and MIPS architectures.</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-cn/tags/pwn/">PWN</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part5-ret2shellcode/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part5-ret2shellcode/cover.5f05682fb9be023753c14c7bf7b130e4_hu3166df2cafdca7684e1b9dcf3608c6c9_2294292_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode"
+                        
+                        data-hash="md5-XwVoL7m&#43;AjdTwUx797Ew5A==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part5 --- ret2shellcode</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part4-ret2text/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part4-ret2text/cover.959f4e2e5300435dc53c019e930d261b_hudfa7423162da6f5e14fd4e8a1ac3231a_749576_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part4 --- ret2text"
+                        
+                        data-hash="md5-lZ9OLlMAQ13FPAGekw0mGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part4 --- ret2text</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part3-%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part3-%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/cover.83e414d02bfc9f736e824b7f6cd9a9eb_huc93e8e51211b13db7df27f880625afbe_1479136_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础"
+                        
+                        data-hash="md5-g&#43;QU0Cv8n3Nugkt/bNmp6w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part3 --- 栈溢出基础</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part2-%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part2-%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/cover.dfc14371a1ebc11e7a4c671f0b6a9755_hu3d6209426f4a4882dd231c4242aff084_2839967_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part2 --- 工具的使用"
+                        
+                        data-hash="md5-38FDcaHrwR56TGcfC2qXVQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part2 --- 工具的使用</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/cover.781de6edaf36962e5b0cc87723920ee2_hu576b02bd11baef12c82f0e62b58bf2a0_136072_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part1---基础知识"
+                        
+                        data-hash="md5-eB3m7a82li5bDMh3I5IO4g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part1---基础知识</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "dfc2d6ff148e57ac47c9efedb4ddf9c370fc33f0",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是rop">什么是ROP</a>
+      <ol>
+        <li><a href="#为什么需要rop">为什么需要ROP</a></li>
+        <li><a href="#rop的过程的简单介绍">ROP的过程的简单介绍</a></li>
+        <li><a href="#gadget">gadget</a></li>
+      </ol>
+    </li>
+    <li><a href="#如何获取gadget">如何获取gadget</a>
+      <ol>
+        <li><a href="#ropgadget">ROPgadget</a></li>
+        <li><a href="#onegadget有一点鸡肋需要运气成分">Onegadget(有一点鸡肋，需要运气成分)</a></li>
+      </ol>
+    </li>
+    <li><a href="#ref">ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

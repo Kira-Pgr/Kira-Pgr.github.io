@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on 猫猫の博客</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/</link>
+        <description>Recent content in Tags on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 17 Jun 2023 16:19:51 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Terminal</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/terminal/</link>
+        <pubDate>Sat, 17 Jun 2023 16:19:51 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/terminal/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>VM</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/vm/</link>
+        <pubDate>Wed, 07 Jun 2023 17:07:14 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/vm/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>AI</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/ai/</link>
+        <pubDate>Wed, 22 Mar 2023 13:38:46 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/ai/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Gnome</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/gnome/</link>
+        <pubDate>Mon, 20 Mar 2023 18:08:35 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/gnome/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Post-exploitation</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/post-exploitation/</link>
+        <pubDate>Mon, 30 Jan 2023 13:57:43 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/post-exploitation/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Web Sec</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/web-sec/</link>
+        <pubDate>Wed, 16 Nov 2022 17:43:04 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/web-sec/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Burp</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/burp/</link>
+        <pubDate>Mon, 03 Oct 2022 18:05:25 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/burp/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Blog</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/blog/</link>
+        <pubDate>Sun, 15 May 2022 02:19:13 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/blog/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>GitHub</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/github/</link>
+        <pubDate>Sun, 15 May 2022 02:19:13 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/github/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>exploit</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/exploit/</link>
+        <pubDate>Fri, 13 May 2022 03:44:40 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/exploit/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PWN</title>
+        <link>https://kira-pgr.github.io/zh-cn/tags/pwn/</link>
+        <pubDate>Thu, 14 Apr 2022 23:21:24 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/tags/pwn/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

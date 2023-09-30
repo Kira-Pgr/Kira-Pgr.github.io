@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Others on 猫猫の博客</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/others/</link>
+        <description>Recent content in Others on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/categories/others/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Burp Suite翻译大赏</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/</link>
+        <pubDate>Mon, 03 Oct 2022 18:05:25 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/cover.jpg" alt="Featured image of post Burp Suite翻译大赏" /&gt;&lt;h1 id=&#34;burp-suite翻译大赏&#34;&gt;Burp Suite翻译大赏&lt;/h1&gt;
+&lt;p&gt;不知道有多少人看到文章简介之后就开始蚌埠住了捏 :&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;神tm嗝套件&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img title=&#34;&#34; src=&#34;1.png&#34; alt=&#34;&#34; data-align=&#34;left&#34; width=&#34;211&#34;&gt;
+&lt;h2 id=&#34;正文开始&#34;&gt;正文开始!&lt;/h2&gt;
+&lt;p&gt;Burp Suite是一个网安人特别钟爱的Web安全测试工具，&lt;/p&gt;
+&lt;p&gt;但是大家基本上提到该工具的时候，都会直接称呼它的英文原名&lt;strong&gt;Burp Suite&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;(当然，这也是比较&lt;del&gt;正常&lt;/del&gt;规范的叫法)&lt;/p&gt;
+&lt;p&gt;但脑洞大开的Pgr决心找找Burp Suite应该怎么翻译才核里 &lt;del&gt;(没错，核弹的核)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;众所周知，让机器翻译来翻译专业术语/工具名字会有意想不到的惊吓&lt;/p&gt;
+&lt;p&gt;所以，我们来让各种机器翻译来翻译以下&lt;strong&gt;Burp Suite&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;为什么选择burp-suite&#34;&gt;为什么选择Burp Suite&lt;/h2&gt;
+&lt;p&gt;因为这两个单词直译起来本身就很搞笑了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Burp: 饱嗝&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Suite:套件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;google翻译&#34;&gt;Google翻译&lt;/h2&gt;
+&lt;p&gt;本以为&lt;strong&gt;Google&lt;/strong&gt;能给人一个满意的翻译= =&lt;/p&gt;
+&lt;p&gt;但它翻译成 &lt;strong&gt;打 嗝 套 房&lt;/strong&gt; 属实有点奇奇怪怪&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-18.png&#34;
+	width=&#34;1347&#34;
+	height=&#34;428&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-18_hu896f24bd62a59c7a117303f5f965c193_40998_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-18_hu896f24bd62a59c7a117303f5f965c193_40998_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;打嗝套房&amp;hellip;可还行&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;314&#34;
+		data-flex-basis=&#34;755px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;百度翻译&#34;&gt;百度翻译&lt;/h2&gt;
+&lt;p&gt;诶?百度貌似彳亍了诶&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-24.png&#34;
+	width=&#34;1604&#34;
+	height=&#34;641&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-24_hua0d2aa015a538d9cfd803c1beb0219c0_106872_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-24_hua0d2aa015a538d9cfd803c1beb0219c0_106872_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不过，莫名加上&amp;#34;教程&amp;#34;是怎么回事&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;600px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;不过它还是翻译出了&lt;strong&gt;Burp套件&lt;/strong&gt;的意思，可以说是很腻害~(≧▽≦)/~&lt;/p&gt;
+&lt;h2 id=&#34;有道翻译&#34;&gt;有道翻译&lt;/h2&gt;
+&lt;p&gt;有道选手在检测语言的时候就寄了诶，难道它认为Burp Suite是来自奇奇怪怪的语言吗 ;&amp;lt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-30.png&#34;
+	width=&#34;1559&#34;
+	height=&#34;494&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-30_hud8ea57d96a649283c8c953a42bbbc957_56280_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-30_hud8ea57d96a649283c8c953a42bbbc957_56280_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;315&#34;
+		data-flex-basis=&#34;757px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在把语言指定为英语后，有道翻译成了 &lt;strong&gt;打 嗝 套 件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-33.png&#34;
+	width=&#34;1589&#34;
+	height=&#34;485&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-33_hu81151d00c319360a8412260d6f7c871b_53943_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-33_hu81151d00c319360a8412260d6f7c871b_53943_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;非常的直译啊&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;327&#34;
+		data-flex-basis=&#34;786px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;但有道这个网络释义就&amp;hellip;多少有点大病&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-37.png&#34;
+	width=&#34;714&#34;
+	height=&#34;150&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-37_hu93ca8f322ec4b766dcf7079083e00df9_13179_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-37_hu93ca8f322ec4b766dcf7079083e00df9_13179_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Burp Suite使用教程不意味着Burp Suite就是使用教程啊喂&amp;hellip;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;476&#34;
+		data-flex-basis=&#34;1142px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;搜狗翻译&#34;&gt;搜狗翻译&lt;/h2&gt;
+&lt;p&gt;噗哈哈哈，我第一次了解到打嗝还能组曲&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-40.png&#34;
+	width=&#34;1394&#34;
+	height=&#34;455&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-40_hu83ab4abb4e762f82d7732d76ca4eaebc_73758_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-40_hu83ab4abb4e762f82d7732d76ca4eaebc_73758_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不愧是搜狗，真是搜到狗了&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;306&#34;
+		data-flex-basis=&#34;735px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;别急，还没完，搜&lt;strong&gt;狗&lt;/strong&gt;网络释义&amp;hellip;.我真的会谢&amp;hellip;&lt;/p&gt;
+&lt;img src=&#34;2.jpg&#34; title=&#34;&#34; alt=&#34;&#34; width=&#34;204&#34;&gt;
+&lt;p&gt;搜&lt;strong&gt;狗&lt;/strong&gt;:我在网上找到了Burp Suite的n种释义&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1.设置模拟器 2.设置代理&lt;/p&gt;
+&lt;p&gt;(注意上面那行是Burp Suite的一个释义)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;抓包测试 推荐工具&lt;/p&gt;
+&lt;p&gt;(貌似没有猫病)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;直接可以运行,但需要安装ava platform se binary&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/3.jpg&#34;
+	width=&#34;1000&#34;
+	height=&#34;1036&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/3_hu17348d235087a30bf8d4ac03d7a07806_115326_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/3_hu17348d235087a30bf8d4ac03d7a07806_115326_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;????????&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;96&#34;
+		data-flex-basis=&#34;231px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Burp Suite是一个功能强大的web运用安全工具,它能够扫描,分析和攻击web运用,通过手动和自动的技术&lt;/p&gt;
+&lt;p&gt;(译文 迫真) )&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;总之就是要让Burp Suite和浏览器是在一个端口,这样才能抓到你想要的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-57.png&#34;
+	width=&#34;696&#34;
+	height=&#34;266&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-57_huf6477e2cd79b96aa4e9c4a7f1cff552d_22629_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_19-57_huf6477e2cd79b96aa4e9c4a7f1cff552d_22629_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;261&#34;
+		data-flex-basis=&#34;627px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;360翻译&#34;&gt;360翻译&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-00.png&#34;
+	width=&#34;1500&#34;
+	height=&#34;424&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-00_hu27c0972fa81c1273576ea4f383fe7a6b_24793_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-00_hu27c0972fa81c1273576ea4f383fe7a6b_24793_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;360和谷歌关系不错哈&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;353&#34;
+		data-flex-basis=&#34;849px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;金山词霸&#34;&gt;金山词霸&lt;/h2&gt;
+&lt;p&gt;这个翻译，是真的无力吐槽&amp;hellip;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;逐渐离谱.jpg ↓↓↓&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-03.png&#34;
+	width=&#34;1544&#34;
+	height=&#34;628&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-03_huffc339725b47c524330b057faefc94a3_45709_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-03_huffc339725b47c524330b057faefc94a3_45709_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;合着渗透测试是看看网站会不会被烧伤的嘛= =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;245&#34;
+		data-flex-basis=&#34;590px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;腾讯翻译君&#34;&gt;腾讯翻译君&lt;/h2&gt;
+&lt;p&gt;可以看出各大机翻平台倾向于认为存在会打嗝的套房= =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-07.png&#34;
+	width=&#34;1602&#34;
+	height=&#34;530&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-07_hu154c7a2fb54a25ba53aab175e5de867c_59886_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite%E7%BF%BB%E8%AF%91%E5%A4%A7%E8%B5%8F/2022-10-03_23-07_hu154c7a2fb54a25ba53aab175e5de867c_59886_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;302&#34;
+		data-flex-basis=&#34;725px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;彩蛋-人-工-翻-译&#34;&gt;彩蛋: 人 工 翻 译&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;你会怎么翻译Burp Suite&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;英语老师: 打嗝套件..?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网安人A: 我刚开始倾向于翻译成&amp;quot; 嗝 套 件&amp;quot;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网安人B: 这个&amp;hellip;没办法翻译吧&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果各位有什么有创意的翻译可以在评论区留言哦qaq&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>团队Me0w00f介绍</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/%E5%9B%A2%E9%98%9Fme0w00f%E4%BB%8B%E7%BB%8D/</link>
+        <pubDate>Thu, 14 Jul 2022 21:27:40 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/%E5%9B%A2%E9%98%9Fme0w00f%E4%BB%8B%E7%BB%8D/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/%E5%9B%A2%E9%98%9Fme0w00f%E4%BB%8B%E7%BB%8D/cover.jpg" alt="Featured image of post 团队Me0w00f介绍" /&gt;&lt;h1 id=&#34;me0w00f&#34;&gt;ME0W00F&lt;/h1&gt;
+&lt;p&gt;嘿嘿，当我写这篇文章的时候就标志着这个团队正式成立了 -   -&lt;/p&gt;
+&lt;p&gt;至于其他仪式啥的，就不必要了awa&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;(摆烂了&amp;hellip; 也没什么不好的)&lt;/del&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;既然标题写的是&amp;quot;介绍&amp;quot;，接下来就简单的介绍一下吧&lt;/p&gt;
+&lt;p&gt;诶嘿~~&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;团队成员&#34;&gt;团队成员&lt;/h2&gt;
+&lt;p&gt;目前四人&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;KiraPGR(喵喵酱) &amp;ndash; 也就是可爱的我&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gem_JAyus(汪汪酱) &amp;ndash; 一起学网安de好兄弟 :&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;WeepingDogel(小犬酱) &amp;ndash; Arch Linux大佬&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Nek0Suk1(猫猫麻酱) &amp;ndash; 美术大佬&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hmmm, &lt;strong&gt;目前并不打算让其他人加入&lt;/strong&gt;，因为感觉合作的话人太多容易乱&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;关于这个名字&#34;&gt;关于这个名字&lt;/h2&gt;
+&lt;p&gt;灵感嘛= =&lt;/p&gt;
+&lt;p&gt;是从喵喵和汪汪来的惹&lt;/p&gt;
+&lt;p&gt;Meow + Woof (&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;1.gif&#34; alt=&#34;&#34; width=&#34;228&#34;&gt;
+&lt;h2 id=&#34;为什么想要组队捏&#34;&gt;为什么想要组队捏&lt;/h2&gt;
+&lt;p&gt;对于我个人而言的话我其实是想找一个一起学习的伙伴嘛= =&lt;/p&gt;
+&lt;p&gt;找共同兴趣爱好的人一起学习会有动力(&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;说不定能把大家都卷成大佬   bushi)&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;其他的一些东西&#34;&gt;其他的一些东西&lt;/h2&gt;
+&lt;p&gt;申请了一个域名↓&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;me0w00f.eu.org
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;目前还没有投入使用&lt;/p&gt;
+&lt;p&gt;以后可能会做个主页，也可能搞几个子域名放实验的东西或者博客&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我的博客也可能之后会迁移到这个域名&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;the-end--&#34;&gt;The End = =&lt;/h2&gt;
+&lt;p&gt;&lt;del&gt;&lt;em&gt;水完了，又可以咕咕咕啦&lt;/em&gt;&lt;/del&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>网安猫猫资源库</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/</link>
+        <pubDate>Fri, 13 May 2022 03:44:40 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/cover.jpg" alt="Featured image of post 网安猫猫资源库" /&gt;&lt;h1 id=&#34;网安猫猫资源库&#34;&gt;网安猫猫资源库&lt;/h1&gt;
+&lt;p&gt;喵~~&lt;/p&gt;
+&lt;p&gt;事情是这样的，搞了一个&lt;del&gt;会卖萌的&lt;/del&gt;Telegram频道存放一些自己学习时用的网安资源，&lt;/p&gt;
+&lt;p&gt;既然都集中存放了，干脆分享给有幸看到我blog的朋友们吧，其中包括&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Web安全教程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PWN教程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一些好用的工具&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CVE推送&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;链接:&lt;a class=&#34;link&#34; href=&#34;https://t.me/nanosec47&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Telegram: Contact @nanosec47&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/1.jpg&#34;
+	width=&#34;1485&#34;
+	height=&#34;841&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/1_huabc5495f3f9d1a939a6cfc95eff6d804_281683_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/1_huabc5495f3f9d1a939a6cfc95eff6d804_281683_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配个图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;附属群(欢迎来吹水):&lt;a class=&#34;link&#34; href=&#34;https://t.me/nanonanoda&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Telegram: Contact @nanonanoda&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;个人收集的资源，非广告/营销号，不喜欢请默默离开，勿喷.uwu.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

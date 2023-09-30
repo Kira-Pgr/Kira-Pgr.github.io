@@ -1,0 +1,2800 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Linux on 猫猫の博客</title>
+        <link>https://kira-pgr.github.io/zh-cn/categories/linux/</link>
+        <description>Recent content in Linux on 猫猫の博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>在Linux上使用截图软件Snipaste</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/</link>
+        <pubDate>Tue, 27 Jun 2023 20:04:01 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/cover.jpg" alt="Featured image of post 在Linux上使用截图软件Snipaste" /&gt;&lt;h1 id=&#34;在linux上使用截图软件snipaste&#34;&gt;在Linux上使用截图软件Snipaste&lt;/h1&gt;
+&lt;p&gt;在离开&lt;code&gt;Windows&lt;/code&gt;之后很长时间，猫猫都对于那款名叫&lt;code&gt;Snipaste&lt;/code&gt;的截图软件甚是怀念&lt;/p&gt;
+&lt;p&gt;可惜官方还没有制作完适配&lt;code&gt;Linux&lt;/code&gt;的版本 :(&lt;/p&gt;
+&lt;p&gt;唉&amp;hellip;那就只有自己折腾&lt;strong&gt;wine&lt;/strong&gt;了&lt;/p&gt;
+&lt;h2 id=&#34;wine的安装&#34;&gt;Wine的安装&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
+sudo apt install wine64
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Tip:&lt;/p&gt;
+&lt;p&gt;如果你的系统是32位的，请使用&lt;code&gt;sudo apt install wine32&lt;/code&gt;
+目前大部分Linux都只有64位了= =&lt;/p&gt;
+&lt;p&gt;如果你不大确定你是不是64位，请使用&lt;code&gt;lscpu&lt;/code&gt;命令并查看&lt;code&gt;CPU op-mode(s)&lt;/code&gt;项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CPU op-mode(s): 32-bit:&lt;/strong&gt; 你用的是32位系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CPU op-mode(s): 64-bit:&lt;/strong&gt; 你用的是64位系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;CPU op-mode(s): 32-bit, 64-bit:&lt;/strong&gt; 你的系统同时支持32位和64位 (这种情况最普遍)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-21-29-image.png&#34;
+	width=&#34;1327&#34;
+	height=&#34;703&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-21-29-image_hu07804e81f189cdbb477c598bac83606f_1090640_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-21-29-image_hu07804e81f189cdbb477c598bac83606f_1090640_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下载snipaste&#34;&gt;下载Snipaste&lt;/h2&gt;
+&lt;p&gt;进入&lt;a class=&#34;link&#34; href=&#34;https://www.snipaste.com/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网下载页面&lt;/a&gt;下载&lt;/p&gt;
+&lt;p&gt;注意我们要选择&lt;code&gt;portable&lt;/code&gt;的&lt;code&gt;Windows&lt;/code&gt;版本&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-26-10-image.png&#34;
+	width=&#34;604&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-26-10-image_hu0393b4c6ad2d65f09d0f9948456d5e17_42602_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-26-10-image_hu0393b4c6ad2d65f09d0f9948456d5e17_42602_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;依据你的系统对应下载32/64位的Snipaste&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;296px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Portable&lt;/code&gt;软件包的优势是没有安装包，直接解压就可以使用，&lt;/p&gt;
+&lt;p&gt;方便我们用&lt;code&gt;Wine&lt;/code&gt;运行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;运行snipaste&#34;&gt;运行Snipaste&lt;/h2&gt;
+&lt;p&gt;把下载下来的压缩包解压到一个合适的地方&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-32-48-image.png&#34;
+	width=&#34;1020&#34;
+	height=&#34;525&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-32-48-image_hu6e222b36e13e546240299f76b475cf13_46906_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-32-48-image_hu6e222b36e13e546240299f76b475cf13_46906_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;194&#34;
+		data-flex-basis=&#34;466px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后在该位置打开终端并输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;wine Snipaste.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后你的Snipaste就应该运行起来了，你应该能在任务栏里看到一个白色的图标&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image.png&#34;
+	width=&#34;524&#34;
+	height=&#34;34&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image_hu9c5a93e18bf51de1680b883f3ed56cba_16492_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image_hu9c5a93e18bf51de1680b883f3ed56cba_16492_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;怪哦，怎么有只猫猫， 没错，那是猫猫本体  (bushi&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1541&#34;
+		data-flex-basis=&#34;3698px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击它就能进行截图啦 :)&lt;/p&gt;
+&lt;h2 id=&#34;配置snipaste快捷键&#34;&gt;配置Snipaste快捷键&lt;/h2&gt;
+&lt;p&gt;在一阵测试后发现在Linux上不能正常使用Snipaste快捷键&lt;/p&gt;
+&lt;p&gt;不过，截图怎么能少了快捷键呢?&lt;/p&gt;
+&lt;p&gt;所以我找到了一个方案&lt;/p&gt;
+&lt;p&gt;去设置里找到自定义快捷键&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于不同系统界面的差异，找不到的自行搜索，这里就不演示了 :]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后在命令那一栏写上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;xdotool key --window &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;xdotool search --name Snipaste &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -n1&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; F1&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后配上你喜欢的截图快捷键&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image.png&#34;
+	width=&#34;585&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image_hu0b1c4c9e162f92f82651ed878c57153a_31076_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image_hu0b1c4c9e162f92f82651ed878c57153a_31076_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;我这里是Ctrl&amp;#43;PrintScreen&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;342px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;其他快捷键在截图后也都能正常使用了哦~&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://phoenixnap.com/kb/how-to-install-wine-on-ubuntu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;How to Install Wine on Ubuntu {Tutorial with Screenshots}&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.snipaste.com/download.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Snipaste Downloads&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Linux平台下搭建KVM/QEMU的Windows虚拟机</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+        <pubDate>Wed, 07 Jun 2023 17:07:14 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.jpg" alt="Featured image of post Linux平台下搭建KVM/QEMU的Windows虚拟机" /&gt;&lt;h1 id=&#34;linux平台下搭建kvmqemu的windows虚拟机&#34;&gt;Linux平台下搭建KVM/QEMU的Windows虚拟机&lt;/h1&gt;
+&lt;p&gt;关于Linux下的虚拟机, 我之前写过一篇&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/p/debian-linux%e4%b8%8b%e5%ae%89%e8%a3%85%e8%99%9a%e6%8b%9f%e6%9c%ba%e8%bd%af%e4%bb%b6/&#34; &gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;不过无论是&lt;code&gt;Virtual Box&lt;/code&gt;还是&lt;code&gt;VMware&lt;/code&gt;,都逃不过一个问题:Windows虚拟机&lt;strong&gt;巨卡无比&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用体验感觉很糟糕，不过它俩儿的优点也有，就是搭虚拟机比较简单&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;友情提醒: 以下人员可以&lt;strong&gt;撤离&lt;/strong&gt;了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IT小白&lt;br&gt;&lt;small&gt;&lt;strike&gt;(如果你不大想感受到计算机十足的恶意&amp;hellip;)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于Linux不是很熟悉的&lt;br&gt;&lt;small&gt;&lt;strike&gt;(怎么说呐&amp;hellip;如果你看下去可容易被劝退哦= =)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不大喜欢折腾的&lt;br&gt;&lt;small&gt;&lt;strike&gt;(相信我，你懒得这么搞&amp;hellip;)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于虚拟机速度没那么在意的&lt;br&gt;&lt;small&gt;&lt;strike&gt;(Duck不必, VBox和VMware完全够用&amp;hellip;)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上人员如果系统是&lt;code&gt;Linux&lt;/code&gt;,可以考虑我之前写的&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/&#34; &gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果系统是&lt;code&gt;Windows&lt;/code&gt;, 请移步百度，这里不过多赘述= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;前期准备&#34;&gt;前期准备&lt;/h2&gt;
+&lt;p&gt;在搭建虚拟机前，你需要下载一些东西&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.microsoft.com/zh-cn/software-download/windows10ISO&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Windows的ISO文件&lt;/a&gt;，这里用Win10做演示&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso&#34; &gt;VirtIO驱动&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe&#34; &gt;SpiceTools&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image.png&#34;
+	width=&#34;460&#34;
+	height=&#34;171&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-36-57-image_hu3e87c7a9c3deae207fb73424351b32fd_11500_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;下到的三个文件&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;269&#34;
+		data-flex-basis=&#34;645px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;之后就是装软件前的经典套路&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装qemukvm&#34;&gt;安装QEMU/KVM&lt;/h2&gt;
+&lt;p&gt;打开Linux主机的终端，输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后重启&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;创建windows虚拟机&#34;&gt;创建Windows虚拟机&lt;/h2&gt;
+&lt;p&gt;重启后打开&lt;code&gt;Virtual Machine Manager&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo virt-manager
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照下面的步骤进行&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png&#34;
+	width=&#34;584&#34;
+	height=&#34;205&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image_hu7c4569bda1d573f644ecfa3e8b09f46e_45361_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;点加号&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;284&#34;
+		data-flex-basis=&#34;683px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image.png&#34;
+	width=&#34;580&#34;
+	height=&#34;555&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-54-47-image_hu65b4c105a803db30436c8716e9976744_122391_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Forward&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;104&#34;
+		data-flex-basis=&#34;250px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image.png&#34;
+	width=&#34;514&#34;
+	height=&#34;535&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-55-30-image_hu17b1510cb020b4435948409108435aec_92843_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Browse&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;96&#34;
+		data-flex-basis=&#34;230px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image.png&#34;
+	width=&#34;820&#34;
+	height=&#34;534&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-56-17-image_hu403e061d219eb952ea9f113ce8a37881_109245_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Browse Local&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;368px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在弹出的文件管理器里选择你的Win10 ISO&lt;/p&gt;
+&lt;p&gt;之后就是选择合适的性能设置&amp;hellip;&lt;/p&gt;
+&lt;p&gt;到第5步请注意除虚拟机名字外，设置与图片一致&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image.png&#34;
+	width=&#34;499&#34;
+	height=&#34;396&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-59-13-image_hudb57bde567d5ef3373dc57d6ddd4d6c9_86774_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;win10就是虚拟机名字，可以随意起&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;302px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;更改windows虚拟机设置&#34;&gt;更改Windows虚拟机设置&lt;/h2&gt;
+&lt;p&gt;在弹出的页面选到&lt;code&gt;SATA Disk1&lt;/code&gt;,&lt;code&gt;Disk bus&lt;/code&gt;选择&lt;code&gt;VirtIO&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;然后点&lt;code&gt;Apply&lt;/code&gt;保存&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image.png&#34;
+	width=&#34;785&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-02-02-image_hu59bfa7d0abc0cdfe1abd7219183982d7_203817_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;最后别忘了Apply&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在点击&lt;code&gt;Add Hardware&lt;/code&gt;后进入到&lt;code&gt;Graphics&lt;/code&gt;,把&lt;code&gt;Type&lt;/code&gt;改成&lt;code&gt;VNC server&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;改完了记得点&lt;code&gt;Finish&lt;/code&gt;,否则前功尽弃= =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image.png&#34;
+	width=&#34;501&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-06-16-image_hu052d6225a606b034b80661b48a2d8eef_92474_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;252px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后再点含有&lt;code&gt;NIC&lt;/code&gt;的那个菜单&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Device model&lt;/code&gt;改为&lt;code&gt;virtio&lt;/code&gt;,并&lt;code&gt;Apply&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image.png&#34;
+	width=&#34;761&#34;
+	height=&#34;615&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-08-40-image_hu177f35694022f354286d6030a667c690_176473_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;NIC后面的东西和视频不一致没事&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;296px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，继续&lt;code&gt;Add Hardware&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;Storage&lt;/code&gt;中选择&lt;code&gt;Select or create custom storage&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后看准了&lt;code&gt;Manage&lt;/code&gt;&lt;del&gt;啪叽~一声&lt;/del&gt;点下去&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image.png&#34;
+	width=&#34;491&#34;
+	height=&#34;474&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-10-14-image_hud3cb633e3ecfc859affb92aaefaef377_101223_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;248px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Browse Local&lt;/code&gt;,然后选择&lt;code&gt;virtio&lt;/code&gt;的ISO文件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Device type&lt;/code&gt;改成&lt;code&gt;CDROM device&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后日常&lt;code&gt;Apply&lt;/code&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image.png&#34;
+	width=&#34;533&#34;
+	height=&#34;302&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-15-51-image_hu6d85e8f5d97292fc767b84d27357c985_83552_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来，是&lt;u&gt;&lt;strong&gt;非常关键&lt;/strong&gt;&lt;/u&gt;的一步&amp;hellip;&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;Boot Options&lt;/code&gt;, 启用&lt;code&gt;Enable boot menu&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;三个设备都勾上，并 &lt;strong&gt;&lt;u&gt;调整顺序&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请一定要检查：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;放在最上面的CDROM是Win10的ISO&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;最下面的CDROM是VirtIO的ISO&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image.png&#34;
+	width=&#34;820&#34;
+	height=&#34;498&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-18-23-image_hu2bbee7b8d772a13912650a68306fa5a3_218287_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一定要看清楚了再进行下一步&amp;hellip;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;395px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;虚拟机安装系统&#34;&gt;虚拟机安装系统&lt;/h2&gt;
+&lt;p&gt;在确认无误后, 点&lt;code&gt;Begin Installation&lt;/code&gt;开始给虚拟机安装系统&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image.png&#34;
+	width=&#34;785&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-18-24-38-image_hu9b4e971d8dcb808ceb4ed50fed5c17d4_205937_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Windows的安装过程大家应该很熟悉了，这里不过多赘述&amp;hellip;&lt;br&gt;&lt;small&gt;&lt;strike&gt;如果你在想，快乐(bushi的安装过程终于要结束了，那么网页的滚动条会告诉你，事情没有那么简单:)&lt;/strike&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;当你进行着熟悉无比的Win安装操作时，到这一步，事情就有点不对劲了:&amp;lt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image.png&#34;
+	width=&#34;512&#34;
+	height=&#34;391&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-42-27-image_hu6d477af1eb25adfe217ed34c2c23ddfd_44042_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;没错，你 无 处 可 装&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;314px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我当时的心情和你们应该差不多，是这样纸滴~&lt;/p&gt;
+&lt;img src=&#34;8d5a832ae5e45d6a676c785e1c1c678cdf056049.jpg&#34; title=&#34;&#34; alt=&#34;337f360dc537189159ca4a21bb2e4dd0.jpg&#34; width=&#34;110&#34;&gt;
+&lt;p&gt;在一阵网上冲浪后，我找到了解决方案:点&lt;code&gt;Load driver&lt;/code&gt;加载驱动&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image.png&#34;
+	width=&#34;518&#34;
+	height=&#34;405&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-46-47-image_hu50cb5a03a84cf0bc2b013f677708758d_68064_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;这个弹窗点OK既可&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;306px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后点&lt;code&gt;Browse&lt;/code&gt;依据目标系统选择驱动&lt;/p&gt;
+&lt;p&gt;路径一般是&lt;code&gt;VirtIO ISO所在盘\viostor\系统版本\系统架构\viostor.inf&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我这里是&lt;code&gt;E:\viostor\w10\amd64\viostor.inf&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;VirtIO ISO&lt;/code&gt;挂载成为了E盘&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;我安装了&lt;code&gt;Windows 10&lt;/code&gt;系统&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;架构是&lt;code&gt;x64&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image.png&#34;
+	width=&#34;503&#34;
+	height=&#34;382&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-19-58-53-image_hua0bd2256ff8b6eb67d88b3bf24c253e2_42050_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;316px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image.png&#34;
+	width=&#34;531&#34;
+	height=&#34;387&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-00-33-image_hu85f86a468d79b97ed17968da93f09063_49479_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;呼~终于有地方可以装了&amp;hellip;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;329px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在日常&lt;code&gt;Next&lt;/code&gt;之后，你就可以休息下了&lt;/p&gt;
+&lt;p&gt;等待系统安装完成吧&lt;/p&gt;
+&lt;h2 id=&#34;虚拟机其他配置&#34;&gt;虚拟机其他配置&lt;/h2&gt;
+&lt;p&gt;嘛&amp;hellip;你不会认为这就结束了吧&amp;hellip;  (坏笑&lt;/p&gt;
+&lt;p&gt;别急，咱们慢慢来~&lt;/p&gt;
+&lt;img src=&#34;4e499250bdb2520afa4a9ed1ff8a4020a833486a.jpg&#34; title=&#34;&#34; alt=&#34;f58581a63f5a05c06a3970ca6753db29.jpg&#34; width=&#34;136&#34;&gt;
+&lt;h3 id=&#34;更新一些驱动&#34;&gt;更新一些驱动&lt;/h3&gt;
+&lt;p&gt;这一步是为了解决一些奇奇怪怪的BUG,&lt;/p&gt;
+&lt;p&gt;比如说虚拟机上不了网&amp;hellip;&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;Windows&lt;/code&gt;虚拟机的设备管理器,找到&lt;code&gt;其他设备&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;右击&lt;code&gt;以太网控制器&lt;/code&gt;并点击&lt;code&gt;更新驱动&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;WARNING&lt;/strong&gt;:由于图片上是英文系统，对应选项的译文有可能和实际显示不符= =&lt;/p&gt;
+&lt;p&gt;以图片和你的系统上显示的内容为准&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image.png&#34;
+	width=&#34;674&#34;
+	height=&#34;498&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-23-38-image_hudfd0e38f95626adf30cde6dc75a08d5a_153820_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;英文系统上的内容&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后&lt;strong&gt;从本地&lt;/strong&gt;选择驱动&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image.png&#34;
+	width=&#34;533&#34;
+	height=&#34;410&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-29-21-image_hu0f444d3b5738ecc85c032bdef538a443_71825_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;看不懂的话，直接选第二个选项= =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;312px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;选择的时候直接选你&lt;code&gt;VirtIO ISO&lt;/code&gt;挂载的那个盘，我这里是&lt;code&gt;E:\&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image.png&#34;
+	width=&#34;547&#34;
+	height=&#34;394&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-32-39-image_hu7f8474346b62a0a2e34fe151b4342f37_77015_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;够清晰了吧&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;138&#34;
+		data-flex-basis=&#34;333px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对&lt;code&gt;显示适配器&lt;/code&gt;重复同样的操作= =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image.png&#34;
+	width=&#34;676&#34;
+	height=&#34;497&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-34-08-image_hu80f4101f43c249c5cf322d19e741dfa2_150996_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;326px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;配置远程访问&#34;&gt;配置远程访问&lt;/h3&gt;
+&lt;p&gt;为什么要这么做?&lt;/p&gt;
+&lt;p&gt;因为在&lt;code&gt;Virt-Manager&lt;/code&gt;里用虚拟机感觉说不出来的难受&lt;/p&gt;
+&lt;p&gt;远程访问能够解决虚拟机两大难题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;复制粘贴不互通&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文件不互通&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;首先，在&lt;code&gt;Windows&lt;/code&gt;虚拟机中控制面板里允许远程控制&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个大家应该会吧&amp;hellip;qwq, 不写了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接着，登出&lt;code&gt;Windows&lt;/code&gt;虚拟机&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;virt-manager&lt;/code&gt;中获取虚拟机IP并记录&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image.png&#34;
+	width=&#34;1134&#34;
+	height=&#34;329&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-50-33-image_hu8f054f24effb3542d1ad3e442fd090cb_81071_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;344&#34;
+		data-flex-basis=&#34;827px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在你的&lt;code&gt;Linux&lt;/code&gt;主机打开终端，输入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install remmina
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;code&gt;remmina&lt;/code&gt;命令打开远程控制软件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png&#34;
+	width=&#34;899&#34;
+	height=&#34;513&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image_hu6d9b738414c5a653ec07a2881276cb94_266791_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;remmina界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点左上角加号新建一个连接&lt;code&gt;Profile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;填入相关信息&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image.png&#34;
+	width=&#34;936&#34;
+	height=&#34;642&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-51-31-image_hu94a8a236aca7c84cb6a3054f006025e8_55712_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;349px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: &lt;code&gt;Share folder&lt;/code&gt;填你想要共享给虚拟机文件夹的&lt;strong&gt;全路径&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;进入&lt;code&gt;Advanced&lt;/code&gt;目录，&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Audio output mode&lt;/code&gt;改为&lt;code&gt;Local&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;为了美观，&lt;code&gt;Quality&lt;/code&gt;可以改成&lt;code&gt;Best (slowest)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image.png&#34;
+	width=&#34;951&#34;
+	height=&#34;633&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-54-26-image_huca8af55a2f8ff2203b5dbd1bed3ae363_63543_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;内网嘛&amp;hellip;速度反正很快~&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在把&lt;code&gt;Spice Tools&lt;/code&gt;放进共享文件夹后&lt;code&gt;Save and Connect&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装spice-tools&#34;&gt;安装Spice Tools&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Spice Tools&lt;/code&gt;有助于提升用户体验&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上一步登入&lt;code&gt;Windows&lt;/code&gt;虚拟机后，在&lt;code&gt;此电脑&lt;/code&gt;里找到共享文件夹并打开&lt;/p&gt;
+&lt;p&gt;把放进去的&lt;code&gt;Spice Tools&lt;/code&gt;的&lt;code&gt;exe&lt;/code&gt;文件拖到其他地方，并断开远程连接&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;virt-manager&lt;/code&gt;中进入虚拟机，并双击运行刚刚拖出来的&lt;code&gt;exe&lt;/code&gt;文件&lt;/p&gt;
+&lt;p&gt;然后就是下一步,&amp;hellip;下一步&amp;hellip;&lt;/p&gt;
+&lt;p&gt;重启后就可以关掉&lt;code&gt;virt-manager&lt;/code&gt;然后用&lt;code&gt;remmina&lt;/code&gt;使用虚拟机辣~&lt;/p&gt;
+&lt;h3 id=&#34;remmina使用技巧&#34;&gt;Remmina使用技巧&lt;/h3&gt;
+&lt;p&gt;在连接后，可以打开两个东西，让使用体验更加丝滑:)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;动态调整分辨率&lt;/p&gt;
+&lt;p&gt;打开后虚拟机分辨率会随着窗口大小调整而调整&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image.png&#34;
+	width=&#34;893&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-14-23-image_hu05f0d4a239e5e9f8d15a7fb44e0983e0_846597_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;是不是无比丝滑~?&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;获取所有键盘操作&lt;/p&gt;
+&lt;p&gt;这个能方便我们在虚拟机使用快捷键qwq&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image.png&#34;
+	width=&#34;892&#34;
+	height=&#34;694&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-21-17-33-image_hue74eb68f725ef461afe802bddc7d20a8_846545_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;对于猫猫这样的老win用户，如果不能用win&amp;#43;r，还真的很不习惯捏~&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;效果展示&#34;&gt;效果展示&lt;/h2&gt;
+&lt;p&gt;呼~这次终于是要结束了= =&lt;/p&gt;
+&lt;p&gt;让我们一起来看看效果吧&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-19-23-image_hu9e487471e2cf3942b015e0dd01788e6b_2429417_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;整体效果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image.png&#34;
+	width=&#34;899&#34;
+	height=&#34;697&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-21-27-image_hued91624ea63be3f15756d78c5fc02549_752467_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;共享文件夹&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;309px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;本文参考以下视频教程:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=Zei8i9CpAn0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FAST! Windows VM on Linux using QEMU / kvm / VirtIO // Ditch Your VirtualBox! - YouTube&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;英文好的各位也可以考虑看这个视频哦~&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Kali Gnome桌面环境の调整&amp;美化--Part3</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/</link>
+        <pubDate>Mon, 20 Mar 2023 18:08:35 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/cover.jpg" alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化--Part3" /&gt;&lt;h1 id=&#34;kali-gnome桌面环境の调整美化part3&#34;&gt;Kali Gnome桌面环境の调整&amp;amp;美化–Part3&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这一系列出到Part3,在座的各位都有责任哈&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;呼!转眼间已经咕咕咕了一个月了= =&lt;/p&gt;
+&lt;p&gt;但也不妨碍我们继续整些花里胡哨的东西，本期文章主要是通过导入第三方主题来美化Gnome环境qwq&lt;/p&gt;
+&lt;h2 id=&#34;效果展示&#34;&gt;效果展示&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/2023-03-20-18-15-21-image.png&#34;
+	width=&#34;1275&#34;
+	height=&#34;645&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/2023-03-20-18-15-21-image_hu14d0fd7a59f4197b088feea2dab7dc4f_72524_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/2023-03-20-18-15-21-image_hu14d0fd7a59f4197b088feea2dab7dc4f_72524_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;啊啊啊啊!Mac风格:&amp;gt;还有圆角!!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;474px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;挑选适合自己的主题&#34;&gt;挑选适合自己的主题&lt;/h2&gt;
+&lt;p&gt;在这里推荐一个&lt;a class=&#34;link&#34; href=&#34;https://www.pling.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;主题商店&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strike&gt;&lt;small&gt;必应告诉我的，嘿嘿:&amp;gt;&lt;/small&gt;&lt;/strike&gt;&lt;/p&gt;
+&lt;p&gt;这上面有很多很好看的主题，还有图标，光标等资源，我目前用的主题是&lt;strong&gt;Nordic&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 由于Kali自身的原因，效果可能和官方的不大一样,所以我选择保留Kali的一些特点和主题的一些特点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;主题安装&#34;&gt;主题安装&lt;/h2&gt;
+&lt;p&gt;一般主题会在页面中写上详细的安装方式，我就在这里简述一下吧.qwq.&lt;/p&gt;
+&lt;h3 id=&#34;下载主题包&#34;&gt;下载主题包&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;第一种方案:下载到&lt;code&gt;/usr/share/themes/&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 如果没有这个目录创建一下&lt;/span&gt;
+sudo mkdir /usr/share/themes/
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/share/themes/
+sudo git clone 主题GitHub链接 主题名
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二种方案:下载到&lt;code&gt;~/.themes/&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 依旧是没有目录就创建一下&lt;/span&gt;
+mkdir ~/.themes/
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/.themes/
+git clone 主题GitHub链接 主题名
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;应用主题&#34;&gt;应用主题&lt;/h3&gt;
+&lt;p&gt;直接上命令吧，&lt;del&gt;最近总想摆大烂&lt;/del&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;gsettings &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; org.gnome.desktop.interface gtk-theme &lt;span class=&#34;s2&#34;&gt;&amp;#34;主题名&amp;#34;&lt;/span&gt;
+gsettings &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; org.gnome.desktop.wm.preferences theme &lt;span class=&#34;s2&#34;&gt;&amp;#34;主题名&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;the-end&#34;&gt;The End!&lt;/h2&gt;
+&lt;p&gt;嗯，没错，这样就水完了一篇博客= =&lt;/p&gt;
+&lt;p&gt;下期内容应该会是干货内容吧:&amp;gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Kali Gnome桌面环境の调整&amp;美化--Part2</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/</link>
+        <pubDate>Mon, 09 Jan 2023 11:13:48 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/cover.jpg" alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化--Part2" /&gt;&lt;h1 id=&#34;kali-gnome桌面环境の调整美化--part2&#34;&gt;Kali Gnome桌面环境の调整&amp;amp;美化&amp;ndash;Part2&lt;/h1&gt;
+&lt;p&gt;近期在队友们的怂恿之下 , 我把实体机的Windows系统换成了Linux系统:&amp;gt;&lt;/p&gt;
+&lt;p&gt;在一番思想斗争之后，我还是选择了更加美观的gnome桌面&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果对于Kali Gnome桌面环境美化感兴趣的顺便可以看看我上一篇&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/p/kali-gnome%e6%a1%8c%e9%9d%a2%e7%8e%af%e5%a2%83%e3%81%ae%e8%b0%83%e6%95%b4%e7%be%8e%e5%8c%96/&#34; &gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;作为一个喜欢瞎折腾的猫猫，新系统拿到手肯定是先花哨一番咯.qwq.&lt;/p&gt;
+&lt;h2 id=&#34;整体效果&#34;&gt;整体效果&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;桌面篇&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/Kira-Pgr/Assets/blob/main/2023-01-09_11-58-26.gif?raw=true&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;动态壁纸&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-16-11-image.png&#34;
+	width=&#34;1920&#34;
+	height=&#34;1080&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-16-11-image_hud4a6c3c0567306a0e99bdfa98001cfaa_3119832_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-16-11-image_hud4a6c3c0567306a0e99bdfa98001cfaa_3119832_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;动态,静态效果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Alt+Tab篇&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-19-40-image.png&#34;
+	width=&#34;1762&#34;
+	height=&#34;990&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-19-40-image_hu1eb13355442bd2b517617dd5bc3bf610_1962072_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-19-40-image_hu1eb13355442bd2b517617dd5bc3bf610_1962072_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;427px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;配置过程&#34;&gt;配置过程&lt;/h2&gt;
+&lt;h3 id=&#34;动态壁纸&#34;&gt;动态壁纸&lt;/h3&gt;
+&lt;p&gt;设置动态壁纸，我用的是&lt;a class=&#34;link&#34; href=&#34;https://github.com/jeffshee/hidamari&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hidamari&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;软件安装&#34;&gt;软件安装&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:使用该方法安装的话软件下载速度在国内可能会&lt;strong&gt;很慢&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;有条件的可以上代理或者VPN(最好是VPN)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安装和配置&lt;code&gt;Flatpak&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
+sudo apt install flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;重启完成后，就可以安装&lt;code&gt;hidamari&lt;/code&gt;了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;flatpak install flathub io.github.jeffshee.Hidamari
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;一般来说，你就够在应用列表里找到这个软件&lt;/p&gt;
+&lt;p&gt;如果不能，你可以这样运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;flatpak run io.github.jeffshee.Hidamari
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;软件使用&#34;&gt;软件使用&lt;/h4&gt;
+&lt;p&gt;嘛&amp;hellip;你可以使用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;视频&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网站&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;youtube等平台的视频&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;来作为你的壁纸&lt;/p&gt;
+&lt;p&gt;至于界面的使用嘛，有手就行= =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-33-58-image.png&#34;
+	width=&#34;1024&#34;
+	height=&#34;615&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-33-58-image_hu21d63ddcb33579237d32894ae9a8a3a5_196693_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/2023-01-09-12-33-58-image_hu21d63ddcb33579237d32894ae9a8a3a5_196693_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;这么简单，猫猫就不说用法了= =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;399px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;桌面小组件&#34;&gt;桌面小组件&lt;/h3&gt;
+&lt;p&gt;我使用的是&lt;a class=&#34;link&#34; href=&#34;https://github.com/brndnmtthws/conky&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;conky&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;软件安装-1&#34;&gt;软件安装&lt;/h4&gt;
+&lt;p&gt;kali可以直接通过&lt;code&gt;apt&lt;/code&gt;进行安装&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
+sudo apt install conky-all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;配置文件&#34;&gt;配置文件&lt;/h4&gt;
+&lt;p&gt;官方有很多各位大神做好的&lt;a class=&#34;link&#34; href=&#34;https://github.com/brndnmtthws/conky/wiki/Configs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;配置&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;各位也可以看着官方&lt;a class=&#34;link&#34; href=&#34;https://github.com/brndnmtthws/conky/wiki/Configurations&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;文档&lt;/a&gt;自己写配置&lt;/p&gt;
+&lt;p&gt;也可以用我的配置:&amp;gt;&lt;/p&gt;
+&lt;h5 id=&#34;创建修改配置文件&#34;&gt;创建/修改配置文件&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:配置文件放在&lt;code&gt;~/.config/conky&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;并命名为&lt;code&gt;conky.conf&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/.config/conky
+vi conky.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;下面我会给出上面图片中使用的两个配置文件&lt;/p&gt;
+&lt;h5 id=&#34;配置1--白色&#34;&gt;配置1&amp;ndash;白色&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;conky.config = {
+    use_xft= true,
+    xftalpha= .1,
+    update_interval= 1,
+    total_run_times= 0,
+
+    background= true,
+
+    own_window= true,
+    own_window_type= &amp;#39;desktop&amp;#39;,
+    own_window_transparent= true,
+    own_window_hints= &amp;#39;undecorated,below,sticky,skip_taskbar,skip_pager&amp;#39;,
+    own_window_colour= &amp;#39;000000&amp;#39;,
+    own_window_argb_visual= true,
+    own_window_argb_value= 0,
+
+    double_buffer= true,
+
+    minimum_width= 270,
+    maximum_width= 270,
+
+    minimum_height= 10,
+
+    draw_shades= false,
+    draw_outline= false,
+    draw_borders= false,
+    draw_graph_borders= false,
+
+    default_color= &amp;#39;FFFFFF&amp;#39;,
+    default_shade_color= &amp;#39;333333&amp;#39;,
+    default_outline_color= &amp;#39;black&amp;#39;,
+    color1 = &amp;#39;A9A9A9&amp;#39;,
+    color3 = &amp;#39;616161&amp;#39;,
+
+    alignment= &amp;#39;top_right&amp;#39;,
+    gap_x= 56,
+    gap_y= 0,
+    no_buffers= true,
+    text_buffer_size = 2048,
+    uppercase= false,
+    cpu_avg_samples= 4,
+    net_avg_samples = 2,
+    override_utf8_locale= true,
+
+    font= &amp;#39;Ubuntu:style=medium:size=9&amp;#39;
+}
+
+conky.text = [[
+
+${color1}
+${voffset 50}
+${alignr}${font Ubuntu:style=Medium:pixelsize=50}${time %H:%M}${font}
+${voffset 5}
+${alignr}${font Ubuntu:style=Medium:pixelsize=13}${time %A %d %B %Y}${font}
+
+
+${voffset 100}
+${font FontAwesome:style=Solid:size=10}${font} Welcome Kira Senpai~
+${hr}
+${font FontAwesome:style=Solid:size=10}${font} All systems are operational!
+
+
+
+#${font FontAwesome:style=Solid:size=10}${font} ${alignr}${if_match &amp;#34;${addr enp3s0}&amp;#34;!=&amp;#34;No Address&amp;#34;} [FILAIRE] ${addr enp3s0}${endif}${if_match &amp;#34;${addr wlp4s7}&amp;#34;!=&amp;#34;No Address&amp;#34;}[WIFI] ${addr wlp4s7}${endif}
+${font FontAwesome:style=Solid:size=10}${font}   Hostname${alignr}${exec hostnamectl | grep &amp;#34;Static hostname&amp;#34; | awk &amp;#39;{print ($3)}&amp;#39;}
+${hr}
+${font FontAwesome:style=Solid:size=10} ${font}   System${alignr}${exec hostnamectl | grep System | awk &amp;#39;{print($3&amp;#34; &amp;#34;$4&amp;#34; &amp;#34;$5)}&amp;#39;}
+
+
+${font FontAwesome:style=Solid:size=10}${font}   CPU${alignr}$cpu%
+${hr}
+${font FontAwesome:style=Solid:size=10}${font}   MEM${alignr}$mem
+
+
+${font FontAwesome:style=Solid:size=10}${font}   Disk IO${alignr}${diskio /dev/nvme0n1}
+${hr}
+${font FontAwesome:style=Solid:size=10} ${font}   Core Temp ${alignr}${hwmon 0 temp 1}°
+
+
+${font FontAwesome:style=Solid:size=10}${font}   Public IP ${alignr}${exec echo &amp;#34;HIDDEN&amp;#34;}
+#${font FontAwesome:style=Solid:size=10}${font}   disques ${alignr}${hddtemp /dev/sda}°.${hddtemp /dev/sdb}°.${hddtemp /dev/sdc}°
+# .${hddtemp /dev/sdd}°.${hddtemp /dev/sde}°.${hddtemp /dev/sdf}°.
+${hr}
+${font FontAwesome:style=Solid:size=10}${font}   Local IP ${alignr}${exec ifconfig | grep 192 | tail -1 | awk &amp;#39;{print($2)}&amp;#39;}
+#${font FontAwesome:style=Solid:size=10}${font}   ventilo ${alignr}${hwmon 0 fan 1} tour/min
+${color3}${cpugraph cpu1 50,133 5e7b7b d8deeb -t} ${cpugraph cpu2 50,133 5e7b7b d8deeb -t}
+${cpugraph cpu3 50,133 5e7b7b d8deeb -t} ${cpugraph cpu4 50,133 5e7b7b d8deeb -t}
+
+${if_match &amp;#34;${addr enp3s0}&amp;#34;!=&amp;#34;No Address&amp;#34;}
+${color3}${downspeedgraph enp3s0 50,269 5e7b7b d8deeb}
+${color1}${font FontAwesome:style=Solid:size=10}${font}   download ${alignr}${downspeedf enp3s0}k/s (${totaldown enp3s0})
+${hr}
+${font FontAwesome:style=Solid:size=10}${font}   upload ${alignr}${upspeedf enp3s0}k/s (${totalup enp3s0})
+${color3}${upspeedgraph enp3s0 50,269 99c8e8 618094}
+${endif}
+${if_match &amp;#34;${addr wlp4s7}&amp;#34;!=&amp;#34;No Address&amp;#34;}
+${color3}${downspeedgraph wlp4s7 50,269 5e7b7b d8deeb}
+${color1}${font FontAwesome:style=Solid:size=10}${font}   download ${alignr}${downspeedf wlp4s7}k/s (${totaldown wlp4s7})
+${hr}
+${font FontAwesome:style=Solid:size=10}${font}   upload ${alignr}${upspeedf wlp4s7}k/s (${totalup wlp4s7})
+${color3}${upspeedgraph wlp4s7 50,269 99c8e8 618094}
+
+${endif}
+]]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;配置2--彩色&#34;&gt;配置2&amp;ndash;彩色&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;conky.config = {
+    use_xft= true,
+    xftalpha= .1,
+    update_interval= 1,
+    total_run_times= 0,
+
+    background= true,
+
+    own_window= true,
+    own_window_type= &amp;#39;desktop&amp;#39;,
+    own_window_transparent= true,
+    own_window_hints= &amp;#39;undecorated,below,sticky,skip_taskbar,skip_pager&amp;#39;,
+    own_window_colour= &amp;#39;000000&amp;#39;,
+    own_window_argb_visual= true,
+    own_window_argb_value= 0,
+
+    double_buffer= true,
+
+    minimum_width= 270,
+    maximum_width= 270,
+
+    minimum_height= 10,
+
+    draw_shades= false,
+    draw_outline= false,
+    draw_borders= false,
+    draw_graph_borders= false,
+
+    default_color= &amp;#39;FFFFFF&amp;#39;,
+    default_shade_color= &amp;#39;333333&amp;#39;,
+    default_outline_color= &amp;#39;black&amp;#39;,
+    color1 = &amp;#39;A9A9A9&amp;#39;,
+    color3 = &amp;#39;e95420&amp;#39;,
+
+    alignment= &amp;#39;top_right&amp;#39;,
+    gap_x= 56,
+    gap_y= 0,
+    no_buffers= true,
+    text_buffer_size = 2048,
+    uppercase= false,
+    cpu_avg_samples= 4,
+    net_avg_samples = 2,
+    override_utf8_locale= true,
+
+    font= &amp;#39;Ubuntu:style=medium:size=9&amp;#39;
+}
+
+conky.text = [[
+
+${color1}
+${color aaad9c}
+${voffset 50}
+${alignr}${font Ubuntu:style=Medium:pixelsize=50}${color e95420}${time %H:%M}${font}${color}
+${voffset 5}
+${alignr}${font Ubuntu:style=Medium:pixelsize=13}${color e95420}${time %A %d %B %Y}${font}${color}
+
+
+${voffset 100}
+${color 03b0d2}${font FontAwesome:style=Solid:size=10}${font} Welcome Kira Senpai~
+${hr}
+${font FontAwesome:style=Solid:size=10}${font} All systems are operational!
+
+${font FontAwesome:style=Solid:size=8}${font}${alignr}Uptime: $uptime${color}
+
+
+
+#${font FontAwesome:style=Solid:size=10}${font} ${alignr}${if_match &amp;#34;${addr enp3s0}&amp;#34;!=&amp;#34;No Address&amp;#34;} [FILAIRE] ${addr enp3s0}${endif}${if_match &amp;#34;${addr wlp4s7}&amp;#34;!=&amp;#34;No Address&amp;#34;}[WIFI] ${addr wlp4s7}${endif}
+${color db3d18}${font FontAwesome:style=Solid:size=10}${font}   Hostname${alignr}${exec hostnamectl | grep &amp;#34;Static hostname&amp;#34; | awk &amp;#39;{print ($3)}&amp;#39;}
+${hr}
+${font FontAwesome:style=Solid:size=10} ${font}   System${alignr}${exec hostnamectl | grep System | awk &amp;#39;{print($3&amp;#34; &amp;#34;$4&amp;#34; &amp;#34;$5)}&amp;#39;}
+
+
+${color 03b0d2}${font FontAwesome:style=Solid:size=10}${font}   CPU${alignr}$cpu%
+${hr}
+${offset 4}${color 000000}${cpugraph 222222 039fab}${color}
+
+
+${color e95420}${font FontAwesome:style=Solid:size=10}${font}   MEM${alignr}$mem
+${hr}
+${offset 4}${color 000000}${memgraph 222222 e95420}${color}
+
+${color 03b0d2}
+${font FontAwesome:style=Solid:size=10}${font}   Disk IO${alignr}${diskio /dev/nvme0n1}
+${hr}
+${font FontAwesome:style=Solid:size=10} ${font}   Core Temp ${alignr}${hwmon 0 temp 1}°
+
+${color e95420}
+${font FontAwesome:style=Solid:size=10}${font}   Public IP ${alignr}${exec echo &amp;#34;HIDDEN&amp;#34;}
+#${font FontAwesome:style=Solid:size=10}${font}   disques ${alignr}${hddtemp /dev/sda}°.${hddtemp /dev/sdb}°.${hddtemp /dev/sdc}°
+# .${hddtemp /dev/sdd}°.${hddtemp /dev/sde}°.${hddtemp /dev/sdf}°.
+${hr}
+${font FontAwesome:style=Solid:size=10}${font}   Local IP ${alignr}${exec ifconfig | grep 192 | tail -1 | awk &amp;#39;{print($2)}&amp;#39;}
+#${font FontAwesome:style=Solid:size=10}${font}   ventilo ${alignr}${hwmon 0 fan 1} tour/min
+
+]]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;gnome插件&#34;&gt;Gnome插件&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://extensions.gnome.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;你可以去官方搜索各种你喜欢的插件来安装&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;但是请注意，不要安装过多插件，否则安全性可能会受到影响&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面是我安装的感觉两个不错的插件&lt;/p&gt;
+&lt;h4 id=&#34;coverflow-alt-tab&#34;&gt;Coverflow Alt-Tab&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;上面展示的Alt+Tab效果&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://extensions.gnome.org/extension/97/coverflow-alt-tab/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;链接&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;特点: 让Alt+Tab页面更加美观&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;clipboard-indicator&#34;&gt;Clipboard Indicator&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;剪贴板历史: 也就是你之前复制过的内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://extensions.gnome.org/extension/779/clipboard-indicator/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;链接&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;特点: 可以取代Windows系统中&lt;code&gt;Win+V&lt;/code&gt;，迅速获取之前复制过的内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
+&lt;p&gt;由于做项目加上covid的原因,已经好久没有写博客了= =&lt;/p&gt;
+&lt;p&gt;本篇是2023年第一篇博客，虽说晚了好几天，但我还是&lt;del&gt;不要face地&lt;/del&gt;在这里住各位新年快乐哈&lt;/p&gt;
+&lt;p&gt;让各位的系统也能在2023新衣服+1 :&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;small&gt;不过，，，没有红包!没有红包！嘿嘿嘿&lt;/small&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Thunar文件管理器玩转右键菜单</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/</link>
+        <pubDate>Fri, 07 Oct 2022 18:07:43 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/cover.jpg" alt="Featured image of post Thunar文件管理器玩转右键菜单" /&gt;&lt;h1 id=&#34;thunar文件管理器自定义右键菜单&#34;&gt;Thunar文件管理器自定义右键菜单&lt;/h1&gt;
+&lt;p&gt;最近找到了一个Linux也能纵想点点点乐趣的方法:)&lt;/p&gt;
+&lt;p&gt;主要是了解到&lt;strong&gt;Thunar文件管理器&lt;/strong&gt;可以自定义右键菜单项后，Pgr猫猫就又想到了奇奇怪怪的点子.&lt;/p&gt;
+&lt;p&gt;既然可以右键菜单项运行一个命令的话，那岂不是可以&amp;hellip;嘿嘿嘿&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一键启动各种工具&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一键完成一些复杂操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;斯哈! 总之，只要是命令行能完成的东西一键都可以实现&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;1.jpg&#34; alt=&#34;&#34; width=&#34;162&#34;&gt;
+&lt;h2 id=&#34;右键菜单自定义步骤&#34;&gt;右键菜单自定义步骤&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可以说是有手就行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;打开自定义菜单项界面&#34;&gt;打开自定义菜单项界面&lt;/h3&gt;
+&lt;p&gt;在Thunar的菜单栏点&lt;code&gt;Edit&lt;/code&gt;&amp;ndash;&amp;gt;&lt;code&gt;Configure custom actions...&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2.jpg&#34;
+	width=&#34;780&#34;
+	height=&#34;558&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2_hua268a8cdb06823d818de55bafa20932c_32843_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2_hua268a8cdb06823d818de55bafa20932c_32843_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;事这样纸滴&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;335px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后就可以看到这个界面了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-00.png&#34;
+	width=&#34;494&#34;
+	height=&#34;542&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-00_hu95ce8e0ad2fe9ad951ee3c1497607887_51069_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-00_hu95ce8e0ad2fe9ad951ee3c1497607887_51069_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;嗯!没错!这个界面!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;218px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;大概介绍以下每个按钮的意思吧&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;这不是显而易见嘛，还要介绍干啥???&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;加号代表新建一个菜单项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;齿轮代表修改当前菜单项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;减号表示删除当前菜单项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上箭头表示上移&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下箭头表示下移&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;自定义菜单项的设置&#34;&gt;自定义菜单项的设置&lt;/h3&gt;
+&lt;p&gt;我们点击那个加号，新建一个菜单项&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-08.png&#34;
+	width=&#34;446&#34;
+	height=&#34;523&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-08_hu73e47c01a4fdcfa08d138e91d44a3c6d_36976_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07_19-08_hu73e47c01a4fdcfa08d138e91d44a3c6d_36976_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;会弹出这样一个界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;204px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;basic页面&#34;&gt;Basic页面&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Name&lt;/code&gt;填随便起的名字，这个名字到时候会显示在菜单栏里&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Description&lt;/code&gt;填简介，这个简介在你鼠标悬停在该菜单项上时出现在文件管理器窗口的最下面&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/4.jpg&#34;
+	width=&#34;1057&#34;
+	height=&#34;350&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/4_hu25ef1283190b37c73e507e35bdb42f06_32708_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/4_hu25ef1283190b37c73e507e35bdb42f06_32708_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;此处应有大滑稽:&amp;gt;&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;302&#34;
+		data-flex-basis=&#34;724px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;虽说你已经可能蚌埠住了，但本篇文章不可能等你笑完:)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Command&lt;/code&gt;填你想要点击该菜单项时执行的命令或者选择一个你想要执行的程序,这一栏的内容将在后文详细讲述.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:命令中可以包含Thunar为我们准备的有特定含义的参数&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;%f     第一个选中的文件/目录的路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%F    所有选中的文件/目录的路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%d    包含该文件的目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%D    包含多个文件的多个目录&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%n     第一个选中文件的文件名(不带路径)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;%N     所有选中文件的文件名(不带路径)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Keyboard Shortcut&lt;/code&gt;这一栏，你只需要点击这一栏然后按下你喜欢的按键组合即可，这一项可以不填&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07-19-53-05-image.png&#34;
+	width=&#34;449&#34;
+	height=&#34;534&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07-19-53-05-image_hu056d31a392ef83410bdcd6839bcab3cd_44486_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-07-19-53-05-image_hu056d31a392ef83410bdcd6839bcab3cd_44486_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;84&#34;
+		data-flex-basis=&#34;201px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Icon&lt;/code&gt;选泽你喜欢的图标，不设置也没事&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;appearance-conditions界面&#34;&gt;Appearance Conditions界面&lt;/h4&gt;
+&lt;p&gt;你可以选择该快捷方式出现的条件&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_20-09.png&#34;
+	width=&#34;443&#34;
+	height=&#34;536&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_20-09_hu3e71df763a4b2c339cc1e188440b7655_38947_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_20-09_hu3e71df763a4b2c339cc1e188440b7655_38947_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;嫌麻烦可以全选&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;82&#34;
+		data-flex-basis=&#34;198px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;勾选的文件类型右击后会显示该选项&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;效果展示&#34;&gt;效果展示&lt;/h3&gt;
+&lt;p&gt;在点OK后我们的自定义菜单项就可以用啦喵~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1.gif&#34;
+	width=&#34;600&#34;
+	height=&#34;338&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_480x0_resize_box.gif 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1_hu3d2771d22c0a423e9ba939ead1b8b053_575129_1024x0_resize_box.gif 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;效果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;177&#34;
+		data-flex-basis=&#34;426px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;通过自定义菜单项简化操作实例&#34;&gt;通过自定义菜单项简化操作实例&lt;/h2&gt;
+&lt;p&gt;点击菜单项执行的命令可以十分灵活，我们这里举几个实用的例子&lt;/p&gt;
+&lt;h3 id=&#34;一键开burp-pro&#34;&gt;一键开Burp Pro&lt;/h3&gt;
+&lt;p&gt;关于Burp Suite Professional的破解可以看我之前的[文章](&lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Burp Suite Professional 安装+破解教程&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;完成破解之后，在你Burp Pro的目录下新建一个&lt;code&gt;burp.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在文件中写入你破解的时候用来&lt;strong&gt;启动Burp的命令&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一般情况下是Loader里显示的那个命令，要是你遇到报错就填解决报错之后的命令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我这里是&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -noverify -javaagent:burploader.jar --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.desktop/javax.swing&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.base/java.lang&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED -jar 文件名.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sh /绝对/路径/burp.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+&lt;h3 id=&#34;一键开cobalt-strike&#34;&gt;一键开Cobalt Strike&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 最近Cobalt Strike出了个严重漏洞，请及时做相关处理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;进入你放有Cobalt Strike的目录，创建以下几个文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CS1&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;CS2&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;list&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;start.sh&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在&lt;code&gt;CS1&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;/opt/CSAgent/teamserver &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ifconfig &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep &lt;span class=&#34;m&#34;&gt;192&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print($2)}&amp;#39;&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; 密码
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在&lt;code&gt;CS2&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;/绝对/路径/cobaltstrike
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在&lt;code&gt;list&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;/绝对/路径/CS1
+/绝对/路径/CS2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在&lt;code&gt;start.sh&lt;/code&gt;中写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;cat /绝对/路径/list &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; xargs -P &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; -n1 sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;密码&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sudo -S /绝对/路径/start.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+&lt;h3 id=&#34;一键开蚁剑&#34;&gt;一键开蚁剑&lt;/h3&gt;
+&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;/绝对/路径/AntSword %f
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+&lt;h3 id=&#34;一键解压缩&#34;&gt;一键解压缩&lt;/h3&gt;
+&lt;p&gt;以zip为例,其他压缩包格式类似&lt;/p&gt;
+&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;unzip -o -d %D %F
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后进入&lt;code&gt;Appearance Conditions&lt;/code&gt;页面&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;File Pattern&lt;/code&gt;改为&lt;code&gt;.zip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;只勾选&lt;code&gt;Other Files&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_23-45.png&#34;
+	width=&#34;449&#34;
+	height=&#34;526&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_23-45_hu2488d1096fbb0f316dab99e04a4c76e2_39543_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2022-10-09_23-45_hu2488d1096fbb0f316dab99e04a4c76e2_39543_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图片酱!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;204px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[WARN] 不支持带密码的压缩包&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;一键压缩&#34;&gt;一键压缩&lt;/h3&gt;
+&lt;p&gt;依然以zip为例,其他压缩包格式类似&lt;/p&gt;
+&lt;p&gt;菜单项&lt;code&gt;Command&lt;/code&gt;一栏写入&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;zip -r %n.zip %N
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Appearance Conditions&lt;/code&gt;页面勾全打上&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>模拟搭建企业自动化运维体系</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/</link>
+        <pubDate>Thu, 07 Jul 2022 17:20:00 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/cover.jpg" alt="Featured image of post 模拟搭建企业自动化运维体系" /&gt;&lt;h1 id=&#34;nanosec--模拟企业网络搭建&#34;&gt;NanoSec&amp;ndash;模拟企业网络搭建&lt;/h1&gt;
+&lt;h2 id=&#34;part-1--规划&#34;&gt;Part 1&amp;ndash;规划&lt;/h2&gt;
+&lt;p&gt;由于实验条件限制，共准备5台机器来测试:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Jenkins&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GitLab + NFS&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Database&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Web Servers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Nginx_Reverse_Proxy&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其中机器3,4,5中服务均用Docker进行部署，且用Jenkins进行自动化安装Docker环境, 启动并配置容器;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP.jpg&#34;
+	width=&#34;1012&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/TP_hubab0974a764934cc7ba9659f7a9b4b63_20240_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个画的很狗的拓扑图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;212&#34;
+		data-flex-basis=&#34;510px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;最后实现效果预测:访问Nginx反向代理可以访问到真实Web服务器的页面，Web服务器能正常访问数据库，代码以及部分配置文件使用GitLab储存，数据定时备份到备份服务器&lt;/p&gt;
+&lt;h2 id=&#34;part-2--实验过程&#34;&gt;Part 2&amp;ndash;实验过程&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本实验使用系统均为CentOS和Rocky Linux(新一代的CenOS ?)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;准备工作&#34;&gt;准备工作&lt;/h3&gt;
+&lt;p&gt;首先配置好5台机器的IP&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Jenkins                   192.168.245.137&lt;/p&gt;
+&lt;p&gt;GitLab+NFS           192.168.245.129&lt;/p&gt;
+&lt;p&gt;WebServers           192.168.245.149&lt;/p&gt;
+&lt;p&gt;DataBase               192.168.245.150&lt;/p&gt;
+&lt;p&gt;Nginx反向代理      192.168.245.151&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;gitlab安装&#34;&gt;GitLab安装&lt;/h4&gt;
+&lt;p&gt;由于直接配置GitLab时我本地各种报错姿势(&lt;/p&gt;
+&lt;p&gt;就采用Docker配置了，其实Docker配置反倒方便一些= =&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;sudo docker run --detach &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --hostname IP or Domain &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --env &lt;span class=&#34;nv&#34;&gt;GITLAB_OMNIBUS_CONFIG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;external_url &amp;#39;http://IP or Domain/&amp;#39;; gitlab_rails[&amp;#39;lfs_enabled&amp;#39;] = true;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --publish 443:443 --publish 80:80 --publish 2222:22 &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --name gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --restart always &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --volume &lt;span class=&#34;nv&#34;&gt;$GITLAB_HOME&lt;/span&gt;/config:/etc/gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --volume &lt;span class=&#34;nv&#34;&gt;$GITLAB_HOME&lt;/span&gt;/logs:/var/log/gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --volume &lt;span class=&#34;nv&#34;&gt;$GITLAB_HOME&lt;/span&gt;/data:/var/opt/gitlab &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --shm-size 256m &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  gitlab/gitlab-ee:latest&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就直接在浏览器访问该机器IP并按照提示配置，这里不再过多赘述&lt;/p&gt;
+&lt;p&gt;至于使用方法嘛。。。和&lt;del&gt;世界上最大的同性交友平台&lt;/del&gt;GitHub差不多&lt;/p&gt;
+&lt;h4 id=&#34;jenkins安装&#34;&gt;Jenkins安装&lt;/h4&gt;
+&lt;p&gt;由于Jenkins依赖Java环境，先安装Java&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum -y install java-11-openjdk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来导入Jenkins官方源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;导入Jenkins密钥&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;终于可以安装啦uwu&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum install jenkins
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装完之后可不要忘记启动并启用服务哦 ;D&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 启动服务:使服务立刻运行起来，启用服务:使服务开机自启&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;systemctl start jenkins
+systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; jenkins
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最后即可在&lt;code&gt;ip:8080&lt;/code&gt;访问Jenkins了喵&lt;/p&gt;
+&lt;h4 id=&#34;jenkins配置&#34;&gt;Jenkins配置&lt;/h4&gt;
+&lt;p&gt;在自定义Jenkins那步选择&lt;strong&gt;安装推荐的插件&lt;/strong&gt;，这样你之后可以少很多折腾&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug.jpg&#34;
+	width=&#34;789&#34;
+	height=&#34;465&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/Plug_hu6786ceea50aca37089148a0e4284c76b_26705_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;407px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后就是安装其他配置自动化需要的插件(Ansible, SSH)了&lt;/p&gt;
+&lt;p&gt;去到&lt;code&gt;http://ip:8080/pluginManager/&lt;/code&gt;(即&lt;code&gt;Manage Jenkins&lt;/code&gt;下的&lt;code&gt;Plugin Manager&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;然后在&lt;code&gt;Available&lt;/code&gt;一栏搜索SSH和Jenkins&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个小提醒:SSH插件存在已知漏洞，从&lt;strong&gt;安全角度考虑生产环境请慎用&lt;/strong&gt;(指可以找到这些漏洞的临时缓解方案)，在实验里我偷个小懒&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4.jpg&#34;
+	width=&#34;1375&#34;
+	height=&#34;674&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4_hu8814786f0602457dd08f41b6a29edb65_61296_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/4_hu8814786f0602457dd08f41b6a29edb65_61296_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;步骤如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;489px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;要是想要节省时间，选中两个插件之后选择&lt;code&gt;Install without restart&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5.jpg&#34;
+	width=&#34;725&#34;
+	height=&#34;427&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/5_hu3fb8a0995a3bed5059ca92fe507ca7c7_23206_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;直接上图吧= =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;407px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装完成之后该配置各个插件了uwu&lt;/p&gt;
+&lt;h5 id=&#34;ssh&#34;&gt;SSH&lt;/h5&gt;
+&lt;p&gt;去到&lt;code&gt;http://ip:8080/configure&lt;/code&gt;或在网页点击&lt;code&gt;Manage Jenkins&lt;/code&gt; &amp;ndash;&amp;gt;&lt;code&gt;Configure System&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在这一界面下滑直到看到&lt;code&gt;SSH remote hosts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6.jpg&#34;
+	width=&#34;439&#34;
+	height=&#34;134&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6_hu4cf2abb05ac5d7dd5144943631646021_4848_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/6_hu4cf2abb05ac5d7dd5144943631646021_4848_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;327&#34;
+		data-flex-basis=&#34;786px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后点击下方的&lt;code&gt;Add&lt;/code&gt;进行配置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Hostname&lt;/code&gt;:主机名，一般填写目标主机ip(写一个)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Port&lt;/code&gt;：ssh端口，默认22&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Credentials&lt;/code&gt;：认证信息，即为通过ssh远程连接目标主机的用户名、密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;这里注意，如果是第一次使用，需要添加新的认证信息&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7.jpg&#34;
+	width=&#34;483&#34;
+	height=&#34;185&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7_hudca93671f7d3466b8db333519b2c3971_15723_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/7_hudca93671f7d3466b8db333519b2c3971_15723_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;还等什么??点Add呀!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;261&#34;
+		data-flex-basis=&#34;626px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;如果你想使用用户名，密码来认证的化，选择&lt;code&gt;Username with password&lt;/code&gt;,然后填好你的用户名，密码&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意，你要用自动化配置的几台机器的账号密码须一样&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8.jpg&#34;
+	width=&#34;1410&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/8_hu8892530fb1f52586b7dc745b4b55a6a4_36418_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;234&#34;
+		data-flex-basis=&#34;562px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;然后点下方的&lt;code&gt;check connection&lt;/code&gt;检查连接,如果看到提示&lt;code&gt;Successfull connection&lt;/code&gt;即为连接成功，然后点击&lt;code&gt;Apply&lt;/code&gt;- -&amp;gt;&lt;code&gt;Save&lt;/code&gt;即可完成ssh配置&lt;/p&gt;
+&lt;h5 id=&#34;ansible&#34;&gt;Ansible&lt;/h5&gt;
+&lt;p&gt;如果要使用Ansible插件，你必须机器(注意是装有Jenkins的机器)上安装有Ansible&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip:Ansible是一个批量自动化管理多台机器的工具&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ansible在epel源里才有，所以先安装epel源&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum -y install epel-release
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安装Ansible&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum -y install ansible
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;下面配置Ansible插件&lt;/p&gt;
+&lt;p&gt;去到&lt;code&gt;http://ip:8080/configureTools/&lt;/code&gt;，或者网页上&lt;code&gt;Manage Jenkins&lt;/code&gt; - -&amp;gt; &lt;code&gt;Global Tool Configuration&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;下划到&lt;code&gt;Ansible&lt;/code&gt;区域，点击&lt;code&gt;Add Ansible&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9.jpg&#34;
+	width=&#34;389&#34;
+	height=&#34;191&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9_hu131514d8c0f82ef766da13f19e39aaed_7498_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/9_hu131514d8c0f82ef766da13f19e39aaed_7498_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;488px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;分别添加&lt;code&gt;ansible&lt;/code&gt;和&lt;code&gt;ansible-playbook&lt;/code&gt;,默认他们的路径都安装在&lt;code&gt;/usr/bin&lt;/code&gt;下，如果不放心可以用&lt;code&gt;which&lt;/code&gt;命令检查&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;which ansible
+which ansible-playbook
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;注意这里的安装路径写到可执行文件所在目录&lt;/p&gt;
+&lt;p&gt;比如说我的ansible是&lt;code&gt;/usr/bin/ansible&lt;/code&gt;,我只需要填&lt;code&gt;/usr/bin&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1.jpg&#34;
+	width=&#34;1300&#34;
+	height=&#34;481&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-1_hu791da616eeee3fb3755db2ec17c8c564_21963_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ansible&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;270&#34;
+		data-flex-basis=&#34;648px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2.jpg&#34;
+	width=&#34;1300&#34;
+	height=&#34;482&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/10-2_hu3a8bc55f34ceeb089bb4c09a4681f7e2_24025_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ansible-playbook&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;269&#34;
+		data-flex-basis=&#34;647px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Ansible有个小坑，就是它不会说&amp;quot;是&amp;quot;&lt;/p&gt;
+&lt;p&gt;为什么这么说捏&lt;/p&gt;
+&lt;p&gt;因为当SSH询问是否需要将新的主机添加到&lt;code&gt;known_hosts&lt;/code&gt;时Ansible无法回应,那就只有报错辣;(&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17.jpg&#34;
+	width=&#34;1394&#34;
+	height=&#34;528&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17_hu9a6a7a35b55e21213a89272e0177d619_77850_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/17_hu9a6a7a35b55e21213a89272e0177d619_77850_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;呜呜呜，Ansible好可怜  雾)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;264&#34;
+		data-flex-basis=&#34;633px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;嘛= =那就帮帮Ansible吧，让它省去烦人的说&amp;quot;是&amp;quot;的步骤&lt;/p&gt;
+&lt;p&gt;在装有&lt;code&gt;Jenkins&lt;/code&gt;和&lt;code&gt;Ansible&lt;/code&gt;的机器上完成:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vi /etc/ssh/ssh_config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后将&lt;code&gt;/etc/ssh/ssh_config&lt;/code&gt; 内容中的&lt;code&gt;StrictHostKeyChecking&lt;/code&gt; 值为&lt;code&gt;no&lt;/code&gt; ,让机器自动接受证书&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意去掉这一行前的注释符&lt;code&gt;#&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18.jpg&#34;
+	width=&#34;1494&#34;
+	height=&#34;807&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18_hu880132dc73536d7a0effdb0f42b30610_121846_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/18_hu880132dc73536d7a0effdb0f42b30610_121846_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;有图有真相&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;444px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;别忘了关键的重启一步喵~~&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;systemctl restart sshd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h4 id=&#34;nfs安装和配置&#34;&gt;NFS安装和配置&lt;/h4&gt;
+&lt;h5 id=&#34;安装&#34;&gt;安装&lt;/h5&gt;
+&lt;p&gt;由于&lt;code&gt;rpc-bind&lt;/code&gt;是NFS的依赖项，必须先安装&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;dnf -y install rpcbind nfs-utils
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后启动&lt;code&gt;rpc-blind&lt;/code&gt;和NFS服务(&lt;code&gt;rpc-bind&lt;/code&gt;服务一定先启动)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;systemctl start rpcbind
+systemctl start nfs-server
+systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; rpcbind
+systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nfs-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;配置&#34;&gt;配置&lt;/h5&gt;
+&lt;p&gt;由于我们的NFS是用来备份数据库的，所以建一个名为DB_Backup的备份文件夹&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir /DB_Backup
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后修改配置文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vi /etc/exports
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输入如下内容:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;/DB_Backup 192.168.245.1/24&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;sync,ro&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 192.168.245.150&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;sync,rw,no_root_squash&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;至于配置文件里里东西的含义，可以看下文&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;最前面的是用来存放备份文件的目录绝对路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;地址可以使用完整IP或网段，例如10.0.0.8或10.0.0.0/24，10.0.0.0/255.255.255.0当然也可以地址可以使用主机名，DNS解析的和本地/etc/hosts解析的都行，支持通配符，例如：*.nanosec.site&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关于括号里的权限设置&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;rw：read-write，可读写;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ro：read-only，只读;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;sync：文件同时写入硬盘和内存;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;async：文件暂存于内存，而不是直接写入硬盘;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;no_root_squash：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，也拥有root权限;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;root_squash：NFS客户端连接服务端时如果使用的是root的话，那么对服务端分享的目录来说，拥有匿名用户权限，通常他将使用nobody或nfsnobody身份;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;all_squash：不论NFS客户端连接服务端时使用什么用户，对服务端分享的目录来说都是拥有匿名用户权限;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;anonuid：匿名用户的UID值，通常是nobody或nfsnobody，可以在此处自行设定;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;anongid：匿名用户的GID值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;出于安全角度角度，只给192.168.245.150即存放数据库的机器写权限&lt;/p&gt;
+&lt;p&gt;当然，no_root_squash参数最好也不要使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;编辑配置文件完成后，需要运行&lt;code&gt;exportfs&lt;/code&gt;重新发布所共享的目录&lt;/p&gt;
+&lt;p&gt;当然也可以重启服务，不过记得先重启&lt;code&gt;rpcbind&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;实现自动化安装环境&#34;&gt;实现自动化安装环境&lt;/h3&gt;
+&lt;p&gt;我们梳理一下思路，我们现在大概可以想到两种方案&lt;/p&gt;
+&lt;h4 id=&#34;方案猜想&#34;&gt;方案猜想&lt;/h4&gt;
+&lt;p&gt;第一种就是直接用SSH插件:不断添加构建步骤在不同机器上进行安装&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11.jpg&#34;
+	width=&#34;594&#34;
+	height=&#34;499&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/11_hu79e4e35ad266e6b3590d55d3124e14af_34682_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;119&#34;
+		data-flex-basis=&#34;285px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12.jpg&#34;
+	width=&#34;1247&#34;
+	height=&#34;587&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/12_hu9c044ff48b5ef396f50e31a1223e7a00_28393_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不得不说，是不是又那么亿点烦&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;212&#34;
+		data-flex-basis=&#34;509px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这个方法想想是没什么问题，但绝对不是适合我们这种懒人的哒= =&lt;/p&gt;
+&lt;p&gt;因为一旦设备数足够多，工作量就会巨大，费时费力&lt;/p&gt;
+&lt;p&gt;第二种方法则是通过ansible插件结合Jenkins和ansible来完成批量自动化，用一个构建步骤就可以在n台机器上运行脚本，而我们只需要提供运行的命令和所有机器的ip就好了&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;绝对是效率贼高的偷懒摸鱼小妙招&lt;/del&gt;&lt;/p&gt;
+&lt;h4 id=&#34;开始施工awa&#34;&gt;开始施工awa&lt;/h4&gt;
+&lt;p&gt;ok,现在我们想好了方案，接下来要做的就是新建一个Jenkins项目然后进行配置&lt;/p&gt;
+&lt;p&gt;回到&lt;code&gt;Dashboard&lt;/code&gt;- -&amp;gt;&lt;code&gt;New item&lt;/code&gt;新建一个项目&lt;/p&gt;
+&lt;p&gt;给项目起一个合适的名字(比如说用来安装环境的项目叫做Install),然后选&lt;code&gt;Freestyle Project&lt;/code&gt;,然后再&lt;del&gt;傻瓜式地&lt;/del&gt;点OK&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13.jpg&#34;
+	width=&#34;1492&#34;
+	height=&#34;764&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/13_hu9266081d2cb53e48ec37aa9eb8acbed6_101372_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;你是不是还在想项目叫什么(?&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;195&#34;
+		data-flex-basis=&#34;468px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后&lt;code&gt;Add build step&lt;/code&gt;-&amp;gt;&lt;code&gt;Invoke Ansible Ad-Hoc Command(调用Ansible临时命令)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14.jpg&#34;
+	width=&#34;602&#34;
+	height=&#34;496&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14_hu540c502a602a414f9b0bd01281d8b574_32599_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/14_hu540c502a602a414f9b0bd01281d8b574_32599_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;291px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;接下来这样填空&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Ansible installation&lt;/code&gt;&amp;ndash;&amp;gt;&lt;code&gt;ansible&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Host pattern&lt;/code&gt;填&lt;strong&gt;all&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Inventory&lt;/code&gt;-&amp;gt;&lt;code&gt;Inline content&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S.如果你不需要使用编程语言来生成IP列表,&lt;/p&gt;
+&lt;p&gt;请不要勾选下方的&lt;code&gt;Dynamic inventory&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1.jpg&#34;
+	width=&#34;1266&#34;
+	height=&#34;612&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1_hu57e93bda8b45dddce357893423f532af_34127_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-1_hu57e93bda8b45dddce357893423f532af_34127_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;呐呐呐~~&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;206&#34;
+		data-flex-basis=&#34;496px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Content&lt;/code&gt;填你需要执行命令机器的IP,一行一个&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Module&lt;/code&gt;填&lt;code&gt;shell&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Module arguments or command to execute&lt;/code&gt;填你要执行的命令,我们这里是要为3台机器配置Docker运行环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install -y docker-ce docker-ce-cli --allowerasing
+systemctl start docker
+systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; docker
+docker pull centos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2.jpg&#34;
+	width=&#34;1258&#34;
+	height=&#34;640&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-2_hu991cec24529d5374f803afdd72465c57_44167_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;图是不能少的啦qwq&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;471px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Credentials&lt;/code&gt;选我们前面在配置SSH插件的适合创建的那个&lt;/li&gt;
+&lt;li&gt;其他的东西保持默认&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3.jpg&#34;
+	width=&#34;1260&#34;
+	height=&#34;531&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/15-3_huaf66fc5de6486a9c57a3f299b0ac405f_19975_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;237&#34;
+		data-flex-basis=&#34;569px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后就是&lt;code&gt;Apply&lt;/code&gt;+&lt;code&gt;Save&lt;/code&gt;一把梭= =&lt;/p&gt;
+&lt;p&gt;然后回到项目主界面之后捏，点&lt;code&gt;Build Now&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;就是那个上面有绿绿三角形的钟~~(要是你理解为其他的东西也可以~~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16.jpg&#34;
+	width=&#34;1919&#34;
+	height=&#34;561&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/16_hu5757ccf8d7feba82c148037cff4d9cee_45305_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;没事，反正有图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;342&#34;
+		data-flex-basis=&#34;820px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;要是你运气好，没报错，就能看到一个绿绿的勾&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;PASS.jpg&#34; alt=&#34;嘛= = 长这样&#34; width=&#34;331&#34;&gt;
+&lt;p&gt;要是BUG满天飞，就会是一个红红火火的x&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;FAIL.jpg&#34; alt=&#34;祝愿大家永远没BUG&#34; width=&#34;331&#34;&gt;
+&lt;p&gt;假设现在已经运行成功并且没有任何报错，右键&lt;code&gt;build&lt;/code&gt;编号，点&lt;code&gt;Console Output&lt;/code&gt;查看控制台输出&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19.jpg&#34;
+	width=&#34;1917&#34;
+	height=&#34;745&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/19_huaf9989b892971d1933dd01cf0c58dbd0_104310_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;OK！完工qaq&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;257&#34;
+		data-flex-basis=&#34;617px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;到现在为止，我们3台机器上已经安装好了Docker环境并拉去了centos镜像&lt;/p&gt;
+&lt;h3 id=&#34;部署web-server&#34;&gt;部署Web Server&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的内心是崩溃的，Docker对于我这种菜狗就全都是坑 =  =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;思路&#34;&gt;思路&lt;/h4&gt;
+&lt;p&gt;我这边的实验能是打算用Docker搭一个LNMP架构，再安装WordPress,&lt;/p&gt;
+&lt;p&gt;当然啦，用Docker也可以搭建其他网站架构&lt;/p&gt;
+&lt;h4 id=&#34;jenkins新建一个新项目&#34;&gt;Jenkins新建一个新项目&lt;/h4&gt;
+&lt;p&gt;建项目的流程和上面配置自动化安装基本一样，就是把机器ip和代码替换掉就可以了&lt;/p&gt;
+&lt;h4 id=&#34;lnmp&#34;&gt;LNMP&lt;/h4&gt;
+&lt;p&gt;在这个过程中真的踩到无数的坑，可能是因为Docker这个镜像精简的&lt;code&gt;feature&lt;/code&gt;吧，很多最最基础的东西都没有= =&lt;/p&gt;
+&lt;p&gt;不管怎么说，先启动Docker,再映射到一个&lt;del&gt;吉利的&lt;/del&gt;端口  &lt;del&gt;(顿时接地气了起来，咳咳= =&lt;/del&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker run --name LNMP -p 8888:80 -d -t centos:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;至于为什么不直接pull nginx的镜像，是因为想统一用yum包管理器，而nginx镜像是apt包管理器= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;第一个坑容器无法正常启动&#34;&gt;第一个坑:容器无法正常启动&lt;/h5&gt;
+&lt;p&gt;你会注意到上面启动容器的命令里包含了&lt;code&gt;-t&lt;/code&gt;参数，&lt;/p&gt;
+&lt;p&gt;为什么咧????&lt;/p&gt;
+&lt;p&gt;&amp;ndash; 因为不加上centos镜像启动的容器会立刻停止运行&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20.jpg&#34;
+	width=&#34;1175&#34;
+	height=&#34;133&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20_hu179365e207b53619013dedb83625c086_34439_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/20_hu179365e207b53619013dedb83625c086_34439_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;就是这么狗&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;883&#34;
+		data-flex-basis=&#34;2120px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;第二个坑无法使用yum源&#34;&gt;第二个坑:无法使用Yum源&lt;/h5&gt;
+&lt;p&gt;太狗了!  容器里的yum源用不了= =&lt;/p&gt;
+&lt;p&gt;报错如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Failed to &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; locale, defaulting to C.UTF-8
+CentOS Linux &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; - AppStream                                                                                                   &lt;span class=&#34;m&#34;&gt;57&lt;/span&gt;  B/s &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;38&lt;/span&gt;  B     00:00
+Error: Failed to download metadata &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; repo &lt;span class=&#34;s1&#34;&gt;&amp;#39;appstream&amp;#39;&lt;/span&gt;: Cannot prepare internal mirrorlist: No URLs in mirrorlist
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看到这个报错，我直接炸毛= =&lt;/p&gt;
+&lt;p&gt;刚开始还以为源的URL没有加上，后来发现是因为&lt;code&gt;AppStream&lt;/code&gt;的&lt;code&gt;mirrorlist&lt;/code&gt;里URL用不了&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;/etc/yum.repos.d/CentOS-Linux-AppStream.repo&lt;/code&gt;文件中官方友情提醒了我们&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# If the mirrorlist does not work for you, you can try the commented out
+# baseurl line instead.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;所以我们只需要把&lt;code&gt;mirrorlist&lt;/code&gt;那一行注释掉并且取消&lt;code&gt;baseurl&lt;/code&gt;的注释&lt;/p&gt;
+&lt;p&gt;因为我们是在Jenkins里自动化，很显然不能用vim,就改用下面这种方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意:自动化也导致不能&lt;code&gt;docker exec -ti 容器名 /bin/bash&lt;/code&gt;调出交互终端&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s/mirrorlist/#mirrorlist/g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;P.S. 使用&lt;code&gt;sh -c &amp;quot;内容&amp;quot;&lt;/code&gt;的原因是不放在引号里&lt;code&gt;Docker exec&lt;/code&gt;会把后面一团东东当成两条命令执行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;第三个坑systemctl报错&#34;&gt;第三个坑:systemctl报错&lt;/h5&gt;
+&lt;p&gt;在一番快乐的安装之后&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum makecache
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install nginx
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install php*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该到了启动和启用服务的时候了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start php-fpm
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; php-fpm
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start nginx
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后&amp;quot;啪!&amp;ldquo;就是一个报错&lt;/p&gt;
+&lt;p&gt;好家伙! systemctl都用不了!!!   震怒)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;System has not been booted with systemd as init system &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;PID 1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;. Can&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;t operate.
+Failed to connect to bus: Host is down
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;img title=&#34;&#34; src=&#34;nu.jpg&#34; alt=&#34;&#34; width=&#34;143&#34; data-align=&#34;center&#34;&gt;
+&lt;p&gt;还好有&lt;del&gt;GayHub&lt;/del&gt;GitHub上大佬的&lt;a class=&#34;link&#34; href=&#34;https://github.com/gdraheim/docker-systemctl-replacement&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Docker systemctl替代品&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install wget
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install python3
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;小提醒:GitHub的raw应该是被gfw给挡住了，所以可能要给Docker配置代理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;部署wordpress&#34;&gt;部署WordPress&lt;/h4&gt;
+&lt;p&gt;因为我们要从GitHub拉取Wordpress源码(或者从内部的GitLab拉取代码)&lt;/p&gt;
+&lt;p&gt;先给容器安装Git&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再把原先nginx默认的一些网页文件删除&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /usr/share/nginx/html/*&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;拉取WordPress&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就可以访问机器ip开始安装WordPress啦&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP.jpg&#34;
+	width=&#34;1918&#34;
+	height=&#34;840&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/WP_huc7c72e8510fe0cca76662c03e31eec7a_89735_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;548px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;又双叒叕踩坑啦wordpress权限不足&#34;&gt;又双叒叕踩坑啦:WordPress权限不足&lt;/h5&gt;
+&lt;p&gt;你需要在Jenkins中提前让WordPress目录对于所有用户可写&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod -R 777 /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;否则就不能自动化了qeq&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21.jpg&#34;
+	width=&#34;1142&#34;
+	height=&#34;663&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/21_hua744ec4f04003630f7219a1ffd4fbc75_44064_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;我不想接受这个抱歉&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;输入已经配置好的数据库信息&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据库配置见下文&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2.jpg&#34;
+	width=&#34;1109&#34;
+	height=&#34;615&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp2_hub528b98807145f4e17ccbcf21cca4816_51426_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;432px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;自动化花里胡哨&#34;&gt;自动化花里胡哨&lt;/h4&gt;
+&lt;p&gt;嘿嘿，最后给配个&lt;a class=&#34;link&#34; href=&#34;https://github.com/mashirozx/sakura&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;主题&lt;/a&gt;，让我的实验kawaii起来~~&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme.jpg&#34;
+	width=&#34;809&#34;
+	height=&#34;536&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/theme_hu486b38f6208f54dffe23747ffdf76669_48395_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;主题预览&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;362px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;附上代码&#34;&gt;附上代码&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker run --name LNMP -p 8888:80 -d -t centos:latest
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s/mirrorlist/#mirrorlist/g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum makecache
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install nginx
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install php*
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install wget
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install python3
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP yum -y install git
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start php-fpm
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; php-fpm
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl start nginx
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nginx
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /usr/share/nginx/html/*&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/WordPress/WordPress.git /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod -R 777 /usr/share/nginx/html/&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti LNMP sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone https://github.com/mashirozx/sakura.git /usr/share/nginx/html/wp-content/themes/Sakura/&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;部署mariadb数据库&#34;&gt;部署MariaDB数据库&lt;/h3&gt;
+&lt;h4 id=&#34;老规矩jenkins新建项目&#34;&gt;老规矩:Jenkins新建项目&lt;/h4&gt;
+&lt;p&gt;不过有了前面的经验之后，这边可以偷个小懒，嘿嘿嘿&lt;/p&gt;
+&lt;p&gt;细心的朋友们可以发现，在新建项目的时候还可以用之前的项目作为模版&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22.jpg&#34;
+	width=&#34;1422&#34;
+	height=&#34;408&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22_hu2744b412728c5e618591b07eb0ab3231_24477_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/22_hu2744b412728c5e618591b07eb0ab3231_24477_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;好诶，可以懒了&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;348&#34;
+		data-flex-basis=&#34;836px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们就以刚刚配置的Web Server作为模板&lt;/p&gt;
+&lt;p&gt;点OK创建之后你会看见和一个和Web Server项目配置相同的新项目&lt;/p&gt;
+&lt;p&gt;接下来也是老样子:修改IP和代码&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25.jpg&#34;
+	width=&#34;1238&#34;
+	height=&#34;778&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/25_huc12be82f3810cf7a0a8de7518439ea5b_79997_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;381px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;配置数据库&#34;&gt;配置数据库&lt;/h4&gt;
+&lt;p&gt;现在在之前配置Web Server的代码基础上进行修改&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S.:建议把容器名进行修改，并起一个易于识别的名字&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;3306端口&#34;&gt;3306端口&lt;/h5&gt;
+&lt;p&gt;既然是MariaDB数据库(和MySQL基本相同)，那就需要映射3306到端口&lt;/p&gt;
+&lt;p&gt;为了之后备份的方便，我们映射一个目录&lt;code&gt;/mnt/backup&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir /mnt/backup
+docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;关于安装&#34;&gt;关于安装&lt;/h5&gt;
+&lt;p&gt;这里轻松多啦，我们已经解决了前面所提及的几个大坑，&lt;/p&gt;
+&lt;p&gt;仔细思考，因为在这里只需要部署数据库，前面安装PHP和Nginx的代码可以干掉啦qwq&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;注意：记得保留前面解决坑所需的代码= =&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后换成安装MariaDB的代码&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install mariadb mariadb-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;启动并启用数据库服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl start mariadb
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; mariadb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;配置-1&#34;&gt;配置&lt;/h5&gt;
+&lt;p&gt;因为我们是自动化，所以不能用之前一贯的方法调出MariaDB的交互式控制台&lt;/p&gt;
+&lt;p&gt;那么，就直接在命令行执行SQL语句吧&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mysql -u 用户名 -p密码 -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;语句&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;注意初始状态的MariaDB是没有密码的，&lt;/p&gt;
+&lt;p&gt;毕竟我们是网安人嘛，为了安全性肯定要设置密码= =&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;ALTER USER &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;你的密码&amp;#39;;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;因为需要让跑Web Server的那台机器访问到数据库，我们进行配置一下权限，顺便再建一个叫做DB的数据库(以存放WordPress的数据)&lt;/p&gt;
+&lt;p&gt;为了安全性，我们只许可Web Server的机器用root的用户名和密码登陆&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意这里指mysql的root用户，和系统的root用户不一样哦 -   -&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -u root -p123.密码 -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &amp;#39;root&amp;#39;@&amp;#39;ip&amp;#39;IDENTIFIED BY &amp;#39;密码&amp;#39; WITH GRANT OPTION; flush privileges; create database db;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;备份&#34;&gt;备份&lt;/h4&gt;
+&lt;p&gt;好啦，最后要做的就是定时备份数据库&lt;/p&gt;
+&lt;p&gt;毕竟数据无价是真理嘛awa&lt;/p&gt;
+&lt;p&gt;首先给数据库的主机装个NFS客户端并每次启动时挂载共享文件夹&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;yum -y install nfs-utils
+mount.nfs IP:/DB_Backup /mnt/backup/
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;mount.nfs IP:/DB_Backup /mnt/backup/&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;docker start MySQL&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+chmod +x /etc/rc.local
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;现在来到容器内部完成真正定时&amp;quot;备份&amp;quot;的操作&lt;/p&gt;
+&lt;p&gt;我们决定每天备份一次数据库，这个时候小小偷个懒，不用&lt;code&gt;crontab -e&lt;/code&gt;了，直接将脚本放到&lt;code&gt;/etc/cron.daily&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;我们可以把备份的脚本放在GitLab里&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;mysqldump -u root -p密码 --all-databases &amp;gt; /db/data-dump.sql
+&lt;span class=&#34;nv&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date +%F&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+cp /db/data-dump.sql /mnt/backup/DB_&lt;span class=&#34;nv&#34;&gt;$date&lt;/span&gt;
+rm -rf /db/data-dump.sql
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23.jpg&#34;
+	width=&#34;1912&#34;
+	height=&#34;842&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/23_hub48237f653917c1a3ce43a6776273b2d_90308_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;放在GitLab会更方便管理&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;544px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;由于我们脚本里需要用到&lt;code&gt;/db&lt;/code&gt;目录，我们得先建&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;mkdir /db&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就&lt;code&gt;git pull&lt;/code&gt;到&lt;code&gt;/etc/cron.daily&lt;/code&gt;目录并赋予适当权限(记得先在容器里安装git哦)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install git
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone http://IP/nanosec/backup.git /etc/cron.daily/&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后可以先运行一下看看是否备份成功&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;/etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26.jpg&#34;
+	width=&#34;999&#34;
+	height=&#34;663&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/26_hu838e2f8ad07977a755d634f3ae5287e5_71929_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;361px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24.jpg&#34;
+	width=&#34;441&#34;
+	height=&#34;96&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/24_hu4fe1442baff7bd7c951c5ce5fabb5310_8435_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;成功XD&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;459&#34;
+		data-flex-basis=&#34;1102px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;附上代码-1&#34;&gt;附上代码&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir /mnt/backup
+yum -y install nfs-utils
+mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;mount.nfs 192.168.245.129:/DB_Backup /mnt/backup/&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;docker start MySQL&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; /etc/rc.local
+chmod +x /etc/rc.local
+docker run --name MySQL -p 3306:3306 -d -t -v /mnt/backup:/mnt/backup centos:latest
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s/mirrorlist/#mirrorlist/g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;sed -i &amp;#39;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&amp;#39; /etc/yum.repos.d/CentOS-*&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum makecache
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install mariadb mariadb-server
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install wget
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install python3
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL yum -y install git
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py -O /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /usr/local/bin/systemctl&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl start mariadb
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; mariadb
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;ALTER USER &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;密码&amp;#39;;&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL mysql -u root -p密码 -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;use mysql; GRANT ALL PRIVILEGES ON *.* TO &amp;#39;root&amp;#39;@&amp;#39;IP&amp;#39;IDENTIFIED BY &amp;#39;密码&amp;#39; WITH GRANT OPTION; flush privileges; create database db;&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;mkdir /db&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone http://192.168.245.129/nanosec/backup.git /etc/cron.daily/&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;chmod +x /etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti MySQL sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;/etc/cron.daily/backup.sh&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;配置nginx反向代理&#34;&gt;配置Nginx反向代理&lt;/h3&gt;
+&lt;p&gt;呼，最后的工作则是配置Nginx反向代理&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;(心里:aaaaaaa总算熬到头了)&lt;/del&gt;&lt;/p&gt;
+&lt;h4 id=&#34;jenkins项目&#34;&gt;Jenkins项目&lt;/h4&gt;
+&lt;p&gt;到这里应该已经成为&amp;quot;老油条&amp;quot;了，&lt;/p&gt;
+&lt;p&gt;直接利用模板+修改一把梭&lt;/p&gt;
+&lt;img src=&#34;awa.jpg&#34; title=&#34;&#34; alt=&#34;&#34; width=&#34;60&#34;&gt;
+&lt;p&gt;最后大概确定应该肯定是这样纸捏&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27.jpg&#34;
+	width=&#34;1245&#34;
+	height=&#34;772&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27_hu836adf1d51f47e292a0038b6982634eb_58051_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/27_hu836adf1d51f47e292a0038b6982634eb_58051_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;387px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;部署nginx反向代理&#34;&gt;部署Nginx反向代理&lt;/h4&gt;
+&lt;p&gt;为了用户访问方便，这次直接映射到80端口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker run --name N_Proxy -p 80:80 -d -t centos:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;安装-1&#34;&gt;安装&lt;/h5&gt;
+&lt;p&gt;Nginx反代嘛= =&lt;/p&gt;
+&lt;p&gt;当然就是要装Nginx&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy yum -y install nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就是日常对服务的操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy systemctl start nginx
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;配置-2&#34;&gt;配置&lt;/h5&gt;
+&lt;p&gt;老样子，先把默认的网站文件删除&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /usr/share/nginx/html/*&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后就到了最关键一步，配置文件的调整&lt;/p&gt;
+&lt;p&gt;为了之后修改配置文件能够&lt;del&gt;优雅地&lt;/del&gt;偷懒，我们将配置文件托管在GitLab上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;user nginx&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+worker_processes auto&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+error_log /var/log/nginx/error.log&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+pid /run/nginx.pid&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.&lt;/span&gt;
+include /usr/share/nginx/modules/*.conf&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+events &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    worker_connections 1024&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+http &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    log_format  main  &lt;span class=&#34;s1&#34;&gt;&amp;#39;$remote_addr - $remote_user [$time_local] &amp;#34;$request&amp;#34; &amp;#39;&lt;/span&gt;
+                      &lt;span class=&#34;s1&#34;&gt;&amp;#39;$status $body_bytes_sent &amp;#34;$http_referer&amp;#34; &amp;#39;&lt;/span&gt;
+                      &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#34;$http_user_agent&amp;#34; &amp;#34;$http_x_forwarded_for&amp;#34;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    access_log  /var/log/nginx/access.log  main&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    sendfile            on&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    tcp_nopush          on&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    tcp_nodelay         on&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    keepalive_timeout   65&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    types_hash_max_size 2048&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    include             /etc/nginx/mime.types&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    default_type        application/octet-stream&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;# Load modular configuration files from the /etc/nginx/conf.d directory.&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;# See http://nginx.org/en/docs/ngx_core_module.html#include&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;# for more information.&lt;/span&gt;
+    include /etc/nginx/conf.d/*.conf&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;#include /etc/nginx/default.d/*.conf;&lt;/span&gt;
+
+upstream web1 &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        server 192.168.245.149:8888  &lt;span class=&#34;nv&#34;&gt;weight&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;#此处填写被代理服务器IP&lt;/span&gt;
+       &lt;span class=&#34;c1&#34;&gt;#server 192.168.0.17  weight=1;&lt;/span&gt;
+       &lt;span class=&#34;c1&#34;&gt;#ip_hash;&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+server&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        listen 80&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        server_name blog.nanosec.io&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        access_log  /var/log/nginx/blog.log&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        location / &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+            root /home/web1_root&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_pass http://web1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_read_timeout 300&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_connect_timeout 300&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_redirect     off&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_set_header   X-Forwarded-Proto &lt;span class=&#34;nv&#34;&gt;$scheme&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_set_header   Host              &lt;span class=&#34;nv&#34;&gt;$http_host&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_set_header   X-Real-IP         &lt;span class=&#34;nv&#34;&gt;$remote_addr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            proxy_set_header X-Forwarded-For &lt;span class=&#34;nv&#34;&gt;$proxy_add_x_forwarded_for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28.jpg&#34;
+	width=&#34;1585&#34;
+	height=&#34;620&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/28_hua4ae1027bbaeba33f0064f18c54fef7e_50243_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;255&#34;
+		data-flex-basis=&#34;613px&#34;
+	
+&gt;我们先把原有的配置文件干掉&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;rm -rf /etc/nginx/nginx.conf&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再放上新的配置文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：因为&lt;code&gt;git clone&lt;/code&gt;无法clone进一个已经存在的目录&lt;/p&gt;
+&lt;p&gt;所以我们需要先clone到一个其他位置并进行移动&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;git clone http://192.168.245.129/nanosec/your-code-here.git&amp;#34;&lt;/span&gt;
+docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;cp /your-code-here/nginx.conf /etc/nginx/&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;检查配置文件是否存在问题&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy nginx -t
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;检查无误后再重新加载配置文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -ti N_Proxy nginx -s reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;完工&#34;&gt;完工&lt;/h4&gt;
+&lt;p&gt;这个时候就可以让这个项目跑起来啦awa&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30.jpg&#34;
+	width=&#34;1059&#34;
+	height=&#34;675&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30_hufca6db4e98f81389b0873d5504c95ec7_105467_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/30_hufca6db4e98f81389b0873d5504c95ec7_105467_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;好诶!没有报错&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;156&#34;
+		data-flex-basis=&#34;376px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;到这里我们访问反向代理的ip或者把&lt;code&gt;blog.nanosec.io&lt;/code&gt;解析到这个ip后访问就可以看到Web Server的那个网页啦&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29.jpg&#34;
+	width=&#34;937&#34;
+	height=&#34;80&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29_hueb5b90525fb4cf606e51d6c59824a990_6539_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/29_hueb5b90525fb4cf606e51d6c59824a990_6539_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1171&#34;
+		data-flex-basis=&#34;2811px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3.jpg&#34;
+	width=&#34;1919&#34;
+	height=&#34;841&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3_hu247aef0cba82f0843aca389463206524_80693_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/wp3_hu247aef0cba82f0843aca389463206524_80693_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;TaDa! 美滋滋~~&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;547px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;part3--结语&#34;&gt;Part3&amp;ndash;结语&lt;/h2&gt;
+&lt;p&gt;Hmmm,这样一个有意思的自动化企业网络架构部署到这里就完成了&lt;/p&gt;
+&lt;h3 id=&#34;优势&#34;&gt;优势&lt;/h3&gt;
+&lt;p&gt;可以说是为运维带来了很大的便捷，一旦机器多起来一台一台装显得费时费力又不现实，&lt;/p&gt;
+&lt;p&gt;自动化通过按几个键就能完成部署，在很大程度上提高了效率 = =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233.jpg&#34;
+	width=&#34;1918&#34;
+	height=&#34;811&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233_hu1c39254c82a3387047299d017b409ba6_134470_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/%E6%A8%A1%E6%8B%9F%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4%E4%BD%93%E7%B3%BB/233_hu1c39254c82a3387047299d017b409ba6_134470_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;你说方便不方便;)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;236&#34;
+		data-flex-basis=&#34;567px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;以后的维护也是变得特别简单了&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要是代码和配置文件需要更改直接去GitLab改&lt;/li&gt;
+&lt;li&gt;要是一些配置步骤需要微调直接在Jenkins上操作&lt;/li&gt;
+&lt;li&gt;新加入的机器只需要按几个键就可以完成部署&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;一些思考&#34;&gt;一些思考&lt;/h3&gt;
+&lt;h4 id=&#34;关于本方案如何改进&#34;&gt;关于本方案如何改进&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;使用ZStack私有云，在与Docker共度了几个夜晚之后，我发现如果在&lt;strong&gt;拥有足够的性能&lt;/strong&gt;条件下，还是使用虚拟机比较好，至于原因嘛，一是对于新手来说友好，配置/使用更加方便，二是安全性更高，毕竟虚拟机逃逸比容器逃逸要困难&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本次实验由于性能问题，没带动ZStack(悲&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;可以把Jenkins里配置的命令集合成脚本，并也托管到GitLab上，这样后期维护会更加便捷&lt;/li&gt;
+&lt;li&gt;备份最好独立一台机器，并把GitLab和Jenkins里的东西也做相应备份&lt;/li&gt;
+&lt;li&gt;在Jenkin中新建一个一键查看日志的项目，方便日志的查看&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;关于安全的思考&#34;&gt;关于安全的思考&lt;/h4&gt;
+&lt;p&gt;怎么说呢。。。这种事情就把所有机器的权限高度集中在一个地方了，这实际上在某种意义上也是十分危险的= =&lt;/p&gt;
+&lt;p&gt;因为一旦集中权限的机器被入侵，那就是&amp;quot;全都没了&amp;quot;的惨剧了&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;就举个最简单的例子，Jenkins机器放到了公网上，而且还是弱密码= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;img src=&#34;cx.jpg&#34; title=&#34;&#34; alt=&#34;&#34; width=&#34;117&#34;&gt;
+&lt;p&gt;当然，从攻击者的角度，可以考虑对于权限集中的地方下手;)&lt;/p&gt;
+&lt;h2 id=&#34;part-4----ref&#34;&gt;Part 4 &amp;ndash; Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://book.fsec.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://book.fsec.io/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Kali Gnome桌面环境の调整&amp;美化</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</link>
+        <pubDate>Fri, 27 May 2022 14:45:16 +0800</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/cover.jpg" alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化" /&gt;&lt;h1 id=&#34;kali-gnome桌面环境の调整美化&#34;&gt;Kali Gnome桌面环境の调整&amp;amp;美化&lt;/h1&gt;
+&lt;p&gt;最近刚把kali桌面环境从xfce迁移到了gnome,主要是看中了gnome的&amp;quot;任务栏&amp;quot;美观这一点,&lt;/p&gt;
+&lt;p&gt;不过这一换貌似有点后悔，不得不说kali还是默认的xfce舒适= =&lt;/p&gt;
+&lt;p&gt;gnome不仅占用更多的资源，而且在GUI方面可供自定义的地方也少了很多:(&lt;/p&gt;
+&lt;p&gt;不过既然已经干了这事，我也懒得再换回来了((&lt;/p&gt;
+&lt;p&gt;那就好好调教一下gnome吧awa&lt;/p&gt;
+&lt;h2 id=&#34;切换默认终端&#34;&gt;切换默认终端&lt;/h2&gt;
+&lt;p&gt;个人感觉gnome默认的terminal很鸡肋，可以&lt;del&gt;花里胡哨&lt;/del&gt;个性化的地方比较少，&lt;/p&gt;
+&lt;p&gt;于是我决定做一个&lt;del&gt;感天动地の大事&lt;/del&gt;:把默认终端换成xfce默认的&lt;strong&gt;qterminal&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;先安装qterminal&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install qterminal
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后配置默认终端&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo update-alternatives --config x-terminal-emulator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.jpg&#34;
+	width=&#34;789&#34;
+	height=&#34;229&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hub2593e56e24e4c6b218d781f95b3f40c_33793_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;列表示例,本图里并没有qterminal,大家自己实践时自己探索哦&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;344&#34;
+		data-flex-basis=&#34;826px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;调整任务栏位置&#34;&gt;调整&amp;quot;任务栏&amp;quot;位置&lt;/h2&gt;
+&lt;p&gt;找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =&lt;/p&gt;
+&lt;p&gt;嘛&amp;hellip;.原来是只能用命令行= =&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;gsettings &lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; org.gnome.shell.extensions.dash-to-dock dock-position 位置
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;关于这个位置支持的值说明:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BOTTOM&lt;/strong&gt; -&amp;gt; 底部&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LEFT&lt;/strong&gt; -&amp;gt; 靠左&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RIGHT&lt;/strong&gt; -&amp;gt; 靠右&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TOP&lt;/strong&gt; -&amp;gt; 顶部&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;用户头像设置排坑&#34;&gt;用户头像设置排坑&lt;/h2&gt;
+&lt;p&gt;因为Kali的安全设置(很有可能是权限)问题，&lt;/p&gt;
+&lt;p&gt;使本来很愉快的换头像变成一件非常狗的事情&lt;/p&gt;
+&lt;p&gt;因为不能走GUI快捷通过点点点换一个好看的头像，&lt;/p&gt;
+&lt;p&gt;所以只能上配置文件了;(&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo vi /var/lib/AccountsService/users/你的用户名
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按&lt;code&gt;i&lt;/code&gt;进入编辑模式对配置文件进行修改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;User&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;Icon&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;你图片的绝对路径 &lt;span class=&#34;c1&#34;&gt;#绝对路径就是从/开始的那个&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;Language&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;XSession&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;SystemAccount&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按&lt;code&gt;Esc&lt;/code&gt;并输入&lt;code&gt;:wq&lt;/code&gt;,再&lt;code&gt;Enter&lt;/code&gt;保存并退出&lt;/p&gt;
+&lt;p&gt;然后再进入你图片所在的目录，调整下改图片文件的权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo chmod &lt;span class=&#34;m&#34;&gt;777&lt;/span&gt; 你的图片
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后再退出登陆，就可以看到你更改的头像啦~~&lt;/p&gt;
+&lt;h2 id=&#34;调教后整体效果&#34;&gt;调教后整体效果&lt;/h2&gt;
+&lt;p&gt;废话不说，直接上图0.0&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.png&#34;
+	width=&#34;1600&#34;
+	height=&#34;839&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1_hu69e5e9258cd5bb224b6d2ae8f9e9da3a_1511875_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;桌面&amp;#43;终端&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2.jpg&#34;
+	width=&#34;1600&#34;
+	height=&#34;835&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/2_hud70b774ae600729d49d8899bde48f9da_52198_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;锁屏界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;459px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.k4nz.com/ad7919e239407320e4c7db00fe28b785/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;「GNOME」- 登录界面，GDM，GNOME Display Manager - K4NZ BLOG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.yisu.com/zixun/461030.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;怎么在Ubuntu中安装多个终端以及更改默认终端 - 系统运维 - 亿速云&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://technoresult.com/move-launcher-bar-to-the-bottom-right-using-terminal-in-ubuntu/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Move Launcher Bar to the Bottom/Right using Terminal in Ubuntu? - Technoresult&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Debian Linux下安装虚拟机软件</title>
+        <link>https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</link>
+        <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/cover.jpg" alt="Featured image of post Debian Linux下安装虚拟机软件" /&gt;&lt;h1 id=&#34;debian-linux下安装虚拟机软件&#34;&gt;Debian Linux下安装虚拟机软件&lt;/h1&gt;
+&lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
+&lt;p&gt;VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少&lt;/p&gt;
+&lt;h3 id=&#34;安装最新版本内核头文件内核镜像&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
+&lt;p&gt;为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们&lt;strong&gt;尽量避免&lt;/strong&gt;使用网上提供的这种方式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install linux-headers-`uname -r`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;采用以下命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
+sudo apt-cache search linux-image    
+sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
+init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
+	width=&#34;1031&#34;
+	height=&#34;715&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;apt安装virtualbox&#34;&gt;apt安装VirtualBox&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;apt-get install virtualbox virtualbox-guest-additions-iso
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
+&lt;p&gt;比起VBox,VMware折腾起来坑真的好多啊= =&lt;/p&gt;
+&lt;p&gt;不过没办法。。。我还有10多个VMware的虚拟机w(&lt;/p&gt;
+&lt;h3 id=&#34;安装最新版本内核头文件内核镜像-1&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
+&lt;p&gt;第一步和安VBox一样的操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt update
+sudo apt-cache search linux-image    
+sudo apt-get install linux-headers-xxx linux-image-xxx  
+#后面的xxx是上面语句中搜索出来的版本号和系统架构
+init 6 #装完重启
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
+	width=&#34;498&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;P.S.如果你安装后遇到了这样的界面，应该会是这一步没有做&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;442px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装各种编译器&#34;&gt;安装各种编译器&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt-get install build-essential 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
+	width=&#34;496&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;P.S.如果你安装完VMware运行出现这样的界面，很可能是你没有安装编译器&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;476px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;安装vmware-workstation&#34;&gt;安装VMware Workstation&lt;/h3&gt;
+&lt;p&gt;去&lt;a class=&#34;link&#34; href=&#34;https://www.vmware.com/go/getworkstation-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官网&lt;/a&gt;下载安装程序&lt;/p&gt;
+&lt;p&gt;给可执行权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;chmod x VMware-Workstation-Full-版本号.bundle 
+&lt;span class=&#34;c1&#34;&gt;#TIP:文件名太长可以Tab补全&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo ./VMware-Workstation-Full-版本号.bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;安装好之后想要运行直接终端输入vmware就可以了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;排坑&#34;&gt;排坑&lt;/h3&gt;
+&lt;p&gt;如果你顺利的话完成上面几步之后依照提示就可以结束这&lt;del&gt;快乐&lt;/del&gt;的安装过程了&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是，，，我还遇到了更多奇奇怪怪的坑&lt;/strong&gt;&lt;/p&gt;
+&lt;img title=&#34;&#34; src=&#34;1.gif&#34; alt=&#34;&#34; width=&#34;251&#34;&gt;
+&lt;p&gt;如果各位朋友也遇到了，可以参考下解决方案&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2.jpg&#34;
+	width=&#34;701&#34;
+	height=&#34;407&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;你再报错试试!?!  怒)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;VMware在编译和安装&lt;code&gt;vmmom&lt;/code&gt;和&lt;code&gt;vmnet&lt;/code&gt;两个模块的时候出了问题，查了各种解决方案都没用&lt;/p&gt;
+&lt;p&gt;最后，我采取了&lt;strong&gt;手动编译安装两个模块&lt;/strong&gt;的方法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;暴力出奇迹&amp;ndash;永远不变的真理 逃)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下是具体解决方案，英语好的伙伴们可以参考&lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/VM-Workstation-16-1-gt-16-2-1-on-Ubuntu-21-10-broke-everything/m-p/2884738#M173158&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这个官方论坛帖子&lt;/a&gt;捏~~&lt;/p&gt;
+&lt;p&gt;先下载模块的&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkubecek/vmware-host-modules/tree/workstation-16.2.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;源码&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于这里&lt;code&gt;git clone&lt;/code&gt;不知道为什么并不能拉取所有源码，所以我们这里选择下载zip包&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3.jpg&#34;
+	width=&#34;589&#34;
+	height=&#34;570&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;下载界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;248px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;解压后进入源码目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;unzip vmware-host-modules-workstation-16.2.1.zip
+cd vmware-host-modules-workstation-16.2.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译+安装&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo systemctl restart vmware
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
+	width=&#34;1033&#34;
+	height=&#34;655&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;如图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完成之后再运行VMware Workstation,就应该可以正常进入程序了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;vmware
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
+	width=&#34;904&#34;
+	height=&#34;741&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;292px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;激活&#34;&gt;激活&lt;/h3&gt;
+&lt;p&gt;网上VMware激活码可谓了一大堆&lt;/p&gt;
+&lt;p&gt;为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
+	width=&#34;897&#34;
+	height=&#34;655&#34;
+	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;激活界面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.a5idc.com/helpcontent/347.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.a5idc.com/helpcontent/347.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
