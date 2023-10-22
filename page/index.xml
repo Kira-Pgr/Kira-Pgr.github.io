@@ -20,7 +20,9 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://kira-pgr.github.io/about/</guid>
-        <description>&lt;p&gt;This is an about page~&lt;/p&gt;
+        <description>&lt;h1 id=&#34;about-the-blog&#34;&gt;About The Blog&lt;/h1&gt;
+&lt;p&gt;The blog is currently updating to support both Chinese and English&lt;br&gt;
+Due to time litmits, all the Chinese ariticles posted before 23-10-22 will be translated using &lt;strong&gt;AI assistants&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
