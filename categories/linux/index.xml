@@ -5,7 +5,186 @@
         <link>https://kira-pgr.github.io/categories/linux/</link>
         <description>Recent content in Linux on CSNek0&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+        <language>en</language>
+        <lastBuildDate>Fri, 29 Apr 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Installing Virtual Machine Software on Debian Linux</title>
+        <link>https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/</link>
+        <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/cover.jpg" alt="Featured image of post Installing Virtual Machine Software on Debian Linux" /&gt;&lt;h1 id=&#34;installing-virtual-machine-software-on-debian-linux&#34;&gt;Installing Virtual Machine Software on Debian Linux&lt;/h1&gt;
+&lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
+&lt;p&gt;VirtualBox is relatively simple to install, and it is open-source and free, consuming fewer system resources.&lt;/p&gt;
+&lt;h3 id=&#34;install-the-latest-version-of-kernel-headerskernel-images&#34;&gt;Install the Latest Version of Kernel Headers/Kernel Images&lt;/h3&gt;
+&lt;p&gt;To avoid system issues due to an outdated kernel version, we need to &lt;strong&gt;avoid&lt;/strong&gt; using the following common method:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-`uname -r`
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Instead, use the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# replace xxx with the version number and system architecture from the above commands&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# reboot after installation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/1.jpg&#34;
+	width=&#34;1031&#34;
+	height=&#34;715&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;As shown in the picture&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;apt-install-virtualbox&#34;&gt;apt Install VirtualBox&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt-get install virtualbox virtualbox-guest-additions-iso
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
+&lt;p&gt;Compared to VBox, VMware is more cumbersome to set up.&lt;/p&gt;
+&lt;p&gt;But I have no choice&amp;hellip; I have more than 10 VMware virtual machines = =&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ahh.. Just felt too lazy to convert al of them&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;install-the-latest-version-of-kernel-headerskernel-images-1&#34;&gt;Install the Latest Version of Kernel Headers/Kernel Images&lt;/h3&gt;
+&lt;p&gt;The first step is the same as installing VBox.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# replace xxx with the version number and system architecture from the above commands
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init 6 # reboot after installation
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/347b.png&#34;
+	width=&#34;498&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;If you encounter this screen after installation, you probably missed this step&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;442px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;install-various-compilers&#34;&gt;Install Various Compilers&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install build-essential 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/347a.png&#34;
+	width=&#34;496&#34;
+	height=&#34;250&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;If you see this screen after running VMware, you probably didn&amp;rsquo;t install the compiler&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;476px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;install-vmware-workstation&#34;&gt;Install VMware Workstation&lt;/h3&gt;
+&lt;p&gt;Download the installer from the &lt;a class=&#34;link&#34; href=&#34;https://www.vmware.com/go/getworkstation-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;official website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Give execute permission:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod x VMware-Workstation-Full-version-number.bundle 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# TIP: You can use Tab to auto-complete long file names&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./VMware-Workstation-Full-version-number.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;To run the application, just type &lt;code&gt;vmware&lt;/code&gt; in the terminal.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h3&gt;
+&lt;p&gt;If everything goes smoothly, you can follow the prompts to finish this &lt;del&gt;happy&lt;/del&gt; installation process.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;However, I encountered many more strange issues.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/2.jpg&#34;
+	width=&#34;701&#34;
+	height=&#34;407&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;If you also encounter these issues, you can refer to the following solutions&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;VMware had problems compiling and installing the &lt;code&gt;vmmom&lt;/code&gt; and &lt;code&gt;vmnet&lt;/code&gt; modules. After trying various solutions, I finally decided to &lt;strong&gt;manually compile and install the two modules&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Here are the specific solutions. You can refer to &lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/VM-Workstation-16-1-gt-16-2-1-on-Ubuntu-21-10-broke-everything/m-p/2884738#M173158&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;this official forum post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;First, download the module&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://github.com/mkubecek/vmware-host-modules/tree/workstation-16.2.1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;source code&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Since &lt;code&gt;git clone&lt;/code&gt; didn&amp;rsquo;t work for some reason, we choose to download the zip file.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/3.jpg&#34;
+	width=&#34;589&#34;
+	height=&#34;570&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Download page&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;248px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;After extracting the source code, navigate to the source code directory:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip vmware-host-modules-workstation-16.2.1.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd vmware-host-modules-workstation-16.2.1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Compile and install:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Restart the VMware service:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/4.jpg&#34;
+	width=&#34;1033&#34;
+	height=&#34;655&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;As shown in the picture&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;After completing these steps, you should be able to run VMware Workstation normally:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/5.jpg&#34;
+	width=&#34;904&#34;
+	height=&#34;741&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;VMware Workstation running&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;292px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.a5idc.com/helpcontent/347.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link 2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;English translations by &lt;strong&gt;GPT-4&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>

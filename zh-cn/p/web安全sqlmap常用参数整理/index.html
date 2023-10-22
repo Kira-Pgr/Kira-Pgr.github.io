@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='突突突...'><title>Web安全:sqlmap常用参数整理</title>
 
@@ -369,66 +369,66 @@
 <small><small><strike>幸灾乐祸呗;)</strike></small></small>
 </p>
 <p>1.设置目标url</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-u --url
-</code></pre></div><p>2.从文件中读取http请求</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-u --url
+</span></span></code></pre></div><p>2.从文件中读取http请求</p>
 <blockquote>
 <p>非常好用，可以直接从burp导出数据包文件</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-r
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-r
+</span></span></code></pre></div><blockquote>
 <p>Tip: 一个提高工作效率的方法</p>
 <p>可以在需要测试的地方(比如说参数/Cookie/UA)加上<code>*</code>,</p>
 <p>从而实现精准快速测试</p>
 </blockquote>
 <p>3.从文件中批量导入url</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-m
-</code></pre></div><p>4.设置sqlmap在发包的时候使用的cookie</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-m
+</span></span></code></pre></div><p>4.设置sqlmap在发包的时候使用的cookie</p>
 <blockquote>
 <p><strong>注意! 该参数并不能测试cookie注入</strong></p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--cookie=cookie值
-</code></pre></div><p>5.让sqlmap在发包的时候使用一个手机的UA</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--mobile
-</code></pre></div><p>6.让sqlmap在发包的时候用一个随机的UA,</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--cookie=cookie值
+</span></span></code></pre></div><p>5.让sqlmap在发包的时候使用一个手机的UA</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--mobile
+</span></span></code></pre></div><p>6.让sqlmap在发包的时候用一个随机的UA,</p>
 <p>而不是默认的UA:<code>sqlmap+版本号</code></p>
 <blockquote>
 <p>实际测试记得加上这个参数，否则就是 <strong>&ldquo;我是坏人&quot;四个字写在脸上 ;&gt;</strong></p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--random-agent
-</code></pre></div><p>7.设置sqlmap使用代理</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--proxy=设置的代理
-</code></pre></div><h2 id="第二类帮助获取数据权限的参数">第二类:帮助获取数据/权限的参数</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--random-agent
+</span></span></code></pre></div><p>7.设置sqlmap使用代理</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--proxy=设置的代理
+</span></span></code></pre></div><h2 id="第二类帮助获取数据权限的参数">第二类:帮助获取数据/权限的参数</h2>
 <p>1.判断当前数据库用户是不是数据库管理员</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--is-dba
-</code></pre></div><p>2.获取所有数据库名</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--dbs
-</code></pre></div><p>3.获取当前数据库用户</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--current-user
-</code></pre></div><p>4.获取当前数据库</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--current-db
-</code></pre></div><p>5.获取数据库所有数据</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--is-dba
+</span></span></code></pre></div><p>2.获取所有数据库名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--dbs
+</span></span></code></pre></div><p>3.获取当前数据库用户</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--current-user
+</span></span></code></pre></div><p>4.获取当前数据库</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--current-db
+</span></span></code></pre></div><p>5.获取数据库所有数据</p>
 <blockquote>
 <p>在某些场景下很刑! 非常可拷!</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--dump-all
-</code></pre></div><p>6.获取表名</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-D 数据库名 --tables
-</code></pre></div><p>7.获取列名</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-D 数据库名 -T 表名 --columns
-</code></pre></div><p>8.获取数据 (危)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">-D 数据库名 -T 表名 -C 列名 --dump
-</code></pre></div><p>9.弹shell</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--os-shell
-</code></pre></div><h2 id="第三类可以增加工作效率的参数">第三类:可以增加工作效率的参数</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--dump-all
+</span></span></code></pre></div><p>6.获取表名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-D 数据库名 --tables
+</span></span></code></pre></div><p>7.获取列名</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-D 数据库名 -T 表名 --columns
+</span></span></code></pre></div><p>8.获取数据 (危)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">-D 数据库名 -T 表名 -C 列名 --dump
+</span></span></code></pre></div><p>9.弹shell</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--os-shell
+</span></span></code></pre></div><h2 id="第三类可以增加工作效率的参数">第三类:可以增加工作效率的参数</h2>
 <p>1.告诉sqlmap目标的数据库类型(如mysql)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--dbms=数据库类型
-</code></pre></div><p>2.在注入的payload前面加上特定的前缀</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--prefix=前缀
-</code></pre></div><p>3.在注入的payload后面加上特定的后缀</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--suffix=后缀
-</code></pre></div><p>4.使用特定的注入技术</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--technique=技术
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--dbms=数据库类型
+</span></span></code></pre></div><p>2.在注入的payload前面加上特定的前缀</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--prefix=前缀
+</span></span></code></pre></div><p>3.在注入的payload后面加上特定的后缀</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--suffix=后缀
+</span></span></code></pre></div><p>4.使用特定的注入技术</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--technique=技术
+</span></span></code></pre></div><hr>
 <p>Tip: 技术的选项 (默认是全选)</p>
 <ul>
 <li>
@@ -454,8 +454,8 @@
 <p>内联查询是什么?能吃吗?</p>
 <p>&ndash; 不可以吃!</p>
 <p>是类似于这样的语句</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">SELECT statement FROM (SELECT statement);
-</code></pre></div></blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SELECT statement FROM (SELECT statement);
+</span></span></code></pre></div></blockquote>
 <hr>
 <p>5.让sqlmap自动选择默认的选项</p>
 <p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8sqlmap%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0%E6%95%B4%E7%90%86/2022-11-17_22-29.png"
@@ -472,12 +472,12 @@
 		data-flex-basis="403px"
 	
 ></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--batch
-</code></pre></div><p>6.调整mysql测试范围的广度 (1最窄，5最广，默认1)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--level=数字
-</code></pre></div><p>7.调整mysql测试风险等级 (1最小，5最大，默认1)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--risk=数字
-</code></pre></div><h2 id="第四类在特定情况中会用到的参数">第四类:在特定情况中会用到的参数</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--batch
+</span></span></code></pre></div><p>6.调整mysql测试范围的广度 (1最窄，5最广，默认1)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--level=数字
+</span></span></code></pre></div><p>7.调整mysql测试风险等级 (1最小，5最大，默认1)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--risk=数字
+</span></span></code></pre></div><h2 id="第四类在特定情况中会用到的参数">第四类:在特定情况中会用到的参数</h2>
 <blockquote>
 <p>在一些稀奇古怪的场景中，某些参数的出现会让我们能愉快的突突突</p>
 </blockquote>
@@ -485,38 +485,38 @@
 <blockquote>
 <p>在sql注入中，可能会出现在一个页面注入的结果，在另一个页面显示的情况</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--second-url=另一个页面
-</code></pre></div><p>2.使用分块传输(比如说用来绕waf)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--chunked
-</code></pre></div><p>3.使用http参数污染(还是可以绕讨厌的waf)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--hpp
-</code></pre></div><p>4.使用混淆模块</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--second-url=另一个页面
+</span></span></code></pre></div><p>2.使用分块传输(比如说用来绕waf)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--chunked
+</span></span></code></pre></div><p>3.使用http参数污染(还是可以绕讨厌的waf)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--hpp
+</span></span></code></pre></div><p>4.使用混淆模块</p>
 <blockquote>
 <p>内置的模块放在sqlmap目录下的<code>tamper</code>文件夹里</p>
 <p>但基本上都寄了= =，最好需要自己做一些修改</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--tamper=模块名
-</code></pre></div><p>5.设置每次发包之间的延迟</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--tamper=模块名
+</span></span></code></pre></div><p>5.设置每次发包之间的延迟</p>
 <blockquote>
 <p>为了防止破服务器宕机或者waf拦截都可能用到</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--delay=秒数
-</code></pre></div><p>6.设置连接超时的秒数(默认是30)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--delay=秒数
+</span></span></code></pre></div><p>6.设置连接超时的秒数(默认是30)</p>
 <blockquote>
 <p>破服务器可能响应的比较慢</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--timeout=秒数
-</code></pre></div><p>7.设置等待数据库响应的秒数</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--timeout=秒数
+</span></span></code></pre></div><p>7.设置等待数据库响应的秒数</p>
 <blockquote>
 <p>破服务器嘛&hellip;你懂的= =</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--time-sec=秒数
-</code></pre></div><p>8.设置本次测试不用sqlmap的缓存</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--time-sec=秒数
+</span></span></code></pre></div><p>8.设置本次测试不用sqlmap的缓存</p>
 <blockquote>
 <p>比如说要检验一下注入漏洞有没有被修复</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">--flush-session
-</code></pre></div><h2 id="ref">ref</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">--flush-session
+</span></span></code></pre></div><h2 id="ref">ref</h2>
 <p><a class="link" href="https://bingslient.github.io/2019/10/31/SQLMAP%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/#%E5%86%85%E8%81%94%E6%9F%A5%E8%AF%A2"  target="_blank" rel="noopener"
     >https://bingslient.github.io/2019/10/31/SQLMAP%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%96%B9%E6%B3%95%E5%92%8C%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/#%E5%86%85%E8%81%94%E6%9F%A5%E8%AF%A2</a></p>
 <p><a class="link" href="https://security.stackexchange.com/questions/238646/never-use-stored-session-in-sqlmap"  target="_blank" rel="noopener"
@@ -659,11 +659,11 @@
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"

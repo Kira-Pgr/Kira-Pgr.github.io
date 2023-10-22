@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='简单总结一下信息收集'><title>Web安全:关于信息收集那些事</title>
 
@@ -378,22 +378,22 @@
 <ul>
 <li>特定文件hash值:这里放一个Python3脚本(PS:原脚本是基于python2的，我在其基础上修改了下)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># -*- coding: gb2312 -*-</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Missing modules? Run the following commands in cmd/terminal&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install base64&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install requests&#34;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install mmh3&#34;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">mmh3</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">base64</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Pls input the url you want to hash favicon(Include http(s):// )&#34;</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;favicon.ico&#34;</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">icon</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-<span class="n">Hash</span> <span class="o">=</span> <span class="n">mmh3</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;The hash is:&#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Hash</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Go to https://www.shodan.io/ and search with http.favicon.hash:&#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Hash</span><span class="p">))</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*- coding: gb2312 -*-</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Missing modules? Run the following commands in cmd/terminal&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install base64&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install requests&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;pip install mmh3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">mmh3</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Pls input the url you want to hash favicon(Include http(s):// )&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;favicon.ico&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">icon</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Hash</span> <span class="o">=</span> <span class="n">mmh3</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;The hash is:&#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Hash</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Go to https://www.shodan.io/ and search with http.favicon.hash:&#34;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Hash</span><span class="p">))</span>
+</span></span></code></pre></div><ul>
 <li>暴力出奇迹= =：采用<a class="link" href="https://github.com/Tai7sy/fuckcdn"  target="_blank" rel="noopener"
     >fuckcdn</a> w8fuckcdn(不推荐)  <a class="link" href="https://github.com/zmap/zmap"  target="_blank" rel="noopener"
     >zmap</a>等工具</li>
@@ -518,8 +518,8 @@
 <h3 id="通过报错判断">通过报错判断</h3>
 <p>故意让网页报错，报错页面可能包含中间件一些信息</p>
 <p>比如:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html">https://www.baidu.com/233333333333333333333333333
-</code></pre></div><p><del>别试了，百度的报错不包含中间件信息;)</del></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">https://www.baidu.com/233333333333333333333333333
+</span></span></code></pre></div><p><del>别试了，百度的报错不包含中间件信息;)</del></p>
 <p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/4.jpg"
 	width="1287"
 	height="286"
@@ -743,11 +743,11 @@
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"

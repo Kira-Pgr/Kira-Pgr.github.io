@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Ohhhhhhh!? My Posh~~'><title>Linux/Windows终端美化</title>
 
@@ -443,23 +443,23 @@
 <h2 id="安装oh-my-posh">安装Oh-My-Posh</h2>
 <h3 id="windows">Windows</h3>
 <p>打开你的终端/cmd/powershell,在其中输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">winget</span> <span class="n">install</span> <span class="n">JanDeDobbeleer</span><span class="p">.</span><span class="n">OhMyPosh</span> <span class="n">-s</span> <span class="n">winget</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">JanDeDobbeleer</span><span class="p">.</span><span class="py">OhMyPosh</span> <span class="n">-s</span> <span class="n">winget</span>
+</span></span></code></pre></div><blockquote>
 <p>注意: 如果你需要美化WSL,请使用下文中的Linux安装方法= =</p>
 </blockquote>
 <h3 id="linux">Linux</h3>
 <p>打开你的终端，输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-sudo chmod +x /usr/local/bin/oh-my-posh
-mkdir ~/.poshthemes
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-chmod u+rw ~/.poshthemes/*.omp.*
-rm ~/.poshthemes/themes.zip
-</code></pre></div><h2 id="安装适配的字体">安装适配的字体</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+</span></span><span class="line"><span class="cl">sudo chmod +x /usr/local/bin/oh-my-posh
+</span></span><span class="line"><span class="cl">mkdir ~/.poshthemes
+</span></span><span class="line"><span class="cl">wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+</span></span><span class="line"><span class="cl">unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+</span></span><span class="line"><span class="cl">chmod u+rw ~/.poshthemes/*.omp.*
+</span></span><span class="line"><span class="cl">rm ~/.poshthemes/themes.zip
+</span></span></code></pre></div><h2 id="安装适配的字体">安装适配的字体</h2>
 <p>打开你的命令行工具，输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">oh-my-posh font install
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">oh-my-posh font install
+</span></span></code></pre></div><blockquote>
 <p>注意：如果你是Windows用户需要以管理员身份运行命令</p>
 </blockquote>
 <h3 id="windows-terminal注意事项">Windows Terminal注意事项</h3>
@@ -469,54 +469,54 @@ rm ~/.poshthemes/themes.zip
 <p>这个是默认快捷键，如果你修改过按你自己修改的快捷键 :&gt;</p>
 </blockquote>
 <p>编辑<code>settings.json</code>修改以下内容</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-    <span class="nt">&#34;profiles&#34;</span><span class="p">:</span>
-    <span class="p">{</span>
-        <span class="nt">&#34;defaults&#34;</span><span class="p">:</span>
-        <span class="p">{</span>
-            <span class="nt">&#34;font&#34;</span><span class="p">:</span>
-            <span class="p">{</span>
-                <span class="nt">&#34;face&#34;</span><span class="p">:</span> <span class="s2">&#34;字体名&#34;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="切换主题">切换主题</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;profiles&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;defaults&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;font&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&#34;face&#34;</span><span class="p">:</span> <span class="s2">&#34;字体名&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="切换主题">切换主题</h2>
 <p>Oh-My-Posh安装完成之后会有一个默认的主题</p>
 <p>如果不够喜欢的话可以切换其他的主题</p>
 <h3 id="获取主题列表">获取主题列表</h3>
 <p>第一个方法是在终端输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Get-PoshThemes
-</code></pre></div><p>第二个方法就是去<a class="link" href="https://ohmyposh.dev/docs/themes"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Get-PoshThemes
+</span></span></code></pre></div><p>第二个方法就是去<a class="link" href="https://ohmyposh.dev/docs/themes"  target="_blank" rel="noopener"
     >官网文档</a>找</p>
 <h3 id="换一个主题吧">换一个主题吧</h3>
 <h4 id="windows-1">Windows</h4>
 <p>打开终端，输入以下命令尝试主题</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">oh-my</span><span class="n">-posh</span> <span class="n">init</span> <span class="n">pwsh</span> <span class="p">-</span><span class="n">-config</span> <span class="n">主题路径</span><span class="p">/</span><span class="n">主题名</span><span class="p">.</span><span class="n">omp</span><span class="p">.</span><span class="n">json</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">oh-my</span><span class="n">-posh</span> <span class="n">init</span> <span class="n">pwsh</span> <span class="p">-</span><span class="n">-config</span> <span class="n">主题路径</span><span class="p">/</span><span class="n">主题名</span><span class="p">.</span><span class="py">omp</span><span class="p">.</span><span class="py">json</span> <span class="p">|</span> <span class="nb">Invoke-Expression</span>
+</span></span></code></pre></div><blockquote>
 <p>P.S. 如果出现报错找不到命令，请将<code>C:\Users\用户名\AppData\Local\Programs\oh-my-posh\bin</code>添加进环境变量</p>
 </blockquote>
 <p>一旦确定主题就去修改<code>$PROFILE</code>的值</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"> <span class="n">notepad</span> <span class="nv">$PROFILE</span>
-</code></pre></div><p>写入尝试主题的那个语句</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"> <span class="n">notepad</span> <span class="nv">$PROFILE</span>
+</span></span></code></pre></div><p>写入尝试主题的那个语句</p>
 <blockquote>
 <p>一般来说，主题路径会是<code>C:\Users\用户名\AppData\Local\Programs\oh-my-posh\themes</code></p>
 </blockquote>
 <p>重载<code>$Profile</code>后生效</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">.</span> <span class="nv">$PROFILE</span>
-</code></pre></div><h4 id="linux-1">Linux</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="nv">$PROFILE</span>
+</span></span></code></pre></div><h4 id="linux-1">Linux</h4>
 <p>这个时候可以说Linux yyds了</p>
 <p>Linux修改主题起来特别容易，输入以下命令就能试用一个主题，也不会有讨厌的报错</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#如果你用的bash把zsh替换成bash</span>
-<span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>oh-my-posh init zsh --config 主题路径/主题名.omp.json<span class="k">)</span><span class="s2">&#34;</span>
-</code></pre></div><p>确定主题就去改<code>~/.bashrc</code>或者<code>~/.zshrc</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">vi ~/.bashrc
-vi ~/.zshrc
-</code></pre></div><p>写入尝试主题的那个语句</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#如果你用的bash把zsh替换成bash</span>
+</span></span><span class="line"><span class="cl"><span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>oh-my-posh init zsh --config 主题路径/主题名.omp.json<span class="k">)</span><span class="s2">&#34;</span>
+</span></span></code></pre></div><p>确定主题就去改<code>~/.bashrc</code>或者<code>~/.zshrc</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vi ~/.bashrc
+</span></span><span class="line"><span class="cl">vi ~/.zshrc
+</span></span></code></pre></div><p>写入尝试主题的那个语句</p>
 <p>依旧是重载后生效</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">exec</span> zsh
-<span class="nb">exec</span> bash
-</code></pre></div><h2 id="结语">结语</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">exec</span> zsh
+</span></span><span class="line"><span class="cl"><span class="nb">exec</span> bash
+</span></span></code></pre></div><h2 id="结语">结语</h2>
 <p>到这里为止我们的美化就完成啦QwQ</p>
 <p>如果大家想要更多花里胡哨的东西可以在评论区留言哦0.0</p>
 <blockquote>

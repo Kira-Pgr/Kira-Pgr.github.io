@@ -68,6 +68,16 @@
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/tags/vm/</loc>
     <lastmod>2023-06-07T17:07:14+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/tags/vm/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/tags/vm/"
+                />
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/</loc>
     <lastmod>2023-06-07T13:20:32+08:00</lastmod>
@@ -94,7 +104,7 @@
     <loc>https://kira-pgr.github.io/zh-cn/tags/gnome/</loc>
     <lastmod>2023-03-20T18:08:35+08:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/</loc>
     <lastmod>2023-03-20T18:08:35+08:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/tags/post-exploitation/</loc>
@@ -103,7 +113,7 @@
     <loc>https://kira-pgr.github.io/zh-cn/p/%E8%AE%BA%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%BC%B9shell/</loc>
     <lastmod>2023-01-30T13:57:43+08:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/</loc>
     <lastmod>2023-01-09T11:13:48+08:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/%E5%A6%82%E4%BD%95%E6%8B%AF%E6%95%91it%E4%BA%BA%E7%9A%84%E8%8B%B1%E8%AF%AD/</loc>
@@ -165,6 +175,16 @@
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/</loc>
     <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/"
+                />
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/categories/linux/</loc>
     <lastmod>2022-04-29T01:03:14-05:00</lastmod>
@@ -195,7 +215,7 @@
     <loc>https://kira-pgr.github.io/zh-cn/tags/pwn/</loc>
     <lastmod>2022-04-14T23:21:24-04:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part6-rop/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part6---rop/</loc>
     <lastmod>2022-04-14T23:21:24-04:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/web%E5%AE%89%E5%85%A8%E5%85%B3%E4%BA%8E%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E9%82%A3%E4%BA%9B%E4%BA%8B/</loc>
@@ -214,13 +234,13 @@
                 href="https://kira-pgr.github.io/zh-cn/categories/beginner/"
                 />
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part5-ret2shellcode/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/</loc>
     <lastmod>2022-03-03T05:50:08-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/</loc>
     <lastmod>2022-02-25T23:27:12-05:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part4-ret2text/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part4---ret2text/</loc>
     <lastmod>2022-02-10T22:54:20-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/%E7%95%99%E8%A8%80%E6%9D%BF/</loc>
@@ -245,10 +265,10 @@
                 href="https://kira-pgr.github.io/zh-cn/categories/software/"
                 />
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part3-%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2022-02-07T07:51:10-05:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part2-%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2022-01-29T21:35:29-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/hugo%E6%97%A0%E9%9C%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
@@ -267,10 +287,10 @@
                 href="https://kira-pgr.github.io/zh-cn/categories/hugo_blog/"
                 />
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/</loc>
     <lastmod>2022-01-28T22:53:47-05:00</lastmod>
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2022-01-27T21:24:46-05:00</lastmod>
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/categories/about_me/</loc>
@@ -340,18 +360,6 @@
                 href="https://kira-pgr.github.io/zh-cn/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%96%B5/"
                 />
   </url><url>
-    <loc>https://kira-pgr.github.io/zh-cn/search/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kira-pgr.github.io/search/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kira-pgr.github.io/zh-cn/search/"
-                />
-  </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/</loc>
     <xhtml:link
                 rel="alternate"
@@ -362,6 +370,18 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://kira-pgr.github.io/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/"
+                />
+  </url><url>
+    <loc>https://kira-pgr.github.io/zh-cn/search/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/search/"
                 />
   </url>
 </urlset>

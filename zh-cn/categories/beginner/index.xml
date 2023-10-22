@@ -5,7 +5,7 @@
         <link>https://kira-pgr.github.io/zh-cn/categories/beginner/</link>
         <description>Recent content in Beginner on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
+        <language>zh-cn</language>
         <lastBuildDate>Wed, 09 Mar 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/categories/beginner/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>小白如何高效地解决各种报错</title>
         <link>https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/</link>
@@ -59,9 +59,9 @@
 &lt;/blockquote&gt;
 &lt;p&gt;诶????怎么启动不了了,之前还好好的?!!&lt;/p&gt;
 &lt;img src=&#34;62c5d7b799c3653d851dcfd9c2a31a0a7bb9a8aa.jpg&#34; title=&#34;&#34; alt=&#34;原地爆炸&#34; width=&#34;225&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ uvicorn main:app --reload  --host 0.0.0.0 --port &lt;span class=&#34;m&#34;&gt;8000&lt;/span&gt;
-Command &lt;span class=&#34;s1&#34;&gt;&amp;#39;uvicorn&amp;#39;&lt;/span&gt; not found
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我明明用pip&lt;strong&gt;装过&lt;/strong&gt;啊&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ uvicorn main:app --reload  --host 0.0.0.0 --port &lt;span class=&#34;m&#34;&gt;8000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Command &lt;span class=&#34;s1&#34;&gt;&amp;#39;uvicorn&amp;#39;&lt;/span&gt; not found
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我明明用pip&lt;strong&gt;装过&lt;/strong&gt;啊&amp;hellip;&lt;/p&gt;
 &lt;p&gt;于是，就有了接下来一幕&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/d8694ad5ad976b997b75aab6d3e144d95c0ce78b.PNG&#34;
 	width=&#34;1284&#34;
@@ -81,8 +81,8 @@ Command &lt;span class=&#34;s1&#34;&gt;&amp;#39;uvicorn&amp;#39;&lt;/span&gt; no
 &lt;p&gt;在吐槽过后&amp;hellip;得解决问题啊&lt;/p&gt;
 &lt;h3 id=&#34;尝试自己解决问题&#34;&gt;尝试自己解决问题&lt;/h3&gt;
 &lt;p&gt;Hmmm,要不再装一下看看，难不成是python默认环境更新了?&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;python3 -m pip install -r requirements.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果&amp;hellip;全部环境都显示已安装&amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python3 -m pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果&amp;hellip;全部环境都显示已安装&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-54-10-image.png&#34;
 	width=&#34;1256&#34;
 	height=&#34;648&#34;
@@ -98,18 +98,18 @@ Command &lt;span class=&#34;s1&#34;&gt;&amp;#39;uvicorn&amp;#39;&lt;/span&gt; no
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;卸了再装逝世看&amp;hellip;?&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;$ pip uninstall uvicorn
-Found existing installation: uvicorn 0.17.6
-Not uninstalling uvicorn at /usr/lib/python3/dist-packages, outside environment /usr
-Can&lt;span class=&#34;s1&#34;&gt;&amp;#39;t uninstall &amp;#39;&lt;/span&gt;uvicorn&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;. No files were found to uninstall.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ pip uninstall uvicorn
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Found existing installation: uvicorn 0.17.6
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Not uninstalling uvicorn at /usr/lib/python3/dist-packages, outside environment /usr
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Can&lt;span class=&#34;s1&#34;&gt;&amp;#39;t uninstall &amp;#39;&lt;/span&gt;uvicorn&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;. No files were found to uninstall.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;怪，太怪了&amp;hellip;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;遇事不决chatgpt&#34;&gt;遇事不决，ChatGPT&lt;/h3&gt;
 &lt;p&gt;后来我又把所有报错全部贴给&lt;code&gt;ChatGPT&lt;/code&gt;,&lt;/p&gt;
 &lt;p&gt;结果，兜兜转转好几回，GPT卡bug了&amp;hellip;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;找不到命令--&amp;gt;安装--&amp;gt;已经安装了--&amp;gt;GPT给我原来的运行命令-&amp;gt;找不到命令--&amp;gt;安装...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;del&gt;你跟我这里搁这儿搁这儿卡循环是吧= =&lt;/del&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;找不到命令--&amp;gt;安装--&amp;gt;已经安装了--&amp;gt;GPT给我原来的运行命令-&amp;gt;找不到命令--&amp;gt;安装...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;del&gt;你跟我这里搁这儿搁这儿卡循环是吧= =&lt;/del&gt;&lt;/p&gt;
 &lt;h3 id=&#34;尝试找更多细节&#34;&gt;尝试找更多细节&lt;/h3&gt;
 &lt;p&gt;在我在其他目录跑这个命令的时候，发现&lt;code&gt;Uvicorn&lt;/code&gt;命令是可用的&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Hmmm, 说不定查查这个能解决问题..?&lt;/p&gt;
@@ -193,8 +193,8 @@ Can&lt;span class=&#34;s1&#34;&gt;&amp;#39;t uninstall &amp;#39;&lt;/span&gt;uvi
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;问题解决&#34;&gt;问题解决&lt;/h3&gt;
 &lt;p&gt;我怀揣着30%的兴奋, 30%的激动, 40%的紧张开始尝试&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;python3 -m uvicorn main:app --reload  --host 0.0.0.0 --port &lt;span class=&#34;m&#34;&gt;8000&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image.png&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python3 -m uvicorn main:app --reload  --host 0.0.0.0 --port &lt;span class=&#34;m&#34;&gt;8000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image.png&#34;
 	width=&#34;1300&#34;
 	height=&#34;537&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image_hu40080c2ea8e5b90d4fa0930abcc0de37_1578653_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image_hu40080c2ea8e5b90d4fa0930abcc0de37_1578653_1024x0_resize_box_3.png 1024w&#34;

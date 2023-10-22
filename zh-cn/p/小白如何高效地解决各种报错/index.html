@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='uvicorn,屑屑你'><title>小白如何高效地解决各种报错</title>
 
@@ -399,9 +399,9 @@
 </blockquote>
 <p>诶????怎么启动不了了,之前还好好的?!!</p>
 <img src="62c5d7b799c3653d851dcfd9c2a31a0a7bb9a8aa.jpg" title="" alt="原地爆炸" width="225">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ uvicorn main:app --reload  --host 0.0.0.0 --port <span class="m">8000</span>
-Command <span class="s1">&#39;uvicorn&#39;</span> not found
-</code></pre></div><p>我明明用pip<strong>装过</strong>啊&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ uvicorn main:app --reload  --host 0.0.0.0 --port <span class="m">8000</span>
+</span></span><span class="line"><span class="cl">Command <span class="s1">&#39;uvicorn&#39;</span> not found
+</span></span></code></pre></div><p>我明明用pip<strong>装过</strong>啊&hellip;</p>
 <p>于是，就有了接下来一幕&hellip;</p>
 <p><img src="/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/d8694ad5ad976b997b75aab6d3e144d95c0ce78b.PNG"
 	width="1284"
@@ -421,8 +421,8 @@ Command <span class="s1">&#39;uvicorn&#39;</span> not found
 <p>在吐槽过后&hellip;得解决问题啊</p>
 <h3 id="尝试自己解决问题">尝试自己解决问题</h3>
 <p>Hmmm,要不再装一下看看，难不成是python默认环境更新了?</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">python3 -m pip install -r requirements.txt
-</code></pre></div><p>结果&hellip;全部环境都显示已安装&hellip;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python3 -m pip install -r requirements.txt
+</span></span></code></pre></div><p>结果&hellip;全部环境都显示已安装&hellip;</p>
 <p><img src="/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-13-54-10-image.png"
 	width="1256"
 	height="648"
@@ -438,18 +438,18 @@ Command <span class="s1">&#39;uvicorn&#39;</span> not found
 	
 ></p>
 <p>卸了再装逝世看&hellip;?</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pip uninstall uvicorn
-Found existing installation: uvicorn 0.17.6
-Not uninstalling uvicorn at /usr/lib/python3/dist-packages, outside environment /usr
-Can<span class="s1">&#39;t uninstall &#39;</span>uvicorn<span class="err">&#39;</span>. No files were found to uninstall.
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pip uninstall uvicorn
+</span></span><span class="line"><span class="cl">Found existing installation: uvicorn 0.17.6
+</span></span><span class="line"><span class="cl">Not uninstalling uvicorn at /usr/lib/python3/dist-packages, outside environment /usr
+</span></span><span class="line"><span class="cl">Can<span class="s1">&#39;t uninstall &#39;</span>uvicorn<span class="err">&#39;</span>. No files were found to uninstall.
+</span></span></code></pre></div><blockquote>
 <p>怪，太怪了&hellip;</p>
 </blockquote>
 <h3 id="遇事不决chatgpt">遇事不决，ChatGPT</h3>
 <p>后来我又把所有报错全部贴给<code>ChatGPT</code>,</p>
 <p>结果，兜兜转转好几回，GPT卡bug了&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">找不到命令--&gt;安装--&gt;已经安装了--&gt;GPT给我原来的运行命令-&gt;找不到命令--&gt;安装...
-</code></pre></div><p><del>你跟我这里搁这儿搁这儿卡循环是吧= =</del></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">找不到命令--&gt;安装--&gt;已经安装了--&gt;GPT给我原来的运行命令-&gt;找不到命令--&gt;安装...
+</span></span></code></pre></div><p><del>你跟我这里搁这儿搁这儿卡循环是吧= =</del></p>
 <h3 id="尝试找更多细节">尝试找更多细节</h3>
 <p>在我在其他目录跑这个命令的时候，发现<code>Uvicorn</code>命令是可用的&hellip;</p>
 <p>Hmmm, 说不定查查这个能解决问题..?</p>
@@ -533,8 +533,8 @@ Can<span class="s1">&#39;t uninstall &#39;</span>uvicorn<span class="err">&#39;<
 ></p>
 <h3 id="问题解决">问题解决</h3>
 <p>我怀揣着30%的兴奋, 30%的激动, 40%的紧张开始尝试</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">python3 -m uvicorn main:app --reload  --host 0.0.0.0 --port <span class="m">8000</span>
-</code></pre></div><p><img src="/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python3 -m uvicorn main:app --reload  --host 0.0.0.0 --port <span class="m">8000</span>
+</span></span></code></pre></div><p><img src="/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image.png"
 	width="1300"
 	height="537"
 	srcset="/zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image_hu40080c2ea8e5b90d4fa0930abcc0de37_1578653_480x0_resize_box_3.png 480w, /zh-cn/p/%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%9C%B0%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E6%8A%A5%E9%94%99/2023-06-07-14-34-08-image_hu40080c2ea8e5b90d4fa0930abcc0de37_1578653_1024x0_resize_box_3.png 1024w"

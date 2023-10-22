@@ -41,6 +41,58 @@
                 href="https://kira-pgr.github.io/categories/machine_learning/"
                 />
   </url><url>
+    <loc>https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/</loc>
+    <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/"
+                />
+  </url><url>
+    <loc>https://kira-pgr.github.io/post/</loc>
+    <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/post/"
+                />
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/</loc>
+    <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/vm/</loc>
+    <lastmod>2022-05-05T09:31:14-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/tags/vm/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/tags/vm/"
+                />
+  </url><url>
     <loc>https://kira-pgr.github.io/categories/linux/</loc>
     <lastmod>2022-04-29T01:03:14-05:00</lastmod>
     <xhtml:link
@@ -182,18 +234,6 @@
                 href="https://kira-pgr.github.io/links/"
                 />
   </url><url>
-    <loc>https://kira-pgr.github.io/post/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kira-pgr.github.io/zh-cn/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kira-pgr.github.io/post/"
-                />
-  </url><url>
     <loc>https://kira-pgr.github.io/search/</loc>
     <xhtml:link
                 rel="alternate"
@@ -204,18 +244,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://kira-pgr.github.io/search/"
-                />
-  </url><url>
-    <loc>https://kira-pgr.github.io/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kira-pgr.github.io/zh-cn/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kira-pgr.github.io/tags/"
                 />
   </url>
 </urlset>

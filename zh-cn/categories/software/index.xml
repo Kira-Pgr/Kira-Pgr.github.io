@@ -5,7 +5,7 @@
         <link>https://kira-pgr.github.io/zh-cn/categories/software/</link>
         <description>Recent content in Software on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
+        <language>zh-cn</language>
         <lastBuildDate>Tue, 08 Feb 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/categories/software/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>在Linux上使用截图软件Snipaste</title>
         <link>https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/</link>
@@ -17,9 +17,9 @@
 &lt;p&gt;可惜官方还没有制作完适配&lt;code&gt;Linux&lt;/code&gt;的版本 :(&lt;/p&gt;
 &lt;p&gt;唉&amp;hellip;那就只有自己折腾&lt;strong&gt;wine&lt;/strong&gt;了&lt;/p&gt;
 &lt;h2 id=&#34;wine的安装&#34;&gt;Wine的安装&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
-sudo apt install wine64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install wine64
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;Tip:&lt;/p&gt;
 &lt;p&gt;如果你的系统是32位的，请使用&lt;code&gt;sudo apt install wine32&lt;/code&gt;
 目前大部分Linux都只有64位了= =&lt;/p&gt;
@@ -87,8 +87,8 @@ sudo apt install wine64
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;然后在该位置打开终端并输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;wine Snipaste.exe
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后你的Snipaste就应该运行起来了，你应该能在任务栏里看到一个白色的图标&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wine Snipaste.exe
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后你的Snipaste就应该运行起来了，你应该能在任务栏里看到一个白色的图标&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image.png&#34;
 	width=&#34;524&#34;
 	height=&#34;34&#34;
@@ -113,8 +113,8 @@ sudo apt install wine64
 &lt;p&gt;由于不同系统界面的差异，找不到的自行搜索，这里就不演示了 :]&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;然后在命令那一栏写上&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;xdotool key --window &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;xdotool search --name Snipaste &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -n1&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; F1&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后配上你喜欢的截图快捷键&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sh -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;xdotool key --window &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;xdotool search --name Snipaste &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -n1&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; F1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后配上你喜欢的截图快捷键&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image.png&#34;
 	width=&#34;585&#34;
 	height=&#34;410&#34;
@@ -390,16 +390,16 @@ sudo apt install wine64
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;之后就是装软件前的经典套路&amp;hellip;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装qemukvm&#34;&gt;安装QEMU/KVM&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装qemukvm&#34;&gt;安装QEMU/KVM&lt;/h2&gt;
 &lt;p&gt;打开Linux主机的终端，输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后重启&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;创建windows虚拟机&#34;&gt;创建Windows虚拟机&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后重启&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;创建windows虚拟机&#34;&gt;创建Windows虚拟机&lt;/h2&gt;
 &lt;p&gt;重启后打开&lt;code&gt;Virtual Machine Manager&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo virt-manager
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照下面的步骤进行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo virt-manager
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照下面的步骤进行&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png&#34;
 	width=&#34;584&#34;
 	height=&#34;205&#34;
@@ -764,8 +764,8 @@ sudo apt install wine64
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;在你的&lt;code&gt;Linux&lt;/code&gt;主机打开终端，输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install remmina
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;code&gt;remmina&lt;/code&gt;命令打开远程控制软件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install remmina
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;code&gt;remmina&lt;/code&gt;命令打开远程控制软件&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png&#34;
 	width=&#34;899&#34;
 	height=&#34;513&#34;
@@ -1155,23 +1155,23 @@ sudo apt install wine64
 &lt;h2 id=&#34;安装oh-my-posh&#34;&gt;安装Oh-My-Posh&lt;/h2&gt;
 &lt;h3 id=&#34;windows&#34;&gt;Windows&lt;/h3&gt;
 &lt;p&gt;打开你的终端/cmd/powershell,在其中输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JanDeDobbeleer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OhMyPosh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-s&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JanDeDobbeleer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;OhMyPosh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;-s&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;注意: 如果你需要美化WSL,请使用下文中的Linux安装方法= =&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;linux&#34;&gt;Linux&lt;/h3&gt;
 &lt;p&gt;打开你的终端，输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-sudo chmod +x /usr/local/bin/oh-my-posh
-mkdir ~/.poshthemes
-wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-chmod u+rw ~/.poshthemes/*.omp.*
-rm ~/.poshthemes/themes.zip
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装适配的字体&#34;&gt;安装适配的字体&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod +x /usr/local/bin/oh-my-posh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir ~/.poshthemes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod u+rw ~/.poshthemes/*.omp.*
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm ~/.poshthemes/themes.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装适配的字体&#34;&gt;安装适配的字体&lt;/h2&gt;
 &lt;p&gt;打开你的命令行工具，输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;oh-my-posh font install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;oh-my-posh font install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;注意：如果你是Windows用户需要以管理员身份运行命令&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;windows-terminal注意事项&#34;&gt;Windows Terminal注意事项&lt;/h3&gt;
@@ -1181,54 +1181,54 @@ rm ~/.poshthemes/themes.zip
 &lt;p&gt;这个是默认快捷键，如果你修改过按你自己修改的快捷键 :&amp;gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;编辑&lt;code&gt;settings.json&lt;/code&gt;修改以下内容&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;profiles&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;nt&#34;&gt;&amp;#34;defaults&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;nt&#34;&gt;&amp;#34;font&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-                &lt;span class=&#34;nt&#34;&gt;&amp;#34;face&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;字体名&amp;#34;&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;切换主题&#34;&gt;切换主题&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;#34;profiles&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;#34;defaults&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;nt&#34;&gt;&amp;#34;font&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nt&#34;&gt;&amp;#34;face&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;字体名&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;切换主题&#34;&gt;切换主题&lt;/h2&gt;
 &lt;p&gt;Oh-My-Posh安装完成之后会有一个默认的主题&lt;/p&gt;
 &lt;p&gt;如果不够喜欢的话可以切换其他的主题&lt;/p&gt;
 &lt;h3 id=&#34;获取主题列表&#34;&gt;获取主题列表&lt;/h3&gt;
 &lt;p&gt;第一个方法是在终端输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;Get-PoshThemes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二个方法就是去&lt;a class=&#34;link&#34; href=&#34;https://ohmyposh.dev/docs/themes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Get-PoshThemes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二个方法就是去&lt;a class=&#34;link&#34; href=&#34;https://ohmyposh.dev/docs/themes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网文档&lt;/a&gt;找&lt;/p&gt;
 &lt;h3 id=&#34;换一个主题吧&#34;&gt;换一个主题吧&lt;/h3&gt;
 &lt;h4 id=&#34;windows-1&#34;&gt;Windows&lt;/h4&gt;
 &lt;p&gt;打开终端，输入以下命令尝试主题&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;oh-my&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-posh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pwsh&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-config&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;主题路径&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;主题名&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;omp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;json&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Invoke-Expression&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;oh-my&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-posh&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;init&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pwsh&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-config&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;主题路径&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;主题名&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;omp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;json&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Invoke-Expression&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;P.S. 如果出现报错找不到命令，请将&lt;code&gt;C:\Users\用户名\AppData\Local\Programs\oh-my-posh\bin&lt;/code&gt;添加进环境变量&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;一旦确定主题就去修改&lt;code&gt;$PROFILE&lt;/code&gt;的值&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt; &lt;span class=&#34;n&#34;&gt;notepad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;写入尝试主题的那个语句&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;n&#34;&gt;notepad&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;写入尝试主题的那个语句&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;一般来说，主题路径会是&lt;code&gt;C:\Users\用户名\AppData\Local\Programs\oh-my-posh\themes&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;重载&lt;code&gt;$Profile&lt;/code&gt;后生效&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;linux-1&#34;&gt;Linux&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PROFILE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;linux-1&#34;&gt;Linux&lt;/h4&gt;
 &lt;p&gt;这个时候可以说Linux yyds了&lt;/p&gt;
 &lt;p&gt;Linux修改主题起来特别容易，输入以下命令就能试用一个主题，也不会有讨厌的报错&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#如果你用的bash把zsh替换成bash&lt;/span&gt;
-&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;oh-my-posh init zsh --config 主题路径/主题名.omp.json&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;确定主题就去改&lt;code&gt;~/.bashrc&lt;/code&gt;或者&lt;code&gt;~/.zshrc&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;vi ~/.bashrc
-vi ~/.zshrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;写入尝试主题的那个语句&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#如果你用的bash把zsh替换成bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;oh-my-posh init zsh --config 主题路径/主题名.omp.json&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;确定主题就去改&lt;code&gt;~/.bashrc&lt;/code&gt;或者&lt;code&gt;~/.zshrc&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vi ~/.zshrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;写入尝试主题的那个语句&lt;/p&gt;
 &lt;p&gt;依旧是重载后生效&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; zsh
-&lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; bash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; zsh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;结语&#34;&gt;结语&lt;/h2&gt;
 &lt;p&gt;到这里为止我们的美化就完成啦QwQ&lt;/p&gt;
 &lt;p&gt;如果大家想要更多花里胡哨的东西可以在评论区留言哦0.0&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1256,14 +1256,14 @@ vi ~/.zshrc
 &lt;p&gt;VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少&lt;/p&gt;
 &lt;h3 id=&#34;安装最新版本内核头文件内核镜像&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
 &lt;p&gt;为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们&lt;strong&gt;尽量避免&lt;/strong&gt;使用网上提供的这种方式&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install linux-headers-`uname -r`
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;采用以下命令&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
-sudo apt-cache search linux-image    
-sudo apt-get install linux-headers-xxx linux-image-xxx  
-&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
-init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-`uname -r`
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;采用以下命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
 	width=&#34;1031&#34;
 	height=&#34;715&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -1278,18 +1278,18 @@ init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;apt安装virtualbox&#34;&gt;apt安装VirtualBox&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;apt-get install virtualbox virtualbox-guest-additions-iso
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt-get install virtualbox virtualbox-guest-additions-iso
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
 &lt;p&gt;比起VBox,VMware折腾起来坑真的好多啊= =&lt;/p&gt;
 &lt;p&gt;不过没办法。。。我还有10多个VMware的虚拟机w(&lt;/p&gt;
 &lt;h3 id=&#34;安装最新版本内核头文件内核镜像-1&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
 &lt;p&gt;第一步和安VBox一样的操作&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt update
-sudo apt-cache search linux-image    
-sudo apt-get install linux-headers-xxx linux-image-xxx  
-#后面的xxx是上面语句中搜索出来的版本号和系统架构
-init 6 #装完重启
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init 6 #装完重启
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
 	width=&#34;498&#34;
 	height=&#34;270&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
@@ -1304,8 +1304,8 @@ init 6 #装完重启
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;安装各种编译器&#34;&gt;安装各种编译器&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt-get install build-essential 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install build-essential 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
 	width=&#34;496&#34;
 	height=&#34;250&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
@@ -1323,11 +1323,11 @@ init 6 #装完重启
 &lt;p&gt;去&lt;a class=&#34;link&#34; href=&#34;https://www.vmware.com/go/getworkstation-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网&lt;/a&gt;下载安装程序&lt;/p&gt;
 &lt;p&gt;给可执行权限&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;chmod x VMware-Workstation-Full-版本号.bundle 
-&lt;span class=&#34;c1&#34;&gt;#TIP:文件名太长可以Tab补全&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo ./VMware-Workstation-Full-版本号.bundle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod x VMware-Workstation-Full-版本号.bundle 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#TIP:文件名太长可以Tab补全&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./VMware-Workstation-Full-版本号.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;安装好之后想要运行直接终端输入vmware就可以了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;排坑&#34;&gt;排坑&lt;/h3&gt;
@@ -1376,14 +1376,14 @@ init 6 #装完重启
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;解压后进入源码目录&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;unzip vmware-host-modules-workstation-16.2.1.zip
-cd vmware-host-modules-workstation-16.2.1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译+安装&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;make
-sudo make install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo systemctl restart vmware
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip vmware-host-modules-workstation-16.2.1.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd vmware-host-modules-workstation-16.2.1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译+安装&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
 	width=&#34;1033&#34;
 	height=&#34;655&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -1398,8 +1398,8 @@ sudo make install
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;完成之后再运行VMware Workstation,就应该可以正常进入程序了&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;vmware
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
 	width=&#34;904&#34;
 	height=&#34;741&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -1414,8 +1414,8 @@ sudo make install
 &lt;h3 id=&#34;激活&#34;&gt;激活&lt;/h3&gt;
 &lt;p&gt;网上VMware激活码可谓了一大堆&lt;/p&gt;
 &lt;p&gt;为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
 	width=&#34;897&#34;
 	height=&#34;655&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -1474,17 +1474,17 @@ sudo make install
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;deb系&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install default-jdk
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Red Hat&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo yum install java-版本号-openjdk-devel
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.java.com/en/download/manual.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install default-jdk
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Red Hat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum install java-版本号-openjdk-devel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.java.com/en/download/manual.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Linux Java下载&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;嗝开始破解&#34;&gt;嗝～～开始破解&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;注意：请把Burp的文件和破解工具放入同一个文件夹&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;终端/cmd/你奇奇怪怪的命令行工具进入放有以上两个文件的目录&lt;/p&gt;
 &lt;p&gt;先运行破解工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -jar burploader.jar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1.png&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -jar burploader.jar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1.png&#34;
 	width=&#34;796&#34;
 	height=&#34;451&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_1024x0_resize_box_3.png 1024w&#34;
@@ -1505,10 +1505,10 @@ sudo make install
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;JAVA17+的看这里&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;保留破解工具窗口，并终端输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -noverify -javaagent:burploader.jar --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.desktop/javax.swing&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.base/java.lang&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED -jar burpsuite_pro_v2022.1.jar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你是其他JAVA版本，Burp启动后提示你要加上xxx的JVM参数，参考以下命令格式&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;java -noverify -javaagent:burploader.jar 提示你要加上的参数 -jar burpsuite_pro_v2022.1.jar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -noverify -javaagent:burploader.jar --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.desktop/javax.swing&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED --add-opens&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;java.base/java.lang&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ALL-UNNAMED -jar burpsuite_pro_v2022.1.jar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果你是其他JAVA版本，Burp启动后提示你要加上xxx的JVM参数，参考以下命令格式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -noverify -javaagent:burploader.jar 提示你要加上的参数 -jar burpsuite_pro_v2022.1.jar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;把破解工具生成的Liscense(许可证)粘贴进Burp的许可证框框= =&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;TIP:你在使用快捷键复制粘贴的时候一定要注意无论你是什么系统快捷键都是Ctrl + C/V&lt;/strong&gt;&lt;/p&gt;

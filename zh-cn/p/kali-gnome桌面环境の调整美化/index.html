@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Gnome折腾日记'><title>Kali Gnome桌面环境の调整&amp;美化</title>
 
@@ -362,10 +362,10 @@
 <p>个人感觉gnome默认的terminal很鸡肋，可以<del>花里胡哨</del>个性化的地方比较少，</p>
 <p>于是我决定做一个<del>感天动地の大事</del>:把默认终端换成xfce默认的<strong>qterminal</strong></p>
 <p>先安装qterminal</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install qterminal
-</code></pre></div><p>然后配置默认终端</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo update-alternatives --config x-terminal-emulator
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install qterminal
+</span></span></code></pre></div><p>然后配置默认终端</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo update-alternatives --config x-terminal-emulator
+</span></span></code></pre></div><blockquote>
 <p>输入命令后在下面会出现一个列表，输入qterminal的序号并敲回车就可以了喵</p>
 </blockquote>
 <p><img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.jpg"
@@ -385,8 +385,8 @@
 <h2 id="调整任务栏位置">调整&quot;任务栏&quot;位置</h2>
 <p>找了半天，发现图形界面里没有一个地方是可以调任务栏位置的= =</p>
 <p>嘛&hellip;.原来是只能用命令行= =</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">gsettings <span class="nb">set</span> org.gnome.shell.extensions.dash-to-dock dock-position 位置
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gsettings <span class="nb">set</span> org.gnome.shell.extensions.dash-to-dock dock-position 位置
+</span></span></code></pre></div><blockquote>
 <p>关于这个位置支持的值说明:</p>
 <p><strong>BOTTOM</strong> -&gt; 底部</p>
 <p><strong>LEFT</strong> -&gt; 靠左</p>
@@ -398,17 +398,17 @@
 <p>使本来很愉快的换头像变成一件非常狗的事情</p>
 <p>因为不能走GUI快捷通过点点点换一个好看的头像，</p>
 <p>所以只能上配置文件了;(</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo vi /var/lib/AccountsService/users/你的用户名
-</code></pre></div><p>按<code>i</code>进入编辑模式对配置文件进行修改</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>User<span class="o">]</span>
-<span class="nv">Icon</span><span class="o">=</span>你图片的绝对路径 <span class="c1">#绝对路径就是从/开始的那个</span>
-<span class="nv">Language</span><span class="o">=</span>
-<span class="nv">XSession</span><span class="o">=</span>
-<span class="nv">SystemAccount</span><span class="o">=</span><span class="nb">true</span>
-</code></pre></div><p>按<code>Esc</code>并输入<code>:wq</code>,再<code>Enter</code>保存并退出</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo vi /var/lib/AccountsService/users/你的用户名
+</span></span></code></pre></div><p>按<code>i</code>进入编辑模式对配置文件进行修改</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>User<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Icon</span><span class="o">=</span>你图片的绝对路径 <span class="c1">#绝对路径就是从/开始的那个</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Language</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">XSession</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SystemAccount</span><span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><p>按<code>Esc</code>并输入<code>:wq</code>,再<code>Enter</code>保存并退出</p>
 <p>然后再进入你图片所在的目录，调整下改图片文件的权限</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo chmod <span class="m">777</span> 你的图片
-</code></pre></div><p>然后再退出登陆，就可以看到你更改的头像啦~~</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo chmod <span class="m">777</span> 你的图片
+</span></span></code></pre></div><p>然后再退出登陆，就可以看到你更改的头像啦~~</p>
 <h2 id="调教后整体效果">调教后整体效果</h2>
 <p>废话不说，直接上图0.0</p>
 <p><img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/1.png"
@@ -490,11 +490,11 @@
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/">
+    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -514,11 +514,11 @@
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/">
+    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part2/cover.6609479bd0907ec6ea00715509d31ad3_hud789057b5615606983ce824e4e6d2366_3484484_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/cover.6609479bd0907ec6ea00715509d31ad3_hud789057b5615606983ce824e4e6d2366_3484484_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"

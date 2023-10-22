@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='论Linux花里胡哨起来的样子'><title>Kali Gnome桌面环境の调整&amp;美化--Part2</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Kali Gnome桌面环境の调整&amp;美化--Part2'>
+<meta property='og:description' content='论Linux花里胡哨起来的样子'>
+<meta property='og:url' content='https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/'>
+<meta property='og:site_name' content='猫猫の博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Gnome' /><meta property='article:published_time' content='2023-01-09T11:13:48&#43;08:00'/><meta property='article:modified_time' content='2023-01-09T11:13:48&#43;08:00'/><meta property='og:image' content='https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/cover.jpg' />
+<meta name="twitter:title" content="Kali Gnome桌面环境の调整&amp;美化--Part2">
+<meta name="twitter:description" content="论Linux花里胡哨起来的样子"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">猫猫の博客</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%96%B5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于本喵</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>猫の存档</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>猫の搜索</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/zh-cn/%E7%8C%AB%E3%81%AE%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>猫の链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" >English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" selected>中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/">
+                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/cover_hud789057b5615606983ce824e4e6d2366_3484484_800x0_resize_q75_box.jpg"
+                        srcset="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/cover_hud789057b5615606983ce824e4e6d2366_3484484_800x0_resize_q75_box.jpg 800w, /zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/cover_hud789057b5615606983ce824e4e6d2366_3484484_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化--Part2" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/linux/" style="background-color: #98bbd0; color: #fff;">
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/">Kali Gnome桌面环境の调整&amp;美化--Part2</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            论Linux花里胡哨起来的样子
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 09, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 4 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="kali-gnome桌面环境の调整美化--part2">Kali Gnome桌面环境の调整&amp;美化&ndash;Part2</h1>
+<p>近期在队友们的怂恿之下 , 我把实体机的Windows系统换成了Linux系统:&gt;</p>
+<p>在一番思想斗争之后，我还是选择了更加美观的gnome桌面</p>
+<blockquote>
+<p>如果对于Kali Gnome桌面环境美化感兴趣的顺便可以看看我上一篇<a class="link" href="/p/kali-gnome%e6%a1%8c%e9%9d%a2%e7%8e%af%e5%a2%83%e3%81%ae%e8%b0%83%e6%95%b4%e7%be%8e%e5%8c%96/" >文章</a></p>
+</blockquote>
+<p>作为一个喜欢瞎折腾的猫猫，新系统拿到手肯定是先花哨一番咯.qwq.</p>
+<h2 id="整体效果">整体效果</h2>
+<ul>
+<li>桌面篇</li>
+</ul>
+<p><img src="https://github.com/Kira-Pgr/Assets/blob/main/2023-01-09_11-58-26.gif?raw=true"
+	
+	
+	
+	loading="lazy"
+	
+		alt="动态壁纸"
+	
+	
+></p>
+<p><img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-16-11-image.png"
+	width="1920"
+	height="1080"
+	srcset="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-16-11-image_hud4a6c3c0567306a0e99bdfa98001cfaa_3119832_480x0_resize_box_3.png 480w, /zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-16-11-image_hud4a6c3c0567306a0e99bdfa98001cfaa_3119832_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="动态,静态效果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="426px"
+	
+></p>
+<ul>
+<li>Alt+Tab篇</li>
+</ul>
+<p><img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-19-40-image.png"
+	width="1762"
+	height="990"
+	srcset="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-19-40-image_hu1eb13355442bd2b517617dd5bc3bf610_1962072_480x0_resize_box_3.png 480w, /zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-19-40-image_hu1eb13355442bd2b517617dd5bc3bf610_1962072_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="427px"
+	
+></p>
+<h2 id="配置过程">配置过程</h2>
+<h3 id="动态壁纸">动态壁纸</h3>
+<p>设置动态壁纸，我用的是<a class="link" href="https://github.com/jeffshee/hidamari"  target="_blank" rel="noopener"
+    >hidamari</a></p>
+<h4 id="软件安装">软件安装</h4>
+<blockquote>
+<p>注意:使用该方法安装的话软件下载速度在国内可能会<strong>很慢</strong></p>
+<p>有条件的可以上代理或者VPN(最好是VPN)</p>
+</blockquote>
+<p>安装和配置<code>Flatpak</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install flatpak
+</span></span><span class="line"><span class="cl">flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+</span></span><span class="line"><span class="cl">sudo reboot
+</span></span></code></pre></div><p>重启完成后，就可以安装<code>hidamari</code>了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">flatpak install flathub io.github.jeffshee.Hidamari
+</span></span></code></pre></div><p>一般来说，你就够在应用列表里找到这个软件</p>
+<p>如果不能，你可以这样运行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">flatpak run io.github.jeffshee.Hidamari
+</span></span></code></pre></div><h4 id="软件使用">软件使用</h4>
+<p>嘛&hellip;你可以使用</p>
+<ul>
+<li>
+<p>视频</p>
+</li>
+<li>
+<p>网站</p>
+</li>
+<li>
+<p>youtube等平台的视频</p>
+</li>
+</ul>
+<p>来作为你的壁纸</p>
+<p>至于界面的使用嘛，有手就行= =</p>
+<p><img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-33-58-image.png"
+	width="1024"
+	height="615"
+	srcset="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-33-58-image_hu21d63ddcb33579237d32894ae9a8a3a5_196693_480x0_resize_box_3.png 480w, /zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part2/2023-01-09-12-33-58-image_hu21d63ddcb33579237d32894ae9a8a3a5_196693_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="这么简单，猫猫就不说用法了= ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="399px"
+	
+></p>
+<h3 id="桌面小组件">桌面小组件</h3>
+<p>我使用的是<a class="link" href="https://github.com/brndnmtthws/conky"  target="_blank" rel="noopener"
+    >conky</a></p>
+<h4 id="软件安装-1">软件安装</h4>
+<p>kali可以直接通过<code>apt</code>进行安装</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install conky-all
+</span></span></code></pre></div><h4 id="配置文件">配置文件</h4>
+<p>官方有很多各位大神做好的<a class="link" href="https://github.com/brndnmtthws/conky/wiki/Configs"  target="_blank" rel="noopener"
+    >配置</a></p>
+<p>各位也可以看着官方<a class="link" href="https://github.com/brndnmtthws/conky/wiki/Configurations"  target="_blank" rel="noopener"
+    >文档</a>自己写配置</p>
+<p>也可以用我的配置:&gt;</p>
+<h5 id="创建修改配置文件">创建/修改配置文件</h5>
+<blockquote>
+<p>注意:配置文件放在<code>~/.config/conky</code></p>
+<p>并命名为<code>conky.conf</code></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/.config/conky
+</span></span><span class="line"><span class="cl">vi conky.conf
+</span></span></code></pre></div><p>下面我会给出上面图片中使用的两个配置文件</p>
+<h5 id="配置1--白色">配置1&ndash;白色</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conky.config = {
+</span></span><span class="line"><span class="cl">    use_xft= true,
+</span></span><span class="line"><span class="cl">    xftalpha= .1,
+</span></span><span class="line"><span class="cl">    update_interval= 1,
+</span></span><span class="line"><span class="cl">    total_run_times= 0,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    background= true,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    own_window= true,
+</span></span><span class="line"><span class="cl">    own_window_type= &#39;desktop&#39;,
+</span></span><span class="line"><span class="cl">    own_window_transparent= true,
+</span></span><span class="line"><span class="cl">    own_window_hints= &#39;undecorated,below,sticky,skip_taskbar,skip_pager&#39;,
+</span></span><span class="line"><span class="cl">    own_window_colour= &#39;000000&#39;,
+</span></span><span class="line"><span class="cl">    own_window_argb_visual= true,
+</span></span><span class="line"><span class="cl">    own_window_argb_value= 0,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    double_buffer= true,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    minimum_width= 270,
+</span></span><span class="line"><span class="cl">    maximum_width= 270,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    minimum_height= 10,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    draw_shades= false,
+</span></span><span class="line"><span class="cl">    draw_outline= false,
+</span></span><span class="line"><span class="cl">    draw_borders= false,
+</span></span><span class="line"><span class="cl">    draw_graph_borders= false,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    default_color= &#39;FFFFFF&#39;,
+</span></span><span class="line"><span class="cl">    default_shade_color= &#39;333333&#39;,
+</span></span><span class="line"><span class="cl">    default_outline_color= &#39;black&#39;,
+</span></span><span class="line"><span class="cl">    color1 = &#39;A9A9A9&#39;,
+</span></span><span class="line"><span class="cl">    color3 = &#39;616161&#39;,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    alignment= &#39;top_right&#39;,
+</span></span><span class="line"><span class="cl">    gap_x= 56,
+</span></span><span class="line"><span class="cl">    gap_y= 0,
+</span></span><span class="line"><span class="cl">    no_buffers= true,
+</span></span><span class="line"><span class="cl">    text_buffer_size = 2048,
+</span></span><span class="line"><span class="cl">    uppercase= false,
+</span></span><span class="line"><span class="cl">    cpu_avg_samples= 4,
+</span></span><span class="line"><span class="cl">    net_avg_samples = 2,
+</span></span><span class="line"><span class="cl">    override_utf8_locale= true,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    font= &#39;Ubuntu:style=medium:size=9&#39;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">conky.text = [[
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${color1}
+</span></span><span class="line"><span class="cl">${voffset 50}
+</span></span><span class="line"><span class="cl">${alignr}${font Ubuntu:style=Medium:pixelsize=50}${time %H:%M}${font}
+</span></span><span class="line"><span class="cl">${voffset 5}
+</span></span><span class="line"><span class="cl">${alignr}${font Ubuntu:style=Medium:pixelsize=13}${time %A %d %B %Y}${font}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${voffset 100}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font} Welcome Kira Senpai~
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font} All systems are operational!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#${font FontAwesome:style=Solid:size=10}${font} ${alignr}${if_match &#34;${addr enp3s0}&#34;!=&#34;No Address&#34;} [FILAIRE] ${addr enp3s0}${endif}${if_match &#34;${addr wlp4s7}&#34;!=&#34;No Address&#34;}[WIFI] ${addr wlp4s7}${endif}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   Hostname${alignr}${exec hostnamectl | grep &#34;Static hostname&#34; | awk &#39;{print ($3)}&#39;}
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10} ${font}   System${alignr}${exec hostnamectl | grep System | awk &#39;{print($3&#34; &#34;$4&#34; &#34;$5)}&#39;}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   CPU${alignr}$cpu%
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   MEM${alignr}$mem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   Disk IO${alignr}${diskio /dev/nvme0n1}
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10} ${font}   Core Temp ${alignr}${hwmon 0 temp 1}°
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   Public IP ${alignr}${exec echo &#34;HIDDEN&#34;}
+</span></span><span class="line"><span class="cl">#${font FontAwesome:style=Solid:size=10}${font}   disques ${alignr}${hddtemp /dev/sda}°.${hddtemp /dev/sdb}°.${hddtemp /dev/sdc}°
+</span></span><span class="line"><span class="cl"># .${hddtemp /dev/sdd}°.${hddtemp /dev/sde}°.${hddtemp /dev/sdf}°.
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   Local IP ${alignr}${exec ifconfig | grep 192 | tail -1 | awk &#39;{print($2)}&#39;}
+</span></span><span class="line"><span class="cl">#${font FontAwesome:style=Solid:size=10}${font}   ventilo ${alignr}${hwmon 0 fan 1} tour/min
+</span></span><span class="line"><span class="cl">${color3}${cpugraph cpu1 50,133 5e7b7b d8deeb -t} ${cpugraph cpu2 50,133 5e7b7b d8deeb -t}
+</span></span><span class="line"><span class="cl">${cpugraph cpu3 50,133 5e7b7b d8deeb -t} ${cpugraph cpu4 50,133 5e7b7b d8deeb -t}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${if_match &#34;${addr enp3s0}&#34;!=&#34;No Address&#34;}
+</span></span><span class="line"><span class="cl">${color3}${downspeedgraph enp3s0 50,269 5e7b7b d8deeb}
+</span></span><span class="line"><span class="cl">${color1}${font FontAwesome:style=Solid:size=10}${font}   download ${alignr}${downspeedf enp3s0}k/s (${totaldown enp3s0})
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   upload ${alignr}${upspeedf enp3s0}k/s (${totalup enp3s0})
+</span></span><span class="line"><span class="cl">${color3}${upspeedgraph enp3s0 50,269 99c8e8 618094}
+</span></span><span class="line"><span class="cl">${endif}
+</span></span><span class="line"><span class="cl">${if_match &#34;${addr wlp4s7}&#34;!=&#34;No Address&#34;}
+</span></span><span class="line"><span class="cl">${color3}${downspeedgraph wlp4s7 50,269 5e7b7b d8deeb}
+</span></span><span class="line"><span class="cl">${color1}${font FontAwesome:style=Solid:size=10}${font}   download ${alignr}${downspeedf wlp4s7}k/s (${totaldown wlp4s7})
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   upload ${alignr}${upspeedf wlp4s7}k/s (${totalup wlp4s7})
+</span></span><span class="line"><span class="cl">${color3}${upspeedgraph wlp4s7 50,269 99c8e8 618094}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${endif}
+</span></span><span class="line"><span class="cl">]]
+</span></span></code></pre></div><h5 id="配置2--彩色">配置2&ndash;彩色</h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conky.config = {
+</span></span><span class="line"><span class="cl">    use_xft= true,
+</span></span><span class="line"><span class="cl">    xftalpha= .1,
+</span></span><span class="line"><span class="cl">    update_interval= 1,
+</span></span><span class="line"><span class="cl">    total_run_times= 0,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    background= true,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    own_window= true,
+</span></span><span class="line"><span class="cl">    own_window_type= &#39;desktop&#39;,
+</span></span><span class="line"><span class="cl">    own_window_transparent= true,
+</span></span><span class="line"><span class="cl">    own_window_hints= &#39;undecorated,below,sticky,skip_taskbar,skip_pager&#39;,
+</span></span><span class="line"><span class="cl">    own_window_colour= &#39;000000&#39;,
+</span></span><span class="line"><span class="cl">    own_window_argb_visual= true,
+</span></span><span class="line"><span class="cl">    own_window_argb_value= 0,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    double_buffer= true,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    minimum_width= 270,
+</span></span><span class="line"><span class="cl">    maximum_width= 270,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    minimum_height= 10,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    draw_shades= false,
+</span></span><span class="line"><span class="cl">    draw_outline= false,
+</span></span><span class="line"><span class="cl">    draw_borders= false,
+</span></span><span class="line"><span class="cl">    draw_graph_borders= false,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    default_color= &#39;FFFFFF&#39;,
+</span></span><span class="line"><span class="cl">    default_shade_color= &#39;333333&#39;,
+</span></span><span class="line"><span class="cl">    default_outline_color= &#39;black&#39;,
+</span></span><span class="line"><span class="cl">    color1 = &#39;A9A9A9&#39;,
+</span></span><span class="line"><span class="cl">    color3 = &#39;e95420&#39;,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    alignment= &#39;top_right&#39;,
+</span></span><span class="line"><span class="cl">    gap_x= 56,
+</span></span><span class="line"><span class="cl">    gap_y= 0,
+</span></span><span class="line"><span class="cl">    no_buffers= true,
+</span></span><span class="line"><span class="cl">    text_buffer_size = 2048,
+</span></span><span class="line"><span class="cl">    uppercase= false,
+</span></span><span class="line"><span class="cl">    cpu_avg_samples= 4,
+</span></span><span class="line"><span class="cl">    net_avg_samples = 2,
+</span></span><span class="line"><span class="cl">    override_utf8_locale= true,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    font= &#39;Ubuntu:style=medium:size=9&#39;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">conky.text = [[
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${color1}
+</span></span><span class="line"><span class="cl">${color aaad9c}
+</span></span><span class="line"><span class="cl">${voffset 50}
+</span></span><span class="line"><span class="cl">${alignr}${font Ubuntu:style=Medium:pixelsize=50}${color e95420}${time %H:%M}${font}${color}
+</span></span><span class="line"><span class="cl">${voffset 5}
+</span></span><span class="line"><span class="cl">${alignr}${font Ubuntu:style=Medium:pixelsize=13}${color e95420}${time %A %d %B %Y}${font}${color}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${voffset 100}
+</span></span><span class="line"><span class="cl">${color 03b0d2}${font FontAwesome:style=Solid:size=10}${font} Welcome Kira Senpai~
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font} All systems are operational!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=8}${font}${alignr}Uptime: $uptime${color}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#${font FontAwesome:style=Solid:size=10}${font} ${alignr}${if_match &#34;${addr enp3s0}&#34;!=&#34;No Address&#34;} [FILAIRE] ${addr enp3s0}${endif}${if_match &#34;${addr wlp4s7}&#34;!=&#34;No Address&#34;}[WIFI] ${addr wlp4s7}${endif}
+</span></span><span class="line"><span class="cl">${color db3d18}${font FontAwesome:style=Solid:size=10}${font}   Hostname${alignr}${exec hostnamectl | grep &#34;Static hostname&#34; | awk &#39;{print ($3)}&#39;}
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10} ${font}   System${alignr}${exec hostnamectl | grep System | awk &#39;{print($3&#34; &#34;$4&#34; &#34;$5)}&#39;}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${color 03b0d2}${font FontAwesome:style=Solid:size=10}${font}   CPU${alignr}$cpu%
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${offset 4}${color 000000}${cpugraph 222222 039fab}${color}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${color e95420}${font FontAwesome:style=Solid:size=10}${font}   MEM${alignr}$mem
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${offset 4}${color 000000}${memgraph 222222 e95420}${color}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${color 03b0d2}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   Disk IO${alignr}${diskio /dev/nvme0n1}
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10} ${font}   Core Temp ${alignr}${hwmon 0 temp 1}°
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">${color e95420}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   Public IP ${alignr}${exec echo &#34;HIDDEN&#34;}
+</span></span><span class="line"><span class="cl">#${font FontAwesome:style=Solid:size=10}${font}   disques ${alignr}${hddtemp /dev/sda}°.${hddtemp /dev/sdb}°.${hddtemp /dev/sdc}°
+</span></span><span class="line"><span class="cl"># .${hddtemp /dev/sdd}°.${hddtemp /dev/sde}°.${hddtemp /dev/sdf}°.
+</span></span><span class="line"><span class="cl">${hr}
+</span></span><span class="line"><span class="cl">${font FontAwesome:style=Solid:size=10}${font}   Local IP ${alignr}${exec ifconfig | grep 192 | tail -1 | awk &#39;{print($2)}&#39;}
+</span></span><span class="line"><span class="cl">#${font FontAwesome:style=Solid:size=10}${font}   ventilo ${alignr}${hwmon 0 fan 1} tour/min
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">]]
+</span></span></code></pre></div><h3 id="gnome插件">Gnome插件</h3>
+<p><a class="link" href="https://extensions.gnome.org/"  target="_blank" rel="noopener"
+    >官网地址</a></p>
+<p>你可以去官方搜索各种你喜欢的插件来安装</p>
+<blockquote>
+<p>但是请注意，不要安装过多插件，否则安全性可能会受到影响</p>
+</blockquote>
+<p>下面是我安装的感觉两个不错的插件</p>
+<h4 id="coverflow-alt-tab">Coverflow Alt-Tab</h4>
+<ul>
+<li>
+<p>上面展示的Alt+Tab效果</p>
+</li>
+<li>
+<p><a class="link" href="https://extensions.gnome.org/extension/97/coverflow-alt-tab/"  target="_blank" rel="noopener"
+    >链接</a></p>
+</li>
+<li>
+<p>特点: 让Alt+Tab页面更加美观</p>
+</li>
+</ul>
+<h4 id="clipboard-indicator">Clipboard Indicator</h4>
+<ul>
+<li>
+<p>剪贴板历史: 也就是你之前复制过的内容</p>
+</li>
+<li>
+<p><a class="link" href="https://extensions.gnome.org/extension/779/clipboard-indicator/"  target="_blank" rel="noopener"
+    >链接</a></p>
+</li>
+<li>
+<p>特点: 可以取代Windows系统中<code>Win+V</code>，迅速获取之前复制过的内容</p>
+</li>
+</ul>
+<h2 id="结语">结语</h2>
+<p>由于做项目加上covid的原因,已经好久没有写博客了= =</p>
+<p>本篇是2023年第一篇博客，虽说晚了好几天，但我还是<del>不要face地</del>在这里住各位新年快乐哈</p>
+<p>让各位的系统也能在2023新衣服+1 :&gt;</p>
+<p><small><small>不过，，，没有红包!没有红包！嘿嘿嘿</small></small></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-cn/tags/gnome/">Gnome</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化--Part3"
+                        
+                        data-hash="md5-dvSjHRhtFs1atHMRO52g5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kali Gnome桌面环境の调整&amp;美化--Part3</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96/cover.f2cd6cd2cf6d28cce9f098425b362967_hu81a9c413a1c8e188446087e0ced1bda4_3605489_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Kali Gnome桌面环境の调整&amp;美化"
+                        
+                        data-hash="md5-8s1s0s9tKMzp8JhCWzYpZw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kali Gnome桌面环境の调整&amp;美化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/cover.ae9f06ced22459c2db3f827966002315_hu696abea9aa81bff342022fb081b516d2_10034586_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 在Linux上使用截图软件Snipaste"
+                        
+                        data-hash="md5-rp8GztIkWcLbP4J5ZgAjFQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">在Linux上使用截图软件Snipaste</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/cover.4464f018b5cd958a3da7c4b180ced7f7_huaff3555d9167d8863726c9c3b3b95f86_2865950_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Linux平台下搭建KVM/QEMU的Windows虚拟机"
+                        
+                        data-hash="md5-RGTwGLXNlYo9p8SxgM7X9w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Linux平台下搭建KVM/QEMU的Windows虚拟机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">
+        
+        
+            <div class="article-image">
+                <img src="/zh-cn/p/thunar%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E7%8E%A9%E8%BD%AC%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/cover.3cefc1778c5c86f23c3dec8316fc07fa_hud7fd8ab6e651f4b11b6ec81f5975f698_2529435_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Thunar文件管理器玩转右键菜单"
+                        
+                        data-hash="md5-PO/Bd4xchvI8PeyDFvwH&#43;g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Thunar文件管理器玩转右键菜单</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "ddbff992a105766dc2834098a20c8e1e497b27c1",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 猫猫の博客
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#整体效果">整体效果</a></li>
+    <li><a href="#配置过程">配置过程</a>
+      <ol>
+        <li><a href="#动态壁纸">动态壁纸</a>
+          <ol>
+            <li><a href="#软件安装">软件安装</a></li>
+            <li><a href="#软件使用">软件使用</a></li>
+          </ol>
+        </li>
+        <li><a href="#桌面小组件">桌面小组件</a>
+          <ol>
+            <li><a href="#软件安装-1">软件安装</a></li>
+            <li><a href="#配置文件">配置文件</a>
+              <ol>
+                <li><a href="#创建修改配置文件">创建/修改配置文件</a></li>
+                <li><a href="#配置1--白色">配置1&ndash;白色</a></li>
+                <li><a href="#配置2--彩色">配置2&ndash;彩色</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><a href="#gnome插件">Gnome插件</a>
+          <ol>
+            <li><a href="#coverflow-alt-tab">Coverflow Alt-Tab</a></li>
+            <li><a href="#clipboard-indicator">Clipboard Indicator</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#结语">结语</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

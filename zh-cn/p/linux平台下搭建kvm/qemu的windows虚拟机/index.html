@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='和Win虚拟机卡慢说拜拜'><title>Linux平台下搭建KVM/QEMU的Windows虚拟机</title>
 
@@ -408,16 +408,16 @@
 	
 ></p>
 <p>之后就是装软件前的经典套路&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
-</code></pre></div><h2 id="安装qemukvm">安装QEMU/KVM</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span></code></pre></div><h2 id="安装qemukvm">安装QEMU/KVM</h2>
 <p>打开Linux主机的终端，输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
-</code></pre></div><p>然后重启</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">reboot
-</code></pre></div><h2 id="创建windows虚拟机">创建Windows虚拟机</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
+</span></span></code></pre></div><p>然后重启</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">reboot
+</span></span></code></pre></div><h2 id="创建windows虚拟机">创建Windows虚拟机</h2>
 <p>重启后打开<code>Virtual Machine Manager</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo virt-manager
-</code></pre></div><p>然后按照下面的步骤进行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo virt-manager
+</span></span></code></pre></div><p>然后按照下面的步骤进行</p>
 <p><img src="/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png"
 	width="584"
 	height="205"
@@ -782,8 +782,8 @@
 	
 ></p>
 <p>在你的<code>Linux</code>主机打开终端，输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install remmina
-</code></pre></div><p>运行<code>remmina</code>命令打开远程控制软件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install remmina
+</span></span></code></pre></div><p>运行<code>remmina</code>命令打开远程控制软件</p>
 <p><img src="/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png"
 	width="899"
 	height="513"
@@ -1058,11 +1058,11 @@
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/">
+    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"

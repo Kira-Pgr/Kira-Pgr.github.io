@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如何专业地用工具打嗝 大雾)'><title>Burp Suite Professional 安装&#43;破解教程</title>
 
@@ -382,17 +382,17 @@
 </li>
 </ul>
 <p>deb系</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install default-jdk
-</code></pre></div><p>Red Hat</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum install java-版本号-openjdk-devel
-</code></pre></div><p><a class="link" href="https://www.java.com/en/download/manual.jsp"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install default-jdk
+</span></span></code></pre></div><p>Red Hat</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum install java-版本号-openjdk-devel
+</span></span></code></pre></div><p><a class="link" href="https://www.java.com/en/download/manual.jsp"  target="_blank" rel="noopener"
     >Linux Java下载</a></p>
 <h3 id="嗝开始破解">嗝～～开始破解</h3>
 <p><strong>注意：请把Burp的文件和破解工具放入同一个文件夹</strong></p>
 <p>终端/cmd/你奇奇怪怪的命令行工具进入放有以上两个文件的目录</p>
 <p>先运行破解工具</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">java -jar burploader.jar
-</code></pre></div><p><img src="/zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1.png"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">java -jar burploader.jar
+</span></span></code></pre></div><p><img src="/zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1.png"
 	width="796"
 	height="451"
 	srcset="/zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_480x0_resize_box_3.png 480w, /zh-cn/p/burp-suite-professional-%E5%AE%89%E8%A3%85-%E7%A0%B4%E8%A7%A3%E6%95%99%E7%A8%8B/1_hude958c5b360fb8fb230f2ce450c616ef_44660_1024x0_resize_box_3.png 1024w"
@@ -413,10 +413,10 @@
 <hr>
 <p><strong>JAVA17+的看这里</strong></p>
 <p>保留破解工具窗口，并终端输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">java -noverify -javaagent:burploader.jar --add-opens<span class="o">=</span>java.desktop/javax.swing<span class="o">=</span>ALL-UNNAMED --add-opens<span class="o">=</span>java.base/java.lang<span class="o">=</span>ALL-UNNAMED -jar burpsuite_pro_v2022.1.jar
-</code></pre></div><p>如果你是其他JAVA版本，Burp启动后提示你要加上xxx的JVM参数，参考以下命令格式</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">java -noverify -javaagent:burploader.jar 提示你要加上的参数 -jar burpsuite_pro_v2022.1.jar
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">java -noverify -javaagent:burploader.jar --add-opens<span class="o">=</span>java.desktop/javax.swing<span class="o">=</span>ALL-UNNAMED --add-opens<span class="o">=</span>java.base/java.lang<span class="o">=</span>ALL-UNNAMED -jar burpsuite_pro_v2022.1.jar
+</span></span></code></pre></div><p>如果你是其他JAVA版本，Burp启动后提示你要加上xxx的JVM参数，参考以下命令格式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">java -noverify -javaagent:burploader.jar 提示你要加上的参数 -jar burpsuite_pro_v2022.1.jar
+</span></span></code></pre></div><hr>
 <p>把破解工具生成的Liscense(许可证)粘贴进Burp的许可证框框= =</p>
 <blockquote>
 <p><strong>TIP:你在使用快捷键复制粘贴的时候一定要注意无论你是什么系统快捷键都是Ctrl + C/V</strong></p>

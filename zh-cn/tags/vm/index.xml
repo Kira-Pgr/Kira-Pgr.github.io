@@ -5,7 +5,7 @@
         <link>https://kira-pgr.github.io/zh-cn/tags/vm/</link>
         <description>Recent content in VM on 猫猫の博客</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
+        <language>zh-cn</language>
         <lastBuildDate>Wed, 07 Jun 2023 17:07:14 +0800</lastBuildDate><atom:link href="https://kira-pgr.github.io/zh-cn/tags/vm/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Linux平台下搭建KVM/QEMU的Windows虚拟机</title>
         <link>https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
@@ -64,16 +64,16 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;之后就是装软件前的经典套路&amp;hellip;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装qemukvm&#34;&gt;安装QEMU/KVM&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安装qemukvm&#34;&gt;安装QEMU/KVM&lt;/h2&gt;
 &lt;p&gt;打开Linux主机的终端，输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后重启&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;创建windows虚拟机&#34;&gt;创建Windows虚拟机&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install qemu-kvm bridge-utils virt-manager libosinfo-bin -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后重启&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;reboot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;创建windows虚拟机&#34;&gt;创建Windows虚拟机&lt;/h2&gt;
 &lt;p&gt;重启后打开&lt;code&gt;Virtual Machine Manager&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo virt-manager
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照下面的步骤进行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo virt-manager
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后按照下面的步骤进行&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-17-53-32-image.png&#34;
 	width=&#34;584&#34;
 	height=&#34;205&#34;
@@ -438,8 +438,8 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;在你的&lt;code&gt;Linux&lt;/code&gt;主机打开终端，输入&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt install remmina
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;code&gt;remmina&lt;/code&gt;命令打开远程控制软件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install remmina
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;code&gt;remmina&lt;/code&gt;命令打开远程控制软件&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/linux%E5%B9%B3%E5%8F%B0%E4%B8%8B%E6%90%AD%E5%BB%BAkvm/qemu%E7%9A%84windows%E8%99%9A%E6%8B%9F%E6%9C%BA/2023-06-07-20-41-53-image.png&#34;
 	width=&#34;899&#34;
 	height=&#34;513&#34;
@@ -589,14 +589,14 @@
 &lt;p&gt;VirtualBox相对来讲安装较为简单，且还是开源免费的，占用系统资源较少&lt;/p&gt;
 &lt;h3 id=&#34;安装最新版本内核头文件内核镜像&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
 &lt;p&gt;为了避免系统因为&amp;quot;年久失修&amp;quot;内核版本不是最新，我们&lt;strong&gt;尽量避免&lt;/strong&gt;使用网上提供的这种方式&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt-get install linux-headers-`uname -r`
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;采用以下命令&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt update
-sudo apt-cache search linux-image    
-sudo apt-get install linux-headers-xxx linux-image-xxx  
-&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
-init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-`uname -r`
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;采用以下命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;#装完重启&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1.jpg&#34;
 	width=&#34;1031&#34;
 	height=&#34;715&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -611,18 +611,18 @@ init &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;apt安装virtualbox&#34;&gt;apt安装VirtualBox&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;apt-get install virtualbox virtualbox-guest-additions-iso
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;apt-get install virtualbox virtualbox-guest-additions-iso
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vmware-workstation&#34;&gt;VMware Workstation&lt;/h2&gt;
 &lt;p&gt;比起VBox,VMware折腾起来坑真的好多啊= =&lt;/p&gt;
 &lt;p&gt;不过没办法。。。我还有10多个VMware的虚拟机w(&lt;/p&gt;
 &lt;h3 id=&#34;安装最新版本内核头文件内核镜像-1&#34;&gt;安装最新版本内核头文件/内核镜像&lt;/h3&gt;
 &lt;p&gt;第一步和安VBox一样的操作&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt update
-sudo apt-cache search linux-image    
-sudo apt-get install linux-headers-xxx linux-image-xxx  
-#后面的xxx是上面语句中搜索出来的版本号和系统架构
-init 6 #装完重启
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-cache search linux-image    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install linux-headers-xxx linux-image-xxx  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#后面的xxx是上面语句中搜索出来的版本号和系统架构
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;init 6 #装完重启
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b.png&#34;
 	width=&#34;498&#34;
 	height=&#34;270&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w&#34;
@@ -637,8 +637,8 @@ init 6 #装完重启
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;安装各种编译器&#34;&gt;安装各种编译器&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt-get install build-essential 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt-get install build-essential 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a.png&#34;
 	width=&#34;496&#34;
 	height=&#34;250&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w&#34;
@@ -656,11 +656,11 @@ init 6 #装完重启
 &lt;p&gt;去&lt;a class=&#34;link&#34; href=&#34;https://www.vmware.com/go/getworkstation-linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;官网&lt;/a&gt;下载安装程序&lt;/p&gt;
 &lt;p&gt;给可执行权限&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;chmod x VMware-Workstation-Full-版本号.bundle 
-&lt;span class=&#34;c1&#34;&gt;#TIP:文件名太长可以Tab补全&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo ./VMware-Workstation-Full-版本号.bundle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod x VMware-Workstation-Full-版本号.bundle 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#TIP:文件名太长可以Tab补全&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./VMware-Workstation-Full-版本号.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;安装好之后想要运行直接终端输入vmware就可以了&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;排坑&#34;&gt;排坑&lt;/h3&gt;
@@ -709,14 +709,14 @@ init 6 #装完重启
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;解压后进入源码目录&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;unzip vmware-host-modules-workstation-16.2.1.zip
-cd vmware-host-modules-workstation-16.2.1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译+安装&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;make
-sudo make install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo systemctl restart vmware
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip vmware-host-modules-workstation-16.2.1.zip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd vmware-host-modules-workstation-16.2.1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译+安装&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo make install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模块安装完之后重启vmware服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl restart vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4.jpg&#34;
 	width=&#34;1033&#34;
 	height=&#34;655&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -731,8 +731,8 @@ sudo make install
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;完成之后再运行VMware Workstation,就应该可以正常进入程序了&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;vmware
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vmware
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5.jpg&#34;
 	width=&#34;904&#34;
 	height=&#34;741&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w&#34;
@@ -747,8 +747,8 @@ sudo make install
 &lt;h3 id=&#34;激活&#34;&gt;激活&lt;/h3&gt;
 &lt;p&gt;网上VMware激活码可谓了一大堆&lt;/p&gt;
 &lt;p&gt;为了帮大家偷懒 (逃 ，我在下面放上一个目前(2022.5)能用的&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ZF3R0-FHED2-M80TY-8QYGC-NPKYF
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6.jpg&#34;
 	width=&#34;897&#34;
 	height=&#34;655&#34;
 	srcset=&#34;https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/6_hu3985cbf7d90b1d375c6c84da026d054a_37718_1024x0_resize_q75_box.jpg 1024w&#34;

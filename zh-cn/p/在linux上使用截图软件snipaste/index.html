@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='丝滑的Linux截图'><title>在Linux上使用截图软件Snipaste</title>
 
@@ -361,9 +361,9 @@
 <p>可惜官方还没有制作完适配<code>Linux</code>的版本 :(</p>
 <p>唉&hellip;那就只有自己折腾<strong>wine</strong>了</p>
 <h2 id="wine的安装">Wine的安装</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt update
-sudo apt install wine64
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install wine64
+</span></span></code></pre></div><blockquote>
 <p>Tip:</p>
 <p>如果你的系统是32位的，请使用<code>sudo apt install wine32</code>
 目前大部分Linux都只有64位了= =</p>
@@ -431,8 +431,8 @@ sudo apt install wine64
 	
 ></p>
 <p>然后在该位置打开终端并输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">wine Snipaste.exe
-</code></pre></div><p>然后你的Snipaste就应该运行起来了，你应该能在任务栏里看到一个白色的图标</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wine Snipaste.exe
+</span></span></code></pre></div><p>然后你的Snipaste就应该运行起来了，你应该能在任务栏里看到一个白色的图标</p>
 <p><img src="/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-36-02-image.png"
 	width="524"
 	height="34"
@@ -457,8 +457,8 @@ sudo apt install wine64
 <p>由于不同系统界面的差异，找不到的自行搜索，这里就不演示了 :]</p>
 </blockquote>
 <p>然后在命令那一栏写上</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sh -c <span class="s2">&#34;xdotool key --window </span><span class="k">$(</span>xdotool search --name Snipaste <span class="p">|</span> head -n1<span class="k">)</span><span class="s2"> F1&#34;</span>
-</code></pre></div><p>然后配上你喜欢的截图快捷键</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sh -c <span class="s2">&#34;xdotool key --window </span><span class="k">$(</span>xdotool search --name Snipaste <span class="p">|</span> head -n1<span class="k">)</span><span class="s2"> F1&#34;</span>
+</span></span></code></pre></div><p>然后配上你喜欢的截图快捷键</p>
 <p><img src="/zh-cn/p/%E5%9C%A8linux%E4%B8%8A%E4%BD%BF%E7%94%A8%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6snipaste/2023-06-28-11-48-54-image.png"
 	width="585"
 	height="410"
@@ -611,11 +611,11 @@ sudo apt install wine64
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/">
+    <a href="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96-part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/kali-gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E3%81%AE%E8%B0%83%E6%95%B4%E7%BE%8E%E5%8C%96--part3/cover.76f4a31d186d16cd5ab473113b9da0e7_hufd51531ceb1ba4e379e4713315bd2aeb_1122965_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"

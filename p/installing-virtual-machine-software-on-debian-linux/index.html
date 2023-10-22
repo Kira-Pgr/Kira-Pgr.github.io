@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='VMware Workstation and VirtualBox on Debian~'><title>Installing Virtual Machine Software on Debian Linux</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Installing Virtual Machine Software on Debian Linux'>
+<meta property='og:description' content='VMware Workstation and VirtualBox on Debian~'>
+<meta property='og:url' content='https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/'>
+<meta property='og:site_name' content='CSNek0&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='VM' /><meta property='article:published_time' content='2022-05-05T09:31:14-04:00'/><meta property='article:modified_time' content='2022-05-05T09:31:14-04:00'/><meta property='og:image' content='https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/cover.jpg' />
+<meta name="twitter:title" content="Installing Virtual Machine Software on Debian Linux">
+<meta name="twitter:description" content="VMware Workstation and VirtualBox on Debian~"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/p/installing-virtual-machine-software-on-debian-linux/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">CSNek0&#39;s Blog</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" selected>English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/installing-virtual-machine-software-on-debian-linux/">
+                <img src="/p/installing-virtual-machine-software-on-debian-linux/cover_hu5a0bff5542c2b4a2a99ba03dfc469cdd_192581_800x0_resize_q75_box.jpg"
+                        srcset="/p/installing-virtual-machine-software-on-debian-linux/cover_hu5a0bff5542c2b4a2a99ba03dfc469cdd_192581_800x0_resize_q75_box.jpg 800w, /p/installing-virtual-machine-software-on-debian-linux/cover_hu5a0bff5542c2b4a2a99ba03dfc469cdd_192581_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="320" 
+                        loading="lazy"
+                        alt="Featured image of post Installing Virtual Machine Software on Debian Linux" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" style="background-color: #98bbd0; color: #fff;">
+                Linux
+            </a>
+        
+            <a href="/categories/software/" style="background-color: #c0972b; color: #fff;">
+                Software
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/installing-virtual-machine-software-on-debian-linux/">Installing Virtual Machine Software on Debian Linux</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            VMware Workstation and VirtualBox on Debian~
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 05, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://kira-pgr.github.io/zh-cn/p/debian-linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/" class="link">中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="installing-virtual-machine-software-on-debian-linux">Installing Virtual Machine Software on Debian Linux</h1>
+<h2 id="virtualbox">VirtualBox</h2>
+<p>VirtualBox is relatively simple to install, and it is open-source and free, consuming fewer system resources.</p>
+<h3 id="install-the-latest-version-of-kernel-headerskernel-images">Install the Latest Version of Kernel Headers/Kernel Images</h3>
+<p>To avoid system issues due to an outdated kernel version, we need to <strong>avoid</strong> using the following common method:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo apt-get install linux-headers-`uname -r`
+</span></span></code></pre></div><p>Instead, use the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt-cache search linux-image    
+</span></span><span class="line"><span class="cl">sudo apt-get install linux-headers-xxx linux-image-xxx  
+</span></span><span class="line"><span class="cl"><span class="c1"># replace xxx with the version number and system architecture from the above commands</span>
+</span></span><span class="line"><span class="cl">init <span class="m">6</span> <span class="c1"># reboot after installation</span>
+</span></span></code></pre></div><p><img src="/p/installing-virtual-machine-software-on-debian-linux/1.jpg"
+	width="1031"
+	height="715"
+	srcset="/p/installing-virtual-machine-software-on-debian-linux/1_hu355f6d3727111a8f03b82babd913da24_194015_480x0_resize_q75_box.jpg 480w, /p/installing-virtual-machine-software-on-debian-linux/1_hu355f6d3727111a8f03b82babd913da24_194015_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="As shown in the picture"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="346px"
+	
+></p>
+<h3 id="apt-install-virtualbox">apt Install VirtualBox</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apt-get install virtualbox virtualbox-guest-additions-iso
+</span></span></code></pre></div><h2 id="vmware-workstation">VMware Workstation</h2>
+<p>Compared to VBox, VMware is more cumbersome to set up.</p>
+<p>But I have no choice&hellip; I have more than 10 VMware virtual machines = =</p>
+<blockquote>
+<p>Ahh.. Just felt too lazy to convert al of them</p>
+</blockquote>
+<h3 id="install-the-latest-version-of-kernel-headerskernel-images-1">Install the Latest Version of Kernel Headers/Kernel Images</h3>
+<p>The first step is the same as installing VBox.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt-cache search linux-image    
+</span></span><span class="line"><span class="cl">sudo apt-get install linux-headers-xxx linux-image-xxx  
+</span></span><span class="line"><span class="cl"># replace xxx with the version number and system architecture from the above commands
+</span></span><span class="line"><span class="cl">init 6 # reboot after installation
+</span></span></code></pre></div><p><img src="/p/installing-virtual-machine-software-on-debian-linux/347b.png"
+	width="498"
+	height="270"
+	srcset="/p/installing-virtual-machine-software-on-debian-linux/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_480x0_resize_box_3.png 480w, /p/installing-virtual-machine-software-on-debian-linux/347b_hu0a432a63b1c4669d09693d94de2a1e3a_43879_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="If you encounter this screen after installation, you probably missed this step"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="442px"
+	
+></p>
+<h3 id="install-various-compilers">Install Various Compilers</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install build-essential 
+</span></span></code></pre></div><p><img src="/p/installing-virtual-machine-software-on-debian-linux/347a.png"
+	width="496"
+	height="250"
+	srcset="/p/installing-virtual-machine-software-on-debian-linux/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_480x0_resize_box_3.png 480w, /p/installing-virtual-machine-software-on-debian-linux/347a_hueb66777951ab5bc5b04164b46c1377fc_40883_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="If you see this screen after running VMware, you probably didn&rsquo;t install the compiler"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="476px"
+	
+></p>
+<h3 id="install-vmware-workstation">Install VMware Workstation</h3>
+<p>Download the installer from the <a class="link" href="https://www.vmware.com/go/getworkstation-linux"  target="_blank" rel="noopener"
+    >official website</a>.</p>
+<p>Give execute permission:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">chmod x VMware-Workstation-Full-version-number.bundle 
+</span></span><span class="line"><span class="cl"><span class="c1"># TIP: You can use Tab to auto-complete long file names</span>
+</span></span></code></pre></div><p>Run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo ./VMware-Workstation-Full-version-number.bundle
+</span></span></code></pre></div><blockquote>
+<p>To run the application, just type <code>vmware</code> in the terminal.</p>
+</blockquote>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>If everything goes smoothly, you can follow the prompts to finish this <del>happy</del> installation process.</p>
+<p><strong>However, I encountered many more strange issues.</strong></p>
+<p><img src="/p/installing-virtual-machine-software-on-debian-linux/2.jpg"
+	width="701"
+	height="407"
+	srcset="/p/installing-virtual-machine-software-on-debian-linux/2_hu99c652a4eadab658293032fa14f733d9_26252_480x0_resize_q75_box.jpg 480w, /p/installing-virtual-machine-software-on-debian-linux/2_hu99c652a4eadab658293032fa14f733d9_26252_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="If you also encounter these issues, you can refer to the following solutions"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
+	
+></p>
+<p>VMware had problems compiling and installing the <code>vmmom</code> and <code>vmnet</code> modules. After trying various solutions, I finally decided to <strong>manually compile and install the two modules</strong>.</p>
+<p>Here are the specific solutions. You can refer to <a class="link" href="https://communities.vmware.com/t5/VMware-Workstation-Pro/VM-Workstation-16-1-gt-16-2-1-on-Ubuntu-21-10-broke-everything/m-p/2884738#M173158"  target="_blank" rel="noopener"
+    >this official forum post</a>.</p>
+<p>First, download the module&rsquo;s <a class="link" href="https://github.com/mkubecek/vmware-host-modules/tree/workstation-16.2.1"  target="_blank" rel="noopener"
+    >source code</a>.</p>
+<blockquote>
+<p>Since <code>git clone</code> didn&rsquo;t work for some reason, we choose to download the zip file.</p>
+</blockquote>
+<p><img src="/p/installing-virtual-machine-software-on-debian-linux/3.jpg"
+	width="589"
+	height="570"
+	srcset="/p/installing-virtual-machine-software-on-debian-linux/3_hu2229d385ee73d775c5026728230842bd_45401_480x0_resize_q75_box.jpg 480w, /p/installing-virtual-machine-software-on-debian-linux/3_hu2229d385ee73d775c5026728230842bd_45401_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Download page"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="248px"
+	
+></p>
+<p>After extracting the source code, navigate to the source code directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">unzip vmware-host-modules-workstation-16.2.1.zip
+</span></span><span class="line"><span class="cl">cd vmware-host-modules-workstation-16.2.1
+</span></span></code></pre></div><p>Compile and install:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">sudo make install
+</span></span></code></pre></div><p>Restart the VMware service:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo systemctl restart vmware
+</span></span></code></pre></div><p><img src="/p/installing-virtual-machine-software-on-debian-linux/4.jpg"
+	width="1033"
+	height="655"
+	srcset="/p/installing-virtual-machine-software-on-debian-linux/4_hu45e376996836c2fbb45bee5993bdb26e_235515_480x0_resize_q75_box.jpg 480w, /p/installing-virtual-machine-software-on-debian-linux/4_hu45e376996836c2fbb45bee5993bdb26e_235515_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="As shown in the picture"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="378px"
+	
+></p>
+<p>After completing these steps, you should be able to run VMware Workstation normally:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vmware
+</span></span></code></pre></div><p><img src="/p/installing-virtual-machine-software-on-debian-linux/5.jpg"
+	width="904"
+	height="741"
+	srcset="/p/installing-virtual-machine-software-on-debian-linux/5_huf397e53c44dde384a09f6cc5d9192edd_131626_480x0_resize_q75_box.jpg 480w, /p/installing-virtual-machine-software-on-debian-linux/5_huf397e53c44dde384a09f6cc5d9192edd_131626_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="VMware Workstation running"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="121"
+		data-flex-basis="292px"
+	
+></p>
+<h2 id="references">References</h2>
+<ul>
+<li><a class="link" href="http://book.fsec.io/101-%E5%9F%BA%E7%A1%80%E7%AF%87/101-A-linux%E5%9F%BA%E7%A1%80/101-A2-Kali%20Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E8%AF%95.html#5-%E5%AE%89%E8%A3%85-virtualbox-%E8%99%9A%E6%8B%9F%E6%9C%BA"  target="_blank" rel="noopener"
+    >Link 1</a></li>
+<li><a class="link" href="https://www.a5idc.com/helpcontent/347.html"  target="_blank" rel="noopener"
+    >Link 2</a></li>
+<li><a class="link" href="https://communities.vmware.com/t5/VMware-Workstation-Pro/Workstation-16-Kernel-Module-Install-Error/m-p/2864257#M171145"  target="_blank" rel="noopener"
+    >Link 3</a></li>
+</ul>
+<blockquote>
+<p>English translations by <strong>GPT-4</strong></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/vm/">VM</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "ddbff992a105766dc2834098a20c8e1e497b27c1",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 CSNek0&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#virtualbox">VirtualBox</a>
+      <ol>
+        <li><a href="#install-the-latest-version-of-kernel-headerskernel-images">Install the Latest Version of Kernel Headers/Kernel Images</a></li>
+        <li><a href="#apt-install-virtualbox">apt Install VirtualBox</a></li>
+      </ol>
+    </li>
+    <li><a href="#vmware-workstation">VMware Workstation</a>
+      <ol>
+        <li><a href="#install-the-latest-version-of-kernel-headerskernel-images-1">Install the Latest Version of Kernel Headers/Kernel Images</a></li>
+        <li><a href="#install-various-compilers">Install Various Compilers</a></li>
+        <li><a href="#install-vmware-workstation">Install VMware Workstation</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ol>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

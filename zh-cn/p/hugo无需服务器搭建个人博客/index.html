@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us" dir="ltr">
+<html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='诶嘿嘿...GitHub...的服务器..诶嘿嘿'><title>Hugo无需服务器搭建个人博客</title>
 
@@ -356,25 +356,25 @@
 <h2 id="安装环境linux">安装环境(Linux)</h2>
 <h3 id="安装hugo">安装Hugo</h3>
 <p>yum系</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum install hugo -y
-</code></pre></div><p>Arch</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo pacman -S hugo
-</code></pre></div><p>deb系</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install hugo
-</code></pre></div><h3 id="安装git系统已经预装的自行忽略">安装Git(系统已经预装的自行忽略)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum install hugo -y
+</span></span></code></pre></div><p>Arch</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo pacman -S hugo
+</span></span></code></pre></div><p>deb系</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install hugo
+</span></span></code></pre></div><h3 id="安装git系统已经预装的自行忽略">安装Git(系统已经预装的自行忽略)</h3>
 <p>yum系</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo yum install git
-</code></pre></div><p>Arch</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo pacman -Syu git
-</code></pre></div><p>deb系</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt install git
-</code></pre></div><h2 id="安装环境windows">安装环境(Windows)</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum install git
+</span></span></code></pre></div><p>Arch</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo pacman -Syu git
+</span></span></code></pre></div><p>deb系</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install git
+</span></span></code></pre></div><h2 id="安装环境windows">安装环境(Windows)</h2>
 <h3 id="安装hugo-1">安装Hugo</h3>
 <p><a class="link" href="https://gohugo.io/getting-started/installing/#less-technical-users"  target="_blank" rel="noopener"
     >https://gohugo.io/getting-started/installing/#less-technical-users</a></p>
 <h3 id="安装git">安装Git</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">winget</span> <span class="n">install</span> <span class="n">Git</span><span class="p">.</span><span class="n">Git</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winget</span> <span class="n">install</span> <span class="n">Git</span><span class="p">.</span><span class="py">Git</span>
+</span></span></code></pre></div><hr>
 <h2 id="开始建站uwu">开始建站.UwU.!</h2>
 <h3 id="github项目创建">GitHub项目创建</h3>
 <ul>
@@ -398,17 +398,17 @@
 <p><strong>注意：我本地环境是Kali Linux, 其他环境可能步骤略有不同= =</strong></p>
 </blockquote>
 <p>终端/cmd/<del>或者你用的其他东西也罢</del>输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hugo new site 你想给网站起的名字
-</code></pre></div><p>这个时候Hugo就给你生成了一个网站</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new site 你想给网站起的名字
+</span></span></code></pre></div><p>这个时候Hugo就给你生成了一个网站</p>
 <p><del>接下来该犯选择综合征了</del></p>
 <p><strong>咳咳，接下来去https://themes.gohugo.io/ 找一个喜欢的主题</strong></p>
 <p>P.S. 我的博客是主题<a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack"  target="_blank" rel="noopener"
     >Stack</a></p>
 <p>进入你本地hugo网站的<strong>themes</strong>目录</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> 网站名/themes
-</code></pre></div><p>然后把你的主题放进去.qaq.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">git clone 你的主题的GitHub网址.git
-</code></pre></div><p>等你的主题静静的躺在那里了之后 逃)，依据文档配置你的网站</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> 网站名/themes
+</span></span></code></pre></div><p>然后把你的主题放进去.qaq.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git clone 你的主题的GitHub网址.git
+</span></span></code></pre></div><p>等你的主题静静的躺在那里了之后 逃)，依据文档配置你的网站</p>
 <blockquote>
 <p>Stack的文档 <a class="link" href="https://docs.stack.jimmycai.com/zh/"  target="_blank" rel="noopener"
     >https://docs.stack.jimmycai.com/zh/</a></p>
@@ -439,24 +439,24 @@
 </blockquote>
 <h3 id="q1文章不显示在首页怎么办">Q1:文章不显示在首页怎么办</h3>
 <p>修改你<strong>网站根目录</strong>下的<code>config.yaml</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">params</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">mainSections</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="l">posts</span><span class="w">
-</span></code></pre></div><h3 id="q2评论区如何配置">Q2:评论区如何配置</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">mainSections</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">posts</span><span class="w">
+</span></span></span></code></pre></div><h3 id="q2评论区如何配置">Q2:评论区如何配置</h3>
 <p>我这里选用的是<code>Gitalk</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">comments</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c">#开启评论功能设置为true</span><span class="w">
-</span><span class="w">        </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">gitalk</span><span class="w"> </span><span class="c">#提供平台，我这里是gitalk,当然你也可以选择其他的</span><span class="w">
-</span><span class="w"></span><span class="c">#注意:提供平台选哪个下面的就填哪块区域</span><span class="w">
-</span></code></pre></div><p>gitaik配置:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">gitalk</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub用户名</span><span class="w">
-</span><span class="w">            </span><span class="nt">admin</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub用户名 </span><span class="w">
-</span><span class="w">            </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub仓库名</span><span class="w"> </span><span class="c">#(注意不是网址!!!!!!!)</span><span class="w">
-</span><span class="w">            </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> 
-</span><span class="w">            </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> 
-</span><span class="w"></span><span class="c">#ClientID和ClientSecret请不要随意告诉他人哦~</span><span class="w">
-</span></code></pre></div><p>ClientID和ClientSecret获取方法:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c">#开启评论功能设置为true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">gitalk</span><span class="w"> </span><span class="c">#提供平台，我这里是gitalk,当然你也可以选择其他的</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#注意:提供平台选哪个下面的就填哪块区域</span><span class="w">
+</span></span></span></code></pre></div><p>gitaik配置:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">gitalk</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub用户名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">admin</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub用户名 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">你的GitHub仓库名</span><span class="w"> </span><span class="c">#(注意不是网址!!!!!!!)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#ClientID和ClientSecret请不要随意告诉他人哦~</span><span class="w">
+</span></span></span></code></pre></div><p>ClientID和ClientSecret获取方法:</p>
 <p>去<a class="link" href="https://github.com/settings/developers"  target="_blank" rel="noopener"
     >GitHub开发者设置里</a>新建一个<code>OAuth App</code></p>
 <p><img src="/zh-cn/p/hugo%E6%97%A0%E9%9C%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/1.jpg"
@@ -502,17 +502,17 @@
 <p>这个自定义的话，其实感觉没什么特殊的必要，往往就是加一些奇奇怪怪的东西上去，但还是扯两句</p>
 </blockquote>
 <p>与自定义相关的路径(如没有可以自己添加)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">网站根目录/layouts/partials/head/custom.html <span class="c1">#插入所有页面头部的HTML </span>
-网站根目录/layouts/partials/footer/custom.html <span class="c1">#插入所有页面底部的HTML</span>
-网站根目录/static/ <span class="c1">#资源文件路径 e.g. js css ...</span>
-</code></pre></div><p>最后放一个我写的Stack博客美化的<a class="link" href="https://blog.nanosec.site/posts/hugo2/"  target="_blank" rel="noopener"
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">网站根目录/layouts/partials/head/custom.html <span class="c1">#插入所有页面头部的HTML </span>
+</span></span><span class="line"><span class="cl">网站根目录/layouts/partials/footer/custom.html <span class="c1">#插入所有页面底部的HTML</span>
+</span></span><span class="line"><span class="cl">网站根目录/static/ <span class="c1">#资源文件路径 e.g. js css ...</span>
+</span></span></code></pre></div><p>最后放一个我写的Stack博客美化的<a class="link" href="https://blog.nanosec.site/posts/hugo2/"  target="_blank" rel="noopener"
     >懒人方法</a></p>
 <hr>
 <h2 id="本地网站试运行">本地网站试运行</h2>
 <p>在你的<strong>网站根目录</strong>下打开终端/cmd/或者你喜欢的命令行工具</p>
 <p>输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">hugo server 
-</code></pre></div><p>然后就可以在本机浏览器输入<code>http://127.0.0.1:1313/</code>看到你的网站啦qaq</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo server 
+</span></span></code></pre></div><p>然后就可以在本机浏览器输入<code>http://127.0.0.1:1313/</code>看到你的网站啦qaq</p>
 <h2 id="写博客">写博客</h2>
 <h3 id="关于markdown">关于Markdown</h3>
 <p>写博客前先熟悉一下<a class="link" href="https://www.markdownguide.org/basic-syntax/"  target="_blank" rel="noopener"
@@ -549,22 +549,22 @@
 <h3 id="试着尝试一下吧qaq">试着尝试一下吧qaq</h3>
 <p>首先我们要创建一个md文件</p>
 <p>在网站根目录打开终端/cmd/&hellip;并输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">hugo new posts/随便一个名字/index.md
-</code></pre></div><p>然后打开<code>index.md</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo new posts/随便一个名字/index.md
+</span></span></code></pre></div><p>然后打开<code>index.md</code></p>
 <p>将预先生产好的内容更改成</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">---
-title: &#34;文章标题&#34;
-description: &#34;简介&#34;
-date: 2022-01-29T02:02:45-05:00
-image: &#34;你同目录下的封面图片名字(带后缀并且是相对路径)&#34;
-categories:
-    <span class="k">-</span> 分类1
-    <span class="k">-</span> 分类2
-tags:
-    <span class="k">-</span> 标签1
-    <span class="k">-</span> 标签2
----
-</code></pre></div><p><strong>注意：不同主题的格式可能不一样，如你没有使用Stack主题，快去查看文档</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;文章标题&#34;
+</span></span><span class="line"><span class="cl">description: &#34;简介&#34;
+</span></span><span class="line"><span class="cl">date: 2022-01-29T02:02:45-05:00
+</span></span><span class="line"><span class="cl">image: &#34;你同目录下的封面图片名字(带后缀并且是相对路径)&#34;
+</span></span><span class="line"><span class="cl">categories:
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> 分类1
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> 分类2
+</span></span><span class="line"><span class="cl">tags:
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> 标签1
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> 标签2
+</span></span><span class="line"><span class="cl">---
+</span></span></code></pre></div><p><strong>注意：不同主题的格式可能不一样，如你没有使用Stack主题，快去查看文档</strong></p>
 <p>之后就可以书写文章内容了</p>
 <blockquote>
 <p>Tip:你引用的图片放在同目录下</p>
@@ -576,16 +576,16 @@ tags:
 </blockquote>
 <h3 id="发布网站">发布网站</h3>
 <p>在网站根目录打开终端/cmd/等等，并输入</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">hugo --theme<span class="o">=</span>主题文件夹名
-</code></pre></div><p>进入public准备发布</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> public
-</code></pre></div><p>发布上GitHub</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git init
-git add -A
-git commit -m <span class="s2">&#34;对这次发布的说明&#34;</span>
-git remote add origin https://github.com/你的Github用户名/你的Github用户名.github.io.git
-git push -u origin master
-</code></pre></div><p>接下来输入你的用户名和你的GitHub<strong>个人访问Token(不是密码，帐号密码已经不支持了)</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo --theme<span class="o">=</span>主题文件夹名
+</span></span></code></pre></div><p>进入public准备发布</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> public
+</span></span></code></pre></div><p>发布上GitHub</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">git add -A
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;对这次发布的说明&#34;</span>
+</span></span><span class="line"><span class="cl">git remote add origin https://github.com/你的Github用户名/你的Github用户名.github.io.git
+</span></span><span class="line"><span class="cl">git push -u origin master
+</span></span></code></pre></div><p>接下来输入你的用户名和你的GitHub<strong>个人访问Token(不是密码，帐号密码已经不支持了)</strong></p>
 <p><strong>申请Token方法</strong></p>
 <ul>
 <li>

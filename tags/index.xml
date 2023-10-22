@@ -5,6 +5,15 @@
         <link>https://kira-pgr.github.io/tags/</link>
         <description>Recent content in Tags on CSNek0&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="https://kira-pgr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+        <language>en</language>
+        <lastBuildDate>Thu, 05 May 2022 09:31:14 -0400</lastBuildDate><atom:link href="https://kira-pgr.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>VM</title>
+        <link>https://kira-pgr.github.io/tags/vm/</link>
+        <pubDate>Thu, 05 May 2022 09:31:14 -0400</pubDate>
+        
+        <guid>https://kira-pgr.github.io/tags/vm/</guid>
+        <description></description>
+        </item>
+        
     </channel>
 </rss>
