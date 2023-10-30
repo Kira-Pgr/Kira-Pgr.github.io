@@ -145,6 +145,45 @@
                 href="https://kira-pgr.github.io/categories/software/"
                 />
   </url><url>
+    <loc>https://kira-pgr.github.io/tags/blog/</loc>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/tags/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/tags/blog/"
+                />
+  </url><url>
+    <loc>https://kira-pgr.github.io/tags/github/</loc>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/tags/github/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/tags/github/"
+                />
+  </url><url>
+    <loc>https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/</loc>
+    <lastmod>2022-01-29T02:02:45-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/p/hugo%E6%97%A0%E9%9C%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/"
+                />
+  </url><url>
     <loc>https://kira-pgr.github.io/categories/hugo_blog/</loc>
     <lastmod>2022-01-29T01:03:14-05:00</lastmod>
     <xhtml:link

@@ -6,6 +6,250 @@
         <description>Recent content in Hugo_Blog on CSNek0&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sat, 29 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/hugo_blog/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Sat, 29 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/hugo_blog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo Personal Blog without a Server</title>
+        <link>https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/</link>
+        <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/cover.jpg" alt="Featured image of post Hugo Personal Blog without a Server" /&gt;&lt;h1 id=&#34;build-your-blog-for-free-using-github-pages&#34;&gt;Build your Blog for Free Using GitHub Pages&lt;/h1&gt;
+&lt;h2 id=&#34;installation-environment-linux&#34;&gt;Installation Environment (Linux)&lt;/h2&gt;
+&lt;h3 id=&#34;installing-hugo&#34;&gt;Installing Hugo&lt;/h3&gt;
+&lt;p&gt;yum system&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum install hugo -y
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Arch&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -S hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;deb system&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;installing-git-skip-this-part-if-pre-installed&#34;&gt;Installing Git (Skip this part if pre-installed)&lt;/h3&gt;
+&lt;p&gt;yum system&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum install git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Arch&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo pacman -Syu git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;deb system&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installation-environment-windows&#34;&gt;Installation Environment (Windows)&lt;/h2&gt;
+&lt;h3 id=&#34;installing-hugo-1&#34;&gt;Installing Hugo&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/installing/#less-technical-users&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gohugo.io/getting-started/installing/#less-technical-users&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;installing-git&#34;&gt;Installing Git&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;winget&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Git&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;py&#34;&gt;Git&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;start-building-the-websiteuwu&#34;&gt;Start Building the Website.UwU.!&lt;/h2&gt;
+&lt;h3 id=&#34;creating-a-github-project&#34;&gt;Creating a GitHub Project&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Register/Login to GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. Due to some reasons, GitHub may be inaccessible in certain areas in China.&lt;/p&gt;
+&lt;p&gt;Solution: Use a VPN or switch to Gitee (requires real-name authentication).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Create a project named &lt;code&gt;YourGithubUsername.github.io&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Keep it for later use.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;building-website-locally&#34;&gt;Building Website Locally&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note: My local environment is Kali Linux. The steps may vary in other environments.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Open the terminal/cmd/whatever and type:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new site NameOfYourWebsite
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now Hugo will generate a website for you.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ahem, next, visit &lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://themes.gohugo.io/&lt;/a&gt; to find a theme you like.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Navigate to the &lt;strong&gt;themes&lt;/strong&gt; directory of your local hugo website.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; WebsiteName/themes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then place your theme inside.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone URLofYourThemeFromGitHub.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once the theme is in place, follow the documentation to configure your site.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Documentation for Stack theme: &lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.stack.jimmycai.com/zh/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;basic-configuration-for-the-stack-theme&#34;&gt;Basic Configuration for the Stack Theme&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Copy &lt;code&gt;YourWebsiteName/themes/hugo-theme-stack/exampleSite/config.yaml&lt;/code&gt; to the root directory of the website (i.e., the &lt;code&gt;YourWebsiteName&lt;/code&gt; directory).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete &lt;code&gt;config.toml&lt;/code&gt; from the website root directory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open &lt;code&gt;config.yaml&lt;/code&gt; in the website root directory and fill in the details.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tips:&lt;/p&gt;
+&lt;p&gt;The author&amp;rsquo;s avatar goes in &lt;code&gt;/themes/hugo-theme-stack/assets/img/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;About the emoji below the avatar: If you don&amp;rsquo;t want to add it, leave the line for emoji empty.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;stack-troubleshooting&#34;&gt;Stack Troubleshooting&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Edit:&lt;/p&gt;
+&lt;p&gt;Well&amp;hellip; since I posted this article, many have become &lt;em&gt;&amp;ldquo;Stack enthusiasts&amp;rdquo;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Given the theme&amp;rsquo;s popularity, I&amp;rsquo;ll share more insights about my configuration experience.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;q1-what-if-posts-dont-appear-on-the-homepage&#34;&gt;Q1: What if posts don&amp;rsquo;t appear on the homepage?&lt;/h3&gt;
+&lt;p&gt;Edit &lt;code&gt;config.yaml&lt;/code&gt; in the &lt;strong&gt;website root directory&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;mainSections&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;posts&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;q2-how-to-configure-comments&#34;&gt;Q2: How to configure comments?&lt;/h3&gt;
+&lt;p&gt;I chose &lt;code&gt;Gitalk&lt;/code&gt; for comments.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;comments&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;enabled&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# set to true to enable comments&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;provider&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;gitalk &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Gitalk configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;gitalk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;owner&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;YourGitHubUsername&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;admin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;YourGitHubUsername&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;repo: YourGitHubRepositoryName (NOTE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;not the URL!!!!!!!)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;clientID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;clientSecret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#DO NOT share your ClientID and ClientSecret!&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How to get ClientID and ClientSecret:&lt;/p&gt;
+&lt;p&gt;Go to &lt;a class=&#34;link&#34; href=&#34;https://github.com/settings/developers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub developer settings&lt;/a&gt; and create a new &lt;code&gt;OAuth App&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/1.jpg&#34;
+	width=&#34;1815&#34;
+	height=&#34;514&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/1_hu83f57fbfa775c166070d66c978aa20d9_205490_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/1_hu83f57fbfa775c166070d66c978aa20d9_205490_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Image description&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;353&#34;
+		data-flex-basis=&#34;847px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Fill in the required fields:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Application Name: Any name&lt;/p&gt;
+&lt;p&gt;Homepage URL: Your blog&amp;rsquo;s URL&lt;/p&gt;
+&lt;p&gt;Application description: Any description&lt;/p&gt;
+&lt;p&gt;Authorization callback URL: Your blog&amp;rsquo;s URL&lt;/p&gt;
+&lt;p&gt;Enable Device Flow: Do NOT tick&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After saving, you will receive the ClientID. Click &lt;code&gt;Generate a new client secret&lt;/code&gt; below the Client Secret box.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/2.jpg&#34;
+	width=&#34;1254&#34;
+	height=&#34;334&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/2_hue4a4cba18a7872f7215e13e8cb31100a_44607_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/hugo-personal-blog-without-a-server/2_hue4a4cba18a7872f7215e13e8cb31100a_44607_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Clicking around&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;375&#34;
+		data-flex-basis=&#34;901px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Note: You can only see the Client Secret &lt;strong&gt;once&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;q3-customization-and-beautification&#34;&gt;Q3: Customization and Beautification&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I don&amp;rsquo;t find much need for customization; usually, it&amp;rsquo;s just about adding quirky stuff. Still, let&amp;rsquo;s discuss it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Paths related to customization:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WebsiteRootDirectory/layouts/partials/head/custom.html &lt;span class=&#34;c1&#34;&gt;# HTML inserted at the head of all pages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WebsiteRootDirectory/layouts/partials/footer/custom.html &lt;span class=&#34;c1&#34;&gt;# HTML inserted at the footer of all pages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;WebsiteRootDirectory/static/ &lt;span class=&#34;c1&#34;&gt;# Path for resource files like js, css, etc.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Lastly, here&amp;rsquo;s a &lt;em&gt;lazy&lt;/em&gt; method I wrote for beautifying Stack blogs: &lt;a class=&#34;link&#34; href=&#34;https://blog.nanosec.site/posts/hugo2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;run-the-website-locally&#34;&gt;Run the website locally&lt;/h2&gt;
+&lt;p&gt;Open terminal/cmd/your preferred command-line tool in the &lt;strong&gt;website root directory&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Type:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo server 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can now visit &lt;code&gt;http://127.0.0.1:1313/&lt;/code&gt; in your local browser to see your website.&lt;/p&gt;
+&lt;h2 id=&#34;writing-blogs&#34;&gt;Writing Blogs&lt;/h2&gt;
+&lt;h3 id=&#34;about-markdown&#34;&gt;About Markdown&lt;/h3&gt;
+&lt;p&gt;Familiarize yourself with &lt;a class=&#34;link&#34; href=&#34;https://www.markdownguide.org/basic-syntax/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Markdown syntax&lt;/a&gt; before writing blogs.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: You can use MarkText (an open-source markdown editor) for blogging. It offers a more comfortable experience.&lt;/p&gt;
+&lt;p&gt;(I used this tool to write this article)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/marktext/marktext#download-and-installation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MarkText download link&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;about-directory-structure&#34;&gt;About Directory Structure&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Your articles are in &lt;code&gt;WebsiteRootDirectory/content/posts/&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Your &amp;ldquo;categories&amp;rdquo; are in &lt;code&gt;WebsiteRootDirectory/content/categories&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;give-it-a-try&#34;&gt;Give it a try!&lt;/h3&gt;
+&lt;p&gt;First, create an md file. Open terminal/cmd/&amp;hellip; in the website root directory and type:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo new posts/AnyNameYouLike/index.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Open &lt;code&gt;index.md&lt;/code&gt; and replace the autogenerated content with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;title: &amp;#34;Article Title&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;description: &amp;#34;Description&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date: 2022-01-29T02:02:45-05:00
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;image: &amp;#34;ImageNameInSameDirectory(with file extension and relative path)&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;categories:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Category1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Category2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tags:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Tag1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; Tag2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;NOTE: Different themes might have different formats. Check the &lt;u&gt;documentation&lt;/u&gt; if you&amp;rsquo;re not using the Stack theme.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You can now start writing the article content.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: Place referenced images in the same directory.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;publishing-the-website-on-github&#34;&gt;Publishing the Website on GitHub&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Whew, once you complete this step, your website will be publicly accessible.&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE: Keep the local environment. You&amp;rsquo;ll need it for future blog posts.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;publishing-the-website&#34;&gt;Publishing the Website&lt;/h3&gt;
+&lt;p&gt;Open terminal/cmd/and so on in the website root directory. Type:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo --theme&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ThemeDirectoryName
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Navigate to &lt;code&gt;WebsiteRootDirectory/public&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; public
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create a &lt;code&gt;.git&lt;/code&gt; directory in &lt;code&gt;public&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add all files to the git repository:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Commit:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;Initial commit&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Note: If your commit failed, it might be due to git not being properly configured. Fix it by following the steps:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global user.email &lt;span class=&#34;s2&#34;&gt;&amp;#34;you@example.com&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git config --global user.name &lt;span class=&#34;s2&#34;&gt;&amp;#34;Your Name&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Then retry the commit.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Connect your repository to the website:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git remote add origin https://github.com/YourGitHubUsername/YourGitHubUsername.github.io.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Push to GitHub:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push -u origin master
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Wait for a while and then visit &lt;code&gt;https://YourGitHubUsername.github.io/&lt;/code&gt; to see your website!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Congratulations!&lt;/strong&gt; Your Hugo blog is now live on GitHub!&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://weepingdogel.github.io/posts/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99_%E4%B8%8B/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;如何使用 GitHub 搭建博客 - WeepingDogel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.stack.jimmycai.com/zh/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;English translations by GPT-4&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>

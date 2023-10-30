@@ -14,6 +14,22 @@
         <guid>https://kira-pgr.github.io/tags/vm/</guid>
         <description></description>
         </item>
+        <item>
+        <title>Blog</title>
+        <link>https://kira-pgr.github.io/tags/blog/</link>
+        <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/tags/blog/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>GitHub</title>
+        <link>https://kira-pgr.github.io/tags/github/</link>
+        <pubDate>Sat, 29 Jan 2022 02:02:45 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/tags/github/</guid>
+        <description></description>
+        </item>
         
     </channel>
 </rss>
