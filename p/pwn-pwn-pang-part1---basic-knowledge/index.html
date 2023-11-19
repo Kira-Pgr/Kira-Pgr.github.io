@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='PWN? PWN!'><title>PWN! PWN! PANG! Part1---Basic Knowledge</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='PWN! PWN! PANG! Part1---Basic Knowledge'>
+<meta property='og:description' content='PWN? PWN!'>
+<meta property='og:url' content='https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/'>
+<meta property='og:site_name' content='CSNek0&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='PWN' /><meta property='article:published_time' content='2022-01-27T21:24:46-05:00'/><meta property='article:modified_time' content='2022-01-27T21:24:46-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/cover.jpg' />
+<meta name="twitter:title" content="PWN! PWN! PANG! Part1---Basic Knowledge">
+<meta name="twitter:description" content="PWN? PWN!"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">CSNek0&#39;s Blog</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" selected>English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/pwn-pwn-pang-part1---basic-knowledge/">
+                <img src="/p/pwn-pwn-pang-part1---basic-knowledge/cover_hu576b02bd11baef12c82f0e62b58bf2a0_136072_800x0_resize_q75_box.jpg"
+                        srcset="/p/pwn-pwn-pang-part1---basic-knowledge/cover_hu576b02bd11baef12c82f0e62b58bf2a0_136072_800x0_resize_q75_box.jpg 800w, /p/pwn-pwn-pang-part1---basic-knowledge/cover_hu576b02bd11baef12c82f0e62b58bf2a0_136072_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part1---Basic Knowledge" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/pwn-pwn-pang-part1---basic-knowledge/">PWN! PWN! PANG! Part1---Basic Knowledge</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            PWN? PWN!
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 27, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="link">中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="pwn-pwn-pang-part1">PWN! PWN! PANG! Part1</h1>
+<h2 id="foreword">Foreword</h2>
+<p>Here are the PGR&rsquo;s basic PWN learning notes, mainly studying the exploitation of vulnerabilities in ELF executable files under Linux</p>
+<p>The content involves:</p>
+<ul>
+<li>Stack vulnerability exploitation, mainly stack overflow attacks</li>
+</ul>
+<blockquote>
+<p>PS: Speaking of Stack Overflow, we must mention a famous IT forum of the same name abroad (it&rsquo;s <strong>extremely, extremely, extremely</strong> useful)</p>
+<p><del>Important things must be said three times XD</del></p>
+<p><a class="link" href="https://stackoverflow.com/"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/</a></p>
+</blockquote>
+<ul>
+<li>
+<p>Format String vulnerabilities in the C language Printf() function</p>
+</li>
+<li>
+<p>A little bit of heap exploitation</p>
+</li>
+</ul>
+<h2 id="what-is-pwn">What is PWN?</h2>
+<p>PWN originally meant the &ldquo;bang&rdquo; sound when a hacker broke into a system. Here, we interpret it as <strong>binary vulnerability mining and exploitation</strong></p>
+<p>To explain step by step = = It can be summarized as the following points:</p>
+<ul>
+<li>
+<p>Crack and exploit successfully (binary vulnerabilities of the program)</p>
+</li>
+<li>
+<p>Break into (devices, servers)</p>
+</li>
+<li>
+<p>Control (devices, servers)</p>
+</li>
+</ul>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/pwn.jpg"
+	width="316"
+	height="206"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_480x0_resize_q75_box.jpg 480w, /p/pwn-pwn-pang-part1---basic-knowledge/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="This is how &ldquo;pwn&rdquo; looks like"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="368px"
+	
+></p>
+<h2 id="elf-files-under-linux">ELF Files Under Linux</h2>
+<p>ELF files are executable files under Linux, they&rsquo;re different from exe files under Windows</p>
+<p>You can use the File command to check your file format:</p>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/file.png"
+	width="1139"
+	height="654"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_480x0_resize_box_3.png 480w, /p/pwn-pwn-pang-part1---basic-knowledge/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="File Command"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="174"
+		data-flex-basis="417px"
+	
+></p>
+<blockquote>
+<p>However, there is an interesting point here. Since the File command judges the file type based on the file header, the file suffix does not affect its judgment of the file as an ELF file (even if a.out has been changed to a.zip)</p>
+<p>However, if you double-click this .zip in the folder window, you will find that: this ELF file has been opened as a compressed file (this seems very similar to Windows)</p>
+<p>It can be seen that in the process of changing the suffix, it has interfered with the system&rsquo;s recognition of the file opening method = =</p>
+</blockquote>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/file1.png"
+	width="945"
+	height="627"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/file1_hu875359da3f79d0c44f12bd1a55586189_97232_480x0_resize_box_3.png 480w, /p/pwn-pwn-pang-part1---basic-knowledge/file1_hu875359da3f79d0c44f12bd1a55586189_97232_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="a &ldquo;zipped&rdquo; program"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="150"
+		data-flex-basis="361px"
+	
+></p>
+<h2 id="structure-of-elf-files">Structure of ELF Files</h2>
+<p>Seems we went off-topic =   =</p>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/ELF.jpg"
+	width="1363"
+	height="716"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_480x0_resize_q75_box.jpg 480w, /p/pwn-pwn-pang-part1---basic-knowledge/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="ELF File Structure"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="456px"
+	
+></p>
+<p>Now let&rsquo;s take another look at this executable file &ldquo;a.out&rdquo;</p>
+<p>We just accidentally opened it as a compressed file (as shown above)</p>
+<p>We see a bunch of strange files:</p>
+<ul>
+<li>
+<p>.got</p>
+</li>
+<li>
+<p>.got.plt</p>
+</li>
+<li>
+<p>.plt</p>
+</li>
+<li>
+<p>.text</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
+</ul>
+<p>These files actually represent the various <strong>&ldquo;sections&rdquo;</strong> of this ELF file on the disk</p>
+<p>And when the ELF is mapped into memory, there are <strong>&ldquo;segments&rdquo;</strong></p>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/ELF1.jpg"
+	width="1351"
+	height="703"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_480x0_resize_q75_box.jpg 480w, /p/pwn-pwn-pang-part1---basic-knowledge/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Sections and Segments"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="192"
+		data-flex-basis="461px"
+	
+></p>
+<h2 id="segments-and-sections">Segments and Sections</h2>
+<p>Here, let&rsquo;s talk in detail about segments and sections</p>
+<p>(Well =    =, because I personally feel this knowledge has a big impact on later learning)</p>
+<p>Here&rsquo;s an important diagram:</p>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/img.png"
+	width="1359"
+	height="717"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/img_hu25854d26341c86fdce4489a656418346_70073_480x0_resize_box_3.png 480w, /p/pwn-pwn-pang-part1---basic-knowledge/img_hu25854d26341c86fdce4489a656418346_70073_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Diagram"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
+	
+></p>
+<p>From this diagram, we can see that the .data, .bss, and .got.plt sections are all mapped to the <strong>Data Segment</strong></p>
+<p>While .rodata, .text, .init, ELF Header are mapped to the <strong>Code Segment</strong></p>
+<p><strong>Why?</strong></p>
+<ul>
+<li>
+<p>The first three sections <del>(too lazy to write in detail)</del> have a common feature: readable and writable. Because user data is saved here, it obviously can&rsquo;t be non-writable =  = . Obviously, you also can&rsquo;t let it be executable, otherwise users can write any data and execute it (never trust user input is safe)</p>
+</li>
+<li>
+<p>The latter four sections are code parts, which are often little programs of their own, so they are readable and executable, but not writable =   =</p>
+</li>
+<li>
+<p>Lastly, &gt;__&lt;, here&rsquo;s another diagram;)</p>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/img1.png"
+	width="1350"
+	height="719"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/img1_huc654210b42dc0202bb596523623c9d4c_100907_480x0_resize_box_3.png 480w, /p/pwn-pwn-pang-part1---basic-knowledge/img1_huc654210b42dc0202bb596523623c9d4c_100907_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Functions of Some Sections"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="450px"
+	
+></p>
+</li>
+</ul>
+<h2 id="organization-of-program-data-in-memory">Organization of Program Data in Memory</h2>
+<p>Straight to the diagram()</p>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/mem.png"
+	width="1355"
+	height="711"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/mem_huae9965f5cba59206b56105b8aa15edc0_63508_480x0_resize_box_3.png 480w, /p/pwn-pwn-pang-part1---basic-knowledge/mem_huae9965f5cba59206b56105b8aa15edc0_63508_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Organization of Program Data in Memory"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="457px"
+	
+></p>
+<blockquote>
+<p>Let&rsquo;s assume everyone has a bit of C foundation here</p>
+<p>Not going off-topic anymore</p>
+</blockquote>
+<p><em><strong>A few points to note here</strong></em></p>
+<ul>
+<li>
+<p>The stack grows <del>downward</del> from high to low address</p>
+</li>
+<li>
+<p>The heap grows from low to high address</p>
+</li>
+<li>
+<p>Data is written from low to high address</p>
+</li>
+<li>
+<p>BSS stores global variables</p>
+</li>
+<li>
+<p>The stack stores local variables</p>
+</li>
+</ul>
+<h2 id="assembly-alert">Assembly Alert!</h2>
+<p>For assembly, you only need to know the most basic instructions =  =</p>
+<p>Since we&rsquo;ve written so much =   =</p>
+<p>Let&rsquo;s continue&hellip;</p>
+<p><em><strong>Some Common Assembly Instructions</strong></em></p>
+<p><img src="/p/pwn-pwn-pang-part1---basic-knowledge/asm.png"
+	width="1354"
+	height="711"
+	srcset="/p/pwn-pwn-pang-part1---basic-knowledge/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_480x0_resize_box_3.png 480w, /p/pwn-pwn-pang-part1---basic-knowledge/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Common Assembly Instructions"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="457px"
+	
+></p>
+<p><em><strong>Usage</strong></em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nasm" data-lang="nasm"><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="nv">DEST</span><span class="p">(</span><span class="nv">ADDRESS</span><span class="p">),</span> <span class="nv">SRC</span><span class="p">(</span><span class="nv">VALUE</span><span class="p">)</span>  <span class="c1">; Transfer the source operand to the destination (similar to an assignment statement)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">LEA</span> <span class="nv">REG</span><span class="p">,</span> <span class="nv">SRC</span>                   <span class="c1">; Send the effective address of the source operand to the specified register (save SRC&#39;s address into…)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">PUSH</span> <span class="nv">VALUE</span>                     <span class="c1">; Push the target value onto the stack, while decreasing the SP pointer by 1 word length</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POP</span> <span class="nv">DEST</span>                       <span class="c1">; Pop the value from the top of the stack to the destination storage position, while increasing the SP pointer by 1 word length</span>
+</span></span><span class="line"><span class="cl"><span class="nf">LEAVE</span>                          <span class="c1">; Instruction to restore the parent function&#39;s stack frame when returning from a function (destroy the child function&#39;s stack frame after the child function call ends)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">RET</span>                            <span class="c1">; Instruction to control the program execution flow to return to the parent function when returning from a function</span>
+</span></span></code></pre></div><h2 id="reference">Reference</h2>
+<p>translations by <strong>GPT-4</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/pwn/">PWN</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/pwn-pwn-pang-part2---tool-usage/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pwn-pwn-pang-part2---tool-usage/cover.dfc14371a1ebc11e7a4c671f0b6a9755_hu3d6209426f4a4882dd231c4242aff084_2839967_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part2 --- Tool Usage"
+                        
+                        data-hash="md5-38FDcaHrwR56TGcfC2qXVQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part2 --- Tool Usage</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/reproducing-clash-rce/">
+        
+        
+            <div class="article-image">
+                <img src="/p/reproducing-clash-rce/cover.90388edc5b014d294f952b1813c530d7_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Reproducing Clash RCE"
+                        
+                        data-hash="md5-kDiO3FsBTSlPlSsYE8Uw1w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Reproducing Clash RCE</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "ddbff992a105766dc2834098a20c8e1e497b27c1",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 CSNek0&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#foreword">Foreword</a></li>
+    <li><a href="#what-is-pwn">What is PWN?</a></li>
+    <li><a href="#elf-files-under-linux">ELF Files Under Linux</a></li>
+    <li><a href="#structure-of-elf-files">Structure of ELF Files</a></li>
+    <li><a href="#segments-and-sections">Segments and Sections</a></li>
+    <li><a href="#organization-of-program-data-in-memory">Organization of Program Data in Memory</a></li>
+    <li><a href="#assembly-alert">Assembly Alert!</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

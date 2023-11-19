@@ -189,6 +189,16 @@
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/tags/exploit/</loc>
     <lastmod>2022-05-13T03:44:40-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/tags/exploit/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/tags/exploit/"
+                />
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/%E7%BD%91%E5%AE%89%E7%8C%AB%E7%8C%AB%E8%B5%84%E6%BA%90%E5%BA%93/</loc>
     <lastmod>2022-05-13T03:44:40-04:00</lastmod>
@@ -234,6 +244,16 @@
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/tags/pwn/</loc>
     <lastmod>2022-04-14T23:21:24-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/tags/pwn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/tags/pwn/"
+                />
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part6---rop/</loc>
     <lastmod>2022-04-14T23:21:24-04:00</lastmod>
@@ -259,6 +279,16 @@
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/</loc>
     <lastmod>2022-02-25T23:27:12-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/p/reproducing-clash-rce/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/p/clash%E7%8C%AB%E7%8C%ABrce%E5%A4%8D%E7%8E%B0%E5%BC%B9shell/"
+                />
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part4---ret2text/</loc>
     <lastmod>2022-02-10T22:54:20-05:00</lastmod>
@@ -290,6 +320,16 @@
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2022-01-29T21:35:29-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/p/pwn-pwn-pang-part2---tool-usage/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part2---%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                />
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/hugo%E6%97%A0%E9%9C%80%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2022-01-29T02:02:45-05:00</lastmod>
@@ -322,6 +362,16 @@
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2022-01-27T21:24:46-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kira-pgr.github.io/p/pwn-pwn-pang-part1---basic-knowledge/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kira-pgr.github.io/zh-cn/p/pwn-pwn-pang-part1---%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+                />
   </url><url>
     <loc>https://kira-pgr.github.io/zh-cn/categories/about_me/</loc>
     <lastmod>2022-01-27T01:03:14-05:00</lastmod>
